@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
+import { dashboardReducer } from './dashboard';
 import { RootState } from './state';
-import { DashboardReducer } from './dashboard';
 
 export { RootState };
 
 export const rootReducer = combineReducers<RootState>({
-  dashboard: DashboardReducer as any
+  dashboard: dashboardReducer as any,
 });

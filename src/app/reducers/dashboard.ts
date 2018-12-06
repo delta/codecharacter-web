@@ -4,6 +4,7 @@ import { RootState } from './state';
 
 const initialState: RootState = {};
 
+/* tslint:disable-next-line:no-empty-interface */
 export interface Action {}
 
-export const DashboardReducer = handleActions<RootState, Action>({}, initialState);
+export const dashboardReducer = handleActions<RootState, Action>({}, initialState);

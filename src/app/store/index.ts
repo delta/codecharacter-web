@@ -1,7 +1,7 @@
-import { Store, createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { logger } from 'app/middleware';
-import { RootState, rootReducer } from 'app/reducers';
+import { rootReducer, RootState } from 'app/reducers';
+import { applyMiddleware, createStore, Store } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 export function configureStore(initialState?: RootState): Store<RootState> {
   let middleware = applyMiddleware(logger);
@@ -10,7 +10,9 @@ export function configureStore(initialState?: RootState): Store<RootState> {
     middleware = composeWithDevTools(middleware);
   }
 
-  const store = createStore(rootReducer as any, initialState as any, middleware) as Store<RootState>;
+  const store = createStore(rootReducer as any, initialState as any, middleware) as Store<
+    RootState
+  >;
 
   if (module.hot) {
     module.hot.accept('app/reducers', () => {
