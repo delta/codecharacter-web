@@ -10,6 +10,7 @@ var outPath = path.join(__dirname, './build');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+var MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 module.exports = {
   context: sourcePath,
@@ -114,7 +115,8 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: 'assets/index.html'
-    })
+    }),
+    new MonacoWebpackPlugin()
   ],
   devServer: {
     contentBase: sourcePath,
