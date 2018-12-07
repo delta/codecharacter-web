@@ -40,9 +40,13 @@
       "js",
       "jsx"
     ],
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "setupTestFrameworkScriptFile": "<rootDir>/__tests__/setup/setupEnzyme.ts",
-    "testPathIgnorePatterns": ["<rootDir>/__tests__/setup/"],
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/setup/"
+    ],
     "moduleNameMapper": {
       "^app(.*)$": "<rootDir>/src/app$1"
     }
@@ -75,6 +79,7 @@
     "jest-css-modules": "^1.1.0",
     "lint-staged": "^8.1.0",
     "mini-css-extract-plugin": "^0.4.4",
+    "monaco-editor-webpack-plugin": "^1.7.0",
     "postcss": "^7.0.5",
     "postcss-browser-reporter": "^0.5.0",
     "postcss-import": "^12.0.0",
@@ -104,6 +109,7 @@
     "react": "^16.5.2",
     "react-ace": "^6.2.0",
     "react-dom": "^16.5.2",
+    "react-monaco-editor": "^0.22.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-split-pane": "^0.1.84",
