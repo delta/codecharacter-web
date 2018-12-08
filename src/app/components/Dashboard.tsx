@@ -5,25 +5,26 @@ import * as React from 'react';
 import SplitPane from 'react-split-pane';
 
 export class Dashboard extends React.Component<{}, Dashboard.State> {
-  constructor(props: {}, context?: any) {
-    super(props, context);
+  constructor(props: {}) {
+    super(props);
     this.state = {
       code: '',
-      width: 500,
+      leftPartitionWidth: 500,
     };
-    this.onChange = this.onChange.bind(this);
   }
 
   public render() {
-    const width = this.state.width;
+    const { leftPartitionWidth } = this.state;
+
     return (
       <SplitPane
         split="vertical"
         minSize={50}
         defaultSize={500}
         resizerClassName={style.vertical}
-        onChange={this.onChange}>
-        <Editor editorWidth={width}/>
+        onChange={this.onChange}
+      >
+        <Editor editorWidth={leftPartitionWidth} theme="vs-dark" fontSize={16} />
         <SplitPane split="horizontal" resizerClassName={style.horizontal}>
           <div />
           <div />
@@ -32,9 +33,9 @@ export class Dashboard extends React.Component<{}, Dashboard.State> {
     );
   }
 
-  private onChange(size: number) {
+  private onChange = (size: number): void => {
     this.setState({
-      width:size,
+      leftPartitionWidth: size,
     });
   }
 }
@@ -42,6 +43,6 @@ export class Dashboard extends React.Component<{}, Dashboard.State> {
 export namespace Dashboard {
   export interface State {
     code: string;
-    width: number;
+    leftPartitionWidth: number;
   }
 }

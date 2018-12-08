@@ -2,46 +2,49 @@ import * as React from 'react';
 /* tslint:disable-next-line:import-name */
 import MonacoEditor from 'react-monaco-editor';
 
-export class Editor extends React.Component<any, any> {
-  constructor(props: any) {
+export class Editor extends React.Component<Editor.Props, Editor.State> {
+  constructor(props: Editor.Props) {
     super(props);
     this.state = {
       code: '// type your code...',
-      width: this.props.editorWidth,
     };
   }
+
   public render() {
-    const code = this.state.code;
+    const { editorWidth, theme, fontSize } = this.props;
+    const { code } = this.state;
     const options = {
+      fontSize,
       selectOnLineNumbers: true,
     };
     return (
       <MonacoEditor
         height={window.innerHeight}
-        width={this.props.editorWidth}
-        language="javascript"
-        theme="vs-dark"
+        width={editorWidth}
+        language="cpp"
+        theme={theme}
         value={code}
         options={options}
-        onChange={this.onChange}
-        editorDidMount={this.editorDidMount}
+        onChange={(newValue) => {
+          this.setState({
+            code: newValue,
+          });
+        }}
+        editorDidMount={(editor) => {
+          editor.focus();
+        }}
       />
     );
   }
-
-  private onChange(newValue: any, e: any) {
-    // console.log('onChange', newValue, e);
-  }
-
-  private editorDidMount(editor: any, monaco: any) {
-    // console.log('editorDidMount', editor);
-    editor.focus();
-  }
-
 }
 
 export namespace Editor {
   export interface State {
     code: string;
+  }
+  export interface Props {
+    editorWidth: number;
+    theme: string;
+    fontSize: number;
   }
 }

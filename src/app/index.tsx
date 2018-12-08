@@ -6,6 +6,6 @@ import { Route, Switch } from 'react-router';
 /* tslint:disable-next-line:variable-name */
 export const App = hot(module)(() => (
   <Switch>
-    <Route path="/dashboard" component={Dashboard} />
+    <Route path="/" component={Dashboard} />
   </Switch>
 ));

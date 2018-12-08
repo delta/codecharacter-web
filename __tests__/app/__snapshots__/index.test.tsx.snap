@@ -4,7 +4,7 @@ exports[`Main App Component Renders 1`] = `
 <Switch>
   <Route
     component={[Function]}
-    path="/dashboard"
+    path="/"
   />
 </Switch>
 `;
