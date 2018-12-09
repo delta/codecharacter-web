@@ -16,6 +16,8 @@ export class Editor extends React.Component<Editor.Props, Editor.State> {
     const options = {
       fontSize,
       selectOnLineNumbers: true,
+      // Type of wordWrap is not string. (Temp Fix)
+      wordWrap: 'on' as 'on',
     };
     return (
       <MonacoEditor

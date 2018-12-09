@@ -19,7 +19,7 @@ export class Dashboard extends React.Component<{}, Dashboard.State> {
     return (
       <SplitPane
         split="vertical"
-        minSize={50}
+        minSize={400}
         defaultSize={500}
         resizerClassName={style.vertical}
         onChange={this.onChange}
@@ -37,7 +37,7 @@ export class Dashboard extends React.Component<{}, Dashboard.State> {
     this.setState({
       leftPartitionWidth: size,
     });
-  }
+  };
 }
 
 export namespace Dashboard {

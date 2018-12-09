@@ -6,6 +6,7 @@ export function omit<T extends object, K extends keyof T>(target: T, ...omitKeys
       }
       return res;
     },
+    /*tslint:disable-next-line:no-any*/
     {} as any,
   );
 }

@@ -5,5 +5,5 @@ import { RootState } from './state';
 export { RootState };
 
 export const rootReducer = combineReducers<RootState>({
-  dashboard: dashboardReducer as any,
+  dashboard: dashboardReducer,
 });
