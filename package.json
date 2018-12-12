@@ -86,6 +86,7 @@
     "enzyme-to-json": "^3.3.5",
     "file-loader": "^2.0.0",
     "gh-pages": "^2.0.1",
+    "hard-source-webpack-plugin": "^0.13.0",
     "html-loader": "^1.0.0-alpha.0",
     "html-webpack-plugin": "^4.0.0-alpha",
     "husky": "^1.2.0",

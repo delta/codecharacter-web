@@ -11,6 +11,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 var MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+var HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 module.exports = {
   context: sourcePath,
@@ -116,7 +117,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'assets/index.html'
     }),
-    new MonacoWebpackPlugin()
+    new MonacoWebpackPlugin(),
+    new HardSourceWebpackPlugin()
   ],
   devServer: {
     contentBase: sourcePath,
