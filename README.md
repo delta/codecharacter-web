@@ -1,10 +1,10 @@
 # CodeCharacter Web
-  Web App for the frontend of CodeCharacter 2019
- 
+Web App for the frontend of CodeCharacter 2019
+
 ## Installation
 
 ```
-$ npm ci
+$ npm install
 ```
 
 ## Running
@@ -19,8 +19,14 @@ $ npm start
 $ npm run build
 ```
 
-## Format code (using [Prettier](https://github.com/prettier/prettier))
+## Format with Prettier & Run ESLint
 
 ```
-$ npm run prettier
+$ npm run lint
+```
+
+## Run ESLint Fix
+
+```
+$ npm run lint:fix
 ```

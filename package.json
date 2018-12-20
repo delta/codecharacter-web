@@ -9,9 +9,8 @@
     "test": "jest",
     "start": "webpack-dev-server --mode development --hot --progress --color --port 3000",
     "build": "webpack -p --progress --colors",
-    "prettier": "prettier --write \"src/**/*.{ts,tsx,css}\" \"__tests__/**/*.{ts,tsx,css}\"",
-    "lint": "./node_modules/.bin/tslint --project .",
-    "lint:fix": "./node_modules/.bin/tslint --project . --fix"
+    "lint": "prettier --write \"src/**/*.{ts,tsx,css}\" \"__tests__/**/*.{ts,tsx,css}\" && tslint --project .",
+    "lint:fix": "tslint --project . --fix"
   },
   "husky": {
     "hooks": {
