@@ -1,5 +1,3 @@
-// import { createAction } from 'redux-actions';
-
 export namespace DashboardActions {
   export enum Type {}
 }

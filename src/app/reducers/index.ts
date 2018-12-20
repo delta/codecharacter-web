@@ -1,9 +1,8 @@
+import { editorReducer } from 'app/reducers/code/Editor';
+import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
-import { dashboardReducer } from './dashboard';
-import { RootState } from './state';
 
-export { RootState };
-
-export const rootReducer = combineReducers<RootState>({
-  dashboard: dashboardReducer,
+export const rootReducer = combineReducers({
+  editor: editorReducer,
+  router: routerReducer,
 });

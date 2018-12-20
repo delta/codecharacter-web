@@ -1,4 +1,4 @@
-import { Editor } from 'app/components/code/editor/Editor';
+import Editor from 'app/containers/code/Editor';
 import * as style from 'app/styles/Dashboard.css';
 import * as React from 'react';
 /* tslint:disable-next-line:import-name */

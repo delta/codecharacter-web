@@ -5,14 +5,10 @@ import MonacoEditor from 'react-monaco-editor';
 export class Editor extends React.Component<Editor.Props, Editor.State> {
   constructor(props: Editor.Props) {
     super(props);
-    this.state = {
-      code: '// type your code...',
-    };
   }
 
   public render() {
-    const { editorWidth, theme, fontSize } = this.props;
-    const { code } = this.state;
+    const { editorWidth, theme, fontSize, code, updateCode } = this.props;
     const options = {
       fontSize,
       selectOnLineNumbers: true,
@@ -28,9 +24,7 @@ export class Editor extends React.Component<Editor.Props, Editor.State> {
         value={code}
         options={options}
         onChange={(newValue) => {
-          this.setState({
-            code: newValue,
-          });
+          updateCode(newValue);
         }}
         editorDidMount={(editor) => {
           editor.focus();
@@ -44,9 +38,20 @@ export namespace Editor {
   export interface State {
     code: string;
   }
-  export interface Props {
+
+  export interface OwnProps {
     editorWidth: number;
     theme: string;
     fontSize: number;
   }
+
+  export interface StateProps {
+    code: string;
+  }
+
+  export interface DispatchProps {
+    updateCode: (code: string) => void;
+  }
+
+  export type Props = OwnProps & StateProps & DispatchProps;
 }
