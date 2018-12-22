@@ -1,0 +1,52 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/codecharacter-web-2019
+    docker:
+      - image: circleci/node:4.8.2
+    steps:
+      - checkout
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-pacages
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+  tests:
+    working_directory: ~/codecharacter-web-2019
+    steps:
+      - checkout
+      - run:
+          name: lint-test
+          command: |
+            npm lint
+            npm lint:fix
+      - run:
+          name: jest-test
+          command: npm test
+  pre-deploy:
+    working_directory: ~/codecharacter-web-2019
+    steps:
+      - checkout
+      - run:
+          name: build
+          command: npm predeploy
+
+workflows:
+  version: 2
+  build-tests-predeploy:
+    jobs:
+      - build
+      - tests:
+          requires:
+            - build
+      - predeploy:
+          type: approval
+          requires:
+            - tests
