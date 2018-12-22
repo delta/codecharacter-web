@@ -20,6 +20,7 @@ jobs:
             - ./node_modules
   tests:
     working_directory: ~/codecharacter-web-2019
+    machine: true
     steps:
       - checkout
       - run:
@@ -32,6 +33,7 @@ jobs:
           command: npm test
   pre-deploy:
     working_directory: ~/codecharacter-web-2019
+    machine: true
     steps:
       - checkout
       - run:
