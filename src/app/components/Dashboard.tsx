@@ -24,7 +24,7 @@ export class Dashboard extends React.Component<{}, Dashboard.State> {
         resizerClassName={style.vertical}
         onChange={this.onChange}
       >
-        <Editor editorWidth={leftPartitionWidth} theme="vs-dark" fontSize={16} />
+        <Editor editorWidth={leftPartitionWidth} theme="monokai" fontSize={16} />
         <SplitPane split="horizontal" resizerClassName={style.horizontal}>
           <div />
           <div />

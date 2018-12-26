@@ -1,6 +1,11 @@
 import * as React from 'react';
-/* tslint:disable-next-line:import-name */
-import MonacoEditor from 'react-monaco-editor';
+// tslint:disable-next-line:import-name
+import AceEditor from 'react-ace';
+
+import 'brace/ext/language_tools';
+import 'brace/ext/searchbox';
+import 'brace/mode/c_cpp';
+import 'brace/theme/monokai';
 
 export class Editor extends React.Component<Editor.Props, Editor.State> {
   constructor(props: Editor.Props) {
@@ -8,27 +13,31 @@ export class Editor extends React.Component<Editor.Props, Editor.State> {
   }
 
   public render() {
-    const { editorWidth, theme, fontSize, code, updateCode } = this.props;
+    const { editorWidth, theme, fontSize } = this.props;
     const options = {
-      fontSize,
-      selectOnLineNumbers: true,
-      // Type of wordWrap is not string. (Temp Fix)
-      wordWrap: 'on' as 'on',
+      enableBasicAutocompletion: false,
+      enableLiveAutocompletion: false,
+      enableSnippets: false,
+      showLineNumbers: true,
+      tabSize: 2,
     };
+
     return (
-      <MonacoEditor
-        height={window.innerHeight}
-        width={editorWidth}
-        language="cpp"
+      <AceEditor
+        mode="c_cpp"
         theme={theme}
-        value={code}
-        options={options}
-        onChange={(newValue) => {
-          updateCode(newValue);
-        }}
-        editorDidMount={(editor) => {
-          editor.focus();
-        }}
+        name="editor_div"
+        fontSize={fontSize}
+        wrapEnabled={true}
+        showPrintMargin={true}
+        showGutter={true}
+        highlightActiveLine={true}
+        setOptions={options}
+        editorProps={{ $blockScrolling: true }}
+        width={editorWidth.toString()}
+        height={'100%'}
+        value={this.props.code}
+        onChange={this.props.updateCode}
       />
     );
   }

@@ -19,8 +19,8 @@ export const editorReducer = (state = editorStoreIntialState, action: EditorStor
   switch (action.type) {
     case EditorActions.Type.UPDATE_CODE: {
       return {
-        code: action.payload.code,
         ...state,
+        code: action.payload.code,
       };
     }
     default:

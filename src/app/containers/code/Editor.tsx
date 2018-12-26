@@ -1,11 +1,11 @@
 import { EditorActions } from 'app/actions';
 import { Editor } from 'app/components/code/Editor';
-import { EditorStoreState } from 'app/reducers/code/Editor';
+import { RootState } from 'app/reducers';
 import { connect } from 'react-redux';
 
-const mapStateToProps = (editorState: EditorStoreState) => {
+const mapStateToProps = (rootState: RootState) => {
   return {
-    code: editorState.code,
+    code: rootState.editor.code,
   };
 };
 
