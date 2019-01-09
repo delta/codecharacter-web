@@ -1,3 +1,4 @@
+import { faCode, faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as styles from 'app/styles/EditorPanel.module.css';
 import classnames from 'classnames';
@@ -18,13 +19,13 @@ export class EditorPanel extends React.Component<EditorPanel.Props, {}> {
           )}
         >
           <Button className={classnames('py-4 px-auto text-white', styles.customBtn)}>
-            <FontAwesomeIcon icon={'code'} />
+            <FontAwesomeIcon icon={faCode} />
           </Button>
           <Button
             className={classnames('py-4 px-auto text-white', styles.customBtn)}
             onClick={() => toggleCustomizationPanel(!showCustomizationPanel)}
           >
-            <FontAwesomeIcon icon={'cog'} />
+            <FontAwesomeIcon icon={faCog} />
           </Button>
         </ButtonGroup>
       </div>

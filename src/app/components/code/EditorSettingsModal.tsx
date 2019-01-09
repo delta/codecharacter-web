@@ -1,3 +1,4 @@
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { themes } from 'app/components/code/Editor'
 import * as styles from 'app/styles/Modal.module.css';
@@ -38,7 +39,7 @@ export class EditorSettingsModal extends React.Component<EditorSettingsModal.Pro
               bsSize="xsmall"
               onClick={() => toggleCustomizationPanel(!showCustomizationModal)}
             >
-              <FontAwesomeIcon icon="times" color={'white'} />
+              <FontAwesomeIcon icon={faTimes} color={'white'} />
             </Button>
           </Col>
         </Row>

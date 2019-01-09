@@ -1,5 +1,4 @@
 import { configureStore } from 'app/store';
-import 'app/utils/fontAwesome';
 import 'bootstrap/dist/css/bootstrap.css';
 import { createBrowserHistory } from 'history';
 import * as React from 'react';
