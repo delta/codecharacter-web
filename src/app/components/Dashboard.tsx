@@ -1,7 +1,7 @@
 import Editor from 'app/containers/code/Editor';
 import EditorPanel from 'app/containers/code/EditorPanel';
-// tslint:disable-next-line:import-name
 import EditorSettingsModal from 'app/containers/code/EditorSettingsModal';
+import GameLog from 'app/containers/code/GameLog';
 import * as style from 'app/styles/Dashboard.css';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
@@ -48,9 +48,9 @@ export class Dashboard extends React.Component<{}, Dashboard.State> {
               </Col>
             </Row>
           </Grid>
-          <SplitPane split="horizontal" resizerClassName={style.horizontal}>
+          <SplitPane split="horizontal" defaultSize={300} resizerClassName={style.horizontal}>
             <div />
-            <div />
+            <GameLog />
           </SplitPane>
         </SplitPane>
       </div>

@@ -8,7 +8,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 // tslint:disable-next-line:variable-name
 export class EditorPanel extends React.Component<EditorPanel.Props, {}> {
   public render() {
-    const { showCustomizationPanel, toggleCustomizationPanel } = this.props
+    const { showCustomizationPanel, toggleCustomizationPanel } = this.props;
     return (
       <div className={classnames('h-100', styles.EditorPanel)}>
         <ButtonGroup
@@ -31,7 +31,7 @@ export class EditorPanel extends React.Component<EditorPanel.Props, {}> {
       </div>
     );
   }
-};
+}
 
 export namespace EditorPanel {
   export interface StateProps {

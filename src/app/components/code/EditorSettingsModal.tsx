@@ -1,15 +1,13 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { themes } from 'app/components/code/Editor'
+import { themes } from 'app/components/code/Editor';
 import * as styles from 'app/styles/Modal.module.css';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Button, Col, FormGroup, Grid, Row } from 'react-bootstrap';
 
-
 // tslint:disable-next-line:variable-name
 export class EditorSettingsModal extends React.Component<EditorSettingsModal.Props, {}> {
-
   public render() {
     const {
       showCustomizationModal,
@@ -17,11 +15,11 @@ export class EditorSettingsModal extends React.Component<EditorSettingsModal.Pro
       fontSize,
       changeFontSize,
       theme,
-      changeTheme
-    } = this.props
-    const fontSizeOptions = []
+      changeTheme,
+    } = this.props;
+    const fontSizeOptions = [];
     for (let i = 8; i <= 40; i += 2) {
-      fontSizeOptions.push(i)
+      fontSizeOptions.push(i);
     }
     return (
       <Grid
@@ -53,11 +51,11 @@ export class EditorSettingsModal extends React.Component<EditorSettingsModal.Pro
                 value={fontSize}
                 onChange={(e) => changeFontSize(Number(e.target.value))}
               >
-                {
-                  fontSizeOptions.map((font: number) => (
-                    <option value={font} key={font}>{font}</option>
-                  ))
-                }
+                {fontSizeOptions.map((font: number) => (
+                  <option value={font} key={font}>
+                    {font}
+                  </option>
+                ))}
               </select>
             </FormGroup>
           </Col>
@@ -71,7 +69,9 @@ export class EditorSettingsModal extends React.Component<EditorSettingsModal.Pro
                 onChange={(e) => changeTheme(e.target.value)}
               >
                 {themes.map((themeValue: string) => (
-                  <option value={themeValue} key={themeValue}>{themeValue}</option>
+                  <option value={themeValue} key={themeValue}>
+                    {themeValue}
+                  </option>
                 ))}
               </select>
             </FormGroup>
@@ -80,7 +80,7 @@ export class EditorSettingsModal extends React.Component<EditorSettingsModal.Pro
       </Grid>
     );
   }
-};
+}
 
 export namespace EditorSettingsModal {
   export interface StateProps {

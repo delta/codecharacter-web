@@ -11,7 +11,11 @@ const mapStateToProps = (rootState: RootState) => {
   };
 };
 
-const editorSettingsModalContainer = connect<EditorSettingsModal.StateProps, EditorSettingsModal.DispatchProps,{}>(
+const editorSettingsModalContainer = connect<
+  EditorSettingsModal.StateProps,
+  EditorSettingsModal.DispatchProps,
+  {}
+>(
   mapStateToProps,
   {
     changeFontSize: EditorActions.changeFontSize,
