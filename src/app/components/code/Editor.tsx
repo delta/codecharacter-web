@@ -5,7 +5,24 @@ import AceEditor from 'react-ace';
 import 'brace/ext/language_tools';
 import 'brace/ext/searchbox';
 import 'brace/mode/c_cpp';
-import 'brace/theme/monokai';
+import 'brace/snippets/c_cpp';
+
+export const themes = [
+  'monokai',
+  'github',
+  'tomorrow',
+  'kuroir',
+  'twilight',
+  'xcode',
+  'textmate',
+  'solarized_dark',
+  'solarized_light',
+  'terminal',
+];
+
+themes.forEach((theme) => {
+  require(`brace/theme/${theme}`);
+});
 
 export class Editor extends React.Component<Editor.Props, Editor.State> {
   constructor(props: Editor.Props) {
@@ -13,7 +30,7 @@ export class Editor extends React.Component<Editor.Props, Editor.State> {
   }
 
   public render() {
-    const { editorWidth, theme, fontSize } = this.props;
+    const { editorWidth, theme, fontSize, code, updateCode } = this.props;
     const options = {
       enableBasicAutocompletion: false,
       enableLiveAutocompletion: false,
@@ -36,8 +53,8 @@ export class Editor extends React.Component<Editor.Props, Editor.State> {
         editorProps={{ $blockScrolling: true }}
         width={editorWidth.toString()}
         height={'100%'}
-        value={this.props.code}
-        onChange={this.props.updateCode}
+        value={code}
+        onChange={updateCode}
       />
     );
   }
@@ -50,12 +67,12 @@ export namespace Editor {
 
   export interface OwnProps {
     editorWidth: number;
-    theme: string;
-    fontSize: number;
   }
 
   export interface StateProps {
     code: string;
+    theme: string;
+    fontSize: number;
   }
 
   export interface DispatchProps {

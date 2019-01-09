@@ -48,6 +48,7 @@ module.exports = {
       // css
       {
         test: /\.css$/,
+        exclude: /\.module.css$/,
         use: [
           isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
           {
@@ -75,6 +76,21 @@ module.exports = {
                   disabled: isProduction
                 })
               ]
+            }
+          }
+        ]
+      },
+      {
+        test: /\.module.css$/,
+        use: [
+          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+          {
+            loader: 'css-loader',
+            query: {
+              modules: true,
+              sourceMap: !isProduction,
+              importLoaders: 1,
+              localIdentName: isProduction ? '[hash:base64:5]' : '[local]__[hash:base64:5]'
             }
           }
         ]

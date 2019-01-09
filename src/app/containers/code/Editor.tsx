@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 const mapStateToProps = (rootState: RootState) => {
   return {
     code: rootState.editor.code,
+    fontSize: rootState.editor.editorOptions.fontSize,
+    theme: rootState.editor.editorOptions.theme,
   };
 };
 
