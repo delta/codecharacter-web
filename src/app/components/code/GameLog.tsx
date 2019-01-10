@@ -11,7 +11,7 @@ export class GameLog extends React.Component<GameLog.Props, {}> {
   }
 
   public render() {
-    const { gameLog } = this.props;
+    const { value } = this.props;
     const options = {
       enableBasicAutocompletion: false,
       enableLiveAutocompletion: false,
@@ -35,7 +35,7 @@ export class GameLog extends React.Component<GameLog.Props, {}> {
         editorProps={{ $blockScrolling: true }}
         width={'100%'}
         height={'100%'}
-        value={gameLog}
+        value={value}
       />
     );
   }
@@ -43,7 +43,7 @@ export class GameLog extends React.Component<GameLog.Props, {}> {
 
 export namespace GameLog {
   export interface StateProps {
-    gameLog: string;
+    value: string;
   }
 
   export interface DispatchProps {

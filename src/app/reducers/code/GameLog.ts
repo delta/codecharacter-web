@@ -6,13 +6,13 @@ const actions = {
 };
 
 export interface GameLogStoreState {
-  gameLog: string;
+  value: string;
 }
 
 export type GameLogStoreAction = ActionType<typeof actions>;
 
 const gameLogStoreIntialState: GameLogStoreState = {
-  gameLog: '/* Game logs */',
+  value: '/* Game logs */',
 };
 
 export const gameLogReducer = (state = gameLogStoreIntialState, action: GameLogStoreAction) => {

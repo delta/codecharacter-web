@@ -2,7 +2,7 @@
 
 exports[`GameLog Container Should render 1`] = `
 <GameLog
-  gameLog="/* Game logs */"
   updateGameLog={[Function]}
+  value="/* Game logs */"
 />
 `;
