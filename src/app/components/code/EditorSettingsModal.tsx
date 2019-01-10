@@ -49,7 +49,7 @@ export class EditorSettingsModal extends React.Component<EditorSettingsModal.Pro
             <p>The size of text in the code editor</p>
             <FormGroup controlId="fontSize">
               <select
-                className={classnames('form-control', styles.formControlSelect)}
+                className={classnames('form-control', styles.formControlSelect, 'font-size-control')}
                 value={fontSize}
                 onChange={(e) => changeFontSize(Number(e.target.value))}
               >
@@ -66,7 +66,7 @@ export class EditorSettingsModal extends React.Component<EditorSettingsModal.Pro
             <p>The syntax and overall theme of the code editor</p>
             <FormGroup controlId="theme">
               <select
-                className={classnames('form-control', styles.formControlSelect)}
+                className={classnames('form-control', styles.formControlSelect, 'theme-control')}
                 value={theme}
                 onChange={(e) => changeTheme(e.target.value)}
               >

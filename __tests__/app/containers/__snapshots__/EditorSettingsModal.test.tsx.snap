@@ -1,0 +1,373 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditorSettingsModal Container Should render 1`] = `
+<Connect(EditorSettingsModal)>
+  <EditorSettingsModal
+    changeFontSize={[Function]}
+    changeTheme={[Function]}
+    fontSize={16}
+    showCustomizationModal={false}
+    theme="monokai"
+    toggleCustomizationPanel={[Function]}
+  >
+    <Grid
+      bsClass="container"
+      className=""
+      componentClass="div"
+      fluid={true}
+      style={
+        Object {
+          "opacity": 0,
+          "transform": "translateY(-100vh)",
+        }
+      }
+    >
+      <div
+        className="container-fluid"
+        style={
+          Object {
+            "opacity": 0,
+            "transform": "translateY(-100vh)",
+          }
+        }
+      >
+        <Row
+          bsClass="row"
+          className="justify-content-between py-2 pl-3"
+          componentClass="div"
+        >
+          <div
+            className="justify-content-between py-2 pl-3 row"
+          >
+            <Col
+              bsClass="col"
+              className="text-light my-auto"
+              componentClass="div"
+            >
+              <div
+                className="text-light my-auto"
+              >
+                SETTINGS
+              </div>
+            </Col>
+            <Col
+              bsClass="col"
+              componentClass="div"
+            >
+              <div
+                className=""
+              >
+                <Button
+                  active={false}
+                  block={false}
+                  bsClass="btn"
+                  bsSize="xsmall"
+                  bsStyle="default"
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  <button
+                    className="btn btn-xs btn-default"
+                    disabled={false}
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <FontAwesomeIcon
+                      border={false}
+                      className=""
+                      color="white"
+                      fixedWidth={false}
+                      flip={null}
+                      icon={
+                        Object {
+                          "icon": Array [
+                            352,
+                            512,
+                            Array [],
+                            "f00d",
+                            "M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z",
+                          ],
+                          "iconName": "times",
+                          "prefix": "fas",
+                        }
+                      }
+                      inverse={false}
+                      listItem={false}
+                      mask={null}
+                      pull={null}
+                      pulse={false}
+                      rotation={null}
+                      size={null}
+                      spin={false}
+                      symbol={false}
+                      title=""
+                      transform={null}
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="svg-inline--fa fa-times fa-w-11 "
+                        color="white"
+                        data-icon="times"
+                        data-prefix="fas"
+                        role="img"
+                        style={Object {}}
+                        viewBox="0 0 352 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                          fill="currentColor"
+                          style={Object {}}
+                        />
+                      </svg>
+                    </FontAwesomeIcon>
+                  </button>
+                </Button>
+              </div>
+            </Col>
+          </div>
+        </Row>
+        <Row
+          bsClass="row"
+          componentClass="div"
+        >
+          <div
+            className="row"
+          >
+            <Col
+              bsClass="col"
+              className="mb-1"
+              componentClass="div"
+              sm={12}
+            >
+              <div
+                className="mb-1 col-sm-12"
+              >
+                <div
+                  className="font-weight-bold py-2"
+                >
+                  Font Size
+                </div>
+                <p>
+                  The size of text in the code editor
+                </p>
+                <FormGroup
+                  bsClass="form-group"
+                  controlId="fontSize"
+                >
+                  <div
+                    className="form-group"
+                  >
+                    <select
+                      className="form-control font-size-control"
+                      onChange={[Function]}
+                      value={16}
+                    >
+                      <option
+                        key="8"
+                        value={8}
+                      >
+                        8
+                      </option>
+                      <option
+                        key="10"
+                        value={10}
+                      >
+                        10
+                      </option>
+                      <option
+                        key="12"
+                        value={12}
+                      >
+                        12
+                      </option>
+                      <option
+                        key="14"
+                        value={14}
+                      >
+                        14
+                      </option>
+                      <option
+                        key="16"
+                        value={16}
+                      >
+                        16
+                      </option>
+                      <option
+                        key="18"
+                        value={18}
+                      >
+                        18
+                      </option>
+                      <option
+                        key="20"
+                        value={20}
+                      >
+                        20
+                      </option>
+                      <option
+                        key="22"
+                        value={22}
+                      >
+                        22
+                      </option>
+                      <option
+                        key="24"
+                        value={24}
+                      >
+                        24
+                      </option>
+                      <option
+                        key="26"
+                        value={26}
+                      >
+                        26
+                      </option>
+                      <option
+                        key="28"
+                        value={28}
+                      >
+                        28
+                      </option>
+                      <option
+                        key="30"
+                        value={30}
+                      >
+                        30
+                      </option>
+                      <option
+                        key="32"
+                        value={32}
+                      >
+                        32
+                      </option>
+                      <option
+                        key="34"
+                        value={34}
+                      >
+                        34
+                      </option>
+                      <option
+                        key="36"
+                        value={36}
+                      >
+                        36
+                      </option>
+                      <option
+                        key="38"
+                        value={38}
+                      >
+                        38
+                      </option>
+                      <option
+                        key="40"
+                        value={40}
+                      >
+                        40
+                      </option>
+                    </select>
+                  </div>
+                </FormGroup>
+              </div>
+            </Col>
+            <Col
+              bsClass="col"
+              className="mb-1"
+              componentClass="div"
+              sm={12}
+            >
+              <div
+                className="mb-1 col-sm-12"
+              >
+                <div
+                  className="font-weight-bold py-2"
+                >
+                  Editor Theme
+                </div>
+                <p>
+                  The syntax and overall theme of the code editor
+                </p>
+                <FormGroup
+                  bsClass="form-group"
+                  controlId="theme"
+                >
+                  <div
+                    className="form-group"
+                  >
+                    <select
+                      className="form-control theme-control"
+                      onChange={[Function]}
+                      value="monokai"
+                    >
+                      <option
+                        key="monokai"
+                        value="monokai"
+                      >
+                        monokai
+                      </option>
+                      <option
+                        key="github"
+                        value="github"
+                      >
+                        github
+                      </option>
+                      <option
+                        key="tomorrow"
+                        value="tomorrow"
+                      >
+                        tomorrow
+                      </option>
+                      <option
+                        key="kuroir"
+                        value="kuroir"
+                      >
+                        kuroir
+                      </option>
+                      <option
+                        key="twilight"
+                        value="twilight"
+                      >
+                        twilight
+                      </option>
+                      <option
+                        key="xcode"
+                        value="xcode"
+                      >
+                        xcode
+                      </option>
+                      <option
+                        key="textmate"
+                        value="textmate"
+                      >
+                        textmate
+                      </option>
+                      <option
+                        key="solarized_dark"
+                        value="solarized_dark"
+                      >
+                        solarized_dark
+                      </option>
+                      <option
+                        key="solarized_light"
+                        value="solarized_light"
+                      >
+                        solarized_light
+                      </option>
+                      <option
+                        key="terminal"
+                        value="terminal"
+                      >
+                        terminal
+                      </option>
+                    </select>
+                  </div>
+                </FormGroup>
+              </div>
+            </Col>
+          </div>
+        </Row>
+      </div>
+    </Grid>
+  </EditorSettingsModal>
+</Connect(EditorSettingsModal)>
+`;
