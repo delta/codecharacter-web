@@ -1,8 +1,0 @@
-.EditorPanel {
-  background: #1c1c1c;
-}
-
-.EditorPanel .customBtn:focus {
-  outline: none;
-  box-shadow: none;
-}

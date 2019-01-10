@@ -30,11 +30,19 @@ export class Editor extends React.Component<Editor.Props, Editor.State> {
   }
 
   public render() {
-    const { editorWidth, theme, fontSize, code, updateCode } = this.props;
+    const {
+      editorWidth,
+      theme,
+      fontSize,
+      basicAutoCompletion,
+      snippets,
+      code,
+      updateCode,
+    } = this.props;
     const options = {
-      enableBasicAutocompletion: false,
+      enableBasicAutocompletion: basicAutoCompletion,
       enableLiveAutocompletion: false,
-      enableSnippets: false,
+      enableSnippets: snippets,
       showLineNumbers: true,
       tabSize: 2,
     };
@@ -51,8 +59,8 @@ export class Editor extends React.Component<Editor.Props, Editor.State> {
         highlightActiveLine={true}
         setOptions={options}
         editorProps={{ $blockScrolling: true }}
-        width={editorWidth.toString()}
-        height={'100%'}
+        width={`${editorWidth.toString()}px`}
+        height={'100vh'}
         value={code}
         onChange={updateCode}
       />
@@ -73,6 +81,8 @@ export namespace Editor {
     code: string;
     theme: string;
     fontSize: number;
+    basicAutoCompletion: boolean;
+    snippets: boolean;
   }
 
   export interface DispatchProps {

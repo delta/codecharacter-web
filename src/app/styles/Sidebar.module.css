@@ -1,0 +1,18 @@
+.Sidebar {
+  background: #292929;
+  width: 50px;
+}
+
+.Sidebar .customBtn {
+  font-size: 20px;
+  color: #9c9c9c;
+}
+
+.Sidebar .customBtn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.Sidebar .customBtn:hover {
+  color: #fff;
+}

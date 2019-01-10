@@ -1,5 +1,5 @@
 import { DashboardActions } from 'app/actions';
-import { EditorPanel } from 'app/components/code/EditorPanel';
+import { Sidebar } from 'app/components/code/SideBar';
 import { RootState } from 'app/reducers';
 import { connect } from 'react-redux';
 
@@ -9,11 +9,11 @@ const mapStateToProps = (rootState: RootState) => {
   };
 };
 
-const editorPanelContainer = connect<EditorPanel.StateProps, EditorPanel.DispatchProps, {}>(
+const sidebarContainer = connect<Sidebar.StateProps, Sidebar.DispatchProps, {}>(
   mapStateToProps,
   {
     setSidePanelTab: DashboardActions.setSidePanelTab,
   },
-)(EditorPanel);
+)(Sidebar);
 
-export default editorPanelContainer;
+export default sidebarContainer;

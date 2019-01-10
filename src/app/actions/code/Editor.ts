@@ -5,6 +5,9 @@ export namespace EditorActions {
     UPDATE_CODE = 'UPDATE_CODE',
     CHANGE_FONT_SIZE = 'CHANGE_FONT_SIZE',
     CHANGE_THEME = 'CHANGE_THEME',
+    ENABLE_AUTO_COMPLETION = 'ENABLE_AUTO_COMPLETION',
+    ENABLE_SNIPPETS = 'ENABLE_SNIPPETS',
+    TOGGLE_CUSTOMIZATION_PANEL = 'TOGGLE_CUSTOMIZATION_PANEL',
   }
 
   export const updateCode = (code: string) =>
@@ -22,4 +25,18 @@ export namespace EditorActions {
       theme,
     });
 
+  export const enableAutoCompletion = (basicAutoCompletion: boolean) =>
+    action(Type.ENABLE_AUTO_COMPLETION, {
+      basicAutoCompletion,
+    });
+
+  export const enableSnippets = (snippets: boolean) =>
+    action(Type.ENABLE_SNIPPETS, {
+      snippets,
+    });
+
+  export const toggleCustomizationPanel = (showCustomizationPanel: boolean) =>
+    action(Type.TOGGLE_CUSTOMIZATION_PANEL, {
+      showCustomizationPanel,
+    });
 }

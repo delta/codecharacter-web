@@ -5,8 +5,10 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (rootState: RootState) => {
   return {
+    basicAutoCompletion: rootState.editor.editorOptions.basicAutoCompletion,
     code: rootState.editor.code,
     fontSize: rootState.editor.editorOptions.fontSize,
+    snippets: rootState.editor.editorOptions.snippets,
     theme: rootState.editor.editorOptions.theme,
   };
 };

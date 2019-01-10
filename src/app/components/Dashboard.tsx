@@ -1,10 +1,10 @@
 import Editor from 'app/containers/code/Editor';
-import EditorPanel from 'app/containers/code/EditorPanel';
-import EditorSettingsModal from 'app/containers/code/EditorSettingsModal';
+import EditorSettings from 'app/containers/code/EditorSettings';
 import GameLog from 'app/containers/code/GameLog';
+import Sidebar from 'app/containers/code/Sidebar';
 import * as style from 'app/styles/Dashboard.css';
 import * as React from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
+import { Grid, Row } from 'react-bootstrap';
 /* tslint:disable-next-line:import-name */
 import SplitPane from 'react-split-pane';
 
@@ -12,40 +12,44 @@ export class Dashboard extends React.Component<{}, Dashboard.State> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      leftPartitionWidth: 600,
+      editorWidth: 450,
+      leftPartitionWidth: 500,
+      usedUpLeftPartitionWidth: 50,
     };
   }
 
   public render() {
-    const { leftPartitionWidth } = this.state;
+    const { editorWidth } = this.state;
+
     return (
       <div>
-        <div
-          className="h-100"
-          style={{
-            display: 'inline',
-            position: 'absolute',
-            width: '50px',
-          }}
-        >
-          <EditorPanel />
-        </div>
         <SplitPane
           split="vertical"
-          minSize={400}
-          defaultSize={600}
+          minSize={500}
+          defaultSize={500}
           resizerClassName={style.vertical}
-          onChange={this.onChange}
-          style={{
-            marginLeft: '50px',
-          }}
+          onChange={this.onResize}
         >
-          <Grid fluid={true} className="h-100">
-            <Row className="h-100">
-              <Col sm={12} md={12} lg={12} className="h-100 p-0">
-                <Editor editorWidth={leftPartitionWidth} />
-                <EditorSettingsModal />
-              </Col>
+          <Grid fluid={true}>
+            <Row>
+              <div
+                style={{
+                  height: '100vh',
+                }}
+              >
+                <Sidebar />
+              </div>
+              <EditorSettings
+                onShowEditorSettings={this.onShowEditorSettings}
+                onHideEditorSettings={this.onHideEditorSettings}
+              />
+              <div
+                style={{
+                  height: '100vh',
+                }}
+              >
+                <Editor editorWidth={editorWidth} />
+              </div>
             </Row>
           </Grid>
           <SplitPane split="horizontal" defaultSize={300} resizerClassName={style.horizontal}>
@@ -57,14 +61,30 @@ export class Dashboard extends React.Component<{}, Dashboard.State> {
     );
   }
 
-  private onChange = (size: number): void => {
+  private onResize = (size: number): void => {
     this.setState({
+      editorWidth: size - this.state.usedUpLeftPartitionWidth,
       leftPartitionWidth: size,
+    });
+  };
+  /* Sidebar width: 50px, Settings width: 350px, force update and rerender Editor by updating editorWidth */
+  private onShowEditorSettings = (): void => {
+    this.setState({
+      editorWidth: this.state.leftPartitionWidth - 400,
+      usedUpLeftPartitionWidth: 400,
+    });
+  };
+  private onHideEditorSettings = (): void => {
+    this.setState({
+      editorWidth: this.state.leftPartitionWidth - 50,
+      usedUpLeftPartitionWidth: 50,
     });
   };
 }
 export namespace Dashboard {
   export interface State {
+    editorWidth: number;
     leftPartitionWidth: number;
+    usedUpLeftPartitionWidth: number;
   }
 }
