@@ -6,12 +6,12 @@ import { combineReducers } from 'redux';
 // tslint:disable-next-line
 export const rootReducer = combineReducers({
   editor: editorReducer,
-  log: gameLogReducer,
+  gameLog: gameLogReducer,
   router: routerReducer,
 });
 
 export interface RootState {
   editor: EditorStoreState;
   router: RouterState;
-  log: GameLogStoreState;
+  gameLog: GameLogStoreState;
 }
