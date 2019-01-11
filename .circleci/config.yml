@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Jest Tests
           command: npm test
-  pre-deploy:
+  predeploy:
     filters:
       branches:
         only: master
@@ -45,7 +45,7 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: build
-          command: npm predeploy
+          command: npm run build
 
 workflows:
   version: 2
@@ -56,6 +56,5 @@ workflows:
           requires:
             - build
       - predeploy:
-          type: approval
           requires:
             - tests
