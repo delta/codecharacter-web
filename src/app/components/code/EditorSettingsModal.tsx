@@ -10,8 +10,8 @@ import { Button, Col, FormGroup, Grid, Row } from 'react-bootstrap';
 export class EditorSettingsModal extends React.Component<EditorSettingsModal.Props, {}> {
   public render() {
     const {
-      showCustomizationModal,
-      toggleCustomizationPanel,
+      showEditorSettingsPanel,
+      toggleEditorSettingsPanel,
       fontSize,
       changeFontSize,
       theme,
@@ -26,8 +26,8 @@ export class EditorSettingsModal extends React.Component<EditorSettingsModal.Pro
         fluid={true}
         className={classnames(styles.Modal)}
         style={{
-          opacity: showCustomizationModal ? 1 : 0,
-          transform: showCustomizationModal ? 'translateY(0)' : 'translateY(-100vh)',
+          opacity: showEditorSettingsPanel ? 1 : 0,
+          transform: showEditorSettingsPanel ? 'translateY(0)' : 'translateY(-100vh)',
         }}
       >
         <Row className="justify-content-between py-2 pl-3">
@@ -35,7 +35,7 @@ export class EditorSettingsModal extends React.Component<EditorSettingsModal.Pro
           <Col>
             <Button
               bsSize="xsmall"
-              onClick={() => toggleCustomizationPanel(!showCustomizationModal)}
+              onClick={() => toggleEditorSettingsPanel(!showEditorSettingsPanel)}
             >
               <FontAwesomeIcon icon={faTimes} color={'white'} />
             </Button>
@@ -86,13 +86,13 @@ export namespace EditorSettingsModal {
   export interface StateProps {
     fontSize: number;
     theme: string;
-    showCustomizationModal: boolean;
+    showEditorSettingsPanel: boolean;
   }
 
   export interface DispatchProps {
     changeFontSize: (fontSize: number) => void;
     changeTheme: (theme: string) => void;
-    toggleCustomizationPanel: (showCustomizationPanel: boolean) => void;
+    toggleEditorSettingsPanel: (showCustomizationPanel: boolean) => void;
   }
 
   export type Props = {} & StateProps & DispatchProps;

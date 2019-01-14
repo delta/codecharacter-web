@@ -1,18 +1,18 @@
-import { EditorActions } from 'app/actions';
+import { DashboardActions } from 'app/actions';
 import { EditorPanel } from 'app/components/code/EditorPanel';
 import { RootState } from 'app/reducers';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (rootState: RootState) => {
   return {
-    showCustomizationPanel: rootState.editor.showCustomizationPanel,
+    showEditorSettingsPanel: rootState.dashboard.showEditorSettingsPanel,
   };
 };
 
 const editorPanelContainer = connect<EditorPanel.StateProps, EditorPanel.DispatchProps, {}>(
   mapStateToProps,
   {
-    toggleCustomizationPanel: EditorActions.toggleCustomizationPanel,
+    toggleEditorSettingsPanel: DashboardActions.toggleEditorSettingsPanel,
   },
 )(EditorPanel);
 

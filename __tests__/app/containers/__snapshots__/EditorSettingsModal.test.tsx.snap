@@ -6,9 +6,9 @@ exports[`EditorSettingsModal Container Should render 1`] = `
     changeFontSize={[Function]}
     changeTheme={[Function]}
     fontSize={16}
-    showCustomizationModal={false}
+    showEditorSettingsPanel={false}
     theme="monokai"
-    toggleCustomizationPanel={[Function]}
+    toggleEditorSettingsPanel={[Function]}
   >
     <Grid
       bsClass="container"

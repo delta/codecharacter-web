@@ -5,7 +5,6 @@ export namespace EditorActions {
     UPDATE_CODE = 'UPDATE_CODE',
     CHANGE_FONT_SIZE = 'CHANGE_FONT_SIZE',
     CHANGE_THEME = 'CHANGE_THEME',
-    TOGGLE_CUSTOMIZATION_PANEL = 'TOGGLE_CUSTOMIZATION_PANEL',
   }
 
   export const updateCode = (code: string) =>
@@ -23,8 +22,4 @@ export namespace EditorActions {
       theme,
     });
 
-  export const toggleCustomizationPanel = (showCustomizationPanel: boolean) =>
-    action(Type.TOGGLE_CUSTOMIZATION_PANEL, {
-      showCustomizationPanel,
-    });
 }

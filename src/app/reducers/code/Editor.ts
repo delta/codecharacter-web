@@ -4,7 +4,6 @@ import { ActionType } from 'typesafe-actions';
 const actions = {
   changeFontSize: EditorActions.changeFontSize,
   changeTheme: EditorActions.changeTheme,
-  toggleCustomizationPanel: EditorActions.toggleCustomizationPanel,
   updateCode: EditorActions.updateCode,
 };
 
@@ -14,7 +13,6 @@ export interface EditorStoreState {
     fontSize: number;
     theme: string;
   };
-  showCustomizationPanel: boolean;
 }
 
 export type EditorStoreAction = ActionType<typeof actions>;
@@ -25,7 +23,6 @@ const editorStoreIntialState: EditorStoreState = {
     fontSize: 16,
     theme: 'monokai',
   },
-  showCustomizationPanel: false,
 };
 
 export const editorReducer = (state = editorStoreIntialState, action: EditorStoreAction) => {
@@ -51,11 +48,6 @@ export const editorReducer = (state = editorStoreIntialState, action: EditorStor
           ...state.editorOptions,
           theme: action.payload.theme,
         },
-      };
-    case EditorActions.Type.TOGGLE_CUSTOMIZATION_PANEL:
-      return {
-        ...state,
-        showCustomizationPanel: action.payload.showCustomizationPanel,
       };
     default:
       return state;

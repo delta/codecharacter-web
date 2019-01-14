@@ -8,7 +8,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 // tslint:disable-next-line:variable-name
 export class EditorPanel extends React.Component<EditorPanel.Props, {}> {
   public render() {
-    const { showCustomizationPanel, toggleCustomizationPanel } = this.props;
+    const { showEditorSettingsPanel, toggleEditorSettingsPanel } = this.props;
     return (
       <div className={classnames('h-100', styles.EditorPanel)}>
         <ButtonGroup
@@ -23,7 +23,7 @@ export class EditorPanel extends React.Component<EditorPanel.Props, {}> {
           </Button>
           <Button
             className={classnames('py-4 px-auto text-white', styles.customBtn)}
-            onClick={() => toggleCustomizationPanel(!showCustomizationPanel)}
+            onClick={() => toggleEditorSettingsPanel(!showEditorSettingsPanel)}
           >
             <FontAwesomeIcon icon={faCog} />
           </Button>
@@ -35,11 +35,11 @@ export class EditorPanel extends React.Component<EditorPanel.Props, {}> {
 
 export namespace EditorPanel {
   export interface StateProps {
-    showCustomizationPanel: boolean;
+    showEditorSettingsPanel: boolean;
   }
 
   export interface DispatchProps {
-    toggleCustomizationPanel: (showCustomizationPanel: boolean) => void;
+    toggleEditorSettingsPanel: (showEditorSettingsPanel: boolean) => void;
   }
 
   export type Props = StateProps & DispatchProps;
