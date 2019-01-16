@@ -1,13 +1,14 @@
+import { SidePanelTab } from 'app/reducers/Dashboard'
 import { action } from 'typesafe-actions';
 
 export namespace DashboardActions {
   export enum Type {
-    TOGGLE_EDITOR_SETTINGS_PANEL = 'TOGGLE_EDITOR_SETTINGS_PANEL'
+    SET_SIDE_PANEL_TAB = 'SET_SIDE_PANEL_TAB'
   }
 
-  export const toggleEditorSettingsPanel = (showEditorSettingsPanel: boolean) =>
-    action(Type.TOGGLE_EDITOR_SETTINGS_PANEL, {
-      showEditorSettingsPanel,
+  export const setSidePanelTab = (sidePanelTab: SidePanelTab) =>
+    action(Type.SET_SIDE_PANEL_TAB, {
+      sidePanelTab,
     });
 }
 

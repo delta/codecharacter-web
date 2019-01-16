@@ -5,14 +5,14 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (rootState: RootState) => {
   return {
-    showEditorSettingsPanel: rootState.dashboard.showEditorSettingsPanel,
+    sidePanelTab: rootState.dashboard.sidePanelTab,
   };
 };
 
 const editorPanelContainer = connect<EditorPanel.StateProps, EditorPanel.DispatchProps, {}>(
   mapStateToProps,
   {
-    toggleEditorSettingsPanel: DashboardActions.toggleEditorSettingsPanel,
+    setSidePanelTab: DashboardActions.setSidePanelTab,
   },
 )(EditorPanel);
 

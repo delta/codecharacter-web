@@ -1,6 +1,7 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { themes } from 'app/components/code/Editor';
+import { SidePanelTab } from 'app/reducers/Dashboard'
 import * as styles from 'app/styles/Modal.module.css';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -10,8 +11,8 @@ import { Button, Col, FormGroup, Grid, Row } from 'react-bootstrap';
 export class EditorSettingsModal extends React.Component<EditorSettingsModal.Props, {}> {
   public render() {
     const {
-      showEditorSettingsPanel,
-      toggleEditorSettingsPanel,
+      closeSidePanelTab,
+      sidePanelTab,
       fontSize,
       changeFontSize,
       theme,
@@ -26,8 +27,8 @@ export class EditorSettingsModal extends React.Component<EditorSettingsModal.Pro
         fluid={true}
         className={classnames(styles.Modal)}
         style={{
-          opacity: showEditorSettingsPanel ? 1 : 0,
-          transform: showEditorSettingsPanel ? 'translateY(0)' : 'translateY(-100vh)',
+          opacity: sidePanelTab === SidePanelTab.EDITOR_SETTINGS ? 1 : 0,
+          transform: sidePanelTab === SidePanelTab.EDITOR_SETTINGS ? 'translateY(0)' : 'translateY(-100vh)',
         }}
       >
         <Row className="justify-content-between py-2 pl-3">
@@ -35,7 +36,7 @@ export class EditorSettingsModal extends React.Component<EditorSettingsModal.Pro
           <Col>
             <Button
               bsSize="xsmall"
-              onClick={() => toggleEditorSettingsPanel(!showEditorSettingsPanel)}
+              onClick={() => closeSidePanelTab()}
             >
               <FontAwesomeIcon icon={faTimes} color={'white'} />
             </Button>
@@ -86,13 +87,14 @@ export namespace EditorSettingsModal {
   export interface StateProps {
     fontSize: number;
     theme: string;
-    showEditorSettingsPanel: boolean;
+    sidePanelTab: SidePanelTab;
   }
 
   export interface DispatchProps {
     changeFontSize: (fontSize: number) => void;
     changeTheme: (theme: string) => void;
-    toggleEditorSettingsPanel: (showCustomizationPanel: boolean) => void;
+    closeSidePanelTab: () => void
+    openSidePanelTab: () => void
   }
 
   export type Props = {} & StateProps & DispatchProps;

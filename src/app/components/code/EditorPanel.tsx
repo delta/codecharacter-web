@@ -1,5 +1,6 @@
 import { faCode, faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SidePanelTab } from 'app/reducers/Dashboard';
 import * as styles from 'app/styles/EditorPanel.module.css';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -8,7 +9,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 // tslint:disable-next-line:variable-name
 export class EditorPanel extends React.Component<EditorPanel.Props, {}> {
   public render() {
-    const { showEditorSettingsPanel, toggleEditorSettingsPanel } = this.props;
+    const { sidePanelTab, setSidePanelTab } = this.props;
     return (
       <div className={classnames('h-100', styles.EditorPanel)}>
         <ButtonGroup
@@ -23,7 +24,7 @@ export class EditorPanel extends React.Component<EditorPanel.Props, {}> {
           </Button>
           <Button
             className={classnames('py-4 px-auto text-white', styles.customBtn)}
-            onClick={() => toggleEditorSettingsPanel(!showEditorSettingsPanel)}
+            onClick={() => sidePanelTab === SidePanelTab.NONE ? setSidePanelTab(SidePanelTab.EDITOR_SETTINGS) : setSidePanelTab(SidePanelTab.NONE)}
           >
             <FontAwesomeIcon icon={faCog} />
           </Button>
@@ -35,11 +36,11 @@ export class EditorPanel extends React.Component<EditorPanel.Props, {}> {
 
 export namespace EditorPanel {
   export interface StateProps {
-    showEditorSettingsPanel: boolean;
+    sidePanelTab: SidePanelTab;
   }
 
   export interface DispatchProps {
-    toggleEditorSettingsPanel: (showEditorSettingsPanel: boolean) => void;
+    setSidePanelTab: (setSidePanelTab: SidePanelTab) => void;
   }
 
   export type Props = StateProps & DispatchProps;

@@ -2,25 +2,29 @@ import { DashboardActions } from 'app/actions';
 import { ActionType } from 'typesafe-actions';
 
 const actions = {
-  toggleEditorSettingsPanel: DashboardActions.toggleEditorSettingsPanel,
+  setSidePanelTab: DashboardActions.setSidePanelTab,
 };
 
+export enum SidePanelTab {
+  EDITOR_SETTINGS = 'EDITOR_SETTINGS',
+  NONE = 'NONE'
+}
 export interface DashboardStoreState {
-  showEditorSettingsPanel: boolean
+  sidePanelTab: SidePanelTab
 }
 
 export type DashboardStoreAction = ActionType<typeof actions>;
 
 const dashboardStoreIntialState: DashboardStoreState = {
-  showEditorSettingsPanel: false,
+  sidePanelTab: SidePanelTab.NONE,
 };
 
 export const dashboardReducer = (state = dashboardStoreIntialState, action: DashboardStoreAction) => {
   switch (action.type) {
-    case DashboardActions.Type.TOGGLE_EDITOR_SETTINGS_PANEL:
+    case DashboardActions.Type.SET_SIDE_PANEL_TAB:
       return {
         ...state,
-        showEditorSettingsPanel: action.payload.showEditorSettingsPanel
+        sidePanelTab: action.payload.sidePanelTab
       }
     default:
       return state;
