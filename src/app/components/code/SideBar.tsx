@@ -9,7 +9,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 // tslint:disable-next-line:variable-name
 export class Sidebar extends React.Component<Sidebar.Props, {}> {
   public render() {
-    const { sidePanelTab, setSidePanelTab } = this.props;
+    const { sidePanelTab, closeSidePanelTab, openSidePanelTab } = this.props;
     return (
       <div className={classnames('h-100', styles.Sidebar)}>
         <ButtonGroup
@@ -21,7 +21,7 @@ export class Sidebar extends React.Component<Sidebar.Props, {}> {
           </Button>
           <Button
             className={classnames('py-4 px-auto text-white', styles.customBtn)}
-            onClick={() => sidePanelTab === SidePanelTab.NONE ? setSidePanelTab(SidePanelTab.EDITOR_SETTINGS) : setSidePanelTab(SidePanelTab.NONE)}
+            onClick={() => sidePanelTab === SidePanelTab.NONE ? openSidePanelTab() : closeSidePanelTab() }
           >
             <FontAwesomeIcon icon={faCog} />
           </Button>
@@ -37,7 +37,8 @@ export namespace Sidebar {
   }
 
   export interface DispatchProps {
-    setSidePanelTab: (setSidePanelTab: SidePanelTab) => void;
+    closeSidePanelTab: () => void
+    openSidePanelTab: () => void
   }
 
   export type Props = StateProps & DispatchProps;

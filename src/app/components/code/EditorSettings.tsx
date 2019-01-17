@@ -1,5 +1,4 @@
 import { themes } from 'app/components/code/Editor';
-import { SidePanelTab } from 'app/reducers/Dashboard';
 import * as styles from 'app/styles/EditorSettings.module.css';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -7,14 +6,6 @@ import { Col, FormGroup, Grid, Row } from 'react-bootstrap';
 
 // tslint:disable-next-line:variable-name
 export class EditorSettings extends React.Component<EditorSettings.Props, {}> {
-  public componentWillReceiveProps(nextProps: EditorSettings.Props) {
-    const { sidePanelTab, onShowEditorSettings, onHideEditorSettings } = nextProps;
-    if (sidePanelTab === 'EDITOR_SETTINGS') {
-      onShowEditorSettings();
-    } else {
-      onHideEditorSettings();
-    }
-  }
 
   public render() {
     const {
@@ -35,6 +26,7 @@ export class EditorSettings extends React.Component<EditorSettings.Props, {}> {
 
     return (
       <div
+        className="SidePanel"
         style={{
           backgroundColor: '#1c1c1c',
           height: '100vh',
@@ -118,17 +110,12 @@ export class EditorSettings extends React.Component<EditorSettings.Props, {}> {
 
 
 export namespace EditorSettings {
-  export interface OwnProps {
-    onShowEditorSettings: () => void;
-    onHideEditorSettings: () => void;
-  }
 
   export interface StateProps {
     basicAutoCompletion: boolean;
     fontSize: number;
     theme: string;
     snippets: boolean;
-    sidePanelTab: SidePanelTab;
   }
 
   export interface DispatchProps {
@@ -138,5 +125,5 @@ export namespace EditorSettings {
     enableSnippets: (snippets: boolean) => void;
   }
 
-  export type Props = OwnProps & StateProps & DispatchProps;
+  export type Props = {} & StateProps & DispatchProps;
 }
