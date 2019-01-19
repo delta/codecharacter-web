@@ -13,7 +13,7 @@ export const rootReducer = combineReducers({
 });
 
 export interface RootState {
-  dashboard: DashboardStoreState
+  dashboard: DashboardStoreState;
   editor: EditorStoreState;
   router: RouterState;
   gameLog: GameLogStoreState;

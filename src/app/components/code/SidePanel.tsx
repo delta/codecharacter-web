@@ -22,7 +22,7 @@ export class SidePanel extends React.Component<SidePanel.Props, {}> {
           height: '100vh',
         }}
       />
-    )
+    );
     switch (sidePanelTab) {
       case SidePanelTab.NONE:
         sidePanel = (
@@ -33,12 +33,10 @@ export class SidePanel extends React.Component<SidePanel.Props, {}> {
               height: '100vh',
             }}
           />
-        )
+        );
         break;
       case SidePanelTab.EDITOR_SETTINGS:
-        sidePanel = (
-          <EditorSettings/>
-        )
+        sidePanel = <EditorSettings />;
         break;
       default:
         sidePanel = (
@@ -49,17 +47,16 @@ export class SidePanel extends React.Component<SidePanel.Props, {}> {
               height: '100vh',
             }}
           />
-        )
+        );
     }
-    return sidePanel
+    return sidePanel;
   }
 }
 
 export namespace SidePanel {
-
   export interface OwnProps {
-    onShowSidePanel: () => void
-    onHideSidePanel: () => void
+    onShowSidePanel: () => void;
+    onHideSidePanel: () => void;
   }
 
   export interface StateProps {

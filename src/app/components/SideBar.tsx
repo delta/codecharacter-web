@@ -21,7 +21,9 @@ export class Sidebar extends React.Component<Sidebar.Props, {}> {
           </Button>
           <Button
             className={classnames('py-4 px-auto text-white', styles.customBtn)}
-            onClick={() => sidePanelTab === SidePanelTab.NONE ? openSidePanelTab() : closeSidePanelTab() }
+            onClick={() =>
+              sidePanelTab === SidePanelTab.NONE ? openSidePanelTab() : closeSidePanelTab()
+            }
           >
             <FontAwesomeIcon icon={faCog} />
           </Button>
@@ -37,8 +39,8 @@ export namespace Sidebar {
   }
 
   export interface DispatchProps {
-    closeSidePanelTab: () => void
-    openSidePanelTab: () => void
+    closeSidePanelTab: () => void;
+    openSidePanelTab: () => void;
   }
 
   export type Props = StateProps & DispatchProps;

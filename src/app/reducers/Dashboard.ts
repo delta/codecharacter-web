@@ -7,10 +7,10 @@ const actions = {
 
 export enum SidePanelTab {
   EDITOR_SETTINGS = 'EDITOR_SETTINGS',
-  NONE = 'NONE'
+  NONE = 'NONE',
 }
 export interface DashboardStoreState {
-  sidePanelTab: SidePanelTab
+  sidePanelTab: SidePanelTab;
 }
 
 export type DashboardStoreAction = ActionType<typeof actions>;
@@ -19,13 +19,16 @@ const dashboardStoreIntialState: DashboardStoreState = {
   sidePanelTab: SidePanelTab.NONE,
 };
 
-export const dashboardReducer = (state = dashboardStoreIntialState, action: DashboardStoreAction) => {
+export const dashboardReducer = (
+  state = dashboardStoreIntialState,
+  action: DashboardStoreAction,
+) => {
   switch (action.type) {
     case DashboardActions.Type.SET_SIDE_PANEL_TAB:
       return {
         ...state,
-        sidePanelTab: action.payload.sidePanelTab
-      }
+        sidePanelTab: action.payload.sidePanelTab,
+      };
     default:
       return state;
   }

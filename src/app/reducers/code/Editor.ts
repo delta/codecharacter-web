@@ -1,12 +1,11 @@
-import { EditorActions } from 'app/actions';
+import { EditorActions, EditorSettingsActions } from 'app/actions';
 import { ActionType } from 'typesafe-actions';
 
 const actions = {
-  changeFontSize: EditorActions.changeFontSize,
-  changeTheme: EditorActions.changeTheme,
-  enableAutoCompletion: EditorActions.enableAutoCompletion,
-  enableSnippets: EditorActions.enableSnippets,
-  toggleCustomizationPanel: EditorActions.toggleCustomizationPanel,
+  changeFontSize: EditorSettingsActions.changeFontSize,
+  changeTheme: EditorSettingsActions.changeTheme,
+  enableAutoCompletion: EditorSettingsActions.enableAutoCompletion,
+  enableSnippets: EditorSettingsActions.enableSnippets,
   updateCode: EditorActions.updateCode,
 };
 
@@ -40,7 +39,7 @@ export const editorReducer = (state = editorStoreIntialState, action: EditorStor
         code: action.payload.code,
       };
     }
-    case EditorActions.Type.CHANGE_FONT_SIZE:
+    case EditorSettingsActions.Type.CHANGE_FONT_SIZE:
       return {
         ...state,
         editorOptions: {
@@ -48,7 +47,7 @@ export const editorReducer = (state = editorStoreIntialState, action: EditorStor
           fontSize: action.payload.fontSize,
         },
       };
-    case EditorActions.Type.CHANGE_THEME:
+    case EditorSettingsActions.Type.CHANGE_THEME:
       return {
         ...state,
         editorOptions: {
@@ -56,7 +55,7 @@ export const editorReducer = (state = editorStoreIntialState, action: EditorStor
           theme: action.payload.theme,
         },
       };
-    case EditorActions.Type.ENABLE_AUTO_COMPLETION:
+    case EditorSettingsActions.Type.ENABLE_AUTO_COMPLETION:
       return {
         ...state,
         editorOptions: {
@@ -64,18 +63,13 @@ export const editorReducer = (state = editorStoreIntialState, action: EditorStor
           basicAutoCompletion: action.payload.basicAutoCompletion,
         },
       };
-    case EditorActions.Type.ENABLE_SNIPPETS:
+    case EditorSettingsActions.Type.ENABLE_SNIPPETS:
       return {
         ...state,
         editorOptions: {
           ...state.editorOptions,
           snippets: action.payload.snippets,
         },
-      };
-    case EditorActions.Type.TOGGLE_CUSTOMIZATION_PANEL:
-      return {
-        ...state,
-        showCustomizationPanel: action.payload.showCustomizationPanel,
       };
     default:
       return state;

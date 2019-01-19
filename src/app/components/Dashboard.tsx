@@ -1,7 +1,7 @@
 import Editor from 'app/containers/code/Editor';
 import GameLog from 'app/containers/code/GameLog';
-import Sidebar from 'app/containers/code/Sidebar';
 import SidePanel from 'app/containers/code/SidePanel';
+import Sidebar from 'app/containers/Sidebar';
 import * as style from 'app/styles/Dashboard.css';
 import * as React from 'react';
 import { Grid, Row } from 'react-bootstrap';
@@ -71,33 +71,33 @@ export class Dashboard extends React.Component<{}, Dashboard.State> {
 
   /* Sidebar width: 50px, Settings width: 350px, force update and rerender Editor by updating editorWidth */
   private onShowSidePanel = (): void => {
-    let  availableWidth = window.innerWidth - this.state.usedUpLeftPartitionWidth
-    const usedUpLeftPartitionWidth = 400
+    let availableWidth = window.innerWidth - this.state.usedUpLeftPartitionWidth;
+    const usedUpLeftPartitionWidth = 400;
     const editorRatio = this.state.editorWidth / availableWidth;
-    availableWidth = window.innerWidth - usedUpLeftPartitionWidth
-    const editorWidth = Math.floor(editorRatio * availableWidth)
-    const leftPartitionWidth = usedUpLeftPartitionWidth + editorWidth
+    availableWidth = window.innerWidth - usedUpLeftPartitionWidth;
+    const editorWidth = Math.floor(editorRatio * availableWidth);
+    const leftPartitionWidth = usedUpLeftPartitionWidth + editorWidth;
 
     this.setState({
       editorWidth,
       leftPartitionWidth,
-      usedUpLeftPartitionWidth
-    })
+      usedUpLeftPartitionWidth,
+    });
   };
 
   private onHideSidePanel = (): void => {
-    let  availableWidth = window.innerWidth - this.state.usedUpLeftPartitionWidth
-    const usedUpLeftPartitionWidth = 50
+    let availableWidth = window.innerWidth - this.state.usedUpLeftPartitionWidth;
+    const usedUpLeftPartitionWidth = 50;
     const editorRatio = this.state.editorWidth / availableWidth;
-    availableWidth = window.innerWidth - usedUpLeftPartitionWidth
-    const editorWidth = Math.floor(editorRatio * availableWidth)
-    const leftPartitionWidth = usedUpLeftPartitionWidth + editorWidth
+    availableWidth = window.innerWidth - usedUpLeftPartitionWidth;
+    const editorWidth = Math.floor(editorRatio * availableWidth);
+    const leftPartitionWidth = usedUpLeftPartitionWidth + editorWidth;
 
     this.setState({
       editorWidth,
       leftPartitionWidth,
-      usedUpLeftPartitionWidth
-    })
+      usedUpLeftPartitionWidth,
+    });
   };
 }
 export namespace Dashboard {

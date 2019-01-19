@@ -1,4 +1,4 @@
-import { EditorActions } from 'app/actions';
+import { EditorSettingsActions } from 'app/actions';
 import { EditorSettings } from 'app/components/code/EditorSettings';
 import { RootState } from 'app/reducers';
 import { connect } from 'react-redux';
@@ -19,11 +19,11 @@ const editorSettingsContainer = connect<
 >(
   mapStateToProps,
   {
-    changeFontSize: EditorActions.changeFontSize,
-    changeTheme: EditorActions.changeTheme,
-    enableAutoCompletion: EditorActions.enableAutoCompletion,
-    enableSnippets: EditorActions.enableSnippets,
-  }
+    changeFontSize: EditorSettingsActions.changeFontSize,
+    changeTheme: EditorSettingsActions.changeTheme,
+    enableAutoCompletion: EditorSettingsActions.enableAutoCompletion,
+    enableSnippets: EditorSettingsActions.enableSnippets,
+  },
 )(EditorSettings);
 
 export default editorSettingsContainer;

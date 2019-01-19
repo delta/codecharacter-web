@@ -6,7 +6,6 @@ import { Col, FormGroup, Grid, Row } from 'react-bootstrap';
 
 // tslint:disable-next-line:variable-name
 export class EditorSettings extends React.Component<EditorSettings.Props, {}> {
-
   public render() {
     const {
       fontSize,
@@ -42,7 +41,11 @@ export class EditorSettings extends React.Component<EditorSettings.Props, {}> {
               <p>The size of text in the code editor</p>
               <FormGroup controlId="fontSize">
                 <select
-                  className={classnames('form-control', styles.formControlSelect, 'font-size-control')}
+                  className={classnames(
+                    'form-control',
+                    styles.formControlSelect,
+                    'font-size-control',
+                  )}
                   value={fontSize}
                   onChange={(e) => changeFontSize(Number(e.target.value))}
                 >
@@ -76,14 +79,22 @@ export class EditorSettings extends React.Component<EditorSettings.Props, {}> {
               <p>Use basic auto code completion in the editor</p>
               <FormGroup controlId="autoCompletion">
                 <select
-                  className={classnames('form-control', styles.formControlSelect, 'auto-complete-control')}
+                  className={classnames(
+                    'form-control',
+                    styles.formControlSelect,
+                    'auto-complete-control',
+                  )}
                   value={basicAutoCompletion ? 'enabled' : 'disabled'}
                   onChange={(e) =>
                     enableAutoCompletion(e.target.value === 'enabled' ? true : false)
                   }
                 >
-                  <option value={'enabled'} key={'enabled'}>Enabled</option>
-                  <option value={'disabled'} key={'disabled'}>Disabled</option>
+                  <option value={'enabled'} key={'enabled'}>
+                    Enabled
+                  </option>
+                  <option value={'disabled'} key={'disabled'}>
+                    Disabled
+                  </option>
                 </select>
               </FormGroup>
             </Col>
@@ -92,25 +103,31 @@ export class EditorSettings extends React.Component<EditorSettings.Props, {}> {
               <p>Use code snippets in editor</p>
               <FormGroup controlId="snippets">
                 <select
-                  className={classnames('form-control', styles.formControlSelect, 'snippets-control')}
+                  className={classnames(
+                    'form-control',
+                    styles.formControlSelect,
+                    'snippets-control',
+                  )}
                   value={snippets ? 'enabled' : 'disabled'}
                   onChange={(e) => enableSnippets(e.target.value === 'enabled' ? true : false)}
                 >
-                  <option value={'enabled'} key={'enabled'}>Enabled</option>
-                  <option value={'disabled'} key={'disabled'}>Disabled</option>
+                  <option value={'enabled'} key={'enabled'}>
+                    Enabled
+                  </option>
+                  <option value={'disabled'} key={'disabled'}>
+                    Disabled
+                  </option>
                 </select>
               </FormGroup>
             </Col>
           </Row>
         </Grid>
       </div>
-    )
+    );
   }
 }
 
-
 export namespace EditorSettings {
-
   export interface StateProps {
     basicAutoCompletion: boolean;
     fontSize: number;
