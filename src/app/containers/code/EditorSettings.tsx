@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (rootState: RootState) => {
   return {
-    basicAutoCompletion: rootState.editor.editorOptions.basicAutoCompletion,
+    enableBasicAutoCompletion: rootState.editor.editorOptions.enableBasicAutoCompletion,
+    enableSnippets: rootState.editor.editorOptions.enableSnippets,
     fontSize: rootState.editor.editorOptions.fontSize,
-    snippets: rootState.editor.editorOptions.snippets,
     theme: rootState.editor.editorOptions.theme,
   };
 };
@@ -21,8 +21,8 @@ const editorSettingsContainer = connect<
   {
     changeFontSize: EditorSettingsActions.changeFontSize,
     changeTheme: EditorSettingsActions.changeTheme,
-    enableAutoCompletion: EditorSettingsActions.enableAutoCompletion,
-    enableSnippets: EditorSettingsActions.enableSnippets,
+    toggleBasicAutoCompletion: EditorSettingsActions.toggleBasicAutoCompletion,
+    toggleSnippets: EditorSettingsActions.toggleSnippets,
   },
 )(EditorSettings);
 

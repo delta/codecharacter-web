@@ -6,10 +6,9 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
 
-// tslint:disable-next-line:variable-name
 export class Sidebar extends React.Component<Sidebar.Props, {}> {
   public render() {
-    const { sidePanelTab, closeSidePanelTab, openSidePanelTab } = this.props;
+    const { sidePanelTab, closeSidePanelTab, openEditorSettings } = this.props;
     return (
       <div className={classnames('h-100', styles.Sidebar)}>
         <ButtonGroup
@@ -22,7 +21,9 @@ export class Sidebar extends React.Component<Sidebar.Props, {}> {
           <Button
             className={classnames('py-4 px-auto text-white', styles.customBtn)}
             onClick={() =>
-              sidePanelTab === SidePanelTab.NONE ? openSidePanelTab() : closeSidePanelTab()
+              sidePanelTab !== SidePanelTab.EDITOR_SETTINGS
+                ? openEditorSettings()
+                : closeSidePanelTab()
             }
           >
             <FontAwesomeIcon icon={faCog} />
@@ -40,7 +41,7 @@ export namespace Sidebar {
 
   export interface DispatchProps {
     closeSidePanelTab: () => void;
-    openSidePanelTab: () => void;
+    openEditorSettings: () => void;
   }
 
   export type Props = StateProps & DispatchProps;

@@ -1,4 +1,4 @@
-import { Dashboard } from 'app/components/Dashboard';
+import Dashboard from 'app/containers/Dashboard';
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
 import { Route, Switch } from 'react-router';

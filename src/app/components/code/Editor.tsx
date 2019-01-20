@@ -34,15 +34,15 @@ export class Editor extends React.Component<Editor.Props, Editor.State> {
       editorWidth,
       theme,
       fontSize,
-      basicAutoCompletion,
-      snippets,
+      enableBasicAutoCompletion: enableBasicAutocompletion,
+      enableSnippets,
       code,
       updateCode,
     } = this.props;
     const options = {
-      enableBasicAutocompletion: basicAutoCompletion,
+      enableBasicAutocompletion,
+      enableSnippets,
       enableLiveAutocompletion: false,
-      enableSnippets: snippets,
       showLineNumbers: true,
       tabSize: 2,
     };
@@ -81,8 +81,8 @@ export namespace Editor {
     code: string;
     theme: string;
     fontSize: number;
-    basicAutoCompletion: boolean;
-    snippets: boolean;
+    enableBasicAutoCompletion: boolean;
+    enableSnippets: boolean;
   }
 
   export interface DispatchProps {

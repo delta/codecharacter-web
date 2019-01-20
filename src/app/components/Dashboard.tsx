@@ -1,21 +1,34 @@
 import Editor from 'app/containers/code/Editor';
 import GameLog from 'app/containers/code/GameLog';
 import SidePanel from 'app/containers/code/SidePanel';
-import Sidebar from 'app/containers/Sidebar';
+import SideBar from 'app/containers/SideBar';
 import * as style from 'app/styles/Dashboard.css';
 import * as React from 'react';
 import { Grid, Row } from 'react-bootstrap';
 /* tslint:disable-next-line:import-name */
 import SplitPane from 'react-split-pane';
 
-export class Dashboard extends React.Component<{}, Dashboard.State> {
-  constructor(props: {}) {
+export class Dashboard extends React.Component<Dashboard.Props, Dashboard.State> {
+  public sideBarWidth = 50;
+  public sidePanelWidth = 350;
+  public minEditorWidth = 400;
+
+  constructor(props: Dashboard.Props) {
     super(props);
     this.state = {
-      editorWidth: 675,
-      leftPartitionWidth: 725,
-      usedUpLeftPartitionWidth: 50,
+      /* 40% of Window width is taken up by Editor Component */
+      editorWidth: Math.max(Math.floor(0.4 * window.innerWidth), this.minEditorWidth),
+      /* SideBar width + SidePanel width(if open). Defaults to 50px (Sidebar width). 50px + 350px if SidePanel is open. */
+      exhaustedLeftPartitionWidth: this.sideBarWidth,
+      /* Left Split Pane width = SideBar width + ?SidePanel width + Editor width */
+      leftPartitionWidth:
+        Math.max(Math.floor(0.4 * window.innerWidth), this.minEditorWidth) + this.sideBarWidth,
     };
+  }
+
+  public componentWillReceiveProps(nextProps: Dashboard.Props) {
+    const { sidePanelOpen } = nextProps;
+    sidePanelOpen ? this.onToggleSidePanel(true) : this.onToggleSidePanel(false);
   }
 
   public render() {
@@ -25,8 +38,8 @@ export class Dashboard extends React.Component<{}, Dashboard.State> {
       <div>
         <SplitPane
           split="vertical"
-          minSize={500}
-          defaultSize={725}
+          minSize={400}
+          defaultSize={this.state.leftPartitionWidth}
           size={leftPartitionWidth}
           resizerClassName={style.vertical}
           onChange={this.onResize}
@@ -38,12 +51,9 @@ export class Dashboard extends React.Component<{}, Dashboard.State> {
                   height: '100vh',
                 }}
               >
-                <Sidebar />
+                <SideBar />
               </div>
-              <SidePanel
-                onShowSidePanel={this.onShowSidePanel}
-                onHideSidePanel={this.onHideSidePanel}
-              />
+              <SidePanel sidePanelWidth={this.sidePanelWidth} />
               <div
                 style={{
                   height: '100vh',
@@ -64,39 +74,26 @@ export class Dashboard extends React.Component<{}, Dashboard.State> {
 
   private onResize = (size: number): void => {
     this.setState({
-      editorWidth: size - this.state.usedUpLeftPartitionWidth,
+      editorWidth: size - this.state.exhaustedLeftPartitionWidth,
       leftPartitionWidth: size,
     });
   };
 
   /* Sidebar width: 50px, Settings width: 350px, force update and rerender Editor by updating editorWidth */
-  private onShowSidePanel = (): void => {
-    let availableWidth = window.innerWidth - this.state.usedUpLeftPartitionWidth;
-    const usedUpLeftPartitionWidth = 400;
+  private onToggleSidePanel = (isSidePanelOpen: boolean): void => {
+    let availableWidth = window.innerWidth - this.state.exhaustedLeftPartitionWidth;
+    const exhaustedLeftPartitionWidth = isSidePanelOpen
+      ? this.sideBarWidth + this.sidePanelWidth
+      : this.sideBarWidth;
     const editorRatio = this.state.editorWidth / availableWidth;
-    availableWidth = window.innerWidth - usedUpLeftPartitionWidth;
+    availableWidth = window.innerWidth - exhaustedLeftPartitionWidth;
     const editorWidth = Math.floor(editorRatio * availableWidth);
-    const leftPartitionWidth = usedUpLeftPartitionWidth + editorWidth;
+    const leftPartitionWidth = exhaustedLeftPartitionWidth + editorWidth;
 
     this.setState({
       editorWidth,
+      exhaustedLeftPartitionWidth,
       leftPartitionWidth,
-      usedUpLeftPartitionWidth,
-    });
-  };
-
-  private onHideSidePanel = (): void => {
-    let availableWidth = window.innerWidth - this.state.usedUpLeftPartitionWidth;
-    const usedUpLeftPartitionWidth = 50;
-    const editorRatio = this.state.editorWidth / availableWidth;
-    availableWidth = window.innerWidth - usedUpLeftPartitionWidth;
-    const editorWidth = Math.floor(editorRatio * availableWidth);
-    const leftPartitionWidth = usedUpLeftPartitionWidth + editorWidth;
-
-    this.setState({
-      editorWidth,
-      leftPartitionWidth,
-      usedUpLeftPartitionWidth,
     });
   };
 }
@@ -104,6 +101,10 @@ export namespace Dashboard {
   export interface State {
     editorWidth: number;
     leftPartitionWidth: number;
-    usedUpLeftPartitionWidth: number;
+    exhaustedLeftPartitionWidth: number;
   }
+  export interface StateProps {
+    sidePanelOpen: boolean;
+  }
+  export type Props = StateProps;
 }

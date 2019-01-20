@@ -4,8 +4,8 @@ export namespace EditorSettingsActions {
   export enum Type {
     CHANGE_FONT_SIZE = 'CHANGE_FONT_SIZE',
     CHANGE_THEME = 'CHANGE_THEME',
-    ENABLE_AUTO_COMPLETION = 'ENABLE_AUTO_COMPLETION',
-    ENABLE_SNIPPETS = 'ENABLE_SNIPPETS',
+    TOGGLE_BASIC_AUTO_COMPLETION = 'TOGGLE_BASIC_AUTO_COMPLETION',
+    TOGGLE_SNIPPETS = 'TOGGLE_SNIPPETS',
   }
 
   export const changeFontSize = (fontSize: number) =>
@@ -18,13 +18,13 @@ export namespace EditorSettingsActions {
       theme,
     });
 
-  export const enableAutoCompletion = (basicAutoCompletion: boolean) =>
-    action(Type.ENABLE_AUTO_COMPLETION, {
-      basicAutoCompletion,
+  export const toggleBasicAutoCompletion = (enableBasicAutoCompletion: boolean) =>
+    action(Type.TOGGLE_BASIC_AUTO_COMPLETION, {
+      enableBasicAutoCompletion,
     });
 
-  export const enableSnippets = (snippets: boolean) =>
-    action(Type.ENABLE_SNIPPETS, {
-      snippets,
+  export const toggleSnippets = (enableSnippets: boolean) =>
+    action(Type.TOGGLE_SNIPPETS, {
+      enableSnippets,
     });
 }

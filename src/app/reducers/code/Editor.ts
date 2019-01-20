@@ -4,17 +4,17 @@ import { ActionType } from 'typesafe-actions';
 const actions = {
   changeFontSize: EditorSettingsActions.changeFontSize,
   changeTheme: EditorSettingsActions.changeTheme,
-  enableAutoCompletion: EditorSettingsActions.enableAutoCompletion,
-  enableSnippets: EditorSettingsActions.enableSnippets,
+  toggleBasicAutoCompletion: EditorSettingsActions.toggleBasicAutoCompletion,
+  toggleSnippets: EditorSettingsActions.toggleSnippets,
   updateCode: EditorActions.updateCode,
 };
 
 export interface EditorStoreState {
   code: string;
   editorOptions: {
-    basicAutoCompletion: boolean;
+    enableBasicAutoCompletion: boolean;
     fontSize: number;
-    snippets: boolean;
+    enableSnippets: boolean;
     theme: string;
   };
 }
@@ -24,9 +24,9 @@ export type EditorStoreAction = ActionType<typeof actions>;
 const editorStoreIntialState: EditorStoreState = {
   code: '#include <bits/stdc++.h>\nusing namespace std; \n\nint main() {\n    return 0;\n}',
   editorOptions: {
-    basicAutoCompletion: false,
+    enableBasicAutoCompletion: false,
+    enableSnippets: false,
     fontSize: 16,
-    snippets: false,
     theme: 'monokai',
   },
 };
@@ -55,20 +55,20 @@ export const editorReducer = (state = editorStoreIntialState, action: EditorStor
           theme: action.payload.theme,
         },
       };
-    case EditorSettingsActions.Type.ENABLE_AUTO_COMPLETION:
+    case EditorSettingsActions.Type.TOGGLE_BASIC_AUTO_COMPLETION:
       return {
         ...state,
         editorOptions: {
           ...state.editorOptions,
-          basicAutoCompletion: action.payload.basicAutoCompletion,
+          enableBasicAutoCompletion: action.payload.enableBasicAutoCompletion,
         },
       };
-    case EditorSettingsActions.Type.ENABLE_SNIPPETS:
+    case EditorSettingsActions.Type.TOGGLE_SNIPPETS:
       return {
         ...state,
         editorOptions: {
           ...state.editorOptions,
-          snippets: action.payload.snippets,
+          enableSnippets: action.payload.enableSnippets,
         },
       };
     default:

@@ -14,7 +14,7 @@ const mapStateToProps = (rootState: RootState) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     closeSidePanelTab: () => dispatch(DashboardActions.setSidePanelTab(SidePanelTab.NONE)),
-    openSidePanelTab: () =>
+    openEditorSettings: () =>
       dispatch(DashboardActions.setSidePanelTab(SidePanelTab.EDITOR_SETTINGS)),
   };
 };
