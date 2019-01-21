@@ -30,3 +30,9 @@ $ npm run lint
 ```
 $ npm run lint:fix
 ```
+
+## Run Jest Tests
+
+```
+$ npm test
+```
