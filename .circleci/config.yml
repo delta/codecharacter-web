@@ -27,6 +27,9 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
+          name: Copy Config
+          command: cp ./src/config/config.example.ts ./src/config/config.ts
+      - run:
           name: Lint Tests
           command: npm run lint
       - run:
@@ -43,6 +46,9 @@ jobs:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Copy Config
+          command: cp ./src/config/config.example.ts ./src/config/config.ts
       - run:
           name: build
           command: npm run build
