@@ -1,4 +1,5 @@
 import EditorSettings from 'app/containers/code/EditorSettings';
+import Leaderboard from 'app/containers/Leaderboard';
 import { SidePanelTab } from 'app/reducers/Dashboard';
 import * as React from 'react';
 
@@ -21,6 +22,20 @@ export class SidePanel extends React.Component<SidePanel.Props, {}> {
             }}
           >
             <EditorSettings />
+          </div>
+        );
+        break;
+      case SidePanelTab.LEADERBOARD:
+        sidePanel = (
+          <div
+            className="SidePanel"
+            style={{
+              backgroundColor: '#1c1c1c',
+              height: '100vh',
+              width: `${sidePanelWidth}px`,
+            }}
+          >
+            <Leaderboard />
           </div>
         );
         break;

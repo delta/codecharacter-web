@@ -1,4 +1,4 @@
-import { faCode, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faCog, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SidePanelTab } from 'app/reducers/Dashboard';
 import * as styles from 'app/styles/Sidebar.module.css';
@@ -8,7 +8,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 
 export class Sidebar extends React.Component<Sidebar.Props, {}> {
   public render() {
-    const { sidePanelTab, closeSidePanelTab, openEditorSettings } = this.props;
+    const { sidePanelTab, closeSidePanelTab, openEditorSettings, openLeaderboard } = this.props;
     return (
       <div className={classnames('h-100', styles.Sidebar)}>
         <ButtonGroup
@@ -28,6 +28,14 @@ export class Sidebar extends React.Component<Sidebar.Props, {}> {
           >
             <FontAwesomeIcon icon={faCog} />
           </Button>
+          <Button
+            className={classnames('py-4 px-auto text-white', styles.customBtn)}
+            onClick={() =>
+              sidePanelTab !== SidePanelTab.LEADERBOARD ? openLeaderboard() : closeSidePanelTab()
+            }
+          >
+            <FontAwesomeIcon icon={faTrophy} />
+          </Button>
         </ButtonGroup>
       </div>
     );
@@ -42,6 +50,7 @@ export namespace Sidebar {
   export interface DispatchProps {
     closeSidePanelTab: () => void;
     openEditorSettings: () => void;
+    openLeaderboard: () => void;
   }
 
   export type Props = StateProps & DispatchProps;

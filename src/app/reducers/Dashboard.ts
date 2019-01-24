@@ -7,6 +7,7 @@ const actions = {
 
 export enum SidePanelTab {
   EDITOR_SETTINGS = 'EDITOR_SETTINGS',
+  LEADERBOARD = 'LEADERBOARD',
   NONE = 'NONE',
 }
 export interface DashboardStoreState {
