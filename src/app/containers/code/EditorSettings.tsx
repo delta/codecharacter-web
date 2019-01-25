@@ -1,6 +1,7 @@
 import { EditorSettingsActions } from 'app/actions';
 import { EditorSettings } from 'app/components/code/EditorSettings';
 import { RootState } from 'app/reducers';
+import * as EditorSettingsInterfaces from 'app/types/code/EditorSettings';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (rootState: RootState) => {
@@ -13,8 +14,8 @@ const mapStateToProps = (rootState: RootState) => {
 };
 
 const editorSettingsContainer = connect<
-  EditorSettings.StateProps,
-  EditorSettings.DispatchProps,
+  EditorSettingsInterfaces.StateProps,
+  EditorSettingsInterfaces.DispatchProps,
   {}
 >(
   mapStateToProps,

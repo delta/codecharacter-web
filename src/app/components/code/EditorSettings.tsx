@@ -1,10 +1,11 @@
 import { themes } from 'app/components/code/Editor';
 import * as styles from 'app/styles/EditorSettings.module.css';
+import * as EditorSettingsInterfaces from 'app/types/code/EditorSettings';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, FormGroup, Grid, Row } from 'react-bootstrap';
 
-export class EditorSettings extends React.Component<EditorSettings.Props, {}> {
+export class EditorSettings extends React.Component<EditorSettingsInterfaces.Props, {}> {
   public render() {
     const {
       fontSize,
@@ -108,22 +109,4 @@ export class EditorSettings extends React.Component<EditorSettings.Props, {}> {
       </Grid>
     );
   }
-}
-
-export namespace EditorSettings {
-  export interface StateProps {
-    enableBasicAutoCompletion: boolean;
-    fontSize: number;
-    theme: string;
-    enableSnippets: boolean;
-  }
-
-  export interface DispatchProps {
-    changeFontSize: (fontSize: number) => void;
-    changeTheme: (theme: string) => void;
-    toggleBasicAutoCompletion: (basicAutoCompletion: boolean) => void;
-    toggleSnippets: (snippets: boolean) => void;
-  }
-
-  export type Props = {} & StateProps & DispatchProps;
 }
