@@ -2,11 +2,12 @@ import { faCode, faCog, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SidePanelTab } from 'app/reducers/Dashboard';
 import * as styles from 'app/styles/Sidebar.module.css';
+import * as SideBarInterfaces from 'app/types/SideBar';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
 
-export class Sidebar extends React.Component<Sidebar.Props, {}> {
+export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
   public render() {
     const { sidePanelTab, closeSidePanelTab, openEditorSettings, openLeaderboard } = this.props;
     return (
@@ -40,20 +41,6 @@ export class Sidebar extends React.Component<Sidebar.Props, {}> {
       </div>
     );
   }
-}
-
-export namespace Sidebar {
-  export interface StateProps {
-    sidePanelTab: SidePanelTab;
-  }
-
-  export interface DispatchProps {
-    closeSidePanelTab: () => void;
-    openEditorSettings: () => void;
-    openLeaderboard: () => void;
-  }
-
-  export type Props = StateProps & DispatchProps;
 }
 
 export default Sidebar;
