@@ -2,6 +2,7 @@ import { RootState } from 'app/reducers';
 
 import { LeaderboardActions } from 'app/actions';
 import { Leaderboard } from 'app/components/Leaderboard';
+import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
@@ -17,7 +18,11 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-const leaderboardContainer = connect<Leaderboard.StateProps, Leaderboard.DispatchProps, {}>(
+const leaderboardContainer = connect<
+  LeaderboardInterfaces.StateProps,
+  LeaderboardInterfaces.DispatchProps,
+  {}
+>(
   mapStateToProps,
   mapDispatchToProps,
 )(Leaderboard);

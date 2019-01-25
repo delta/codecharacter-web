@@ -1,21 +1,7 @@
 import { LeaderboardActions } from 'app/actions';
-import { ActionType } from 'typesafe-actions';
-import Player = LeaderboardActions.Player;
+import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 
-const actions = {
-  getPlayersData: LeaderboardActions.getPlayersData,
-  updateError: LeaderboardActions.updateError,
-  updateLeaderboard: LeaderboardActions.updateLeaderboard,
-};
-
-export interface LeaderboardStoreState {
-  readonly loading: boolean;
-  readonly players: Player[];
-}
-
-export type LeaderboardStoreAction = ActionType<typeof actions>;
-
-const leaderboardInitialState: LeaderboardStoreState = {
+const leaderboardInitialState: LeaderboardInterfaces.LeaderboardStoreState = {
   loading: false,
   players: [
     { id: 1, name: 'Uenify', rating: 3500, country: 'in' },
@@ -33,7 +19,7 @@ const leaderboardInitialState: LeaderboardStoreState = {
 
 export const leaderboardReducer = (
   state = leaderboardInitialState,
-  action: LeaderboardStoreAction,
+  action: LeaderboardInterfaces.LeaderboardStoreAction,
 ) => {
   switch (action.type) {
     case LeaderboardActions.Type.UPDATE_LEADERBOARD: {

@@ -1,10 +1,10 @@
 import { LeaderboardActions } from 'app/actions';
 import { Svg } from 'app/components/code/Svg';
 import * as styles from 'app/styles/Leaderboard.module.css';
+import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Button, Col } from 'react-bootstrap';
-import Player = LeaderboardActions.Player;
 import MAX_RATING = LeaderboardActions.MAX_RATING;
 
 // @ts-ignore
@@ -12,7 +12,7 @@ import MAX_RATING = LeaderboardActions.MAX_RATING;
 import ReactCountryFlag from 'react-country-flag';
 const colors = ['#FFB900', '#69797E', '#847545', '#038387'];
 
-export class LeaderboardElement extends React.Component<LeaderboardElement.Props, {}> {
+export class LeaderboardElement extends React.Component<LeaderboardInterfaces.ElementProps, {}> {
   public render() {
     const { player, rank } = this.props;
     return (
@@ -74,12 +74,4 @@ export class LeaderboardElement extends React.Component<LeaderboardElement.Props
       </Col>
     );
   }
-}
-
-export namespace LeaderboardElement {
-  export interface OwnProps {
-    player: Player;
-    rank: number;
-  }
-  export type Props = OwnProps;
 }

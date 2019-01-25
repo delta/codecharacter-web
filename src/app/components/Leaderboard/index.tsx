@@ -1,12 +1,11 @@
-import { LeaderboardActions } from 'app/actions';
 import { LeaderboardElement } from 'app/components/Leaderboard/LeaderboardElement';
 import * as styles from 'app/styles/Leaderboard.module.css';
+import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
-import Player = LeaderboardActions.Player;
 
-export class Leaderboard extends React.Component<Leaderboard.Props, {}> {
+export class Leaderboard extends React.Component<LeaderboardInterfaces.Props, {}> {
   public render() {
     const { players } = this.props;
     return (
@@ -26,16 +25,4 @@ export class Leaderboard extends React.Component<Leaderboard.Props, {}> {
       </Grid>
     );
   }
-}
-
-export namespace Leaderboard {
-  export interface StateProps {
-    players: Player[];
-  }
-
-  export interface DispatchProps {
-    getPlayersData: () => void;
-  }
-
-  export type Props = StateProps & DispatchProps;
 }

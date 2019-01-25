@@ -1,13 +1,6 @@
+import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import { action } from 'typesafe-actions';
-
 export namespace LeaderboardActions {
-  export interface Player {
-    country: string;
-    id: number;
-    name: string;
-    rating: number;
-  }
-
   export enum Type {
     GET_PLAYERS_DATA = 'GET_PLAYERS_DATA',
     UPDATE_ERROR = 'UPDATE_ERROR',
@@ -16,12 +9,7 @@ export namespace LeaderboardActions {
 
   export const MAX_RATING = 4000;
 
-  export interface LeaderboardDataType {
-    loading: boolean;
-    players: Player[];
-  }
-
-  export const updateLeaderboard = (leaderboardData: LeaderboardDataType) => {
+  export const updateLeaderboard = (leaderboardData: LeaderboardInterfaces.LeaderboardDataType) => {
     return action(Type.UPDATE_LEADERBOARD, leaderboardData);
   };
 

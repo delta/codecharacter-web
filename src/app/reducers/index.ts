@@ -1,9 +1,10 @@
 import { editorReducer, EditorStoreState } from 'app/reducers/code/Editor';
 import { gameLogReducer, GameLogStoreState } from 'app/reducers/code/GameLog';
 import { dashboardReducer } from 'app/reducers/Dashboard';
-import { leaderboardReducer, LeaderboardStoreState } from 'app/reducers/Leaderboard';
+import { leaderboardReducer } from 'app/reducers/Leaderboard';
 import { userReducer, UserStoreState } from 'app/reducers/User';
 import * as DashboardInterfaces from 'app/types/Dashboard';
+import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import { routerReducer, RouterState } from 'react-router-redux';
 import { combineReducers } from 'redux';
 
@@ -19,7 +20,7 @@ export const rootReducer = combineReducers({
 export interface RootState {
   dashboard: DashboardInterfaces.DashboardStoreState;
   editor: EditorStoreState;
-  leaderboard: LeaderboardStoreState;
+  leaderboard: LeaderboardInterfaces.LeaderboardStoreState;
   router: RouterState;
   gameLog: GameLogStoreState;
   user: UserStoreState;
