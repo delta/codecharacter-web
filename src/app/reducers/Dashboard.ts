@@ -1,28 +1,19 @@
 import { DashboardActions } from 'app/actions';
-import { ActionType } from 'typesafe-actions';
-
-const actions = {
-  setSidePanelTab: DashboardActions.setSidePanelTab,
-};
+import * as DashboardInterfaces from 'app/types/Dashboard';
 
 export enum SidePanelTab {
   EDITOR_SETTINGS = 'EDITOR_SETTINGS',
   LEADERBOARD = 'LEADERBOARD',
   NONE = 'NONE',
 }
-export interface DashboardStoreState {
-  sidePanelTab: SidePanelTab;
-}
 
-export type DashboardStoreAction = ActionType<typeof actions>;
-
-const dashboardStoreIntialState: DashboardStoreState = {
+const dashboardStoreIntialState: DashboardInterfaces.DashboardStoreState = {
   sidePanelTab: SidePanelTab.NONE,
 };
 
 export const dashboardReducer = (
   state = dashboardStoreIntialState,
-  action: DashboardStoreAction,
+  action: DashboardInterfaces.DashboardStoreAction,
 ) => {
   switch (action.type) {
     case DashboardActions.Type.SET_SIDE_PANEL_TAB:

@@ -11,5 +11,3 @@ export namespace DashboardActions {
       sidePanelTab,
     });
 }
-
-export type DashboardActions = Omit<typeof DashboardActions, 'Type'>;

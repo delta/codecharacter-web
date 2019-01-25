@@ -3,17 +3,21 @@ import GameLog from 'app/containers/code/GameLog';
 import SidePanel from 'app/containers/code/SidePanel';
 import SideBar from 'app/containers/SideBar';
 import * as style from 'app/styles/Dashboard.css';
+import * as DashboardInterfaces from 'app/types/Dashboard';
 import * as React from 'react';
 import { Grid, Row } from 'react-bootstrap';
 /* tslint:disable-next-line:import-name */
 import SplitPane from 'react-split-pane';
 
-export class Dashboard extends React.Component<Dashboard.Props, Dashboard.State> {
+export class Dashboard extends React.Component<
+  DashboardInterfaces.Props,
+  DashboardInterfaces.State
+> {
   public sideBarWidth = 50;
   public sidePanelWidth = 350;
   public minEditorWidth = 400;
 
-  constructor(props: Dashboard.Props) {
+  constructor(props: DashboardInterfaces.Props) {
     super(props);
     this.state = {
       /* 40% of Window width is taken up by Editor Component */
@@ -26,7 +30,7 @@ export class Dashboard extends React.Component<Dashboard.Props, Dashboard.State>
     };
   }
 
-  public componentWillReceiveProps(nextProps: Dashboard.Props) {
+  public componentWillReceiveProps(nextProps: DashboardInterfaces.Props) {
     const { sidePanelOpen } = nextProps;
     sidePanelOpen ? this.onToggleSidePanel(true) : this.onToggleSidePanel(false);
   }
@@ -96,15 +100,4 @@ export class Dashboard extends React.Component<Dashboard.Props, Dashboard.State>
       leftPartitionWidth,
     });
   };
-}
-export namespace Dashboard {
-  export interface State {
-    editorWidth: number;
-    leftPartitionWidth: number;
-    exhaustedLeftPartitionWidth: number;
-  }
-  export interface StateProps {
-    sidePanelOpen: boolean;
-  }
-  export type Props = StateProps;
 }
