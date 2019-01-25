@@ -1,5 +1,5 @@
 import { LeaderboardActions } from 'app/actions';
-import { Svg } from 'app/components/code/Svg';
+import { Svg } from 'app/components/Leaderboard/Svg';
 import * as styles from 'app/styles/Leaderboard.module.css';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import classnames from 'classnames';

@@ -1,6 +1,6 @@
 import { editorReducer } from 'app/reducers/code/Editor';
-import { gameLogReducer } from 'app/reducers/code/GameLog';
 import { dashboardReducer } from 'app/reducers/Dashboard';
+import { gameLogReducer } from 'app/reducers/GameLog';
 import { leaderboardReducer } from 'app/reducers/Leaderboard';
 import { userReducer } from 'app/reducers/User';
 import * as EditorInterfaces from 'app/types/code/Editor';

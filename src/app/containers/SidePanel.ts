@@ -1,4 +1,4 @@
-import { SidePanel } from 'app/components/code/SidePanel';
+import { SidePanel } from 'app/components/SidePanel';
 import { RootState } from 'app/reducers';
 import { connect } from 'react-redux';
 

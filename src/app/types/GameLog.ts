@@ -1,4 +1,4 @@
-import { GameLogActions } from 'app/actions/code/GameLog';
+import { GameLogActions } from 'app/actions/GameLog';
 import { ActionType } from 'typesafe-actions';
 
 export interface StateProps {

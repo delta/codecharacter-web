@@ -1,5 +1,5 @@
 import { GameLogActions } from 'app/actions';
-import { GameLog } from 'app/components/code/GameLog';
+import { GameLog } from 'app/components/GameLog';
 import { RootState } from 'app/reducers';
 import * as GameLogInterfaces from 'app/types/GameLog';
 import { connect } from 'react-redux';

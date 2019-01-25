@@ -1,4 +1,4 @@
-import GameLog from 'app/containers/code/GameLog';
+import GameLog from 'app/containers/GameLog';
 import { configureStore } from 'app/store';
 import { shallow } from 'enzyme';
 import * as React from 'react';

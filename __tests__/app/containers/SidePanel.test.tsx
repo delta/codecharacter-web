@@ -1,5 +1,5 @@
 import { DashboardActions } from 'app/actions';
-import SidePanel from 'app/containers/code/SidePanel';
+import SidePanel from 'app/containers/SidePanel';
 import { SidePanelTab } from 'app/reducers/Dashboard';
 import { configureStore } from 'app/store';
 import { shallow } from 'enzyme';
