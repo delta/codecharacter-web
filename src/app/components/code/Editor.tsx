@@ -1,3 +1,4 @@
+import * as EditorInterfaces from 'app/types/code/Editor';
 import * as React from 'react';
 // tslint:disable-next-line:import-name
 import AceEditor from 'react-ace';
@@ -24,8 +25,8 @@ themes.forEach((theme) => {
   require(`brace/theme/${theme}`);
 });
 
-export class Editor extends React.Component<Editor.Props, Editor.State> {
-  constructor(props: Editor.Props) {
+export class Editor extends React.Component<EditorInterfaces.Props, EditorInterfaces.State> {
+  constructor(props: EditorInterfaces.Props) {
     super(props);
   }
 
@@ -66,28 +67,4 @@ export class Editor extends React.Component<Editor.Props, Editor.State> {
       />
     );
   }
-}
-
-export namespace Editor {
-  export interface State {
-    code: string;
-  }
-
-  export interface OwnProps {
-    editorWidth: number;
-  }
-
-  export interface StateProps {
-    code: string;
-    theme: string;
-    fontSize: number;
-    enableBasicAutoCompletion: boolean;
-    enableSnippets: boolean;
-  }
-
-  export interface DispatchProps {
-    updateCode: (code: string) => void;
-  }
-
-  export type Props = OwnProps & StateProps & DispatchProps;
 }

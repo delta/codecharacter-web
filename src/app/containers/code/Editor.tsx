@@ -1,6 +1,7 @@
 import { EditorActions } from 'app/actions';
 import { Editor } from 'app/components/code/Editor';
 import { RootState } from 'app/reducers';
+import * as EditorInterfaces from 'app/types/code/Editor';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (rootState: RootState) => {
@@ -13,7 +14,11 @@ const mapStateToProps = (rootState: RootState) => {
   };
 };
 
-const editorContainer = connect<Editor.StateProps, Editor.DispatchProps, Editor.OwnProps>(
+const editorContainer = connect<
+  EditorInterfaces.StateProps,
+  EditorInterfaces.DispatchProps,
+  EditorInterfaces.OwnProps
+>(
   mapStateToProps,
   {
     updateCode: EditorActions.updateCode,

@@ -1,27 +1,7 @@
 import { EditorActions, EditorSettingsActions } from 'app/actions';
-import { ActionType } from 'typesafe-actions';
+import * as EditorInterfaces from 'app/types/code/Editor';
 
-const actions = {
-  changeFontSize: EditorSettingsActions.changeFontSize,
-  changeTheme: EditorSettingsActions.changeTheme,
-  toggleBasicAutoCompletion: EditorSettingsActions.toggleBasicAutoCompletion,
-  toggleSnippets: EditorSettingsActions.toggleSnippets,
-  updateCode: EditorActions.updateCode,
-};
-
-export interface EditorStoreState {
-  code: string;
-  editorOptions: {
-    enableBasicAutoCompletion: boolean;
-    fontSize: number;
-    enableSnippets: boolean;
-    theme: string;
-  };
-}
-
-export type EditorStoreAction = ActionType<typeof actions>;
-
-const editorStoreIntialState: EditorStoreState = {
+const editorStoreIntialState: EditorInterfaces.EditorStoreState = {
   code: '#include <bits/stdc++.h>\nusing namespace std; \n\nint main() {\n    return 0;\n}',
   editorOptions: {
     enableBasicAutoCompletion: false,
@@ -31,7 +11,10 @@ const editorStoreIntialState: EditorStoreState = {
   },
 };
 
-export const editorReducer = (state = editorStoreIntialState, action: EditorStoreAction) => {
+export const editorReducer = (
+  state = editorStoreIntialState,
+  action: EditorInterfaces.EditorStoreAction,
+) => {
   switch (action.type) {
     case EditorActions.Type.UPDATE_CODE: {
       return {
