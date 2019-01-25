@@ -1,21 +1,14 @@
 import { GameLogActions } from 'app/actions';
-import { ActionType } from 'typesafe-actions';
+import * as GameLogInterfaces from 'app/types/GameLog';
 
-const actions = {
-  updateGameLog: GameLogActions.updateGameLog,
-};
-
-export interface GameLogStoreState {
-  value: string;
-}
-
-export type GameLogStoreAction = ActionType<typeof actions>;
-
-const gameLogStoreIntialState: GameLogStoreState = {
+const gameLogStoreIntialState: GameLogInterfaces.GameLogStoreState = {
   value: '/* Game logs */',
 };
 
-export const gameLogReducer = (state = gameLogStoreIntialState, action: GameLogStoreAction) => {
+export const gameLogReducer = (
+  state = gameLogStoreIntialState,
+  action: GameLogInterfaces.GameLogStoreAction,
+) => {
   switch (action.type) {
     case GameLogActions.Type.UPDATE_GAME_LOG: {
       return {

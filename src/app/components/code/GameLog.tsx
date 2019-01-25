@@ -1,3 +1,4 @@
+import * as GameLogInterfaces from 'app/types/GameLog';
 import * as React from 'react';
 // tslint:disable-next-line:import-name
 import AceEditor from 'react-ace';
@@ -5,8 +6,8 @@ import AceEditor from 'react-ace';
 import 'brace/mode/c_cpp';
 import 'brace/theme/terminal';
 
-export class GameLog extends React.Component<GameLog.Props, {}> {
-  constructor(props: GameLog.Props) {
+export class GameLog extends React.Component<GameLogInterfaces.Props, {}> {
+  constructor(props: GameLogInterfaces.Props) {
     super(props);
   }
 
@@ -39,16 +40,4 @@ export class GameLog extends React.Component<GameLog.Props, {}> {
       />
     );
   }
-}
-
-export namespace GameLog {
-  export interface StateProps {
-    value: string;
-  }
-
-  export interface DispatchProps {
-    updateGameLog: (gameLog: string) => void;
-  }
-
-  export type Props = StateProps & DispatchProps;
 }
