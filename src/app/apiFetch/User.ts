@@ -1,8 +1,7 @@
-import { UserActions } from 'app/actions/User';
-import { BodyInterfaces } from 'app/sagas/User';
+import * as UserInterfaces from 'app/types/User';
 import { API_BASE_URL } from '../../config/config';
 
-export const userLogin = (body: BodyInterfaces.Login) => {
+export const userLogin = (body: UserInterfaces.Login) => {
   return fetch(`${API_BASE_URL}user/login`, {
     body: JSON.stringify(body),
     credentials: 'include',
@@ -23,7 +22,7 @@ export const userLogin = (body: BodyInterfaces.Login) => {
     });
 };
 
-export const userRegister = (body: UserActions.RegisterDetails) => {
+export const userRegister = (body: UserInterfaces.Register) => {
   return fetch(`${API_BASE_URL}user/register`, {
     body: JSON.stringify(body),
     credentials: 'include',

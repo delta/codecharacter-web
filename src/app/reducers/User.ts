@@ -1,24 +1,7 @@
 import { UserActions } from 'app/actions';
-import { ActionType } from 'typesafe-actions';
+import * as UserInterfaces from 'app/types/User';
 
-const actions = {
-  getDetails: UserActions.getDetails,
-  login: UserActions.login,
-  logout: UserActions.logout,
-  register: UserActions.register,
-  updateErrorMessage: UserActions.updateErrorMessage,
-  updateUserDetails: UserActions.updateUserDetails,
-};
-
-export interface UserStoreState {
-  errorMessage: string;
-  username: string;
-  email: string;
-  country: string;
-  isLoggedIn: boolean;
-}
-
-const userStoreIntialState: UserStoreState = {
+const userStoreIntialState: UserInterfaces.UserStoreState = {
   country: 'IN',
   email: '',
   errorMessage: '',
@@ -26,9 +9,10 @@ const userStoreIntialState: UserStoreState = {
   username: '',
 };
 
-export type UserStoreAction = ActionType<typeof actions>;
-
-export const userReducer = (state = userStoreIntialState, action: UserStoreAction) => {
+export const userReducer = (
+  state = userStoreIntialState,
+  action: UserInterfaces.UserStoreAction,
+) => {
   switch (action.type) {
     case UserActions.Type.UPDATE_USER_DETAILS: {
       const { country, email, isLoggedIn, username } = action.payload.userDetails;

@@ -1,3 +1,4 @@
+import * as UserInterfaces from 'app/types/User';
 import { action } from 'typesafe-actions';
 
 export namespace UserActions {
@@ -19,17 +20,7 @@ export namespace UserActions {
 
   export const logout = () => action(Type.LOGOUT);
 
-  export interface RegisterDetails {
-    username: string;
-    password: string;
-    repeatPassword: string;
-    email: string;
-    country?: string;
-    fullName: string;
-    pragyanId?: string;
-  }
-
-  export const register = (registerDetails: RegisterDetails) =>
+  export const register = (registerDetails: UserInterfaces.Register) =>
     action(Type.REGISTER, { registerDetails });
 
   export const getDetails = () => action(Type.GET_DETAILS);
