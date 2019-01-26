@@ -1,4 +1,4 @@
-import { EditorActions } from 'app/actions';
+import { CodeActions, UserActions } from 'app/actions';
 import { Editor } from 'app/components/code/Editor';
 import { RootState } from 'app/reducers';
 import * as EditorInterfaces from 'app/types/code/Editor';
@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (rootState: RootState) => {
   return {
-    code: rootState.editor.code,
+    code: rootState.code.code,
     enableBasicAutoCompletion: rootState.editor.editorOptions.enableBasicAutoCompletion,
     enableSnippets: rootState.editor.editorOptions.enableSnippets,
     fontSize: rootState.editor.editorOptions.fontSize,
@@ -21,7 +21,9 @@ const editorContainer = connect<
 >(
   mapStateToProps,
   {
-    updateCode: EditorActions.updateCode,
+    getLatestCode: CodeActions.getLatestCode,
+    login: UserActions.login,
+    updateCode: CodeActions.updateCode,
   },
 )(Editor);
 

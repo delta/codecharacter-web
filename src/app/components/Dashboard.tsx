@@ -1,8 +1,8 @@
-import { SubmitBar } from 'app/components/SubmitBar';
 import Editor from 'app/containers/code/Editor';
 import GameLog from 'app/containers/GameLog';
 import SideBar from 'app/containers/SideBar';
 import SidePanel from 'app/containers/SidePanel';
+import SubmitBar from 'app/containers/SubmitBar';
 import * as style from 'app/styles/Dashboard.css';
 import * as DashboardInterfaces from 'app/types/Dashboard';
 import * as React from 'react';

@@ -1,4 +1,4 @@
-import { EditorActions } from 'app/actions/code/Editor';
+import { CodeActions } from 'app/actions';
 import { EditorSettingsActions } from 'app/actions/code/EditorSettings';
 import { ActionType } from 'typesafe-actions';
 
@@ -7,7 +7,7 @@ const actions = {
   changeTheme: EditorSettingsActions.changeTheme,
   toggleBasicAutoCompletion: EditorSettingsActions.toggleBasicAutoCompletion,
   toggleSnippets: EditorSettingsActions.toggleSnippets,
-  updateCode: EditorActions.updateCode,
+  updateCode: CodeActions.updateCode,
 };
 
 export interface State {
@@ -28,12 +28,13 @@ export interface StateProps {
 
 export interface DispatchProps {
   updateCode: (code: string) => void;
+  getLatestCode: () => void;
+  login: (username: string, password: string) => void;
 }
 
 export type Props = OwnProps & StateProps & DispatchProps;
 
 export interface EditorStoreState {
-  code: string;
   editorOptions: {
     enableBasicAutoCompletion: boolean;
     fontSize: number;

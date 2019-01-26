@@ -1,8 +1,7 @@
-import { EditorActions, EditorSettingsActions } from 'app/actions';
+import { EditorSettingsActions } from 'app/actions';
 import * as EditorInterfaces from 'app/types/code/Editor';
 
 const editorStoreIntialState: EditorInterfaces.EditorStoreState = {
-  code: '#include <bits/stdc++.h>\nusing namespace std; \n\nint main() {\n    return 0;\n}',
   editorOptions: {
     enableBasicAutoCompletion: false,
     enableSnippets: false,
@@ -16,12 +15,6 @@ export const editorReducer = (
   action: EditorInterfaces.EditorStoreAction,
 ) => {
   switch (action.type) {
-    case EditorActions.Type.UPDATE_CODE: {
-      return {
-        ...state,
-        code: action.payload.code,
-      };
-    }
     case EditorSettingsActions.Type.CHANGE_FONT_SIZE:
       return {
         ...state,
