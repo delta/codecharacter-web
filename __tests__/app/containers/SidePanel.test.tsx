@@ -1,5 +1,4 @@
 import { DashboardActions } from 'app/actions';
-// import EditorSettings from 'app/containers/code/EditorSettings'
 import SidePanel from 'app/containers/code/SidePanel';
 import { SidePanelTab } from 'app/reducers/Dashboard';
 import { configureStore } from 'app/store';
@@ -21,6 +20,16 @@ describe('SidePanel Container', () => {
 
   it('Should render EditorSettings', () => {
     store.dispatch(DashboardActions.setSidePanelTab(SidePanelTab.EDITOR_SETTINGS));
+    const wrapper = shallow(<SidePanel sidePanelWidth={350} />, {
+      context: {
+        store,
+      },
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('Should render Leaderboard', () => {
+    store.dispatch(DashboardActions.setSidePanelTab(SidePanelTab.LEADERBOARD));
     const wrapper = shallow(<SidePanel sidePanelWidth={350} />, {
       context: {
         store,

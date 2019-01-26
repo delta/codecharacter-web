@@ -20,7 +20,9 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faCode} />
           </Button>
           <Button
-            className={classnames('py-4 px-auto text-white', styles.customBtn)}
+            className={classnames('py-4 px-auto editor-settings-btn-ctrl', styles.customBtn, {
+              [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.EDITOR_SETTINGS,
+            })}
             onClick={() =>
               sidePanelTab !== SidePanelTab.EDITOR_SETTINGS
                 ? openEditorSettings()
@@ -30,7 +32,9 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faCog} />
           </Button>
           <Button
-            className={classnames('py-4 px-auto text-white', styles.customBtn)}
+            className={classnames('py-4 px-auto leaderboard-btn-ctrl', styles.customBtn, {
+              [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.LEADERBOARD,
+            })}
             onClick={() =>
               sidePanelTab !== SidePanelTab.LEADERBOARD ? openLeaderboard() : closeSidePanelTab()
             }

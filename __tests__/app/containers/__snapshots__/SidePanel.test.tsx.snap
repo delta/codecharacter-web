@@ -8,6 +8,14 @@ exports[`SidePanel Container Should render EditorSettings 1`] = `
 />
 `;
 
+exports[`SidePanel Container Should render Leaderboard 1`] = `
+<SidePanel
+  dispatch={[Function]}
+  sidePanelTab="LEADERBOARD"
+  sidePanelWidth={350}
+/>
+`;
+
 exports[`SidePanel Container Should render empty <div/> after sidePanel toggle off 1`] = `
 <SidePanel
   dispatch={[Function]}

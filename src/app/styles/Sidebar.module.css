@@ -16,3 +16,11 @@
 .Sidebar .customBtn:hover {
   color: #fff;
 }
+
+.Sidebar .customBtn:active {
+  transform: scale(1.08);
+}
+
+.Sidebar .customBtnActive {
+  color: #fff;
+}

@@ -11,7 +11,7 @@ export class Leaderboard extends React.Component<LeaderboardInterfaces.Props, {}
     return (
       <Grid fluid={true} className={classnames(styles.Leaderboard)}>
         <Row className="justify-content-between py-2 pl-3">
-          <Col className="text-light my-auto">LEADERBOARD</Col>
+          <Col className="text-light font-weight-bold my-auto">LEADERBOARD</Col>
         </Row>
         <Row className={styles['leaderboard-wrap']}>
           {players.length ? (

@@ -42,9 +42,7 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
               }`}</div>
 
               <div className={classnames(styles['leader-score'])}>
-                <div className={classnames(styles['leader-score_title'])}>
-                  {player.rating} ratings
-                </div>
+                <div className={classnames(styles['leader-score_title'])}>{player.rating}</div>
               </div>
             </div>
           </div>

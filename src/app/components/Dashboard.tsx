@@ -1,3 +1,4 @@
+import { SubmitBar } from 'app/components/code/SubmitBar';
 import Editor from 'app/containers/code/Editor';
 import GameLog from 'app/containers/code/GameLog';
 import SidePanel from 'app/containers/code/SidePanel';
@@ -68,7 +69,11 @@ export class Dashboard extends React.Component<
             </Row>
           </Grid>
           <SplitPane split="horizontal" defaultSize={300} resizerClassName={style.horizontal}>
-            <div />
+            <Grid>
+              <Row>
+                <SubmitBar />
+              </Row>
+            </Grid>
             <GameLog />
           </SplitPane>
         </SplitPane>

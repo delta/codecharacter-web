@@ -1,0 +1,43 @@
+.SubmitBar {
+  width: 100%;
+  padding: 8px;
+  background: #292929;
+  position: fixed;
+  box-sizing: border-box;
+}
+
+.SubmitBar .customBtn {
+  color: #dddddd;
+  background: #525252;
+  border: 1px solid #525252;
+  outline: none;
+  margin: 0 8px;
+  font-size: 15px;
+  display: inline-block;
+}
+
+.SubmitBar .customBtn:hover {
+  cursor: pointer;
+}
+
+.SubmitBar .customBtn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.SubmitBar .customBtn:active {
+  transform: scale(1.08);
+}
+
+.customBtn div {
+  padding: 0.5px;
+}
+
+.customBtn span {
+  margin: 2px;
+}
+
+.icon {
+  padding-right: 5px;
+  border-right: 1px solid #3f3f3f;
+}
