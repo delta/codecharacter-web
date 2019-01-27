@@ -23,7 +23,10 @@ export class SubmitBar extends React.Component<SubmitBarInterfaces.Props, {}> {
           </span>
           <span>SAVE</span>
         </button>
-        <button className={classnames(styles.customBtn)} onClick={() => this.props.commitCode('Commit Message')}>
+        <button
+          className={classnames(styles.customBtn)}
+          onClick={() => this.props.commitCode('Commit Message')}
+        >
           <span className={classnames(styles.icon)}>
             <FontAwesomeIcon icon={faCodeBranch} />
           </span>

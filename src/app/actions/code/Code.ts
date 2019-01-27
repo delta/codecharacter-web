@@ -15,7 +15,8 @@ export namespace CodeActions {
 
   export const getLatestCode = () => action(Type.GET_LATEST_CODE);
 
-  export const updateStatusMessage = (statusMessage: string) => action(Type.UPDATE_STATUS_MESSAGE, {statusMessage});
+  export const updateStatusMessage = (statusMessage: string) =>
+    action(Type.UPDATE_STATUS_MESSAGE, { statusMessage });
 
   export const updateCode = (code: string) => action(Type.UPDATE_CODE, { code });
-};
+}

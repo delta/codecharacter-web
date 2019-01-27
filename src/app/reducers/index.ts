@@ -3,6 +3,7 @@ import { editorReducer } from 'app/reducers/code/Editor';
 import { dashboardReducer } from 'app/reducers/Dashboard';
 import { gameLogReducer } from 'app/reducers/GameLog';
 import { leaderboardReducer } from 'app/reducers/Leaderboard';
+import { notificationReducer } from 'app/reducers/Notification';
 import { userReducer } from 'app/reducers/User';
 import * as CodeInterfaces from 'app/types/code/Code';
 import * as EditorInterfaces from 'app/types/code/Editor';
@@ -19,6 +20,7 @@ export const rootReducer = combineReducers({
   editor: editorReducer,
   gameLog: gameLogReducer,
   leaderboard: leaderboardReducer,
+  notification: notificationReducer,
   router: routerReducer,
   user: userReducer,
 });

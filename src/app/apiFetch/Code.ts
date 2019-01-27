@@ -26,7 +26,7 @@ export const saveCode = (code: string) => {
 export const commitCode = (commitMessage: string) => {
   return fetch(`${API_BASE_URL}code/commit`, {
     body: JSON.stringify({
-      commitMessage
+      commitMessage,
     }),
     credentials: 'include',
     headers: {
@@ -50,7 +50,7 @@ export const getLatestCode = () => {
   return fetch(`${API_BASE_URL}code/latest`, {
     credentials: 'include',
     headers: {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     method: 'GET',
