@@ -1,0 +1,17 @@
+.customFlag {
+  width: 89%;
+  background: #fff;
+  padding: 8px;
+  border: 1px solid #ced4da;
+}
+
+.flag-select img {
+  width: 1.5em;
+  position: relative;
+  top: 0 !important;
+}
+
+.flag-select .arrow-down {
+  position: absolute;
+  right: 10px;
+}

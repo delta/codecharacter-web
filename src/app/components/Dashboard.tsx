@@ -9,6 +9,7 @@ import * as React from 'react';
 import { Grid, Row } from 'react-bootstrap';
 /* tslint:disable-next-line:import-name */
 import SplitPane from 'react-split-pane';
+import { Authentication } from './Authentication';
 
 export class Dashboard extends React.Component<
   DashboardInterfaces.Props,
@@ -41,6 +42,7 @@ export class Dashboard extends React.Component<
 
     return (
       <div>
+        <Authentication />
         <SplitPane
           split="vertical"
           minSize={400}
