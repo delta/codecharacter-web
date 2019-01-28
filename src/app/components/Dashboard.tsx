@@ -1,3 +1,4 @@
+import Authentication from 'app/containers/Authentication';
 import Editor from 'app/containers/code/Editor';
 import GameLog from 'app/containers/GameLog';
 import SideBar from 'app/containers/SideBar';
@@ -9,7 +10,6 @@ import * as React from 'react';
 import { Grid, Row } from 'react-bootstrap';
 /* tslint:disable-next-line:import-name */
 import SplitPane from 'react-split-pane';
-import { Authentication } from './Authentication';
 
 export class Dashboard extends React.Component<
   DashboardInterfaces.Props,

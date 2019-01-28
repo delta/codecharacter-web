@@ -1,7 +1,9 @@
-import { faEnvelope, faFlag, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faFlag, faLock, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as styles from 'app/styles/Authentication.module.css';
 import 'app/styles/Register.css';
+import { AuthType } from 'app/types/Authentication';
+import * as RegisterInterfaces from 'app/types/Authentication/Register';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
@@ -9,25 +11,28 @@ import { Col, Row } from 'react-bootstrap';
 import ReactFlagsSelect from 'react-flags-select';
 // tslint:disable-next-line:no-var-requires
 require('react-flags-select/css/react-flags-select.css');
-import { AuthType } from '.';
 
-export class Register extends React.Component<Register.Props, Register.State> {
+export class Register extends React.Component<
+  RegisterInterfaces.Props,
+  RegisterInterfaces.OwnState
+> {
   private registerRef = React.createRef<HTMLFormElement>();
-  constructor(props: Register.Props) {
+  constructor(props: RegisterInterfaces.Props) {
     super(props);
 
     this.state = {
-      confirmPassword: '',
       country: 'IN',
       email: '',
+      fullName: '',
       password: '',
+      repeatPassword: '',
       username: '',
     };
   }
 
   public render() {
-    const { confirmPassword, email, password, username } = this.state;
-    const { handleSelectPanel } = this.props;
+    const { repeatPassword, email, password, username, fullName } = this.state;
+    const { handleSelectPanel, checkUsernameExists, errorMessage } = this.props;
     return (
       <div>
         <Row>
@@ -36,15 +41,7 @@ export class Register extends React.Component<Register.Props, Register.State> {
               className={'registerForm'}
               noValidate
               ref={this.registerRef}
-              onSubmit={(e) => {
-                const form = this.registerRef.current;
-                if (form) {
-                  if (!form.checkValidity()) {
-                    e.preventDefault();
-                  }
-                  form.classList.add('was-validated');
-                }
-              }}
+              onSubmit={this.handleRegister}
             >
               <div className="form-row">
                 <div className="col mb-3">
@@ -63,6 +60,37 @@ export class Register extends React.Component<Register.Props, Register.State> {
                       maxLength={50}
                       minLength={5}
                       value={username}
+                      onChange={(e) => {
+                        checkUsernameExists(e.target.value);
+                        this.setState({
+                          username: e.target.value,
+                        });
+                      }}
+                      required
+                    />
+                    <div className="invalid-feedback">
+                      {errorMessage ? errorMessage : 'Username must have minimum 5 characters.'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="col mb-3">
+                  <div className="input-group">
+                    <div className="input-group-prepend">
+                      <span className="input-group-text" id="inputGroupPrepend">
+                        <FontAwesomeIcon icon={faUserTie} />
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="registerValidationFullname"
+                      placeholder="Your fullname"
+                      aria-describedby="inputGroupPrepend"
+                      maxLength={50}
+                      minLength={5}
+                      value={fullName}
                       onChange={(e) =>
                         this.setState({
                           username: e.target.value,
@@ -70,7 +98,7 @@ export class Register extends React.Component<Register.Props, Register.State> {
                       }
                       required
                     />
-                    <div className="invalid-feedback">Username must have minimum 5 characters.</div>
+                    <div className="invalid-feedback">Name must have minimum 5 characters.</div>
                   </div>
                 </div>
               </div>
@@ -159,14 +187,14 @@ export class Register extends React.Component<Register.Props, Register.State> {
                     <input
                       type="password"
                       className="form-control"
-                      id="registerValidationPasswordConfirm"
+                      id="registerValidationrepeatPassword"
                       placeholder="Confirm password"
                       aria-describedby="inputGroupPrepend"
                       minLength={5}
-                      value={confirmPassword}
+                      value={repeatPassword}
                       onChange={(e) =>
                         this.setState({
-                          confirmPassword: e.target.value,
+                          repeatPassword: e.target.value,
                         })
                       }
                       required
@@ -219,18 +247,24 @@ export class Register extends React.Component<Register.Props, Register.State> {
       country: countryCode,
     });
   };
-}
-
-export namespace Register {
-  export interface OwnProps {
-    handleSelectPanel: (authType: AuthType) => void;
-  }
-  export interface State {
-    username: string;
-    password: string;
-    confirmPassword: string;
-    email: string;
-    country: string;
-  }
-  export type Props = OwnProps;
+  private handleRegister = (event: React.FormEvent<HTMLFormElement>) => {
+    const { register } = this.props;
+    const { repeatPassword, country, email, fullName, password, username } = this.state;
+    const form = this.registerRef.current;
+    if (form) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+      }
+      form.classList.add('was-validated');
+      register({
+        country,
+        email,
+        fullName,
+        password,
+        repeatPassword,
+        username,
+        pragyanId: '',
+      });
+    }
+  };
 }

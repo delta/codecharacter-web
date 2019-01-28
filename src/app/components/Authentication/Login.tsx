@@ -1,20 +1,21 @@
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { AuthType } from 'app/components/Authentication/';
 import * as styles from 'app/styles/Authentication.module.css';
+import { AuthType } from 'app/types/Authentication/';
+import * as LoginInterfaces from 'app/types/Authentication/Login';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
-export class Login extends React.Component<Login.Props, Login.State> {
+export class Login extends React.Component<LoginInterfaces.Props, LoginInterfaces.OwnState> {
   private loginRef = React.createRef<HTMLFormElement>();
 
-  constructor(props: Login.Props) {
+  constructor(props: LoginInterfaces.Props) {
     super(props);
 
     this.state = {
-      email: '',
       password: '',
+      username: '',
     };
   }
 
@@ -27,39 +28,31 @@ export class Login extends React.Component<Login.Props, Login.State> {
               className={classnames('loginForm')}
               noValidate
               ref={this.loginRef}
-              onSubmit={(e) => {
-                const form = this.loginRef.current;
-                if (form) {
-                  if (!form.checkValidity()) {
-                    e.preventDefault();
-                  }
-                  form.classList.add('was-validated');
-                }
-              }}
+              onSubmit={this.handleLogin}
             >
               <div className="form-row">
                 <div className="col mb-4">
                   <div className="input-group">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroupPrepend">
-                        <FontAwesomeIcon icon={faEnvelope} />
+                        <FontAwesomeIcon icon={faUser} />
                       </span>
                     </div>
                     <input
-                      type="email"
+                      type="text"
                       className="form-control"
-                      id="validationEmail"
-                      placeholder="Your email"
+                      id="validationUsername"
+                      placeholder="Your username"
                       aria-describedby="inputGroupPrepend"
                       required
-                      value={this.state.email}
+                      value={this.state.username}
                       onChange={(e) =>
                         this.setState({
-                          email: e.target.value,
+                          username: e.target.value,
                         })
                       }
                     />
-                    <div className="invalid-feedback">Please enter a valid Email ID.</div>
+                    <div className="invalid-feedback">Please enter a valid Username.</div>
                   </div>
                 </div>
               </div>
@@ -123,15 +116,16 @@ export class Login extends React.Component<Login.Props, Login.State> {
       </div>
     );
   }
-}
-
-export namespace Login {
-  export interface OwnProps {
-    handleSelectPanel: (authType: AuthType) => void;
-  }
-  export interface State {
-    email: string;
-    password: string;
-  }
-  export type Props = OwnProps;
+  private handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    const { login } = this.props;
+    const { username, password } = this.state;
+    const form = this.loginRef.current;
+    if (form) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+      }
+      form.classList.add('was-validated');
+      login(username, password);
+    }
+  };
 }

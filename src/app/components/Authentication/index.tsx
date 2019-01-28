@@ -1,18 +1,22 @@
 import { faTimes, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Login } from 'app/components/Authentication/Login';
-import { Register } from 'app/components/Authentication/Register';
+import Login from 'app/containers/Authentication/Login';
+import Register from 'app/containers/Authentication/Register';
 import * as styles from 'app/styles/Authentication.module.css';
+import * as AuthenticationInterfaces from 'app/types/Authentication';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Button, Col, Grid, Row } from 'react-bootstrap';
-
-export class Authentication extends React.Component<{}, Authentication.Props> {
-  constructor(props: {}) {
+export class Authentication extends React.Component<
+  AuthenticationInterfaces.Props,
+  AuthenticationInterfaces.State
+> {
+  constructor(props: AuthenticationInterfaces.Props) {
     super(props);
+    const { isLoggedIn } = this.props;
     this.state = {
-      authType: AuthType.REGISTER,
-      isAuthModalOpen: true,
+      authType: AuthenticationInterfaces.AuthType.REGISTER,
+      isAuthModalOpen: !isLoggedIn,
     };
   }
 
@@ -48,24 +52,26 @@ export class Authentication extends React.Component<{}, Authentication.Props> {
               <div className={classnames(styles.buttonPanelBackground)}>
                 <Button
                   className={classnames(styles.buttonPanel, {
-                    [`${styles.buttonPanelActive}`]: authType === AuthType.LOGIN,
+                    [`${styles.buttonPanelActive}`]:
+                      authType === AuthenticationInterfaces.AuthType.LOGIN,
                   })}
-                  onClick={() => this.handleSelectPanel(AuthType.LOGIN)}
+                  onClick={() => this.handleSelectPanel(AuthenticationInterfaces.AuthType.LOGIN)}
                 >
                   <FontAwesomeIcon icon={faUser} /> &nbsp;Login
                 </Button>
                 <Button
                   className={classnames(styles.buttonPanel, {
-                    [`${styles.buttonPanelActive}`]: authType === AuthType.REGISTER,
+                    [`${styles.buttonPanelActive}`]:
+                      authType === AuthenticationInterfaces.AuthType.REGISTER,
                   })}
-                  onClick={() => this.handleSelectPanel(AuthType.REGISTER)}
+                  onClick={() => this.handleSelectPanel(AuthenticationInterfaces.AuthType.REGISTER)}
                 >
                   <FontAwesomeIcon icon={faUserPlus} /> &nbsp;Register
                 </Button>
               </div>
             </Col>
           </Row>
-          {authType === AuthType.LOGIN ? (
+          {authType === AuthenticationInterfaces.AuthType.LOGIN ? (
             <Login handleSelectPanel={this.handleSelectPanel} />
           ) : (
             <Register handleSelectPanel={this.handleSelectPanel} />
@@ -80,22 +86,9 @@ export class Authentication extends React.Component<{}, Authentication.Props> {
       isAuthModalOpen,
     });
   };
-  private handleSelectPanel = (authType: AuthType) => {
+  private handleSelectPanel = (authType: AuthenticationInterfaces.AuthType) => {
     this.setState({
       authType,
     });
   };
-}
-
-export enum AuthType {
-  LOGIN = 'LOGIN',
-  REGISTER = 'REGISTER',
-}
-
-export namespace Authentication {
-  export interface State {
-    isAuthModalOpen: boolean;
-    authType: AuthType;
-  }
-  export type Props = State;
 }
