@@ -10,13 +10,16 @@ const mapStateToProps = (rootState: RootState) => {
   };
 };
 
-const loginContainer = connect<RegisterInterfaces.StateProps, RegisterInterfaces.DispatchProps, {}>(
+const registerContainer = connect<
+  RegisterInterfaces.StateProps,
+  RegisterInterfaces.DispatchProps,
+  {}
+>(
   mapStateToProps,
   {
     checkUsernameExists: UserActions.checkUsernameExists,
     register: UserActions.register,
-    updateErrorMessage: UserActions.updateErrorMessage,
   },
 )(Register);
 
-export default loginContainer;
+export default registerContainer;

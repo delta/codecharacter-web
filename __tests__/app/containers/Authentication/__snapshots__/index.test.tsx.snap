@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Authentication main Container Should render 1`] = `
+<Authentication
+  dispatch={[Function]}
+  isLoggedIn={false}
+/>
+`;

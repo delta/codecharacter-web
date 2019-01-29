@@ -7,7 +7,7 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
-export class Login extends React.Component<LoginInterfaces.Props, LoginInterfaces.OwnState> {
+export class Login extends React.Component<LoginInterfaces.Props, LoginInterfaces.State> {
   private loginRef = React.createRef<HTMLFormElement>();
 
   constructor(props: LoginInterfaces.Props) {
@@ -42,7 +42,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                       type="text"
                       className="form-control"
                       id="validationUsername"
-                      placeholder="Your username"
+                      placeholder="Username"
                       aria-describedby="inputGroupPrepend"
                       required
                       value={this.state.username}
@@ -68,7 +68,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                       type="password"
                       className="form-control"
                       id="validationPassword"
-                      placeholder="Your password"
+                      placeholder="Password"
                       aria-describedby="inputGroupPrepend"
                       minLength={5}
                       required
@@ -120,12 +120,12 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     const { login } = this.props;
     const { username, password } = this.state;
     const form = this.loginRef.current;
+    event.preventDefault();
     if (form) {
-      if (!form.checkValidity()) {
-        event.preventDefault();
+      if (form.checkValidity()) {
+        login(username, password);
       }
       form.classList.add('was-validated');
-      login(username, password);
     }
   };
 }

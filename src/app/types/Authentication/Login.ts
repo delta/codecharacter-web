@@ -1,5 +1,6 @@
 import { AuthType } from 'app/types/Authentication';
-export { Login as OwnState } from 'app/types/User';
+
+export { Login as State } from 'app/types/User';
 
 export interface OwnProps {
   handleSelectPanel: (authType: AuthType) => void;

@@ -116,9 +116,5 @@
 }
 
 .buttonPanelBackground {
-  padding: 5px;
-  /* background: #17a2b8; */
-  align-items: center;
   display: flex;
-  justify-content: center;
 }

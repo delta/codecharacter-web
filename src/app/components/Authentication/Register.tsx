@@ -9,13 +9,9 @@ import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
 // tslint:disable-next-line:import-name
 import ReactFlagsSelect from 'react-flags-select';
-// tslint:disable-next-line:no-var-requires
-require('react-flags-select/css/react-flags-select.css');
+import 'react-flags-select/css/react-flags-select.css';
 
-export class Register extends React.Component<
-  RegisterInterfaces.Props,
-  RegisterInterfaces.OwnState
-> {
+export class Register extends React.Component<RegisterInterfaces.Props, RegisterInterfaces.State> {
   private registerRef = React.createRef<HTMLFormElement>();
   constructor(props: RegisterInterfaces.Props) {
     super(props);
@@ -25,6 +21,7 @@ export class Register extends React.Component<
       email: '',
       fullName: '',
       password: '',
+      pragyanId: '',
       repeatPassword: '',
       username: '',
     };
@@ -55,7 +52,7 @@ export class Register extends React.Component<
                       type="text"
                       className="form-control"
                       id="registerValidationUsername"
-                      placeholder="Your username"
+                      placeholder="Username"
                       aria-describedby="inputGroupPrepend"
                       maxLength={50}
                       minLength={5}
@@ -68,9 +65,7 @@ export class Register extends React.Component<
                       }}
                       required
                     />
-                    <div className="invalid-feedback">
-                      {errorMessage ? errorMessage : 'Username must have minimum 5 characters.'}
-                    </div>
+                    <div className="invalid-feedback">Username must have minimum 5 characters.</div>
                   </div>
                 </div>
               </div>
@@ -86,14 +81,14 @@ export class Register extends React.Component<
                       type="text"
                       className="form-control"
                       id="registerValidationFullname"
-                      placeholder="Your fullname"
+                      placeholder="Name"
                       aria-describedby="inputGroupPrepend"
                       maxLength={50}
                       minLength={5}
                       value={fullName}
                       onChange={(e) =>
                         this.setState({
-                          username: e.target.value,
+                          fullName: e.target.value,
                         })
                       }
                       required
@@ -114,7 +109,7 @@ export class Register extends React.Component<
                       type="email"
                       className="form-control"
                       id="registerValidationEmail"
-                      placeholder="Your email"
+                      placeholder="Email"
                       aria-describedby="inputGroupPrepend"
                       value={email}
                       onChange={(e) =>
@@ -159,7 +154,7 @@ export class Register extends React.Component<
                       type="password"
                       className="form-control"
                       id="registerValidationPassword"
-                      placeholder="Your password"
+                      placeholder="Password"
                       aria-describedby="inputGroupPrepend"
                       minLength={5}
                       value={password}
@@ -177,7 +172,7 @@ export class Register extends React.Component<
                 </div>
               </div>
               <div className="form-row">
-                <div className="col mb-3">
+                <div className="col mb-1">
                   <div className="input-group">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroupPrepend">
@@ -188,7 +183,7 @@ export class Register extends React.Component<
                       type="password"
                       className="form-control"
                       id="registerValidationrepeatPassword"
-                      placeholder="Confirm password"
+                      placeholder="Confirm Password"
                       aria-describedby="inputGroupPrepend"
                       minLength={5}
                       value={repeatPassword}
@@ -202,6 +197,10 @@ export class Register extends React.Component<
                     <div className="invalid-feedback">Passwords should match.</div>
                   </div>
                 </div>
+              </div>
+              <div className="form-row">
+                <div className="input-group" />
+                <div className="col text-center mt -0 mb-2 errorMessage">{errorMessage}</div>
               </div>
               <div className="form-row">
                 <div className="col text-center">
@@ -249,22 +248,23 @@ export class Register extends React.Component<
   };
   private handleRegister = (event: React.FormEvent<HTMLFormElement>) => {
     const { register } = this.props;
-    const { repeatPassword, country, email, fullName, password, username } = this.state;
+    const { repeatPassword, country, email, fullName, password, username, pragyanId } = this.state;
     const form = this.registerRef.current;
+    event.preventDefault();
+
     if (form) {
-      if (!form.checkValidity()) {
-        event.preventDefault();
+      if (form.checkValidity()) {
+        register({
+          country,
+          email,
+          fullName,
+          password,
+          pragyanId,
+          repeatPassword,
+          username,
+        });
       }
       form.classList.add('was-validated');
-      register({
-        country,
-        email,
-        fullName,
-        password,
-        repeatPassword,
-        username,
-        pragyanId: '',
-      });
     }
   };
 }
