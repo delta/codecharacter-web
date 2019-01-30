@@ -11,7 +11,7 @@ const mapStateToProps = (rootState: RootState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    commitCode: (commitMessage: string) => dispatch(CodeActions.commit(commitMessage)),
+    commit: (commitMessage: string) => dispatch(CodeActions.commit(commitMessage)),
     saveCode: () => dispatch(CodeActions.save()),
   };
 };

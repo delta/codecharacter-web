@@ -79,7 +79,7 @@ export class Dashboard extends React.Component<
             </Row>
           </Grid>
           <SplitPane split="horizontal" defaultSize={300} resizerClassName={style.horizontal}>
-            <Grid>
+            <Grid fluid={true}>
               <Row>
                 <SubmitBar />
               </Row>

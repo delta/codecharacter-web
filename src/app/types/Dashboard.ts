@@ -24,6 +24,7 @@ export type DashboardActions = Omit<typeof DashboardActions, 'Type'>;
 
 export interface DashboardStoreState {
   sidePanelTab: SidePanelTab;
+  isCommitModalOpen: boolean;
 }
 
 export type DashboardStoreAction = ActionType<typeof actions>;

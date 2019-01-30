@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommitMessageBox Container Should render 1`] = `
+<CommitMessageBox
+  commitMessage="Inital Commit"
+  handleCommit={[Function]}
+  isCommitMessageBoxOpen={true}
+  updateCommitMessage={[Function]}
+>
+  <div
+    className=""
+  >
+    <form
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <Grid
+        bsClass="container"
+        className=""
+        componentClass="div"
+        fluid={true}
+      >
+        <div
+          className="container-fluid"
+        >
+          <Row
+            bsClass="row"
+            className="mt-2"
+            componentClass="div"
+          >
+            <div
+              className="mt-2 row"
+            >
+              <div
+                className="w-100"
+              >
+                <div
+                  className="col form-row mb-2"
+                >
+                  <div
+                    className="input-group"
+                  >
+                    <input
+                      className="form-control"
+                      id="validationUsername"
+                      maxLength={50}
+                      onChange={[Function]}
+                      placeholder="Describe your commit."
+                      required={true}
+                      value="Inital Commit"
+                    />
+                    <button
+                      className="btn btn-info ml-3"
+                      type="submit"
+                    >
+                      Commit
+                    </button>
+                    <div
+                      className="invalid-feedback"
+                    >
+                      Please enter valid commit message.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Row>
+        </div>
+      </Grid>
+    </form>
+  </div>
+</CommitMessageBox>
+`;
