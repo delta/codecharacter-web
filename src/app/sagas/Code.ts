@@ -51,10 +51,39 @@ export function* getLatestCode(action: ActionType<typeof CodeActions.getLatestCo
   }
 }
 
+export function* getCommitLog(action: ActionType<typeof CodeActions.getCommitLog>) {
+  try {
+    const res = yield call(codeFetch.getCommitLog);
+    if (res.type === resType.ERROR) {
+      yield put(CodeActions.updateStatusMessage(res.error));
+    } else {
+      yield put(CodeActions.updateCommitLog(res.log));
+    }
+  } catch (err) {
+    throw err;
+  }
+}
+
+export function* checkoutCode(action: ActionType<typeof CodeActions.checkoutCode>) {
+  try {
+    const res = yield call(codeFetch.getCommitCode, action.payload.commitHash);
+    if (res.type === resType.ERROR) {
+      yield put(CodeActions.updateStatusMessage(res.error));
+    } else {
+      yield put(CodeActions.updateCode(res.code));
+      yield put(CodeActions.setCurrentCommitHash(action.payload.commitHash));
+    }
+  } catch (err) {
+    throw err;
+  }
+}
+
 export function* codeSagas() {
   yield all([
     takeEvery(CodeActions.Type.SAVE, save),
     takeEvery(CodeActions.Type.COMMIT, commit),
     takeEvery(CodeActions.Type.GET_LATEST_CODE, getLatestCode),
+    takeEvery(CodeActions.Type.GET_COMMIT_LOG, getCommitLog),
+    takeEvery(CodeActions.Type.CHECKOUT_CODE, checkoutCode),
   ]);
 }

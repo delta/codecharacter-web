@@ -6,8 +6,7 @@ export interface StateProps {
 
 export interface DispatchProps {
   closeSidePanelTab: () => void;
-  openEditorSettings: () => void;
-  openLeaderboard: () => void;
+  openSidePanelTab: (type: SidePanelTab) => void;
 }
 
 export type Props = StateProps & DispatchProps;

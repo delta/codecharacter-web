@@ -65,3 +65,43 @@ export const getLatestCode = () => {
       throw error;
     });
 };
+
+export const getCommitLog = () => {
+  return fetch(`${API_BASE_URL}code/log`, {
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const getCommitCode = (commitHash: string) => {
+  return fetch(`${API_BASE_URL}code/view/${commitHash}`, {
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      throw error;
+    });
+};

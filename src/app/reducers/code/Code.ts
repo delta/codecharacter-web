@@ -3,6 +3,8 @@ import * as CodeInterfaces from 'app/types/code/Code';
 
 const codeStoreInitialState: CodeInterfaces.CodeStoreState = {
   code: '#include <bits/stdc++.h>\nusing namespace std; \n\nint main() {\n  return 0;\n}',
+  commitLog: [],
+  currentCommitHash: 'latest',
   statusMessage: '',
 };
 
@@ -21,6 +23,18 @@ export const codeReducer = (
       return {
         ...state,
         code: action.payload.code,
+      };
+    }
+    case CodeActions.Type.UPDATE_COMMIT_LOG: {
+      return {
+        ...state,
+        commitLog: action.payload.log,
+      };
+    }
+    case CodeActions.Type.SET_CURRENT_COMMIT_HASH: {
+      return {
+        ...state,
+        currentCommitHash: action.payload.commitHash,
       };
     }
     default:

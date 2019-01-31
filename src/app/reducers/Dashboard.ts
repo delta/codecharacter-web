@@ -4,6 +4,7 @@ import * as DashboardInterfaces from 'app/types/Dashboard';
 export enum SidePanelTab {
   EDITOR_SETTINGS = 'EDITOR_SETTINGS',
   LEADERBOARD = 'LEADERBOARD',
+  COMMIT_LOG = 'COMMIT_LOG',
   NONE = 'NONE',
 }
 

@@ -43,6 +43,7 @@ export class Editor extends React.Component<EditorInterfaces.Props, EditorInterf
       enableSnippets,
       code,
       updateCode,
+      viewOnly,
     } = this.props;
     const options = {
       enableBasicAutocompletion,
@@ -63,6 +64,7 @@ export class Editor extends React.Component<EditorInterfaces.Props, EditorInterf
         showGutter={true}
         highlightActiveLine={true}
         setOptions={options}
+        readOnly={viewOnly}
         editorProps={{ $blockScrolling: true }}
         width={`${editorWidth.toString()}px`}
         height={'100vh'}

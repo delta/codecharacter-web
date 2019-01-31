@@ -16,6 +16,7 @@
   justify-content: space-between;
 }
 .leaderboard-wrap {
+  z-index: 0;
   height: 92vh;
   overflow-y: scroll;
   margin-bottom: 5px;
@@ -27,7 +28,7 @@
 }
 
 .leaderboard-wrap::-webkit-scrollbar {
-  width: 6px;
+  width: 3px;
   background-color: #1c1c1c;
 }
 

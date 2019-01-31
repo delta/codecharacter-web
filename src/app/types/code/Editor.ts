@@ -24,12 +24,12 @@ export interface StateProps {
   fontSize: number;
   enableBasicAutoCompletion: boolean;
   enableSnippets: boolean;
+  viewOnly: boolean;
 }
 
 export interface DispatchProps {
   updateCode: (code: string) => void;
   getLatestCode: () => void;
-  login: (username: string, password: string) => void;
 }
 
 export type Props = OwnProps & StateProps & DispatchProps;

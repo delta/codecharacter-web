@@ -1,4 +1,4 @@
-import { CodeActions, UserActions } from 'app/actions';
+import { CodeActions } from 'app/actions';
 import { Editor } from 'app/components/code/Editor';
 import { RootState } from 'app/reducers';
 import * as EditorInterfaces from 'app/types/code/Editor';
@@ -11,6 +11,7 @@ const mapStateToProps = (rootState: RootState) => {
     enableSnippets: rootState.editor.editorOptions.enableSnippets,
     fontSize: rootState.editor.editorOptions.fontSize,
     theme: rootState.editor.editorOptions.theme,
+    viewOnly: rootState.code.currentCommitHash !== 'latest',
   };
 };
 
@@ -22,7 +23,6 @@ const editorContainer = connect<
   mapStateToProps,
   {
     getLatestCode: CodeActions.getLatestCode,
-    login: UserActions.login,
     updateCode: CodeActions.updateCode,
   },
 )(Editor);
