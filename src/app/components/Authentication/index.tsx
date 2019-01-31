@@ -1,4 +1,4 @@
-import { faTimes, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Login from 'app/containers/Authentication/Login';
 import Register from 'app/containers/Authentication/Register';
@@ -13,41 +13,27 @@ export class Authentication extends React.Component<
 > {
   constructor(props: AuthenticationInterfaces.Props) {
     super(props);
-    const { isLoggedIn } = this.props;
     this.state = {
       authType: AuthenticationInterfaces.AuthType.REGISTER,
-      isAuthModalOpen: !isLoggedIn,
     };
   }
 
   public render() {
-    const { isAuthModalOpen, authType } = this.state;
+    const { authType } = this.state;
+    const { isLoggedIn } = this.props;
     return (
       <div
         className={classnames(styles.Authentication, {
-          [`${styles.modalOpen}`]: isAuthModalOpen,
-          [`${styles.modalClose}`]: !isAuthModalOpen,
+          [`${styles.modalOpen}`]: !isLoggedIn,
         })}
       >
         <Grid
           fluid={true}
           className={classnames(styles.modal, {
-            [`${styles.slideEnter}`]: isAuthModalOpen,
-            [`${styles.slideExit}`]: !isAuthModalOpen,
+            [`${styles.slideEnter}`]: !isLoggedIn,
           })}
         >
-          <Row className="justify-content-between">
-            <Col className={'ml-auto'}>
-              <Button
-                className={classnames(styles.customBtn)}
-                bsSize="xsmall"
-                onClick={() => this.toggleAuthenticationModal(!isAuthModalOpen)}
-              >
-                <FontAwesomeIcon icon={faTimes} color={'black'} />
-              </Button>
-            </Col>
-          </Row>
-          <Row>
+          <Row className="mt-3">
             <Col sm={12}>
               <div className={classnames(styles.buttonPanelBackground)}>
                 <Button
@@ -81,11 +67,6 @@ export class Authentication extends React.Component<
     );
   }
 
-  private toggleAuthenticationModal = (isAuthModalOpen: boolean) => {
-    this.setState({
-      isAuthModalOpen,
-    });
-  };
   private handleSelectPanel = (authType: AuthenticationInterfaces.AuthType) => {
     this.setState({
       authType,

@@ -58,10 +58,6 @@
   animation: modalOpen 0.4s ease-out forwards;
 }
 
-.slideExit {
-  animation: modalClose 0.4s ease-out forwards;
-}
-
 @keyframes modalOpen {
   0% {
     opacity: 0;
@@ -76,23 +72,6 @@
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes modalClose {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  20% {
-    opacity: 0.8;
-    transform: translateY(10vh);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(-100vh);
   }
 }
 

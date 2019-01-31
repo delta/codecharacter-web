@@ -39,10 +39,10 @@ export class Dashboard extends React.Component<
 
   public render() {
     const { editorWidth, leftPartitionWidth } = this.state;
-
+    const { isLoggedIn } = this.props;
     return (
       <div>
-        <Authentication />
+        {!isLoggedIn ? <Authentication /> : null}
         <SplitPane
           split="vertical"
           minSize={400}

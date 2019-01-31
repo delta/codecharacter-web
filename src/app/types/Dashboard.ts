@@ -13,6 +13,7 @@ export interface State {
 }
 
 export interface StateProps {
+  isLoggedIn: boolean;
   sidePanelOpen: boolean;
 }
 

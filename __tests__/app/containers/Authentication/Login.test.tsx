@@ -5,8 +5,6 @@ import * as React from 'react';
 
 describe('Login Container', () => {
   const store = configureStore();
-  // tslint:disable-next-line:no-console
-  console.log(<Login handleSelectPanel={Function} />);
   const wrapper = mount(<Login handleSelectPanel={Function} />, {
     context: {
       store,

@@ -20,6 +20,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
   }
 
   public render() {
+    const { username, password } = this.state;
     return (
       <div>
         <Row>
@@ -45,7 +46,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                       placeholder="Username"
                       aria-describedby="inputGroupPrepend"
                       required
-                      value={this.state.username}
+                      value={username}
                       onChange={(e) =>
                         this.setState({
                           username: e.target.value,
@@ -71,6 +72,12 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                       placeholder="Password"
                       aria-describedby="inputGroupPrepend"
                       minLength={5}
+                      value={password}
+                      onChange={(e) =>
+                        this.setState({
+                          password: e.target.value,
+                        })
+                      }
                       required
                     />
                     <div className="invalid-feedback">Please enter the correct password.</div>

@@ -17,18 +17,18 @@ export const userReducer = (
     case UserActions.Type.UPDATE_USER_DETAILS: {
       const { country, email, isLoggedIn, username } = action.payload.userDetails;
       return {
+        ...state,
         country: country ? country : state.country,
         email: email ? email : state.email,
         isLoggedIn: isLoggedIn ? isLoggedIn : state.isLoggedIn,
         username: username ? username : state.username,
-        ...state,
       };
     }
 
     case UserActions.Type.UPDATE_ERROR_MESSAGE: {
       return {
-        errorMessage: action.payload.errorMessage ? action.payload.errorMessage : '',
         ...state,
+        errorMessage: action.payload.errorMessage ? action.payload.errorMessage : '',
       };
     }
 

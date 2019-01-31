@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (rootState: RootState) => {
   return {
+    isLoggedIn: rootState.user.isLoggedIn,
     sidePanelOpen: rootState.dashboard.sidePanelTab !== SidePanelTab.NONE,
   };
 };

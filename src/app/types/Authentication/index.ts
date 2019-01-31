@@ -4,7 +4,6 @@ export enum AuthType {
 }
 
 export interface State {
-  isAuthModalOpen: boolean;
   authType: AuthType;
 }
 

@@ -177,9 +177,11 @@ exports[`Login Container Should render 1`] = `
                       className="form-control"
                       id="validationPassword"
                       minLength={5}
+                      onChange={[Function]}
                       placeholder="Password"
                       required={true}
                       type="password"
+                      value=""
                     />
                     <div
                       className="invalid-feedback"
