@@ -9,6 +9,7 @@ export interface Props {
   index: number;
   commitDetails: Commit;
   commitsLength: number;
-  onClick: () => void;
+  forkCode?: () => void;
+  checkoutCode: () => void;
   isCurrentHash: boolean;
 }

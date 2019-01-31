@@ -19,6 +19,7 @@ const commitLogContainer = connect<
   mapStateToProps,
   {
     checkoutCode: CodeActions.checkoutCode,
+    forkCode: CodeActions.forkCode,
     getCommitLog: CodeActions.getCommitLog,
   },
 )(CommitLog);

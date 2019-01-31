@@ -1,4 +1,4 @@
-import * as commitLogStyles from 'app/styles/CommitLog.module.css';
+import * as styles from 'app/styles/CommitLog.module.css';
 import * as CommitInterfaces from 'app/types/code/CommitElement';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -56,11 +56,10 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
   }
 
   public render() {
-    const { commitDetails } = this.props;
-
+    const { commitDetails, forkCode, checkoutCode } = this.props;
     return (
       <div
-        onClick={this.props.onClick}
+        onClick={checkoutCode}
         onMouseEnter={() => {
           this.setState({ isHovered: true });
         }}
@@ -68,18 +67,26 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
           this.setState({ isHovered: false });
         }}
         className={classnames(
-          commitLogStyles.Commit,
+          styles.Commit,
           'list-group-item',
           'list-group-item-action',
           'flex-column',
           'align-items-start',
         )}
       >
-        <div className={classnames(commitLogStyles.CommitDetails)}>
+        <div className={classnames(styles.CommitDetails)}>
           <div className="d-flex w-100 justify-content-between">
             <h6 className="mb-1">{commitDetails.message}</h6>
+            {commitDetails.hash !== 'latest' ? (
+              <img
+                className={classnames(styles.ForkLogo)}
+                onClick={forkCode}
+                src="assets/img/fork.png"
+                title="Fork"
+              />
+            ) : null}
           </div>
-          <p className={classnames('mb-2', commitLogStyles.CommitDate)}>
+          <p className={classnames('mb-2', styles.CommitDate)}>
             {new Date(commitDetails.date).toUTCString()}
           </p>
           <small style={{ color: '#ddd' }}>{commitDetails.hash.substring(0, 7)}</small>

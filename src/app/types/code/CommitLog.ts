@@ -12,6 +12,7 @@ export interface State {
 export interface DispatchProps {
   checkoutCode: (commitHash: string) => void;
   getCommitLog: () => void;
+  forkCode: (commitHash: string) => void;
 }
 
 export type Props = {} & StateProps & DispatchProps;

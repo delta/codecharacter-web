@@ -12,6 +12,7 @@ export namespace CodeActions {
     UPDATE_COMMIT_LOG = 'UPDATE_COMMIT_LOG',
     CHECKOUT_CODE = 'CHECKOUT_CODE',
     SET_CURRENT_COMMIT_HASH = 'SET_CURRENT_COMMIT_HASH',
+    FORK_CODE = 'FORK_CODE',
   }
 
   export const save = () => action(Type.SAVE);
@@ -33,4 +34,6 @@ export namespace CodeActions {
 
   export const setCurrentCommitHash = (commitHash: string) =>
     action(Type.SET_CURRENT_COMMIT_HASH, { commitHash });
+
+  export const forkCode = (commitHash: string) => action(Type.FORK_CODE, { commitHash });
 }

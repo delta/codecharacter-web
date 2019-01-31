@@ -18,7 +18,7 @@ export class CommitLog extends React.Component<
   }
 
   public render() {
-    const { commitLog, checkoutCode, currentCommitHash } = this.props;
+    const { commitLog, checkoutCode, currentCommitHash, forkCode } = this.props;
     const currentDate = new Date();
     const latestCommit = {
       date: currentDate.toString(),
@@ -33,7 +33,7 @@ export class CommitLog extends React.Component<
         <Row className={styles['commitlog-wrap']}>
           <CommitElement
             isCurrentHash={currentCommitHash === latestCommit.hash}
-            onClick={() => checkoutCode(latestCommit.hash)}
+            checkoutCode={() => checkoutCode(latestCommit.hash)}
             key={0}
             index={0}
             commitDetails={latestCommit}
@@ -42,9 +42,12 @@ export class CommitLog extends React.Component<
           {commitLog.map((commit, index) => (
             <CommitElement
               isCurrentHash={currentCommitHash === commit.hash}
-              onClick={() => checkoutCode(commit.hash)}
+              checkoutCode={() => checkoutCode(commit.hash)}
               key={index + 1}
               index={index + 1}
+              forkCode={() => {
+                forkCode(commit.hash);
+              }}
               commitDetails={commit}
               commitsLength={commitLog.length + 1}
             />

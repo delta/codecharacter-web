@@ -28,8 +28,8 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-  updateCode: (code: string) => void;
   getLatestCode: () => void;
+  updateCode: (code: string) => void;
 }
 
 export type Props = OwnProps & StateProps & DispatchProps;

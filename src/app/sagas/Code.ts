@@ -78,6 +78,20 @@ export function* checkoutCode(action: ActionType<typeof CodeActions.checkoutCode
   }
 }
 
+export function* forkCode(action: ActionType<typeof CodeActions.forkCode>) {
+  try {
+    const res = yield call(codeFetch.forkCode, action.payload.commitHash);
+    if (res.type === resType.ERROR) {
+      yield put(CodeActions.updateStatusMessage(res.error));
+    } else {
+      yield put(CodeActions.setCurrentCommitHash('latest'));
+      yield put(CodeActions.getLatestCode());
+    }
+  } catch (err) {
+    throw err;
+  }
+}
+
 export function* codeSagas() {
   yield all([
     takeEvery(CodeActions.Type.SAVE, save),
@@ -85,5 +99,6 @@ export function* codeSagas() {
     takeEvery(CodeActions.Type.GET_LATEST_CODE, getLatestCode),
     takeEvery(CodeActions.Type.GET_COMMIT_LOG, getCommitLog),
     takeEvery(CodeActions.Type.CHECKOUT_CODE, checkoutCode),
+    takeEvery(CodeActions.Type.FORK_CODE, forkCode),
   ]);
 }

@@ -105,3 +105,23 @@ export const getCommitCode = (commitHash: string) => {
       throw error;
     });
 };
+
+export const forkCode = (commitHash: string) => {
+  return fetch(`${API_BASE_URL}code/fork/${commitHash}`, {
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
