@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Editor Container Should render Editor 1`] = `
+<Editor
+  code="#include <bits/stdc++.h>
+using namespace std; 
+
+int main() {
+  return 0;
+}"
+  editorWidth={400}
+  enableBasicAutoCompletion={false}
+  enableSnippets={false}
+  fontSize={16}
+  getLatestCode={[Function]}
+  theme="monokai"
+  updateCode={[Function]}
+  viewOnly={false}
+/>
+`;

@@ -3,7 +3,7 @@ import { configureStore } from 'app/store';
 import { mount } from 'enzyme';
 import * as React from 'react';
 
-describe('SidePanel Container', () => {
+describe('EditorSettings Container', () => {
   const store = configureStore();
 
   it('Should render EditorSettings', () => {

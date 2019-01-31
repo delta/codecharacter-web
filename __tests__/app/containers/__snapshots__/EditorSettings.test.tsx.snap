@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SidePanel Container Should render EditorSettings 1`] = `
+exports[`EditorSettings Container Should render EditorSettings 1`] = `
 <Connect(EditorSettings)>
   <EditorSettings
     changeFontSize={[Function]}
