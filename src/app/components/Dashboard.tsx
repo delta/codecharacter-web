@@ -52,7 +52,11 @@ export class Dashboard extends React.Component<
         {!isLoggedIn ? <Authentication /> : null}
         <SplitPane
           split="vertical"
-          minSize={this.minEditorWidth + (this.props.sidePanelOpen ? this.sidePanelWidth : 0) + this.sideBarWidth}
+          minSize={
+            this.minEditorWidth +
+            (this.props.sidePanelOpen ? this.sidePanelWidth : 0) +
+            this.sideBarWidth
+          }
           defaultSize={this.state.leftPartitionWidth}
           size={leftPartitionWidth}
           resizerClassName={style.vertical}

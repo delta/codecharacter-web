@@ -263,7 +263,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           repeatPassword,
           username,
         });
-        handleSelectPanel(AuthType.LOGIN)
+        handleSelectPanel(AuthType.LOGIN);
       }
       form.classList.add('was-validated');
     }
