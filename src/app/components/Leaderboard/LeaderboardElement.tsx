@@ -18,7 +18,6 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
     return (
       <Col
         sm={12}
-        key={player.id}
         style={{
           animationDelay: `${rank * 0.1}s`,
         }}

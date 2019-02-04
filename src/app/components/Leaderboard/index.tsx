@@ -16,7 +16,7 @@ export class Leaderboard extends React.Component<LeaderboardInterfaces.Props, {}
         <Row className={styles['leaderboard-wrap']}>
           {players.length ? (
             players.map((player, rank) => (
-              <LeaderboardElement player={player} rank={rank} key={player.id} />
+              <LeaderboardElement player={player} rank={rank} key={rank} />
             ))
           ) : (
             <div>Nothing to show</div>
