@@ -1,4 +1,4 @@
-import { faCode, faCodeBranch, faCog, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faCode, faCodeBranch, faCog, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SidePanelTab } from 'app/reducers/Dashboard';
 import * as styles from 'app/styles/Sidebar.module.css';
@@ -16,11 +16,11 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           vertical
           className={classnames('w-100 justify-content-center align-items-center', styles.Sidebar)}
         >
-          <Button className={classnames('py-4 px-auto text-white h2', styles.customBtn)}>
+          <Button className={classnames('py-3 px-auto text-white', styles.customBtn)}>
             <FontAwesomeIcon icon={faCode} />
           </Button>
           <Button
-            className={classnames('py-4 px-auto editor-settings-btn-ctrl', styles.customBtn, {
+            className={classnames('py-3 px-auto editor-settings-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.EDITOR_SETTINGS,
             })}
             onClick={() =>
@@ -32,7 +32,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faCog} />
           </Button>
           <Button
-            className={classnames('py-4 px-auto leaderboard-btn-ctrl', styles.customBtn, {
+            className={classnames('py-3 px-auto leaderboard-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.LEADERBOARD,
             })}
             onClick={() =>
@@ -44,7 +44,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faTrophy} />
           </Button>
           <Button
-            className={classnames('py-4 px-auto commitlog-btn-ctrl', styles.customBtn, {
+            className={classnames('py-3 px-auto commitlog-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.COMMIT_LOG,
             })}
             onClick={() =>
@@ -54,6 +54,18 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             }
           >
             <FontAwesomeIcon icon={faCodeBranch} />
+          </Button>
+          <Button
+            className={classnames('py-3 px-auto commitlog-btn-ctrl', styles.customBtn, {
+              [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.NOTIFICATION,
+            })}
+            onClick={() =>
+              sidePanelTab !== SidePanelTab.NOTIFICATION
+                ? openSidePanelTab(SidePanelTab.NOTIFICATION)
+                : closeSidePanelTab()
+            }
+          >
+            <FontAwesomeIcon icon={faBell} />
           </Button>
         </ButtonGroup>
       </div>

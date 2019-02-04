@@ -29,6 +29,7 @@ export interface StateProps {
 
 export interface DispatchProps {
   getLatestCode: () => void;
+  save: (code: string) => void;
   updateCode: (code: string) => void;
 }
 

@@ -1,61 +1,46 @@
 import CommitLog from 'app/containers/code/CommitLog';
 import EditorSettings from 'app/containers/code/EditorSettings';
 import Leaderboard from 'app/containers/Leaderboard';
+// tslint:disable-next-line:import-name
+import Notification from 'app/containers/Notification/';
 import { SidePanelTab } from 'app/reducers/Dashboard';
+import * as styles from 'app/styles/SidePanel.module.css';
+import classnames from 'classnames';
 import * as React from 'react';
 
 export class SidePanel extends React.Component<SidePanel.Props, {}> {
   public render() {
     const { sidePanelTab, sidePanelWidth } = this.props;
-    let sidePanel = <div className="SidePanel" />;
+    let sidePanel = <div className={classnames(styles.SidePanel)} />;
     switch (sidePanelTab) {
       case SidePanelTab.NONE:
-        sidePanel = <div className="SidePanel" />;
+        sidePanel = <div className={classnames(styles.SidePanel)} />;
         break;
       case SidePanelTab.EDITOR_SETTINGS:
-        sidePanel = (
-          <div
-            className="SidePanel"
-            style={{
-              backgroundColor: '#1c1c1c',
-              height: '100vh',
-              width: `${sidePanelWidth}px`,
-            }}
-          >
-            <EditorSettings />
-          </div>
-        );
+        sidePanel = <EditorSettings />;
         break;
       case SidePanelTab.LEADERBOARD:
-        sidePanel = (
-          <div
-            className="SidePanel"
-            style={{
-              backgroundColor: '#1c1c1c',
-              height: '100vh',
-              width: `${sidePanelWidth}px`,
-            }}
-          >
-            <Leaderboard />
-          </div>
-        );
+        sidePanel = <Leaderboard />;
         break;
       case SidePanelTab.COMMIT_LOG:
-        sidePanel = (
-          <div
-            className="SidePanel"
-            style={{
-              backgroundColor: '#1c1c1c',
-              height: '100vh',
-              width: `${sidePanelWidth}px`,
-            }}
-          >
-            <CommitLog />
-          </div>
-        );
+        sidePanel = <CommitLog />;
+        break;
+      case SidePanelTab.NOTIFICATION:
+        sidePanel = <Notification />;
         break;
     }
-    return sidePanel;
+    return sidePanelTab === SidePanelTab.NONE ? (
+      sidePanel
+    ) : (
+      <div
+        className={classnames(styles.SidePanel)}
+        style={{
+          width: `${sidePanelWidth}px`,
+        }}
+      >
+        {sidePanel}
+      </div>
+    );
   }
 }
 

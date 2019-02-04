@@ -40,6 +40,7 @@ export class Editor extends React.Component<EditorInterfaces.Props, EditorInterf
       code,
       updateCode,
       viewOnly,
+      save,
     } = this.props;
     const options = {
       enableBasicAutocompletion,
@@ -66,6 +67,15 @@ export class Editor extends React.Component<EditorInterfaces.Props, EditorInterf
         height={'100vh'}
         value={code}
         onChange={updateCode}
+        commands={[
+          {
+            bindKey: { win: 'Ctrl-S', mac: 'Command-S' },
+            exec: () => {
+              save(code);
+            },
+            name: 'Save',
+          },
+        ]}
       />
     );
   }

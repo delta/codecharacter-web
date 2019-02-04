@@ -1,0 +1,89 @@
+.Notification {
+  background-color: #1c1c1c;
+  color: #ddd;
+  border: 2px solid #1c1c1c;
+  overflow: hidden;
+}
+
+.customBtn {
+  color: #dddddd;
+  background: #525252;
+  min-width: 50px;
+  border: none;
+  outline: none;
+}
+
+.customBtn:hover,
+.closeBtn:hover {
+  cursor: pointer;
+}
+
+.customBtn:focus,
+.closeBtn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.customBtn:active,
+.closeBtn:active {
+  transform: scale(1.08);
+}
+
+.buttonActive {
+  background: #2a2828;
+}
+
+.notificationWrap {
+  max-height: 85vh;
+  overflow-y: scroll;
+}
+
+.notificationWrap::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #1c1c1c;
+}
+
+.notificationWrap::-webkit-scrollbar {
+  width: 3px;
+  background-color: #1c1c1c;
+}
+
+.notificationWrap::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  height: 30px;
+}
+
+.notificationElement {
+  min-height: 70px;
+  color: #104300;
+  padding: 10px;
+  background: #aff29a;
+  border-radius: 2px;
+}
+
+.INFO {
+  color: #0c5460;
+  background-color: #d1ecf1;
+}
+
+.SUCCESS {
+  color: #104300;
+  background: #aff29a;
+}
+
+.ERROR {
+  color: #4f0800;
+  background: #ffaba2;
+}
+
+.header {
+  display: flex;
+}
+
+.closeBtn {
+  background: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+}

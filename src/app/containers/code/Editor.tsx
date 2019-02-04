@@ -23,6 +23,7 @@ const editorContainer = connect<
   mapStateToProps,
   {
     getLatestCode: CodeActions.getLatestCode,
+    save: CodeActions.save,
     updateCode: CodeActions.updateCode,
   },
 )(Editor);
