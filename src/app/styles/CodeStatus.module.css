@@ -1,0 +1,29 @@
+.CodeStatusRow {
+  background-color: #202020;
+  height: 22px;
+  margin: 0px;
+}
+
+.CommitStatusCol {
+  padding-left: 30px;
+  padding-right: 0px;
+  padding-top: 5px;
+}
+
+.StatusTextCol {
+  padding-left: 0px;
+  padding-right: 30px;
+  padding-top: 5px;
+}
+
+.LastSaveCol {
+  padding-left: 0px;
+  padding-right: 30px;
+  padding-top: 5px;
+}
+
+.StatusText {
+  color: white;
+  font-size: 13px;
+  line-height: 13px;
+}

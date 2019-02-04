@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CodeStatus Container Should render 1`] = `
+<CodeStatus
+  currentCommitHash="latest"
+  width={250}
+/>
+`;

@@ -6,7 +6,7 @@ import * as React from 'react';
 describe('Leaderboard Container', () => {
   it('Should render Leaderboard', () => {
     const store = configureStore();
-        const wrapper = shallow(<Leaderboard />, {
+    const wrapper = shallow(<Leaderboard />, {
       context: {
         store,
       },

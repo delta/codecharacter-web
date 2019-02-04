@@ -1,4 +1,5 @@
 import Authentication from 'app/containers/Authentication';
+import CodeStatus from 'app/containers/code/CodeStatus';
 import Editor from 'app/containers/code/Editor';
 import GameLog from 'app/containers/GameLog';
 import SideBar from 'app/containers/SideBar';
@@ -66,6 +67,7 @@ export class Dashboard extends React.Component<
                   height: '100vh',
                 }}
               >
+                <CodeStatus width={editorWidth} />
                 <Editor editorWidth={editorWidth} />
               </div>
             </Row>

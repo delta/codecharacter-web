@@ -30,10 +30,6 @@ export class Editor extends React.Component<EditorInterfaces.Props, EditorInterf
     super(props);
   }
 
-  public componentWillMount() {
-    this.props.getLatestCode();
-  }
-
   public render() {
     const {
       editorWidth,
