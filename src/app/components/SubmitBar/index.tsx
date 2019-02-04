@@ -57,16 +57,19 @@ export class SubmitBar extends React.Component<
       </div>
     );
   }
+
   private toggleCommitMessageBox = (isCommitMessageBoxOpen: boolean) => {
     this.setState({
       isCommitMessageBoxOpen,
     });
   };
+
   private updateCommitMessage = (commitMessage: string) => {
     this.setState({
       commitMessage,
     });
   };
+
   private handleCommit = () => {
     const { commitMessage } = this.state;
     const { commit } = this.props;

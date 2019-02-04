@@ -10,7 +10,6 @@ export enum SidePanelTab {
 }
 
 const dashboardStoreIntialState: DashboardInterfaces.DashboardStoreState = {
-  isCommitModalOpen: false,
   sidePanelTab: SidePanelTab.NONE,
 };
 

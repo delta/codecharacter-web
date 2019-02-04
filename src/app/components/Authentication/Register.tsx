@@ -247,7 +247,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     });
   };
   private handleRegister = (event: React.FormEvent<HTMLFormElement>) => {
-    const { register } = this.props;
+    const { register, handleSelectPanel } = this.props;
     const { repeatPassword, country, email, fullName, password, username, pragyanId } = this.state;
     const form = this.registerRef.current;
     event.preventDefault();
@@ -263,6 +263,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           repeatPassword,
           username,
         });
+        handleSelectPanel(AuthType.LOGIN)
       }
       form.classList.add('was-validated');
     }

@@ -49,6 +49,7 @@ export class CommitMessageBox extends React.Component<CommitMessageBoxInterfaces
       </div>
     );
   }
+
   private handleCommit = (event: React.FormEvent<HTMLFormElement>) => {
     const { handleCommit } = this.props;
     const form = this.commitMessageRef.current;
