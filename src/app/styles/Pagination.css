@@ -1,0 +1,70 @@
+.atag,
+.next,
+.previous {
+  border-radius: 20px;
+  border: 2px solid white;
+  margin: 4px;
+  line-height: 20px;
+  user-select: none;
+}
+
+.atag:hover,
+.next:hover,
+.previous:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black !important;
+}
+
+.atag:hover a,
+.next:hover a,
+.previous:hover a,
+.atag.active a {
+  color: black;
+}
+
+.atag a,
+.next a,
+.previous a,
+.atag.active a {
+  color: black;
+}
+
+.atag a,
+.next a,
+.previous a {
+  padding: 0px 8px;
+  color: white;
+  font-size: 13px;
+  font-family: sans-serif;
+  text-decoration: none;
+  font-weight: 400;
+  user-select: none;
+}
+
+.atag a:focus,
+.next a:focus,
+.previous a:focus {
+  outline: none;
+}
+
+.atag a:hover,
+.next a:hover,
+.previous a:hover,
+.atag.active {
+  color: black;
+  background-color: white;
+}
+
+.break-me {
+  padding: 3px 10px;
+}
+
+.break-me a {
+  text-decoration: none;
+  color: white;
+}
+
+.pagination {
+  margin: 0px;
+}

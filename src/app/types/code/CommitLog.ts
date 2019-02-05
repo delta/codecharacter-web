@@ -6,7 +6,7 @@ export interface StateProps {
 }
 
 export interface State {
-  imgType: string[];
+  offset: number;
 }
 
 export interface DispatchProps {
