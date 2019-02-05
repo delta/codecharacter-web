@@ -1,20 +1,21 @@
 import { UserActions } from 'app/actions';
 import * as UserFetch from 'app/apiFetch/User';
+import { checkAuthentication } from 'app/sagas/utils';
 import { resType } from 'app/types/sagas';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
 export function* login(action: ActionType<typeof UserActions.login>) {
   try {
-    const result = yield call(UserFetch.userLogin, {
+    const res = yield call(UserFetch.userLogin, {
       password: action.payload.password,
       username: action.payload.username,
     });
 
-    // result.error is empty if result.type != 'Error'
-    yield put(UserActions.updateErrorMessage(result.error));
+    // res.error is empty if res.type != 'Error'
+    yield put(UserActions.updateErrorMessage(res.error));
 
-    if (result.type !== resType.ERROR) {
+    if (res.type !== resType.ERROR) {
       yield put(
         UserActions.updateUserDetails({
           country: '',
@@ -31,12 +32,15 @@ export function* login(action: ActionType<typeof UserActions.login>) {
 
 export function* logout(action: ActionType<typeof UserActions.logout>) {
   try {
-    const result = yield call(UserFetch.userLogout);
+    const res = yield call(UserFetch.userLogout);
 
-    // result.error is empty if result.type != 'Error'
-    yield put(UserActions.updateErrorMessage(result.error));
+    const isAuthenticated = yield checkAuthentication(res);
+    if (isAuthenticated === false) return;
 
-    if (result.type !== resType.ERROR) {
+    // res.error is empty if res.type != 'Error'
+    yield put(UserActions.updateErrorMessage(res.error));
+
+    if (res.type !== resType.ERROR) {
       yield put(
         UserActions.updateUserDetails({
           country: '',
@@ -53,12 +57,12 @@ export function* logout(action: ActionType<typeof UserActions.logout>) {
 
 export function* register(action: ActionType<typeof UserActions.register>) {
   try {
-    const result = yield call(UserFetch.userRegister, action.payload.registerDetails);
+    const res = yield call(UserFetch.userRegister, action.payload.registerDetails);
 
-    // result.error has error string if type = 'Error', else empty
-    yield put(UserActions.updateErrorMessage(result.error));
+    // res.error has error string if type = 'Error', else empty
+    yield put(UserActions.updateErrorMessage(res.error));
 
-    if (result.type !== resType.ERROR) {
+    if (res.type !== resType.ERROR) {
       yield put(
         UserActions.updateUserDetails({
           country: action.payload.registerDetails.country,
@@ -75,10 +79,10 @@ export function* register(action: ActionType<typeof UserActions.register>) {
 
 export function* checkUsernameExists(action: ActionType<typeof UserActions.checkUsernameExists>) {
   try {
-    const result = yield call(UserFetch.checkUsernameExists, action.payload.username);
+    const res = yield call(UserFetch.checkUsernameExists, action.payload.username);
 
     // Call returns error if username already exists, else empty
-    yield put(UserActions.updateErrorMessage(result.error));
+    yield put(UserActions.updateErrorMessage(res.error));
   } catch (err) {
     throw err;
   }
