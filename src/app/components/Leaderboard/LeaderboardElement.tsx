@@ -14,21 +14,22 @@ const colors = ['#FFB900', '#69797E', '#847545', '#038387'];
 
 export class LeaderboardElement extends React.Component<LeaderboardInterfaces.ElementProps, {}> {
   public render() {
-    const { player, rank } = this.props;
+    const { player, rank, index } = this.props;
+    const fetchSize = LeaderboardActions.FETCH_SIZE;
     return (
       <Col
         sm={12}
         style={{
-          animationDelay: `${rank * 0.1}s`,
+          animationDelay: `${(index % fetchSize) * 0.1}s`,
         }}
         className={classnames('mb-1', styles.leader)}
       >
         <div className={classnames(styles['leader-wrap'])}>
           <div className={classnames(styles['player-info-1'])}>
-            {rank < 3 ? (
+            {player.rank <= 3 ? (
               <div
                 style={{
-                  backgroundColor: colors[rank],
+                  backgroundColor: colors[player.rank - 1],
                 }}
                 className={classnames(styles['leader-ava'])}
               >
@@ -36,8 +37,8 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
               </div>
             ) : null}
             <div className={classnames(styles['leader-content'])}>
-              <div className={classnames(styles['leader-name'])}>{`${rank + 1}. ${
-                player.name
+              <div className={classnames(styles['leader-name'])}>{`${player.rank}. ${
+                player.username
               }`}</div>
 
               <div className={classnames(styles['leader-score'])}>
@@ -52,12 +53,12 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
             </div>
 
             <Button bsStyle="danger" style={{ fontSize: '0.55em' }} bsSize="xsmall">
-              PLAY
+              FIGHT
             </Button>
           </div>
         </div>
         <div
-          style={{ animationDelay: `${0.4 + rank * 0.2}s` }}
+          style={{ animationDelay: `${0.4 + (index % fetchSize) * 0.2}s` }}
           className={classnames(styles['leader-bar'])}
         >
           <div

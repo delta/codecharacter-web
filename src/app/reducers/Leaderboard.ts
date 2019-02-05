@@ -3,18 +3,7 @@ import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 
 const leaderboardInitialState: LeaderboardInterfaces.LeaderboardStoreState = {
   loading: false,
-  players: [
-    { id: 1, name: 'Uenify', rating: 3500, country: 'in' },
-    { id: 3, name: 'kekland', rating: 2750, country: 'in' },
-    { id: 2, name: 'Madopew', rating: 1220, country: 'fr' },
-    { id: 4, name: 'Yussend', rating: 700, country: 'in' },
-    { id: 5, name: 'Admin', rating: 675, country: 'in' },
-    { id: 1, name: 'Uenify', rating: 3500, country: 'in' },
-    { id: 3, name: 'kekland', rating: 2750, country: 'in' },
-    { id: 2, name: 'Madopew', rating: 1220, country: 'fr' },
-    { id: 4, name: 'Yussend', rating: 700, country: 'in' },
-    { id: 5, name: 'Admin', rating: 675, country: 'in' },
-  ],
+  players: [],
 };
 
 export const leaderboardReducer = (
@@ -22,11 +11,23 @@ export const leaderboardReducer = (
   action: LeaderboardInterfaces.LeaderboardStoreAction,
 ) => {
   switch (action.type) {
-    case LeaderboardActions.Type.UPDATE_LEADERBOARD: {
+    case LeaderboardActions.Type.UPDATE_LOADING_STATUS: {
       return {
         ...state,
+        loading: action.payload.loadingStatus,
+      };
+    }
+    case LeaderboardActions.Type.UPDATE_LEADERBOARD: {
+      let players = [];
+      if (action.payload.type === LeaderboardActions.updateType.APPEND) {
+        players = [...state.players, ...action.payload.leaderboardData];
+      } else {
+        players = action.payload.leaderboardData;
+      }
+      return {
+        ...state,
+        players,
         loading: false,
-        players: [...state.players, ...action.payload.players],
       };
     }
     case LeaderboardActions.Type.UPDATE_ERROR:

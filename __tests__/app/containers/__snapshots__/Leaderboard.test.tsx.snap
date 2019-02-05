@@ -2,70 +2,9 @@
 
 exports[`Leaderboard Container Should render Leaderboard 1`] = `
 <Leaderboard
-  getPlayersData={[Function]}
-  players={
-    Array [
-      Object {
-        "country": "in",
-        "id": 1,
-        "name": "Uenify",
-        "rating": 3500,
-      },
-      Object {
-        "country": "in",
-        "id": 3,
-        "name": "kekland",
-        "rating": 2750,
-      },
-      Object {
-        "country": "fr",
-        "id": 2,
-        "name": "Madopew",
-        "rating": 1220,
-      },
-      Object {
-        "country": "in",
-        "id": 4,
-        "name": "Yussend",
-        "rating": 700,
-      },
-      Object {
-        "country": "in",
-        "id": 5,
-        "name": "Admin",
-        "rating": 675,
-      },
-      Object {
-        "country": "in",
-        "id": 1,
-        "name": "Uenify",
-        "rating": 3500,
-      },
-      Object {
-        "country": "in",
-        "id": 3,
-        "name": "kekland",
-        "rating": 2750,
-      },
-      Object {
-        "country": "fr",
-        "id": 2,
-        "name": "Madopew",
-        "rating": 1220,
-      },
-      Object {
-        "country": "in",
-        "id": 4,
-        "name": "Yussend",
-        "rating": 700,
-      },
-      Object {
-        "country": "in",
-        "id": 5,
-        "name": "Admin",
-        "rating": 675,
-      },
-    ]
-  }
+  clearLeaderboard={[Function]}
+  getLeaderboard={[Function]}
+  loading={false}
+  players={Array []}
 />
 `;

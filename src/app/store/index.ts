@@ -1,6 +1,7 @@
 import { logger } from 'app/middleware';
 import { rootReducer } from 'app/reducers';
 import { codeSagas } from 'app/sagas/Code';
+import { leaderboardSagas } from 'app/sagas/Leaderboard';
 import { userSagas } from 'app/sagas/User';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -18,6 +19,7 @@ export function configureStore(initialState?: object) {
   const store = createStore(rootReducer, initialState, middleware);
   sagaMiddleware.run(userSagas);
   sagaMiddleware.run(codeSagas);
+  sagaMiddleware.run(leaderboardSagas);
 
   if (module.hot) {
     module.hot.accept('app/reducers', () => {

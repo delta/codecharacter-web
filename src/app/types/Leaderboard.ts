@@ -2,38 +2,56 @@ import { LeaderboardActions } from 'app/actions';
 import { ActionType } from 'typesafe-actions';
 
 export interface Player {
+  rank: number;
   country: string;
-  id: number;
-  name: string;
+  username: string;
   rating: number;
+  fullName: string;
+}
+
+export interface GetLeaderboard {
+  start: number;
+  pattern: string;
+  end: number;
+}
+
+export interface Search {
+  pattern: string;
+  start: number;
+  end: number;
 }
 
 export interface StateProps {
   players: Player[];
+  loading: boolean;
 }
 
 export interface DispatchProps {
-  getPlayersData: () => void;
+  clearLeaderboard: () => void;
+  getLeaderboard: (pattern: string, start: number) => void;
 }
 
 export type Props = StateProps & DispatchProps;
 
+export interface State {
+  nextFetchIndex: number;
+  pattern: string;
+  isSearching: boolean;
+}
+
 export interface ElementOwnProps {
   player: Player;
   rank: number;
+  index: number;
 }
 
 export type ElementProps = ElementOwnProps;
 
-export interface LeaderboardDataType {
-  loading: boolean;
-  players: Player[];
-}
-
 const actions = {
-  getPlayersData: LeaderboardActions.getPlayersData,
+  getLeaderboard: LeaderboardActions.getLeaderboard,
   updateError: LeaderboardActions.updateError,
   updateLeaderboard: LeaderboardActions.updateLeaderboard,
+  updateLoading: LeaderboardActions.updateLoadingStatus,
 };
 
 export interface LeaderboardStoreState {

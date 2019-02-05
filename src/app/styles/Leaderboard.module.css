@@ -8,6 +8,8 @@
   transition: all 0.2s ease-out;
   height: 100vh;
   overflow: hidden;
+  padding-left: 2px;
+  padding-right: 0px;
 }
 
 .leader-wrap {
@@ -20,6 +22,7 @@
   z-index: 0;
   max-height: 92vh;
   overflow-y: scroll;
+  overflow-x: hidden;
   margin-bottom: 5px;
 }
 
@@ -30,13 +33,18 @@
 }
 
 .leaderboard-wrap::-webkit-scrollbar {
-  width: 3px;
+  width: 5px;
   background-color: #1c1c1c;
 }
 
 .leaderboard-wrap::-webkit-scrollbar-thumb {
   background-color: #ddd;
-  height: 30px;
+}
+
+.leader-wrap {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
 }
 
 .leader {
@@ -51,7 +59,6 @@
 
 .leader-ava {
   padding: 8px;
-  margin-right: 16px;
   position: relative;
 }
 
@@ -61,6 +68,7 @@
 
 .player-info-2 {
   display: flex;
+  padding: 5px !important;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
@@ -111,6 +119,67 @@
 .bar {
   height: 4px;
   border-radius: 2px;
+}
+
+.search {
+  outline: 0;
+  width: 100%;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.textbox {
+  outline: 0;
+  height: 42px;
+  width: 244px;
+  line-height: 42px;
+  padding: 0 16px;
+  background-color: #1c1c1c;
+  color: white;
+  border: 0;
+  float: left;
+}
+
+.textbox:focus {
+  outline: 0;
+}
+
+.button {
+  outline: 0;
+  background: #1c1c1c !important;
+  float: right;
+  height: 42px;
+  width: 42px;
+  text-align: center;
+  line-height: 42px;
+  border: 0;
+  color: white;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 16px;
+  text-rendering: auto;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+  -webkit-border-radius: 0 4px 4px 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.leader-content {
+  padding: 10px;
+}
+
+.button:hover {
+  background-color: #ddd;
+  color: #1c1c1c;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: 0;
+}
+
+.leaderboardTitle {
+  padding: 0px !important;
 }
 
 @keyframes revealLeaders {

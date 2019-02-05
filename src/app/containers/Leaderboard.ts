@@ -8,13 +8,17 @@ import { Dispatch } from 'redux';
 
 const mapStateToProps = (rootState: RootState) => {
   return {
+    loading: rootState.leaderboard.loading,
     players: rootState.leaderboard.players,
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    getPlayersData: () => dispatch(LeaderboardActions.getPlayersData()),
+    clearLeaderboard: () =>
+      dispatch(LeaderboardActions.updateLeaderboard([], LeaderboardActions.updateType.REPLACE)),
+    getLeaderboard: (pattern: string, start: number) =>
+      dispatch(LeaderboardActions.getLeaderboard(pattern, start)),
   };
 };
 
