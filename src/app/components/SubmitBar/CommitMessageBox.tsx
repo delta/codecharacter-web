@@ -51,14 +51,16 @@ export class CommitMessageBox extends React.Component<CommitMessageBoxInterfaces
   }
 
   private handleCommit = (event: React.FormEvent<HTMLFormElement>) => {
-    const { handleCommit } = this.props;
+    const { handleCommit, updateCommitMessage } = this.props;
     const form = this.commitMessageRef.current;
     event.preventDefault();
     if (form) {
+      form.classList.add('was-validated');
       if (form.checkValidity()) {
         handleCommit();
+        updateCommitMessage('');
+        form.classList.remove('was-validated');
       }
-      form.classList.add('was-validated');
     }
   };
 }

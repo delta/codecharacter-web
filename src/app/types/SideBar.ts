@@ -6,6 +6,7 @@ export interface StateProps {
 
 export interface DispatchProps {
   closeSidePanelTab: () => void;
+  logout: () => void;
   openSidePanelTab: (type: SidePanelTab) => void;
 }
 

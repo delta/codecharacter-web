@@ -6,6 +6,7 @@ export interface State {
 export interface DispatchProps {
   saveCode: () => void;
   commit: (commitMessage: string) => void;
+  getCommitLog: () => void;
 }
 
 export type Props = {} & DispatchProps;

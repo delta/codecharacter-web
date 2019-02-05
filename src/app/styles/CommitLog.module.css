@@ -66,11 +66,10 @@
 
 .ForkLogo {
   padding: 2px;
-  height: 25px;
-  width: 20px;
+  height: 25px !important;
 }
 
 .ForkLogo:hover {
-  padding: 0px;
+  transform: scale(1.08);
   cursor: pointer;
 }

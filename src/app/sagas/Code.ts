@@ -1,13 +1,9 @@
 import { CodeActions } from 'app/actions';
 import * as codeFetch from 'app/apiFetch/Code';
 import { RootState } from 'app/reducers';
+import { resType } from 'app/types/sagas';
 import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
-
-enum resType {
-  ERROR = 'Error',
-  SUCCESS = 'Success',
-}
 
 export function* save(action: ActionType<typeof CodeActions.save>) {
   try {

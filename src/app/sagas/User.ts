@@ -1,5 +1,6 @@
 import { UserActions } from 'app/actions';
 import * as UserFetch from 'app/apiFetch/User';
+import { resType } from 'app/types/sagas';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
@@ -13,13 +14,35 @@ export function* login(action: ActionType<typeof UserActions.login>) {
     // result.error is empty if result.type != 'Error'
     yield put(UserActions.updateErrorMessage(result.error));
 
-    if (result.type !== 'Error') {
+    if (result.type !== resType.ERROR) {
       yield put(
         UserActions.updateUserDetails({
           country: '',
           email: '',
           isLoggedIn: true,
           username: action.payload.username,
+        }),
+      );
+    }
+  } catch (err) {
+    throw err;
+  }
+}
+
+export function* logout(action: ActionType<typeof UserActions.logout>) {
+  try {
+    const result = yield call(UserFetch.userLogout);
+
+    // result.error is empty if result.type != 'Error'
+    yield put(UserActions.updateErrorMessage(result.error));
+
+    if (result.type !== resType.ERROR) {
+      yield put(
+        UserActions.updateUserDetails({
+          country: '',
+          email: '',
+          isLoggedIn: false,
+          username: '',
         }),
       );
     }
@@ -35,7 +58,7 @@ export function* register(action: ActionType<typeof UserActions.register>) {
     // result.error has error string if type = 'Error', else empty
     yield put(UserActions.updateErrorMessage(result.error));
 
-    if (result.type !== 'Error') {
+    if (result.type !== resType.ERROR) {
       yield put(
         UserActions.updateUserDetails({
           country: action.payload.registerDetails.country,
@@ -65,6 +88,7 @@ export function* userSagas() {
   yield all([
     takeEvery(UserActions.Type.REGISTER, register),
     takeEvery(UserActions.Type.LOGIN, login),
+    takeEvery(UserActions.Type.LOGOUT, logout),
     takeEvery(UserActions.Type.CHECK_USERNAME_EXISTS, checkUsernameExists),
   ]);
 }

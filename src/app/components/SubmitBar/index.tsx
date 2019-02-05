@@ -70,10 +70,11 @@ export class SubmitBar extends React.Component<
     });
   };
 
-  private handleCommit = () => {
+  private handleCommit = async () => {
     const { commitMessage } = this.state;
-    const { commit } = this.props;
-    commit(commitMessage);
-    this.toggleCommitMessageBox(false);
+    const { commit, getCommitLog } = this.props;
+    await commit(commitMessage);
+    await this.toggleCommitMessageBox(false);
+    await getCommitLog();
   };
 }

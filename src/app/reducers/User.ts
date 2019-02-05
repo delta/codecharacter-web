@@ -18,10 +18,10 @@ export const userReducer = (
       const { country, email, isLoggedIn, username } = action.payload.userDetails;
       return {
         ...state,
-        country: country ? country : state.country,
-        email: email ? email : state.email,
-        isLoggedIn: isLoggedIn ? isLoggedIn : state.isLoggedIn,
-        username: username ? username : state.username,
+        country: country !== undefined ? country : state.country,
+        email: email !== undefined ? email : state.email,
+        isLoggedIn: isLoggedIn !== undefined ? isLoggedIn : state.isLoggedIn,
+        username: username !== undefined ? username : state.username,
       };
     }
 

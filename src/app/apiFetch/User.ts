@@ -22,6 +22,21 @@ export const userLogin = (body: UserInterfaces.Login) => {
     });
 };
 
+export const userLogout = () => {
+  return fetch(`${API_BASE_URL}user/logout`, {
+    method: 'POST',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
 export const userRegister = (body: UserInterfaces.Register) => {
   return fetch(`${API_BASE_URL}user/register`, {
     body: JSON.stringify(body),

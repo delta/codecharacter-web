@@ -1,4 +1,4 @@
-import { DashboardActions } from 'app/actions';
+import { DashboardActions, UserActions } from 'app/actions';
 import { Sidebar } from 'app/components/SideBar';
 import { RootState } from 'app/reducers';
 import { SidePanelTab } from 'app/reducers/Dashboard';
@@ -15,6 +15,7 @@ const mapStateToProps = (rootState: RootState) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     closeSidePanelTab: () => dispatch(DashboardActions.setSidePanelTab(SidePanelTab.NONE)),
+    logout: () => dispatch(UserActions.logout()),
     openSidePanelTab: (type: SidePanelTab) => dispatch(DashboardActions.setSidePanelTab(type)),
   };
 };

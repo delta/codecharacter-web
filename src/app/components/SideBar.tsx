@@ -1,4 +1,11 @@
-import { faBell, faCode, faCodeBranch, faCog, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBell,
+  faCode,
+  faCodeBranch,
+  faCog,
+  faSignOutAlt,
+  faTrophy,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SidePanelTab } from 'app/reducers/Dashboard';
 import * as styles from 'app/styles/Sidebar.module.css';
@@ -9,7 +16,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 
 export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
   public render() {
-    const { sidePanelTab, closeSidePanelTab, openSidePanelTab } = this.props;
+    const { sidePanelTab, closeSidePanelTab, openSidePanelTab, logout } = this.props;
     return (
       <div className={classnames('h-100', styles.Sidebar)}>
         <ButtonGroup
@@ -66,6 +73,9 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             }
           >
             <FontAwesomeIcon icon={faBell} />
+          </Button>
+          <Button className={classnames('py-3 px-auto', styles.customBtn)} onClick={() => logout()}>
+            <FontAwesomeIcon icon={faSignOutAlt} />
           </Button>
         </ButtonGroup>
       </div>
