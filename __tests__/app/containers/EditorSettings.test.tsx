@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 
 describe('EditorSettings Container', () => {
-  const store = configureStore();
+  const { store } = configureStore();
 
   it('Should render EditorSettings', () => {
     const wrapper = mount(<EditorSettings />, {
@@ -38,6 +38,7 @@ describe('EditorSettings Container', () => {
     wrapper.find('select.theme-control').simulate('change', { target: { value: 'github' } });
     expect(wrapper.find('select.theme-control').props().value).toBe('github');
   });
+
   it('Should enable autoComplete', () => {
     const wrapper = mount(<EditorSettings />, {
       context: {

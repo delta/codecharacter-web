@@ -14,6 +14,7 @@ describe('CommitMessageBox Container', () => {
     },
   };
   const wrapper = mount(<CommitMessageBox {...props} />);
+
   it('Should render', () => {
     expect(wrapper).toMatchSnapshot();
   });

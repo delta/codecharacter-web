@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import * as React from 'react';
 
 describe('Authentication main Container', () => {
-  const store = configureStore();
+  const { store } = configureStore();
   const wrapper = shallow(<Authentication />, {
     context: {
       store,

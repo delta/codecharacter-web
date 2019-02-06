@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 
 describe('Login Container', () => {
-  const store = configureStore();
+  const { store } = configureStore();
   const wrapper = mount(<Login handleSelectPanel={Function} />, {
     context: {
       store,

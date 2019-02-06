@@ -48,7 +48,7 @@
       "enzyme-to-json/serializer"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!pnotify).+\\.js$"
+      "node_modules/(?!(pnotify|redux-persist)).+\\.js$"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/__tests__/setup/setupEnzyme.ts",
     "testPathIgnorePatterns": [
@@ -81,6 +81,7 @@
     "@types/react-router-redux": "^5.0.17",
     "@types/react-split-pane": "^0.1.67",
     "@types/redux-actions": "2.3.1",
+    "@types/redux-persist": "^4.3.1",
     "@types/webpack": "4.4.16",
     "@types/webpack-env": "1.13.6",
     "babel-cli": "^6.26.0",
@@ -146,6 +147,7 @@
     "react-split-pane": "^0.1.84",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.1",
+    "redux-persist": "^5.10.0",
     "redux-saga": "^0.16.2"
   }
 }

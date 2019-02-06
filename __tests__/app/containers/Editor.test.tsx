@@ -4,8 +4,9 @@ import { shallow } from 'enzyme';
 import * as React from 'react';
 
 describe('Editor Container', () => {
+  const { store } = configureStore();
+
   it('Should render Editor', () => {
-    const store = configureStore();
     const wrapper = shallow(<Editor editorWidth={400} />, {
       context: {
         store,
@@ -13,8 +14,8 @@ describe('Editor Container', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
   it('Should have props', () => {
-    const store = configureStore();
     const wrapper = shallow(<Editor editorWidth={400} />, {
       context: {
         store,

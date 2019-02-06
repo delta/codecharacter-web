@@ -4,8 +4,9 @@ import { shallow } from 'enzyme';
 import * as React from 'react';
 
 describe('Notification Container', () => {
+  const { store } = configureStore();
+
   it('Should render Notification', () => {
-    const store = configureStore();
     const wrapper = shallow(<Notification />, {
       context: {
         store,
@@ -15,7 +16,6 @@ describe('Notification Container', () => {
   });
 
   it('Should have props', () => {
-    const store = configureStore();
     const wrapper = shallow(<Notification />, {
       context: {
         store,

@@ -11,8 +11,9 @@ describe('Notification Container', () => {
     title: 'Info!',
     type: NotificationInterfaces.NotificationType.INFO,
   };
+  const { store } = configureStore();
+
   it('Should render Notification', () => {
-    const store = configureStore();
     const wrapper = shallow(<NotificationElement {...props} />, {
       context: {
         store,
@@ -22,7 +23,6 @@ describe('Notification Container', () => {
   });
 
   it('Should have props', () => {
-    const store = configureStore();
     const wrapper = shallow(<NotificationElement {...props} />, {
       context: {
         store,

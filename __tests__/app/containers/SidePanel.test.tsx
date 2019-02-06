@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 import * as React from 'react';
 
 describe('SidePanel Container', () => {
-  const store = configureStore();
+  const { store } = configureStore();
 
   it('Should render empty <div/> initially', () => {
     const wrapper = shallow(<SidePanel sidePanelWidth={350} />, {

@@ -5,6 +5,8 @@ import { leaderboardSagas } from 'app/sagas/Leaderboard';
 import { userSagas } from 'app/sagas/User';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/es/storage';
 // tslint:disable-next-line:import-name
 import createSagaMiddleware from 'redux-saga';
 
@@ -16,10 +18,19 @@ export function configureStore(initialState?: object) {
     middleware = composeWithDevTools(middleware);
   }
 
-  const store = createStore(rootReducer, initialState, middleware);
+  const persistConfig = {
+    storage,
+    key: 'root',
+  };
+
+  const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+  const store = createStore(persistedReducer, initialState, middleware);
   sagaMiddleware.run(userSagas);
   sagaMiddleware.run(codeSagas);
   sagaMiddleware.run(leaderboardSagas);
+
+  const persistor = persistStore(store);
 
   if (module.hot) {
     module.hot.accept('app/reducers', () => {
@@ -28,5 +39,5 @@ export function configureStore(initialState?: object) {
     });
   }
 
-  return store;
+  return { store, persistor };
 }

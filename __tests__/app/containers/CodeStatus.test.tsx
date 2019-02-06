@@ -4,12 +4,13 @@ import { shallow } from 'enzyme';
 import * as React from 'react';
 
 describe('CodeStatus Container', () => {
-  const store = configureStore();
+  const { store } = configureStore();
   const wrapper = shallow(<CodeStatus width={250} />, {
     context: {
       store,
     },
   });
+
   it('Should render', () => {
     expect(wrapper).toMatchSnapshot();
   });

@@ -7,7 +7,7 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 
 describe('SideBar Container', () => {
-  const store = configureStore();
+  const { store } = configureStore();
   const wrapper = mount(<SidebarContainer />, {
     context: {
       store,
