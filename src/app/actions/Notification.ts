@@ -11,23 +11,21 @@ export namespace NotificationActions {
     DELETE_NOTIFICATION_TYPE = 'DELETE_NOTIFICATION_TYPE',
   }
 
-  export const info = (title: string, text: string) =>
+  export const info = (message: string) =>
     action(Type.INFO, {
-      text,
-      title,
+      message,
     });
 
-  export const success = (title: string, text: string) =>
+  export const success = (message: string) =>
     action(Type.SUCCESS, {
-      text,
-      title,
+      message,
     });
 
-  export const error = (title: string, text: string) =>
+  export const error = (message: string) =>
     action(Type.ERROR, {
-      text,
-      title,
+      message,
     });
+
   export const add = (type: NotificationType, title: string, text: string) =>
     action(Type.ADD, {
       text,

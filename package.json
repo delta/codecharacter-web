@@ -130,6 +130,7 @@
     "webpack-dev-server": "^3.1.9"
   },
   "dependencies": {
+    "@types/socket.io-client": "^1.4.32",
     "bootstrap": "^4.2.1",
     "classnames": "^2.2.6",
     "react": "^16.5.2",
@@ -148,6 +149,7 @@
     "redux": "^4.0.1",
     "redux-actions": "^2.6.1",
     "redux-persist": "^5.10.0",
-    "redux-saga": "^0.16.2"
+    "redux-saga": "^0.16.2",
+    "socket.io-client": "^2.2.0"
   }
 }

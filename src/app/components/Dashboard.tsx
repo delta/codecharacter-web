@@ -4,6 +4,7 @@ import Editor from 'app/containers/code/Editor';
 import GameLog from 'app/containers/GameLog';
 import SideBar from 'app/containers/SideBar';
 import SidePanel from 'app/containers/SidePanel';
+import SocketHandler from 'app/containers/SocketHandler';
 import SubmitBar from 'app/containers/SubmitBar';
 import * as style from 'app/styles/Dashboard.css';
 import * as DashboardInterfaces from 'app/types/Dashboard';
@@ -50,6 +51,7 @@ export class Dashboard extends React.Component<
     return (
       <div>
         {!isLoggedIn ? <Authentication /> : null}
+        {isLoggedIn ? <SocketHandler /> : null}
         <SplitPane
           split="vertical"
           minSize={

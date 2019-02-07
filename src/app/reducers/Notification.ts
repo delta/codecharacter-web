@@ -3,7 +3,30 @@ import * as NotificationInterfaces from 'app/types/Notification';
 
 // @ts-ignore
 import PNotify from 'pnotify/dist/es/PNotify';
+import 'pnotify/dist/es/PNotifyButtons';
 import 'pnotify/dist/PNotifyBrightTheme.css';
+
+const pnotifyOptions = (title: string) => {
+  return {
+    title,
+    buttons: {
+      closer: true,
+      sticker: true,
+    },
+    delay: 5000,
+    stack: {
+      context: document.body,
+      dir1: 'up',
+      dir2: 'left',
+      firstpos1: 25,
+      firstpos2: 25,
+      push: 'bottom',
+      spacing1: 36,
+      spacing2: 36,
+    },
+    text: false,
+  };
+};
 
 const successNotifications = [
   {
@@ -87,26 +110,20 @@ export const notificationReducer = (
 ) => {
   switch (action.type) {
     case NotificationActions.Type.INFO: {
-      PNotify.info({
-        text: action.payload.text,
-        title: action.payload.title,
-      });
+      PNotify.info(pnotifyOptions(action.payload.message));
       return state;
     }
+
     case NotificationActions.Type.SUCCESS: {
-      PNotify.success({
-        text: action.payload.text,
-        title: action.payload.title,
-      });
+      PNotify.success(pnotifyOptions(action.payload.message));
       return state;
     }
+
     case NotificationActions.Type.ERROR: {
-      PNotify.error({
-        text: action.payload.text,
-        title: action.payload.title,
-      });
+      PNotify.error(pnotifyOptions(action.payload.message));
       return state;
     }
+
     case NotificationActions.Type.DELETE_NOTIFICATION_TYPE: {
       const updatedNotifications =
         action.payload.type === NotificationInterfaces.NotificationTabType.ALL
@@ -120,6 +137,7 @@ export const notificationReducer = (
         notifications: updatedNotifications,
       };
     }
+
     case NotificationActions.Type.DELETE_NOTIFICATION: {
       return {
         ...state,
@@ -128,6 +146,7 @@ export const notificationReducer = (
         ),
       };
     }
+
     default:
       return state;
   }
