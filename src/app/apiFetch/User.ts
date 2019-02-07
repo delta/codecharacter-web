@@ -24,6 +24,7 @@ export const userLogin = (body: UserInterfaces.Login) => {
 
 export const userLogout = () => {
   return fetch(`${API_BASE_URL}user/logout`, {
+    credentials: 'include',
     method: 'POST',
   })
     .then((response) => {
