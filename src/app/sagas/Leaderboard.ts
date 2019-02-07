@@ -16,10 +16,39 @@ export function* getLeaderboard(action: ActionType<typeof LeaderboardActions.get
 
     yield put(LeaderboardActions.updateError(result.error));
 
-    if (result.type !== resType.ERROR) {
+    // rank: number;
+    // country: string;
+    // username: string;
+    // rating: number;
+    // fullName: string;
+
+    if (result.type === resType.ERROR) {
       yield put(
         LeaderboardActions.updateLeaderboard(
-          result.searchData,
+          // result.searchData,
+          [
+            {
+              country: 'IN',
+              fullName: 'FullName1',
+              rank: 1,
+              rating: 1,
+              username: 'Username1',
+            },
+            {
+              country: 'KE',
+              fullName: 'FullName2',
+              rank: 2,
+              rating: 2,
+              username: 'kenya',
+            },
+            {
+              country: 'IN',
+              fullName: 'FullName3',
+              rank: 3,
+              rating: 3,
+              username: 'person2',
+            },
+          ],
           LeaderboardActions.updateType.APPEND,
         ),
       );

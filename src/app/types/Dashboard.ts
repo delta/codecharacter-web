@@ -22,6 +22,7 @@ export interface State {
 export interface StateProps {
   isLoggedIn: boolean;
   sidePanelOpen: boolean;
+  isUserProfileModalOpen: boolean;
 }
 
 export type Props = StateProps;

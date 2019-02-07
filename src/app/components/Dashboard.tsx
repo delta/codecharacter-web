@@ -6,6 +6,7 @@ import SideBar from 'app/containers/SideBar';
 import SidePanel from 'app/containers/SidePanel';
 import SocketHandler from 'app/containers/SocketHandler';
 import SubmitBar from 'app/containers/SubmitBar';
+import UserProfileModal from 'app/containers/UserProfileModal';
 import * as style from 'app/styles/Dashboard.css';
 import * as DashboardInterfaces from 'app/types/Dashboard';
 import * as React from 'react';
@@ -48,7 +49,7 @@ export class Dashboard extends React.Component<
 
   public render() {
     const { editorWidthRatio, windowWidth, fixedLeftPaneWidth, splitPaneState } = this.state;
-    const { isLoggedIn } = this.props;
+    const { isLoggedIn, isUserProfileModalOpen } = this.props;
 
     let editorWidth;
     switch (splitPaneState) {
@@ -75,6 +76,7 @@ export class Dashboard extends React.Component<
       <div>
         {!isLoggedIn ? <Authentication /> : null}
         {isLoggedIn ? <SocketHandler /> : null}
+        {isUserProfileModalOpen ? <UserProfileModal /> : null}
         <SplitPane
           split="vertical"
           minSize={this.minEditorWidth + fixedLeftPaneWidth}

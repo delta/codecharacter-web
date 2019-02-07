@@ -123,6 +123,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
       </div>
     );
   }
+
   private handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     const { login } = this.props;
     const { username, password } = this.state;

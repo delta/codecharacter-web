@@ -11,4 +11,8 @@ export interface StateProps {
   isLoggedIn: boolean;
 }
 
-export type Props = StateProps;
+export interface DispatchProps {
+  toggleUserProfileModal: (isUserProfileModalOpen: boolean) => void;
+}
+
+export type Props = StateProps & DispatchProps;

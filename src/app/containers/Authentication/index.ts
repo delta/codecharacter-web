@@ -1,3 +1,4 @@
+import { UserActions } from 'app/actions';
 import { Authentication } from 'app/components/Authentication';
 import { RootState } from 'app/reducers';
 import * as AuthenticationInterfaces from 'app/types/Authentication/';
@@ -9,8 +10,15 @@ const mapStateToProps = (rootState: RootState) => {
   };
 };
 
-const authenticationContainer = connect<AuthenticationInterfaces.Props, {}, {}>(mapStateToProps)(
-  Authentication,
-);
+const authenticationContainer = connect<
+  AuthenticationInterfaces.StateProps,
+  AuthenticationInterfaces.DispatchProps,
+  {}
+>(
+  mapStateToProps,
+  {
+    toggleUserProfileModal: UserActions.toggleUserProfileModal,
+  },
+)(Authentication);
 
 export default authenticationContainer;

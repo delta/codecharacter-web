@@ -1,0 +1,100 @@
+.UserProfileModal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.customBtn,
+.customBtn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.customBtn:hover {
+  color: #fff;
+}
+
+.customBtn:active {
+  transform: scale(1.04);
+}
+
+.editPenActive {
+  color: black;
+}
+
+.editPen:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.editPen:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.editPen:active {
+  transform: scale(1.04);
+}
+
+.modalOpen {
+  background-color: rgba(28, 28, 28, 0.5);
+}
+
+.modalClose {
+  animation: removeBackground 0.4s ease-out forwards;
+}
+
+.modal {
+  width: 500px;
+  background-color: #fff;
+  z-index: 100;
+  color: #ddd;
+  border-radius: 3px;
+  -webkit-box-shadow: -5px 7px 41px -4px rgba(41, 41, 41, 1);
+  -moz-box-shadow: -5px 7px 41px -4px rgba(41, 41, 41, 1);
+  box-shadow: -5px 7px 41px -4px rgba(41, 41, 41, 1);
+}
+
+.slideEnter {
+  animation: modalOpen 0.4s ease-out forwards;
+}
+
+@keyframes modalOpen {
+  0% {
+    opacity: 0;
+    transform: translateY(-100vh);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(10vh);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes removeBackground {
+  0% {
+    opacity: 1;
+  }
+
+  20% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh);
+  }
+}
+
+.form {
+  padding: 20px;
+}

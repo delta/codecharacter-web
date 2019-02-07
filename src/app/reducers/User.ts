@@ -5,7 +5,9 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   country: 'IN',
   email: '',
   errorMessage: '',
-  isLoggedIn: false,
+  fullName: '',
+  isLoggedIn: true,
+  isUserProfileModalOpen: false,
   username: '',
 };
 
@@ -15,12 +17,24 @@ export const userReducer = (
 ) => {
   switch (action.type) {
     case UserActions.Type.UPDATE_USER_DETAILS: {
-      const { country, email, isLoggedIn, username } = action.payload.userDetails;
+      const {
+        country,
+        email,
+        isLoggedIn,
+        username,
+        fullName,
+        isUserProfileModalOpen,
+      } = action.payload.userDetails;
       return {
         ...state,
         country: country !== undefined ? country : state.country,
         email: email !== undefined ? email : state.email,
+        fullName: fullName !== undefined ? fullName : state.fullName,
         isLoggedIn: isLoggedIn !== undefined ? isLoggedIn : state.isLoggedIn,
+        isUserProfileModalOpen:
+          isUserProfileModalOpen !== undefined
+            ? isUserProfileModalOpen
+            : state.isUserProfileModalOpen,
         username: username !== undefined ? username : state.username,
       };
     }
@@ -31,7 +45,12 @@ export const userReducer = (
         errorMessage: action.payload.errorMessage ? action.payload.errorMessage : '',
       };
     }
-
+    case UserActions.Type.TOGGLE_USER_PROFILE_MODAL: {
+      return {
+        ...state,
+        isUserProfileModalOpen: action.payload.isUserProfileModalOpen,
+      };
+    }
     default:
       return state;
   }

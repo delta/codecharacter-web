@@ -2,6 +2,7 @@ import { LeaderboardActions } from 'app/actions';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 
 const leaderboardInitialState: LeaderboardInterfaces.LeaderboardStoreState = {
+  isUserProfileModalOpen: false,
   loading: false,
   players: [],
 };
@@ -34,6 +35,11 @@ export const leaderboardReducer = (
       return {
         ...state,
         loading: false,
+      };
+    case LeaderboardActions.Type.TOGGLE_USER_PROFILE_MODAL:
+      return {
+        ...state,
+        isUserProfileModalOpen: action.payload.isUserProfileModalOpen,
       };
     default:
       return state;

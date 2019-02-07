@@ -77,6 +77,56 @@ export function* register(action: ActionType<typeof UserActions.register>) {
   }
 }
 
+export function* getUserDetails(action: ActionType<typeof UserActions.getUserDetails>) {
+  try {
+    const res = yield call(UserFetch.userGetDetails);
+
+    // res.error has error string if type = 'Error', else empty
+    yield put(UserActions.updateErrorMessage(res.error));
+
+    const isAuthenticated = yield checkAuthentication(res);
+    if (isAuthenticated === false) return;
+    if (res.type !== resType.ERROR) {
+      yield put(
+        UserActions.updateUserDetails({
+          country: res.userDetails.country,
+          fullName: res.userDetails.fullName,
+          isLoggedIn: true,
+          username: res.userDetails.username,
+        }),
+      );
+    }
+  } catch (err) {
+    throw err;
+  }
+}
+
+export function* editUserProfile(action: ActionType<typeof UserActions.editUserProfile>) {
+  try {
+    const res = yield call(UserFetch.userGetDetails, action.payload.editUserDetails);
+
+    // res.error has error string if type = 'Error', else empty
+    yield put(UserActions.updateErrorMessage(res.error));
+
+    const isAuthenticated = yield checkAuthentication(res);
+    if (isAuthenticated === false) return;
+
+    if (res.type !== resType.ERROR) {
+      yield put(
+        UserActions.updateUserDetails({
+          country: action.payload.editUserDetails.country,
+          email: action.payload.editUserDetails.email,
+          fullName: action.payload.editUserDetails.fullName,
+          isLoggedIn: true,
+          username: action.payload.editUserDetails.username,
+        }),
+      );
+    }
+  } catch (err) {
+    throw err;
+  }
+}
+
 export function* checkUsernameExists(action: ActionType<typeof UserActions.checkUsernameExists>) {
   try {
     const res = yield call(UserFetch.checkUsernameExists, action.payload.username);
@@ -91,8 +141,10 @@ export function* checkUsernameExists(action: ActionType<typeof UserActions.check
 export function* userSagas() {
   yield all([
     takeEvery(UserActions.Type.REGISTER, register),
+    takeEvery(UserActions.Type.EDIT_USER_PROFILE, editUserProfile),
     takeEvery(UserActions.Type.LOGIN, login),
     takeEvery(UserActions.Type.LOGOUT, logout),
     takeEvery(UserActions.Type.CHECK_USERNAME_EXISTS, checkUsernameExists),
+    takeEvery(UserActions.Type.GET_USER_DETAILS, getUserDetails),
   ]);
 }

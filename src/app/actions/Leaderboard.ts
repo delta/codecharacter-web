@@ -6,6 +6,7 @@ export namespace LeaderboardActions {
     GET_LEADERBOARD = 'GET_LEADERBOARD',
     UPDATE_ERROR = 'UPDATE_ERROR',
     UPDATE_LEADERBOARD = 'UPDATE_LEADERBOARD',
+    TOGGLE_USER_PROFILE_MODAL = 'TOGGLE_USER_PROFILE_MODAL',
   }
 
   export enum updateType {
@@ -37,6 +38,12 @@ export namespace LeaderboardActions {
       pattern,
       start,
       end: start + FETCH_SIZE - 1,
+    });
+  };
+
+  export const toggleUserProfileModal = (isUserProfileModalOpen: boolean) => {
+    return action(Type.TOGGLE_USER_PROFILE_MODAL, {
+      isUserProfileModalOpen,
     });
   };
 }

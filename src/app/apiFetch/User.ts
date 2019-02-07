@@ -59,6 +59,43 @@ export const userRegister = (body: UserInterfaces.Register) => {
     });
 };
 
+export const userEditProfile = (body: UserInterfaces.EditUserDetails) => {
+  return fetch(`${API_BASE_URL}user/update`, {
+    body: JSON.stringify(body),
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const userGetDetails = () => {
+  return fetch(`${API_BASE_URL}user/profile`, {
+    credentials: 'include',
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
 export const checkUsernameExists = (username: string) => {
   return fetch(`${API_BASE_URL}user/checkusername/${username}`, {
     method: 'GET',

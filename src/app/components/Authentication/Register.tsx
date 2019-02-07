@@ -241,11 +241,13 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       </div>
     );
   }
+
   private onSelectFlag = (countryCode: string) => {
     this.setState({
       country: countryCode,
     });
   };
+
   private handleRegister = (event: React.FormEvent<HTMLFormElement>) => {
     const { register, handleSelectPanel } = this.props;
     const { repeatPassword, country, email, fullName, password, username, pragyanId } = this.state;
