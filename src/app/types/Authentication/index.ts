@@ -12,6 +12,7 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
+  updateErrorMessage: (errorMessage: string) => void;
   toggleUserProfileModal: (isUserProfileModalOpen: boolean) => void;
 }
 

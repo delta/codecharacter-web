@@ -20,7 +20,7 @@ export class Authentication extends React.Component<
 
   public render() {
     const { authType } = this.state;
-    const { isLoggedIn } = this.props;
+    const { isLoggedIn, updateErrorMessage } = this.props;
     return (
       <div
         className={classnames(styles.Authentication, {
@@ -41,7 +41,10 @@ export class Authentication extends React.Component<
                     [`${styles.buttonPanelActive}`]:
                       authType === AuthenticationInterfaces.AuthType.LOGIN,
                   })}
-                  onClick={() => this.handleSelectPanel(AuthenticationInterfaces.AuthType.LOGIN)}
+                  onClick={() => {
+                    updateErrorMessage('');
+                    this.handleSelectPanel(AuthenticationInterfaces.AuthType.LOGIN);
+                  }}
                 >
                   <FontAwesomeIcon icon={faUser} /> &nbsp;Login
                 </Button>
@@ -50,7 +53,10 @@ export class Authentication extends React.Component<
                     [`${styles.buttonPanelActive}`]:
                       authType === AuthenticationInterfaces.AuthType.REGISTER,
                   })}
-                  onClick={() => this.handleSelectPanel(AuthenticationInterfaces.AuthType.REGISTER)}
+                  onClick={() => {
+                    updateErrorMessage('');
+                    this.handleSelectPanel(AuthenticationInterfaces.AuthType.REGISTER);
+                  }}
                 >
                   <FontAwesomeIcon icon={faUserPlus} /> &nbsp;Register
                 </Button>

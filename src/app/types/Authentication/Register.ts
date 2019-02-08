@@ -14,6 +14,7 @@ export interface ElementOwnProps {
 export interface DispatchProps {
   checkUsernameExists: (username: string) => void;
   register: (registerDetails: UserInterfaces.Register) => void;
+  updateErrorMessage: (errorMessage: string) => void;
 }
 
 export type Props = StateProps & DispatchProps & ElementOwnProps;

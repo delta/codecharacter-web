@@ -29,7 +29,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
   public render() {
     const { repeatPassword, email, password, username, fullName } = this.state;
-    const { handleSelectPanel, checkUsernameExists, errorMessage } = this.props;
+    const { handleSelectPanel, checkUsernameExists, errorMessage, updateErrorMessage } = this.props;
     return (
       <div>
         <Row>
@@ -231,7 +231,10 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                 style={{
                   cursor: 'pointer',
                 }}
-                onClick={() => handleSelectPanel(AuthType.LOGIN)}
+                onClick={() => {
+                  updateErrorMessage('');
+                  handleSelectPanel(AuthType.LOGIN);
+                }}
               >
                 Login now
               </a>

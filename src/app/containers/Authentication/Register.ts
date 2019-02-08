@@ -19,6 +19,7 @@ const registerContainer = connect<
   {
     checkUsernameExists: UserActions.checkUsernameExists,
     register: UserActions.register,
+    updateErrorMessage: UserActions.updateErrorMessage,
   },
 )(Register);
 

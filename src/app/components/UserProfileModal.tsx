@@ -71,7 +71,12 @@ export class UserProfileModal extends React.Component<
       country,
       listDisabled,
     } = this.state;
-    const { checkUsernameExists, isUserProfileModalOpen, toggleUserProfileModal } = this.props;
+    const {
+      checkUsernameExists,
+      isUserProfileModalOpen,
+      toggleUserProfileModal,
+      userDetails,
+    } = this.props;
     return (
       <div
         className={classnames(styles.UserProfileModal, {
@@ -385,7 +390,7 @@ export class UserProfileModal extends React.Component<
                   <div className="form-row">
                     <div className="input-group" />
                     <div className="col text-center mt -0 mb-2 errorMessage">
-                      {/* {errorMessage} */}
+                      {userDetails.errorMessage}
                     </div>
                   </div>
                   <div className="form-row">

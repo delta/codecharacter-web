@@ -21,6 +21,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
 
   public render() {
     const { username, password } = this.state;
+    const { errorMessage, updateErrorMessage } = this.props;
     return (
       <div>
         <Row>
@@ -58,7 +59,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                 </div>
               </div>
               <div className="form-row">
-                <div className="col mb-4">
+                <div className="col mb-1">
                   <div className="input-group">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroupPrepend">
@@ -83,6 +84,10 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                     <div className="invalid-feedback">Please enter the correct password.</div>
                   </div>
                 </div>
+              </div>
+              <div className="form-row">
+                <div className="input-group" />
+                <div className="col text-center mt -0 mb-2 errorMessage">{errorMessage}</div>
               </div>
               <div className="form-row">
                 <div className="col text-center">
@@ -113,7 +118,10 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                 style={{
                   cursor: 'pointer',
                 }}
-                onClick={() => this.props.handleSelectPanel(AuthType.REGISTER)}
+                onClick={() => {
+                  updateErrorMessage('');
+                  this.props.handleSelectPanel(AuthType.REGISTER);
+                }}
               >
                 Create one
               </a>

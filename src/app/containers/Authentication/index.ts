@@ -18,6 +18,7 @@ const authenticationContainer = connect<
   mapStateToProps,
   {
     toggleUserProfileModal: UserActions.toggleUserProfileModal,
+    updateErrorMessage: UserActions.updateErrorMessage,
   },
 )(Authentication);
 
