@@ -11,6 +11,7 @@ export interface State {
   editorRatio: number;
   leftPartitionWidth: number;
   exhaustedLeftPartitionWidth: number;
+  isEditorOpen: boolean;
 }
 
 export interface StateProps {

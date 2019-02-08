@@ -9,7 +9,7 @@ import { App } from './app';
 // prepare store
 const history = createBrowserHistory();
 const { store, persistor } = configureStore();
-import { PersistGate } from 'redux-persist/integration/react'
+import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.render(
   <Provider store={store}>

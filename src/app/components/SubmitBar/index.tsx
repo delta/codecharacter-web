@@ -1,4 +1,10 @@
-import { faCloud, faCodeBranch, faPlay } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChevronLeft,
+  faChevronRight,
+  faCloud,
+  faCodeBranch,
+  faPlay,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CommitMessageBox } from 'app/components/SubmitBar/CommitMessageBox';
 import * as styles from 'app/styles/SubmitBar.module.css';
@@ -19,7 +25,7 @@ export class SubmitBar extends React.Component<
   }
 
   public render() {
-    const { saveCode } = this.props;
+    const { saveCode, toggleEditor, isEditorOpen } = this.props;
     const { commitMessage, isCommitMessageBoxOpen } = this.state;
     return (
       <div
@@ -27,6 +33,15 @@ export class SubmitBar extends React.Component<
           [`${styles.hideCommitBox}`]: !isCommitMessageBoxOpen,
         })}
       >
+        <button className={classnames(styles.customBtn)} onClick={() => toggleEditor()}>
+          <span className={classnames(styles.icon, styles.toggleIcon)}>
+            {!isEditorOpen ? (
+              <FontAwesomeIcon icon={faChevronRight} />
+            ) : (
+              <FontAwesomeIcon icon={faChevronLeft} />
+            )}
+          </span>
+        </button>
         <button className={classnames(styles.customBtn)}>
           <span className={classnames(styles.icon)}>
             <FontAwesomeIcon icon={faPlay} />

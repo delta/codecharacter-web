@@ -41,3 +41,8 @@
   padding-right: 5px;
   border-right: 1px solid #3f3f3f;
 }
+
+.toggleIcon {
+  padding-right: 0px;
+  border-right: 0px;
+}

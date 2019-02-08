@@ -9,4 +9,7 @@ export interface DispatchProps {
   getCommitLog: () => void;
 }
 
-export type Props = {} & DispatchProps;
+export type Props = {
+  toggleEditor: () => void;
+  isEditorOpen: boolean;
+} & DispatchProps;
