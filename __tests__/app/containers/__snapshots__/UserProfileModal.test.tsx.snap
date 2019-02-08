@@ -3,6 +3,7 @@
 exports[`UserProfileModal Container Should render 1`] = `
 <UserProfileModal
   checkUsernameExists={[Function]}
+  editUserPassword={[Function]}
   editUserProfile={[Function]}
   getUserDetails={[Function]}
   isUserProfileModalOpen={false}

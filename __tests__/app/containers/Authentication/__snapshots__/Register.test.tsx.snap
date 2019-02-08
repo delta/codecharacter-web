@@ -6,5 +6,6 @@ exports[`Register Container Should render 1`] = `
   errorMessage=""
   handleSelectPanel={[Function]}
   register={[Function]}
+  updateErrorMessage={[Function]}
 />
 `;

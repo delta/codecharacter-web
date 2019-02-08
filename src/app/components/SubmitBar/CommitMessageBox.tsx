@@ -26,7 +26,7 @@ export class CommitMessageBox extends React.Component<CommitMessageBoxInterfaces
                   <div className="input-group">
                     <input
                       className="form-control"
-                      id="validationUsername"
+                      id="validationCommitMessage"
                       placeholder="Describe your commit."
                       maxLength={50}
                       required

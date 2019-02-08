@@ -24,11 +24,13 @@ export const userReducer = (
         username,
         fullName,
         isUserProfileModalOpen,
+        errorMessage,
       } = action.payload.userDetails;
       return {
         ...state,
         country: country !== undefined ? country : state.country,
         email: email !== undefined ? email : state.email,
+        errorMessage: errorMessage !== undefined ? errorMessage : state.errorMessage,
         fullName: fullName !== undefined ? fullName : state.fullName,
         isLoggedIn: isLoggedIn !== undefined ? isLoggedIn : state.isLoggedIn,
         isUserProfileModalOpen:

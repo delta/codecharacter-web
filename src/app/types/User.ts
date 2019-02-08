@@ -13,11 +13,14 @@ export interface Register {
 
 export interface EditUserDetails {
   username?: string;
-  password?: string;
-  repeatPassword?: string;
   email?: string;
   country?: string;
   fullName?: string;
+}
+
+export interface EditUserPassword {
+  password?: string;
+  oldPassword?: string;
 }
 
 export interface Login {
@@ -26,6 +29,7 @@ export interface Login {
 }
 
 const actions = {
+  editUserPassword: UserActions.editUserPassword,
   editUserProfile: UserActions.editUserProfile,
   getUserDetails: UserActions.getUserDetails,
   login: UserActions.login,

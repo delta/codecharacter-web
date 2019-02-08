@@ -108,7 +108,12 @@ export class Dashboard extends React.Component<
               </div>
             </Row>
           </Grid>
-          <SplitPane split="horizontal" defaultSize={300} resizerClassName={style.horizontal}>
+          <SplitPane
+            split="horizontal"
+            defaultSize={300}
+            resizerClassName={style.horizontal}
+            maxSize={500}
+          >
             <Grid fluid={true}>
               <Row>
                 <SubmitBar

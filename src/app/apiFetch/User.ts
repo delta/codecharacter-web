@@ -60,7 +60,28 @@ export const userRegister = (body: UserInterfaces.Register) => {
 };
 
 export const userEditProfile = (body: UserInterfaces.EditUserDetails) => {
-  return fetch(`${API_BASE_URL}user/update`, {
+  return fetch(`${API_BASE_URL}user/profile/update`, {
+    body: JSON.stringify(body),
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const userEditPassword = (body: UserInterfaces.EditUserPassword) => {
+  return fetch(`${API_BASE_URL}user/profile/updatePassword`, {
     body: JSON.stringify(body),
     credentials: 'include',
     headers: {

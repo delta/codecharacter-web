@@ -8,6 +8,7 @@ export namespace UserActions {
     REGISTER = 'REGISTER',
     GET_USER_DETAILS = 'GET_USER_DETAILS',
     EDIT_USER_PROFILE = 'EDIT_USER_PROFILE',
+    EDIT_USER_PASSWORD = 'EDIT_USER_PASSWORD',
     UPDATE_ERROR_MESSAGE = 'UPDATE_ERROR_MESSAGE',
     UPDATE_USER_DETAILS = 'UPDATE_USER_DETAILS',
     CHECK_USERNAME_EXISTS = 'CHECK_USERNAME_EXISTS',
@@ -33,6 +34,7 @@ export namespace UserActions {
     fullName?: string;
     username?: string;
     email?: string;
+    errorMessage?: string;
     country?: string;
     isUserProfileModalOpen?: boolean;
   }
@@ -44,6 +46,9 @@ export namespace UserActions {
 
   export const editUserProfile = (editUserDetails: UserInterfaces.EditUserDetails) =>
     action(Type.EDIT_USER_PROFILE, { editUserDetails });
+
+  export const editUserPassword = (editUserPasswordDetails: UserInterfaces.EditUserPassword) =>
+    action(Type.EDIT_USER_PASSWORD, { editUserPasswordDetails });
 
   export const checkUsernameExists = (username: string) =>
     action(Type.CHECK_USERNAME_EXISTS, { username });

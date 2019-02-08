@@ -14,7 +14,7 @@ export class Authentication extends React.Component<
   constructor(props: AuthenticationInterfaces.Props) {
     super(props);
     this.state = {
-      authType: AuthenticationInterfaces.AuthType.REGISTER,
+      authType: AuthenticationInterfaces.AuthType.LOGIN,
     };
   }
 

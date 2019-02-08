@@ -42,7 +42,7 @@ exports[`CommitMessageBox Container Should render 1`] = `
                   >
                     <input
                       className="form-control"
-                      id="validationUsername"
+                      id="validationCommitMessage"
                       maxLength={50}
                       onChange={[Function]}
                       placeholder="Describe your commit."

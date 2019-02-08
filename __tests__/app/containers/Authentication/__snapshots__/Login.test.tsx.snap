@@ -5,8 +5,10 @@ exports[`Login Container Should render 1`] = `
   handleSelectPanel={[Function]}
 >
   <Login
+    errorMessage=""
     handleSelectPanel={[Function]}
     login={[Function]}
+    updateErrorMessage={[Function]}
   >
     <div>
       <Row
@@ -111,7 +113,7 @@ exports[`Login Container Should render 1`] = `
                 className="form-row"
               >
                 <div
-                  className="col mb-4"
+                  className="col mb-1"
                 >
                   <div
                     className="input-group"
@@ -190,6 +192,16 @@ exports[`Login Container Should render 1`] = `
                     </div>
                   </div>
                 </div>
+              </div>
+              <div
+                className="form-row"
+              >
+                <div
+                  className="input-group"
+                />
+                <div
+                  className="col text-center mt -0 mb-2 errorMessage"
+                />
               </div>
               <div
                 className="form-row"

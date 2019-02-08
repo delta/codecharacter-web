@@ -103,7 +103,7 @@ export function* getUserDetails(action: ActionType<typeof UserActions.getUserDet
 
 export function* editUserProfile(action: ActionType<typeof UserActions.editUserProfile>) {
   try {
-    const res = yield call(UserFetch.userGetDetails, action.payload.editUserDetails);
+    const res = yield call(UserFetch.userEditProfile, action.payload.editUserDetails);
 
     // res.error has error string if type = 'Error', else empty
     yield put(UserActions.updateErrorMessage(res.error));
@@ -127,6 +127,29 @@ export function* editUserProfile(action: ActionType<typeof UserActions.editUserP
   }
 }
 
+export function* editUserPassword(action: ActionType<typeof UserActions.editUserPassword>) {
+  try {
+    const res = yield call(UserFetch.userEditPassword, action.payload.editUserPasswordDetails);
+
+    // res.error has error string if type = 'Error', else empty
+    yield put(UserActions.updateErrorMessage(res.error));
+
+    const isAuthenticated = yield checkAuthentication(res);
+    if (isAuthenticated === false) return;
+
+    if (res.type !== resType.ERROR) {
+      yield put(
+        UserActions.updateUserDetails({
+          errorMessage: '',
+          isLoggedIn: true,
+        }),
+      );
+    }
+  } catch (err) {
+    throw err;
+  }
+}
+
 export function* checkUsernameExists(action: ActionType<typeof UserActions.checkUsernameExists>) {
   try {
     const res = yield call(UserFetch.checkUsernameExists, action.payload.username);
@@ -142,6 +165,7 @@ export function* userSagas() {
   yield all([
     takeEvery(UserActions.Type.REGISTER, register),
     takeEvery(UserActions.Type.EDIT_USER_PROFILE, editUserProfile),
+    takeEvery(UserActions.Type.EDIT_USER_PASSWORD, editUserPassword),
     takeEvery(UserActions.Type.LOGIN, login),
     takeEvery(UserActions.Type.LOGOUT, logout),
     takeEvery(UserActions.Type.CHECK_USERNAME_EXISTS, checkUsernameExists),

@@ -11,10 +11,10 @@ export interface ListDisabled {
   isEmailDisabled: boolean;
   isFlagSelectDisabled: boolean;
   isPasswordDisabled: boolean;
-  isRepeatPasswordDisabled: boolean;
 }
 export interface State {
   username: string;
+  oldPassword: string;
   password: string;
   repeatPassword: string;
   email: string;
@@ -25,6 +25,7 @@ export interface State {
 
 export interface DispatchProps {
   checkUsernameExists: (username: string) => void;
+  editUserPassword: (editUserPasswordDetails: UserInterfaces.EditUserPassword) => void;
   editUserProfile: (editUserDetails: UserInterfaces.EditUserDetails) => void;
   getUserDetails: () => void;
   toggleUserProfileModal: (isUserProfileModalOpen: boolean) => void;
