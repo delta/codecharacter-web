@@ -2,7 +2,7 @@
 
 exports[`Authentication main Container Should render 1`] = `
 <Authentication
-  dispatch={[Function]}
-  isLoggedIn={false}
+  isLoggedIn={true}
+  toggleUserProfileModal={[Function]}
 />
 `;

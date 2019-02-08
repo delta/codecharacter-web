@@ -5,6 +5,8 @@ exports[`Leaderboard Container Should render Leaderboard 1`] = `
   clearLeaderboard={[Function]}
   getLeaderboard={[Function]}
   loading={false}
+  loggedInUsername=""
   players={Array []}
+  toggleUserProfileModal={[Function]}
 />
 `;

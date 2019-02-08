@@ -412,7 +412,15 @@ export class UserProfileModal extends React.Component<
 
   private handleEditProfile = (event: React.FormEvent<HTMLFormElement>) => {
     const { editUserProfile } = this.props;
-    const { repeatPassword, country, email, fullName, password, username, listDisabled } = this.state;
+    const {
+      repeatPassword,
+      country,
+      email,
+      fullName,
+      password,
+      username,
+      listDisabled,
+    } = this.state;
     const form = this.editProfileRef.current;
     event.preventDefault();
 
