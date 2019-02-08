@@ -8,9 +8,8 @@ const actions = {
 
 export interface State {
   editorWidth: number;
-  editorRatio: number;
-  leftPartitionWidth: number;
-  exhaustedLeftPartitionWidth: number;
+  editorWidthRatio: number;
+  fixedLeftPaneWidth: number;
   isEditorOpen: boolean;
 }
 

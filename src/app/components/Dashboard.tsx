@@ -20,24 +20,26 @@ export class Dashboard extends React.Component<
   public sideBarWidth = 50;
   public sidePanelWidth = 350;
   public minEditorWidth = 350;
+  public minRendererWidth = 20;
+  public initialEditorRatio = 0.4;
 
   constructor(props: DashboardInterfaces.Props) {
     super(props);
-    /* 40% of Window width is taken up by Editor Component */
-    const initialEditorWidth = Math.max(Math.floor(0.4 * window.innerWidth), this.minEditorWidth);
+
+    const fixedLeftPaneWidth =
+      this.sideBarWidth + (this.props.sidePanelOpen ? this.sidePanelWidth : 0);
+    const resizeableWidth = window.innerWidth - fixedLeftPaneWidth;
+    const initialEditorWidth = this.initialEditorRatio * resizeableWidth;
+
     this.state = {
-      /* Ratio of editor width with total window width */
-      editorRatio: initialEditorWidth / window.innerWidth,
+      fixedLeftPaneWidth,
       editorWidth: initialEditorWidth,
-      /* SideBar width + SidePanel width(if open). Defaults to 50px (Sidebar width). 50px + 350px if SidePanel is open. */
-      exhaustedLeftPartitionWidth: this.sideBarWidth,
+      editorWidthRatio: this.initialEditorRatio,
       isEditorOpen: true,
-      /* Left Split Pane width = SideBar width + ?SidePanel width + Editor width */
-      leftPartitionWidth: initialEditorWidth + this.sideBarWidth,
     };
 
     if (window.addEventListener) {
-      window.addEventListener('resize', this.setEditorWidth, true);
+      window.addEventListener('resize', this.onWindowResize, true);
     }
   }
 
@@ -47,8 +49,10 @@ export class Dashboard extends React.Component<
   }
 
   public render() {
-    const { editorWidth, leftPartitionWidth } = this.state;
+    let { editorWidth } = this.state;
     const { isLoggedIn } = this.props;
+    editorWidth = Math.max(editorWidth, this.minEditorWidth);
+
     return (
       <div>
         {!isLoggedIn ? <Authentication /> : null}
@@ -56,14 +60,12 @@ export class Dashboard extends React.Component<
         <SplitPane
           split="vertical"
           minSize={
-            (this.state.isEditorOpen ? this.minEditorWidth : 0) +
-            (this.props.sidePanelOpen ? this.sidePanelWidth : 0) +
-            this.sideBarWidth
+            (this.state.isEditorOpen ? this.minEditorWidth : 0) + this.state.fixedLeftPaneWidth
           }
-          defaultSize={leftPartitionWidth}
-          size={leftPartitionWidth}
+          maxSize={window.innerWidth - this.minRendererWidth}
+          size={(this.state.isEditorOpen ? editorWidth : 0) + this.state.fixedLeftPaneWidth}
           resizerClassName={style.vertical}
-          onChange={this.onResize}
+          onChange={this.onSplitPaneResize}
         >
           <Grid fluid={true}>
             <Row>
@@ -81,7 +83,7 @@ export class Dashboard extends React.Component<
                 }}
               >
                 <CodeStatus width={editorWidth} />
-                <Editor editorWidth={editorWidth} />
+                {this.state.isEditorOpen ? <Editor editorWidth={editorWidth} /> : null}
               </div>
             </Row>
           </Grid>
@@ -89,7 +91,7 @@ export class Dashboard extends React.Component<
             <Grid fluid={true}>
               <Row>
                 <SubmitBar
-                  toggleEditor={this.toggleEditor}
+                  toggleEditor={this.onEditorToggle}
                   isEditorOpen={this.state.isEditorOpen}
                 />
               </Row>
@@ -101,70 +103,45 @@ export class Dashboard extends React.Component<
     );
   }
 
-  private setEditorWidth = () => {
-    const editorWidth = Math.max(
-      this.state.editorRatio * (window.innerWidth - this.state.exhaustedLeftPartitionWidth),
-      this.minEditorWidth,
-    );
+  private onWindowResize = () => {
+    const resizeableWidth = window.innerWidth - this.state.fixedLeftPaneWidth;
+    const editorWidth = this.state.editorWidthRatio * resizeableWidth;
     this.setState({
       editorWidth,
-      leftPartitionWidth: editorWidth + this.state.exhaustedLeftPartitionWidth,
     });
   };
 
-  private toggleEditor = (): void => {
+  private onEditorToggle = (): void => {
+    this.setState({
+      isEditorOpen: !this.state.isEditorOpen,
+    });
+
     if (this.state.isEditorOpen) {
-      this.setState({
-        editorWidth: 0,
-        isEditorOpen: false,
-        leftPartitionWidth:
-          this.sideBarWidth + (this.props.sidePanelOpen ? this.sidePanelWidth : 0),
-      });
-    } else {
-      const availableWidth = window.innerWidth - this.state.exhaustedLeftPartitionWidth;
-      const editorWidth = Math.max(
-        Math.floor(this.state.editorRatio * availableWidth),
-        this.minEditorWidth,
-      );
+      const availableWidth = window.innerWidth - this.state.fixedLeftPaneWidth;
+      const editorWidth = this.state.editorWidthRatio * availableWidth;
       this.setState({
         editorWidth,
-        isEditorOpen: true,
-        leftPartitionWidth:
-          this.sideBarWidth + (this.props.sidePanelOpen ? this.sidePanelWidth : 0) + editorWidth,
       });
     }
   };
 
-  private onResize = (size: number): void => {
-    const editorWidth = Math.max(
-      size - this.state.exhaustedLeftPartitionWidth,
-      this.minEditorWidth,
-    );
+  private onSplitPaneResize = (leftPaneSize: number): void => {
+    const editorWidth = leftPaneSize - this.state.fixedLeftPaneWidth;
+    const resizeableWidth = window.innerWidth - this.state.fixedLeftPaneWidth;
     this.setState({
       editorWidth,
-      editorRatio: editorWidth / (window.innerWidth - this.state.exhaustedLeftPartitionWidth),
-      leftPartitionWidth: size,
+      editorWidthRatio: editorWidth / resizeableWidth,
     });
   };
 
-  /* Sidebar width: 50px, Settings width: 350px, force update and rerender Editor by updating editorWidth */
   private onToggleSidePanel = (isSidePanelOpen: boolean): void => {
-    let availableWidth = window.innerWidth - this.state.exhaustedLeftPartitionWidth;
-    const exhaustedLeftPartitionWidth = isSidePanelOpen
-      ? this.sideBarWidth + this.sidePanelWidth
-      : this.sideBarWidth;
-    const editorRatio = this.state.editorWidth / availableWidth;
-    availableWidth = window.innerWidth - exhaustedLeftPartitionWidth;
-    const editorWidth = !this.state.isEditorOpen
-      ? 0
-      : Math.max(Math.floor(editorRatio * availableWidth), this.minEditorWidth);
-    const leftPartitionWidth = exhaustedLeftPartitionWidth + editorWidth;
+    const fixedLeftPaneWidth = this.sideBarWidth + (isSidePanelOpen ? this.sidePanelWidth : 0);
+    const resizeableWidth = window.innerWidth - fixedLeftPaneWidth;
+    const editorWidth = this.state.editorWidthRatio * resizeableWidth;
 
     this.setState({
-      editorRatio,
       editorWidth,
-      exhaustedLeftPartitionWidth,
-      leftPartitionWidth,
+      fixedLeftPaneWidth,
     });
   };
 }
