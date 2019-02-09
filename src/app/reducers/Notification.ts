@@ -15,14 +15,9 @@ const pnotifyOptions = (title: string) => {
     },
     delay: 5000,
     stack: {
-      context: document.body,
+      ...PNotify.defaultStack,
       dir1: 'up',
-      dir2: 'left',
-      firstpos1: 25,
-      firstpos2: 25,
-      push: 'bottom',
-      spacing1: 36,
-      spacing2: 36,
+      push: 'up',
     },
     text: false,
   };

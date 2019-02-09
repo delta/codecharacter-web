@@ -4,20 +4,41 @@ import * as React from 'react';
 import { connect } from 'socket.io-client';
 
 export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props, {}> {
-  public componentDidMount() {
-    const socket = connect(API_BASE_URL);
+  // tslint:disable-next-line
+  public socket: any;
 
-    socket.on('Info', (message: string) => {
+  public componentDidMount() {
+    this.socket = connect(
+      API_BASE_URL,
+      {
+        reconnection: true,
+        reconnectionDelay: 1000,
+      },
+    );
+
+    this.socket.on('Info', (message: string) => {
       this.props.sendInfo(message);
     });
 
-    socket.on('Success', (message: string) => {
+    this.socket.on('Success', (message: string) => {
       this.props.sendSuccess(message);
     });
 
-    socket.on('Error', (message: string) => {
+    this.socket.on('Error', (message: string) => {
       this.props.sendError(message);
     });
+
+    this.socket.on('connect', () => {
+      this.props.sendSuccess('Connected to Server!');
+    });
+
+    this.socket.on('disconnect', () => {
+      this.props.sendError('Disconnected');
+    });
+  }
+
+  public componentWillUnmount() {
+    this.socket.disconnect();
   }
 
   public render() {
