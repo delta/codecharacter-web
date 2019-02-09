@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "predeploy": "npm run build",
-    "test": "jest",
+    "test": "jest -i",
     "start": "webpack-dev-server --mode development --hot --progress --color --port 3000",
     "build": "webpack -p --progress --colors",
     "lint": "prettier --write \"src/**/*.{ts,tsx,css}\" \"__tests__/**/*.{ts,tsx,css}\" && tslint --project .",
