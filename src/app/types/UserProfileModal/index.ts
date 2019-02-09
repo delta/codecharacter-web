@@ -6,11 +6,11 @@ export interface StateProps {
 }
 
 export interface ListDisabled {
-  isUserNameDisabled: boolean;
-  isFullNameDisabled: boolean;
-  isEmailDisabled: boolean;
-  isFlagSelectDisabled: boolean;
-  isPasswordDisabled: boolean;
+  isUserNameDisabled?: boolean;
+  isFullNameDisabled?: boolean;
+  isEmailDisabled?: boolean;
+  isFlagSelectDisabled?: boolean;
+  isPasswordDisabled?: boolean;
 }
 export interface State {
   username: string;
@@ -21,6 +21,25 @@ export interface State {
   country: string;
   fullName: string;
   listDisabled: ListDisabled;
+}
+
+export enum InputName {
+  username = 'username',
+  oldPassword = 'oldPassword',
+  password = 'password',
+  repeatPassword = 'repeatPassword',
+  email = 'email',
+  country = 'country',
+  fullName = 'fullName',
+  listDisabled = 'listDisabled',
+}
+
+export enum InputState {
+  isUserNameDisabled = 'isUserNameDisabled',
+  isFullNameDisabled = 'isFullNameDisabled',
+  isEmailDisabled = 'isEmailDisabled',
+  isFlagSelectDisabled = 'isFlagSelectDisabled',
+  isPasswordDisabled = 'isPasswordDisabled',
 }
 
 export interface DispatchProps {
