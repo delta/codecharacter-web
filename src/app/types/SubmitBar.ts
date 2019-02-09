@@ -1,3 +1,5 @@
+import { SplitPaneState } from 'app/types/Dashboard';
+
 export interface State {
   commitMessage: string;
   isCommitMessageBoxOpen: boolean;
@@ -10,6 +12,6 @@ export interface DispatchProps {
 }
 
 export type Props = {
-  toggleEditor: () => void;
-  isEditorOpen: boolean;
+  changeSplitPaneState: (state: SplitPaneState) => void;
+  splitPaneState: SplitPaneState;
 } & DispatchProps;

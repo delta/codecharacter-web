@@ -8,6 +8,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CommitMessageBox } from 'app/components/SubmitBar/CommitMessageBox';
 import * as styles from 'app/styles/SubmitBar.module.css';
+import { SplitPaneState } from 'app/types/Dashboard';
 import * as SubmitBarInterfaces from 'app/types/SubmitBar';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -25,7 +26,7 @@ export class SubmitBar extends React.Component<
   }
 
   public render() {
-    const { saveCode, toggleEditor, isEditorOpen } = this.props;
+    const { saveCode, splitPaneState, changeSplitPaneState } = this.props;
     const { commitMessage, isCommitMessageBoxOpen } = this.state;
     return (
       <div
@@ -33,14 +34,55 @@ export class SubmitBar extends React.Component<
           [`${styles.hideCommitBox}`]: !isCommitMessageBoxOpen,
         })}
       >
-        <button className={classnames(styles.customBtn)} onClick={() => toggleEditor()}>
-          <span className={classnames(styles.icon, styles.toggleIcon)}>
-            {!isEditorOpen ? (
-              <FontAwesomeIcon icon={faChevronRight} />
-            ) : (
+        <button className={classnames(styles.customBtn)} style={{ padding: '0px' }}>
+          {this.props.splitPaneState !== SplitPaneState.RENDERER ? (
+            <span
+              className={classnames(styles.icon, styles.toggleIcon)}
+              style={{ padding: '6px' }}
+              onClick={() => {
+                switch (splitPaneState) {
+                  case SplitPaneState.EDITOR: {
+                    changeSplitPaneState(SplitPaneState.BOTH);
+                    break;
+                  }
+                  case SplitPaneState.BOTH: {
+                    changeSplitPaneState(SplitPaneState.RENDERER);
+                    break;
+                  }
+                  case SplitPaneState.RENDERER: {
+                    changeSplitPaneState(SplitPaneState.RENDERER);
+                    break;
+                  }
+                }
+              }}
+            >
               <FontAwesomeIcon icon={faChevronLeft} />
-            )}
-          </span>
+            </span>
+          ) : null}
+          {this.props.splitPaneState !== SplitPaneState.EDITOR ? (
+            <span
+              className={classnames(styles.icon, styles.toggleIcon)}
+              style={{ padding: '6px' }}
+              onClick={() => {
+                switch (splitPaneState) {
+                  case SplitPaneState.EDITOR: {
+                    changeSplitPaneState(SplitPaneState.EDITOR);
+                    break;
+                  }
+                  case SplitPaneState.BOTH: {
+                    changeSplitPaneState(SplitPaneState.EDITOR);
+                    break;
+                  }
+                  case SplitPaneState.RENDERER: {
+                    changeSplitPaneState(SplitPaneState.BOTH);
+                    break;
+                  }
+                }
+              }}
+            >
+              <FontAwesomeIcon icon={faChevronRight} />
+            </span>
+          ) : null}
         </button>
         <button className={classnames(styles.customBtn)}>
           <span className={classnames(styles.icon)}>

@@ -6,11 +6,17 @@ const actions = {
   setSidePanelTab: DashboardActions.setSidePanelTab,
 };
 
+export enum SplitPaneState {
+  EDITOR = 'EDITOR',
+  BOTH = 'BOTH',
+  RENDERER = 'RENDERER',
+}
+
 export interface State {
-  editorWidth: number;
   editorWidthRatio: number;
   fixedLeftPaneWidth: number;
-  isEditorOpen: boolean;
+  splitPaneState: SplitPaneState;
+  windowWidth: number;
 }
 
 export interface StateProps {
