@@ -5,6 +5,7 @@ import {
   faCog,
   faSignOutAlt,
   faTrophy,
+  faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SidePanelTab } from 'app/reducers/Dashboard';
@@ -16,7 +17,13 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 
 export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
   public render() {
-    const { sidePanelTab, closeSidePanelTab, openSidePanelTab, logout } = this.props;
+    const {
+      sidePanelTab,
+      closeSidePanelTab,
+      openSidePanelTab,
+      logout,
+      toggleUserProfileModal,
+    } = this.props;
     return (
       <div className={classnames('h-100', styles.Sidebar)}>
         <ButtonGroup
@@ -73,6 +80,14 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             }
           >
             <FontAwesomeIcon icon={faBell} />
+          </Button>
+          <Button
+            className={classnames('py-3 px-auto', styles.customBtn)}
+            onClick={() => {
+              toggleUserProfileModal(true);
+            }}
+          >
+            <FontAwesomeIcon icon={faUser} />
           </Button>
           <Button className={classnames('py-3 px-auto', styles.customBtn)} onClick={() => logout()}>
             <FontAwesomeIcon icon={faSignOutAlt} />

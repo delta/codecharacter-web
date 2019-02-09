@@ -38,7 +38,7 @@ export class Leaderboard extends React.Component<
   }
 
   public render() {
-    const { players, loading, toggleUserProfileModal, loggedInUsername } = this.props;
+    const { players, loading } = this.props;
     return (
       <Grid fluid={true} className={classnames(styles.Leaderboard)}>
         {this.state.isSearching ? (
@@ -93,16 +93,16 @@ export class Leaderboard extends React.Component<
         >
           <Row>
             {players.length ? (
-              players.map((player, index) => (
-                <LeaderboardElement
-                  player={player}
-                  rank={player.rank}
-                  index={index}
-                  key={index}
-                  loggedInUsername={loggedInUsername}
-                  toggleUserProfileModal={toggleUserProfileModal}
-                />
-              ))
+              players.map((player, index) =>
+                player ? (
+                  <LeaderboardElement
+                    player={player}
+                    rank={player.rank}
+                    index={index}
+                    key={index}
+                  />
+                ) : <div style={{ padding: '0px 30px' }}>Nothing to show</div>,
+              )
             ) : (
               <div style={{ padding: '0px 30px' }}>Nothing to show</div>
             )}

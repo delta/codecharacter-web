@@ -3,7 +3,7 @@ import { InputName, InputState } from 'app/types/UserProfileModal';
 import { mount } from 'enzyme';
 import * as React from 'react';
 
-describe('EditPassword Compoennt', () => {
+describe('EditPassword Component', () => {
   const wrapper = mount(
     <EditPassword
       handleEditPassword={(e: React.FormEvent<HTMLFormElement>) => {

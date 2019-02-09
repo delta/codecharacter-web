@@ -14,7 +14,7 @@ const colors = ['#FFB900', '#69797E', '#847545', '#038387'];
 
 export class LeaderboardElement extends React.Component<LeaderboardInterfaces.ElementProps, {}> {
   public render() {
-    const { player, rank, index, toggleUserProfileModal, loggedInUsername } = this.props;
+    const { player, rank, index } = this.props;
     const fetchSize = LeaderboardActions.FETCH_SIZE;
     return (
       <Col
@@ -38,17 +38,7 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
             ) : null}
             <div className={classnames(styles['leader-content'])}>
               <div className={classnames(styles['leader-name'])}>
-                {`${player.rank}.`}{' '}
-                <span
-                  className={classnames({
-                    [`${styles.leaderUserName}`]: loggedInUsername === player.username,
-                  })}
-                  onClick={(e) => {
-                    if (loggedInUsername === player.username) {
-                      toggleUserProfileModal(true);
-                    }
-                  }}
-                >{`${player.username}`}</span>
+                {`${player.rank}.`} <span>{`${player.username}`}</span>
               </div>
 
               <div className={classnames(styles['leader-score'])}>

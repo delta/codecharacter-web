@@ -17,6 +17,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     closeSidePanelTab: () => dispatch(DashboardActions.setSidePanelTab(SidePanelTab.NONE)),
     logout: () => dispatch(UserActions.logout()),
     openSidePanelTab: (type: SidePanelTab) => dispatch(DashboardActions.setSidePanelTab(type)),
+    toggleUserProfileModal: (isUserProfileModalOpen: boolean) =>
+      dispatch(UserActions.toggleUserProfileModal(isUserProfileModalOpen)),
   };
 };
 const sidebarContainer = connect<SideBarInterfaces.StateProps, SideBarInterfaces.DispatchProps, {}>(
