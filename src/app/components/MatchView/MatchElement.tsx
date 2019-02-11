@@ -53,22 +53,10 @@ export class MatchElement extends React.Component<MatchInterfaces.ElementProps, 
               fontSize: '12px',
             }}
           >
-            Played At : {this.formatDate(new Date())}
+            Played At : {match.playedAt}
           </div>
         </div>
       </Col>
     );
   }
-
-  private formatDate = (date: Date) => {
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    const hourFormatted = hour % 12 || 12;
-    const minuteFormatted = minute < 10 ? `0${minute}` : `${minute}`;
-    const morning = hour < 12 ? 'am' : 'pm';
-    return `${month}/${day}/${year} ${hourFormatted}:${minuteFormatted}${morning}`;
-  };
 }

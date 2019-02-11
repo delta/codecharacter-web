@@ -94,11 +94,11 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
                   <MatchElement match={match} index={index - 1} key={index - 1} />
                 ) : null
               ) : (
-                <div> Nothing to show </div>
+                <div className="ml-5"> Nothing to show </div>
               ),
             )
           ) : (
-            <div> Nothing to show </div>
+            <div className="ml-5"> Nothing to show </div>
           )}
         </Row>
         <Row>

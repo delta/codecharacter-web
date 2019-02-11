@@ -17,7 +17,7 @@ export interface Match {
   userTwoScore: number;
   userTwo: string;
   winner: string;
-  playedAt: Date;
+  playedAt: string;
 }
 
 export interface StateProps {
