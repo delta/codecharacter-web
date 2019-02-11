@@ -75,7 +75,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faCodeBranch} />
           </Button>
           <Button
-            className={classnames('py-3 px-auto commitlog-btn-ctrl', styles.customBtn, {
+            className={classnames('py-3 px-auto match-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.MATCH,
             })}
             onClick={() =>
@@ -87,7 +87,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faTv} />
           </Button>
           <Button
-            className={classnames('py-3 px-auto commitlog-btn-ctrl', styles.customBtn, {
+            className={classnames('py-3 px-auto notification-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.NOTIFICATION,
             })}
             id="notifications_button"

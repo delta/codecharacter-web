@@ -15,6 +15,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
     super(props);
     this.state = {
       activeMatchViewTab: MatchInterfaces.MatchViewTabType.MY_MATCHES,
+      offset: 0,
     };
   }
 
@@ -22,6 +23,12 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
     this.props.getMatches();
     this.props.getTopMatches();
   }
+
+  public handlePageClick = (data: { selected: number }) => {
+    this.setState({
+      offset: Math.ceil(data.selected * Match.paginationSize),
+    });
+  };
 
   public render() {
     const { activeMatchViewTab } = this.state;
@@ -68,18 +75,24 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
             matches.length ? (
               matches.map((match, index) =>
                 match ? (
-                  <MatchElement match={match} index={index} key={index} />
+                  index >= this.state.offset &&
+                  index <= this.state.offset + Match.paginationSize - 1 ? (
+                    <MatchElement match={match} index={index - 1} key={index - 1} />
+                  ) : null
                 ) : (
-                  <div> Nothing to show </div>
+                  <div className="ml-5"> Nothing to show </div>
                 ),
               )
             ) : (
-              <div> Nothing to show </div>
+              <div className="ml-5"> Nothing to show </div>
             )
           ) : topMatches.length ? (
             topMatches.map((match, index) =>
               match ? (
-                <MatchElement match={match} index={index} key={index} />
+                index >= this.state.offset &&
+                index <= this.state.offset + Match.paginationSize - 1 ? (
+                  <MatchElement match={match} index={index - 1} key={index - 1} />
+                ) : null
               ) : (
                 <div> Nothing to show </div>
               ),
@@ -108,7 +121,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
               pageClassName={'atag'}
               pageRangeDisplayed={2}
               activeLinkClassName={'active'}
-              // onPageChange={this.handlePageClick}
+              onPageChange={this.handlePageClick}
               containerClassName={'pagination'}
               activeClassName={'active'}
             />

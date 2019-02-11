@@ -8,6 +8,7 @@ export enum MatchViewTabType {
 
 export interface OwnState {
   activeMatchViewTab: MatchViewTabType;
+  offset: number;
 }
 
 export interface Match {
