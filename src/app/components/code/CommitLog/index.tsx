@@ -1,3 +1,5 @@
+import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CommitElement } from 'app/components/code/CommitLog/CommitElement';
 import * as styles from 'app/styles/CommitLog.module.css';
 import 'app/styles/Pagination.css';
@@ -68,8 +70,16 @@ export class CommitLog extends React.Component<
           )}
           <Col className="d-flex justify-content-center" style={{ width: '100vw', margin: '10px' }}>
             <ReactPaginate
-              previousLabel={'<<'}
-              nextLabel={'>>'}
+              previousLabel={
+                <span>
+                  <FontAwesomeIcon icon={faCaretLeft} /> <FontAwesomeIcon icon={faCaretLeft} />
+                </span>
+              }
+              nextLabel={
+                <span>
+                  <FontAwesomeIcon icon={faCaretRight} /> <FontAwesomeIcon icon={faCaretRight} />
+                </span>
+              }
               breakLabel={'...'}
               breakClassName={'break-me'}
               pageCount={Math.max(renderCommitLog.length / CommitLog.paginationSize)}

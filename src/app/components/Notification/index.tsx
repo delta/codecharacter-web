@@ -41,7 +41,7 @@ export class Notification extends React.Component<
     return (
       <Grid fluid={true} className={classnames(styles.Notification)}>
         <Row className="justify-content-between py-2 px-3">
-          <Col className="text-light font-weight-bold my-auto">Notifications</Col>
+          <Col className="text-light font-weight-bold my-auto">NOTIFICATIONS</Col>
           <Col className="text-light font-weight-bold my-auto">
             <button
               className={classnames(styles.customBtn)}

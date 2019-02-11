@@ -2,7 +2,8 @@ import CommitLog from 'app/containers/code/CommitLog';
 import EditorSettings from 'app/containers/code/EditorSettings';
 import Leaderboard from 'app/containers/Leaderboard';
 // tslint:disable-next-line:import-name
-import Notification from 'app/containers/Notification/';
+import Match from 'app/containers/MatchView';
+import Notification from 'app/containers/Notification';
 import { SidePanelTab } from 'app/reducers/Dashboard';
 import * as styles from 'app/styles/SidePanel.module.css';
 import classnames from 'classnames';
@@ -28,6 +29,8 @@ export class SidePanel extends React.Component<SidePanel.Props, {}> {
       case SidePanelTab.NOTIFICATION:
         sidePanel = <Notification />;
         break;
+      case SidePanelTab.MATCH:
+        sidePanel = <Match />;
     }
     return sidePanelTab === SidePanelTab.NONE ? (
       sidePanel
