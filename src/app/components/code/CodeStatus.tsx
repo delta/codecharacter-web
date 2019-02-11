@@ -12,6 +12,7 @@ export class CodeStatus extends React.Component<CodeStatusInterfaces.Props, {}> 
         className={classnames(styles.CodeStatusRow)}
         style={{
           width,
+          height: '3.5vh',
         }}
       >
         <Col sm={8} className={classnames(styles.CommitStatusCol)}>

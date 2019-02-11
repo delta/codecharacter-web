@@ -64,7 +64,7 @@ export class Editor extends React.Component<EditorInterfaces.Props, EditorInterf
         readOnly={viewOnly}
         editorProps={{ $blockScrolling: true }}
         width={`${editorWidth.toString()}px`}
-        height={'100vh'}
+        height={'96.5vh'}
         value={code}
         onChange={updateCode}
         commands={[
