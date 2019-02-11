@@ -29,6 +29,9 @@ export class Authentication extends React.Component<
       >
         <Grid
           fluid={true}
+          style={{
+            width: authType === AuthenticationInterfaces.AuthType.LOGIN ? '500px' : '850px',
+          }}
           className={classnames(styles.modal, {
             [`${styles.slideEnter}`]: !isLoggedIn,
           })}

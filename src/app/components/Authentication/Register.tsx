@@ -38,14 +38,14 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     const { handleSelectPanel, checkUsernameExists, errorMessage, updateErrorMessage } = this.props;
     return (
       <div>
-        <Row>
-          <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
-            <form
-              className={'registerForm'}
-              noValidate
-              ref={this.registerRef}
-              onSubmit={this.handleRegister}
-            >
+        <div className={classnames('col-sm-12', styles.form)}>
+          <form
+            className={'registerForm d-flex flex-wrap'}
+            noValidate
+            ref={this.registerRef}
+            onSubmit={this.handleRegister}
+          >
+            <div className="col-sm-6 col-md-6 col-lg-6">
               <div className="form-row">
                 <div className="col mb-3">
                   <div className="input-group">
@@ -80,34 +80,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   <div className="input-group">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroupPrepend">
-                        <FontAwesomeIcon icon={faUserTie} />
-                      </span>
-                    </div>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="registerValidationFullname"
-                      placeholder="Name"
-                      aria-describedby="inputGroupPrepend"
-                      maxLength={50}
-                      minLength={5}
-                      value={fullName}
-                      onChange={(e) =>
-                        this.setState({
-                          fullName: e.target.value,
-                        })
-                      }
-                      required
-                    />
-                    <div className="invalid-feedback">Name must have minimum 5 characters.</div>
-                  </div>
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="col mb-3">
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text" id="inputGroupPrepend">
                         <FontAwesomeIcon icon={faEnvelope} />
                       </span>
                     </div>
@@ -126,25 +98,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       required
                     />
                     <div className="invalid-feedback">Please enter a valid Email ID.</div>
-                  </div>
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="col sm={12} mb-3">
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text" id="inputGroupPrepend">
-                        <FontAwesomeIcon icon={faFlag} />
-                      </span>
-                    </div>
-                    <ReactFlagsSelect
-                      searchable={true}
-                      placeholder="Search for a country"
-                      className="customFlag"
-                      defaultCountry="IN"
-                      onSelect={this.onSelectFlag}
-                    />
-                    <div className="invalid-feedback">Please select a country.</div>
                   </div>
                 </div>
               </div>
@@ -177,6 +130,55 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="col-sm-6 col-md-6 col-lg-6">
+              <div className="form-row">
+                <div className="col mb-3">
+                  <div className="input-group">
+                    <div className="input-group-prepend">
+                      <span className="input-group-text" id="inputGroupPrepend">
+                        <FontAwesomeIcon icon={faUserTie} />
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="registerValidationFullname"
+                      placeholder="Name"
+                      aria-describedby="inputGroupPrepend"
+                      maxLength={50}
+                      minLength={5}
+                      value={fullName}
+                      onChange={(e) =>
+                        this.setState({
+                          fullName: e.target.value,
+                        })
+                      }
+                      required
+                    />
+                    <div className="invalid-feedback">Name must have minimum 5 characters.</div>
+                  </div>
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="col sm={12} mb-3">
+                  <div className="input-group-prepend">
+                    <div className="input-group-prepend">
+                      <span className="input-group-text" id="inputGroupPrepend">
+                        <FontAwesomeIcon icon={faFlag} />
+                      </span>
+                    </div>
+                    <ReactFlagsSelect
+                      searchable={true}
+                      placeholder="Search for a country"
+                      className="customFlag"
+                      defaultCountry="IN"
+                      onSelect={this.onSelectFlag}
+                    />
+                    <div className="invalid-feedback">Please select a country.</div>
+                  </div>
+                </div>
+              </div>
               <div className="form-row">
                 <div className="col mb-1">
                   <div className="input-group">
@@ -204,6 +206,8 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="col-sm-12 col-md-12 col-lg-12">
               <div className="form-row d-flex justify-content-center my-1">
                 <div className="d-flex justify-content-center input-group">
                   <ReCAPTCHA
@@ -225,16 +229,17 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                     className="btn btn-info"
                     type="submit"
                     style={{
-                      width: '100%',
+                      width: '50%',
                     }}
                   >
                     Register
                   </button>
                 </div>
               </div>
-            </form>
-          </div>
-        </Row>
+            </div>
+          </form>
+        </div>
+        <Row />
         <Row
           style={{
             borderTop: '2px solid #999',

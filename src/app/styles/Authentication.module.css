@@ -43,8 +43,8 @@
   animation: removeBackground 0.4s ease-out forwards;
 }
 
-.Authentication .modal {
-  width: 500px;
+.modal {
+  min-width: 500px;
   background-color: #fff;
   z-index: 100;
   color: #ddd;
