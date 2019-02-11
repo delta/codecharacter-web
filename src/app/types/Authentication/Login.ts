@@ -1,7 +1,10 @@
 import { AuthType } from 'app/types/Authentication';
 
-export { Login as State } from 'app/types/User';
-
+export interface State {
+  isCaptchaValidated: boolean;
+  username: string;
+  password: string;
+}
 export interface ElementOwnProps {
   handleSelectPanel: (authType: AuthType) => void;
 }

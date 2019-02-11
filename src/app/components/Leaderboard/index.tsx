@@ -101,7 +101,9 @@ export class Leaderboard extends React.Component<
                     index={index}
                     key={index}
                   />
-                ) : <div style={{ padding: '0px 30px' }}>Nothing to show</div>,
+                ) : (
+                  <div style={{ padding: '0px 30px' }}>Nothing to show</div>
+                ),
               )
             ) : (
               <div style={{ padding: '0px 30px' }}>Nothing to show</div>

@@ -1,11 +1,11 @@
 import Login from 'app/containers/Authentication/Login';
 import { configureStore } from 'app/store';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import * as React from 'react';
 
 describe('Login Container', () => {
   const { store } = configureStore();
-  const wrapper = mount(<Login handleSelectPanel={Function} />, {
+  const wrapper = shallow(<Login handleSelectPanel={Function} />, {
     context: {
       store,
     },

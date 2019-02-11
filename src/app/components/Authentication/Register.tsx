@@ -1,5 +1,6 @@
 import { faEnvelope, faFlag, faLock, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
 import * as styles from 'app/styles/Authentication.module.css';
 import 'app/styles/Register.css';
 import { AuthType } from 'app/types/Authentication';
@@ -10,9 +11,13 @@ import { Col, Row } from 'react-bootstrap';
 // tslint:disable-next-line:import-name
 import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
+// tslint:disable-next-line:import-name
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export class Register extends React.Component<RegisterInterfaces.Props, RegisterInterfaces.State> {
   private registerRef = React.createRef<HTMLFormElement>();
+  private recaptchaRef = React.createRef<ReCAPTCHA>();
+
   constructor(props: RegisterInterfaces.Props) {
     super(props);
 
@@ -20,6 +25,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       country: 'IN',
       email: '',
       fullName: '',
+      isCaptchaValidated: false,
       password: '',
       pragyanId: '',
       repeatPassword: '',
@@ -198,6 +204,17 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   </div>
                 </div>
               </div>
+              <div className="form-row d-flex justify-content-center my-1">
+                <div className="d-flex justify-content-center input-group">
+                  <ReCAPTCHA
+                    sitekey={RECAPTCHA_SITE_KEY}
+                    data-theme={'dark'}
+                    onChange={this.onChange}
+                    ref={this.recaptchaRef}
+                  />
+                  <div className="invalid-feedback">Please fill recaptcha.</div>
+                </div>
+              </div>
               <div className="form-row">
                 <div className="input-group" />
                 <div className="col text-center mt -0 mb-2 errorMessage">{errorMessage}</div>
@@ -253,12 +270,21 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
   private handleRegister = (event: React.FormEvent<HTMLFormElement>) => {
     const { register, handleSelectPanel } = this.props;
-    const { repeatPassword, country, email, fullName, password, username, pragyanId } = this.state;
+    const {
+      repeatPassword,
+      country,
+      email,
+      fullName,
+      password,
+      username,
+      pragyanId,
+      isCaptchaValidated,
+    } = this.state;
     const form = this.registerRef.current;
     event.preventDefault();
 
     if (form) {
-      if (form.checkValidity()) {
+      if (form.checkValidity() && isCaptchaValidated) {
         register({
           country,
           email,
@@ -271,6 +297,14 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
         handleSelectPanel(AuthType.LOGIN);
       }
       form.classList.add('was-validated');
+    }
+  };
+
+  private onChange = (value: string | null) => {
+    if (value) {
+      this.setState({
+        isCaptchaValidated: true,
+      });
     }
   };
 }

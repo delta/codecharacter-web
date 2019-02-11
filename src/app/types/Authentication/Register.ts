@@ -1,8 +1,16 @@
 import { AuthType } from 'app/types/Authentication';
 import * as UserInterfaces from 'app/types/User';
 
-export { Register as State } from 'app/types/User';
-
+export interface State {
+  isCaptchaValidated: boolean;
+  username: string;
+  password: string;
+  repeatPassword: string;
+  email: string;
+  country?: string;
+  fullName: string;
+  pragyanId?: string;
+}
 export interface StateProps {
   errorMessage: string;
 }
