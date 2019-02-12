@@ -7,7 +7,9 @@ import {
   faPlay,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SubmissionActions } from 'app/actions';
 import { CommitMessageBox } from 'app/components/SubmitBar/CommitMessageBox';
+import { RunOptions } from 'app/components/SubmitBar/RunOptions';
 import * as styles from 'app/styles/SubmitBar.module.css';
 import { SplitPaneState } from 'app/types/Dashboard';
 import * as SubmitBarInterfaces from 'app/types/SubmitBar';
@@ -23,12 +25,13 @@ export class SubmitBar extends React.Component<
     this.state = {
       commitMessage: '',
       isCommitMessageBoxOpen: false,
+      isDropdownOpen: false,
     };
   }
 
   public render() {
-    const { saveCode, splitPaneState, changeSplitPaneState } = this.props;
-    const { commitMessage, isCommitMessageBoxOpen } = this.state;
+    const { saveCode, splitPaneState, changeSplitPaneState, maps, loadMaps } = this.props;
+    const { commitMessage, isCommitMessageBoxOpen, isDropdownOpen } = this.state;
     return (
       <div
         className={classnames(styles.SubmitBar, {
@@ -98,6 +101,8 @@ export class SubmitBar extends React.Component<
           </span>
         </button>
         <button className={classnames(styles.customBtn)} id="run_button">
+          onClick={() => this.handleCompileAgainst(!this.state.isDropdownOpen)}
+        >
           <span className={classnames(styles.icon)}>
             <FontAwesomeIcon icon={faPlay} />
           </span>
@@ -125,6 +130,9 @@ export class SubmitBar extends React.Component<
           handleCommit={this.handleCommit}
           updateCommitMessage={this.updateCommitMessage}
         />
+        {isDropdownOpen ? (
+          <RunOptions loadMaps={loadMaps} compileAgainst={this.handleCompileAgainst} maps={maps} />
+        ) : null}
       </div>
     );
   }
@@ -147,5 +155,17 @@ export class SubmitBar extends React.Component<
     await commit(commitMessage);
     await this.toggleCommitMessageBox(false);
     await getCommitLog();
+  };
+
+  private handleCompileAgainst = async (open: boolean, value?: string, mapId?: number) => {
+    const { selfMatch } = this.props;
+    await this.setState({ isDropdownOpen: open, isCommitMessageBoxOpen: false });
+    switch (value) {
+      case SubmissionActions.Type.SELF_MATCH:
+        await selfMatch(mapId!);
+        break;
+      default:
+        break;
+    }
   };
 }

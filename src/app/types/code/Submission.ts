@@ -5,6 +5,7 @@ const actions = {
   changeCurrentRequest: SubmissionActions.changeCurrentRequest,
   changeState: SubmissionActions.changeState,
   resetSubmissionState: SubmissionActions.resetSubmissionState,
+  saveMaps: SubmissionActions.saveMaps,
   updateMapId: SubmissionActions.updateMapId,
 };
 
@@ -27,6 +28,12 @@ export interface SubmissionStoreState {
   request: Request;
   state: RequestState;
   mapId: number;
+  maps: Map[];
+}
+
+export interface Map {
+  mapId: number;
+  name: string;
 }
 
 export type SubmissionStoreAction = ActionType<typeof actions>;

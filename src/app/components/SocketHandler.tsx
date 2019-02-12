@@ -1,21 +1,19 @@
 import { API_BASE_URL } from 'app/../config/config';
 import * as SocketHandlerInterfaces from 'app/types/SocketHandler';
 import * as React from 'react';
-import { connect } from 'socket.io-client';
+import * as io from 'socket.io-client';
 
 export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props, {}> {
-  // tslint:disable-next-line
-  public socket: any;
+  private socket: SocketIOClient.Socket;
+  constructor(props: SocketHandlerInterfaces.Props) {
+    super(props);
+    this.socket = io.connect(API_BASE_URL, {
+      reconnection: true,
+      reconnectionDelay: 1000,
+    });
+  }
 
   public componentDidMount() {
-    this.socket = connect(
-      API_BASE_URL,
-      {
-        reconnection: true,
-        reconnectionDelay: 1000,
-      },
-    );
-
     this.socket.on('Info', (message: string) => {
       this.props.sendInfo(message);
     });
@@ -25,6 +23,14 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     });
 
     this.socket.on('Error', (message: string) => {
+      this.props.sendError(message);
+    });
+
+    this.socket.on('Compile Success', (message: string) => {
+      this.props.sendSuccess(message);
+    });
+
+    this.socket.on('Compile Error', (message: string) => {
       this.props.sendError(message);
     });
 

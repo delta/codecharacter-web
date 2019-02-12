@@ -6,7 +6,9 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 const mapStateToProps = (rootState: RootState) => {
-  return {};
+  return {
+    maps: rootState.submission.maps,
+  };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -14,11 +16,17 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     commit: (commitMessage: string) => dispatch(CodeActions.commit(commitMessage)),
     getCommitLog: () => dispatch(CodeActions.getCommitLog()),
     lockCode: () => dispatch(SubmissionActions.lockCode()),
+    loadMaps: () => dispatch(SubmissionActions.loadMaps()),
     saveCode: () => dispatch(CodeActions.save()),
+    selfMatch: (mapId: number) => dispatch(SubmissionActions.selfMatch(mapId)),
   };
 };
 
-const submitBarContainer = connect<{}, SubmitBarInterfaces.DispatchProps, {}>(
+const submitBarContainer = connect<
+  SubmitBarInterfaces.StateProps,
+  SubmitBarInterfaces.DispatchProps,
+  {}
+>(
   mapStateToProps,
   mapDispatchToProps,
 )(SubmitBar);

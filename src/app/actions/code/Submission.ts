@@ -15,6 +15,8 @@ export namespace SubmissionActions {
     PREVIOUS_COMMIT_MATCH = 'PREVIOUS_COMMIT_MATCH',
     SELF_MATCH = 'SELF_MATCH',
     RESET_SUBMISSION_STATE = 'RESET_SUBMISSION_STATE',
+    LOAD_MAPS = 'LOAD_MAPS',
+    SAVE_MAPS = 'SAVE_MAPS',
   }
 
   export const changeState = (state: SubmissionInterfaces.RequestState) =>
@@ -49,4 +51,11 @@ export namespace SubmissionActions {
   export const selfMatch = (mapId: number) => action(Type.SELF_MATCH, { mapId });
 
   export const resetSubmissionState = () => action(Type.RESET_SUBMISSION_STATE);
+
+  export const loadMaps = () => action(Type.LOAD_MAPS);
+
+  export const saveMaps = (maps: SubmissionInterfaces.Map[]) =>
+    action(Type.SAVE_MAPS, {
+      maps,
+    });
 }

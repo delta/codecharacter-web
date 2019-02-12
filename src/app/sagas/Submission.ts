@@ -265,6 +265,19 @@ export function* handleExecuteError(
   }
 }
 
+export function* loadMaps(action: ActionType<typeof SubmissionActions.loadMaps>) {
+  try {
+    const res = yield call(SubmissionFetch.loadMaps);
+    const isAuthenticated = yield checkAuthentication(res);
+    if (isAuthenticated === false) {
+      return;
+    }
+    yield put(SubmissionActions.saveMaps(res.mapsData));
+  } catch (err) {
+    throw err;
+  }
+}
+
 export function* submissionSagas() {
   yield all([
     takeEvery(SubmissionActions.Type.HANDLE_COMPILE_SUCCESS, handleCompileSuccess),
@@ -275,5 +288,6 @@ export function* submissionSagas() {
     takeEvery(SubmissionActions.Type.LOCK_CODE, lockCode),
     takeEvery(SubmissionActions.Type.PREVIOUS_COMMIT_MATCH, previousCommitMatch),
     takeEvery(SubmissionActions.Type.SELF_MATCH, selfMatch),
+    takeEvery(SubmissionActions.Type.LOAD_MAPS, loadMaps),
   ]);
 }

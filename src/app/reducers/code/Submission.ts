@@ -3,6 +3,7 @@ import * as SubmissionInterfaces from 'app/types/code/Submission';
 
 const submissionStoreState: SubmissionInterfaces.SubmissionStoreState = {
   mapId: 1,
+  maps: [],
   request: SubmissionInterfaces.Request.NONE,
   state: SubmissionInterfaces.RequestState.IDLE,
 };
@@ -34,6 +35,12 @@ export const submissionReducer = (
       return {
         ...submissionStoreState,
       };
+    case SubmissionActions.Type.SAVE_MAPS: {
+      return {
+        ...state,
+        maps: action.payload.maps,
+      };
+    }
     default:
       return state;
   }

@@ -72,3 +72,15 @@ export const lockCode = () => {
       throw error;
     });
 };
+
+export const loadMaps = () => {
+  return fetch(`${API_BASE_URL}simulate/maps`, {
+    credentials: 'include',
+    method: 'GET',
+  })
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => {
+      throw error;
+    });
+};
