@@ -37,6 +37,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             className={classnames('py-3 px-auto editor-settings-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.EDITOR_SETTINGS,
             })}
+            id="editor_settings_button"
             onClick={() =>
               sidePanelTab !== SidePanelTab.EDITOR_SETTINGS
                 ? openSidePanelTab(SidePanelTab.EDITOR_SETTINGS)
@@ -49,6 +50,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             className={classnames('py-3 px-auto leaderboard-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.LEADERBOARD,
             })}
+            id="leaderboard_button"
             onClick={() =>
               sidePanelTab !== SidePanelTab.LEADERBOARD
                 ? openSidePanelTab(SidePanelTab.LEADERBOARD)
@@ -61,6 +63,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             className={classnames('py-3 px-auto commitLog-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.COMMIT_LOG,
             })}
+            id="commit_log_button"
             onClick={() =>
               sidePanelTab !== SidePanelTab.COMMIT_LOG
                 ? openSidePanelTab(SidePanelTab.COMMIT_LOG)
@@ -73,6 +76,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             className={classnames('py-3 px-auto notification-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.NOTIFICATION,
             })}
+            id="notifications_button"
             onClick={() =>
               sidePanelTab !== SidePanelTab.NOTIFICATION
                 ? openSidePanelTab(SidePanelTab.NOTIFICATION)
@@ -83,6 +87,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           </Button>
           <Button
             className={classnames('py-3 px-auto', styles.customBtn)}
+            id="user_profile_button"
             onClick={() => {
               toggleUserProfileModal(true);
             }}

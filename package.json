@@ -141,6 +141,7 @@
     "react-dom": "^16.5.2",
     "react-flags-select": "^1.1.10",
     "react-google-recaptcha": "^1.0.5",
+    "react-joyride": "^2.0.4",
     "react-monaco-editor": "^0.22.0",
     "react-paginate": "^6.2.1",
     "react-redux": "^5.0.7",

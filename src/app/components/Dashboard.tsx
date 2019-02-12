@@ -1,3 +1,4 @@
+import Joyride from 'app/components/Joyride';
 import Authentication from 'app/containers/Authentication';
 import CodeStatus from 'app/containers/code/CodeStatus';
 import Editor from 'app/containers/code/Editor';
@@ -74,6 +75,7 @@ export class Dashboard extends React.Component<
     }
     return (
       <div>
+        <Joyride/>
         {!isLoggedIn ? <Authentication /> : null}
         {isLoggedIn ? <SocketHandler /> : null}
         {isUserProfileModalOpen ? <UserProfileModal /> : null}

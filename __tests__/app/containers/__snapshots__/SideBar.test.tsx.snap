@@ -91,11 +91,13 @@ exports[`SideBar Container Should render 1`] = `
             bsStyle="default"
             className="py-3 px-auto editor-settings-btn-ctrl"
             disabled={false}
+            id="editor_settings_button"
             onClick={[Function]}
           >
             <button
               className="py-3 px-auto editor-settings-btn-ctrl btn btn-default"
               disabled={false}
+              id="editor_settings_button"
               onClick={[Function]}
               type="button"
             >
@@ -155,11 +157,13 @@ exports[`SideBar Container Should render 1`] = `
             bsStyle="default"
             className="py-3 px-auto leaderboard-btn-ctrl"
             disabled={false}
+            id="leaderboard_button"
             onClick={[Function]}
           >
             <button
               className="py-3 px-auto leaderboard-btn-ctrl btn btn-default"
               disabled={false}
+              id="leaderboard_button"
               onClick={[Function]}
               type="button"
             >
@@ -219,11 +223,13 @@ exports[`SideBar Container Should render 1`] = `
             bsStyle="default"
             className="py-3 px-auto commitLog-btn-ctrl"
             disabled={false}
+            id="commit_log_button"
             onClick={[Function]}
           >
             <button
               className="py-3 px-auto commitLog-btn-ctrl btn btn-default"
               disabled={false}
+              id="commit_log_button"
               onClick={[Function]}
               type="button"
             >
@@ -283,11 +289,13 @@ exports[`SideBar Container Should render 1`] = `
             bsStyle="default"
             className="py-3 px-auto notification-btn-ctrl"
             disabled={false}
+            id="notifications_button"
             onClick={[Function]}
           >
             <button
               className="py-3 px-auto notification-btn-ctrl btn btn-default"
               disabled={false}
+              id="notifications_button"
               onClick={[Function]}
               type="button"
             >
@@ -347,11 +355,13 @@ exports[`SideBar Container Should render 1`] = `
             bsStyle="default"
             className="py-3 px-auto"
             disabled={false}
+            id="user_profile_button"
             onClick={[Function]}
           >
             <button
               className="py-3 px-auto btn btn-default"
               disabled={false}
+              id="user_profile_button"
               onClick={[Function]}
               type="button"
             >
