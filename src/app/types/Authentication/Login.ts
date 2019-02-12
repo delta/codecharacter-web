@@ -2,6 +2,7 @@ import { AuthType } from 'app/types/Authentication';
 
 export interface State {
   isCaptchaValidated: boolean;
+  isFormSubmitted: boolean;
   username: string;
   password: string;
 }

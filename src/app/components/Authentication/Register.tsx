@@ -26,6 +26,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       email: '',
       fullName: '',
       isCaptchaValidated: false,
+      isFormSubmitted: false,
       password: '',
       pragyanId: '',
       repeatPassword: '',
@@ -34,7 +35,15 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   }
 
   public render() {
-    const { repeatPassword, email, password, username, fullName } = this.state;
+    const {
+      repeatPassword,
+      email,
+      password,
+      username,
+      fullName,
+      isCaptchaValidated,
+      isFormSubmitted,
+    } = this.state;
     const { handleSelectPanel, checkUsernameExists, errorMessage, updateErrorMessage } = this.props;
     return (
       <div>
@@ -216,7 +225,14 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                     onChange={this.onChange}
                     ref={this.recaptchaRef}
                   />
-                  <div className="invalid-feedback">Please fill recaptcha.</div>
+                  <div
+                    className="invalid-feedback text-center"
+                    style={{
+                      display: !isCaptchaValidated && isFormSubmitted ? 'block' : 'none',
+                    }}
+                  >
+                    Please fill recaptcha.
+                  </div>
                 </div>
               </div>
               <div className="form-row">
@@ -302,6 +318,9 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
         handleSelectPanel(AuthType.LOGIN);
       }
       form.classList.add('was-validated');
+      this.setState({
+        isFormSubmitted: true,
+      });
     }
   };
 

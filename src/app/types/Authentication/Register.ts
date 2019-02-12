@@ -3,11 +3,12 @@ import * as UserInterfaces from 'app/types/User';
 
 export interface State {
   isCaptchaValidated: boolean;
+  isFormSubmitted: boolean;
   username: string;
   password: string;
   repeatPassword: string;
   email: string;
-  country?: string;
+  country: string;
   fullName: string;
   pragyanId?: string;
 }
