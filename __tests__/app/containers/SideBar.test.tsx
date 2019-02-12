@@ -8,7 +8,7 @@ import * as React from 'react';
 
 describe('SideBar Container', () => {
   const { store } = configureStore();
-  const wrapper = mount(<SidebarContainer />, {
+  const wrapper = mount(<SidebarContainer toggleJoyRide={Function} />, {
     context: {
       store,
     },

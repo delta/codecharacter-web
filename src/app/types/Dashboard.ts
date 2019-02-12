@@ -17,6 +17,7 @@ export interface State {
   fixedLeftPaneWidth: number;
   splitPaneState: SplitPaneState;
   windowWidth: number;
+  isJoyRideActive: boolean;
 }
 
 export interface StateProps {

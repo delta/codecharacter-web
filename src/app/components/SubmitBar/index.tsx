@@ -37,6 +37,7 @@ export class SubmitBar extends React.Component<
         <button className={classnames(styles.customBtn)} style={{ padding: '0px' }}>
           {this.props.splitPaneState !== SplitPaneState.RENDERER ? (
             <span
+              id="toggle_button"
               className={classnames(styles.icon, styles.toggleIcon)}
               style={{ padding: '6px' }}
               onClick={() => {
@@ -61,6 +62,7 @@ export class SubmitBar extends React.Component<
           ) : null}
           {this.props.splitPaneState !== SplitPaneState.EDITOR ? (
             <span
+              id="toggle_button"
               className={classnames(styles.icon, styles.toggleIcon)}
               style={{ padding: '6px' }}
               onClick={() => {
@@ -84,19 +86,20 @@ export class SubmitBar extends React.Component<
             </span>
           ) : null}
         </button>
-        <button className={classnames(styles.customBtn)}>
+        <button className={classnames(styles.customBtn)} id="run_button">
           <span className={classnames(styles.icon)}>
             <FontAwesomeIcon icon={faPlay} />
           </span>
           <span>RUN</span>
         </button>
-        <button className={classnames(styles.customBtn)} onClick={saveCode}>
+        <button className={classnames(styles.customBtn)} onClick={saveCode} id="save_button">
           <span className={classnames(styles.icon)}>
             <FontAwesomeIcon icon={faCloud} />
           </span>
           <span>SAVE</span>
         </button>
         <button
+          id="commit_button"
           className={classnames(styles.customBtn)}
           onClick={() => this.toggleCommitMessageBox(!isCommitMessageBoxOpen)}
         >

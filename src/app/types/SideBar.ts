@@ -4,6 +4,10 @@ export interface StateProps {
   sidePanelTab: SidePanelTab;
 }
 
+export interface OwnProps {
+  toggleJoyRide: () => void;
+}
+
 export interface DispatchProps {
   closeSidePanelTab: () => void;
   logout: () => void;
@@ -11,4 +15,4 @@ export interface DispatchProps {
   toggleUserProfileModal: (isUserProfileModalOpen: boolean) => void;
 }
 
-export type Props = StateProps & DispatchProps;
+export type Props = OwnProps & StateProps & DispatchProps;

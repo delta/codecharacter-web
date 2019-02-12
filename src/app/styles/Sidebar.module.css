@@ -24,3 +24,28 @@
 .Sidebar .customBtnActive {
   color: #fff;
 }
+
+.Sidebar .joyRide {
+  font-size: 20px;
+  color: #9c9c9c;
+  position: fixed;
+  position: absolute;
+  top: 88vh;
+}
+
+.joyRide:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.joyRide:hover {
+  color: #fff;
+}
+
+.joyRide:active {
+  transform: scale(1.08);
+}
+
+.joyRideActive {
+  color: #fff;
+}

@@ -3,6 +3,7 @@ import {
   faCode,
   faCodeBranch,
   faCog,
+  faInfoCircle,
   faSignOutAlt,
   faTrophy,
   faUser,
@@ -94,8 +95,19 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           >
             <FontAwesomeIcon icon={faUser} />
           </Button>
-          <Button className={classnames('py-3 px-auto', styles.customBtn)} onClick={() => logout()}>
+          <Button
+            className={classnames('py-3 px-auto', styles.customBtn)}
+            id="logout_button"
+            onClick={() => logout()}
+          >
             <FontAwesomeIcon icon={faSignOutAlt} />
+          </Button>
+          <Button
+            className={classnames('py-3 px-auto', styles.joyRide)}
+            id="joyride_button"
+            onClick={() => this.props.toggleJoyRide()}
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />
           </Button>
         </ButtonGroup>
       </div>

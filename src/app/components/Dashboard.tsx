@@ -34,6 +34,7 @@ export class Dashboard extends React.Component<
     this.state = {
       fixedLeftPaneWidth,
       editorWidthRatio: this.initialEditorRatio,
+      isJoyRideActive: false,
       splitPaneState: DashboardInterfaces.SplitPaneState.BOTH,
       windowWidth: window.innerWidth,
     };
@@ -49,7 +50,13 @@ export class Dashboard extends React.Component<
   }
 
   public render() {
-    const { editorWidthRatio, windowWidth, fixedLeftPaneWidth, splitPaneState } = this.state;
+    const {
+      editorWidthRatio,
+      windowWidth,
+      fixedLeftPaneWidth,
+      splitPaneState,
+      isJoyRideActive,
+    } = this.state;
     const { isLoggedIn, isUserProfileModalOpen } = this.props;
 
     let editorWidth;
@@ -75,7 +82,7 @@ export class Dashboard extends React.Component<
     }
     return (
       <div>
-        <Joyride/>
+        {isLoggedIn && isJoyRideActive ? <Joyride toggleJoyRide={this.onToggleJoyRide} /> : null}
         {!isLoggedIn ? <Authentication /> : null}
         {isLoggedIn ? <SocketHandler /> : null}
         {isUserProfileModalOpen ? <UserProfileModal /> : null}
@@ -95,7 +102,7 @@ export class Dashboard extends React.Component<
                   height: '100vh',
                 }}
               >
-                <SideBar />
+                <SideBar toggleJoyRide={this.onToggleJoyRide} />
               </div>
               <SidePanel sidePanelWidth={this.sidePanelWidth} />
               <div
@@ -122,6 +129,7 @@ export class Dashboard extends React.Component<
                   changeSplitPaneState={this.changeSplitPaneState}
                   splitPaneState={this.state.splitPaneState}
                 />
+                <div id="renderer" />
               </Row>
             </Grid>
             <GameLog />
@@ -161,6 +169,12 @@ export class Dashboard extends React.Component<
 
     this.setState({
       fixedLeftPaneWidth,
+    });
+  };
+
+  private onToggleJoyRide = (): void => {
+    this.setState({
+      isJoyRideActive: !this.state.isJoyRideActive,
     });
   };
 }
