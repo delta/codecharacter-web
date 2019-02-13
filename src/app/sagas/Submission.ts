@@ -4,6 +4,7 @@ import { RootState } from 'app/reducers';
 import { Request, RequestState } from 'app/types/code/Submission';
 import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
+import * as zlib from 'zlib';
 
 export const getSubmissionState = (state: RootState) => state.submission;
 
@@ -216,7 +217,19 @@ export function* handleExecuteSuccess(
     }
 
     const logs = JSON.parse(action.payload.logs);
-    yield put(CodeActions.updateLogs(logs.player1Log, logs.player2Log, logs.gameLog));
+
+    // @ts-ignore
+    let debugLog1 = new Buffer.from(logs.player1Log);
+    // @ts-ignore
+    let debugLog2 = new Buffer.from(logs.player2Log);
+    // @ts-ignore
+    let gameLog = new Buffer.from(logs.gameLog);
+
+    debugLog1 = zlib.gunzipSync(debugLog1);
+    debugLog2 = zlib.gunzipSync(debugLog2);
+    gameLog = zlib.gunzipSync(gameLog);
+
+    yield put(CodeActions.updateLogs(debugLog1, debugLog2, gameLog));
     yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
   } catch (err) {
     throw err;

@@ -152,6 +152,7 @@
     "redux-actions": "^2.6.1",
     "redux-persist": "^5.10.0",
     "redux-saga": "^0.16.2",
-    "socket.io-client": "^2.2.0"
+    "socket.io-client": "^2.2.0",
+    "zlib": "^1.0.5"
   }
 }
