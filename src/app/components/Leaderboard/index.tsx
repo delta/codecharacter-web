@@ -1,13 +1,13 @@
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LeaderboardElement } from 'app/components/Leaderboard/LeaderboardElement';
+import { Timer } from 'app/components/Leaderboard/Timer';
 import * as styles from 'app/styles/Leaderboard.module.css';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 import { BeatLoader } from 'react-spinners';
-
 export class Leaderboard extends React.Component<
   LeaderboardInterfaces.Props,
   LeaderboardInterfaces.State
@@ -27,6 +27,7 @@ export class Leaderboard extends React.Component<
   public componentWillMount(): void {
     this.props.clearLeaderboard();
     this.props.getLeaderboard('', this.state.nextFetchIndex);
+    this.props.getTimer();
   }
 
   public componentWillReceiveProps(nextProps: LeaderboardInterfaces.Props) {
@@ -38,7 +39,7 @@ export class Leaderboard extends React.Component<
   }
 
   public render() {
-    const { players, loading } = this.props;
+    const { players, loading, timerData, getTimer } = this.props;
     return (
       <Grid fluid={true} className={classnames(styles.Leaderboard)}>
         {this.state.isSearching ? (
@@ -92,6 +93,18 @@ export class Leaderboard extends React.Component<
           className={styles['leaderboard-wrap']}
         >
           <Row>
+            <div
+              className="col-12 text-center"
+              style={{
+                fontSize: '10px',
+              }}
+            >
+              {timerData >= 0 ? (
+                <Timer timerData={timerData} getTimer={getTimer} />
+              ) : (
+                `Ready to initiate Match`
+              )}
+            </div>
             {players.length ? (
               players.map((player, index) =>
                 player ? (

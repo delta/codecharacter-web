@@ -21,14 +21,20 @@ export interface Search {
   end: number;
 }
 
+export interface RunMatch {
+  opponentId: string;
+}
+
 export interface StateProps {
   players: Player[];
   loading: boolean;
+  timerData: number;
 }
 
 export interface DispatchProps {
   clearLeaderboard: () => void;
   getLeaderboard: (pattern: string, start: number) => void;
+  getTimer: () => void;
 }
 
 export type Props = StateProps & DispatchProps;
@@ -50,6 +56,7 @@ export type ElementProps = ElementOwnProps;
 const actions = {
   getLeaderboard: LeaderboardActions.getLeaderboard,
   resetLeaderboardState: LeaderboardActions.resetLeaderboardState,
+  setTimer: LeaderboardActions.setTimer,
   toggleUserProfileModal: LeaderboardActions.toggleUserProfileModal,
   updateError: LeaderboardActions.updateError,
   updateLeaderboard: LeaderboardActions.updateLeaderboard,
@@ -60,6 +67,7 @@ export interface LeaderboardStoreState {
   isUserProfileModalOpen: boolean;
   readonly loading: boolean;
   readonly players: Player[];
+  timerData: number;
 }
 
 export type LeaderboardStoreAction = ActionType<typeof actions>;

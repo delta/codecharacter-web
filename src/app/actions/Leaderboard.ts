@@ -8,6 +8,9 @@ export namespace LeaderboardActions {
     UPDATE_LEADERBOARD = 'UPDATE_LEADERBOARD',
     TOGGLE_USER_PROFILE_MODAL = 'TOGGLE_USER_PROFILE_MODAL',
     RESET_LEADERBOARD_STATE = 'RESET_LEADERBOARD_STATE',
+    GET_TIMER = 'GET_TIMER',
+    SET_TIMER = 'SET_TIMER',
+    START_MATCH = 'START_MATCH',
   }
 
   export enum updateType {
@@ -49,4 +52,19 @@ export namespace LeaderboardActions {
   };
 
   export const resetLeaderboardState = () => action(Type.RESET_LEADERBOARD_STATE);
+  export const getTimer = () => {
+    return action(Type.GET_TIMER);
+  };
+
+  export const setTimer = (timerData: number) => {
+    return action(Type.SET_TIMER, {
+      timerData,
+    });
+  };
+
+  export const runMatch = (opponentId: string) => {
+    return action(Type.START_MATCH, {
+      opponentId,
+    });
+  };
 }

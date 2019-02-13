@@ -16,3 +16,19 @@ export const getLeaderboard = (body: LeaderboardInterfaces.GetLeaderboard) => {
       throw error;
     });
 };
+
+export const getTimer = () => {
+  return fetch(`${API_BASE_URL}leaderboard/timer`, {
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'GET',
+  })
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((err) => {
+      throw err;
+    });
+};

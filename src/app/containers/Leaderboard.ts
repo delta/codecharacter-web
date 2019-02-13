@@ -9,6 +9,7 @@ const mapStateToProps = (rootState: RootState) => {
   return {
     loading: rootState.leaderboard.loading,
     players: rootState.leaderboard.players,
+    timerData: rootState.leaderboard.timerData,
   };
 };
 
@@ -18,6 +19,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       dispatch(LeaderboardActions.updateLeaderboard([], LeaderboardActions.updateType.REPLACE)),
     getLeaderboard: (pattern: string, start: number) =>
       dispatch(LeaderboardActions.getLeaderboard(pattern, start)),
+    getTimer: () => dispatch(LeaderboardActions.getTimer()),
   };
 };
 

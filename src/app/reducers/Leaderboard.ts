@@ -5,6 +5,7 @@ const leaderboardInitialState: LeaderboardInterfaces.LeaderboardStoreState = {
   isUserProfileModalOpen: false,
   loading: false,
   players: [],
+  timerData: 0,
 };
 
 export const leaderboardReducer = (
@@ -46,6 +47,11 @@ export const leaderboardReducer = (
         ...leaderboardInitialState,
       };
     }
+    case LeaderboardActions.Type.SET_TIMER:
+      return {
+        ...state,
+        timerData: action.payload.timerData,
+      };
     default:
       return state;
   }
