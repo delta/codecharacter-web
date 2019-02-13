@@ -1,6 +1,7 @@
 import { CodeActions, SubmissionActions } from 'app/actions';
 import * as SubmissionFetch from 'app/apiFetch/Submission';
 import { RootState } from 'app/reducers';
+import { checkAuthentication } from 'app/sagas/utils';
 import { Request, RequestState } from 'app/types/code/Submission';
 import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
@@ -84,23 +85,32 @@ export function* changeStateCurrentRequest(
       yield put(SubmissionActions.updateMapId(action.payload.mapId));
     }
 
+    let res;
+
     switch (currentState) {
       case RequestState.COMPILE_CURRENT_CODE: {
-        yield call(SubmissionFetch.codeCompile);
+        res = yield call(SubmissionFetch.codeCompile);
         break;
       }
       case RequestState.COMPILE_PREVIOUS_COMMIT_CODE: {
-        yield call(SubmissionFetch.codeCompile, action.payload.commitHash);
+        res = yield call(SubmissionFetch.codeCompile, action.payload.commitHash);
         break;
       }
       case RequestState.EXECUTE_SELF_MATCH: {
-        yield call(SubmissionFetch.executeSelfMatch, submissionState.mapId);
+        res = yield call(SubmissionFetch.executeSelfMatch, submissionState.mapId);
         break;
       }
       case RequestState.EXECUTE_PREVIOUS_COMMIT_MATCH: {
-        yield call(SubmissionFetch.executePreviousCommitMatch, submissionState.mapId);
+        res = yield call(SubmissionFetch.executePreviousCommitMatch, submissionState.mapId);
         break;
       }
+    }
+
+    const isAuthenticated = yield checkAuthentication(res);
+    if (isAuthenticated === false) {
+      yield put(SubmissionActions.changeCurrentRequest(Request.NONE));
+      yield put(SubmissionActions.changeState(RequestState.IDLE));
+      return;
     }
   } catch (err) {
     throw err;
@@ -159,7 +169,8 @@ export function* handleCompileSuccess(
             break;
           }
           case Request.LOCK_CODE: {
-            yield call(SubmissionFetch.lockCode);
+            const res = yield call(SubmissionFetch.lockCode);
+            yield checkAuthentication(res);
             yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
             break;
           }
