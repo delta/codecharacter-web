@@ -2,9 +2,11 @@ import { AuthType } from 'app/types/Authentication';
 import * as UserInterfaces from 'app/types/User';
 
 export interface State {
+  collegeName?: string;
   isCaptchaValidated: boolean;
   isFormSubmitted: boolean;
   username: string;
+  isStudent: boolean;
   password: string;
   repeatPassword: string;
   email: string;
