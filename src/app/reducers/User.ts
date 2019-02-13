@@ -6,7 +6,7 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   email: '',
   errorMessage: '',
   fullName: '',
-  isLoggedIn: true,
+  isLoggedIn: false,
   isUserProfileModalOpen: false,
   username: '',
 };

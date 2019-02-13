@@ -1,5 +1,6 @@
 import { codeReducer } from 'app/reducers/code/Code';
 import { editorReducer } from 'app/reducers/code/Editor';
+import { submissionReducer } from 'app/reducers/code/Submission';
 import { dashboardReducer } from 'app/reducers/Dashboard';
 import { gameLogReducer } from 'app/reducers/GameLog';
 import { leaderboardReducer } from 'app/reducers/Leaderboard';
@@ -7,6 +8,7 @@ import { notificationReducer } from 'app/reducers/Notification';
 import { userReducer } from 'app/reducers/User';
 import * as CodeInterfaces from 'app/types/code/Code';
 import * as EditorInterfaces from 'app/types/code/Editor';
+import * as SubmissionInterfaces from 'app/types/code/Submission';
 import * as DashboardInterfaces from 'app/types/Dashboard';
 import * as GameLogInterfaces from 'app/types/GameLog';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
@@ -23,6 +25,7 @@ export const rootReducer = combineReducers({
   leaderboard: leaderboardReducer,
   notification: notificationReducer,
   router: routerReducer,
+  submission: submissionReducer,
   user: userReducer,
 });
 
@@ -35,4 +38,5 @@ export interface RootState {
   router: RouterState;
   gameLog: GameLogInterfaces.GameLogStoreState;
   user: UserInterfaces.UserStoreState;
+  submission: SubmissionInterfaces.SubmissionStoreState;
 }
