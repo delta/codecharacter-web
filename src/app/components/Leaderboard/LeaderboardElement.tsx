@@ -14,7 +14,7 @@ const colors = ['#FFB900', '#69797E', '#847545', '#038387'];
 
 export class LeaderboardElement extends React.Component<LeaderboardInterfaces.ElementProps, {}> {
   public render() {
-    const { player, rank, index } = this.props;
+    const { player, rank, index, isPlayAgainstDisabled } = this.props;
     const fetchSize = LeaderboardActions.FETCH_SIZE;
     return (
       <Col
@@ -52,7 +52,12 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
               <ReactCountryFlag code={player.country} svg alt={player.country} />
             </div>
 
-            <Button bsStyle="danger" style={{ fontSize: '0.55em' }} bsSize="xsmall">
+            <Button
+              bsStyle="danger"
+              style={{ fontSize: '0.55em' }}
+              bsSize="xsmall"
+              disabled={isPlayAgainstDisabled}
+            >
               FIGHT
             </Button>
           </div>

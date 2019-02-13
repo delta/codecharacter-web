@@ -49,6 +49,7 @@ export interface ElementOwnProps {
   player: Player;
   rank: number;
   index: number;
+  isPlayAgainstDisabled: boolean;
 }
 
 export type ElementProps = ElementOwnProps;
