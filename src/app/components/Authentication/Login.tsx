@@ -40,6 +40,14 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             >
               <div className="form-row">
                 <div className="col mb-4">
+                  <div
+                    className="text-center text-dark mb-2"
+                    style={{
+                      fontSize: '12px',
+                    }}
+                  >
+                    You can use your Pragyan account credentials if you have one.
+                  </div>
                   <div className="input-group">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroupPrepend">
