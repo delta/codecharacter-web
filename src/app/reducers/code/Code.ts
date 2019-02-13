@@ -40,14 +40,6 @@ export const codeReducer = (
         currentCommitHash: action.payload.commitHash,
       };
     }
-    case CodeActions.Type.UPDATE_LOGS: {
-      return {
-        ...state,
-        debugLog1: action.payload.debugLog1,
-        debugLog2: action.payload.debugLog2,
-        log: action.payload.log,
-      };
-    }
     default:
       return state;
   }

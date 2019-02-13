@@ -11,7 +11,6 @@ const actions = {
   setCurrentCommitHash: CodeActions.setCurrentCommitHash,
   updateCode: CodeActions.updateCode,
   updateCommitLog: CodeActions.updateCommitLog,
-  updateLogs: CodeActions.updateLogs,
   updateStatusMessage: CodeActions.updateStatusMessage,
 };
 

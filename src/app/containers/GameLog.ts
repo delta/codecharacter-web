@@ -6,7 +6,9 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (rootState: RootState) => {
   return {
-    value: rootState.gameLog.value,
+    gameLog: rootState.gameLog.gameLog,
+    player1DebugLog: rootState.gameLog.player1DebugLog,
+    player2DebugLog: rootState.gameLog.player2DebugLog,
   };
 };
 

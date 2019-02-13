@@ -2,11 +2,13 @@ import { GameLogActions } from 'app/actions/GameLog';
 import { ActionType } from 'typesafe-actions';
 
 export interface StateProps {
-  value: string;
+  gameLog: string;
+  player1DebugLog: string;
+  player2DebugLog: string;
 }
 
 export interface DispatchProps {
-  updateGameLog: (gameLog: string) => void;
+  updateGameLog: (player1DebugLog: string, player2DebugLog: string, gameLog: string) => void;
 }
 
 export type Props = StateProps & DispatchProps;
@@ -16,7 +18,9 @@ const actions = {
 };
 
 export interface GameLogStoreState {
-  value: string;
+  gameLog: string;
+  player1DebugLog: string;
+  player2DebugLog: string;
 }
 
 export type GameLogStoreAction = ActionType<typeof actions>;

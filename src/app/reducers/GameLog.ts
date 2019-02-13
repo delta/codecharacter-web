@@ -2,7 +2,9 @@ import { GameLogActions } from 'app/actions';
 import * as GameLogInterfaces from 'app/types/GameLog';
 
 const gameLogStoreIntialState: GameLogInterfaces.GameLogStoreState = {
-  value: '/* Game logs */',
+  gameLog: '/* Game logs */',
+  player1DebugLog: '',
+  player2DebugLog: '',
 };
 
 export const gameLogReducer = (
@@ -10,10 +12,12 @@ export const gameLogReducer = (
   action: GameLogInterfaces.GameLogStoreAction,
 ) => {
   switch (action.type) {
-    case GameLogActions.Type.UPDATE_GAME_LOG: {
+    case GameLogActions.Type.UPDATE_GAME_LOGS: {
       return {
         ...state,
-        logCode: action.payload.gameLog,
+        gameLog: action.payload.gameLog,
+        player1DebugLog: action.payload.player1DebugLog,
+        player2DebugLog: action.payload.player2DebugLog,
       };
     }
     default:

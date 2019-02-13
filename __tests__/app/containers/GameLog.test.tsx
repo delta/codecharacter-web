@@ -16,6 +16,6 @@ describe('GameLog Container', () => {
   });
 
   it('should have prop', () => {
-    expect(wrapper.props().value).toMatch(store.getState().gameLog.value);
+    expect(wrapper.props().gameLog).toMatch(store.getState().gameLog.gameLog);
   });
 });

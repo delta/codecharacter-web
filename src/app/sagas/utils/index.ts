@@ -2,7 +2,7 @@ import { UserActions } from 'app/actions';
 import { put } from 'redux-saga/effects';
 
 export function* checkAuthentication(result: { type: string; error: string }) {
-  if (result.error === 'Unauthorised') {
+  if (result.error && result.error === 'Unauthorised') {
     yield put(
       UserActions.updateUserDetails({
         country: '',

@@ -1,4 +1,4 @@
-import { CodeActions, SubmissionActions } from 'app/actions';
+import { GameLogActions, SubmissionActions } from 'app/actions';
 import * as SubmissionFetch from 'app/apiFetch/Submission';
 import { RootState } from 'app/reducers';
 import { checkAuthentication } from 'app/sagas/utils';
@@ -229,18 +229,13 @@ export function* handleExecuteSuccess(
 
     const logs = JSON.parse(action.payload.logs);
 
-    // @ts-ignore
-    let debugLog1 = new Buffer.from(logs.player1Log);
-    // @ts-ignore
-    let debugLog2 = new Buffer.from(logs.player2Log);
-    // @ts-ignore
-    let gameLog = new Buffer.from(logs.gameLog);
+    const debugLog1 = zlib.gunzipSync(Buffer.from(logs.player1Log));
+    const debugLog2 = zlib.gunzipSync(Buffer.from(logs.player2Log));
+    const gameLog = zlib.gunzipSync(Buffer.from(logs.gameLog));
 
-    debugLog1 = zlib.gunzipSync(debugLog1);
-    debugLog2 = zlib.gunzipSync(debugLog2);
-    gameLog = zlib.gunzipSync(gameLog);
-
-    yield put(CodeActions.updateLogs(debugLog1, debugLog2, gameLog));
+    yield put(
+      GameLogActions.updateGameLog(debugLog1.toString(), debugLog2.toString(), gameLog.toString()),
+    );
     yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
   } catch (err) {
     throw err;
