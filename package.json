@@ -83,6 +83,7 @@
     "@types/react-split-pane": "^0.1.67",
     "@types/redux-actions": "2.3.1",
     "@types/redux-persist": "^4.3.1",
+    "@types/socket.io-client": "^1.4.32",
     "@types/webpack": "4.4.16",
     "@types/webpack-env": "1.13.6",
     "babel-cli": "^6.26.0",
@@ -90,6 +91,7 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "canvas-prebuilt": "^2.0.0-alpha.14",
     "css-loader": "^1.0.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
@@ -131,9 +133,9 @@
     "webpack-dev-server": "^3.1.9"
   },
   "dependencies": {
-    "@types/socket.io-client": "^1.4.32",
     "bootstrap": "^4.2.1",
     "classnames": "^2.2.6",
+    "codecharacter-renderer": "^2.0.0",
     "react": "^16.5.2",
     "react-ace": "^6.2.0",
     "react-bootstrap": "^0.32.4",

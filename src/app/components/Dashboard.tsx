@@ -3,6 +3,7 @@ import Authentication from 'app/containers/Authentication';
 import CodeStatus from 'app/containers/code/CodeStatus';
 import Editor from 'app/containers/code/Editor';
 import GameLog from 'app/containers/GameLog';
+import Renderer from 'app/containers/Renderer';
 import SideBar from 'app/containers/SideBar';
 import SidePanel from 'app/containers/SidePanel';
 import SocketHandler from 'app/containers/SocketHandler';
@@ -24,6 +25,8 @@ export class Dashboard extends React.Component<
   public minEditorWidth = 350;
   public minRendererWidth = 50;
   public initialEditorRatio = 0.4;
+  public initialRendererHeight = 300;
+  public compilationData = '';
 
   constructor(props: DashboardInterfaces.Props) {
     super(props);
@@ -35,6 +38,7 @@ export class Dashboard extends React.Component<
       fixedLeftPaneWidth,
       editorWidthRatio: this.initialEditorRatio,
       isJoyRideActive: false,
+      rendererHeight: this.initialRendererHeight,
       splitPaneState: DashboardInterfaces.SplitPaneState.BOTH,
       windowWidth: window.innerWidth,
     };
@@ -80,6 +84,7 @@ export class Dashboard extends React.Component<
         editorWidth = 0;
       }
     }
+
     return (
       <div>
         {isLoggedIn && isJoyRideActive ? <Joyride toggleJoyRide={this.onToggleJoyRide} /> : null}
@@ -119,8 +124,9 @@ export class Dashboard extends React.Component<
           </Grid>
           <SplitPane
             split="horizontal"
-            defaultSize={300}
+            defaultSize={this.initialRendererHeight}
             resizerClassName={style.horizontal}
+            onChange={(size: number) => this.setState({ rendererHeight: size })}
             maxSize={500}
           >
             <Grid fluid={true}>
@@ -129,7 +135,9 @@ export class Dashboard extends React.Component<
                   changeSplitPaneState={this.changeSplitPaneState}
                   splitPaneState={this.state.splitPaneState}
                 />
-                <div id="renderer" />
+              </Row>
+              <Row style={{ paddingTop: 42 }} id="renderer">
+                <Renderer height={this.state.rendererHeight - 42} />
               </Row>
             </Grid>
             <GameLog />

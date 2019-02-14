@@ -16,6 +16,7 @@ export enum SplitPaneState {
 export interface State {
   editorWidthRatio: number;
   fixedLeftPaneWidth: number;
+  rendererHeight: number;
   splitPaneState: SplitPaneState;
   windowWidth: number;
   isJoyRideActive: boolean;
@@ -25,6 +26,9 @@ export interface StateProps {
   isLoggedIn: boolean;
   sidePanelOpen: boolean;
   isUserProfileModalOpen: boolean;
+  logFile: string;
+  player1DebugLog: string;
+  player2DebugLog: string;
 }
 
 export type Props = StateProps;

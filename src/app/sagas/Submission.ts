@@ -5,7 +5,6 @@ import { checkAuthentication } from 'app/sagas/utils';
 import { Request, RequestState } from 'app/types/code/Submission';
 import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
-import * as zlib from 'zlib';
 
 export const getSubmissionState = (state: RootState) => state.submission;
 
@@ -231,13 +230,11 @@ export function* handleExecuteSuccess(
 
     const logs = JSON.parse(action.payload.logs);
 
-    const debugLog1 = zlib.gunzipSync(Buffer.from(logs.player1Log));
-    const debugLog2 = zlib.gunzipSync(Buffer.from(logs.player2Log));
-    const gameLog = zlib.gunzipSync(Buffer.from(logs.gameLog));
+    const debugLog1 = logs.player1Log;
+    const debugLog2 = logs.player2Log;
+    const gameLog = logs.gameLog;
 
-    yield put(
-      GameLogActions.updateGameLog(debugLog1.toString(), debugLog2.toString(), gameLog.toString()),
-    );
+    yield put(GameLogActions.updateGameLog(debugLog1, debugLog2, gameLog));
     yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
   } catch (err) {
     throw err;

@@ -8,6 +8,9 @@ const mapStateToProps = (rootState: RootState) => {
   return {
     isLoggedIn: rootState.user.isLoggedIn,
     isUserProfileModalOpen: rootState.user.isUserProfileModalOpen,
+    logFile: rootState.gameLog.gameLog,
+    player1DebugLog: rootState.gameLog.player1DebugLog,
+    player2DebugLog: rootState.gameLog.player2DebugLog,
     sidePanelOpen: rootState.dashboard.sidePanelTab !== SidePanelTab.NONE,
   };
 };

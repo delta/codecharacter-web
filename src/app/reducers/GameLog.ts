@@ -2,7 +2,8 @@ import { GameLogActions } from 'app/actions';
 import * as GameLogInterfaces from 'app/types/GameLog';
 
 const gameLogStoreIntialState: GameLogInterfaces.GameLogStoreState = {
-  gameLog: '/* Game logs */',
+  displayDebugLog: '',
+  gameLog: '',
   player1DebugLog: '',
   player2DebugLog: '',
 };
@@ -23,6 +24,18 @@ export const gameLogReducer = (
     case GameLogActions.Type.RESET_GAME_LOG_STATE: {
       return {
         ...gameLogStoreIntialState,
+      }
+    }
+    case GameLogActions.Type.UPDATE_DISPLAY_DEBUG_LOG: {
+      return {
+        ...state,
+        displayDebugLog: `${state.displayDebugLog}${action.payload.log}`,
+      };
+    }
+    case GameLogActions.Type.CLEAR_DISPLAY_DEBUG_LOG: {
+      return {
+        ...state,
+        displayDebugLog: '',
       };
     }
     default:

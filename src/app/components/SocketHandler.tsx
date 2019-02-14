@@ -32,8 +32,11 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       this.props.sendSuccess('Connected to Server!');
     });
 
+    this.socket.on('Compile Info', (message: string) => {
+      this.props.sendInfo(message);
+    });
+
     this.socket.on('Compile Success', () => {
-      this.props.sendSuccess('Compile Successful!');
       this.props.sendCompileSuccess();
     });
 
@@ -42,7 +45,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       this.props.sendCompileError(message);
     });
 
-    this.socket.on('Match Complete', (result: string) => {
+    this.socket.on('Match Success', (result: string) => {
       this.props.sendExecuteSuccess(result);
     });
 

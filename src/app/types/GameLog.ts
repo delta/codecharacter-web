@@ -2,23 +2,20 @@ import { GameLogActions } from 'app/actions/GameLog';
 import { ActionType } from 'typesafe-actions';
 
 export interface StateProps {
-  gameLog: string;
-  player1DebugLog: string;
-  player2DebugLog: string;
+  debugLog: string;
 }
 
-export interface DispatchProps {
-  updateGameLog: (player1DebugLog: string, player2DebugLog: string, gameLog: string) => void;
-}
-
-export type Props = StateProps & DispatchProps;
+export type Props = StateProps;
 
 const actions = {
+  clearDisplayDebugLog: GameLogActions.clearDisplayDebugLog,
   resetGameLog: GameLogActions.resetGameLogState,
+  updateDisplayDebugLog: GameLogActions.updateDisplayDebugLog,
   updateGameLog: GameLogActions.updateGameLog,
 };
 
 export interface GameLogStoreState {
+  displayDebugLog: string;
   gameLog: string;
   player1DebugLog: string;
   player2DebugLog: string;
