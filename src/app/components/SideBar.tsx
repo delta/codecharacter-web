@@ -98,7 +98,10 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           <Button
             className={classnames('py-3 px-auto', styles.customBtn)}
             id="logout_button"
-            onClick={() => logout()}
+            onClick={() => {
+              logout();
+              this.resetCompleteState();
+            }}
           >
             <FontAwesomeIcon icon={faSignOutAlt} />
           </Button>
@@ -113,6 +116,27 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
       </div>
     );
   }
+
+  private resetCompleteState = (): void => {
+    const {
+      resetCodeState,
+      resetDashboardState,
+      resetEditorState,
+      resetGameLogState,
+      resetLeaderboardState,
+      resetNotificationState,
+      resetSubmissionState,
+      resetUserState,
+    } = this.props;
+    resetCodeState();
+    resetDashboardState();
+    resetEditorState();
+    resetGameLogState();
+    resetLeaderboardState();
+    resetNotificationState();
+    resetSubmissionState();
+    resetUserState();
+  };
 }
 
 export default Sidebar;
