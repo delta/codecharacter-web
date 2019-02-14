@@ -41,6 +41,11 @@ export const leaderboardReducer = (
         ...state,
         isUserProfileModalOpen: action.payload.isUserProfileModalOpen,
       };
+    case LeaderboardActions.Type.RESET_LEADERBOARD_STATE: {
+      return {
+        ...leaderboardInitialState,
+      };
+    }
     default:
       return state;
   }

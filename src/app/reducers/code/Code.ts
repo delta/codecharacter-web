@@ -40,6 +40,11 @@ export const codeReducer = (
         currentCommitHash: action.payload.commitHash,
       };
     }
+    case CodeActions.Type.RESET_CODE_STATE: {
+      return {
+        ...codeStoreInitialState,
+      };
+    }
     default:
       return state;
   }

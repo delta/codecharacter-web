@@ -20,6 +20,11 @@ export const gameLogReducer = (
         player2DebugLog: action.payload.player2DebugLog,
       };
     }
+    case GameLogActions.Type.RESET_GAME_LOG_STATE: {
+      return {
+        ...gameLogStoreIntialState,
+      };
+    }
     default:
       return state;
   }

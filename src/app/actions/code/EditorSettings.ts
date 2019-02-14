@@ -6,6 +6,7 @@ export namespace EditorSettingsActions {
     CHANGE_THEME = 'CHANGE_THEME',
     TOGGLE_BASIC_AUTO_COMPLETION = 'TOGGLE_BASIC_AUTO_COMPLETION',
     TOGGLE_SNIPPETS = 'TOGGLE_SNIPPETS',
+    RESET_EDITOR_STATE = 'RESET_EDITOR_STATE',
   }
 
   export const changeFontSize = (fontSize: number) =>
@@ -27,4 +28,6 @@ export namespace EditorSettingsActions {
     action(Type.TOGGLE_SNIPPETS, {
       enableSnippets,
     });
+
+  export const resetEditorState = () => action(Type.RESET_EDITOR_STATE);
 }

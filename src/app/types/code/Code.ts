@@ -8,6 +8,7 @@ export interface Commit {
 }
 
 const actions = {
+  resetCodeState: CodeActions.resetCodeState,
   setCurrentCommitHash: CodeActions.setCurrentCommitHash,
   updateCode: CodeActions.updateCode,
   updateCommitLog: CodeActions.updateCommitLog,

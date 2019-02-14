@@ -13,6 +13,7 @@ export namespace UserActions {
     UPDATE_USER_DETAILS = 'UPDATE_USER_DETAILS',
     CHECK_USERNAME_EXISTS = 'CHECK_USERNAME_EXISTS',
     TOGGLE_USER_PROFILE_MODAL = 'TOGGLE_USER_PROFILE_MODAL',
+    RESET_USER_STATE = 'RESET_USER_STATE',
   }
 
   export const login = (username: string, password: string) =>
@@ -55,4 +56,6 @@ export namespace UserActions {
 
   export const toggleUserProfileModal = (isUserProfileModalOpen: boolean) =>
     action(Type.TOGGLE_USER_PROFILE_MODAL, { isUserProfileModalOpen });
+
+  export const resetUserState = () => action(Type.RESET_USER_STATE);
 }

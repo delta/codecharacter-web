@@ -3,6 +3,7 @@ import { SidePanelTab } from 'app/reducers/Dashboard';
 import { ActionType } from 'typesafe-actions';
 
 const actions = {
+  resetDashboardState: DashboardActions.resetDashboardState,
   setSidePanelTab: DashboardActions.setSidePanelTab,
 };
 

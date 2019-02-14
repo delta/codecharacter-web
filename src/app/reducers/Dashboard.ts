@@ -23,6 +23,11 @@ export const dashboardReducer = (
         ...state,
         sidePanelTab: action.payload.sidePanelTab,
       };
+    case DashboardActions.Type.RESET_DASHBOARD_STATE: {
+      return {
+        ...dashboardStoreIntialState,
+      };
+    }
     default:
       return state;
   }

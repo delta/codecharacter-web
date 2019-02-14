@@ -30,6 +30,10 @@ export const submissionReducer = (
         mapId: action.payload.mapId,
       };
     }
+    case SubmissionActions.Type.RESET_SUBMISSION_STATE:
+      return {
+        ...submissionStoreState,
+      };
     default:
       return state;
   }

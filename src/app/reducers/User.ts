@@ -53,6 +53,11 @@ export const userReducer = (
         isUserProfileModalOpen: action.payload.isUserProfileModalOpen,
       };
     }
+    case UserActions.Type.RESET_USER_STATE: {
+      return {
+        ...userStoreIntialState,
+      };
+    }
     default:
       return state;
   }

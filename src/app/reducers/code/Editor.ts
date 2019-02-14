@@ -47,6 +47,10 @@ export const editorReducer = (
           enableSnippets: action.payload.enableSnippets,
         },
       };
+    case EditorSettingsActions.Type.RESET_EDITOR_STATE:
+      return {
+        ...editorStoreIntialState,
+      };
     default:
       return state;
   }

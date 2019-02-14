@@ -9,6 +9,7 @@ export namespace NotificationActions {
     ADD = 'ADD',
     DELETE_NOTIFICATION = 'DELETE_NOTIFICATION',
     DELETE_NOTIFICATION_TYPE = 'DELETE_NOTIFICATION_TYPE',
+    RESET_NOTIFICATION_STATE = 'RESET_NOTIFICATION_STATE',
   }
 
   export const info = (message: string) =>
@@ -42,4 +43,6 @@ export namespace NotificationActions {
     action(Type.DELETE_NOTIFICATION, {
       id,
     });
+
+  export const resetNotificationState = () => action(Type.RESET_NOTIFICATION_STATE);
 }

@@ -7,6 +7,7 @@ export namespace LeaderboardActions {
     UPDATE_ERROR = 'UPDATE_ERROR',
     UPDATE_LEADERBOARD = 'UPDATE_LEADERBOARD',
     TOGGLE_USER_PROFILE_MODAL = 'TOGGLE_USER_PROFILE_MODAL',
+    RESET_LEADERBOARD_STATE = 'RESET_LEADERBOARD_STATE',
   }
 
   export enum updateType {
@@ -46,4 +47,6 @@ export namespace LeaderboardActions {
       isUserProfileModalOpen,
     });
   };
+
+  export const resetLeaderboardState = () => action(Type.RESET_LEADERBOARD_STATE);
 }

@@ -4,6 +4,7 @@ import { ActionType } from 'typesafe-actions';
 const actions = {
   changeCurrentRequest: SubmissionActions.changeCurrentRequest,
   changeState: SubmissionActions.changeState,
+  resetSubmissionState: SubmissionActions.resetSubmissionState,
   updateMapId: SubmissionActions.updateMapId,
 };
 

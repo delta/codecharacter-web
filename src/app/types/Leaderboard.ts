@@ -49,6 +49,7 @@ export type ElementProps = ElementOwnProps;
 
 const actions = {
   getLeaderboard: LeaderboardActions.getLeaderboard,
+  resetLeaderboardState: LeaderboardActions.resetLeaderboardState,
   toggleUserProfileModal: LeaderboardActions.toggleUserProfileModal,
   updateError: LeaderboardActions.updateError,
   updateLeaderboard: LeaderboardActions.updateLeaderboard,

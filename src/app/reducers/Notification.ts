@@ -141,7 +141,11 @@ export const notificationReducer = (
         ),
       };
     }
-
+    case NotificationActions.Type.RESET_NOTIFICATION_STATE: {
+      return {
+        ...notificationInitialState,
+      };
+    }
     default:
       return state;
   }

@@ -14,6 +14,7 @@ export namespace SubmissionActions {
     LOCK_CODE = 'LOCK_CODE',
     PREVIOUS_COMMIT_MATCH = 'PREVIOUS_COMMIT_MATCH',
     SELF_MATCH = 'SELF_MATCH',
+    RESET_SUBMISSION_STATE = 'RESET_SUBMISSION_STATE',
   }
 
   export const changeState = (state: SubmissionInterfaces.RequestState) =>
@@ -46,4 +47,6 @@ export namespace SubmissionActions {
     action(Type.PREVIOUS_COMMIT_MATCH, { mapId, commitHash });
 
   export const selfMatch = (mapId: number) => action(Type.SELF_MATCH, { mapId });
+
+  export const resetSubmissionState = () => action(Type.RESET_SUBMISSION_STATE);
 }

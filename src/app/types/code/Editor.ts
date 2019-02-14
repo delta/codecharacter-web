@@ -5,6 +5,7 @@ import { ActionType } from 'typesafe-actions';
 const actions = {
   changeFontSize: EditorSettingsActions.changeFontSize,
   changeTheme: EditorSettingsActions.changeTheme,
+  resetEditorState: EditorSettingsActions.resetEditorState,
   toggleBasicAutoCompletion: EditorSettingsActions.toggleBasicAutoCompletion,
   toggleSnippets: EditorSettingsActions.toggleSnippets,
   updateCode: CodeActions.updateCode,

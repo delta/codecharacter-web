@@ -7,6 +7,7 @@ const actions = {
   deleteNotificationType: NotificationActions.deleteNotificationType,
   error: NotificationActions.error,
   info: NotificationActions.info,
+  resetNotificationState: NotificationActions.resetNotificationState,
   success: NotificationActions.success,
 };
 

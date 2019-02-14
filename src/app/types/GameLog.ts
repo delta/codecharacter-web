@@ -14,6 +14,7 @@ export interface DispatchProps {
 export type Props = StateProps & DispatchProps;
 
 const actions = {
+  resetGameLog: GameLogActions.resetGameLogState,
   updateGameLog: GameLogActions.updateGameLog,
 };
 

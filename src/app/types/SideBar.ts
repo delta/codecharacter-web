@@ -12,6 +12,14 @@ export interface DispatchProps {
   closeSidePanelTab: () => void;
   logout: () => void;
   openSidePanelTab: (type: SidePanelTab) => void;
+  resetCodeState: () => void;
+  resetEditorState: () => void;
+  resetSubmissionState: () => void;
+  resetDashboardState: () => void;
+  resetGameLogState: () => void;
+  resetLeaderboardState: () => void;
+  resetNotificationState: () => void;
+  resetUserState: () => void;
   toggleUserProfileModal: (isUserProfileModalOpen: boolean) => void;
 }
 
