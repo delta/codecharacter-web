@@ -32,6 +32,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       password: '',
       pragyanId: '',
       repeatPassword: '',
+      type: RegisterInterfaces.RegisterType.Professional,
       username: '',
     };
   }
@@ -47,6 +48,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       isFormSubmitted,
       isStudent,
       collegeName,
+      type,
     } = this.state;
     const { handleSelectPanel, checkUsernameExists, errorMessage, updateErrorMessage } = this.props;
     return (
@@ -227,7 +229,15 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   <input
                     type="checkbox"
                     id="switch"
-                    onChange={() => this.setState({ isStudent: !isStudent })}
+                    onChange={() =>
+                      this.setState({
+                        isStudent: !isStudent,
+                        type:
+                          type === RegisterInterfaces.RegisterType.Student
+                            ? RegisterInterfaces.RegisterType.Professional
+                            : RegisterInterfaces.RegisterType.Student,
+                      })
+                    }
                   />
                   <label htmlFor="switch">Toggle</label>
                 </span>
@@ -350,6 +360,8 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       username,
       pragyanId,
       isCaptchaValidated,
+      type,
+      collegeName: college,
     } = this.state;
     const form = this.registerRef.current;
     event.preventDefault();
@@ -357,12 +369,14 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     if (form) {
       if (form.checkValidity() && isCaptchaValidated) {
         register({
+          college,
           country,
           email,
           fullName,
           password,
           pragyanId,
           repeatPassword,
+          type,
           username,
         });
         handleSelectPanel(AuthType.LOGIN);

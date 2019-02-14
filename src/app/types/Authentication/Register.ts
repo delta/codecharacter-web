@@ -1,6 +1,10 @@
 import { AuthType } from 'app/types/Authentication';
 import * as UserInterfaces from 'app/types/User';
 
+export enum RegisterType {
+  Student = 'Student',
+  Professional = 'Professional',
+}
 export interface State {
   collegeName?: string;
   isCaptchaValidated: boolean;
@@ -13,6 +17,7 @@ export interface State {
   country: string;
   fullName: string;
   pragyanId?: string;
+  type: RegisterType;
 }
 export interface StateProps {
   errorMessage: string;

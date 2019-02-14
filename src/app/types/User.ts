@@ -1,4 +1,5 @@
 import { UserActions } from 'app/actions';
+import * as RegisterInterfaces from 'app/types/Authentication/Register';
 import { ActionType } from 'typesafe-actions';
 
 export interface Register {
@@ -6,9 +7,11 @@ export interface Register {
   password: string;
   repeatPassword: string;
   email: string;
-  country?: string;
+  country: string;
   fullName: string;
   pragyanId?: string;
+  type: RegisterInterfaces.RegisterType;
+  college?: string;
 }
 
 export interface EditUserDetails {

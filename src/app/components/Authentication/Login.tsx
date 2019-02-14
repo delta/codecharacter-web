@@ -46,7 +46,17 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                       fontSize: '12px',
                     }}
                   >
-                    You can use your Pragyan account credentials if you have one.
+                    You can use your{' '}
+                    <a
+                      target="blank"
+                      href="https://pragyan.org"
+                      style={{
+                        textDecoration: 'none',
+                      }}
+                    >
+                      Pragyan
+                    </a>{' '}
+                    account credentials to login.
                   </div>
                   <div className="input-group">
                     <div className="input-group-prepend">
