@@ -118,24 +118,8 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
   }
 
   private resetCompleteState = (): void => {
-    const {
-      resetCodeState,
-      resetDashboardState,
-      resetEditorState,
-      resetGameLogState,
-      resetLeaderboardState,
-      resetNotificationState,
-      resetSubmissionState,
-      resetUserState,
-    } = this.props;
-    resetCodeState();
-    resetDashboardState();
-    resetEditorState();
-    resetGameLogState();
-    resetLeaderboardState();
-    resetNotificationState();
-    resetSubmissionState();
-    resetUserState();
+    const { resetAppState } = this.props;
+    resetAppState();
   };
 }
 

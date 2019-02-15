@@ -1,4 +1,13 @@
-import { UserActions } from 'app/actions';
+import {
+  CodeActions,
+  DashboardActions,
+  EditorSettingsActions,
+  GameLogActions,
+  LeaderboardActions,
+  NotificationActions,
+  SubmissionActions,
+  UserActions,
+} from 'app/actions';
 import * as UserFetch from 'app/apiFetch/User';
 import { checkAuthentication } from 'app/sagas/utils';
 import { resType } from 'app/types/sagas';
@@ -161,6 +170,21 @@ export function* checkUsernameExists(action: ActionType<typeof UserActions.check
   }
 }
 
+export function* resetAppState(action: ActionType<typeof UserActions.resetAppState>) {
+  try {
+    yield put(CodeActions.resetCodeState());
+    yield put(EditorSettingsActions.resetEditorState());
+    yield put(SubmissionActions.resetSubmissionState());
+    yield put(DashboardActions.resetDashboardState());
+    yield put(GameLogActions.resetGameLogState());
+    yield put(LeaderboardActions.resetLeaderboardState());
+    yield put(NotificationActions.resetNotificationState());
+    yield put(UserActions.resetUserState());
+  } catch (err) {
+    throw err;
+  }
+}
+
 export function* userSagas() {
   yield all([
     takeEvery(UserActions.Type.REGISTER, register),
@@ -170,5 +194,6 @@ export function* userSagas() {
     takeEvery(UserActions.Type.LOGOUT, logout),
     takeEvery(UserActions.Type.CHECK_USERNAME_EXISTS, checkUsernameExists),
     takeEvery(UserActions.Type.GET_USER_DETAILS, getUserDetails),
+    takeEvery(UserActions.Type.RESET_APP_STATE, resetAppState),
   ]);
 }
