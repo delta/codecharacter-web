@@ -1,4 +1,4 @@
-import { GameLogActions, SubmissionActions } from 'app/actions';
+import { GameLogActions, NotificationActions, SubmissionActions } from 'app/actions';
 import * as SubmissionFetch from 'app/apiFetch/Submission';
 import { RootState } from 'app/reducers';
 import { checkAuthentication } from 'app/sagas/utils';
@@ -15,6 +15,7 @@ export function* lockCode(action: ActionType<typeof SubmissionActions.lockCode>)
 
     if (submissionState.request !== Request.NONE) return;
 
+    yield put(NotificationActions.info('Code is being locked...'));
     yield put(
       SubmissionActions.changeStateCurrentRequest(
         RequestState.COMPILE_CURRENT_CODE,
@@ -171,6 +172,7 @@ export function* handleCompileSuccess(
           case Request.LOCK_CODE: {
             const res = yield call(SubmissionFetch.lockCode);
             yield checkAuthentication(res);
+            yield put(NotificationActions.success('Code Locked'));
             yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
             break;
           }

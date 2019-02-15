@@ -9,6 +9,7 @@ export interface DispatchProps {
   saveCode: () => void;
   commit: (commitMessage: string) => void;
   getCommitLog: () => void;
+  lockCode: () => void;
 }
 
 export type Props = {

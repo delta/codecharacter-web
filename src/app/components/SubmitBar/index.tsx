@@ -3,6 +3,7 @@ import {
   faChevronRight,
   faCloud,
   faCodeBranch,
+  faLock,
   faPlay,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -85,6 +86,16 @@ export class SubmitBar extends React.Component<
               <FontAwesomeIcon icon={faChevronRight} />
             </span>
           ) : null}
+        </button>
+        <button
+          className={classnames(styles.customBtn)}
+          title="Lock Code"
+          id="lock_button"
+          onClick={this.props.lockCode}
+        >
+          <span className={classnames(styles.icon)} style={{ padding: 0, margin: 0, border: 0 }}>
+            <FontAwesomeIcon icon={faLock} />
+          </span>
         </button>
         <button className={classnames(styles.customBtn)} id="run_button">
           <span className={classnames(styles.icon)}>
