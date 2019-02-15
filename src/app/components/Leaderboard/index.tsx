@@ -39,14 +39,7 @@ export class Leaderboard extends React.Component<
   }
 
   public render() {
-    const { players, loading, timerData, getTimer } = this.props;
-    // export interface Player {
-    //   rank: number;
-    //   country: string;
-    //   username: string;
-    //   rating: number;
-    //   fullName: string;
-    // }
+    const { players, loading, timerData, getTimer, setTimer } = this.props;
 
     return (
       <Grid fluid={true} className={classnames(styles.Leaderboard)}>
@@ -108,7 +101,7 @@ export class Leaderboard extends React.Component<
               }}
             >
               {timerData > 0 ? (
-                <Timer timerData={timerData} getTimer={getTimer} />
+                <Timer timerData={timerData} getTimer={getTimer} setTimer={setTimer} />
               ) : (
                 `Ready to initiate Match`
               )}

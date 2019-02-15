@@ -35,6 +35,7 @@ export interface DispatchProps {
   clearLeaderboard: () => void;
   getLeaderboard: (pattern: string, start: number) => void;
   getTimer: () => void;
+  setTimer: (timerData: number) => void;
 }
 
 export type Props = StateProps & DispatchProps;

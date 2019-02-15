@@ -20,6 +20,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     getLeaderboard: (pattern: string, start: number) =>
       dispatch(LeaderboardActions.getLeaderboard(pattern, start)),
     getTimer: () => dispatch(LeaderboardActions.getTimer()),
+    setTimer: (timerData: number) => dispatch(LeaderboardActions.setTimer(timerData)),
   };
 };
 
