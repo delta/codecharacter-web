@@ -25,6 +25,7 @@ export interface StateProps {
   fontSize: number;
   enableBasicAutoCompletion: boolean;
   enableSnippets: boolean;
+  isLoggedIn: boolean;
   viewOnly: boolean;
 }
 

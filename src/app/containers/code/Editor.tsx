@@ -10,6 +10,7 @@ const mapStateToProps = (rootState: RootState) => {
     enableBasicAutoCompletion: rootState.editor.editorOptions.enableBasicAutoCompletion,
     enableSnippets: rootState.editor.editorOptions.enableSnippets,
     fontSize: rootState.editor.editorOptions.fontSize,
+    isLoggedIn: rootState.user.isLoggedIn,
     theme: rootState.editor.editorOptions.theme,
     viewOnly: rootState.code.currentCommitHash !== 'latest',
   };
