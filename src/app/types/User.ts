@@ -3,6 +3,7 @@ import * as RegisterInterfaces from 'app/types/Authentication/Register';
 import { ActionType } from 'typesafe-actions';
 
 export interface Register {
+  avatar?: string;
   username: string;
   password: string;
   repeatPassword: string;

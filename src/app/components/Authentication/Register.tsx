@@ -22,6 +22,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     super(props);
 
     this.state = {
+      avatar: 'BABOON',
       collegeName: '',
       country: 'IN',
       email: '',
@@ -50,6 +51,9 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       collegeName,
       type,
     } = this.state;
+
+    const avatars = Object.keys(RegisterInterfaces.Avatar);
+
     const { handleSelectPanel, checkUsernameExists, errorMessage, updateErrorMessage } = this.props;
     return (
       <div>
@@ -145,6 +149,60 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   </div>
                 </div>
               </div>
+              <div className="text-center text-dark">
+                Are you a student ?{' '}
+                <span>
+                  <input
+                    type="checkbox"
+                    id="switch"
+                    onChange={() =>
+                      this.setState({
+                        isStudent: !isStudent,
+                        type:
+                          type === RegisterInterfaces.RegisterType.Student
+                            ? RegisterInterfaces.RegisterType.Professional
+                            : RegisterInterfaces.RegisterType.Student,
+                      })
+                    }
+                  />
+                  <label htmlFor="switch">Toggle</label>
+                </span>
+              </div>
+              {isStudent ? (
+                <div className="form-row">
+                  <div className="col-12" />
+                  <div className="col-12 mb-3">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text" id="inputGroupPrepend">
+                          <FontAwesomeIcon icon={faUser} />
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="collegeNameValidation"
+                        placeholder="College Name"
+                        aria-describedby="inputGroupPrepend"
+                        maxLength={50}
+                        minLength={5}
+                        value={collegeName}
+                        onChange={(e) => {
+                          checkUsernameExists(e.target.value);
+                          this.setState({
+                            collegeName: e.target.value,
+                          });
+                        }}
+                        required
+                      />
+                      <div className="invalid-feedback">
+                        Username must have minimum 5 characters.
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-2" />
+                </div>
+              ) : null}
             </div>
             <div className="col-sm-6 col-md-6 col-lg-6">
               <div className="form-row">
@@ -221,62 +279,35 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-sm-12 col-md-12 col-lg-12">
-              <div className="text-center text-dark">
-                Are you a student ?{' '}
-                <span>
-                  <input
-                    type="checkbox"
-                    id="switch"
-                    onChange={() =>
-                      this.setState({
-                        isStudent: !isStudent,
-                        type:
-                          type === RegisterInterfaces.RegisterType.Student
-                            ? RegisterInterfaces.RegisterType.Professional
-                            : RegisterInterfaces.RegisterType.Student,
-                      })
-                    }
-                  />
-                  <label htmlFor="switch">Toggle</label>
-                </span>
-              </div>
-              {isStudent ? (
-                <div className="form-row">
-                  <div className="col-2" />
-                  <div className="col-8 mb-3">
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroupPrepend">
-                          <FontAwesomeIcon icon={faUser} />
-                        </span>
-                      </div>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="collegeNameValidation"
-                        placeholder="College Name"
-                        aria-describedby="inputGroupPrepend"
-                        maxLength={50}
-                        minLength={5}
-                        value={collegeName}
-                        onChange={(e) => {
-                          checkUsernameExists(e.target.value);
+              <div className="form-row" style={{ padding: '10px 0px', fontFamily: 'lato' }}>
+                <div className="text-center text-dark">Choose your spirit animal</div>
+                <div className={classnames(styles['avatar-select-container'])}>
+                  <section className={classnames(styles['avatar-section'])}>
+                    {avatars.map((avatar: string) => (
+                      <div
+                        className={
+                          avatar === this.state.avatar
+                            ? classnames(styles['avatar-img-active'])
+                            : classnames(styles['avatar-img'])
+                        }
+                        onClick={() => {
                           this.setState({
-                            collegeName: e.target.value,
+                            avatar,
                           });
                         }}
-                        required
-                      />
-                      <div className="invalid-feedback">
-                        Username must have minimum 5 characters.
+                        title={avatar}
+                      >
+                        {
+                          // @ts-ignore
+                          <img width={50} height={50} src={RegisterInterfaces.Avatar[avatar]} />
+                        }
                       </div>
-                    </div>
-                  </div>
-                  <div className="col-2" />
+                    ))}
+                  </section>
                 </div>
-              ) : null}
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-12 col-lg-12">
               <div className="form-row d-flex justify-content-center my-1">
                 <div className="d-flex justify-content-center input-group">
                   <ReCAPTCHA
@@ -352,6 +383,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   private handleRegister = (event: React.FormEvent<HTMLFormElement>) => {
     const { register, handleSelectPanel } = this.props;
     const {
+      avatar,
       repeatPassword,
       country,
       email,
@@ -369,6 +401,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     if (form) {
       if (form.checkValidity() && isCaptchaValidated) {
         register({
+          avatar,
           college,
           country,
           email,
