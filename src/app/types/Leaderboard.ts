@@ -55,6 +55,18 @@ export interface ElementOwnProps {
 
 export type ElementProps = ElementOwnProps;
 
+export interface TimerProps {
+  timerData: number;
+  getTimer: () => void;
+  setTimer: (timerData: number) => void;
+}
+
+export interface TimerState {
+  totalSeconds: number;
+  seconds: number;
+  minutes: number;
+}
+
 const actions = {
   getLeaderboard: LeaderboardActions.getLeaderboard,
   resetLeaderboardState: LeaderboardActions.resetLeaderboardState,

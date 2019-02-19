@@ -1,9 +1,9 @@
+import { TimerProps, TimerState } from 'app/types/Leaderboard';
 import * as React from 'react';
-
-export class Timer extends React.Component<Props, State> {
+export class Timer extends React.Component<TimerProps, TimerState> {
   public secondsRemaining = 0;
   public intervalHandle = 0;
-  constructor(props: Props) {
+  constructor(props: TimerProps) {
     super(props);
 
     this.state = {
@@ -11,6 +11,12 @@ export class Timer extends React.Component<Props, State> {
       seconds: 0,
       totalSeconds: this.props.timerData,
     };
+  }
+
+  public componentWillUnmount() {
+    if (this.intervalHandle !== 0) {
+      clearInterval(this.intervalHandle);
+    }
   }
 
   public render() {
@@ -40,16 +46,4 @@ export class Timer extends React.Component<Props, State> {
       this.props.getTimer();
     }
   };
-}
-
-export interface Props {
-  timerData: number;
-  getTimer: () => void;
-  setTimer: (timerData: number) => void;
-}
-
-export interface State {
-  totalSeconds: number;
-  seconds: number;
-  minutes: number;
 }

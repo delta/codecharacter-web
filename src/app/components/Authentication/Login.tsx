@@ -179,7 +179,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     const form = this.loginRef.current;
     event.preventDefault();
     if (form) {
-      if (form.checkValidity() && !isCaptchaValidated) {
+      if (form.checkValidity() && isCaptchaValidated) {
         login(username, password);
       }
       form.classList.add('was-validated');
