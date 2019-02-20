@@ -7,6 +7,7 @@ exports[`Leaderboard Container Should render Leaderboard 1`] = `
   getTimer={[Function]}
   loading={false}
   players={Array []}
+  runMatch={[Function]}
   setTimer={[Function]}
   timerData={0}
 />

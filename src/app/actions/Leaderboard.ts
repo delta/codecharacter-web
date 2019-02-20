@@ -62,7 +62,7 @@ export namespace LeaderboardActions {
     });
   };
 
-  export const runMatch = (opponentId: string) => {
+  export const runMatch = (opponentId: number) => {
     return action(Type.START_MATCH, {
       opponentId,
     });

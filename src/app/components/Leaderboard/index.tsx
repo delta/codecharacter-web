@@ -39,7 +39,7 @@ export class Leaderboard extends React.Component<
   }
 
   public render() {
-    const { players, loading, timerData, getTimer, setTimer } = this.props;
+    const { players, loading, timerData, getTimer, setTimer, runMatch } = this.props;
 
     return (
       <Grid fluid={true} className={classnames(styles.Leaderboard)}>
@@ -114,7 +114,8 @@ export class Leaderboard extends React.Component<
                     rank={player.rank}
                     index={index}
                     key={index}
-                    isPlayAgainstDisabled={timerData > 0 ? false : true}
+                    runMatch={runMatch}
+                    isPlayAgainstDisabled={timerData > 0 ? true : false}
                   />
                 ) : (
                   <div style={{ padding: '0px 30px' }}>Nothing to show</div>

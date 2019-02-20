@@ -2,6 +2,7 @@ import { LeaderboardActions } from 'app/actions';
 import { ActionType } from 'typesafe-actions';
 
 export interface Player {
+  id: number;
   rank: number;
   country: string;
   username: string;
@@ -22,7 +23,7 @@ export interface Search {
 }
 
 export interface RunMatch {
-  opponentId: string;
+  opponentId: number;
 }
 
 export interface StateProps {
@@ -35,6 +36,7 @@ export interface DispatchProps {
   clearLeaderboard: () => void;
   getLeaderboard: (pattern: string, start: number) => void;
   getTimer: () => void;
+  runMatch: (opponentId: number) => void;
   setTimer: (timerData: number) => void;
 }
 
@@ -51,6 +53,7 @@ export interface ElementOwnProps {
   rank: number;
   index: number;
   isPlayAgainstDisabled: boolean;
+  runMatch: (opponentId: number) => void;
 }
 
 export type ElementProps = ElementOwnProps;

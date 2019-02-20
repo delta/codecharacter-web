@@ -14,7 +14,7 @@ const colors = ['#FFB900', '#69797E', '#847545', '#038387'];
 
 export class LeaderboardElement extends React.Component<LeaderboardInterfaces.ElementProps, {}> {
   public render() {
-    const { player, rank, index, isPlayAgainstDisabled } = this.props;
+    const { player, rank, index, isPlayAgainstDisabled, runMatch } = this.props;
     const fetchSize = LeaderboardActions.FETCH_SIZE;
     return (
       <Col
@@ -57,6 +57,7 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
               style={{ fontSize: '0.55em' }}
               bsSize="xsmall"
               disabled={isPlayAgainstDisabled}
+              onClick={() => runMatch(player.id)}
             >
               FIGHT
             </Button>
