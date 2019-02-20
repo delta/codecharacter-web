@@ -1,6 +1,6 @@
 .dropdown {
   position: absolute;
-  left: 6em;
+  left: 9em;
   border-radius: 4px;
   color: #dddddd;
   background: #222;
@@ -48,10 +48,9 @@
 .dropdown-submenu {
   top: 0;
   min-width: 100px;
-  color: #ddd;
   left: 100%;
-  border-radius: 4px;
-  background: #2F3129;
+  background: #686868;
+  color: black !important;
   font-size: 14px;
   z-index: 99;
 }

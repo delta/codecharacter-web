@@ -21,6 +21,7 @@ export function configureStore(initialState?: object) {
 
   const persistConfig = {
     storage,
+    blacklist: ['gameLog', 'submission'],
     key: 'root',
   };
 

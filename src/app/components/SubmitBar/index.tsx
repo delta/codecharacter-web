@@ -25,13 +25,13 @@ export class SubmitBar extends React.Component<
     this.state = {
       commitMessage: '',
       isCommitMessageBoxOpen: false,
-      isDropdownOpen: false,
+      isRunOptionsOpen: false,
     };
   }
 
   public render() {
     const { saveCode, splitPaneState, changeSplitPaneState, maps, loadMaps } = this.props;
-    const { commitMessage, isCommitMessageBoxOpen, isDropdownOpen } = this.state;
+    const { commitMessage, isCommitMessageBoxOpen, isRunOptionsOpen } = this.state;
     return (
       <div
         className={classnames(styles.SubmitBar, {
@@ -100,11 +100,12 @@ export class SubmitBar extends React.Component<
             <FontAwesomeIcon icon={faLock} />
           </span>
         </button>
-        <button className={classnames(styles.customBtn)}
+        <button
+          className={classnames(styles.customBtn)}
           id="run_button"
           onClick={() => {
             this.setState({
-              isDropdownOpen: !isDropdownOpen,
+              isRunOptionsOpen: !isRunOptionsOpen,
             });
           }}
         >
@@ -135,7 +136,7 @@ export class SubmitBar extends React.Component<
           handleCommit={this.handleCommit}
           updateCommitMessage={this.updateCommitMessage}
         />
-        {isDropdownOpen ? (
+        {isRunOptionsOpen ? (
           <RunOptions loadMaps={loadMaps} startMatch={this.startMatch} maps={maps} />
         ) : null}
       </div>

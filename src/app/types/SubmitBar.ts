@@ -5,7 +5,7 @@ import { SplitPaneState } from 'app/types/Dashboard';
 export interface State {
   commitMessage: string;
   isCommitMessageBoxOpen: boolean;
-  isDropdownOpen: boolean;
+  isRunOptionsOpen: boolean;
 }
 
 export interface StateProps {
@@ -22,7 +22,7 @@ export interface DispatchProps {
 }
 
 export interface RunOptionsOwnState {
-  isMapToggle: boolean;
+  isMapOptionsOpen: boolean;
   currentIndex: number;
 }
 

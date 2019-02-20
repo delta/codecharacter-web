@@ -24,7 +24,7 @@ export const gameLogReducer = (
     case GameLogActions.Type.RESET_GAME_LOG_STATE: {
       return {
         ...gameLogStoreIntialState,
-      }
+      };
     }
     case GameLogActions.Type.UPDATE_DISPLAY_DEBUG_LOG: {
       return {

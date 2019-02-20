@@ -7,59 +7,76 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
   private socket: SocketIOClient.Socket;
   constructor(props: SocketHandlerInterfaces.Props) {
     super(props);
-    this.socket = io.connect(API_BASE_URL, {
-      reconnection: true,
-      reconnectionDelay: 1000,
-    });
+    this.socket = io.connect(
+      API_BASE_URL,
+      {
+        reconnection: true,
+        reconnectionDelay: 1000,
+      },
+    );
   }
 
   public componentDidMount() {
+    const {
+      sendCompileError,
+      sendCompileSuccess,
+      sendExecuteError,
+      sendExecuteSuccess,
+      sendInfo,
+      sendSuccess,
+      sendError
+    } = this.props;
+
     this.socket.on('Info', (message: string) => {
-      this.props.sendInfo(message);
+      sendInfo(message);
     });
 
     this.socket.on('Success', (message: string) => {
-      this.props.sendSuccess(message);
+      sendSuccess(message);
     });
 
     this.socket.on('Error', (message: string) => {
-      this.props.sendError(message);
+      sendError(message);
     });
 
     this.socket.on('connect', () => {
-      this.props.sendSuccess('Connected to Server!');
+      sendSuccess('Connected to Server!');
     });
 
     this.socket.on('Compile Info', (message: string) => {
-      this.props.sendInfo(message);
+      sendInfo(message);
     });
 
     this.socket.on('Compile Success', () => {
-      this.props.sendCompileSuccess();
+      sendCompileSuccess();
     });
 
     this.socket.on('Compile Error', (message: string) => {
-      this.props.sendError(`Compile Error: ${message}`);
-      this.props.sendCompileError('');
+      sendError(`Compile Error: ${message}`);
+      sendCompileError('');
     });
 
     this.socket.on('Compile Error Log', (log: string) => {
-      this.props.sendError('Compile Error');
-      this.props.sendCompileError(log);
+      sendError('Compile Error');
+      sendCompileError(log);
+    });
+
+    this.socket.on('Match Info', (message: string) => {
+      sendInfo(message);
     });
 
     this.socket.on('Match Error', (message: string) => {
-      this.props.sendError('Match Error!');
-      this.props.sendExecuteError(message);
+      sendError('Match Error!');
+      sendExecuteError(message);
     });
 
-    this.socket.on('Match Success', (message: string) => {
-      this.props.sendError('Match Error!');
-      this.props.sendExecuteError(message);
+    this.socket.on('Match Success', (matchLogs: string) => {
+      sendSuccess('Match Executed!');
+      sendExecuteSuccess(matchLogs);
     });
 
     this.socket.on('disconnect', () => {
-      this.props.sendError('Disconnected');
+      sendError('Disconnected');
     });
   }
 

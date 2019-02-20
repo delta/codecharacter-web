@@ -14,7 +14,7 @@ export class RunOptions extends React.Component<
     super(props);
     this.state = {
       currentIndex: -1,
-      isMapToggle: false,
+      isMapOptionsOpen: false,
     };
   }
 
@@ -23,23 +23,26 @@ export class RunOptions extends React.Component<
   }
 
   public render() {
-    const { maps } = this.props;
+    const { maps, startMatch } = this.props;
+    const { currentIndex, isMapOptionsOpen } = this.state;
 
-    const options = [{
-      icon: <FontAwesomeIcon icon={faBrain} />,
-      name: 'Self Code Match',
-      type: SubmissionActions.Type.SELF_MATCH,
-    }];
+    const matchOptions = [
+      {
+        icon: <FontAwesomeIcon icon={faBrain} />,
+        name: 'Self Code Match',
+        type: SubmissionActions.Type.SELF_MATCH,
+      },
+    ];
 
-    const mapsOptions = (
+    const mapOptions = (
       <div className={classnames(styles['dropdown-submenu'])}>
-        {maps.map((map) => (
+        {maps.map((mapElement) => (
           <div
-            key={map.mapId}
+            key={mapElement.mapId}
             className={classnames(styles.dropdownItem)}
-            onClick={() => this.props.startMatch(options[this.state.currentIndex].type, map.mapId)}
+            onClick={() => startMatch(matchOptions[currentIndex].type, mapElement.mapId)}
           >
-            <span className={classnames(styles.dropdownName)}>{map.name}</span>
+            <span className={classnames(styles.dropdownName)}>{mapElement.name}</span>
           </div>
         ))}
       </div>
@@ -47,19 +50,19 @@ export class RunOptions extends React.Component<
 
     return (
       <div className={classnames(styles.dropdown)}>
-        {options.map((option, index) => {
+        {matchOptions.map((option, index) => {
           return (
             <div>
               <div
                 key={index}
                 className={classnames(styles.dropdownItem)}
-                onClick={() => this.toggleMapsOptions(index)}
+                onClick={() => this.toggleMapOptions(index)}
               >
                 <span className={classnames(styles.dropdownItemName)}>{option.name}</span>
                 <span className={classnames(styles.dropdownItemIcon)}>{option.icon}</span>
               </div>
               <div>
-                {this.state.isMapToggle && (this.state.currentIndex === index) ?  mapsOptions : null}
+                {isMapOptionsOpen && currentIndex === index ? mapOptions : null}
               </div>
             </div>
           );
@@ -68,16 +71,16 @@ export class RunOptions extends React.Component<
     );
   }
 
-  private toggleMapsOptions = (currentIndex: number) => {
+  private toggleMapOptions = (currentIndex: number) => {
     if (this.state.currentIndex === currentIndex) {
       this.setState({
         currentIndex: -1,
-        isMapToggle: false,
+        isMapOptionsOpen: false,
       });
     } else {
       this.setState({
         currentIndex,
-        isMapToggle: true,
+        isMapOptionsOpen: true,
       });
     }
   };
