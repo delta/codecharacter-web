@@ -15,8 +15,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     commit: (commitMessage: string) => dispatch(CodeActions.commit(commitMessage)),
     getCommitLog: () => dispatch(CodeActions.getCommitLog()),
-    lockCode: () => dispatch(SubmissionActions.lockCode()),
     loadMaps: () => dispatch(SubmissionActions.loadMaps()),
+    lockCode: () => dispatch(SubmissionActions.lockCode()),
     saveCode: () => dispatch(CodeActions.save()),
     selfMatch: (mapId: number) => dispatch(SubmissionActions.selfMatch(mapId)),
   };

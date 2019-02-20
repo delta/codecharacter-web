@@ -16,12 +16,9 @@ export interface DispatchProps {
   saveCode: () => void;
   commit: (commitMessage: string) => void;
   getCommitLog: () => void;
-<<<<<<< 80089a814819733fdbc7ca737f756d8d70165621
   lockCode: () => void;
-=======
   selfMatch: (mapId: number) => void;
   loadMaps: () => void;
->>>>>>> added-run-functionality
 }
 
 export interface RunOptionsOwnState {

@@ -100,7 +100,8 @@ export class SubmitBar extends React.Component<
             <FontAwesomeIcon icon={faLock} />
           </span>
         </button>
-        <button className={classnames(styles.customBtn)} id="run_button">
+        <button className={classnames(styles.customBtn)}
+          id="run_button"
           onClick={() => {
             this.setState({
               isDropdownOpen: !isDropdownOpen,

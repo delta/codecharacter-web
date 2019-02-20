@@ -26,14 +26,6 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       this.props.sendError(message);
     });
 
-    this.socket.on('Compile Success', (message: string) => {
-      this.props.sendSuccess(message);
-    });
-
-    this.socket.on('Compile Error', (message: string) => {
-      this.props.sendError(message);
-    });
-
     this.socket.on('connect', () => {
       this.props.sendSuccess('Connected to Server!');
     });
@@ -47,16 +39,23 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     });
 
     this.socket.on('Compile Error', (message: string) => {
-      this.props.sendError('Compile Error');
-      this.props.sendCompileError(message);
+      this.props.sendError(`Compile Error: ${message}`);
+      this.props.sendCompileError('');
     });
 
-    this.socket.on('Match Success', (result: string) => {
-      this.props.sendExecuteSuccess(result);
+    this.socket.on('Compile Error Log', (log: string) => {
+      this.props.sendError('Compile Error');
+      this.props.sendCompileError(log);
     });
 
     this.socket.on('Match Error', (message: string) => {
-      this.props.sendCompileError(message);
+      this.props.sendError('Match Error!');
+      this.props.sendExecuteError(message);
+    });
+
+    this.socket.on('Match Success', (message: string) => {
+      this.props.sendError('Match Error!');
+      this.props.sendExecuteError(message);
     });
 
     this.socket.on('disconnect', () => {
