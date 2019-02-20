@@ -101,7 +101,11 @@ export class SubmitBar extends React.Component<
           </span>
         </button>
         <button className={classnames(styles.customBtn)} id="run_button">
-          onClick={() => this.handleCompileAgainst(!this.state.isDropdownOpen)}
+          onClick={() => {
+            this.setState({
+              isDropdownOpen: !isDropdownOpen,
+            });
+          }}
         >
           <span className={classnames(styles.icon)}>
             <FontAwesomeIcon icon={faPlay} />
@@ -131,7 +135,7 @@ export class SubmitBar extends React.Component<
           updateCommitMessage={this.updateCommitMessage}
         />
         {isDropdownOpen ? (
-          <RunOptions loadMaps={loadMaps} compileAgainst={this.handleCompileAgainst} maps={maps} />
+          <RunOptions loadMaps={loadMaps} startMatch={this.startMatch} maps={maps} />
         ) : null}
       </div>
     );
@@ -157,15 +161,13 @@ export class SubmitBar extends React.Component<
     await getCommitLog();
   };
 
-  private handleCompileAgainst = async (open: boolean, value?: string, mapId?: number) => {
+  private startMatch = async (type: SubmissionActions.Type, mapId: number) => {
     const { selfMatch } = this.props;
-    await this.setState({ isDropdownOpen: open, isCommitMessageBoxOpen: false });
-    switch (value) {
+    switch (type) {
       case SubmissionActions.Type.SELF_MATCH:
-        await selfMatch(mapId!);
+        await selfMatch(mapId);
         break;
       default:
-        break;
     }
   };
 }

@@ -1,14 +1,17 @@
 .dropdown {
   position: absolute;
-  top: 45px;
+  left: 6em;
   border-radius: 4px;
   color: #dddddd;
   background: #222;
-  left: 2em;
   font-size: 14px;
-  min-width: 200px;
+  width: 200px;
   z-index: 99;
   box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.6), 0 5px 10px rgba(0, 0, 0, 0.6);
+}
+
+.dropdown:hover {
+  cursor: pointer;
 }
 
 .dropdown .dropdownItem {
@@ -48,8 +51,11 @@
   color: #ddd;
   left: 100%;
   border-radius: 4px;
-  background: #222;
+  background: #2F3129;
   font-size: 14px;
   z-index: 99;
-  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.6), 0 5px 10px rgba(0, 0, 0, 0.6);
+}
+
+.dropdownItemIcon {
+  float: right;
 }

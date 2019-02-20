@@ -1,3 +1,4 @@
+import { SubmissionActions } from 'app/actions';
 import * as SubmissionInterfaces from 'app/types/code/Submission';
 import { SplitPaneState } from 'app/types/Dashboard';
 
@@ -23,21 +24,21 @@ export interface DispatchProps {
 >>>>>>> added-run-functionality
 }
 
-export interface ElementOwnState {
+export interface RunOptionsOwnState {
   isMapToggle: boolean;
   currentIndex: number;
 }
 
-export interface ElementStateProps {
+export interface RunOptionsStateProps {
   maps: SubmissionInterfaces.Map[];
 }
 
-export interface ElementDispatchProps {
-  compileAgainst: (open: boolean, value?: string, mapId?: number) => void;
+export interface RunOptionsDispatchProps {
+  startMatch: (type: SubmissionActions.Type, mapId: number) => void;
   loadMaps: () => void;
 }
 
-export type ElementProps = ElementDispatchProps & ElementStateProps;
+export type RunOptionsProps = RunOptionsDispatchProps & RunOptionsStateProps;
 
 export type Props = {
   changeSplitPaneState: (state: SplitPaneState) => void;
