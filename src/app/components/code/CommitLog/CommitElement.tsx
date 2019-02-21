@@ -1,3 +1,5 @@
+import { faKhanda } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as styles from 'app/styles/CommitLog.module.css';
 import * as CommitInterfaces from 'app/types/code/CommitElement';
 import classnames from 'classnames';
@@ -78,12 +80,31 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
           <div className="d-flex w-100 justify-content-between">
             <h6 className="mb-1">{commitDetails.message}</h6>
             {commitDetails.hash !== 'latest' ? (
-              <img
-                className={classnames(styles.ForkLogo)}
-                onClick={forkCode}
-                src="assets/img/fork.png"
-                title="Fork"
-              />
+              <div>
+                <img
+                  className={classnames(styles.ForkLogo)}
+                  onClick={forkCode}
+                  src="assets/img/fork.png"
+                  title="Fork"
+                />
+                <button
+                  style={{
+                    background: 'none',
+                    border: 0,
+                    color: 'white',
+                    margin: 0,
+                    padding: 0,
+                  }}
+                  className={classnames(styles.ForkLogo)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    this.props.startMatch(1, commitDetails.hash);
+                  }}
+                  title={'Commit Match'}
+                >
+                  <FontAwesomeIcon icon={faKhanda} style={{ margin: '0px 10px', padding: 0 }} />
+                </button>
+              </div>
             ) : null}
           </div>
           <p className={classnames('mb-2', styles.CommitDate)}>

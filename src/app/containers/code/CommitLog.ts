@@ -1,4 +1,4 @@
-import { CodeActions } from 'app/actions/code/Code';
+import { CodeActions, SubmissionActions } from 'app/actions';
 import { CommitLog } from 'app/components/code/CommitLog';
 import { RootState } from 'app/reducers';
 import * as CommitLogInterfaces from 'app/types/code/CommitLog';
@@ -21,6 +21,7 @@ const commitLogContainer = connect<
     checkoutCode: CodeActions.checkoutCode,
     forkCode: CodeActions.forkCode,
     getCommitLog: CodeActions.getCommitLog,
+    startPreviousCommitMatch: SubmissionActions.previousCommitMatch,
   },
 )(CommitLog);
 

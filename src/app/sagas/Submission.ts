@@ -38,7 +38,7 @@ export function* previousCommitMatch(
     yield put(
       SubmissionActions.changeStateCurrentRequest(
         RequestState.COMPILE_PREVIOUS_COMMIT_CODE,
-        Request.LOCK_CODE,
+        Request.PREVIOUS_COMMIT_MATCH,
         action.payload.commitHash,
         action.payload.mapId,
       ),
@@ -132,7 +132,7 @@ export function* handleCompileSuccess(
       (currentRequest === Request.LOCK_CODE &&
         currentState !== RequestState.COMPILE_CURRENT_CODE) ||
       (currentRequest === Request.PREVIOUS_COMMIT_MATCH &&
-        (currentState !== RequestState.COMPILE_CURRENT_CODE ||
+        (currentState !== RequestState.COMPILE_CURRENT_CODE &&
           currentState !== RequestState.COMPILE_PREVIOUS_COMMIT_CODE)) ||
       (currentRequest === Request.SELF_MATCH && currentState !== RequestState.COMPILE_CURRENT_CODE)
     ) {

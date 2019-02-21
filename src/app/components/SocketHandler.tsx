@@ -24,7 +24,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       sendExecuteSuccess,
       sendInfo,
       sendSuccess,
-      sendError
+      sendError,
     } = this.props;
 
     this.socket.on('Info', (message: string) => {
@@ -48,6 +48,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     });
 
     this.socket.on('Compile Success', () => {
+      sendSuccess('Compiled Successfully!');
       sendCompileSuccess();
     });
 
@@ -68,6 +69,14 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     this.socket.on('Match Error', (message: string) => {
       sendError('Match Error!');
       sendExecuteError(message);
+    });
+
+    this.socket.on('Match Result Success', (result: string) => {
+      sendSuccess(result);
+    });
+
+    this.socket.on('Match Result Error', (result: string) => {
+      sendError(result);
     });
 
     this.socket.on('Match Success', (matchLogs: string) => {

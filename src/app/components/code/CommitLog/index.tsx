@@ -62,6 +62,7 @@ export class CommitLog extends React.Component<
                 }}
                 commitDetails={commit}
                 commitsLength={renderCommitLog.length + 1}
+                startMatch={this.props.startPreviousCommitMatch}
               />
             ) : null,
           )}

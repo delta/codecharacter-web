@@ -11,5 +11,6 @@ export interface Props {
   commitsLength: number;
   forkCode?: () => void;
   checkoutCode: () => void;
+  startMatch: (mapId: number, commitHash: string) => void;
   isCurrentHash: boolean;
 }

@@ -17,7 +17,7 @@ export function* getLeaderboard(action: ActionType<typeof LeaderboardActions.get
     });
     yield put(LeaderboardActions.updateError(result.error));
 
-    if (result.type === resType.ERROR) {
+    if (result.type !== resType.ERROR) {
       yield put(
         LeaderboardActions.updateLeaderboard(
           result.searchData,

@@ -61,9 +61,7 @@ export class RunOptions extends React.Component<
                 <span className={classnames(styles.dropdownItemName)}>{option.name}</span>
                 <span className={classnames(styles.dropdownItemIcon)}>{option.icon}</span>
               </div>
-              <div>
-                {isMapOptionsOpen && currentIndex === index ? mapOptions : null}
-              </div>
+              <div>{isMapOptionsOpen && currentIndex === index ? mapOptions : null}</div>
             </div>
           );
         })}
