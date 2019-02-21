@@ -2,6 +2,8 @@ import { SubmissionActions } from 'app/actions';
 import * as SubmissionInterfaces from 'app/types/code/Submission';
 
 const submissionStoreState: SubmissionInterfaces.SubmissionStoreState = {
+  aiIds: [],
+  currentAiId: 1,
   mapId: 1,
   maps: [],
   request: SubmissionInterfaces.Request.NONE,
@@ -31,6 +33,12 @@ export const submissionReducer = (
         mapId: action.payload.mapId,
       };
     }
+    case SubmissionActions.Type.UPDATE_CURRENT_AI_ID: {
+      return {
+        ...state,
+        currentAiId: action.payload.aiId,
+      };
+    }
     case SubmissionActions.Type.RESET_SUBMISSION_STATE:
       return {
         ...submissionStoreState,
@@ -39,6 +47,12 @@ export const submissionReducer = (
       return {
         ...state,
         maps: action.payload.maps,
+      };
+    }
+    case SubmissionActions.Type.UPDATE_AI_IDS: {
+      return {
+        ...state,
+        aiIds: action.payload.aiIds,
       };
     }
     default:

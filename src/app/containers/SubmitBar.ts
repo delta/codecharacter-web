@@ -7,13 +7,16 @@ import { Dispatch } from 'redux';
 
 const mapStateToProps = (rootState: RootState) => {
   return {
+    aiIds: rootState.submission.aiIds,
     maps: rootState.submission.maps,
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
+    aiMatch: (mapId: number, aiId: number) => dispatch(SubmissionActions.aiMatch(mapId, aiId)),
     commit: (commitMessage: string) => dispatch(CodeActions.commit(commitMessage)),
+    getAiIds: () => dispatch(SubmissionActions.getAiIds()),
     getCommitLog: () => dispatch(CodeActions.getCommitLog()),
     loadMaps: () => dispatch(SubmissionActions.loadMaps()),
     lockCode: () => dispatch(SubmissionActions.lockCode()),

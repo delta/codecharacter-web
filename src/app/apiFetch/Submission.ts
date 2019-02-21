@@ -38,6 +38,26 @@ export const executeSelfMatch = (mapId: number) => {
     });
 };
 
+export const executeAiMatch = (mapId: number, aiId: number) => {
+  return fetch(`${API_BASE_URL}simulate/match/ai`, {
+    body: JSON.stringify({
+      aiId,
+      mapId,
+    }),
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  })
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => {
+      throw error;
+    });
+};
+
 export const executePreviousCommitMatch = (mapId: number) => {
   return fetch(`${API_BASE_URL}simulate/match/commit`, {
     body: JSON.stringify({
@@ -75,6 +95,18 @@ export const lockCode = () => {
 
 export const loadMaps = () => {
   return fetch(`${API_BASE_URL}simulate/maps`, {
+    credentials: 'include',
+    method: 'GET',
+  })
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const loadAiIds = () => {
+  return fetch(`${API_BASE_URL}simulate/ais`, {
     credentials: 'include',
     method: 'GET',
   })

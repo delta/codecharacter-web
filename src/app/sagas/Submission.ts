@@ -68,6 +68,29 @@ export function* selfMatch(action: ActionType<typeof SubmissionActions.selfMatch
   }
 }
 
+export function* aiMatch(action: ActionType<typeof SubmissionActions.aiMatch>) {
+  try {
+    const submissionState = yield select(getSubmissionState);
+
+    if (submissionState.request !== Request.NONE) return;
+
+    yield put(GameLogActions.updateGameLog('', '', ''));
+    yield put(GameLogActions.clearDisplayDebugLog());
+
+    yield put(SubmissionActions.updateCurrentAiId(action.payload.aiId));
+    yield put(
+      SubmissionActions.changeStateCurrentRequest(
+        RequestState.COMPILE_CURRENT_CODE,
+        Request.AI_MATCH,
+        'latest',
+        action.payload.mapId,
+      ),
+    );
+  } catch (err) {
+    throw err;
+  }
+}
+
 export function* changeStateCurrentRequest(
   action: ActionType<typeof SubmissionActions.changeStateCurrentRequest>,
 ) {
@@ -82,7 +105,9 @@ export function* changeStateCurrentRequest(
     if (
       (currentRequest === Request.PREVIOUS_COMMIT_MATCH &&
         currentState === RequestState.COMPILE_PREVIOUS_COMMIT_CODE) ||
-      (currentRequest === Request.SELF_MATCH && currentState === RequestState.COMPILE_CURRENT_CODE)
+      (currentRequest === Request.SELF_MATCH &&
+        currentState === RequestState.COMPILE_CURRENT_CODE) ||
+      (currentRequest === Request.AI_MATCH && currentState === RequestState.COMPILE_CURRENT_CODE)
     ) {
       yield put(SubmissionActions.updateMapId(action.payload.mapId));
     }
@@ -104,6 +129,14 @@ export function* changeStateCurrentRequest(
       }
       case RequestState.EXECUTE_PREVIOUS_COMMIT_MATCH: {
         res = yield call(SubmissionFetch.executePreviousCommitMatch, submissionState.mapId);
+        break;
+      }
+      case RequestState.EXECUTE_AI_MATCH: {
+        res = yield call(
+          SubmissionFetch.executeAiMatch,
+          submissionState.mapId,
+          submissionState.currentAiId,
+        );
         break;
       }
     }
@@ -134,7 +167,9 @@ export function* handleCompileSuccess(
       (currentRequest === Request.PREVIOUS_COMMIT_MATCH &&
         (currentState !== RequestState.COMPILE_CURRENT_CODE &&
           currentState !== RequestState.COMPILE_PREVIOUS_COMMIT_CODE)) ||
-      (currentRequest === Request.SELF_MATCH && currentState !== RequestState.COMPILE_CURRENT_CODE)
+      (currentRequest === Request.SELF_MATCH &&
+        currentState !== RequestState.COMPILE_CURRENT_CODE) ||
+      (currentRequest === Request.AI_MATCH && currentState !== RequestState.COMPILE_CURRENT_CODE)
     ) {
       return;
     }
@@ -165,6 +200,15 @@ export function* handleCompileSuccess(
             yield put(
               SubmissionActions.changeStateCurrentRequest(
                 RequestState.EXECUTE_PREVIOUS_COMMIT_MATCH,
+                currentRequest,
+              ),
+            );
+            break;
+          }
+          case Request.AI_MATCH: {
+            yield put(
+              SubmissionActions.changeStateCurrentRequest(
+                RequestState.EXECUTE_AI_MATCH,
                 currentRequest,
               ),
             );
@@ -201,7 +245,9 @@ export function* handleCompileError(
       (currentRequest === Request.PREVIOUS_COMMIT_MATCH &&
         (currentState !== RequestState.COMPILE_CURRENT_CODE ||
           currentState !== RequestState.COMPILE_PREVIOUS_COMMIT_CODE)) ||
-      (currentRequest === Request.SELF_MATCH && currentState !== RequestState.COMPILE_CURRENT_CODE)
+      (currentRequest === Request.SELF_MATCH &&
+        currentState !== RequestState.COMPILE_CURRENT_CODE) ||
+      (currentRequest === Request.AI_MATCH && currentState !== RequestState.COMPILE_CURRENT_CODE)
     ) {
       return;
     }
@@ -232,7 +278,8 @@ export function* handleExecuteSuccess(
       currentRequest === Request.LOCK_CODE ||
       (currentRequest === Request.PREVIOUS_COMMIT_MATCH &&
         currentState !== RequestState.EXECUTE_PREVIOUS_COMMIT_MATCH) ||
-      (currentRequest === Request.SELF_MATCH && currentState !== RequestState.EXECUTE_SELF_MATCH)
+      (currentRequest === Request.SELF_MATCH && currentState !== RequestState.EXECUTE_SELF_MATCH) ||
+      (currentRequest === Request.AI_MATCH && currentState !== RequestState.EXECUTE_AI_MATCH)
     ) {
       return;
     }
@@ -263,7 +310,8 @@ export function* handleExecuteError(
       currentRequest === Request.LOCK_CODE ||
       (currentRequest === Request.PREVIOUS_COMMIT_MATCH &&
         currentState !== RequestState.EXECUTE_PREVIOUS_COMMIT_MATCH) ||
-      (currentRequest === Request.SELF_MATCH && currentState !== RequestState.EXECUTE_SELF_MATCH)
+      (currentRequest === Request.SELF_MATCH && currentState !== RequestState.EXECUTE_SELF_MATCH) ||
+      (currentRequest === Request.AI_MATCH && currentState !== RequestState.EXECUTE_AI_MATCH)
     ) {
       return;
     }
@@ -287,6 +335,19 @@ export function* loadMaps(action: ActionType<typeof SubmissionActions.loadMaps>)
   }
 }
 
+export function* getAiIds(action: ActionType<typeof SubmissionActions.getAiIds>) {
+  try {
+    const res = yield call(SubmissionFetch.loadAiIds);
+    const isAuthenticated = yield checkAuthentication(res);
+    if (isAuthenticated === false) {
+      return;
+    }
+    yield put(SubmissionActions.updateAiIds(res.aiIds));
+  } catch (err) {
+    throw err;
+  }
+}
+
 export function* submissionSagas() {
   yield all([
     takeEvery(SubmissionActions.Type.HANDLE_COMPILE_SUCCESS, handleCompileSuccess),
@@ -297,6 +358,8 @@ export function* submissionSagas() {
     takeEvery(SubmissionActions.Type.LOCK_CODE, lockCode),
     takeEvery(SubmissionActions.Type.PREVIOUS_COMMIT_MATCH, previousCommitMatch),
     takeEvery(SubmissionActions.Type.SELF_MATCH, selfMatch),
+    takeEvery(SubmissionActions.Type.AI_MATCH, aiMatch),
     takeEvery(SubmissionActions.Type.LOAD_MAPS, loadMaps),
+    takeEvery(SubmissionActions.Type.GET_AI_IDS, getAiIds),
   ]);
 }

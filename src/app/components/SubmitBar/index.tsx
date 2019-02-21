@@ -30,7 +30,15 @@ export class SubmitBar extends React.Component<
   }
 
   public render() {
-    const { saveCode, splitPaneState, changeSplitPaneState, maps, loadMaps } = this.props;
+    const {
+      saveCode,
+      splitPaneState,
+      changeSplitPaneState,
+      maps,
+      loadMaps,
+      getAiIds,
+      aiIds,
+    } = this.props;
     const { commitMessage, isCommitMessageBoxOpen, isRunOptionsOpen } = this.state;
     return (
       <div
@@ -137,7 +145,13 @@ export class SubmitBar extends React.Component<
           updateCommitMessage={this.updateCommitMessage}
         />
         {isRunOptionsOpen ? (
-          <RunOptions loadMaps={loadMaps} startMatch={this.startMatch} maps={maps} />
+          <RunOptions
+            loadMaps={loadMaps}
+            startMatch={this.startMatch}
+            maps={maps}
+            getAiIds={getAiIds}
+            aiIds={aiIds}
+          />
         ) : null}
       </div>
     );
@@ -163,13 +177,18 @@ export class SubmitBar extends React.Component<
     await getCommitLog();
   };
 
-  private startMatch = async (type: SubmissionActions.Type, mapId: number) => {
-    const { selfMatch } = this.props;
+  private startMatch = async (type: SubmissionActions.Type, mapId: number, aiId: number) => {
+    const { selfMatch, aiMatch } = this.props;
+
     switch (type) {
-      case SubmissionActions.Type.SELF_MATCH:
+      case SubmissionActions.Type.SELF_MATCH: {
         await selfMatch(mapId);
         break;
-      default:
+      }
+      case SubmissionActions.Type.AI_MATCH: {
+        await aiMatch(mapId, aiId);
+        break;
+      }
     }
   };
 }

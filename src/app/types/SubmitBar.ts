@@ -10,6 +10,7 @@ export interface State {
 
 export interface StateProps {
   maps: SubmissionInterfaces.Map[];
+  aiIds: number[];
 }
 
 export interface DispatchProps {
@@ -17,8 +18,10 @@ export interface DispatchProps {
   commit: (commitMessage: string) => void;
   getCommitLog: () => void;
   lockCode: () => void;
+  aiMatch: (mapId: number, aiId: number) => void;
   selfMatch: (mapId: number) => void;
   loadMaps: () => void;
+  getAiIds: () => void;
 }
 
 export interface RunOptionsOwnState {
@@ -28,11 +31,13 @@ export interface RunOptionsOwnState {
 
 export interface RunOptionsStateProps {
   maps: SubmissionInterfaces.Map[];
+  aiIds: number[];
 }
 
 export interface RunOptionsDispatchProps {
-  startMatch: (type: SubmissionActions.Type, mapId: number) => void;
+  startMatch: (type: SubmissionActions.Type, mapId: number, aiId: number) => void;
   loadMaps: () => void;
+  getAiIds: () => void;
 }
 
 export type RunOptionsProps = RunOptionsDispatchProps & RunOptionsStateProps;

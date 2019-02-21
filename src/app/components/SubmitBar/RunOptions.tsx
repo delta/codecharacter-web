@@ -1,4 +1,4 @@
-import { faBrain } from '@fortawesome/free-solid-svg-icons';
+import { faBrain, faRobot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SubmissionActions } from 'app/actions';
 import * as styles from 'app/styles/RunOptions.module.css';
@@ -20,19 +20,30 @@ export class RunOptions extends React.Component<
 
   public componentWillMount(): void {
     this.props.loadMaps();
+    this.props.getAiIds();
   }
 
   public render() {
-    const { maps, startMatch } = this.props;
+    const { maps, startMatch, aiIds } = this.props;
     const { currentIndex, isMapOptionsOpen } = this.state;
 
     const matchOptions = [
       {
+        aiId: 0,
         icon: <FontAwesomeIcon icon={faBrain} />,
         name: 'Self Code Match',
         type: SubmissionActions.Type.SELF_MATCH,
       },
     ];
+
+    aiIds.map((aiId) => {
+      matchOptions.push({
+        aiId,
+        icon: <FontAwesomeIcon icon={faRobot} />,
+        name: `AI ${aiId} Match`,
+        type: SubmissionActions.Type.AI_MATCH,
+      });
+    });
 
     const mapOptions = (
       <div className={classnames(styles['dropdown-submenu'])}>
@@ -40,7 +51,13 @@ export class RunOptions extends React.Component<
           <div
             key={mapElement.mapId}
             className={classnames(styles.dropdownItem)}
-            onClick={() => startMatch(matchOptions[currentIndex].type, mapElement.mapId)}
+            onClick={() =>
+              startMatch(
+                matchOptions[currentIndex].type,
+                mapElement.mapId,
+                matchOptions[currentIndex].aiId,
+              )
+            }
           >
             <span className={classnames(styles.dropdownName)}>{mapElement.name}</span>
           </div>

@@ -11,12 +11,16 @@ export namespace SubmissionActions {
     HANDLE_EXECUTE_SUCCESS = 'HANDLE_EXECUTE_SUCCESS',
     HANDLE_EXECUTE_ERROR = 'HANDLE_EXECUTE_ERROR',
     UPDATE_MAP_ID = 'UPDATE_MAP_ID',
+    UPDATE_CURRENT_AI_ID = 'UPDATE_CURRENT_AI_ID',
     LOCK_CODE = 'LOCK_CODE',
     PREVIOUS_COMMIT_MATCH = 'PREVIOUS_COMMIT_MATCH',
     SELF_MATCH = 'SELF_MATCH',
-    RESET_SUBMISSION_STATE = 'RESET_SUBMISSION_STATE',
+    AI_MATCH = 'AI_MATCH',
     LOAD_MAPS = 'LOAD_MAPS',
     SAVE_MAPS = 'SAVE_MAPS',
+    GET_AI_IDS = 'GET_AI_IDS',
+    UPDATE_AI_IDS = 'UPDATE_AI_IDS',
+    RESET_SUBMISSION_STATE = 'RESET_SUBMISSION_STATE',
   }
 
   export const changeState = (state: SubmissionInterfaces.RequestState) =>
@@ -30,7 +34,9 @@ export namespace SubmissionActions {
     currentRequest: SubmissionInterfaces.Request,
     commitHash = 'latest',
     mapId = 1,
-  ) => action(Type.CHANGE_STATE_CURRENT_REQUEST, { state, currentRequest, commitHash, mapId });
+    aiId = 1,
+  ) =>
+    action(Type.CHANGE_STATE_CURRENT_REQUEST, { state, currentRequest, commitHash, mapId, aiId });
 
   export const handleCompileSuccess = () => action(Type.HANDLE_COMPILE_SUCCESS);
 
@@ -43,12 +49,16 @@ export namespace SubmissionActions {
 
   export const updateMapId = (mapId: number) => action(Type.UPDATE_MAP_ID, { mapId });
 
+  export const updateCurrentAiId = (aiId: number) => action(Type.UPDATE_CURRENT_AI_ID, { aiId });
+
   export const lockCode = () => action(Type.LOCK_CODE);
 
   export const previousCommitMatch = (mapId: number, commitHash: string) =>
     action(Type.PREVIOUS_COMMIT_MATCH, { mapId, commitHash });
 
   export const selfMatch = (mapId: number) => action(Type.SELF_MATCH, { mapId });
+
+  export const aiMatch = (mapId: number, aiId: number) => action(Type.AI_MATCH, { mapId, aiId });
 
   export const resetSubmissionState = () => action(Type.RESET_SUBMISSION_STATE);
 
@@ -58,4 +68,8 @@ export namespace SubmissionActions {
     action(Type.SAVE_MAPS, {
       maps,
     });
+
+  export const getAiIds = () => action(Type.GET_AI_IDS);
+
+  export const updateAiIds = (aiIds: number[]) => action(Type.UPDATE_AI_IDS, { aiIds });
 }
