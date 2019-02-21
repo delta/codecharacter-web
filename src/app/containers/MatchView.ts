@@ -16,6 +16,7 @@ const mapStateToProps = (rootState: RootState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
+    getGameLogs: (gameId: number) => dispatch(MatchActions.getGameLogs(gameId)),
     getMatches: () => dispatch(MatchActions.getMatches()),
     getTopMatches: () => dispatch(MatchActions.getTopMatches()),
   };

@@ -7,6 +7,7 @@ describe('MatchElement Component', () => {
     <MatchElement
       index={1}
       match={{
+        games: [],
         playedAt: 'date string',
         score1: 1,
         score2: 5,
@@ -14,6 +15,7 @@ describe('MatchElement Component', () => {
         username2: 'user2',
         verdict: 1,
       }}
+      getGameLogs={(gameId: number) => undefined}
     />,
   );
 

@@ -4,6 +4,7 @@ import {
   EditorSettingsActions,
   GameLogActions,
   LeaderboardActions,
+  MatchActions,
   NotificationActions,
   SubmissionActions,
   UserActions,
@@ -180,6 +181,7 @@ export function* resetAppState(action: ActionType<typeof UserActions.resetAppSta
     yield put(LeaderboardActions.resetLeaderboardState());
     yield put(NotificationActions.resetNotificationState());
     yield put(UserActions.resetUserState());
+    yield put(MatchActions.resetMatchView());
   } catch (err) {
     throw err;
   }

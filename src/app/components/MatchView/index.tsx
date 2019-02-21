@@ -32,7 +32,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
 
   public render() {
     const { activeMatchViewTab } = this.state;
-    const { matches, topMatches } = this.props;
+    const { matches, topMatches, getGameLogs } = this.props;
 
     return (
       <Grid fluid={true} className={classnames(styles.MatchView)}>
@@ -78,7 +78,12 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
                 match ? (
                   index >= this.state.offset &&
                   index <= this.state.offset + Match.paginationSize - 1 ? (
-                    <MatchElement match={match} index={index - 1} key={index - 1} />
+                    <MatchElement
+                      match={match}
+                      index={index - 1}
+                      key={index - 1}
+                      getGameLogs={getGameLogs}
+                    />
                   ) : null
                 ) : (
                   <div className="ml-5"> Nothing to show </div>
@@ -92,7 +97,12 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
               match ? (
                 index >= this.state.offset &&
                 index <= this.state.offset + Match.paginationSize - 1 ? (
-                  <MatchElement match={match} index={index - 1} key={index - 1} />
+                  <MatchElement
+                    match={match}
+                    index={index - 1}
+                    key={index - 1}
+                    getGameLogs={getGameLogs}
+                  />
                 ) : null
               ) : (
                 <div className="ml-5"> Nothing to show </div>

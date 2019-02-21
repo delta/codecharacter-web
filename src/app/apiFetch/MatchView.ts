@@ -31,3 +31,19 @@ export const getTopMatches = () => {
       throw error;
     });
 };
+
+export const getGameLogs = (gameId: number) => {
+  return fetch(`${API_BASE_URL}match/log/${gameId}`, {
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'GET',
+  })
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => {
+      throw error;
+    });
+};

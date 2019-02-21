@@ -8,7 +8,7 @@ import { Col } from 'react-bootstrap';
 
 export class MatchElement extends React.Component<MatchInterfaces.ElementProps, {}> {
   public render() {
-    const { match } = this.props;
+    const { match, getGameLogs } = this.props;
     return (
       <Col sm={12} className={classnames('mb-1')}>
         <div
@@ -31,21 +31,16 @@ export class MatchElement extends React.Component<MatchInterfaces.ElementProps, 
             {match.verdict === 1 ? 'WON' : match.verdict === 2 ? 'LOST' : 'TIE'}
           </div>
           <div className={classnames(styles.body, 'd-flex justify-content-around text-dark')}>
-            <span className={classnames(styles.game)}>
-              <FontAwesomeIcon icon={faVideo} />
-            </span>
-            <span className={classnames(styles.game)}>
-              <FontAwesomeIcon icon={faVideo} />
-            </span>
-            <span className={classnames(styles.game)}>
-              <FontAwesomeIcon icon={faVideo} />
-            </span>
-            <span className={classnames(styles.game)}>
-              <FontAwesomeIcon icon={faVideo} />
-            </span>
-            <span className={classnames(styles.game)}>
-              <FontAwesomeIcon icon={faVideo} />
-            </span>
+            {match.games.map((gameId, index) => (
+              <span
+                key={index}
+                className={classnames(styles.game)}
+                // @ts-ignore
+                onClick={() => getGameLogs(gameId.id)}
+              >
+                <FontAwesomeIcon icon={faVideo} />
+              </span>
+            ))}
           </div>
           <div
             className=" d-flex justify-content-start text-capitalize text-dark my-1 mx-3 h6"

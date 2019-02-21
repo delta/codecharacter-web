@@ -1,4 +1,4 @@
-import { MatchActions } from 'app/actions';
+import { GameLogActions, MatchActions } from 'app/actions';
 import * as MatchFetch from 'app/apiFetch/MatchView';
 import { checkAuthentication } from 'app/sagas/utils';
 import { resType } from 'app/types/sagas';
@@ -40,9 +40,35 @@ export function* getTopMatches(action: ActionType<typeof MatchActions.getTopMatc
   }
 }
 
+export function* getGameLogs(action: ActionType<typeof MatchActions.getGameLogs>) {
+  try {
+    const res = yield call(MatchFetch.getGameLogs, action.payload.gameId);
+
+    const isAuthenticated = yield checkAuthentication(res);
+    if (isAuthenticated === false) return;
+
+    if (res.type === resType.ERROR) {
+      yield put(MatchActions.updateError(res.error));
+    } else {
+      yield put(GameLogActions.clearDisplayDebugLog());
+
+      const logs = res.logs;
+      const debugLog1 = logs.player1Log;
+      const debugLog2 = logs.player2Log;
+      const gameLog = logs.gameLog;
+
+      yield put(GameLogActions.updateGameLog('', '', ''));
+      yield put(GameLogActions.updateGameLog(debugLog1, debugLog2, gameLog));
+    }
+  } catch (err) {
+    throw err;
+  }
+}
+
 export function* matchSagas() {
   yield all([
     takeEvery(MatchActions.Type.GET_MATCHES, getMatches),
     takeEvery(MatchActions.Type.GET_TOP_MATCHES, getTopMatches),
+    takeEvery(MatchActions.Type.GET_GAME_LOGS, getGameLogs),
   ]);
 }

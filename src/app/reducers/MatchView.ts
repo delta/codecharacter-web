@@ -37,6 +37,10 @@ export const matchesReducer = (
         ...state,
         loading: false,
       };
+    case MatchActions.Type.RESET_MATCH_VIEW:
+      return {
+        ...matchesInitialState,
+      };
     default:
       return state;
   }
