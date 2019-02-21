@@ -17,7 +17,7 @@ export const getMatches = () => {
 };
 
 export const getTopMatches = () => {
-  return fetch(`${API_BASE_URL}match/top`, {
+  return fetch(`${API_BASE_URL}match/pro`, {
     credentials: 'include',
     headers: {
       Accept: 'application/json',

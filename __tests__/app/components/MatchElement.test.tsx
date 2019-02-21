@@ -8,11 +8,11 @@ describe('MatchElement Component', () => {
       index={1}
       match={{
         playedAt: 'date string',
-        userOne: 'user1',
-        userOneScore: 1,
-        userTwo: 'user2',
-        userTwoScore: 5,
-        winner: 'user2',
+        score1: 1,
+        score2: 5,
+        username1: 'user1',
+        username2: 'user2',
+        verdict: 1,
       }}
     />,
   );

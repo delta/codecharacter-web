@@ -10,7 +10,7 @@ import { Col, Grid, Row } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 
 export class Match extends React.Component<MatchInterfaces.Props, MatchInterfaces.State> {
-  private static paginationSize = 10;
+  private static paginationSize = 15;
   constructor(props: MatchInterfaces.Props) {
     super(props);
     this.state = {
@@ -19,7 +19,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
     };
   }
 
-  public componentWillMount() {
+  public componentDidMount() {
     this.props.getMatches();
     this.props.getTopMatches();
   }
@@ -33,6 +33,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
   public render() {
     const { activeMatchViewTab } = this.state;
     const { matches, topMatches } = this.props;
+
     return (
       <Grid fluid={true} className={classnames(styles.MatchView)}>
         <Row className="justify-content-between py-2 px-3">
@@ -70,9 +71,9 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
             </button>
           </div>
         </Row>
-        <Row className={classnames('mb-2', styles.notificationWrap)}>
+        <Row className={classnames('mb-2', styles.matchViewWrap)}>
           {activeMatchViewTab === MatchInterfaces.MatchViewTabType.MY_MATCHES ? (
-            matches.length ? (
+            matches && matches.length ? (
               matches.map((match, index) =>
                 match ? (
                   index >= this.state.offset &&
@@ -86,7 +87,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
             ) : (
               <div className="ml-5"> Nothing to show </div>
             )
-          ) : topMatches.length ? (
+          ) : topMatches && topMatches.length ? (
             topMatches.map((match, index) =>
               match ? (
                 index >= this.state.offset &&
@@ -116,10 +117,10 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
               }
               breakLabel={'...'}
               breakClassName={'break-me'}
-              pageCount={Math.max(matches.length / Match.paginationSize)}
               marginPagesDisplayed={1}
               pageClassName={'atag'}
               pageRangeDisplayed={2}
+              pageCount={Math.ceil(matches.length / Match.paginationSize)}
               activeLinkClassName={'active'}
               onPageChange={this.handlePageClick}
               containerClassName={'pagination'}

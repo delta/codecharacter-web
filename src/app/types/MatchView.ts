@@ -12,11 +12,11 @@ export interface OwnState {
 }
 
 export interface Match {
-  userOne: string;
-  userOneScore: number;
-  userTwoScore: number;
-  userTwo: string;
-  winner: string;
+  username1: string;
+  score1: number;
+  username2: string;
+  score2: number;
+  verdict: number;
   playedAt: string;
 }
 

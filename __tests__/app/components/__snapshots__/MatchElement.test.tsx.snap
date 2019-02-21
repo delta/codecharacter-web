@@ -6,11 +6,11 @@ exports[`MatchElement Component Should render 1`] = `
   match={
     Object {
       "playedAt": "date string",
-      "userOne": "user1",
-      "userOneScore": 1,
-      "userTwo": "user2",
-      "userTwoScore": 5,
-      "winner": "user2",
+      "score1": 1,
+      "score2": 5,
+      "username1": "user1",
+      "username2": "user2",
+      "verdict": 1,
     }
   }
 >
@@ -95,7 +95,7 @@ exports[`MatchElement Component Should render 1`] = `
         <div
           className=" d-flex justify-content-center text-capitalize text-font-weight-bold text-dark"
         >
-          LOST
+          WON
         </div>
         <div
           className="d-flex justify-content-around text-dark"

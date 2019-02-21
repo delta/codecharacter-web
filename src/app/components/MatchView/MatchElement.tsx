@@ -13,22 +13,22 @@ export class MatchElement extends React.Component<MatchInterfaces.ElementProps, 
       <Col sm={12} className={classnames('mb-1')}>
         <div
           className={classnames('w-100', styles.matchElement, {
-            [`${styles.winBackground}`]: match.userOneScore > match.userTwoScore,
-            [`${styles.loseBackground}`]: match.userOneScore < match.userTwoScore,
+            [`${styles.winBackground}`]: match.score1 > match.score2,
+            [`${styles.loseBackground}`]: match.score1 < match.score2,
           })}
         >
           <div className="d-flex justify-content-around text-dark">
-            <span>{match.userOne}</span>
+            <span>{match.username1}</span>
             <span>
               <FontAwesomeIcon icon={faShieldAlt} />
             </span>
-            <span>{match.userTwo}</span>
+            <span>{match.username2}</span>
           </div>
           <div className=" d-flex justify-content-center text-capitalize text-font-weight-bold text-dark h2  my-2">
-            {match.userOneScore} - {match.userTwoScore}
+            {match.score1} - {match.score2}
           </div>
           <div className=" d-flex justify-content-center text-capitalize text-font-weight-bold text-dark">
-            {match.userOne === match.winner ? 'WON' : 'LOST'}
+            {match.verdict === 1 ? 'WON' : match.verdict === 2 ? 'LOST' : 'TIE'}
           </div>
           <div className={classnames(styles.body, 'd-flex justify-content-around text-dark')}>
             <span className={classnames(styles.game)}>

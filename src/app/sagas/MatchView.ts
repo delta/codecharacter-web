@@ -15,7 +15,7 @@ export function* getMatches(action: ActionType<typeof MatchActions.getMatches>) 
     if (res.type === resType.ERROR) {
       yield put(MatchActions.updateError(res.error));
     } else {
-      yield put(MatchActions.updateMatches(res.matches));
+      yield put(MatchActions.updateMatches(res.matchData));
     }
   } catch (err) {
     throw err;
@@ -33,7 +33,7 @@ export function* getTopMatches(action: ActionType<typeof MatchActions.getTopMatc
     if (res.type === resType.ERROR) {
       yield put(MatchActions.updateError(res.error));
     } else {
-      yield put(MatchActions.updateTopMatches(res.matches));
+      yield put(MatchActions.updateTopMatches(res.matchData));
     }
   } catch (err) {
     throw err;
