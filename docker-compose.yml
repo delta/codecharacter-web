@@ -4,4 +4,4 @@ services:
     container_name: codecharacter_web
     build: .
     ports:
-      - "8000:5000"
+      - "9019:5000"

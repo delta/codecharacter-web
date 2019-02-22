@@ -1,4 +1,4 @@
-import { API_BASE_URL } from 'app/../config/config';
+import { SOCKET_BASE_URL } from 'app/../config/config';
 import * as SocketHandlerInterfaces from 'app/types/SocketHandler';
 import * as React from 'react';
 import * as io from 'socket.io-client';
@@ -8,10 +8,11 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
   constructor(props: SocketHandlerInterfaces.Props) {
     super(props);
     this.socket = io.connect(
-      API_BASE_URL,
+      SOCKET_BASE_URL,
       {
         reconnection: true,
         reconnectionDelay: 1000,
+        transports: ['websocket'],
       },
     );
   }
