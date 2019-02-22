@@ -1,6 +1,7 @@
 import { LeaderboardActions } from 'app/actions';
 import { Svg } from 'app/components/Leaderboard/Svg';
 import * as styles from 'app/styles/Leaderboard.module.css';
+import { Avatar } from 'app/types/Authentication/Register';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -14,7 +15,7 @@ const colors = ['#FFB900', '#69797E', '#847545', '#038387'];
 
 export class LeaderboardElement extends React.Component<LeaderboardInterfaces.ElementProps, {}> {
   public render() {
-    const { player, rank, index, isPlayAgainstDisabled, runMatch } = this.props;
+    const { player, rank, index, isPlayAgainstDisabled, runMatch, currentUsername } = this.props;
     const fetchSize = LeaderboardActions.FETCH_SIZE;
     return (
       <Col
@@ -37,12 +38,50 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
               </div>
             ) : null}
             <div className={classnames(styles['leader-content'])}>
-              <div className={classnames(styles['leader-name'])}>
-                {`${player.rank}.`} <span>{`${player.username}`}</span>
+              <div
+                className={classnames(styles['leader-name'])}
+                style={{
+                  display: 'inline-block',
+                }}
+              >
+                {
+                  <img
+                    width={35}
+                    height={35}
+                    // @ts-ignore
+                    src={Avatar[player.avatar]}
+                    style={{
+                      display: 'inline',
+                    }}
+                  />
+                }
               </div>
 
-              <div className={classnames(styles['leader-score'])}>
-                <div className={classnames(styles['leader-score_title'])}>{player.rating}</div>
+              <div
+                className={classnames(styles['leader-score'])}
+                style={{
+                  display: 'inline-block',
+                }}
+              >
+                <div
+                  className={classnames('text-light', styles['leader-score_title'])}
+                  style={{
+                    display: 'block',
+                    fontSize: '18px',
+                  }}
+                >
+                  {`${player.rank}.`} <span>{`${player.username}`}</span>
+                </div>
+                <div
+                  className={classnames(styles['leader-score_title'])}
+                  style={{
+                    display: 'block',
+                    fontSize: '14px',
+                    marginTop: '5px',
+                  }}
+                >
+                  score: {player.rating}
+                </div>
               </div>
             </div>
           </div>
@@ -56,7 +95,7 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
               bsStyle="danger"
               style={{ fontSize: '0.55em' }}
               bsSize="xsmall"
-              disabled={isPlayAgainstDisabled}
+              disabled={isPlayAgainstDisabled || currentUsername === player.username}
               onClick={() => runMatch(player.id)}
             >
               FIGHT

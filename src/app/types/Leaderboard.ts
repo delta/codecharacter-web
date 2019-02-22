@@ -8,6 +8,7 @@ export interface Player {
   username: string;
   rating: number;
   fullName: string;
+  avatar: string;
 }
 
 export interface GetLeaderboard {
@@ -30,6 +31,7 @@ export interface StateProps {
   players: Player[];
   loading: boolean;
   timerData: number;
+  username: string;
 }
 
 export interface DispatchProps {
@@ -54,6 +56,7 @@ export interface ElementOwnProps {
   index: number;
   isPlayAgainstDisabled: boolean;
   runMatch: (opponentId: number) => void;
+  currentUsername: string;
 }
 
 export type ElementProps = ElementOwnProps;

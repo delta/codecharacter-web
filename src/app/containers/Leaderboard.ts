@@ -10,6 +10,7 @@ const mapStateToProps = (rootState: RootState) => {
     loading: rootState.leaderboard.loading,
     players: rootState.leaderboard.players,
     timerData: rootState.leaderboard.timerData,
+    username: rootState.user.username,
   };
 };
 

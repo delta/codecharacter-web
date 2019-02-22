@@ -10,5 +10,6 @@ exports[`Leaderboard Container Should render Leaderboard 1`] = `
   runMatch={[Function]}
   setTimer={[Function]}
   timerData={0}
+  username=""
 />
 `;
