@@ -1,32 +1,26 @@
 import { faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
 import * as styles from 'app/styles/Authentication.module.css';
 import { AuthType } from 'app/types/Authentication/';
 import * as LoginInterfaces from 'app/types/Authentication/Login';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
-// tslint:disable-next-line:import-name
-import ReCAPTCHA from 'react-google-recaptcha';
 
 export class Login extends React.Component<LoginInterfaces.Props, LoginInterfaces.State> {
   private loginRef = React.createRef<HTMLFormElement>();
-  private recaptchaRef = React.createRef<ReCAPTCHA>();
 
   constructor(props: LoginInterfaces.Props) {
     super(props);
 
     this.state = {
-      isCaptchaValidated: false,
-      isFormSubmitted: false,
       password: '',
       username: '',
     };
   }
 
   public render() {
-    const { username, password, isCaptchaValidated, isFormSubmitted } = this.state;
+    const { username, password } = this.state;
     const { errorMessage, updateErrorMessage } = this.props;
     return (
       <div>
@@ -109,23 +103,6 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                   </div>
                 </div>
               </div>
-              <div className="form-row d-flex justify-content-center my-1">
-                <div className="d-flex justify-content-center input-group">
-                  <ReCAPTCHA
-                    sitekey={RECAPTCHA_SITE_KEY}
-                    onChange={this.onChange}
-                    ref={this.recaptchaRef}
-                  />
-                  <div
-                    className="invalid-feedback text-center"
-                    style={{
-                      display: !isCaptchaValidated && isFormSubmitted ? 'block' : 'none',
-                    }}
-                  >
-                    Please fill recaptcha.
-                  </div>
-                </div>
-              </div>
               <div className="form-row">
                 <div className="input-group" />
                 <div className="col text-center mt -0 mb-2 errorMessage">{errorMessage}</div>
@@ -175,25 +152,14 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
 
   private handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     const { login } = this.props;
-    const { username, password, isCaptchaValidated } = this.state;
+    const { username, password } = this.state;
     const form = this.loginRef.current;
     event.preventDefault();
     if (form) {
-      if (form.checkValidity() && isCaptchaValidated) {
+      if (form.checkValidity()) {
         login(username, password);
       }
       form.classList.add('was-validated');
-      this.setState({
-        isFormSubmitted: true,
-      });
-    }
-  };
-
-  private onChange = (value: string | null) => {
-    if (value) {
-      this.setState({
-        isCaptchaValidated: true,
-      });
     }
   };
 }

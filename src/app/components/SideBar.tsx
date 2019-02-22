@@ -32,14 +32,15 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           vertical
           className={classnames('w-100 justify-content-center align-items-center', styles.Sidebar)}
         >
-          <Button className={classnames('py-3 px-auto text-white', styles.customBtn)}>
+          <Button className={classnames('py-2 px-auto text-white', styles.customBtn)}>
             <FontAwesomeIcon icon={faCode} />
           </Button>
           <Button
-            className={classnames('py-3 px-auto editor-settings-btn-ctrl', styles.customBtn, {
+            className={classnames('py-2 px-auto editor-settings-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.EDITOR_SETTINGS,
             })}
             id="editor_settings_button"
+            title={'SETTINGS'}
             onClick={() =>
               sidePanelTab !== SidePanelTab.EDITOR_SETTINGS
                 ? openSidePanelTab(SidePanelTab.EDITOR_SETTINGS)
@@ -49,10 +50,11 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faCog} />
           </Button>
           <Button
-            className={classnames('py-3 px-auto leaderboard-btn-ctrl', styles.customBtn, {
+            className={classnames('py-2 px-auto leaderboard-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.LEADERBOARD,
             })}
             id="leaderboard_button"
+            title={'LEADERBOARD'}
             onClick={() =>
               sidePanelTab !== SidePanelTab.LEADERBOARD
                 ? openSidePanelTab(SidePanelTab.LEADERBOARD)
@@ -62,10 +64,11 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faTrophy} />
           </Button>
           <Button
-            className={classnames('py-3 px-auto commitLog-btn-ctrl', styles.customBtn, {
+            className={classnames('py-2 px-auto commitLog-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.COMMIT_LOG,
             })}
             id="commit_log_button"
+            title={'COMMIT LOG'}
             onClick={() =>
               sidePanelTab !== SidePanelTab.COMMIT_LOG
                 ? openSidePanelTab(SidePanelTab.COMMIT_LOG)
@@ -75,9 +78,11 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faCodeBranch} />
           </Button>
           <Button
-            className={classnames('py-3 px-auto match-btn-ctrl', styles.customBtn, {
+            className={classnames('py-2 px-auto match-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.MATCH,
             })}
+            id="matchView_button"
+            title={'CCTV'}
             onClick={() =>
               sidePanelTab !== SidePanelTab.MATCH
                 ? openSidePanelTab(SidePanelTab.MATCH)
@@ -87,10 +92,11 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faTv} />
           </Button>
           <Button
-            className={classnames('py-3 px-auto notification-btn-ctrl', styles.customBtn, {
+            className={classnames('py-2 px-auto notification-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.NOTIFICATION,
             })}
             id="notifications_button"
+            title={'NOTIFICATIONS'}
             onClick={() =>
               sidePanelTab !== SidePanelTab.NOTIFICATION
                 ? openSidePanelTab(SidePanelTab.NOTIFICATION)
@@ -100,8 +106,9 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faBell} />
           </Button>
           <Button
-            className={classnames('py-3 px-auto', styles.customBtn)}
+            className={classnames('py-2 px-auto', styles.customBtn)}
             id="user_profile_button"
+            title={'PROFILE'}
             onClick={() => {
               toggleUserProfileModal(true);
             }}
@@ -109,8 +116,9 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faUser} />
           </Button>
           <Button
-            className={classnames('py-3 px-auto', styles.customBtn)}
+            className={classnames('py-2 px-auto', styles.customBtn)}
             id="logout_button"
+            title={'LOGOUT'}
             onClick={() => {
               logout();
               this.resetCompleteState();
@@ -119,7 +127,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faSignOutAlt} />
           </Button>
           <Button
-            className={classnames('py-3 px-auto', styles.joyRide)}
+            className={classnames('py-2 px-auto', styles.joyRide)}
             id="joyride_button"
             onClick={() => this.props.toggleJoyRide()}
           >

@@ -31,11 +31,11 @@ exports[`SideBar Container Should render 1`] = `
             block={false}
             bsClass="btn"
             bsStyle="default"
-            className="py-3 px-auto text-white"
+            className="py-2 px-auto text-white"
             disabled={false}
           >
             <button
-              className="py-3 px-auto text-white btn btn-default"
+              className="py-2 px-auto text-white btn btn-default"
               disabled={false}
               type="button"
             >
@@ -93,16 +93,18 @@ exports[`SideBar Container Should render 1`] = `
             block={false}
             bsClass="btn"
             bsStyle="default"
-            className="py-3 px-auto editor-settings-btn-ctrl"
+            className="py-2 px-auto editor-settings-btn-ctrl"
             disabled={false}
             id="editor_settings_button"
             onClick={[Function]}
+            title="SETTINGS"
           >
             <button
-              className="py-3 px-auto editor-settings-btn-ctrl btn btn-default"
+              className="py-2 px-auto editor-settings-btn-ctrl btn btn-default"
               disabled={false}
               id="editor_settings_button"
               onClick={[Function]}
+              title="SETTINGS"
               type="button"
             >
               <FontAwesomeIcon
@@ -159,16 +161,18 @@ exports[`SideBar Container Should render 1`] = `
             block={false}
             bsClass="btn"
             bsStyle="default"
-            className="py-3 px-auto leaderboard-btn-ctrl"
+            className="py-2 px-auto leaderboard-btn-ctrl"
             disabled={false}
             id="leaderboard_button"
             onClick={[Function]}
+            title="LEADERBOARD"
           >
             <button
-              className="py-3 px-auto leaderboard-btn-ctrl btn btn-default"
+              className="py-2 px-auto leaderboard-btn-ctrl btn btn-default"
               disabled={false}
               id="leaderboard_button"
               onClick={[Function]}
+              title="LEADERBOARD"
               type="button"
             >
               <FontAwesomeIcon
@@ -225,16 +229,18 @@ exports[`SideBar Container Should render 1`] = `
             block={false}
             bsClass="btn"
             bsStyle="default"
-            className="py-3 px-auto commitLog-btn-ctrl"
+            className="py-2 px-auto commitLog-btn-ctrl"
             disabled={false}
             id="commit_log_button"
             onClick={[Function]}
+            title="COMMIT LOG"
           >
             <button
-              className="py-3 px-auto commitLog-btn-ctrl btn btn-default"
+              className="py-2 px-auto commitLog-btn-ctrl btn btn-default"
               disabled={false}
               id="commit_log_button"
               onClick={[Function]}
+              title="COMMIT LOG"
               type="button"
             >
               <FontAwesomeIcon
@@ -291,14 +297,18 @@ exports[`SideBar Container Should render 1`] = `
             block={false}
             bsClass="btn"
             bsStyle="default"
-            className="py-3 px-auto match-btn-ctrl"
+            className="py-2 px-auto match-btn-ctrl"
             disabled={false}
+            id="matchView_button"
             onClick={[Function]}
+            title="CCTV"
           >
             <button
-              className="py-3 px-auto match-btn-ctrl btn btn-default"
+              className="py-2 px-auto match-btn-ctrl btn btn-default"
               disabled={false}
+              id="matchView_button"
               onClick={[Function]}
+              title="CCTV"
               type="button"
             >
               <FontAwesomeIcon
@@ -355,16 +365,18 @@ exports[`SideBar Container Should render 1`] = `
             block={false}
             bsClass="btn"
             bsStyle="default"
-            className="py-3 px-auto notification-btn-ctrl"
+            className="py-2 px-auto notification-btn-ctrl"
             disabled={false}
             id="notifications_button"
             onClick={[Function]}
+            title="NOTIFICATIONS"
           >
             <button
-              className="py-3 px-auto notification-btn-ctrl btn btn-default"
+              className="py-2 px-auto notification-btn-ctrl btn btn-default"
               disabled={false}
               id="notifications_button"
               onClick={[Function]}
+              title="NOTIFICATIONS"
               type="button"
             >
               <FontAwesomeIcon
@@ -421,16 +433,18 @@ exports[`SideBar Container Should render 1`] = `
             block={false}
             bsClass="btn"
             bsStyle="default"
-            className="py-3 px-auto"
+            className="py-2 px-auto"
             disabled={false}
             id="user_profile_button"
             onClick={[Function]}
+            title="PROFILE"
           >
             <button
-              className="py-3 px-auto btn btn-default"
+              className="py-2 px-auto btn btn-default"
               disabled={false}
               id="user_profile_button"
               onClick={[Function]}
+              title="PROFILE"
               type="button"
             >
               <FontAwesomeIcon
@@ -487,16 +501,18 @@ exports[`SideBar Container Should render 1`] = `
             block={false}
             bsClass="btn"
             bsStyle="default"
-            className="py-3 px-auto"
+            className="py-2 px-auto"
             disabled={false}
             id="logout_button"
             onClick={[Function]}
+            title="LOGOUT"
           >
             <button
-              className="py-3 px-auto btn btn-default"
+              className="py-2 px-auto btn btn-default"
               disabled={false}
               id="logout_button"
               onClick={[Function]}
+              title="LOGOUT"
               type="button"
             >
               <FontAwesomeIcon
@@ -553,13 +569,13 @@ exports[`SideBar Container Should render 1`] = `
             block={false}
             bsClass="btn"
             bsStyle="default"
-            className="py-3 px-auto"
+            className="py-2 px-auto"
             disabled={false}
             id="joyride_button"
             onClick={[Function]}
           >
             <button
-              className="py-3 px-auto btn btn-default"
+              className="py-2 px-auto btn btn-default"
               disabled={false}
               id="joyride_button"
               onClick={[Function]}
