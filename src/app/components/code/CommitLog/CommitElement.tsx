@@ -78,7 +78,7 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
       >
         <div className={classnames(styles.CommitDetails)}>
           <div className="d-flex w-100 justify-content-between">
-            <h6 className="mb-1">{commitDetails.message}</h6>
+            <h6 className="mb-1" title={commitDetails.message}>{commitDetails.message.length > 20 ? `${commitDetails.message.substring(0, 20)}...` : commitDetails.message}</h6>
             {commitDetails.hash !== 'latest' ? (
               <div>
                 <img
