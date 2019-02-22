@@ -99,9 +99,12 @@ export function* getUserDetails(action: ActionType<typeof UserActions.getUserDet
     if (res.type !== resType.ERROR) {
       yield put(
         UserActions.updateUserDetails({
+          avatar: res.userDetails.avatar,
+          college: res.userDetails.college,
           country: res.userDetails.country,
           fullName: res.userDetails.fullName,
           isLoggedIn: true,
+          type: res.userDetails.type,
           username: res.userDetails.username,
         }),
       );
@@ -124,6 +127,7 @@ export function* editUserProfile(action: ActionType<typeof UserActions.editUserP
     if (res.type !== resType.ERROR) {
       yield put(
         UserActions.updateUserDetails({
+          avatar: action.payload.editUserDetails.avatar,
           country: action.payload.editUserDetails.country,
           email: action.payload.editUserDetails.email,
           fullName: action.payload.editUserDetails.fullName,

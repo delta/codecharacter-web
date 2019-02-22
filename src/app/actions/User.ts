@@ -33,6 +33,9 @@ export namespace UserActions {
 
   interface UserDetails {
     isLoggedIn: boolean;
+    avatar?: string;
+    college?: string;
+    type?: string;
     fullName?: string;
     username?: string;
     email?: string;

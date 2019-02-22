@@ -21,12 +21,15 @@ describe('EditPassword Component', () => {
       password={'password'}
       repeatPassword={'repeatPassword'}
       userDetails={{
+        avatar: '',
+        college: '',
         country: 'IN',
         email: '',
         errorMessage: '',
         fullName: '',
         isLoggedIn: true,
         isUserProfileModalOpen: false,
+        type: '',
         username: '',
       }}
     />,
