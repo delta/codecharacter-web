@@ -13,6 +13,7 @@ export interface ListDisabled {
   isPasswordDisabled?: boolean;
 }
 export interface State {
+  avatar: string;
   username: string;
   oldPassword: string;
   password: string;
@@ -24,6 +25,7 @@ export interface State {
 }
 
 export enum InputName {
+  avatar = 'avatar',
   username = 'username',
   oldPassword = 'oldPassword',
   password = 'password',

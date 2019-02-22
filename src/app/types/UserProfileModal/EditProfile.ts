@@ -16,6 +16,7 @@ export interface ElementOwnProps {
   email: string;
   userDetails: UserInterfaces.UserStoreState;
   country: string;
+  avatar: string;
 }
 
 export type Props = ElementOwnProps;

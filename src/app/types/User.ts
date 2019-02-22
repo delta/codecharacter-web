@@ -20,6 +20,9 @@ export interface EditUserDetails {
   email?: string;
   country?: string;
   fullName?: string;
+  college?: string;
+  type?: string;
+  avatar?: string;
 }
 
 export interface EditUserPassword {
@@ -53,6 +56,9 @@ export interface UserStoreState {
   country: string;
   isLoggedIn: boolean;
   isUserProfileModalOpen: boolean;
+  college: string;
+  type: string;
+  avatar: string;
 }
 
 export type UserStoreAction = ActionType<typeof actions>;
