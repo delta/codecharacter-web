@@ -21,6 +21,7 @@ export class UserProfileModal extends React.Component<
     super(props);
     const { userDetails } = this.props;
     this.state = {
+      avatar: userDetails.country,
       country: userDetails.country,
       email: userDetails.email,
       fullName: userDetails.fullName,
@@ -40,9 +41,10 @@ export class UserProfileModal extends React.Component<
   }
 
   public componentWillReceiveProps(nextProps: UserProfileInterfaces.Props) {
-    const { country, username, fullName } = this.state;
+    const { country, username, fullName, avatar } = this.state;
     const { userDetails } = nextProps;
     this.setState({
+      avatar: userDetails.avatar !== avatar ? userDetails.avatar : avatar,
       country: userDetails.country !== country ? userDetails.country : country,
       fullName: userDetails.fullName !== fullName ? userDetails.fullName : fullName,
       username: userDetails.username !== country ? username : userDetails.username,
@@ -64,6 +66,7 @@ export class UserProfileModal extends React.Component<
       password,
       repeatPassword,
       listDisabled,
+      avatar,
     } = this.state;
     const { isUserProfileModalOpen, toggleUserProfileModal, userDetails } = this.props;
     return (
@@ -79,7 +82,11 @@ export class UserProfileModal extends React.Component<
           })}
         >
           <Row>
-            <div className="col" />
+            <div className="col">
+              <div className="col text-center mb-1">
+                <h4 className="text-dark m-2">Edit Profile</h4>
+              </div>
+            </div>
             <div className="col-sm-auto p-0 m-0">
               <Button
                 className={classnames(styles.customBtn)}
@@ -91,11 +98,11 @@ export class UserProfileModal extends React.Component<
               </Button>
             </div>
           </Row>
-          <Row>
+          {/* <Row>
             <div className="col text-center mb-3">
               <h3 className="text-dark m-0">Edit Profile</h3>
             </div>
-          </Row>
+          </Row> */}
           <div className="text-center errorMessage">{userDetails.errorMessage}</div>
           <Row>
             <EditProfile
@@ -110,6 +117,7 @@ export class UserProfileModal extends React.Component<
               email={email}
               userDetails={userDetails}
               country={country}
+              avatar={avatar}
             />
             <EditPassword
               handleEditPassword={this.handleEditPassword}
@@ -130,7 +138,7 @@ export class UserProfileModal extends React.Component<
 
   private handleEditProfile = (event: React.FormEvent<HTMLFormElement>) => {
     const { editUserProfile } = this.props;
-    const { country, email, fullName, username, listDisabled } = this.state;
+    const { country, email, fullName, username, listDisabled, avatar } = this.state;
     const form = this.editProfileRef.current;
     event.preventDefault();
 
@@ -141,6 +149,7 @@ export class UserProfileModal extends React.Component<
           ...(!listDisabled.isEmailDisabled && { email }),
           ...(!listDisabled.isFullNameDisabled && { fullName }),
           ...(!listDisabled.isUserNameDisabled && { username }),
+          avatar,
         });
 
         this.setState({

@@ -1,6 +1,7 @@
 import { faEnvelope, faFlag, faPen, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as styles from 'app/styles/UserProfileModal.module.css';
+import { Avatar } from 'app/types/Authentication/Register';
 import { InputName, InputState } from 'app/types/UserProfileModal';
 import * as EditProfileInterfaces from 'app/types/UserProfileModal/EditProfile';
 import classnames from 'classnames';
@@ -14,7 +15,8 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
   public render() {
     const { handleEditProfile, onInputChange, inputEnabler } = this.props;
     const { editProfileRef, reactFlagRef } = this.props;
-    const { username, listDisabled, fullName, email, country } = this.props;
+    const { username, listDisabled, fullName, email, country, avatar: currentAvatar } = this.props;
+    const avatars = Object.keys(Avatar);
     return (
       <div className="col-6">
         <Row className="mb-3">
@@ -147,7 +149,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                   </div>
                 </div>
               </div>
-              <div className="form-row">
+              <div className="form-row" id="react-flag">
                 <div className="col sm={12} mb-3">
                   <div className="input-group-prepend">
                     <div className="input-group-prepend">
@@ -182,6 +184,36 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                       </span>
                     </div>
                     <div className="invalid-feedback">Please select a country.</div>
+                  </div>
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="col sm={12} mb-3">
+                  <div className="input-group">
+                    <div className="text-center text-dark">Edit your spirit animal</div>
+                    <div className={classnames(styles['avatar-select-container'])}>
+                      <section className={classnames(styles['avatar-section'])}>
+                        {avatars.map((avatar: string) => (
+                          <div
+                            key={avatar}
+                            className={
+                              avatar === currentAvatar
+                                ? classnames(styles['avatar-img-active'])
+                                : classnames(styles['avatar-img'])
+                            }
+                            onClick={() => {
+                              onInputChange(InputName.avatar, avatar);
+                            }}
+                            title={avatar}
+                          >
+                            {
+                              // @ts-ignore
+                              <img width={50} height={50} src={Avatar[avatar]} />
+                            }
+                          </div>
+                        ))}
+                      </section>
+                    </div>
                   </div>
                 </div>
               </div>
