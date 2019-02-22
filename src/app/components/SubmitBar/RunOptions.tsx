@@ -18,9 +18,17 @@ export class RunOptions extends React.Component<
     };
   }
 
+  public componentDidMount(): void {
+    window.addEventListener('click', this.props.closeOptions, false);
+  }
+
   public componentWillMount(): void {
     this.props.loadMaps();
     this.props.getAiIds();
+  }
+
+  public componentWillUnmount(): void {
+    window.removeEventListener('click', this.props.closeOptions, false);
   }
 
   public render() {
@@ -73,7 +81,10 @@ export class RunOptions extends React.Component<
               <div
                 key={index}
                 className={classnames(styles.dropdownItem)}
-                onClick={() => this.toggleMapOptions(index)}
+                onClick={(event: React.MouseEvent<HTMLDivElement>) => {
+                  this.toggleMapOptions(index);
+                  event.stopPropagation();
+                }}
               >
                 <span className={classnames(styles.dropdownItemName)}>{option.name}</span>
                 <span className={classnames(styles.dropdownItemIcon)}>{option.icon}</span>

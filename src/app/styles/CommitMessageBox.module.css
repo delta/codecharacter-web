@@ -6,6 +6,7 @@
   background-color: rgb(41, 41, 41);
   color: #ddd;
   border-radius: 3px;
+  z-index: 1000;
 }
 
 .hideCommitMessageBox {

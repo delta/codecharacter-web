@@ -38,6 +38,7 @@ export interface RunOptionsDispatchProps {
   startMatch: (type: SubmissionActions.Type, mapId: number, aiId: number) => void;
   loadMaps: () => void;
   getAiIds: () => void;
+  closeOptions: () => void;
 }
 
 export type RunOptionsProps = RunOptionsDispatchProps & RunOptionsStateProps;

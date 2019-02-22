@@ -111,10 +111,11 @@ export class SubmitBar extends React.Component<
         <button
           className={classnames(styles.customBtn)}
           id="run_button"
-          onClick={() => {
+          onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
             this.setState({
               isRunOptionsOpen: !isRunOptionsOpen,
             });
+            event.stopPropagation();
           }}
         >
           <span className={classnames(styles.icon)}>
@@ -151,11 +152,18 @@ export class SubmitBar extends React.Component<
             maps={maps}
             getAiIds={getAiIds}
             aiIds={aiIds}
+            closeOptions={this.closeRunOptions}
           />
         ) : null}
       </div>
     );
   }
+
+  private closeRunOptions = () => {
+    this.setState({
+      isRunOptionsOpen: false,
+    });
+  };
 
   private toggleCommitMessageBox = (isCommitMessageBoxOpen: boolean) => {
     this.setState({
