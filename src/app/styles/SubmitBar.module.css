@@ -4,6 +4,7 @@
   background: #292929;
   position: fixed;
   box-sizing: border-box;
+  z-index: 1;
 }
 
 .SubmitBar .customBtn {

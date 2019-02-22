@@ -32,8 +32,12 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           vertical
           className={classnames('w-100 justify-content-center align-items-center', styles.Sidebar)}
         >
-          <Button className={classnames('py-2 px-auto text-white', styles.customBtn)}>
-            <FontAwesomeIcon icon={faCode} />
+          <Button
+            className={classnames('py-2 px-auto text-white', styles.customBtn)}
+            onClick={() => closeSidePanelTab()}>
+            <FontAwesomeIcon
+              icon={faCode}
+            />
           </Button>
           <Button
             className={classnames('py-2 px-auto editor-settings-btn-ctrl', styles.customBtn, {

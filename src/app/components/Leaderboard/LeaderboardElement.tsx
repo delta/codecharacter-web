@@ -67,10 +67,15 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
                   className={classnames('text-light', styles['leader-score_title'])}
                   style={{
                     display: 'block',
-                    fontSize: '18px',
+                    fontSize: '16px',
+                    whiteSpace: 'nowrap',
                   }}
+                  title={player.username}
                 >
-                  {`${player.rank}.`} <span>{`${player.username}`}</span>
+                  {`${player.rank}.`}{' '}
+                  <span>{`${player.username.substr(0, 13)}${
+                    player.username.length > 13 ? '...' : ''
+                  }`}</span>
                 </div>
                 <div
                   className={classnames(styles['leader-score_title'])}
@@ -80,7 +85,7 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
                     marginTop: '5px',
                   }}
                 >
-                  score: {player.rating}
+                  Rating: {player.rating}
                 </div>
               </div>
             </div>
