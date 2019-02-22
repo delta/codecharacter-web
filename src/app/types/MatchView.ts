@@ -12,6 +12,8 @@ export interface OwnState {
 }
 
 export interface Match {
+  avatar1: string;
+  avatar2: string;
   username1: string;
   score1: number;
   username2: string;
@@ -40,6 +42,7 @@ export type State = OwnState;
 export interface ElementOwnProps {
   match: Match;
   index: number;
+  currentUserMatch: boolean;
   getGameLogs: (gameId: number) => void;
 }
 

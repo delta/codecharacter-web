@@ -55,17 +55,17 @@
 }
 
 .matchElement {
-  min-height: 70px;
   padding: 5px;
-  border: 1px solid #fff;
   border-radius: 2px;
-  background: #e9ecef;
+  background: #464646;
+  color: #fff;
+  box-shadow: 1px 1px 4px 0px rgba(143, 132, 143, 1);
 }
 
 .loseBackground {
-  background: #efc6c6;
+  color: #d23d56;
 }
 
 .winBackground {
-  background: #c6efcc;
+  color: #50c32c;
 }

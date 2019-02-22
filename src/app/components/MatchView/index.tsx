@@ -83,6 +83,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
                       index={index - 1}
                       key={index - 1}
                       getGameLogs={getGameLogs}
+                      currentUserMatch={true}
                     />
                   ) : null
                 ) : (
@@ -102,6 +103,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
                     index={index - 1}
                     key={index - 1}
                     getGameLogs={getGameLogs}
+                    currentUserMatch={false}
                   />
                 ) : null
               ) : (

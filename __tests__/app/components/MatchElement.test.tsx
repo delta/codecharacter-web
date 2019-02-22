@@ -5,8 +5,11 @@ import * as React from 'react';
 describe('MatchElement Component', () => {
   const wrapper = mount(
     <MatchElement
+      currentUserMatch={false}
       index={1}
       match={{
+        avatar1: 'BABOON',
+        avatar2: 'BEAR',
         games: [],
         playedAt: 'date string',
         score1: 1,

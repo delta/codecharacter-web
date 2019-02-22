@@ -2,10 +2,13 @@
 
 exports[`MatchElement Component Should render 1`] = `
 <MatchElement
+  currentUserMatch={false}
   getGameLogs={[Function]}
   index={1}
   match={
     Object {
+      "avatar1": "BABOON",
+      "avatar2": "BEAR",
       "games": Array [],
       "playedAt": "date string",
       "score1": 1,
@@ -26,10 +29,10 @@ exports[`MatchElement Component Should render 1`] = `
       className="mb-1 col-sm-12"
     >
       <div
-        className="w-100 undefined"
+        className="w-100"
       >
         <div
-          className="d-flex justify-content-around text-dark"
+          className="d-flex justify-content-around "
         >
           <span>
             user1
@@ -88,22 +91,38 @@ exports[`MatchElement Component Should render 1`] = `
           </span>
         </div>
         <div
-          className=" d-flex justify-content-center text-capitalize text-font-weight-bold text-dark h2  my-2"
+          className=" d-flex justify-content-center w-100"
         >
-          1
-           - 
-          5
+          <img
+            height={35}
+            src="assets/img/userAvatars/001-baboon.svg"
+            title="BABOON"
+            width={35}
+          />
+          <span
+            className="text-capitalize text-font-weight-bold  h3 mx-3"
+          >
+            1
+             - 
+            5
+          </span>
+          <img
+            height={35}
+            src="assets/img/userAvatars/002-bear.svg"
+            title="BEAR"
+            width={35}
+          />
         </div>
         <div
-          className=" d-flex justify-content-center text-capitalize text-font-weight-bold text-dark"
+          className=" d-flex justify-content-center text-capitalize text-font-weight-bold "
         >
           WON
         </div>
         <div
-          className="d-flex justify-content-around text-dark"
+          className="d-flex justify-content-around "
         />
         <div
-          className=" d-flex justify-content-start text-capitalize text-dark my-1 mx-3 h6"
+          className=" d-flex justify-content-start text-capitalize  my-1 mx-3 h6"
           style={
             Object {
               "fontSize": "12px",
