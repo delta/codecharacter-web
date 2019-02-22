@@ -17,6 +17,7 @@ export function* save(action: ActionType<typeof CodeActions.save>) {
       yield put(CodeActions.updateStatusMessage(res.error));
     } else {
       yield put(CodeActions.updateStatusMessage('Saved!'));
+      yield put(CodeActions.getLastSaveTime());
     }
   } catch (err) {
     throw err;
@@ -105,6 +106,22 @@ export function* forkCode(action: ActionType<typeof CodeActions.forkCode>) {
   }
 }
 
+export function* getLastSaveTime(action: ActionType<typeof CodeActions.getLastSaveTime>) {
+  try {
+    const res = yield call(codeFetch.getLastSaveTime);
+    const isAuthenticated = yield checkAuthentication(res);
+    if (isAuthenticated === false) return;
+
+    if (res.type === resType.ERROR) {
+      yield put(CodeActions.updateStatusMessage(res.error));
+    } else {
+      yield put(CodeActions.updateLastSaveTime(new Date(res.lastSavedAt)));
+    }
+  } catch (err) {
+    throw err;
+  }
+}
+
 export function* codeSagas() {
   yield all([
     takeEvery(CodeActions.Type.SAVE, save),
@@ -113,5 +130,6 @@ export function* codeSagas() {
     takeEvery(CodeActions.Type.GET_COMMIT_LOG, getCommitLog),
     takeEvery(CodeActions.Type.CHECKOUT_CODE, checkoutCode),
     takeEvery(CodeActions.Type.FORK_CODE, forkCode),
+    takeEvery(CodeActions.Type.GET_LAST_SAVE_TIME, getLastSaveTime),
   ]);
 }

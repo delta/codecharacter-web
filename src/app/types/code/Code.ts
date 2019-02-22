@@ -12,6 +12,7 @@ const actions = {
   setCurrentCommitHash: CodeActions.setCurrentCommitHash,
   updateCode: CodeActions.updateCode,
   updateCommitLog: CodeActions.updateCommitLog,
+  updateLastSaveTime: CodeActions.updateLastSaveTime,
   updateStatusMessage: CodeActions.updateStatusMessage,
 };
 
@@ -22,6 +23,7 @@ export interface CodeStoreState {
   currentCommitHash: string;
   debugLog1: string;
   debugLog2: string;
+  lastSaveTime: Date;
   log: string;
 }
 

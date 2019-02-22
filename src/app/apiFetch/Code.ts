@@ -125,3 +125,23 @@ export const forkCode = (commitHash: string) => {
       throw error;
     });
 };
+
+export const getLastSaveTime = () => {
+  return fetch(`${API_BASE_URL}code/lastsave`, {
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'GET',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      throw error;
+    });
+};

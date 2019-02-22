@@ -14,6 +14,8 @@ export namespace CodeActions {
     SET_CURRENT_COMMIT_HASH = 'SET_CURRENT_COMMIT_HASH',
     FORK_CODE = 'FORK_CODE',
     RESET_CODE_STATE = 'RESET_CODE_STATE',
+    GET_LAST_SAVE_TIME = 'GET_LAST_SAVE_TIME',
+    UPDATE_LAST_SAVE_TIME = 'UPDATE_LAST_SAVE_TIME',
   }
 
   export const save = () => action(Type.SAVE);
@@ -37,6 +39,11 @@ export namespace CodeActions {
     action(Type.SET_CURRENT_COMMIT_HASH, { commitHash });
 
   export const forkCode = (commitHash: string) => action(Type.FORK_CODE, { commitHash });
+
+  export const getLastSaveTime = () => action(Type.GET_LAST_SAVE_TIME);
+
+  export const updateLastSaveTime = (lastSaveTime: Date) =>
+    action(Type.UPDATE_LAST_SAVE_TIME, { lastSaveTime });
 
   export const resetCodeState = () => action(Type.RESET_CODE_STATE);
 }

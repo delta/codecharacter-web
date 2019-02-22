@@ -33,10 +33,12 @@ exports[`SideBar Container Should render 1`] = `
             bsStyle="default"
             className="py-2 px-auto text-white"
             disabled={false}
+            onClick={[Function]}
           >
             <button
               className="py-2 px-auto text-white btn btn-default"
               disabled={false}
+              onClick={[Function]}
               type="button"
             >
               <FontAwesomeIcon
