@@ -11,6 +11,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 var HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   context: sourcePath,
@@ -132,7 +133,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'assets/index.html'
     }),
-    new HardSourceWebpackPlugin()
+    new HardSourceWebpackPlugin(),
+    new CopyWebpackPlugin([{
+      from: 'assets',
+      to: 'assets'
+    }])
   ],
   devServer: {
     contentBase: sourcePath,
