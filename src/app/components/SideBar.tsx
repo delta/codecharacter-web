@@ -132,9 +132,17 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           <Button
             className={classnames('py-2 px-auto', styles.joyRide)}
             id="joyride_button"
+            title={'Take a tour'}
             onClick={() => this.props.toggleJoyRide()}
           >
             <FontAwesomeIcon icon={faInfoCircle} />
+          </Button>
+          <Button
+            className={classnames('py-2 px-auto', styles.dologo)}
+            id="digital_ocean_logo"
+            title={'We thank Digital Ocean for hosting Code Character'}
+          >
+            <img src="assets/img/doLogo.png" height={20} width={20}/>
           </Button>
         </ButtonGroup>
       </div>

@@ -30,7 +30,13 @@
   color: #9c9c9c;
   position: fixed;
   position: absolute;
-  top: 88vh;
+  top: 82vh;
+}
+
+.Sidebar .dologo {
+  position: fixed;
+  position: absolute;
+  top: 92vh;
 }
 
 .joyRide:focus {
