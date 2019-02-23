@@ -1,7 +1,7 @@
 import { GameLogActions, NotificationActions, SubmissionActions } from 'app/actions';
 import * as SubmissionFetch from 'app/apiFetch/Submission';
 import { RootState } from 'app/reducers';
-import { checkAuthentication } from 'app/sagas/utils';
+import { checkAccountActivated, checkAuthentication } from 'app/sagas/utils';
 import { Request, RequestState } from 'app/types/code/Submission';
 import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
@@ -142,7 +142,8 @@ export function* changeStateCurrentRequest(
     }
 
     const isAuthenticated = yield checkAuthentication(res);
-    if (isAuthenticated === false) {
+    const isActivated = yield checkAccountActivated(res);
+    if (isAuthenticated === false || isActivated === false) {
       yield put(SubmissionActions.changeCurrentRequest(Request.NONE));
       yield put(SubmissionActions.changeState(RequestState.IDLE));
       return;
@@ -325,8 +326,11 @@ export function* handleExecuteError(
 export function* loadMaps(action: ActionType<typeof SubmissionActions.loadMaps>) {
   try {
     const res = yield call(SubmissionFetch.loadMaps);
+
     const isAuthenticated = yield checkAuthentication(res);
-    if (isAuthenticated === false) {
+    const isActivated = yield checkAccountActivated(res);
+
+    if (isAuthenticated === false || isActivated === false) {
       return;
     }
     yield put(SubmissionActions.saveMaps(res.mapsData));
@@ -338,8 +342,11 @@ export function* loadMaps(action: ActionType<typeof SubmissionActions.loadMaps>)
 export function* getAiIds(action: ActionType<typeof SubmissionActions.getAiIds>) {
   try {
     const res = yield call(SubmissionFetch.loadAiIds);
+
     const isAuthenticated = yield checkAuthentication(res);
-    if (isAuthenticated === false) {
+    const isActivated = yield checkAccountActivated(res);
+
+    if (isAuthenticated === false || isActivated === false) {
       return;
     }
     yield put(SubmissionActions.updateAiIds(res.aiIds));
