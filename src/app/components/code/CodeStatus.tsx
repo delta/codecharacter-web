@@ -70,14 +70,14 @@ export class CodeStatus extends React.Component<
           height: '3.5vh',
         }}
       >
-        <Col sm={8} className={classnames(styles.CommitStatusCol)}>
+        <Col sm={6} className={classnames(styles.CommitStatusCol)}>
           <p className={classnames(styles.StatusText)} style={{ textAlign: 'left' }}>
             {' '}
             On Commit: {currentCommitHash.slice(0, 7)}{' '}
             {currentCommitHash !== 'latest' ? '(Non editable)' : ''}
           </p>
         </Col>
-        <Col sm={4} className={classnames(styles.StatusTextCol)}>
+        <Col sm={6} className={classnames(styles.StatusTextCol)}>
           <p className={classnames(styles.StatusText)} style={{ textAlign: 'right' }}>
             {this.state.lastSaveMessage}
           </p>
