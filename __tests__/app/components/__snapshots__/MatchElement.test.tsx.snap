@@ -31,65 +31,141 @@ exports[`MatchElement Component Should render 1`] = `
       <div
         className="w-100"
       >
-        <div
+        <Row
+          bsClass="row"
           className="d-flex justify-content-around "
+          componentClass="div"
         >
-          <span>
-            user1
-          </span>
-          <span>
-            <FontAwesomeIcon
-              border={false}
-              className=""
-              fixedWidth={false}
-              flip={null}
-              icon={
+          <div
+            className="d-flex justify-content-around  row"
+          >
+            <Col
+              bsClass="col"
+              componentClass="div"
+              sm={5}
+              style={
                 Object {
-                  "icon": Array [
-                    512,
-                    512,
-                    Array [],
-                    "f3ed",
-                    "M496 128c0 221.282-135.934 344.645-221.539 380.308a48 48 0 0 1-36.923 0C130.495 463.713 16 326.487 16 128a48 48 0 0 1 29.539-44.308l192-80a48 48 0 0 1 36.923 0l192 80A48 48 0 0 1 496 128zM256 446.313l.066.034c93.735-46.689 172.497-156.308 175.817-307.729L256 65.333v380.98z",
-                  ],
-                  "iconName": "shield-alt",
-                  "prefix": "fas",
+                  "textAlign": "center",
                 }
               }
-              inverse={false}
-              listItem={false}
-              mask={null}
-              pull={null}
-              pulse={false}
-              rotation={null}
-              size={null}
-              spin={false}
-              symbol={false}
-              title=""
-              transform={null}
             >
-              <svg
-                aria-hidden="true"
-                className="svg-inline--fa fa-shield-alt fa-w-16 "
-                data-icon="shield-alt"
-                data-prefix="fas"
-                role="img"
-                style={Object {}}
-                viewBox="0 0 512 512"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                className="col-sm-5"
+                style={
+                  Object {
+                    "textAlign": "center",
+                  }
+                }
               >
-                <path
-                  d="M496 128c0 221.282-135.934 344.645-221.539 380.308a48 48 0 0 1-36.923 0C130.495 463.713 16 326.487 16 128a48 48 0 0 1 29.539-44.308l192-80a48 48 0 0 1 36.923 0l192 80A48 48 0 0 1 496 128zM256 446.313l.066.034c93.735-46.689 172.497-156.308 175.817-307.729L256 65.333v380.98z"
-                  fill="currentColor"
-                  style={Object {}}
-                />
-              </svg>
-            </FontAwesomeIcon>
-          </span>
-          <span>
-            user2
-          </span>
-        </div>
+                <p
+                  style={
+                    Object {
+                      "fontSize": 13,
+                    }
+                  }
+                >
+                  user1
+                </p>
+              </div>
+            </Col>
+            <Col
+              bsClass="col"
+              componentClass="div"
+              sm={2}
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <div
+                className="col-sm-2"
+                style={
+                  Object {
+                    "textAlign": "center",
+                  }
+                }
+              >
+                <FontAwesomeIcon
+                  border={false}
+                  className=""
+                  fixedWidth={false}
+                  flip={null}
+                  icon={
+                    Object {
+                      "icon": Array [
+                        512,
+                        512,
+                        Array [],
+                        "f3ed",
+                        "M496 128c0 221.282-135.934 344.645-221.539 380.308a48 48 0 0 1-36.923 0C130.495 463.713 16 326.487 16 128a48 48 0 0 1 29.539-44.308l192-80a48 48 0 0 1 36.923 0l192 80A48 48 0 0 1 496 128zM256 446.313l.066.034c93.735-46.689 172.497-156.308 175.817-307.729L256 65.333v380.98z",
+                      ],
+                      "iconName": "shield-alt",
+                      "prefix": "fas",
+                    }
+                  }
+                  inverse={false}
+                  listItem={false}
+                  mask={null}
+                  pull={null}
+                  pulse={false}
+                  rotation={null}
+                  size={null}
+                  spin={false}
+                  symbol={false}
+                  title=""
+                  transform={null}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-shield-alt fa-w-16 "
+                    data-icon="shield-alt"
+                    data-prefix="fas"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M496 128c0 221.282-135.934 344.645-221.539 380.308a48 48 0 0 1-36.923 0C130.495 463.713 16 326.487 16 128a48 48 0 0 1 29.539-44.308l192-80a48 48 0 0 1 36.923 0l192 80A48 48 0 0 1 496 128zM256 446.313l.066.034c93.735-46.689 172.497-156.308 175.817-307.729L256 65.333v380.98z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                </FontAwesomeIcon>
+              </div>
+            </Col>
+            <Col
+              bsClass="col"
+              componentClass="div"
+              sm={5}
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <div
+                className="col-sm-5"
+                style={
+                  Object {
+                    "textAlign": "center",
+                  }
+                }
+              >
+                <p
+                  style={
+                    Object {
+                      "fontSize": 13,
+                    }
+                  }
+                >
+                  user2
+                </p>
+              </div>
+            </Col>
+          </div>
+        </Row>
         <div
           className=" d-flex justify-content-center w-100"
         >

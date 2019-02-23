@@ -5,7 +5,7 @@ import { Avatar } from 'app/types/Authentication/Register';
 import * as MatchInterfaces from 'app/types/MatchView';
 import classnames from 'classnames';
 import * as React from 'react';
-import { Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 
 export class MatchElement extends React.Component<MatchInterfaces.ElementProps, {}> {
   public render() {
@@ -13,13 +13,17 @@ export class MatchElement extends React.Component<MatchInterfaces.ElementProps, 
     return (
       <Col sm={12} className={classnames('mb-1')}>
         <div className={classnames('w-100', styles.matchElement)}>
-          <div className="d-flex justify-content-around ">
-            <span>{match.username1}</span>
-            <span>
+          <Row className="d-flex justify-content-around ">
+            <Col sm={5} style={{ textAlign: 'center' }}>
+              <p style={{ fontSize: 13 }}>{`${match.username1.substr(0, 15)}${match.username1.length > 15 ? '...' : ''}`}</p>
+            </Col>
+            <Col sm={2} style={{ textAlign: 'center' }}>
               <FontAwesomeIcon icon={faShieldAlt} />
-            </span>
-            <span>{match.username2}</span>
-          </div>
+            </Col>
+            <Col sm={5} style={{ textAlign: 'center' }}>
+              <p style={{ fontSize: 13 }}>{`${match.username2.substr(0,15)}${match.username2.length > 15 ? '...' : ''}`}</p>
+            </Col>
+          </Row>
           <div
             className={classnames(' d-flex justify-content-center w-100', {
               [`${styles.winBackground}`]: currentUserMatch && match.score1 < match.score2,
