@@ -103,7 +103,6 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
           </div>
           <p className={classnames('mb-2', styles.CommitDate)}>
             {new Date(commitDetails.date).toUTCString()}
-            <small style={{ color: '#ddd' }}> &middot; {commitDetails.hash.substring(0, 7)}</small>
           </p>
         </div>
         <div style={{ width: '20%', marginLeft: '80%' }}>
