@@ -61,7 +61,7 @@ export class CodeStatus extends React.Component<
   }
 
   public render() {
-    const { currentCommitHash, width } = this.props;
+    const { currentCommitHash, width, isCodeSaved } = this.props;
     return (
       <Row
         className={classnames(styles.CodeStatusRow)}
@@ -70,16 +70,15 @@ export class CodeStatus extends React.Component<
           height: '3.5vh',
         }}
       >
-        <Col sm={6} className={classnames(styles.CommitStatusCol)}>
+        <Col sm={6} className={classnames(styles.StatusTextCol)}>
           <p className={classnames(styles.StatusText)} style={{ textAlign: 'left' }}>
-            {' '}
-            On Commit: {currentCommitHash.slice(0, 7)}{' '}
-            {currentCommitHash !== 'latest' ? '(Non editable)' : ''}
+            {isCodeSaved ? ' ' : '* '}{this.state.lastSaveMessage}
           </p>
         </Col>
-        <Col sm={6} className={classnames(styles.StatusTextCol)}>
+        <Col sm={6} className={classnames(styles.CommitStatusCol)}>
           <p className={classnames(styles.StatusText)} style={{ textAlign: 'right' }}>
-            {this.state.lastSaveMessage}
+            On Commit: {currentCommitHash.slice(0, 7)}{' '}
+            {currentCommitHash !== 'latest' ? '(Non editable)' : ''}
           </p>
         </Col>
       </Row>

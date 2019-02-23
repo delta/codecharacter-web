@@ -4,13 +4,13 @@
   margin: 0px;
 }
 
-.CommitStatusCol {
+.StatusTextCol {
   padding-left: 30px;
   padding-right: 0px;
   padding-top: 5px;
 }
 
-.StatusTextCol {
+.CommitStatusCol {
   padding-left: 0px;
   padding-right: 30px;
   padding-top: 5px;

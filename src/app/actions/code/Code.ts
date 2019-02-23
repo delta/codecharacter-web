@@ -16,6 +16,7 @@ export namespace CodeActions {
     RESET_CODE_STATE = 'RESET_CODE_STATE',
     GET_LAST_SAVE_TIME = 'GET_LAST_SAVE_TIME',
     UPDATE_LAST_SAVE_TIME = 'UPDATE_LAST_SAVE_TIME',
+    UPDATE_IS_CODE_SAVED = 'UPDATE_IS_CODE_SAVED',
   }
 
   export const save = () => action(Type.SAVE);
@@ -46,4 +47,7 @@ export namespace CodeActions {
     action(Type.UPDATE_LAST_SAVE_TIME, { lastSaveTime });
 
   export const resetCodeState = () => action(Type.RESET_CODE_STATE);
+
+  export const updateIsCodeSaved = (isCodeSaved: boolean) =>
+    action(Type.UPDATE_IS_CODE_SAVED, { isCodeSaved });
 }

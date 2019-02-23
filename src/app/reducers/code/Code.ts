@@ -7,6 +7,7 @@ const codeStoreInitialState: CodeInterfaces.CodeStoreState = {
   currentCommitHash: 'latest',
   debugLog1: '',
   debugLog2: '',
+  isCodeSaved: true,
   lastSaveTime: new Date(0),
   log: '',
   statusMessage: '',
@@ -27,6 +28,7 @@ export const codeReducer = (
       return {
         ...state,
         code: action.payload.code,
+        isCodeSaved: false,
       };
     }
     case CodeActions.Type.UPDATE_COMMIT_LOG: {
@@ -45,6 +47,12 @@ export const codeReducer = (
       return {
         ...state,
         lastSaveTime: action.payload.lastSaveTime,
+      };
+    }
+    case CodeActions.Type.UPDATE_IS_CODE_SAVED: {
+      return {
+        ...state,
+        isCodeSaved: action.payload.isCodeSaved,
       };
     }
     case CodeActions.Type.RESET_CODE_STATE: {

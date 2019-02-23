@@ -1,5 +1,6 @@
 export interface StateProps {
   currentCommitHash: string;
+  isCodeSaved: boolean;
   lastSaveTime: Date;
 }
 

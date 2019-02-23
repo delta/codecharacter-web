@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 const mapStateToProps = (rootState: RootState) => {
   return {
     currentCommitHash: rootState.code.currentCommitHash,
+    isCodeSaved: rootState.code.isCodeSaved,
     lastSaveTime: rootState.code.lastSaveTime,
   };
 };
