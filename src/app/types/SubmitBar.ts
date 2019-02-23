@@ -22,6 +22,7 @@ export interface DispatchProps {
   selfMatch: (mapId: number) => void;
   loadMaps: () => void;
   getAiIds: () => void;
+  clearLogs: () => void;
 }
 
 export interface RunOptionsOwnState {

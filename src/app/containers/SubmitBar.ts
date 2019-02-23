@@ -1,4 +1,4 @@
-import { CodeActions, SubmissionActions } from 'app/actions';
+import { CodeActions, GameLogActions, SubmissionActions } from 'app/actions';
 import { SubmitBar } from 'app/components/SubmitBar';
 import { RootState } from 'app/reducers';
 import * as SubmitBarInterfaces from 'app/types/SubmitBar';
@@ -15,6 +15,10 @@ const mapStateToProps = (rootState: RootState) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     aiMatch: (mapId: number, aiId: number) => dispatch(SubmissionActions.aiMatch(mapId, aiId)),
+    clearLogs: () => {
+      dispatch(GameLogActions.updateGameLog('', '', ''));
+      dispatch(GameLogActions.clearDisplayDebugLog());
+    },
     commit: (commitMessage: string) => dispatch(CodeActions.commit(commitMessage)),
     getAiIds: () => dispatch(SubmissionActions.getAiIds()),
     getCommitLog: () => dispatch(CodeActions.getCommitLog()),

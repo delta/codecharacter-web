@@ -5,6 +5,7 @@ import {
   faCodeBranch,
   faLock,
   faPlay,
+  faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SubmissionActions } from 'app/actions';
@@ -38,6 +39,7 @@ export class SubmitBar extends React.Component<
       loadMaps,
       getAiIds,
       aiIds,
+      clearLogs,
     } = this.props;
     const { commitMessage, isCommitMessageBoxOpen, isRunOptionsOpen } = this.state;
     return (
@@ -106,6 +108,15 @@ export class SubmitBar extends React.Component<
         >
           <span className={classnames(styles.icon)} style={{ padding: 0, margin: 0, border: 0 }}>
             <FontAwesomeIcon icon={faLock} />
+          </span>
+        </button>
+        <button className={classnames(styles.customBtn)} onClick={clearLogs} id="save_button">
+          <span
+            className={classnames(styles.icon)}
+            style={{ padding: 0, margin: 0, border: 0 }}
+            title={'Clear Renderer Log'}
+          >
+            <FontAwesomeIcon icon={faTrash} />
           </span>
         </button>
         <button
