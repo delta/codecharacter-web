@@ -8,6 +8,7 @@ import { Dispatch } from 'redux';
 
 const mapStateToProps = (rootState: RootState) => {
   return {
+    currentUsername: rootState.user.username,
     loading: rootState.match.loading,
     matches: rootState.match.matches,
     topMatches: rootState.match.topMatches,

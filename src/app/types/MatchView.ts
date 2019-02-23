@@ -27,6 +27,7 @@ export interface StateProps {
   matches: Match[];
   topMatches: Match[];
   loading: boolean;
+  currentUsername: string;
 }
 
 export interface DispatchProps {

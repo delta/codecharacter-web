@@ -32,7 +32,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
 
   public render() {
     const { activeMatchViewTab } = this.state;
-    const { matches, topMatches, getGameLogs } = this.props;
+    const { matches, topMatches, getGameLogs, currentUsername } = this.props;
 
     return (
       <Grid fluid={true} className={classnames(styles.MatchView)}>
@@ -83,7 +83,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
                       index={index - 1}
                       key={index - 1}
                       getGameLogs={getGameLogs}
-                      currentUserMatch={true}
+                      currentUserMatch={match.username1 === currentUsername}
                       type={MatchInterfaces.MatchViewTabType.MY_MATCHES}
                     />
                   ) : null

@@ -17,6 +17,10 @@ export class MatchElement extends React.Component<MatchInterfaces.ElementProps, 
             'w-100',
             styles.matchElement,
             type === MatchInterfaces.MatchViewTabType.TOP_MATCHES ? styles.topMatchElement : '',
+            {
+              [`${styles.winBackground}`]: currentUserMatch && match.score1 < match.score2,
+              [`${styles.loseBackground}`]: currentUserMatch && match.score1 < match.score2,
+            },
           )}
         >
           <Row className="d-flex justify-content-around ">
@@ -34,12 +38,7 @@ export class MatchElement extends React.Component<MatchInterfaces.ElementProps, 
               }`}</p>
             </Col>
           </Row>
-          <div
-            className={classnames(' d-flex justify-content-center w-100', {
-              [`${styles.winBackground}`]: currentUserMatch && match.score1 < match.score2,
-              [`${styles.loseBackground}`]: currentUserMatch && match.score1 < match.score2,
-            })}
-          >
+          <div className={classnames(' d-flex justify-content-center w-100')}>
             {
               // @ts-ignore
               <img width={35} height={35} src={Avatar[match.avatar1]} />
@@ -67,14 +66,14 @@ export class MatchElement extends React.Component<MatchInterfaces.ElementProps, 
               </span>
             ))}
           </div>
-          <div
+          {/* <div
             className=" d-flex justify-content-start text-capitalize  my-1 mx-3 h6"
             style={{
               fontSize: '12px',
             }}
           >
             Played At : {match.playedAt}
-          </div>
+          </div> */}
         </div>
       </Col>
     );

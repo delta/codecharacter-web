@@ -70,11 +70,11 @@
 }
 
 .loseBackground {
-  color: #d23d56;
+  background-color: #d23d56;
 }
 
 .winBackground {
-  color: #50c32c;
+  background-color: #50c32c;
 }
 
 .topMatchesButton {
