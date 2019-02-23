@@ -9,6 +9,9 @@ export interface Player {
   rating: number;
   fullName: string;
   avatar: string;
+  numWin: number;
+  numLoss: number;
+  numTie: number;
 }
 
 export interface GetLeaderboard {

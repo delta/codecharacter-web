@@ -113,11 +113,11 @@
 }
 
 .leader-bar {
-  margin-top: 8px;
+  margin-top: 10px;
+  height: 3px;
   animation-name: barLoad;
-  animation-duration: 0.4s;
+  animation-duration: 1s;
   animation-fill-mode: both;
-  animation-timing-function: cubic-bezier(0.6, 0.2, 0.1, 1);
   transform-origin: left;
 }
 

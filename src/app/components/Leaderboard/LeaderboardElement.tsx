@@ -6,7 +6,6 @@ import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Button, Col } from 'react-bootstrap';
-import MAX_RATING = LeaderboardActions.MAX_RATING;
 
 // @ts-ignore
 // tslint:disable-next-line:import-name
@@ -15,8 +14,11 @@ const colors = ['#FFB900', '#69797E', '#847545', '#038387'];
 
 export class LeaderboardElement extends React.Component<LeaderboardInterfaces.ElementProps, {}> {
   public render() {
-    const { player, rank, index, isPlayAgainstDisabled, runMatch, currentUsername } = this.props;
+    const { player, index, isPlayAgainstDisabled, runMatch, currentUsername } = this.props;
     const fetchSize = LeaderboardActions.FETCH_SIZE;
+
+    const playerTotalMatches = player.numWin + player.numLoss + player.numTie;
+
     return (
       <Col
         sm={12}
@@ -107,16 +109,30 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
             </Button>
           </div>
         </div>
-        <div
-          style={{ animationDelay: `${0.4 + (index % fetchSize) * 0.2}s` }}
-          className={classnames(styles['leader-bar'])}
-        >
+        <div className={classnames('progress', styles['leader-bar'])}>
           <div
+            className="progress-bar"
+            role="progressbar"
             style={{
-              backgroundColor: rank <= 3 ? colors[rank] : colors[3],
-              width: `${(player.rating / MAX_RATING) * 100}%`,
+              backgroundColor: '#28A745',
+              width: `${(player.numWin * 100) / playerTotalMatches}%`,
             }}
-            className={classnames(styles.bar)}
+          />
+          <div
+            className="progress-bar"
+            role="progressbar"
+            style={{
+              backgroundColor: '#FFC107',
+              width: `${(player.numTie * 100) / playerTotalMatches}%`,
+            }}
+          />
+          <div
+            className="progress-bar"
+            role="progressbar"
+            style={{
+              backgroundColor: '#DB3444',
+              width: `${(player.numLoss * 100) / playerTotalMatches}%`,
+            }}
           />
         </div>
       </Col>
