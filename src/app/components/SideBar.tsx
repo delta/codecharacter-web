@@ -43,7 +43,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.EDITOR_SETTINGS,
             })}
             id="editor_settings_button"
-            title={'SETTINGS'}
+            title={'Editor Settings'}
             onClick={() =>
               sidePanelTab !== SidePanelTab.EDITOR_SETTINGS
                 ? openSidePanelTab(SidePanelTab.EDITOR_SETTINGS)
@@ -57,7 +57,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.LEADERBOARD,
             })}
             id="leaderboard_button"
-            title={'LEADERBOARD'}
+            title={'Leaderboard'}
             onClick={() =>
               sidePanelTab !== SidePanelTab.LEADERBOARD
                 ? openSidePanelTab(SidePanelTab.LEADERBOARD)
@@ -71,7 +71,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.COMMIT_LOG,
             })}
             id="commit_log_button"
-            title={'COMMIT LOG'}
+            title={'Commit Log'}
             onClick={() =>
               sidePanelTab !== SidePanelTab.COMMIT_LOG
                 ? openSidePanelTab(SidePanelTab.COMMIT_LOG)
@@ -85,7 +85,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.MATCH,
             })}
             id="matchView_button"
-            title={'CCTV'}
+            title={'View Matches'}
             onClick={() =>
               sidePanelTab !== SidePanelTab.MATCH
                 ? openSidePanelTab(SidePanelTab.MATCH)
@@ -99,7 +99,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.NOTIFICATION,
             })}
             id="notifications_button"
-            title={'NOTIFICATIONS'}
+            title={'Notifications'}
             onClick={() =>
               sidePanelTab !== SidePanelTab.NOTIFICATION
                 ? openSidePanelTab(SidePanelTab.NOTIFICATION)
@@ -111,7 +111,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           <Button
             className={classnames('py-2 px-auto', styles.customBtn)}
             id="user_profile_button"
-            title={'PROFILE'}
+            title={'Profile'}
             onClick={() => {
               toggleUserProfileModal(true);
             }}
@@ -121,7 +121,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           <Button
             className={classnames('py-2 px-auto', styles.customBtn)}
             id="logout_button"
-            title={'LOGOUT'}
+            title={'Logout'}
             onClick={() => {
               logout();
               this.resetCompleteState();
