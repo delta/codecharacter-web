@@ -18,6 +18,7 @@ exports[`MatchElement Component Should render 1`] = `
       "verdict": 1,
     }
   }
+  type="TOP_MATCHES"
 >
   <Col
     bsClass="col"
@@ -172,7 +173,6 @@ exports[`MatchElement Component Should render 1`] = `
           <img
             height={35}
             src="assets/img/userAvatars/001-baboon.svg"
-            title="BABOON"
             width={35}
           />
           <span
@@ -185,7 +185,6 @@ exports[`MatchElement Component Should render 1`] = `
           <img
             height={35}
             src="assets/img/userAvatars/002-bear.svg"
-            title="BEAR"
             width={35}
           />
         </div>
