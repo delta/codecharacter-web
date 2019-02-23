@@ -135,7 +135,7 @@
   "dependencies": {
     "bootstrap": "^4.2.1",
     "classnames": "^2.2.6",
-    "codecharacter-renderer": "^2.0.0",
+    "codecharacter-renderer": "2.0.0",
     "copy-webpack-plugin": "^5.0.0",
     "react": "^16.5.2",
     "react-ace": "^6.2.0",

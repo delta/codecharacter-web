@@ -57,13 +57,13 @@ export class CommitLog extends React.Component<
               <CommitElement
                 isCurrentHash={currentCommitHash === commit.hash}
                 checkoutCode={() => checkoutCode(commit.hash)}
-                key={index + 1}
-                index={index + 1}
+                key={index}
+                index={index}
                 forkCode={() => {
                   forkCode(commit.hash);
                 }}
                 commitDetails={commit}
-                commitsLength={renderCommitLog.length + 1}
+                commitsLength={renderCommitLog.length}
                 startMatch={this.props.startPreviousCommitMatch}
               />
             ) : null,
