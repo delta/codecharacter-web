@@ -127,14 +127,14 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
               >
                 <div className="col-12 text-center">
                   <button
-                    className="btn btn-info"
+                    className="btn btn-success"
                     type="submit"
                     style={{
                       marginTop: '24px',
                       width: '100%',
                     }}
                   >
-                    Edit Credentials
+                    Save Credentials
                   </button>
                 </div>
               </div>

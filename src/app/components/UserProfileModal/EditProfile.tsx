@@ -220,13 +220,13 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
               <div className="form-row">
                 <div className="col text-center mb-2">
                   <button
-                    className="btn btn-info"
+                    className="btn btn-success"
                     type="submit"
                     style={{
                       width: '100%',
                     }}
                   >
-                    Edit Profile
+                    Save Profile
                   </button>
                 </div>
               </div>

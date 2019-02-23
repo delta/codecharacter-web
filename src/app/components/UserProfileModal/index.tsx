@@ -82,7 +82,7 @@ export class UserProfileModal extends React.Component<
           })}
         >
           <Row>
-            <div className="col">
+            <div className="col" style={{ padding: 10 }}>
               <div className="col text-center mb-1">
                 <h4 className="text-dark m-2">Edit Profile</h4>
               </div>
