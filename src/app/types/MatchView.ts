@@ -43,6 +43,7 @@ export interface ElementOwnProps {
   match: Match;
   index: number;
   currentUserMatch: boolean;
+  type: MatchViewTabType;
   getGameLogs: (gameId: number) => void;
 }
 

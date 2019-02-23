@@ -7,7 +7,7 @@ import { Col, Row } from 'react-bootstrap';
 export class CodeStatus extends React.Component<
   CodeStatusInterfaces.Props,
   CodeStatusInterfaces.State
-  > {
+> {
   public constructor(props: CodeStatusInterfaces.Props) {
     super(props);
     this.state = {
@@ -15,9 +15,10 @@ export class CodeStatus extends React.Component<
     };
   }
   public componentDidMount() {
-
     setInterval(() => {
-      let delta = Math.ceil(Math.abs(new Date(this.props.lastSaveTime).getTime() - (new Date()).getTime()) / 1000);
+      let delta = Math.ceil(
+        Math.abs(new Date(this.props.lastSaveTime).getTime() - new Date().getTime()) / 1000,
+      );
 
       // calculate (and subtract) whole days
       const days = Math.floor(delta / 86400);
@@ -58,7 +59,6 @@ export class CodeStatus extends React.Component<
       }
     }, 1000);
   }
-
 
   public render() {
     const { currentCommitHash, width } = this.props;

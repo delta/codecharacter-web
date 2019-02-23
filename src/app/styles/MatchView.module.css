@@ -34,6 +34,7 @@
 }
 
 .matchViewWrap {
+  padding-top: 20px;
   max-height: 85vh;
   overflow-y: scroll;
 }
@@ -56,9 +57,16 @@
 
 .matchElement {
   padding: 5px;
+  margin-top: 5px;
   border-radius: 2px;
   background: #464646;
   color: #fff;
+}
+
+.topMatchElement {
+  animation: pulse 1.5s infinite;
+  animation-direction: alternate;
+  margin-bottom: 10px;
 }
 
 .loseBackground {
@@ -67,4 +75,36 @@
 
 .winBackground {
   color: #50c32c;
+}
+
+.topMatchesButton {
+  animation: pulse 1.5s infinite;
+  animation-direction: alternate;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 16px #fc6ecc, -2px 0 16px #f66acd, 2px 0 16px #e15cd4;
+  }
+  15% {
+    box-shadow: 0 0 16px #f66acd, -2px 0 16px #e15cd4, 2px 0 16px #bf45de;
+  }
+  30% {
+    box-shadow: 0 0 16px #e15cd4, -2px 0 16px #bf45de, 2px 0 16px #b841e0;
+  }
+  45% {
+    box-shadow: 0 0 16px #bf45de, -2px 0 16px #b841e0, 2px 0 16px #a132e8;
+  }
+  60% {
+    box-shadow: 0 0 16px #b841e0, -2px 0 16px #a132e8, 2px 0 16px #831ef0;
+  }
+  75% {
+    box-shadow: 0 0 16px #a132e8, -2px 0 16px #831ef0, 2px 0 16px #7011f6;
+  }
+  90% {
+    box-shadow: 0 0 16px #831ef0, -2px 0 16px #7011f6, 2px 0 16px #670cf9;
+  }
+  100% {
+    box-shadow: 0 0 16px #7011f6, -2px 0 16px #670cf9, 2px 0 16px #6315ff;
+  }
 }

@@ -1,4 +1,5 @@
 import { MatchElement } from 'app/components/MatchView/MatchElement';
+import { MatchViewTabType } from 'app/types/MatchView';
 import { mount } from 'enzyme';
 import * as React from 'react';
 
@@ -19,6 +20,7 @@ describe('MatchElement Component', () => {
         verdict: 1,
       }}
       getGameLogs={(gameId: number) => undefined}
+      type={MatchViewTabType.TOP_MATCHES}
     />,
   );
 

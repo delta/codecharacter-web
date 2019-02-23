@@ -142,7 +142,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             id="digital_ocean_logo"
             title={'We thank Digital Ocean for hosting Code Character'}
           >
-            <img src="assets/img/doLogo.png" height={20} width={20}/>
+            <img src="assets/img/doLogo.png" height={20} width={20} />
           </Button>
         </ButtonGroup>
       </div>

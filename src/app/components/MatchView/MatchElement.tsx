@@ -9,19 +9,29 @@ import { Col, Row } from 'react-bootstrap';
 
 export class MatchElement extends React.Component<MatchInterfaces.ElementProps, {}> {
   public render() {
-    const { match, getGameLogs, currentUserMatch } = this.props;
+    const { match, getGameLogs, currentUserMatch, type } = this.props;
     return (
       <Col sm={12} className={classnames('mb-1')}>
-        <div className={classnames('w-100', styles.matchElement)}>
+        <div
+          className={classnames(
+            'w-100',
+            styles.matchElement,
+            type === MatchInterfaces.MatchViewTabType.TOP_MATCHES ? styles.topMatchElement : '',
+          )}
+        >
           <Row className="d-flex justify-content-around ">
             <Col sm={5} style={{ textAlign: 'center' }}>
-              <p style={{ fontSize: 13 }}>{`${match.username1.substr(0, 15)}${match.username1.length > 15 ? '...' : ''}`}</p>
+              <p style={{ fontSize: 13 }}>{`${match.username1.substr(0, 15)}${
+                match.username1.length > 15 ? '...' : ''
+              }`}</p>
             </Col>
             <Col sm={2} style={{ textAlign: 'center' }}>
               <FontAwesomeIcon icon={faShieldAlt} />
             </Col>
             <Col sm={5} style={{ textAlign: 'center' }}>
-              <p style={{ fontSize: 13 }}>{`${match.username2.substr(0,15)}${match.username2.length > 15 ? '...' : ''}`}</p>
+              <p style={{ fontSize: 13 }}>{`${match.username2.substr(0, 15)}${
+                match.username2.length > 15 ? '...' : ''
+              }`}</p>
             </Col>
           </Row>
           <div
@@ -32,14 +42,14 @@ export class MatchElement extends React.Component<MatchInterfaces.ElementProps, 
           >
             {
               // @ts-ignore
-              <img width={35} height={35} src={Avatar[match.avatar1]}/>
+              <img width={35} height={35} src={Avatar[match.avatar1]} />
             }
             <span className="text-capitalize text-font-weight-bold  h3 mx-3">
               {match.score1} - {match.score2}
             </span>
             {
               // @ts-ignore
-              <img width={35} height={35} src={Avatar[match.avatar2]}/>
+              <img width={35} height={35} src={Avatar[match.avatar2]} />
             }
           </div>
           <div className=" d-flex justify-content-center text-capitalize text-font-weight-bold ">

@@ -57,7 +57,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
           </div>
           <div className="col d-flex justify-content-center mb-3">
             <button
-              className={classnames(styles.customBtn, {
+              className={classnames(styles.customBtn, styles.topMatchesButton, {
                 [`${styles.buttonActive}`]:
                   activeMatchViewTab === MatchInterfaces.MatchViewTabType.TOP_MATCHES,
               })}
@@ -84,6 +84,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
                       key={index - 1}
                       getGameLogs={getGameLogs}
                       currentUserMatch={true}
+                      type={MatchInterfaces.MatchViewTabType.MY_MATCHES}
                     />
                   ) : null
                 ) : (
@@ -104,6 +105,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
                     key={index - 1}
                     getGameLogs={getGameLogs}
                     currentUserMatch={false}
+                    type={MatchInterfaces.MatchViewTabType.TOP_MATCHES}
                   />
                 ) : null
               ) : (
