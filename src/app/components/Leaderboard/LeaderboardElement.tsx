@@ -104,6 +104,7 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
               bsSize="xsmall"
               disabled={isPlayAgainstDisabled || currentUsername === player.username}
               onClick={() => runMatch(player.id)}
+              title={`Start match`}
             >
               <img src="assets/img/fight.png" width={15} height={15} />
             </Button>

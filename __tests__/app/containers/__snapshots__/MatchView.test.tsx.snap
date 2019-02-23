@@ -3,6 +3,7 @@
 exports[`MatchView Container Should render 1`] = `
 <Connect(Match)>
   <Match
+    currentUsername=""
     getGameLogs={[Function]}
     getMatches={[Function]}
     getTopMatches={[Function]}

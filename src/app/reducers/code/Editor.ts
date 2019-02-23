@@ -6,7 +6,7 @@ const editorStoreIntialState: EditorInterfaces.EditorStoreState = {
     enableBasicAutoCompletion: false,
     enableSnippets: false,
     fontSize: 16,
-    theme: 'monokai',
+    theme: 'twilight',
   },
 };
 

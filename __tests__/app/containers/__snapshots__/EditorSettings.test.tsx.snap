@@ -8,7 +8,7 @@ exports[`EditorSettings Container Should render EditorSettings 1`] = `
     enableBasicAutoCompletion={false}
     enableSnippets={false}
     fontSize={16}
-    theme="monokai"
+    theme="twilight"
     toggleBasicAutoCompletion={[Function]}
     toggleSnippets={[Function]}
   >
@@ -206,7 +206,7 @@ exports[`EditorSettings Container Should render EditorSettings 1`] = `
                     <select
                       className="form-control theme-control"
                       onChange={[Function]}
-                      value="monokai"
+                      value="twilight"
                     >
                       <option
                         key="monokai"

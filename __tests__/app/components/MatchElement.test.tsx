@@ -17,7 +17,7 @@ describe('MatchElement Component', () => {
         score2: 5,
         username1: 'user1',
         username2: 'user2',
-        verdict: 1,
+        verdict: '1',
       }}
       getGameLogs={(gameId: number) => undefined}
       type={MatchViewTabType.TOP_MATCHES}

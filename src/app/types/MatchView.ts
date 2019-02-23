@@ -18,7 +18,7 @@ export interface Match {
   score1: number;
   username2: string;
   score2: number;
-  verdict: number;
+  verdict: string;
   playedAt: string;
   games: number[];
 }

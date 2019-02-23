@@ -10,6 +10,9 @@ import { Col, Row } from 'react-bootstrap';
 export class MatchElement extends React.Component<MatchInterfaces.ElementProps, {}> {
   public render() {
     const { match, getGameLogs, currentUserMatch, type } = this.props;
+
+    const isMyMatch = type === MatchInterfaces.MatchViewTabType.MY_MATCHES;
+
     return (
       <Col sm={12} className={classnames('mb-1')}>
         <div
@@ -18,8 +21,14 @@ export class MatchElement extends React.Component<MatchInterfaces.ElementProps, 
             styles.matchElement,
             type === MatchInterfaces.MatchViewTabType.TOP_MATCHES ? styles.topMatchElement : '',
             {
-              [`${styles.winBackground}`]: currentUserMatch && match.score1 < match.score2,
-              [`${styles.loseBackground}`]: currentUserMatch && match.score1 < match.score2,
+              [`${styles.winBackground}`]:
+                isMyMatch &&
+                ((currentUserMatch && match.score1 > match.score2) ||
+                  (!currentUserMatch && match.score2 > match.score1)),
+              [`${styles.loseBackground}`]:
+                isMyMatch &&
+                ((currentUserMatch && match.score2 > match.score1) ||
+                  (!currentUserMatch && match.score1 > match.score2)),
             },
           )}
         >
@@ -51,9 +60,16 @@ export class MatchElement extends React.Component<MatchInterfaces.ElementProps, 
               <img width={35} height={35} src={Avatar[match.avatar2]} />
             }
           </div>
-          <div className=" d-flex justify-content-center text-capitalize text-font-weight-bold ">
-            {match.verdict === 1 ? 'WON' : match.verdict === 2 ? 'LOST' : 'TIE'}
-          </div>
+          {isMyMatch ? (
+            <div className=" d-flex justify-content-center text-capitalize text-font-weight-bold ">
+              {match.verdict === '0'
+                ? 'TIE'
+                : (match.verdict === '1' && currentUserMatch) ||
+                  (match.verdict === '2' && !currentUserMatch)
+                ? 'WON'
+                : 'LOST'}
+            </div>
+          ) : null}
           <div className={classnames(styles.body, 'd-flex justify-content-around ')}>
             {match.games.map((gameId, index) => (
               <span

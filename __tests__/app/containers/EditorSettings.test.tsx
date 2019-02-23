@@ -34,7 +34,7 @@ describe('EditorSettings Container', () => {
       },
     });
 
-    expect(wrapper.find('select.theme-control').props().value).toBe('monokai');
+    expect(wrapper.find('select.theme-control').props().value).toBe('twilight');
     wrapper.find('select.theme-control').simulate('change', { target: { value: 'github' } });
     expect(wrapper.find('select.theme-control').props().value).toBe('github');
   });
