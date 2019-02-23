@@ -32,14 +32,14 @@ export class MatchElement extends React.Component<MatchInterfaces.ElementProps, 
           >
             {
               // @ts-ignore
-              <img width={35} height={35} src={Avatar[match.avatar1]} title={match.avatar1} />
+              <img width={35} height={35} src={Avatar[match.avatar1]}/>
             }
             <span className="text-capitalize text-font-weight-bold  h3 mx-3">
               {match.score1} - {match.score2}
             </span>
             {
               // @ts-ignore
-              <img width={35} height={35} src={Avatar[match.avatar2]} title={match.avatar2} />
+              <img width={35} height={35} src={Avatar[match.avatar2]}/>
             }
           </div>
           <div className=" d-flex justify-content-center text-capitalize text-font-weight-bold ">
