@@ -1,3 +1,4 @@
+import { MapList } from 'app/components/code/CommitLog/MapList';
 import * as styles from 'app/styles/CommitLog.module.css';
 import * as CommitInterfaces from 'app/types/code/CommitElement';
 import classnames from 'classnames';
@@ -18,11 +19,25 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
     this.state = {
       imgType: CommitElement.commitImgType.COMMIT_INITIAL,
       isHovered: false,
+      isMapListOpen: false,
     };
   }
 
   public componentDidMount() {
+    window.addEventListener('click', (() => {
+      this.setState({
+        isMapListOpen: false,
+      });
+    }), false);
     this.setImgType();
+  }
+
+  public componentWillMount() {
+    window.removeEventListener('click', (() => {
+      this.setState({
+        isMapListOpen: false,
+      });
+    }), false);
   }
 
   public componentDidUpdate(prevProps: CommitInterfaces.Props, prevState: CommitInterfaces.State) {
@@ -56,7 +71,9 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
   }
 
   public render() {
-    const { commitDetails, forkCode, checkoutCode } = this.props;
+    const { commitDetails, forkCode, checkoutCode, maps, startMatch } = this.props;
+    const { isMapListOpen } = this.state;
+
     return (
       <div
         onClick={checkoutCode}
@@ -87,7 +104,9 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
                   className={classnames(styles.ForkLogo)}
                   onClick={(e) => {
                     e.stopPropagation();
-                    this.props.startMatch(1, commitDetails.hash);
+                    this.setState({
+                      isMapListOpen: !isMapListOpen,
+                    });
                   }}
                   src="assets/img/commit-match.png"
                   title="Fight this code"
@@ -99,6 +118,17 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
                   title="Checkout as current code"
                 />
               </div>
+            ) : null}
+            {isMapListOpen ? (
+              <MapList
+                maps={maps}
+                startMatch={(mapId) => {
+                  startMatch(mapId, commitDetails.hash);
+                  this.setState({
+                    isMapListOpen: !isMapListOpen,
+                  });
+                }}
+              />
             ) : null}
           </div>
           <p className={classnames('mb-2', styles.CommitDate)}>

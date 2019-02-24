@@ -1,8 +1,10 @@
 import { Commit } from 'app/types/code/Code';
+import { Map } from 'app/types/code/Submission';
 
 export interface StateProps {
   commitLog: Commit[];
   currentCommitHash: string;
+  maps: Map[];
 }
 
 export interface State {
@@ -14,6 +16,7 @@ export interface DispatchProps {
   getCommitLog: () => void;
   forkCode: (commitHash: string) => void;
   startPreviousCommitMatch: (mapId: number, commitHash: string) => void;
+  loadMaps: () => void;
 }
 
 export type Props = {} & StateProps & DispatchProps;

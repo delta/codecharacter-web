@@ -26,6 +26,7 @@ export class CommitLog extends React.Component<
 
   public componentDidMount() {
     this.props.getCommitLog();
+    this.props.loadMaps();
   }
 
   public handlePageClick = (data: { selected: number }) => {
@@ -43,7 +44,7 @@ export class CommitLog extends React.Component<
     };
     const renderCommitLog: Commit[] = [];
     renderCommitLog.push(latestCommit);
-    const { checkoutCode, currentCommitHash, forkCode, commitLog } = this.props;
+    const { checkoutCode, currentCommitHash, forkCode, commitLog, maps } = this.props;
     renderCommitLog.push(...commitLog);
     return (
       <Grid fluid={true} className={classnames(styles.CommitLog)}>
@@ -62,6 +63,7 @@ export class CommitLog extends React.Component<
                 forkCode={() => {
                   forkCode(commit.hash);
                 }}
+                maps={maps}
                 commitDetails={commit}
                 commitsLength={renderCommitLog.length}
                 startMatch={this.props.startPreviousCommitMatch}

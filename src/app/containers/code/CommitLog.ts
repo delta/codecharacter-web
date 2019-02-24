@@ -8,6 +8,7 @@ const mapStateToProps = (rootState: RootState) => {
   return {
     commitLog: rootState.code.commitLog,
     currentCommitHash: rootState.code.currentCommitHash,
+    maps: rootState.submission.maps,
   };
 };
 
@@ -21,6 +22,7 @@ const commitLogContainer = connect<
     checkoutCode: CodeActions.checkoutCode,
     forkCode: CodeActions.forkCode,
     getCommitLog: CodeActions.getCommitLog,
+    loadMaps: SubmissionActions.loadMaps,
     startPreviousCommitMatch: SubmissionActions.previousCommitMatch,
   },
 )(CommitLog);

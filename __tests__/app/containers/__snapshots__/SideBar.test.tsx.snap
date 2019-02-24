@@ -651,11 +651,16 @@ exports[`SideBar Container Should render 1`] = `
               title="Made with ❤ by Delta Force"
               type="button"
             >
-              <img
-                height={20}
-                src="assets/img/deltaLogo.png"
-                width={20}
-              />
+              <a
+                href="https://delta.nitt.edu"
+                target="_blank"
+              >
+                <img
+                  height={20}
+                  src="assets/img/deltaLogo.png"
+                  width={20}
+                />
+              </a>
             </button>
           </Button>
           <Button
