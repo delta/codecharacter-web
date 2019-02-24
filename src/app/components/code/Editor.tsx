@@ -51,7 +51,7 @@ export class Editor extends React.Component<EditorInterfaces.Props, EditorInterf
     const options = {
       enableBasicAutocompletion,
       enableSnippets,
-      enableLiveAutocompletion: false,
+      enableLiveAutocompletion: enableBasicAutocompletion,
       showLineNumbers: true,
       tabSize: 2,
     };
