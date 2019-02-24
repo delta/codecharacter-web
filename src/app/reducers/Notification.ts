@@ -6,19 +6,22 @@ import PNotify from 'pnotify/dist/es/PNotify';
 import 'pnotify/dist/es/PNotifyButtons';
 import 'pnotify/dist/PNotifyBrightTheme.css';
 
+const stackBottomRight = {
+  ...PNotify.defaultStack,
+  dir1: 'up',
+  dir2: 'left',
+};
+
 const pnotifyOptions = (title: string) => {
   return {
     title,
+    addclass: 'stack-bottomright',
     buttons: {
       closer: true,
       sticker: true,
     },
     delay: 5000,
-    stack: {
-      ...PNotify.defaultStack,
-      dir1: 'up',
-      push: 'up',
-    },
+    stack: stackBottomRight,
     text: false,
   };
 };

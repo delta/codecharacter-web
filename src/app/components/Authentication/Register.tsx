@@ -186,6 +186,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         aria-describedby="inputGroupPrepend"
                         maxLength={50}
                         minLength={5}
+                        pattern="[a-zA-Z0-9\s]+"
                         value={collegeName}
                         onChange={(e) => {
                           checkUsernameExists(e.target.value);
@@ -381,7 +382,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   };
 
   private handleRegister = (event: React.FormEvent<HTMLFormElement>) => {
-    const { register, handleSelectPanel } = this.props;
+    const { register } = this.props;
     const {
       avatar,
       repeatPassword,
@@ -412,7 +413,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           type,
           username,
         });
-        handleSelectPanel(AuthType.LOGIN);
       }
       form.classList.add('was-validated');
       this.setState({

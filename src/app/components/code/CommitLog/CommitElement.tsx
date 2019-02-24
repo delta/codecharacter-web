@@ -24,20 +24,28 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
   }
 
   public componentDidMount() {
-    window.addEventListener('click', (() => {
-      this.setState({
-        isMapListOpen: false,
-      });
-    }), false);
+    window.addEventListener(
+      'click',
+      () => {
+        this.setState({
+          isMapListOpen: false,
+        });
+      },
+      false,
+    );
     this.setImgType();
   }
 
   public componentWillMount() {
-    window.removeEventListener('click', (() => {
-      this.setState({
-        isMapListOpen: false,
-      });
-    }), false);
+    window.removeEventListener(
+      'click',
+      () => {
+        this.setState({
+          isMapListOpen: false,
+        });
+      },
+      false,
+    );
   }
 
   public componentDidUpdate(prevProps: CommitInterfaces.Props, prevState: CommitInterfaces.State) {

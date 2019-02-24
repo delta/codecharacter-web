@@ -10,9 +10,13 @@ export class MapList extends React.Component<MapListProps, {}> {
     return (
       <div className={classnames(styles.dropdown)}>
         {maps.map((map, index) => (
-          <div className={classnames(styles.dropdownItem)} onClick={(e) => {
-            startMatch(map.mapId); e.stopPropagation();
-          }}>
+          <div
+            className={classnames(styles.dropdownItem)}
+            onClick={(e) => {
+              startMatch(map.mapId);
+              e.stopPropagation();
+            }}
+          >
             <span className={classnames(styles.dropdownName)}>{map.name}</span>
           </div>
         ))}
