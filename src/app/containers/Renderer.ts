@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 const mapStateToProps = (rootState: RootState) => {
   return {
     logFile: rootState.gameLog.gameLog,
+    matchPlayerId: rootState.gameLog.matchPlayerId,
     player1DebugLog: rootState.gameLog.player1DebugLog,
     player2DebugLog: rootState.gameLog.player2DebugLog,
   };

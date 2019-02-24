@@ -6,6 +6,7 @@ export interface StateProps {
   logFile: string;
   player1DebugLog: string;
   player2DebugLog: string;
+  matchPlayerId: number;
 }
 
 export interface DispatchProps {

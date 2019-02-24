@@ -12,26 +12,36 @@ export default class Renderer extends React.Component<RendererInterfaces.Props, 
   }
 
   public render() {
+    const {
+      height,
+      logFile,
+      player1DebugLog,
+      player2DebugLog,
+      matchPlayerId,
+      clearLog,
+      updateLog,
+    } = this.props;
+
     return (
-      <div style={{ display: 'block', width: '100%', height: this.props.height }}>
-        {this.props.logFile !== '' ? (
+      <div style={{ height, display: 'block', width: '100%' }}>
+        {logFile !== '' ? (
           <CodecharacterRenderer
             // @ts-ignore
-            logFile={zlib.gunzipSync(Buffer.from(JSON.parse(this.props.logFile)))}
+            logFile={zlib.gunzipSync(Buffer.from(JSON.parse(logFile)))}
             options={{
-              logClearFunction: this.props.clearLog,
-              logFunction: this.props.updateLog,
+              logClearFunction: clearLog,
+              logFunction: updateLog,
               player1Log: String.fromCharCode.apply(
                 null,
                 // @ts-ignore
-                zlib.gunzipSync(Buffer.from(JSON.parse(this.props.player1DebugLog))),
+                zlib.gunzipSync(Buffer.from(JSON.parse(player1DebugLog))),
               ),
               player2Log: String.fromCharCode.apply(
                 null,
                 // @ts-ignore
-                zlib.gunzipSync(Buffer.from(JSON.parse(this.props.player2DebugLog))),
+                zlib.gunzipSync(Buffer.from(JSON.parse(player2DebugLog))),
               ),
-              playerID: 1,
+              playerID: { matchPlayerId },
             }}
             style={{ position: 'relative' }}
           />

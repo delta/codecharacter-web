@@ -293,9 +293,11 @@ export function* handleExecuteSuccess(
     const debugLog1 = logs.player1Log;
     const debugLog2 = logs.player2Log;
     const gameLog = logs.gameLog;
+    const matchPlayerId = logs.matchPlayerId;
 
     yield put(GameLogActions.updateGameLog(debugLog1, debugLog2, gameLog));
     yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
+    yield put(GameLogActions.updateMatchPlayerId(matchPlayerId));
   } catch (err) {
     console.error(err);
   }
