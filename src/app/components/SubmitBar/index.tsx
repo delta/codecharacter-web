@@ -100,16 +100,6 @@ export class SubmitBar extends React.Component<
             </span>
           ) : null}
         </button>
-        <button
-          className={classnames(styles.customBtn)}
-          title="Lock Code"
-          id="lock_button"
-          onClick={this.props.lockCode}
-        >
-          <span className={classnames(styles.icon)} style={{ padding: 0, margin: 0, border: 0 }}>
-            <FontAwesomeIcon icon={faLock} />
-          </span>
-        </button>
         <button className={classnames(styles.customBtn)} onClick={clearLogs} id="save_button">
           <span
             className={classnames(styles.icon)}
@@ -149,6 +139,17 @@ export class SubmitBar extends React.Component<
             <FontAwesomeIcon icon={faCodeBranch} />
           </span>
           <span>COMMIT</span>
+        </button>
+        <button
+          className={classnames(styles.customBtn)}
+          title="Lock Code"
+          id="lock_button"
+          onClick={this.props.lockCode}
+        >
+          <span className={classnames(styles.icon)}>
+            <FontAwesomeIcon icon={faLock} />
+          </span>
+          <span>SUBMIT</span>
         </button>
         <CommitMessageBox
           commitMessage={commitMessage}
