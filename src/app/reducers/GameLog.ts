@@ -54,6 +54,15 @@ export const gameLogReducer = (
         matchPlayerId: action.payload.matchPlayerId,
       };
     }
+    case GameLogActions.Type.CLEAR_ALL_LOGS: {
+      return {
+        ...state,
+        displayDebugLog: '',
+        gameLog: '',
+        player1DebugLog: '',
+        player2DebugLog: '',
+      };
+    }
     default:
       return state;
   }
