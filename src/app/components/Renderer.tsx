@@ -42,7 +42,7 @@ export default class Renderer extends React.Component<RendererInterfaces.Props, 
                 // @ts-ignore
                 zlib.gunzipSync(Buffer.from(JSON.parse(player2DebugLog))),
               ),
-              playerID: { matchPlayerId },
+              playerID: matchPlayerId,
             }}
             style={{ position: 'relative' }}
           />
