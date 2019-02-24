@@ -641,6 +641,30 @@ exports[`SideBar Container Should render 1`] = `
             bsStyle="default"
             className="py-2 px-auto"
             disabled={false}
+            id="delta_logo"
+            title="Made with ❤ by Delta Force"
+          >
+            <button
+              className="py-2 px-auto btn btn-default"
+              disabled={false}
+              id="delta_logo"
+              title="Made with ❤ by Delta Force"
+              type="button"
+            >
+              <img
+                height={20}
+                src="assets/img/deltaLogo.png"
+                width={20}
+              />
+            </button>
+          </Button>
+          <Button
+            active={false}
+            block={false}
+            bsClass="btn"
+            bsStyle="default"
+            className="py-2 px-auto"
+            disabled={false}
             id="digital_ocean_logo"
             title="We thank Digital Ocean for hosting Code Character"
           >

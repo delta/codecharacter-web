@@ -138,6 +138,15 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faInfoCircle} />
           </Button>
           <Button
+            className={classnames('py-2 px-auto', styles.deltaLogo)}
+            id="delta_logo"
+            title={'Made with ❤ by Delta Force'}
+          >
+            <a href="https://delta.nitt.edu" target="_blank">
+              <img src="assets/img/deltaLogo.png" height={20} width={20} />
+            </a>
+          </Button>
+          <Button
             className={classnames('py-2 px-auto', styles.dologo)}
             id="digital_ocean_logo"
             title={'We thank Digital Ocean for hosting Code Character'}

@@ -30,10 +30,16 @@
   color: #9c9c9c;
   position: fixed;
   position: absolute;
-  top: 82vh;
+  top: 77vh;
 }
 
 .Sidebar .dologo {
+  position: fixed;
+  position: absolute;
+  top: 85vh;
+}
+
+.Sidebar .deltaLogo {
   position: fixed;
   position: absolute;
   top: 92vh;
