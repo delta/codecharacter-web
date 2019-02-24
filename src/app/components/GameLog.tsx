@@ -4,7 +4,7 @@ import * as React from 'react';
 import AceEditor from 'react-ace';
 
 import 'brace/mode/c_cpp';
-import 'brace/theme/terminal';
+import 'brace/theme/chaos';
 
 export class GameLog extends React.Component<GameLogInterfaces.Props, {}> {
   constructor(props: GameLogInterfaces.Props) {
@@ -23,7 +23,7 @@ export class GameLog extends React.Component<GameLogInterfaces.Props, {}> {
     return (
       <AceEditor
         mode="c_cpp"
-        theme={'terminal'}
+        theme={'chaos'}
         name="game_log_div"
         fontSize={14}
         wrapEnabled={true}
