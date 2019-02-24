@@ -38,6 +38,15 @@ export const gameLogReducer = (
         displayDebugLog: '',
       };
     }
+    case GameLogActions.Type.CLEAR_ALL_LOGS: {
+      return {
+        ...state,
+        displayDebugLog: '',
+        gameLog: '',
+        player1DebugLog: '',
+        player2DebugLog: '',
+      };
+    }
     default:
       return state;
   }

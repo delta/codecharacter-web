@@ -8,6 +8,7 @@ export interface StateProps {
 export type Props = StateProps;
 
 const actions = {
+  clearAllLogs: GameLogActions.clearAllLogs,
   clearDisplayDebugLog: GameLogActions.clearDisplayDebugLog,
   resetGameLog: GameLogActions.resetGameLogState,
   updateDisplayDebugLog: GameLogActions.updateDisplayDebugLog,
