@@ -15,6 +15,7 @@ int main() {
   getLatestCode={[Function]}
   getUnreadGlobalNotifications={[Function]}
   isLoggedIn={false}
+  keyboardHandler="default"
   save={[Function]}
   theme="twilight"
   updateCode={[Function]}

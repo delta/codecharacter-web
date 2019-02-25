@@ -11,6 +11,7 @@ const mapStateToProps = (rootState: RootState) => {
     enableSnippets: rootState.editor.editorOptions.enableSnippets,
     fontSize: rootState.editor.editorOptions.fontSize,
     isLoggedIn: rootState.user.isLoggedIn,
+    keyboardHandler: rootState.editor.editorOptions.keyboardHandler,
     theme: rootState.editor.editorOptions.theme,
     viewOnly: rootState.code.currentCommitHash !== 'latest',
   };

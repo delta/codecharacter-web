@@ -47,7 +47,7 @@ export default class Renderer extends React.Component<RendererInterfaces.Props, 
             style={{ position: 'relative' }}
           />
         ) : (
-          <div style={{ width: '100%' }}>
+          <div style={{ width: '100%', minWidth: '280px' }}>
             <Row>
               <Col sm={12} className="text-center">
                 <div

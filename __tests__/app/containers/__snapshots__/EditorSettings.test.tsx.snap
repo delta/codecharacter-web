@@ -4,10 +4,12 @@ exports[`EditorSettings Container Should render EditorSettings 1`] = `
 <Connect(EditorSettings)>
   <EditorSettings
     changeFontSize={[Function]}
+    changeKeyboardHandler={[Function]}
     changeTheme={[Function]}
     enableBasicAutoCompletion={false}
     enableSnippets={false}
     fontSize={16}
+    keyboardHandler="default"
     theme="twilight"
     toggleBasicAutoCompletion={[Function]}
     toggleSnippets={[Function]}
@@ -267,6 +269,79 @@ exports[`EditorSettings Container Should render EditorSettings 1`] = `
                         value="terminal"
                       >
                         terminal
+                      </option>
+                      <option
+                        key="chaos"
+                        value="chaos"
+                      >
+                        chaos
+                      </option>
+                      <option
+                        key="chrome"
+                        value="chrome"
+                      >
+                        chrome
+                      </option>
+                      <option
+                        key="eclipse"
+                        value="eclipse"
+                      >
+                        eclipse
+                      </option>
+                      <option
+                        key="dracula"
+                        value="dracula"
+                      >
+                        dracula
+                      </option>
+                    </select>
+                  </div>
+                </FormGroup>
+              </div>
+            </Col>
+            <Col
+              bsClass="col"
+              className="mb-1"
+              componentClass="div"
+              sm={12}
+            >
+              <div
+                className="mb-1 col-sm-12"
+              >
+                <div
+                  className="font-weight-bold py-1"
+                >
+                  Editor Keybinding
+                </div>
+                <FormGroup
+                  bsClass="form-group"
+                  controlId="keyboardHandler"
+                >
+                  <div
+                    className="form-group"
+                  >
+                    <select
+                      className="form-control keyboardHandler-control"
+                      onChange={[Function]}
+                      value="default"
+                    >
+                      <option
+                        key="emacs"
+                        value="emacs"
+                      >
+                        emacs
+                      </option>
+                      <option
+                        key="vim"
+                        value="vim"
+                      >
+                        vim
+                      </option>
+                      <option
+                        key="default"
+                        value="default"
+                      >
+                        default
                       </option>
                     </select>
                   </div>

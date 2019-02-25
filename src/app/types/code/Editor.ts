@@ -4,6 +4,7 @@ import { ActionType } from 'typesafe-actions';
 
 const actions = {
   changeFontSize: EditorSettingsActions.changeFontSize,
+  changeKeyboardHandler: EditorSettingsActions.changeKeyboardHandler,
   changeTheme: EditorSettingsActions.changeTheme,
   resetEditorState: EditorSettingsActions.resetEditorState,
   toggleBasicAutoCompletion: EditorSettingsActions.toggleBasicAutoCompletion,
@@ -23,6 +24,7 @@ export interface StateProps {
   code: string;
   theme: string;
   fontSize: number;
+  keyboardHandler: string;
   enableBasicAutoCompletion: boolean;
   enableSnippets: boolean;
   isLoggedIn: boolean;
@@ -43,6 +45,7 @@ export interface EditorStoreState {
     enableBasicAutoCompletion: boolean;
     fontSize: number;
     enableSnippets: boolean;
+    keyboardHandler: string;
     theme: string;
   };
 }

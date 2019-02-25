@@ -6,6 +6,7 @@ const editorStoreIntialState: EditorInterfaces.EditorStoreState = {
     enableBasicAutoCompletion: false,
     enableSnippets: false,
     fontSize: 16,
+    keyboardHandler: 'default',
     theme: 'twilight',
   },
 };
@@ -29,6 +30,14 @@ export const editorReducer = (
         editorOptions: {
           ...state.editorOptions,
           theme: action.payload.theme,
+        },
+      };
+    case EditorSettingsActions.Type.CHANGE_KEYBOARD_HANDLER:
+      return {
+        ...state,
+        editorOptions: {
+          ...state.editorOptions,
+          keyboardHandler: action.payload.keyboardHandler,
         },
       };
     case EditorSettingsActions.Type.TOGGLE_BASIC_AUTO_COMPLETION:

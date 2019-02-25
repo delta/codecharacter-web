@@ -19,10 +19,22 @@ export const themes = [
   'solarized_dark',
   'solarized_light',
   'terminal',
+  'chaos',
+  'chrome',
+  'eclipse',
+  'dracula',
 ];
+
+export const keyboardHandlers = ['emacs', 'vim', 'default'];
 
 themes.forEach((theme) => {
   require(`brace/theme/${theme}`);
+});
+
+keyboardHandlers.forEach((keyboardHandler) => {
+  if (keyboardHandler !== 'default') {
+    require(`brace/keybinding/${keyboardHandler}`);
+  }
 });
 
 export class Editor extends React.Component<EditorInterfaces.Props, EditorInterfaces.State> {
@@ -41,6 +53,7 @@ export class Editor extends React.Component<EditorInterfaces.Props, EditorInterf
       editorWidth,
       theme,
       fontSize,
+      keyboardHandler,
       enableBasicAutoCompletion: enableBasicAutocompletion,
       enableSnippets,
       code,
@@ -68,6 +81,7 @@ export class Editor extends React.Component<EditorInterfaces.Props, EditorInterf
         highlightActiveLine={true}
         setOptions={options}
         readOnly={viewOnly}
+        keyboardHandler={keyboardHandler !== 'default' ? keyboardHandler : ''}
         editorProps={{ $blockScrolling: true }}
         width={`${editorWidth.toString()}px`}
         height={'96.5vh'}

@@ -1,4 +1,4 @@
-import { themes } from 'app/components/code/Editor';
+import { keyboardHandlers, themes } from 'app/components/code/Editor';
 import * as styles from 'app/styles/EditorSettings.module.css';
 import * as EditorSettingsInterfaces from 'app/types/code/EditorSettings';
 import classnames from 'classnames';
@@ -12,9 +12,11 @@ export class EditorSettings extends React.Component<EditorSettingsInterfaces.Pro
       changeFontSize,
       theme,
       changeTheme,
+      changeKeyboardHandler,
       enableBasicAutoCompletion,
       toggleBasicAutoCompletion,
       enableSnippets,
+      keyboardHandler,
       toggleSnippets,
     } = this.props;
 
@@ -60,6 +62,26 @@ export class EditorSettings extends React.Component<EditorSettingsInterfaces.Pro
                 {themes.map((themeValue: string) => (
                   <option value={themeValue} key={themeValue}>
                     {themeValue}
+                  </option>
+                ))}
+              </select>
+            </FormGroup>
+          </Col>
+          <Col sm={12} className={classnames('mb-1', styles.setting)}>
+            <div className="font-weight-bold py-1">Editor Keybinding</div>
+            <FormGroup controlId="keyboardHandler">
+              <select
+                className={classnames(
+                  'form-control',
+                  styles.formControlSelect,
+                  'keyboardHandler-control',
+                )}
+                value={keyboardHandler}
+                onChange={(e) => changeKeyboardHandler(e.target.value)}
+              >
+                {keyboardHandlers.map((keyboardHandlerOption: string) => (
+                  <option value={keyboardHandlerOption} key={keyboardHandlerOption}>
+                    {keyboardHandlerOption}
                   </option>
                 ))}
               </select>

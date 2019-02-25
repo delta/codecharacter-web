@@ -9,6 +9,7 @@ const mapStateToProps = (rootState: RootState) => {
     enableBasicAutoCompletion: rootState.editor.editorOptions.enableBasicAutoCompletion,
     enableSnippets: rootState.editor.editorOptions.enableSnippets,
     fontSize: rootState.editor.editorOptions.fontSize,
+    keyboardHandler: rootState.editor.editorOptions.keyboardHandler,
     theme: rootState.editor.editorOptions.theme,
   };
 };
@@ -21,6 +22,7 @@ const editorSettingsContainer = connect<
   mapStateToProps,
   {
     changeFontSize: EditorSettingsActions.changeFontSize,
+    changeKeyboardHandler: EditorSettingsActions.changeKeyboardHandler,
     changeTheme: EditorSettingsActions.changeTheme,
     toggleBasicAutoCompletion: EditorSettingsActions.toggleBasicAutoCompletion,
     toggleSnippets: EditorSettingsActions.toggleSnippets,
