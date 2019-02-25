@@ -7,7 +7,7 @@ import { Col, Row } from 'react-bootstrap';
 export class CodeStatus extends React.Component<
   CodeStatusInterfaces.Props,
   CodeStatusInterfaces.State
-> {
+  > {
   public constructor(props: CodeStatusInterfaces.Props) {
     super(props);
     this.state = {
@@ -76,11 +76,16 @@ export class CodeStatus extends React.Component<
             {this.state.lastSaveMessage}
           </p>
         </Col>
-        <Col sm={6} className={classnames(styles.CommitStatusCol)}>
+        <Col sm={5} className={classnames(styles.CommitStatusCol)}>
           <p className={classnames(styles.StatusText)} style={{ textAlign: 'right' }}>
             {currentState}
           </p>
         </Col>
+        {currentState !== 'Idle'
+          ? <Col sm={1} className={classnames(styles.loaderWrapper)}>
+            <p className={classnames(styles.loader)}></p>
+          </Col>
+          : null}
       </Row>
     );
   }

@@ -83,6 +83,7 @@ export function* register(action: ActionType<typeof UserActions.register>) {
           username: action.payload.registerDetails.username,
         }),
       );
+      yield put(NotificationActions.success('Registered successfully!'));
     }
   } catch (err) {
     console.error(err);
