@@ -39,7 +39,7 @@ export default class Joyride extends React.Component<
       content: (
         <p>
           This is the leaderboard panel. <br />
-          View the rankings of users playing!
+          View current ratings and challenge other players!
         </p>
       ),
       placement: 'right',
@@ -50,7 +50,8 @@ export default class Joyride extends React.Component<
       content: (
         <p>
           This is the commit log panel. <br />
-          You can store different versions of your code and view or fork and use them at your wish.
+          You can store a linear commit history, and checkout to old code.
+          You can even simulate a match between two versions of your own code.
         </p>
       ),
       placement: 'right',
@@ -60,9 +61,9 @@ export default class Joyride extends React.Component<
     {
       content: (
         <p>
-          This is the view matches panel. <br />
+          This is the View Matches panel. <br />
           You can replay your previous matches and view top rated matches too. If you played a epic
-          match, chances are your match will be featured here.
+          match, chances are your match will be featured here!
         </p>
       ),
       placement: 'right',
@@ -72,18 +73,7 @@ export default class Joyride extends React.Component<
     {
       content: (
         <p>
-          This is the notifications panel. <br /> You can view you your notifications based on their
-          types and delete them.
-        </p>
-      ),
-      placement: 'right',
-      target: '#notifications_button',
-      title: 'Notifications',
-    },
-    {
-      content: (
-        <p>
-          This is the user profile. <br />
+          This is the User Profile page <br />
           View and edit your details and credentials.
         </p>
       ),
@@ -93,33 +83,33 @@ export default class Joyride extends React.Component<
     },
     {
       content: (
-        <p>Click to toggle off the Editor or Renderer. You can also drag to adjust the sizes.</p>
+        <p>Click to toggle off the Editor or Renderer. You can also drag the split panes to adjust the sizes.</p>
       ),
       placement: 'bottom',
       target: '#toggle_button',
       title: 'Toggle Editor/Renderer',
     },
     {
-      content: <p>Click to clear the gamelogs of previous games.</p>,
+      content: <p>Click here to clear the game logs, in case it's getting too messy</p>,
       placement: 'bottom',
       target: '#clear_gamelog_button',
       title: 'Clear Game Logs',
     },
     {
-      content: <p>Click to compile code and run the game simulation.</p>,
+      content: <p>Click to compile code and run the game simulation</p>,
       placement: 'bottom',
       target: '#run_button',
       title: 'Run Game',
     },
     {
-      content: <p>Saves your code and prevents you from losing your progress.</p>,
+      content: <p>Click to same your code. Your last saved code is the version that is compiled!</p>,
       placement: 'bottom',
       target: '#save_button',
       title: 'Save',
     },
     {
       content: (
-        <p>Creates a snapshot of your code and lets you keep different versions of your code.</p>
+        <p>Create a new snapshot of your code. It will be saved forever, unless our servers get bombed by a nuclear explosion.</p>
       ),
       placement: 'bottom',
       target: '#commit_button',
@@ -128,9 +118,9 @@ export default class Joyride extends React.Component<
     {
       content: (
         <p>
-          Submits current version of code as default code for playing against opponents.
+          This will submit your code as your current competitive AI. All your challenges with other players will be played using this code.
           <br />
-          You have to submit your code before choosing your opponent.
+          You have to submit your code before challenging an opponent.
         </p>
       ),
       placement: 'bottom',
@@ -138,30 +128,13 @@ export default class Joyride extends React.Component<
       title: 'Submit',
     },
     {
-      content: (
-        <p>
-          Renders the game simulation. <br /> Lets you pause, play your simulation at different
-          speeds too.
-        </p>
-      ),
-      placement: 'bottom',
-      target: '#renderer',
-      title: 'Renderer',
-    },
-    {
-      content: <p>View the game logs at each step of your game.</p>,
-      placement: 'top',
-      target: '#game_log_div',
-      title: 'Logger',
-    },
-    {
-      content: <p>Log out of your CodeCharacter account, take a break and come back soon 😀 !</p>,
+      content: <p>Log out of your Code Character account. It's good to take a break once in a while 😀 !</p>,
       placement: 'right',
       target: '#logout_button',
       title: 'Logout',
     },
     {
-      content: <p>Click to take a tour to explore the available features.</p>,
+      content: <p>Take this tour again, in case you forget what's where</p>,
       placement: 'right',
       target: '#joyride_button',
       title: 'Help',
