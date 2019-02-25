@@ -23,10 +23,8 @@ export class UserProfileModal extends React.Component<
     this.state = {
       avatar: userDetails.country,
       country: userDetails.country,
-      email: userDetails.email,
       fullName: userDetails.fullName,
       listDisabled: {
-        isEmailDisabled: true,
         isFlagSelectDisabled: true,
         isFullNameDisabled: true,
         isPasswordDisabled: true,
@@ -58,7 +56,6 @@ export class UserProfileModal extends React.Component<
 
   public render() {
     const {
-      email,
       fullName,
       username,
       country,
@@ -114,7 +111,6 @@ export class UserProfileModal extends React.Component<
               username={username}
               listDisabled={listDisabled}
               fullName={fullName}
-              email={email}
               userDetails={userDetails}
               country={country}
               avatar={avatar}
@@ -138,7 +134,7 @@ export class UserProfileModal extends React.Component<
 
   private handleEditProfile = (event: React.FormEvent<HTMLFormElement>) => {
     const { editUserProfile } = this.props;
-    const { country, email, fullName, username, listDisabled, avatar } = this.state;
+    const { country, fullName, username, listDisabled, avatar } = this.state;
     const form = this.editProfileRef.current;
     event.preventDefault();
 
@@ -146,7 +142,6 @@ export class UserProfileModal extends React.Component<
       if (form.checkValidity()) {
         editUserProfile({
           ...(!listDisabled.isFlagSelectDisabled && { country }),
-          ...(!listDisabled.isEmailDisabled && { email }),
           ...(!listDisabled.isFullNameDisabled && { fullName }),
           ...(!listDisabled.isUserNameDisabled && { username }),
           avatar,

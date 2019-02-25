@@ -1,4 +1,4 @@
-import { faEnvelope, faFlag, faPen, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
+import { faFlag, faPen, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as styles from 'app/styles/UserProfileModal.module.css';
 import { Avatar } from 'app/types/Authentication/Register';
@@ -15,7 +15,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
   public render() {
     const { handleEditProfile, onInputChange, inputEnabler } = this.props;
     const { editProfileRef, reactFlagRef } = this.props;
-    const { username, listDisabled, fullName, email, country, avatar: currentAvatar } = this.props;
+    const { username, listDisabled, fullName, country, avatar: currentAvatar } = this.props;
     const avatars = Object.keys(Avatar);
     return (
       <div className="col-6">
@@ -114,41 +114,6 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                   </div>
                 </div>
               </div>
-              <div className="form-row">
-                <div className="col mb-3">
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text" id="inputGroupPrepend">
-                        <FontAwesomeIcon icon={faEnvelope} />
-                      </span>
-                    </div>
-                    <input
-                      type="email"
-                      className="form-control"
-                      id="editValidationEmail"
-                      placeholder="Email"
-                      aria-describedby="inputGroupPrepend"
-                      value={email}
-                      onChange={(e) => onInputChange(InputName.email, e.target.value)}
-                      required
-                      disabled={listDisabled.isEmailDisabled}
-                    />
-                    <div className="input-group-append">
-                      <span
-                        className={classnames('input-group-text', styles.editPen, {
-                          [`${styles.editPenActive}`]: !listDisabled.isEmailDisabled,
-                        })}
-                        onClick={() => {
-                          inputEnabler(InputState.isEmailDisabled, !listDisabled.isEmailDisabled);
-                        }}
-                      >
-                        <FontAwesomeIcon icon={faPen} />
-                      </span>
-                    </div>
-                    <div className="invalid-feedback">Please enter a valid Email ID.</div>
-                  </div>
-                </div>
-              </div>
               <div className="form-row" id="react-flag">
                 <div className="col sm={12} mb-3">
                   <div className="input-group-prepend">
@@ -225,8 +190,13 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                     style={{
                       width: '100%',
                     }}
+                    disabled={
+                      listDisabled.isFullNameDisabled &&
+                      listDisabled.isFlagSelectDisabled &&
+                      listDisabled.isUserNameDisabled
+                    }
                   >
-                    Save Profile
+                    Save Changes
                   </button>
                 </div>
               </div>

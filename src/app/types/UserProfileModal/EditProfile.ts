@@ -13,7 +13,6 @@ export interface ElementOwnProps {
   username: string;
   listDisabled: ListDisabled;
   fullName: string;
-  email: string;
   userDetails: UserInterfaces.UserStoreState;
   country: string;
   avatar: string;

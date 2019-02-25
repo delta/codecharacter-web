@@ -14,7 +14,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
     const { listDisabled, oldPassword, password, repeatPassword } = this.props;
     return (
       <div className="col-6">
-        <Row className={classnames('mb-4')}>
+        <Row className={classnames('mb-3')}>
           <div className={classnames('col-sm-12', styles.form)}>
             <div
               className={classnames('text-dark', styles.formHeading)}
@@ -42,7 +42,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
               onSubmit={handleEditPassword}
             >
               <div className="form-row">
-                <div className="col mb-4">
+                <div className="col mb-3">
                   <div className="input-group">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroupPrepend">
@@ -68,7 +68,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                 </div>
               </div>
               <div className="form-row">
-                <div className="col mb-4">
+                <div className="col mb-3">
                   <div className="input-group">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroupPrepend">
@@ -94,7 +94,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                 </div>
               </div>
               <div className="form-row">
-                <div className="col mb-4">
+                <div className="col mb-3">
                   <div className="input-group">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroupPrepend">
@@ -122,7 +122,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
               <div
                 className="form-row"
                 style={{
-                  marginTop: '112px',
+                  marginTop: '106px',
                 }}
               >
                 <div className="col-12 text-center">
@@ -130,11 +130,11 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                     className="btn btn-success"
                     type="submit"
                     style={{
-                      marginTop: '24px',
                       width: '100%',
                     }}
+                    disabled={listDisabled.isPasswordDisabled}
                   >
-                    Save Credentials
+                    Save Changes
                   </button>
                 </div>
               </div>
