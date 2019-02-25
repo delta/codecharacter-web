@@ -381,8 +381,8 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     });
   };
 
-  private handleRegister = (event: React.FormEvent<HTMLFormElement>) => {
-    const { register } = this.props;
+  private handleRegister = async (event: React.FormEvent<HTMLFormElement>) => {
+    const { register, errorMessage, handleSelectPanel } = this.props;
     const {
       avatar,
       repeatPassword,
@@ -401,7 +401,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
     if (form) {
       if (form.checkValidity() && isCaptchaValidated) {
-        register({
+        await register({
           avatar,
           college,
           country,
@@ -413,6 +413,10 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           type,
           username,
         });
+
+        if (errorMessage === '') {
+          handleSelectPanel(AuthType.LOGIN);
+        }
       }
       form.classList.add('was-validated');
       this.setState({
