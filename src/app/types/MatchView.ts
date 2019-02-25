@@ -48,6 +48,10 @@ export interface ElementOwnProps {
   getGameLogs: (gameId: number) => void;
 }
 
+export interface ElementState {
+  isHoveredOver: boolean;
+}
+
 export type ElementProps = ElementOwnProps;
 
 const actions = {

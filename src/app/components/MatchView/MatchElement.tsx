@@ -7,28 +7,57 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
-export class MatchElement extends React.Component<MatchInterfaces.ElementProps, {}> {
+export class MatchElement extends React.Component<
+  MatchInterfaces.ElementProps,
+  MatchInterfaces.ElementState
+> {
+  public constructor(props: MatchInterfaces.ElementProps) {
+    super(props);
+    this.state = {
+      isHoveredOver: false,
+    };
+  }
+
   public render() {
     const { match, getGameLogs, currentUserMatch, type } = this.props;
+    const { isHoveredOver } = this.state;
 
     const isMyMatch = type === MatchInterfaces.MatchViewTabType.MY_MATCHES;
+    let matchResult = 'TIE';
+
+    if (match.verdict === '0') {
+      matchResult = 'TIE';
+    } else if (match.verdict === '1') {
+      if (currentUserMatch) matchResult = 'WON';
+      else matchResult = 'LOST';
+    } else {
+      if (currentUserMatch) matchResult = 'LOST';
+      else matchResult = 'WON';
+    }
 
     return (
-      <Col sm={12} className={classnames('mb-1')}>
+      <Col
+        sm={12}
+        className={classnames('mb-1')}
+        onMouseEnter={() => {
+          this.setState({
+            isHoveredOver: true,
+          });
+        }}
+        onMouseLeave={() => {
+          this.setState({
+            isHoveredOver: false,
+          });
+        }}
+      >
         <div
           className={classnames(
             'w-100',
             styles.matchElement,
             type === MatchInterfaces.MatchViewTabType.TOP_MATCHES ? styles.topMatchElement : '',
             {
-              [`${styles.winBackground}`]:
-                isMyMatch &&
-                ((currentUserMatch && match.score1 > match.score2) ||
-                  (!currentUserMatch && match.score2 > match.score1)),
-              [`${styles.loseBackground}`]:
-                isMyMatch &&
-                ((currentUserMatch && match.score2 > match.score1) ||
-                  (!currentUserMatch && match.score1 > match.score2)),
+              [`${styles.winBackground}`]: isMyMatch && matchResult === 'WON',
+              [`${styles.loseBackground}`]: isMyMatch && matchResult === 'LOST',
             },
           )}
         >
@@ -62,12 +91,7 @@ export class MatchElement extends React.Component<MatchInterfaces.ElementProps, 
           </div>
           {isMyMatch ? (
             <div className=" d-flex justify-content-center text-capitalize text-font-weight-bold ">
-              {match.verdict === '0'
-                ? 'TIE'
-                : (match.verdict === '1' && currentUserMatch) ||
-                  (match.verdict === '2' && !currentUserMatch)
-                ? 'WON'
-                : 'LOST'}
+              {matchResult}
             </div>
           ) : null}
           <div className={classnames(styles.body, 'd-flex justify-content-around ')}>
@@ -82,14 +106,16 @@ export class MatchElement extends React.Component<MatchInterfaces.ElementProps, 
               </span>
             ))}
           </div>
-          {/* <div
-            className=" d-flex justify-content-start text-capitalize  my-1 mx-3 h6"
-            style={{
-              fontSize: '12px',
-            }}
-          >
-            Played At : {match.playedAt}
-          </div> */}
+          {isHoveredOver ? (
+            <div
+              className=" d-flex justify-content-start text-capitalize  my-1 mx-3 h6"
+              style={{
+                fontSize: '12px',
+              }}
+            >
+              {new Date(match.playedAt).toLocaleString()}
+            </div>
+          ) : null}
         </div>
       </Col>
     );

@@ -24,10 +24,14 @@ exports[`MatchElement Component Should render 1`] = `
     bsClass="col"
     className="mb-1"
     componentClass="div"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
     sm={12}
   >
     <div
       className="mb-1 col-sm-12"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <div
         className="w-100"
