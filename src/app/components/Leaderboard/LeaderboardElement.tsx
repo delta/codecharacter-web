@@ -83,11 +83,11 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
                   className={classnames(styles['leader-score_title'])}
                   style={{
                     display: 'block',
-                    fontSize: '14px',
+                    fontSize: '17px',
                     marginTop: '5px',
                   }}
                 >
-                  Rating: {player.rating}
+                  {player.rating}
                 </div>
               </div>
             </div>

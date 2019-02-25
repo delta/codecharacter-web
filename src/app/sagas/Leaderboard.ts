@@ -60,6 +60,8 @@ export function* runMatch(action: ActionType<typeof LeaderboardActions.runMatch>
     if (result.type === resType.ERROR) {
       return;
     }
+
+    yield put(LeaderboardActions.getTimer());
   } catch (err) {
     console.error(err);
   }

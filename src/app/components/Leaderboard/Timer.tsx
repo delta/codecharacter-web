@@ -35,7 +35,7 @@ export class Timer extends React.Component<TimerProps, TimerState> {
   private tick = (): void => {
     const { totalSeconds } = this.state;
     const min = Math.floor(totalSeconds / 60);
-    const sec = totalSeconds - Math.floor(totalSeconds / 60) * 60;
+    const sec = Math.floor(totalSeconds - Math.floor(totalSeconds / 60) * 60);
 
     this.setState({
       minutes: min,
