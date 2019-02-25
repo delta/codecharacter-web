@@ -27,11 +27,21 @@ exports[`MatchElement Component Should render 1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     sm={12}
+    style={
+      Object {
+        "borderRadius": 5,
+      }
+    }
   >
     <div
       className="mb-1 col-sm-12"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      style={
+        Object {
+          "borderRadius": 5,
+        }
+      }
     >
       <div
         className="w-100"

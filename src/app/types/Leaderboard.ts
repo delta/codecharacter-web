@@ -9,6 +9,7 @@ export interface Player {
   rating: number;
   fullName: string;
   avatar: string;
+  type: string;
   numWin: number;
   numLoss: number;
   numTie: number;

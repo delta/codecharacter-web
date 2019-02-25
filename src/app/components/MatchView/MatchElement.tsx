@@ -38,6 +38,7 @@ export class MatchElement extends React.Component<
     return (
       <Col
         sm={12}
+        style={{ borderRadius: 5 }}
         className={classnames('mb-1')}
         onMouseEnter={() => {
           this.setState({
