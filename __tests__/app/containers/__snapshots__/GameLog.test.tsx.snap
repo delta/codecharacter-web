@@ -4,5 +4,6 @@ exports[`GameLog Container Should render 1`] = `
 <GameLog
   debugLog=""
   dispatch={[Function]}
+  height={100}
 />
 `;

@@ -25,7 +25,11 @@ export class Timer extends React.Component<TimerProps, TimerState> {
       this.intervalHandle = setInterval(this.tick, 1000);
     }
     const { minutes, seconds } = this.state;
-    return <span>{`Please wait ${minutes} minutes, ${seconds} seconds to initiate a match.`}</span>;
+    return (
+      <span>{`Please wait ${minutes} minutes, ${Math.floor(
+        seconds,
+      )} seconds to initiate a match.`}</span>
+    );
   }
 
   private tick = (): void => {

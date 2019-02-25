@@ -131,6 +131,7 @@ module.exports = {
       disable: !isProduction
     }),
     new HtmlWebpackPlugin({
+      favicon: 'assets/img/codecharacterLogo.jpeg',
       template: 'assets/index.html'
     }),
     new HardSourceWebpackPlugin(),

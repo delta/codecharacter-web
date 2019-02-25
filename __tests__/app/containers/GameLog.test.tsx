@@ -5,7 +5,7 @@ import * as React from 'react';
 
 describe('GameLog Container', () => {
   const { store } = configureStore();
-  const wrapper = shallow(<GameLog />, {
+  const wrapper = shallow(<GameLog height={100} />, {
     context: {
       store,
     },

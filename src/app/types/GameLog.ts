@@ -5,7 +5,11 @@ export interface StateProps {
   debugLog: string;
 }
 
-export type Props = StateProps;
+export interface ElementProps {
+  height: number;
+}
+
+export type Props = StateProps & ElementProps;
 
 const actions = {
   clearAllLogs: GameLogActions.clearAllLogs,

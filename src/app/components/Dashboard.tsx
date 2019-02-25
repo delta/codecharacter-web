@@ -25,7 +25,7 @@ export class Dashboard extends React.Component<
   public minEditorWidth = 350;
   public minRendererWidth = 50;
   public initialEditorRatio = 0.4;
-  public initialRendererHeight = 300;
+  public initialRendererHeight = 40;
   public compilationData = '';
 
   constructor(props: DashboardInterfaces.Props) {
@@ -140,7 +140,7 @@ export class Dashboard extends React.Component<
                 <Renderer height={this.state.rendererHeight - 42} />
               </Row>
             </Grid>
-            <GameLog />
+            <GameLog height={window.innerHeight - this.state.rendererHeight} />
           </SplitPane>
         </SplitPane>
       </div>

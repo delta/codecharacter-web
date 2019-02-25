@@ -9,6 +9,8 @@ const mapStateToProps = (rootState: RootState) => {
   };
 };
 
-const gameLogContainer = connect<GameLogInterfaces.StateProps, {}, {}>(mapStateToProps)(GameLog);
+const gameLogContainer = connect<GameLogInterfaces.StateProps, {}, GameLogInterfaces.ElementProps>(
+  mapStateToProps,
+)(GameLog);
 
 export default gameLogContainer;

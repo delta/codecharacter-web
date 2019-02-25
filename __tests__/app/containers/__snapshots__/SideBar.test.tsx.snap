@@ -31,12 +31,12 @@ exports[`SideBar Container Should render 1`] = `
             block={false}
             bsClass="btn"
             bsStyle="default"
-            className="py-2 px-auto text-white"
+            className="py-2 px-auto text-white d-flex justify-content-center"
             disabled={false}
             onClick={[Function]}
           >
             <button
-              className="py-2 px-auto text-white btn btn-default"
+              className="py-2 px-auto text-white d-flex justify-content-center btn btn-default"
               disabled={false}
               onClick={[Function]}
               type="button"
