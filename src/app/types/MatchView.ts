@@ -11,6 +11,12 @@ export interface OwnState {
   offset: number;
 }
 
+export interface Game {
+  id: number;
+  verdict: string;
+  mapId: number;
+}
+
 export interface Match {
   avatar1: string;
   avatar2: string;
@@ -20,7 +26,7 @@ export interface Match {
   score2: number;
   verdict: string;
   playedAt: string;
-  games: number[];
+  games: Game[];
 }
 
 export interface StateProps {

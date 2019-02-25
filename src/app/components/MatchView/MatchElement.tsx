@@ -1,4 +1,4 @@
-import { faShieldAlt, faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as styles from 'app/styles/MatchView.module.css';
 import { Avatar } from 'app/types/Authentication/Register';
@@ -11,6 +11,14 @@ export class MatchElement extends React.Component<
   MatchInterfaces.ElementProps,
   MatchInterfaces.ElementState
 > {
+  public MAP_THUMBNAIL = [
+    'assets/img/maps/islesofcodechar.png',
+    'assets/img/maps/timeturner.png',
+    'assets/img/maps/treacherousmangroves.png',
+    'assets/img/maps/mysterymap.png',
+    'assets/img/maps/mysterymap.png',
+  ];
+
   public constructor(props: MatchInterfaces.ElementProps) {
     super(props);
     this.state = {
@@ -96,14 +104,28 @@ export class MatchElement extends React.Component<
             </div>
           ) : null}
           <div className={classnames(styles.body, 'd-flex justify-content-around ')}>
-            {match.games.map((gameId, index) => (
+            {match.games.map((game, index) => (
               <span
                 key={index}
                 className={classnames(styles.game)}
-                // @ts-ignore
-                onClick={() => getGameLogs(gameId.id)}
+                onClick={() => getGameLogs(game.id)}
               >
-                <FontAwesomeIcon icon={faVideo} />
+                <img
+                  src={this.MAP_THUMBNAIL[game.mapId - 1]}
+                  width={30}
+                  height={30}
+                  style={{
+                    boxShadow: `0 0 20px ${
+                      game.verdict === '0'
+                        ? 'yellow'
+                        : game.verdict === '1'
+                          ? 'green'
+                          : game.verdict === '2'
+                            ? 'red'
+                            : 'gray'
+                      }`,
+                  }}
+                />
               </span>
             ))}
           </div>

@@ -1,3 +1,5 @@
+import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LeaderboardActions } from 'app/actions';
 import { Svg } from 'app/components/Leaderboard/Svg';
 import * as styles from 'app/styles/Leaderboard.module.css';
@@ -97,7 +99,7 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
                     marginTop: '3px',
                   }}
                 >
-                  {player.type}
+                  {player.type === 'Student' ? <FontAwesomeIcon icon={faGraduationCap} /> : null}
                 </div>
               </div>
             </div>
