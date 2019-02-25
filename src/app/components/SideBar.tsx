@@ -3,7 +3,7 @@ import {
   faCode,
   faCodeBranch,
   faCog,
-  faInfoCircle,
+  faQuestionCircle,
   faSignOutAlt,
   faTrophy,
   faTv,
@@ -135,7 +135,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             title={'Take a tour'}
             onClick={() => this.props.toggleJoyRide()}
           >
-            <FontAwesomeIcon icon={faInfoCircle} />
+            <FontAwesomeIcon icon={faQuestionCircle} />
           </Button>
           <Button
             className={classnames('py-2 px-auto', styles.deltaLogo)}

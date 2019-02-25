@@ -60,6 +60,18 @@ export default class Joyride extends React.Component<
     {
       content: (
         <p>
+          This is the view matches panel. <br />
+          You can replay your previous matches and view top rated matches too. If you played a epic
+          match, chances are your match will be featured here.
+        </p>
+      ),
+      placement: 'right',
+      target: '#matchView_button',
+      title: 'Battle TV',
+    },
+    {
+      content: (
+        <p>
           This is the notifications panel. <br /> You can view you your notifications based on their
           types and delete them.
         </p>
@@ -88,6 +100,12 @@ export default class Joyride extends React.Component<
       title: 'Toggle Editor/Renderer',
     },
     {
+      content: <p>Click to clear the gamelogs of previous games.</p>,
+      placement: 'bottom',
+      target: '#clear_gamelog_button',
+      title: 'Clear Game Logs',
+    },
+    {
       content: <p>Click to compile code and run the game simulation.</p>,
       placement: 'bottom',
       target: '#run_button',
@@ -106,6 +124,18 @@ export default class Joyride extends React.Component<
       placement: 'bottom',
       target: '#commit_button',
       title: 'Commit',
+    },
+    {
+      content: (
+        <p>
+          Submits current version of code as default code for playing against opponents.
+          <br />
+          You have to submit your code before choosing your opponent.
+        </p>
+      ),
+      placement: 'bottom',
+      target: '#submit_button',
+      title: 'Submit',
     },
     {
       content: (
@@ -129,6 +159,12 @@ export default class Joyride extends React.Component<
       placement: 'right',
       target: '#logout_button',
       title: 'Logout',
+    },
+    {
+      content: <p>Click to take a tour to explore the available features.</p>,
+      placement: 'right',
+      target: '#joyride_button',
+      title: 'Help',
     },
   ];
 

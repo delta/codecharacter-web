@@ -100,7 +100,11 @@ export class SubmitBar extends React.Component<
             </span>
           ) : null}
         </button>
-        <button className={classnames(styles.customBtn)} onClick={clearLogs} id="save_button">
+        <button
+          className={classnames(styles.customBtn)}
+          onClick={clearLogs}
+          id="clear_gamelog_button"
+        >
           <span
             className={classnames(styles.icon)}
             style={{ padding: 0, margin: 0, border: 0 }}
@@ -142,8 +146,8 @@ export class SubmitBar extends React.Component<
         </button>
         <button
           className={classnames(styles.customBtn)}
-          title="Lock Code"
-          id="lock_button"
+          title="Submit Code"
+          id="submit_button"
           onClick={this.props.lockCode}
         >
           <span className={classnames(styles.icon)}>
