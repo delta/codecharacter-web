@@ -7,7 +7,7 @@ import { Col, Row } from 'react-bootstrap';
 export class CodeStatus extends React.Component<
   CodeStatusInterfaces.Props,
   CodeStatusInterfaces.State
-  > {
+> {
   public constructor(props: CodeStatusInterfaces.Props) {
     super(props);
     this.state = {
@@ -81,11 +81,11 @@ export class CodeStatus extends React.Component<
             {currentState}
           </p>
         </Col>
-        {currentState !== 'Idle'
-          ? <Col sm={1} className={classnames(styles.loaderWrapper)}>
-            <p className={classnames(styles.loader)}></p>
+        {currentState !== 'Idle' ? (
+          <Col sm={1} className={classnames(styles.loaderWrapper)}>
+            <p className={classnames(styles.loader)} />
           </Col>
-          : null}
+        ) : null}
       </Row>
     );
   }

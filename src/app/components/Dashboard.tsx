@@ -52,6 +52,17 @@ export class Dashboard extends React.Component<
     sidePanelOpen ? this.onToggleSidePanel(true) : this.onToggleSidePanel(false);
   }
 
+  public componentDidMount() {
+    setTimeout(() => {
+      // @ts-ignore
+      document.getElementById('preloader-container').style.opacity = '0';
+    }, 2000);
+
+    setTimeout(() => {
+      // @ts-ignore
+      document.getElementById('preloader-container').style.display = 'none';
+    }, 2500);
+  }
   public render() {
     const {
       editorWidthRatio,

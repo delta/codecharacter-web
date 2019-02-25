@@ -4,8 +4,83 @@
     <meta charset="utf-8">
     <script src="//cdn.polyfill.io/v2/polyfill.min.js"></script>
     <title>Code Character</title>
+    <style>
+      #preloader-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 100000;
+        background-color: #222;
+        transition: opacity 1s;
+      }
+      .animation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 60px;
+        height: 60px;
+        
+        animation: 1s spinning infinite;
+      }
+      
+      .animation:before,
+      .animation:after {
+        animation: 1s movingRight infinite;
+        content: "";
+        display: block;
+        height: 20px;
+        border: 20px solid #f90;
+        border-top: none;
+        border-bottom: none;
+        margin-bottom: 20px;
+      }
+      .animation:after {
+        animation-name: movingLeft;
+      }
+      
+      @keyframes spinning {
+        0% {
+          transform: rotate(0deg);
+        }
+        40%,
+        100% {
+          transform: rotate(90deg);
+        }
+      }
+      
+      @keyframes movingLeft {
+        0% {
+          transform: translateX(0%);
+        }
+        40% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0%);
+        }
+      }
+      @keyframes movingRight {
+        0% {
+          transform: translateX(0%);
+        }
+        40% {
+          transform: translateX(50%);
+        }
+        100% {
+          transform: translateX(0%);
+        }
+      }
+    </style>
   </head>
   <body>
+    <div id="preloader-container">
+      <i class="animation"></i>
+    </div>
     <div id="root"></div>
   </body>
 </html>
