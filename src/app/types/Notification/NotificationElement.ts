@@ -1,7 +1,9 @@
-import { Notification } from 'app/types/Notification';
+import { NotificationTabType } from 'app/types/Notification';
 
 export interface DispatchProps {
-  deleteNotification: (id: number) => void;
+  message: string;
+  type: NotificationTabType;
+  createdAt: Date;
 }
 
-export type Props = Notification & DispatchProps;
+export type Props = DispatchProps;

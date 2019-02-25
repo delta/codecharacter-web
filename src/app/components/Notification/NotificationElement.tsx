@@ -1,4 +1,4 @@
-import { faCheckCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as styles from 'app/styles/Notification.module.css';
 import * as NotificationElementInterfaces from 'app/types/Notification/NotificationElement';
@@ -8,7 +8,7 @@ import { Col } from 'react-bootstrap';
 
 export class NotificationElement extends React.Component<NotificationElementInterfaces.Props, {}> {
   public render() {
-    const { id, title, text, type, deleteNotification } = this.props;
+    const { message, type, createdAt } = this.props;
     return (
       <Col sm={12} className={classnames('mb-1')}>
         <div className={classnames('w-100', styles.notificationElement, styles[type])}>
@@ -16,23 +16,12 @@ export class NotificationElement extends React.Component<NotificationElementInte
             <span className="mr-2 mb-1">
               <FontAwesomeIcon icon={faCheckCircle} />
             </span>
-            <span>{title}</span>
-            <span
-              style={{
-                marginLeft: 'auto',
-              }}
-            >
-              <button
-                className={classnames(styles.closeBtn)}
-                onClick={() => {
-                  deleteNotification(id);
-                }}
-              >
-                <FontAwesomeIcon icon={faTimes} />
-              </button>
-            </span>
+            <span>{'Global'}</span>
           </div>
-          <div className={classnames('ml-2', styles.body)}>{text}</div>
+          <div className={classnames('ml-2', 'pl-2', styles.body)}>{message}</div>
+          <div className={classnames('ml-2', 'pl-2', styles.body)}>
+            {new Date(createdAt).toLocaleString()}
+          </div>
         </div>
       </Col>
     );

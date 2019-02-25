@@ -19,6 +19,7 @@ const notificationContainer = connect<
   mapStateToProps,
   {
     deleteNotificationType: NotificationActions.deleteNotificationType,
+    getAllGlobalNotifications: NotificationActions.getAllGlobalNotifications,
   },
 )(Notification);
 

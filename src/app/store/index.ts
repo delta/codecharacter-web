@@ -3,6 +3,7 @@ import { rootReducer } from 'app/reducers';
 import { codeSagas } from 'app/sagas/Code';
 import { leaderboardSagas } from 'app/sagas/Leaderboard';
 import { matchSagas } from 'app/sagas/MatchView';
+import { notificationSagas } from 'app/sagas/Notification';
 import { submissionSagas } from 'app/sagas/Submission';
 import { userSagas } from 'app/sagas/User';
 import { applyMiddleware, createStore } from 'redux';
@@ -34,6 +35,7 @@ export function configureStore(initialState?: object) {
   sagaMiddleware.run(leaderboardSagas);
   sagaMiddleware.run(submissionSagas);
   sagaMiddleware.run(matchSagas);
+  sagaMiddleware.run(notificationSagas);
 
   const persistor = persistStore(store);
 

@@ -1,4 +1,4 @@
-import { CodeActions } from 'app/actions';
+import { CodeActions, NotificationActions } from 'app/actions';
 import { Editor } from 'app/components/code/Editor';
 import { RootState } from 'app/reducers';
 import * as EditorInterfaces from 'app/types/code/Editor';
@@ -24,6 +24,7 @@ const editorContainer = connect<
   mapStateToProps,
   {
     getLatestCode: CodeActions.getLatestCode,
+    getUnreadGlobalNotifications: NotificationActions.getUnreadGlobalNotifications,
     save: CodeActions.save,
     updateCode: CodeActions.updateCode,
   },

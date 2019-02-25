@@ -9,6 +9,7 @@ const actions = {
   info: NotificationActions.info,
   resetNotificationState: NotificationActions.resetNotificationState,
   success: NotificationActions.success,
+  updateGlobalNotifications: NotificationActions.updateGlobalNotifications,
 };
 
 export enum NotificationType {
@@ -26,14 +27,13 @@ export enum NotificationTabType {
 
 export interface Notification {
   id: number;
-  title: string;
-  text: string;
-  type: NotificationType;
+  message: string;
+  createdAt: Date;
 }
 
 export interface NotificationStoreState {
-  loading: boolean;
   notifications: Notification[];
+  loading: boolean;
 }
 
 export interface State {
@@ -47,6 +47,7 @@ export interface StateProps {
 
 export interface DispatchProps {
   deleteNotificationType: (type: NotificationTabType) => void;
+  getAllGlobalNotifications: () => void;
 }
 
 export type Props = StateProps & DispatchProps;

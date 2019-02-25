@@ -13,6 +13,7 @@ int main() {
   enableSnippets={false}
   fontSize={16}
   getLatestCode={[Function]}
+  getUnreadGlobalNotifications={[Function]}
   isLoggedIn={false}
   save={[Function]}
   theme="twilight"

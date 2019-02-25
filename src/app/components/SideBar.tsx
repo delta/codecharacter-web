@@ -1,5 +1,5 @@
 import {
-  faBell,
+  faBook,
   faCode,
   faCodeBranch,
   faCog,
@@ -96,14 +96,14 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.NOTIFICATION,
             })}
             id="notifications_button"
-            title={'Notifications'}
+            title={'About'}
             onClick={() =>
               sidePanelTab !== SidePanelTab.NOTIFICATION
                 ? openSidePanelTab(SidePanelTab.NOTIFICATION)
                 : closeSidePanelTab()
             }
           >
-            <FontAwesomeIcon icon={faBell} />
+            <FontAwesomeIcon icon={faBook} />
           </Button>
           <Button
             className={classnames('py-2 px-auto', styles.customBtn)}

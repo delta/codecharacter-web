@@ -33,6 +33,7 @@ export interface DispatchProps {
   getLatestCode: () => void;
   save: (code: string) => void;
   updateCode: (code: string) => void;
+  getUnreadGlobalNotifications: () => void;
 }
 
 export type Props = OwnProps & StateProps & DispatchProps;

@@ -3,70 +3,8 @@
 exports[`Notification Container Should render Notification 1`] = `
 <Notification
   deleteNotificationType={[Function]}
+  getAllGlobalNotifications={[Function]}
   loading={false}
-  notifications={
-    Array [
-      Object {
-        "id": 1,
-        "text": "Your recent match was a win",
-        "title": "Success!",
-        "type": "SUCCESS",
-      },
-      Object {
-        "id": 2,
-        "text": "Your recent match was a win",
-        "title": "Success!",
-        "type": "SUCCESS",
-      },
-      Object {
-        "id": 3,
-        "text": "Your recent match was a win",
-        "title": "Success!",
-        "type": "SUCCESS",
-      },
-      Object {
-        "id": 4,
-        "text": "Game could not finish",
-        "title": "Error!",
-        "type": "ERROR",
-      },
-      Object {
-        "id": 5,
-        "text": "Game could not finish",
-        "title": "Error!",
-        "type": "ERROR",
-      },
-      Object {
-        "id": 6,
-        "text": "Game could not finish",
-        "title": "Error!",
-        "type": "ERROR",
-      },
-      Object {
-        "id": 7,
-        "text": "You have moved up a postion in leaderboard",
-        "title": "Info!",
-        "type": "INFO",
-      },
-      Object {
-        "id": 8,
-        "text": "You have moved up a postion in leaderboard",
-        "title": "Info!",
-        "type": "INFO",
-      },
-      Object {
-        "id": 9,
-        "text": "You have moved up a postion in leaderboard",
-        "title": "Info!",
-        "type": "INFO",
-      },
-      Object {
-        "id": 10,
-        "text": "You have moved up a postion in leaderboard",
-        "title": "Info!",
-        "type": "INFO",
-      },
-    ]
-  }
+  notifications={Array []}
 />
 `;
