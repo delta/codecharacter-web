@@ -35,7 +35,7 @@
 
 .matchViewWrap {
   padding-top: 20px;
-  max-height: 85vh;
+  max-height: 75vh;
   overflow-y: scroll;
 }
 
@@ -53,6 +53,10 @@
 .matchViewWrap::-webkit-scrollbar-thumb {
   background-color: #ddd;
   height: 30px;
+}
+
+.game:hover {
+  cursor: pointer;
 }
 
 .matchElement {

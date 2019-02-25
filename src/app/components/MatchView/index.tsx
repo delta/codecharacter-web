@@ -116,32 +116,37 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
             <div className="ml-5"> Nothing to show </div>
           )}
         </Row>
-        <Row>
-          <Col className="d-flex justify-content-center" style={{ width: '100vw', margin: '10px' }}>
-            <ReactPaginate
-              previousLabel={
-                <span>
-                  <FontAwesomeIcon icon={faCaretLeft} /> <FontAwesomeIcon icon={faCaretLeft} />
-                </span>
-              }
-              nextLabel={
-                <span>
-                  <FontAwesomeIcon icon={faCaretRight} /> <FontAwesomeIcon icon={faCaretRight} />
-                </span>
-              }
-              breakLabel={'...'}
-              breakClassName={'break-me'}
-              marginPagesDisplayed={1}
-              pageClassName={'atag'}
-              pageRangeDisplayed={2}
-              pageCount={Math.ceil(matches.length / Match.paginationSize)}
-              activeLinkClassName={'active'}
-              onPageChange={this.handlePageClick}
-              containerClassName={'pagination'}
-              activeClassName={'active'}
-            />
-          </Col>
-        </Row>
+        {activeMatchViewTab === MatchInterfaces.MatchViewTabType.MY_MATCHES ? (
+          <Row>
+            <Col
+              className="d-flex justify-content-center"
+              style={{ width: '100vw', margin: '10px' }}
+            >
+              <ReactPaginate
+                previousLabel={
+                  <span>
+                    <FontAwesomeIcon icon={faCaretLeft} /> <FontAwesomeIcon icon={faCaretLeft} />
+                  </span>
+                }
+                nextLabel={
+                  <span>
+                    <FontAwesomeIcon icon={faCaretRight} /> <FontAwesomeIcon icon={faCaretRight} />
+                  </span>
+                }
+                breakLabel={'...'}
+                breakClassName={'break-me'}
+                marginPagesDisplayed={1}
+                pageClassName={'atag'}
+                pageRangeDisplayed={2}
+                pageCount={Math.ceil(matches.length / Match.paginationSize)}
+                activeLinkClassName={'active'}
+                onPageChange={this.handlePageClick}
+                containerClassName={'pagination'}
+                activeClassName={'active'}
+              />
+            </Col>
+          </Row>
+        ) : null}
       </Grid>
     );
   }
