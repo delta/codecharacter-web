@@ -64,10 +64,10 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                       </span>
                     </div>
                     <input
-                      type="text"
+                      type="email"
                       className="form-control"
                       id="validationUsername"
-                      placeholder="Username"
+                      placeholder="Email"
                       aria-describedby="inputGroupPrepend"
                       required
                       value={username}
@@ -77,7 +77,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                         })
                       }
                     />
-                    <div className="invalid-feedback">Please enter a valid Username.</div>
+                    <div className="invalid-feedback">Please enter a valid Email.</div>
                   </div>
                 </div>
               </div>

@@ -3,6 +3,7 @@ import {
   faCode,
   faCodeBranch,
   faCog,
+  faInfoCircle,
   faQuestionCircle,
   faSignOutAlt,
   faTrophy,
@@ -34,6 +35,34 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             onClick={() => closeSidePanelTab()}
           >
             <FontAwesomeIcon icon={faCode} />
+          </Button>
+          <Button
+            className={classnames('py-2 px-auto notification-btn-ctrl', styles.customBtn, {
+              [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.NOTIFICATION,
+            })}
+            id="notifications_button"
+            title={'About'}
+            onClick={() =>
+              sidePanelTab !== SidePanelTab.NOTIFICATION
+                ? openSidePanelTab(SidePanelTab.NOTIFICATION)
+                : closeSidePanelTab()
+            }
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />
+          </Button>
+          <Button
+            className={classnames('py-2 px-auto notification-btn-ctrl', styles.customBtn, {
+              [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.DOCS,
+            })}
+            id="docs_button"
+            title={'About'}
+            onClick={() =>
+              sidePanelTab !== SidePanelTab.DOCS
+                ? openSidePanelTab(SidePanelTab.DOCS)
+                : closeSidePanelTab()
+            }
+          >
+            <FontAwesomeIcon icon={faBook} />
           </Button>
           <Button
             className={classnames('py-2 px-auto editor-settings-btn-ctrl', styles.customBtn, {
@@ -90,20 +119,6 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             }
           >
             <FontAwesomeIcon icon={faTv} />
-          </Button>
-          <Button
-            className={classnames('py-2 px-auto notification-btn-ctrl', styles.customBtn, {
-              [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.NOTIFICATION,
-            })}
-            id="notifications_button"
-            title={'About'}
-            onClick={() =>
-              sidePanelTab !== SidePanelTab.NOTIFICATION
-                ? openSidePanelTab(SidePanelTab.NOTIFICATION)
-                : closeSidePanelTab()
-            }
-          >
-            <FontAwesomeIcon icon={faBook} />
           </Button>
           <Button
             className={classnames('py-2 px-auto', styles.customBtn)}

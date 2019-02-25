@@ -34,7 +34,6 @@
 
 .notificationWrap {
   max-height: 85vh;
-  overflow-y: scroll;
 }
 
 .notificationWrap::-webkit-scrollbar-track {

@@ -1,3 +1,4 @@
+import { Docs } from 'app/components/Docs';
 import CommitLog from 'app/containers/code/CommitLog';
 import EditorSettings from 'app/containers/code/EditorSettings';
 import Leaderboard from 'app/containers/Leaderboard';
@@ -35,6 +36,8 @@ export class SidePanel extends React.Component<SidePanel.Props, {}> {
         break;
       case SidePanelTab.USER_EDIT:
         sidePanel = <UserProfileModal />;
+      case SidePanelTab.DOCS:
+        sidePanel = <Docs />;
     }
     return sidePanelTab === SidePanelTab.NONE ? (
       sidePanel

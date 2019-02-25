@@ -20,11 +20,11 @@ export class Dashboard extends React.Component<
   DashboardInterfaces.State
 > {
   public sideBarWidth = 50;
-  public sidePanelWidth = 350;
+  public sidePanelWidth = 380;
   public minEditorWidth = 350;
   public minRendererWidth = 50;
   public initialEditorRatio = 0.4;
-  public initialRendererHeight = 40;
+  public initialRendererHeight = 400;
   public compilationData = '';
 
   constructor(props: DashboardInterfaces.Props) {

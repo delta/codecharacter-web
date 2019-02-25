@@ -2,6 +2,7 @@ import { DashboardActions } from 'app/actions';
 import * as DashboardInterfaces from 'app/types/Dashboard';
 
 export enum SidePanelTab {
+  DOCS = 'DOCS',
   EDITOR_SETTINGS = 'EDITOR_SETTINGS',
   LEADERBOARD = 'LEADERBOARD',
   COMMIT_LOG = 'COMMIT_LOG',

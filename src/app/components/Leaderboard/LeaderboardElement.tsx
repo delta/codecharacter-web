@@ -40,7 +40,14 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
               >
                 <Svg />
               </div>
-            ) : null}
+            ) : <div
+              style={{
+                fontSize: 38,
+              }}
+              className={classnames(styles['leader-ava'])}
+            >
+                {player.rank}
+              </div>}
             <div className={classnames(styles['leader-content'])}>
               <div
                 className={classnames(styles['leader-name'])}
@@ -76,30 +83,28 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
                   }}
                   title={player.username}
                 >
-                  {`${player.rank}.`}{' '}
-                  <span>{`${player.username.substr(0, 13)}${
-                    player.username.length > 13 ? '...' : ''
-                  }`}</span>
+                  <span>{`${player.username.substr(0, 15)}${
+                    player.username.length > 15 ? '...' : ''
+                    }`}</span>
                 </div>
                 <div
                   className={classnames(styles['leader-score_title'])}
                   style={{
+                    color: 'gray',
                     display: 'block',
-                    fontSize: '17px',
+                    fontSize: '26px',
                     marginTop: '5px',
                   }}
                 >
                   {player.rating}
-                </div>
-                <div
-                  className={classnames(styles['leader-score_title'])}
-                  style={{
-                    display: 'block',
-                    fontSize: '14px',
-                    marginTop: '3px',
-                  }}
-                >
-                  {player.type === 'Student' ? <FontAwesomeIcon icon={faGraduationCap} /> : null}
+                  {' '}
+                  {player.type === 'Student'
+                    ? <FontAwesomeIcon
+                        style={{ fontSize: 18, display: 'inline' }}
+                        icon={faGraduationCap}
+                        title={'Student Participant'}
+                      />
+                    : null}
                 </div>
               </div>
             </div>

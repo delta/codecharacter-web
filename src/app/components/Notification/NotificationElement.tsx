@@ -16,9 +16,8 @@ export class NotificationElement extends React.Component<NotificationElementInte
             <span className="mr-2 mb-1">
               <FontAwesomeIcon icon={faCheckCircle} />
             </span>
-            <span>{'Global'}</span>
+            <span>{message}</span>
           </div>
-          <div className={classnames('ml-2', 'pl-2', styles.body)}>{message}</div>
           <div className={classnames('ml-2', 'pl-2', styles.body)}>
             {new Date(createdAt).toLocaleString()}
           </div>

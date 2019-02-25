@@ -49,6 +49,12 @@ export class Notification extends React.Component<
               </a>{' '}
               and start playing!
             </p>
+            <p>
+              In case of any queries, discuss at the{' '}
+              <a href="https://forum.pragyan.org/c/code-character" target="_blank">
+                CodeCharacter Forum
+              </a>{' '}.
+            </p>
             <h6>
               <strong>PRIZES</strong>
             </h6>
@@ -65,6 +71,10 @@ export class Notification extends React.Component<
               <li>Second Place - 10K INR</li>
               <li>Third Place - 5K INR</li>
             </ul>
+            <p>
+              Note: College Student Winners will be requested to provide valid college proof
+              to collect prizes.
+            </p>
             <br />
           </Col>
         </Row>
