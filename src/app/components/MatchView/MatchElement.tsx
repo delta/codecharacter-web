@@ -19,6 +19,14 @@ export class MatchElement extends React.Component<
     'mysterymap',
   ];
 
+  public MAP_NAME = [
+    'Isles of Codecharacter',
+    'Time Turner',
+    'Treacherous Mangroves',
+    'The Fuhrer',
+    'Crossroads of Destiny',
+  ];
+
   public constructor(props: MatchInterfaces.ElementProps) {
     super(props);
     this.state = {
@@ -65,6 +73,7 @@ export class MatchElement extends React.Component<
             {
               [`${styles.winBackground}`]: isMyMatch && matchResult === 'WON',
               [`${styles.loseBackground}`]: isMyMatch && matchResult === 'LOST',
+              [`${styles.tieBackground}`]: isMyMatch && matchResult === 'TIE',
             },
           )}
         >
@@ -107,7 +116,7 @@ export class MatchElement extends React.Component<
                 key={index}
                 className={classnames(styles.game)}
                 onClick={() => getGameLogs(game.id)}
-                title={this.MAP_THUMBNAIL[game.mapId - 1]}
+                title={this.MAP_NAME[game.mapId - 1]}
               >
                 <img
                   src={`assets/img/maps/${this.MAP_THUMBNAIL[game.mapId - 1]}.png`}

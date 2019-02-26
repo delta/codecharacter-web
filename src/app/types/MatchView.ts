@@ -22,8 +22,10 @@ export interface Match {
   avatar2: string;
   username1: string;
   score1: number;
+  rating1?: number;
   username2: string;
   score2: number;
+  rating2?: number;
   verdict: string;
   playedAt: string;
   games: Game[];

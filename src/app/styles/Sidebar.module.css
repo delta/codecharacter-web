@@ -61,6 +61,11 @@
   filter: invert(44%) sepia(34%) saturate(5910%) hue-rotate(174deg) brightness(90%) contrast(102%);
 }
 
+.deltaLogo:hover {
+  -webkit-filter: invert(43%) sepia(87%) saturate(1513%) hue-rotate(82deg) brightness(103%) contrast(87%);
+  filter: invert(43%) sepia(87%) saturate(1513%) hue-rotate(82deg) brightness(103%) contrast(87%);
+}
+
 .joyRide:active {
   transform: scale(1.08);
 }

@@ -76,8 +76,8 @@ export class CodeStatus extends React.Component<
                 {isCodeSaved ? ' ' : '* '}
                 {this.state.lastSaveMessage}
               </p>)
-            : (<p className={classnames(styles.StatusText)} style={{ textAlign: 'left' }}>
-                {'Read Only (Old Commit)'}
+            : (<p className={classnames(styles.StatusText)} style={{ textAlign: 'left', color: 'red' }}>
+                <b>{'Read Only (Old Commit)'}</b>
               </p>)
           }
         </Col>

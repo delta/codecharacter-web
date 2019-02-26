@@ -81,6 +81,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     });
 
     this.socket.on('Match Success', (matchLogs: string) => {
+      sendSuccess('Match Executed Successfully!');
       sendExecuteSuccess(matchLogs);
     });
 

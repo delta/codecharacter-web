@@ -41,7 +41,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.DOCS,
             })}
             id="docs_button"
-            title={'About'}
+            title={'Docs'}
             onClick={() =>
               sidePanelTab !== SidePanelTab.DOCS
                 ? openSidePanelTab(SidePanelTab.DOCS)
