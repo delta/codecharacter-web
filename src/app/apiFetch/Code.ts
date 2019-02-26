@@ -1,3 +1,4 @@
+/* tslint:disable:no-console*/
 import { API_BASE_URL } from '../../config/config';
 
 export const saveCode = (code: string) => {
@@ -19,7 +20,7 @@ export const saveCode = (code: string) => {
       return data;
     })
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -42,7 +43,7 @@ export const commitCode = (commitMessage: string) => {
       return data;
     })
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -62,7 +63,7 @@ export const getLatestCode = () => {
       return data;
     })
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -82,7 +83,7 @@ export const getCommitLog = () => {
       return data;
     })
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -102,7 +103,7 @@ export const getCommitCode = (commitHash: string) => {
       return data;
     })
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -122,7 +123,7 @@ export const forkCode = (commitHash: string) => {
       return data;
     })
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -142,6 +143,6 @@ export const getLastSaveTime = () => {
       return data;
     })
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };

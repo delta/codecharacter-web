@@ -1,3 +1,4 @@
+/* tslint:disable:no-console*/
 import { API_BASE_URL } from '../../config/config';
 
 export const codeCompile = (commitHash = 'latest') => {
@@ -15,7 +16,7 @@ export const codeCompile = (commitHash = 'latest') => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -34,7 +35,7 @@ export const executeSelfMatch = (mapId: number) => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -54,7 +55,7 @@ export const executeAiMatch = (mapId: number, aiId: number) => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -73,7 +74,7 @@ export const executePreviousCommitMatch = (mapId: number) => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -89,7 +90,7 @@ export const lockCode = () => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -101,7 +102,7 @@ export const loadMaps = () => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -113,6 +114,6 @@ export const loadAiIds = () => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };

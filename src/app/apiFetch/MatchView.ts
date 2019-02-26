@@ -1,3 +1,4 @@
+/* tslint:disable:no-console*/
 import { API_BASE_URL } from '../../config/config';
 
 export const getMatches = () => {
@@ -12,7 +13,7 @@ export const getMatches = () => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -28,7 +29,7 @@ export const getTopMatches = () => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -44,6 +45,6 @@ export const getGameLogs = (gameId: number) => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };

@@ -1,3 +1,4 @@
+/* tslint:disable:no-console*/
 import { CodeActions } from 'app/actions';
 import * as codeFetch from 'app/apiFetch/Code';
 import { RootState } from 'app/reducers';
@@ -21,7 +22,7 @@ export function* save(action: ActionType<typeof CodeActions.save>) {
       yield put(CodeActions.getLastSaveTime());
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -37,7 +38,7 @@ export function* commit(action: ActionType<typeof CodeActions.commit>) {
       yield put(CodeActions.updateStatusMessage('Commit Saved!'));
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -53,7 +54,7 @@ export function* getLatestCode(action: ActionType<typeof CodeActions.getLatestCo
       yield put(CodeActions.updateCode(res.code));
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -69,7 +70,7 @@ export function* getCommitLog(action: ActionType<typeof CodeActions.getCommitLog
       yield put(CodeActions.updateCommitLog(res.log));
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -86,7 +87,7 @@ export function* checkoutCode(action: ActionType<typeof CodeActions.checkoutCode
       yield put(CodeActions.setCurrentCommitHash(action.payload.commitHash));
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -103,7 +104,7 @@ export function* forkCode(action: ActionType<typeof CodeActions.forkCode>) {
       yield put(CodeActions.getLatestCode());
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -119,7 +120,7 @@ export function* getLastSaveTime(action: ActionType<typeof CodeActions.getLastSa
       yield put(CodeActions.updateLastSaveTime(new Date(res.lastSavedAt)));
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 

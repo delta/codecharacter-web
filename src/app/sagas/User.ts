@@ -1,3 +1,4 @@
+/* tslint:disable:no-console*/
 import {
   CodeActions,
   DashboardActions,
@@ -37,7 +38,7 @@ export function* login(action: ActionType<typeof UserActions.login>) {
       yield put(CodeActions.getLastSaveTime());
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -62,7 +63,7 @@ export function* logout(action: ActionType<typeof UserActions.logout>) {
       );
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -84,7 +85,7 @@ export function* register(action: ActionType<typeof UserActions.register>) {
       );
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -111,7 +112,7 @@ export function* getUserDetails(action: ActionType<typeof UserActions.getUserDet
       );
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -138,7 +139,7 @@ export function* editUserProfile(action: ActionType<typeof UserActions.editUserP
       );
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -161,7 +162,7 @@ export function* editUserPassword(action: ActionType<typeof UserActions.editUser
       );
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -172,7 +173,7 @@ export function* checkUsernameExists(action: ActionType<typeof UserActions.check
     // Call returns error if username already exists, else empty
     yield put(UserActions.updateErrorMessage(res.error));
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -188,7 +189,7 @@ export function* resetAppState(action: ActionType<typeof UserActions.resetAppSta
     yield put(UserActions.resetUserState());
     yield put(MatchActions.resetMatchView());
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 

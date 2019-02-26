@@ -1,3 +1,4 @@
+/* tslint:disable:no-console*/
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import { API_BASE_URL } from '../../config/config';
 
@@ -13,7 +14,7 @@ export const getLeaderboard = (body: LeaderboardInterfaces.GetLeaderboard) => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 

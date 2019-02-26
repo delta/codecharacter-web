@@ -1,3 +1,4 @@
+/* tslint:disable:no-console*/
 import { LeaderboardActions } from 'app/actions';
 import * as LeaderboardFetch from 'app/apiFetch/Leaderboard';
 import * as SimulationFetch from 'app/apiFetch/Simulation';
@@ -28,7 +29,7 @@ export function* getLeaderboard(action: ActionType<typeof LeaderboardActions.get
 
     yield put(LeaderboardActions.updateLoadingStatus(false));
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -44,7 +45,7 @@ export function* getTimerSaga(action: ActionType<typeof LeaderboardActions.getTi
       yield put(LeaderboardActions.setTimer(result.timer));
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -60,7 +61,7 @@ export function* runMatch(action: ActionType<typeof LeaderboardActions.runMatch>
       return;
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 

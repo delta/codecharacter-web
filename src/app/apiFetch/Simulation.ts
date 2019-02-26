@@ -1,3 +1,4 @@
+/* tslint:disable:no-console*/
 import * as SimulationInterfaces from 'app/types/Leaderboard';
 import { API_BASE_URL } from '../../config/config';
 
@@ -17,7 +18,7 @@ export const runMatch = (body: SimulationInterfaces.RunMatch) => {
     .then((data) => {
       return data;
     })
-    .catch((err) => {
-      throw err;
+    .catch((error) => {
+      console.error(error);
     });
 };

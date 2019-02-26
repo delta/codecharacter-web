@@ -1,3 +1,4 @@
+/* tslint:disable:no-console*/
 import { GameLogActions, MatchActions } from 'app/actions';
 import * as MatchFetch from 'app/apiFetch/MatchView';
 import { checkAuthentication } from 'app/sagas/utils';
@@ -18,7 +19,7 @@ export function* getMatches(action: ActionType<typeof MatchActions.getMatches>) 
       yield put(MatchActions.updateMatches(res.matchData));
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -36,7 +37,7 @@ export function* getTopMatches(action: ActionType<typeof MatchActions.getTopMatc
       yield put(MatchActions.updateTopMatches(res.matchData));
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -61,7 +62,7 @@ export function* getGameLogs(action: ActionType<typeof MatchActions.getGameLogs>
       yield put(GameLogActions.updateGameLog(debugLog1, debugLog2, gameLog));
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 

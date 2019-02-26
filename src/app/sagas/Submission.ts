@@ -1,3 +1,4 @@
+/* tslint:disable:no-console*/
 import { GameLogActions, NotificationActions, SubmissionActions } from 'app/actions';
 import * as SubmissionFetch from 'app/apiFetch/Submission';
 import { RootState } from 'app/reducers';
@@ -24,7 +25,7 @@ export function* lockCode(action: ActionType<typeof SubmissionActions.lockCode>)
       ),
     );
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -46,7 +47,7 @@ export function* previousCommitMatch(
       ),
     );
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -67,7 +68,7 @@ export function* selfMatch(action: ActionType<typeof SubmissionActions.selfMatch
       ),
     );
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -89,7 +90,7 @@ export function* aiMatch(action: ActionType<typeof SubmissionActions.aiMatch>) {
       ),
     );
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -151,7 +152,7 @@ export function* changeStateCurrentRequest(
       return;
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -229,7 +230,7 @@ export function* handleCompileSuccess(
       }
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -264,7 +265,7 @@ export function* handleCompileError(
 
     yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -296,7 +297,7 @@ export function* handleExecuteSuccess(
     yield put(GameLogActions.updateGameLog(debugLog1, debugLog2, gameLog));
     yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -321,7 +322,7 @@ export function* handleExecuteError(
 
     yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -337,7 +338,7 @@ export function* loadMaps(action: ActionType<typeof SubmissionActions.loadMaps>)
     }
     yield put(SubmissionActions.saveMaps(res.mapsData));
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -353,7 +354,7 @@ export function* getAiIds(action: ActionType<typeof SubmissionActions.getAiIds>)
     }
     yield put(SubmissionActions.updateAiIds(res.aiIds));
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 

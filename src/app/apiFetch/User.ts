@@ -1,3 +1,4 @@
+/* tslint:disable:no-console*/
 import * as UserInterfaces from 'app/types/User';
 import { API_BASE_URL } from '../../config/config';
 
@@ -18,7 +19,7 @@ export const userLogin = (body: UserInterfaces.Login) => {
       return data;
     })
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -34,7 +35,7 @@ export const userLogout = () => {
       return data;
     })
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -55,7 +56,7 @@ export const userRegister = (body: UserInterfaces.Register) => {
       return data;
     })
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -76,7 +77,7 @@ export const userEditProfile = (body: UserInterfaces.EditUserDetails) => {
       return data;
     })
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -97,7 +98,7 @@ export const userEditPassword = (body: UserInterfaces.EditUserPassword) => {
       return data;
     })
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -113,7 +114,7 @@ export const userGetDetails = () => {
       return data;
     })
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -128,6 +129,6 @@ export const checkUsernameExists = (username: string) => {
       return data;
     })
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
