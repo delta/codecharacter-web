@@ -35,7 +35,7 @@
 
 .matchViewWrap {
   padding-top: 20px;
-  max-height: 75vh;
+  max-height: 80vh;
   overflow-y: scroll;
 }
 
@@ -61,8 +61,8 @@
 
 .matchElement {
   padding: 5px;
+  border-radius: 5px;
   margin-top: 5px;
-  border-radius: 2px;
   background: #464646;
   color: #fff;
 }

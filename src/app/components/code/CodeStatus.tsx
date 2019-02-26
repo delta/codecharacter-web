@@ -7,7 +7,7 @@ import { Col, Row } from 'react-bootstrap';
 export class CodeStatus extends React.Component<
   CodeStatusInterfaces.Props,
   CodeStatusInterfaces.State
-> {
+  > {
   public constructor(props: CodeStatusInterfaces.Props) {
     super(props);
     this.state = {
@@ -61,7 +61,7 @@ export class CodeStatus extends React.Component<
   }
 
   public render() {
-    const { currentState, width, isCodeSaved } = this.props;
+    const { currentState, width, isCodeSaved, currentCommitHash } = this.props;
     return (
       <Row
         className={classnames(styles.CodeStatusRow)}
@@ -71,10 +71,15 @@ export class CodeStatus extends React.Component<
         }}
       >
         <Col sm={6} className={classnames(styles.StatusTextCol)}>
-          <p className={classnames(styles.StatusText)} style={{ textAlign: 'left' }}>
-            {isCodeSaved ? ' ' : '* '}
-            {this.state.lastSaveMessage}
-          </p>
+          {currentCommitHash === 'latest'
+            ? (<p className={classnames(styles.StatusText)} style={{ textAlign: 'left' }}>
+                {isCodeSaved ? ' ' : '* '}
+                {this.state.lastSaveMessage}
+              </p>)
+            : (<p className={classnames(styles.StatusText)} style={{ textAlign: 'left' }}>
+                {'Read Only (Old Commit)'}
+              </p>)
+          }
         </Col>
         <Col sm={5} className={classnames(styles.CommitStatusCol)}>
           <p className={classnames(styles.StatusText)} style={{ textAlign: 'right' }}>

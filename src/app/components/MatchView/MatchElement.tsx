@@ -12,11 +12,11 @@ export class MatchElement extends React.Component<
   MatchInterfaces.ElementState
 > {
   public MAP_THUMBNAIL = [
-    'assets/img/maps/islesofcodechar.png',
-    'assets/img/maps/timeturner.png',
-    'assets/img/maps/treacherousmangroves.png',
-    'assets/img/maps/mysterymap.png',
-    'assets/img/maps/mysterymap.png',
+    'islesofcodechar',
+    'timeturner',
+    'treacherousmangroves',
+    'mysterymap',
+    'mysterymap',
   ];
 
   public constructor(props: MatchInterfaces.ElementProps) {
@@ -27,7 +27,7 @@ export class MatchElement extends React.Component<
   }
 
   public render() {
-    const { match, getGameLogs, currentUserMatch, type } = this.props;
+    const { match, getGameLogs, type } = this.props;
     const { isHoveredOver } = this.state;
 
     const isMyMatch = type === MatchInterfaces.MatchViewTabType.MY_MATCHES;
@@ -36,11 +36,9 @@ export class MatchElement extends React.Component<
     if (match.verdict === '0') {
       matchResult = 'TIE';
     } else if (match.verdict === '1') {
-      if (currentUserMatch) matchResult = 'WON';
-      else matchResult = 'LOST';
+      matchResult = 'WON';
     } else {
-      if (currentUserMatch) matchResult = 'LOST';
-      else matchResult = 'WON';
+      matchResult = 'LOST';
     }
 
     return (
@@ -88,14 +86,14 @@ export class MatchElement extends React.Component<
           <div className={classnames(' d-flex justify-content-center w-100')}>
             {
               // @ts-ignore
-              <img width={35} height={35} src={Avatar[match.avatar1]} />
+              <img width={40} height={40} src={Avatar[match.avatar1]} />
             }
             <span className="text-capitalize text-font-weight-bold  h3 mx-3">
               {match.score1} - {match.score2}
             </span>
             {
               // @ts-ignore
-              <img width={35} height={35} src={Avatar[match.avatar2]} />
+              <img width={40} height={40} src={Avatar[match.avatar2]} />
             }
           </div>
           {isMyMatch ? (
@@ -109,30 +107,34 @@ export class MatchElement extends React.Component<
                 key={index}
                 className={classnames(styles.game)}
                 onClick={() => getGameLogs(game.id)}
+                title={this.MAP_THUMBNAIL[game.mapId - 1]}
               >
                 <img
-                  src={this.MAP_THUMBNAIL[game.mapId - 1]}
+                  src={`assets/img/maps/${this.MAP_THUMBNAIL[game.mapId - 1]}.png`}
                   width={30}
                   height={30}
                   style={{
-                    boxShadow: `0 0 20px ${
+                    border: `4px solid ${
                       game.verdict === '0'
-                        ? 'yellow'
+                        ? '#957f00'
                         : game.verdict === '1'
-                          ? 'green'
+                          ? '#047104'
                           : game.verdict === '2'
-                            ? 'red'
-                            : 'gray'
+                            ? '#770000'
+                            : 'black'
                       }`,
+                      marginBottom: 5,
+                      borderRadius: 3,
                   }}
                 />
               </span>
             ))}
           </div>
-          {isHoveredOver ? (
+          {isHoveredOver && isMyMatch ? (
             <div
               className=" d-flex justify-content-start text-capitalize  my-1 mx-3 h6"
               style={{
+                margin: '5px',
                 fontSize: '12px',
               }}
             >

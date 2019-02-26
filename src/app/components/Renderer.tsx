@@ -54,7 +54,7 @@ export default class Renderer extends React.Component<RendererInterfaces.Props, 
                   style={{ display: 'inline-block', borderRadius: 120, backgroundColor: '#d3d3d3' }}
                 >
                   <img
-                    src="assets/img/mascot.png"
+                    src="assets/img/mascotgif.gif"
                     height={190}
                     width={130}
                     style={{ padding: 10, margin: '10px 40px' }}
@@ -64,7 +64,7 @@ export default class Renderer extends React.Component<RendererInterfaces.Props, 
             </Row>
             <Row>
               <Col sm={12} className="text-center">
-                <h2 style={{ fontFamily: 'Courier New', color: '#20c20e', margin: 30 }}>
+                <h2 style={{ fontFamily: 'Courier New', color: '#f9ee80', margin: 30 }}>
                   Waiting to run your code...
                 </h2>
               </Col>

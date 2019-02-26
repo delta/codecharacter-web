@@ -5,7 +5,7 @@ export class Docs extends React.Component<{}, {}> {
     return (
       <iframe
         src="https://docs.readthedocs.io"
-        style={{ width: '100%', height: '100%' }}
+        style={{ width: '100%', height: '100%', border: 0 }}
       />
     );
   }

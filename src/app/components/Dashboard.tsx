@@ -139,7 +139,7 @@ export class Dashboard extends React.Component<
             onChange={(size: number) => this.setState({ rendererHeight: size })}
             maxSize={500}
           >
-            <Grid fluid={true} style={{ backgroundColor: 'black' }}>
+            <Grid fluid={true} style={{ backgroundColor: '#141414' }}>
               <Row>
                 <SubmitBar
                   changeSplitPaneState={this.changeSplitPaneState}

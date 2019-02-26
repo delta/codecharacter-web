@@ -68,8 +68,3 @@
 .joyRideActive {
   color: #fff;
 }
-
-.deltaLogo:hover {
-  -webkit-filter: invert(31%) sepia(63%) saturate(3402%) hue-rotate(84deg) brightness(87%) contrast(83%);
-  filter: invert(31%) sepia(63%) saturate(3402%) hue-rotate(84deg) brightness(87%) contrast(83%);
-}
