@@ -30,6 +30,6 @@ export const getTimer = () => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((err) => {
-      throw err;
+      console.error(err);
     });
 };

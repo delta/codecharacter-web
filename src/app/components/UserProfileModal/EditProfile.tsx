@@ -15,7 +15,14 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
   public render() {
     const { handleEditProfile, onInputChange, inputEnabler } = this.props;
     const { editProfileRef, reactFlagRef } = this.props;
-    const { username, listDisabled, fullName, country, avatar: currentAvatar } = this.props;
+    const {
+      username,
+      listDisabled,
+      fullName,
+      country,
+      userDetails,
+      avatar: currentAvatar,
+    } = this.props;
     const avatars = Object.keys(Avatar);
     return (
       <div className="col-6">
@@ -193,7 +200,8 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                     disabled={
                       listDisabled.isFullNameDisabled &&
                       listDisabled.isFlagSelectDisabled &&
-                      listDisabled.isUserNameDisabled
+                      listDisabled.isUserNameDisabled &&
+                      currentAvatar === userDetails.avatar
                     }
                   >
                     Save Changes
