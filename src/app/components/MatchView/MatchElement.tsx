@@ -111,33 +111,50 @@ export class MatchElement extends React.Component<
             </div>
           ) : null}
           <div className={classnames(styles.body, 'd-flex justify-content-around ')}>
-            {match.games.map((game, index) => (
-              <span
-                key={index}
-                className={classnames(styles.game)}
-                onClick={() => getGameLogs(game.id)}
-                title={this.MAP_NAME[game.mapId - 1]}
-              >
-                <img
-                  src={`assets/img/maps/${this.MAP_THUMBNAIL[game.mapId - 1]}.png`}
-                  width={30}
-                  height={30}
-                  style={{
-                    border: `4px solid ${
-                      game.verdict === '0'
-                        ? '#957f00'
-                        : game.verdict === '1'
-                          ? '#047104'
-                          : game.verdict === '2'
-                            ? '#770000'
-                            : 'black'
-                      }`,
-                      marginBottom: 5,
-                      borderRadius: 3,
-                  }}
-                />
-              </span>
-            ))}
+            {match.games.map((game, index) => {
+              let gameVerdict = 'TIE';
+
+              if (game.verdict === '0') {
+                gameVerdict = 'TIE';
+              } else if (game.verdict === '1') {
+                gameVerdict = 'WON';
+              } else if (game.verdict === '2') {
+                gameVerdict = 'LOST';
+              } else {
+                gameVerdict = 'RUNTIME ERROR'
+              }
+
+              return (
+                <span
+                  key={index}
+                  className={classnames(styles.game)}
+                  onClick={() => getGameLogs(game.id)}
+                  title={
+                    `${this.MAP_NAME[game.mapId - 1]} - ${gameVerdict}`
+                  }
+                >
+                  <img
+                    src={`assets/img/maps/${this.MAP_THUMBNAIL[game.mapId - 1]}.png`}
+                    width={30}
+                    height={30}
+                    style={{
+                      border: `4px solid ${
+                        game.verdict === '0'
+                          ? '#957f00'
+                          : game.verdict === '1'
+                            ? '#047104'
+                            : game.verdict === '2'
+                              ? '#770000'
+                              : 'black'
+                        }`,
+                        marginBottom: 5,
+                        borderRadius: 3,
+                    }}
+                  />
+                </span>
+              );
+            })
+          }
           </div>
           {isHoveredOver && isMyMatch ? (
             <div

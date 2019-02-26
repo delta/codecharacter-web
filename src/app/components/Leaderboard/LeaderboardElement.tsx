@@ -61,9 +61,10 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
                     height={35}
                     // @ts-ignore
                     src={Avatar[player.avatar]}
-                    style={{
-                      display: 'inline',
-                    }}
+                    className={classnames({
+                      [`${styles['leader-avatar']}`]: (currentUsername !== player.username),
+                      [`${styles['leader-avatar-current']}`]: (currentUsername === player.username)
+                    })}
                   />
                 }
               </div>
@@ -115,16 +116,18 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
               <ReactCountryFlag code={player.country} svg alt={player.country} />
             </div>
 
-            <Button
-              bsStyle="danger"
-              style={{ fontSize: '0.55em' }}
-              bsSize="xsmall"
-              disabled={isPlayAgainstDisabled || currentUsername === player.username}
-              onClick={() => runMatch(player.id)}
-              title={`Start match`}
-            >
-              <img src="assets/img/fight.png" width={15} height={15} />
-            </Button>
+            {!(isPlayAgainstDisabled || currentUsername === player.username)
+              ? <Button
+                bsStyle="danger"
+                style={{ fontSize: '0.55em' }}
+                bsSize="xsmall"
+                onClick={() => runMatch(player.id)}
+                title={`Start match`}
+              >
+                <img src="assets/img/fight.png" width={15} height={15} />
+              </Button>
+              : null
+            }
           </div>
         </div>
         <div className={classnames('progress', styles['leader-bar'])}>

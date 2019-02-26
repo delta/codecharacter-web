@@ -1,11 +1,13 @@
 import * as React from 'react';
+import classnames from 'classnames';
+import * as styles from 'app/styles/Docs.module.css';
 
 export class Docs extends React.Component<{}, {}> {
   public render() {
     return (
       <iframe
         src="https://docs.readthedocs.io"
-        style={{ width: '100%', height: '100%', border: 0 }}
+        className={classnames(styles['docs-iframe'])}
       />
     );
   }
