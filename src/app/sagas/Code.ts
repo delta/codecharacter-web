@@ -17,7 +17,6 @@ export function* save(action: ActionType<typeof CodeActions.save>) {
     if (res.type === resType.ERROR) {
       yield put(CodeActions.updateStatusMessage(res.error));
     } else {
-      yield put(CodeActions.updateStatusMessage('Saved!'));
       yield put(CodeActions.updateIsCodeSaved(true));
       yield put(CodeActions.getLastSaveTime());
     }

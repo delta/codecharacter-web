@@ -1,5 +1,5 @@
 /* tslint:disable:no-console*/
-import { GameLogActions, NotificationActions, SubmissionActions } from 'app/actions';
+import { CodeActions, GameLogActions, NotificationActions, SubmissionActions } from 'app/actions';
 import * as SubmissionFetch from 'app/apiFetch/Submission';
 import { RootState } from 'app/reducers';
 import { checkAccountActivated, checkAuthentication } from 'app/sagas/utils';
@@ -14,7 +14,8 @@ export function* lockCode(action: ActionType<typeof SubmissionActions.lockCode>)
     const submissionState = yield select(getSubmissionState);
 
     if (submissionState.request !== Request.NONE) return;
-
+    
+    yield put(CodeActions.save());
     yield put(NotificationActions.info('Code is being locked...'));
     yield put(GameLogActions.clearAllLogs());
 
@@ -38,6 +39,7 @@ export function* previousCommitMatch(
 
     yield put(GameLogActions.clearAllLogs());
 
+    yield put(CodeActions.save());
     yield put(
       SubmissionActions.changeStateCurrentRequest(
         RequestState.COMPILE_PREVIOUS_COMMIT_CODE,
@@ -59,6 +61,7 @@ export function* selfMatch(action: ActionType<typeof SubmissionActions.selfMatch
 
     yield put(GameLogActions.clearAllLogs());
 
+    yield put(CodeActions.save());
     yield put(
       SubmissionActions.changeStateCurrentRequest(
         RequestState.COMPILE_CURRENT_CODE,
@@ -80,6 +83,7 @@ export function* aiMatch(action: ActionType<typeof SubmissionActions.aiMatch>) {
 
     yield put(GameLogActions.clearAllLogs());
 
+    yield put(CodeActions.save());
     yield put(SubmissionActions.updateCurrentAiId(action.payload.aiId));
     yield put(
       SubmissionActions.changeStateCurrentRequest(
