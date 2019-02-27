@@ -19,13 +19,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 
 export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
   public render() {
-    const {
-      sidePanelTab,
-      closeSidePanelTab,
-      openSidePanelTab,
-      logout,
-      toggleUserProfileModal,
-    } = this.props;
+    const { sidePanelTab, closeSidePanelTab, openSidePanelTab, logout } = this.props;
     return (
       <div className={classnames('h-100', styles.Sidebar)}>
         <ButtonGroup
@@ -116,7 +110,9 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             id="user_profile_button"
             title={'Profile'}
             onClick={() => {
-              toggleUserProfileModal(true);
+              sidePanelTab !== SidePanelTab.USER_EDIT
+                ? openSidePanelTab(SidePanelTab.USER_EDIT)
+                : closeSidePanelTab();
             }}
           >
             <FontAwesomeIcon icon={faUser} />

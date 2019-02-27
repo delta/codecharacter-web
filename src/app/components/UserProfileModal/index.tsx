@@ -1,14 +1,13 @@
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { EditPassword } from 'app/components/UserProfileModal/EditPassword';
 import { EditProfile } from 'app/components/UserProfileModal/EditProfile';
 import * as styles from 'app/styles/UserProfileModal.module.css';
 import * as UserProfileInterfaces from 'app/types/UserProfileModal';
 import classnames from 'classnames';
 import * as React from 'react';
-import { Button, Grid, Row } from 'react-bootstrap';
+import { Col, Grid, Row } from 'react-bootstrap';
 // tslint:disable-next-line:import-name
 import ReactFlagsSelect from 'react-flags-select';
+
 export class UserProfileModal extends React.Component<
   UserProfileInterfaces.Props,
   UserProfileInterfaces.State
@@ -21,6 +20,7 @@ export class UserProfileModal extends React.Component<
     super(props);
     const { userDetails } = this.props;
     this.state = {
+      activeForm: UserProfileInterfaces.editFormType.OWN_PROFILE,
       avatar: userDetails.country,
       country: userDetails.country,
       fullName: userDetails.fullName,
@@ -64,44 +64,55 @@ export class UserProfileModal extends React.Component<
       repeatPassword,
       listDisabled,
       avatar,
+      activeForm,
     } = this.state;
-    const { isUserProfileModalOpen, toggleUserProfileModal, userDetails } = this.props;
+    const { userDetails } = this.props;
     return (
-      <div
-        className={classnames(styles.UserProfileModal, {
-          [`${styles.modalOpen}`]: isUserProfileModalOpen,
-        })}
-      >
-        <Grid
-          fluid={true}
-          className={classnames(styles.modal, {
-            [`${styles.slideEnter}`]: isUserProfileModalOpen,
-          })}
-        >
-          <Row>
-            <div className="col" style={{ padding: 10 }}>
-              <div className="col text-center mb-1">
-                <h4 className="text-dark m-2">Edit Profile</h4>
-              </div>
-            </div>
-            <div className="col-sm-auto p-0 m-0">
-              <Button
-                className={classnames(styles.customBtn)}
-                onClick={() => {
-                  toggleUserProfileModal(false);
-                }}
-              >
-                <FontAwesomeIcon icon={faTimes} color={'black'} />
-              </Button>
-            </div>
-          </Row>
-          {/* <Row>
-            <div className="col text-center mb-3">
-              <h3 className="text-dark m-0">Edit Profile</h3>
-            </div>
-          </Row> */}
-          <div className="text-center errorMessage">{userDetails.errorMessage}</div>
-          <Row>
+      <Grid fluid={true} className={classnames(styles.UserEdit)}>
+        <Row className="justify-content-between py-2 pl-3">
+          <Col className="text-light font-weight-bold my-auto">USER DETAILS</Col>
+        </Row>
+        <Row>
+          <div className="col d-flex justify-content-center mb-3">
+            <button
+              className={classnames(styles.customBtn, {
+                [`${styles.buttonActive}`]:
+                  activeForm === UserProfileInterfaces.editFormType.OWN_PROFILE,
+              })}
+              onClick={() => {
+                this.setState({
+                  activeForm: UserProfileInterfaces.editFormType.OWN_PROFILE,
+                });
+              }}
+            >
+              {' '}
+              Your Information{' '}
+            </button>
+          </div>
+          <div className="col d-flex justify-content-center mb-3">
+            <button
+              className={classnames(styles.customBtn, {
+                [`${styles.buttonActive}`]:
+                  activeForm === UserProfileInterfaces.editFormType.OTHER_PROFILE,
+              })}
+              onClick={() => {
+                this.setState({
+                  activeForm: UserProfileInterfaces.editFormType.OTHER_PROFILE,
+                });
+              }}
+            >
+              {' '}
+              Other Users{' '}
+            </button>
+          </div>
+        </Row>
+        <div className={classnames(styles['userEdit-wrap'], 'row')}>
+          <Row
+            style={{
+              overflowX: 'hidden',
+              paddingLeft: '10px',
+            }}
+          >
             <EditProfile
               handleEditProfile={this.handleEditProfile}
               onInputChange={this.onInputChange}
@@ -127,8 +138,10 @@ export class UserProfileModal extends React.Component<
               userDetails={userDetails}
             />
           </Row>
-        </Grid>
-      </div>
+        </div>
+        {activeForm === UserProfileInterfaces.editFormType.OWN_PROFILE ? <Row /> : null}
+        {activeForm === UserProfileInterfaces.editFormType.OWN_PROFILE ? <Row /> : null}
+      </Grid>
     );
   }
 

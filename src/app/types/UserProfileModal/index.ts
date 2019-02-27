@@ -11,7 +11,13 @@ export interface ListDisabled {
   isFlagSelectDisabled?: boolean;
   isPasswordDisabled?: boolean;
 }
+
+export enum editFormType {
+  OWN_PROFILE = 'OWN_PROFILE',
+  OTHER_PROFILE = 'OTHER_PROFILE',
+}
 export interface State {
+  activeForm: editFormType;
   avatar: string;
   username: string;
   oldPassword: string;

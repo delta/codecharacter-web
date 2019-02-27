@@ -25,16 +25,10 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
     } = this.props;
     const avatars = Object.keys(Avatar);
     return (
-      <div className="col-6">
+      <div className="col-12">
         <Row className="mb-3">
-          <div
-            className={classnames('col-sm-12', styles.form)}
-            style={{
-              borderRight: '1px solid rgb(235, 235, 235)',
-              color: 'red',
-            }}
-          >
-            <div className={classnames('text-dark', styles.formHeading)}> Basic Information </div>
+          <div className={classnames('col-sm-12', styles.form)}>
+            <div className={classnames('text-light', styles.formHeading)}> Basic Information </div>
             <form
               className={'editForm'}
               noValidate
@@ -162,7 +156,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
               <div className="form-row">
                 <div className="col sm={12} mb-3">
                   <div className="input-group">
-                    <div className="text-center text-dark">Edit your spirit animal</div>
+                    <div className="text-center text-light">Edit your spirit animal</div>
                     <div className={classnames(styles['avatar-select-container'])}>
                       <section className={classnames(styles['avatar-section'])}>
                         {avatars.map((avatar: string) => (

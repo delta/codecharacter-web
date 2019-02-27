@@ -50,8 +50,8 @@ export default class Joyride extends React.Component<
       content: (
         <p>
           This is the commit log panel. <br />
-          You can store a linear commit history, and checkout to old code.
-          You can even simulate a match between two versions of your own code.
+          You can store a linear commit history, and checkout to old code. You can even simulate a
+          match between two versions of your own code.
         </p>
       ),
       placement: 'right',
@@ -83,7 +83,10 @@ export default class Joyride extends React.Component<
     },
     {
       content: (
-        <p>Click to toggle off the Editor or Renderer. You can also drag the split panes to adjust the sizes.</p>
+        <p>
+          Click to toggle off the Editor or Renderer. You can also drag the split panes to adjust
+          the sizes.
+        </p>
       ),
       placement: 'bottom',
       target: '#toggle_button',
@@ -102,14 +105,19 @@ export default class Joyride extends React.Component<
       title: 'Run Game',
     },
     {
-      content: <p>Click to same your code. Your last saved code is the version that is compiled!</p>,
+      content: (
+        <p>Click to same your code. Your last saved code is the version that is compiled!</p>
+      ),
       placement: 'bottom',
       target: '#save_button',
       title: 'Save',
     },
     {
       content: (
-        <p>Create a new snapshot of your code. It will be saved forever, unless our servers get bombed by a nuclear explosion.</p>
+        <p>
+          Create a new snapshot of your code. It will be saved forever, unless our servers get
+          bombed by a nuclear explosion.
+        </p>
       ),
       placement: 'bottom',
       target: '#commit_button',
@@ -118,7 +126,8 @@ export default class Joyride extends React.Component<
     {
       content: (
         <p>
-          This will submit your code as your current competitive AI. All your challenges with other players will be played using this code.
+          This will submit your code as your current competitive AI. All your challenges with other
+          players will be played using this code.
           <br />
           You have to submit your code before challenging an opponent.
         </p>
@@ -128,7 +137,11 @@ export default class Joyride extends React.Component<
       title: 'Submit',
     },
     {
-      content: <p>Log out of your Code Character account. It's good to take a break once in a while 😀 !</p>,
+      content: (
+        <p>
+          Log out of your Code Character account. It's good to take a break once in a while 😀 !
+        </p>
+      ),
       placement: 'right',
       target: '#logout_button',
       title: 'Logout',

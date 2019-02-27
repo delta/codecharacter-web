@@ -41,12 +41,6 @@
   background-color: #ddd;
 }
 
-.leader-wrap {
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-}
-
 .leader {
   padding: 8px 16px;
   margin-bottom: 8px;

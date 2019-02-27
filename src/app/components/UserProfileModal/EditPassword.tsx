@@ -13,11 +13,11 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
     const { editPasswordRef } = this.props;
     const { listDisabled, oldPassword, password, repeatPassword } = this.props;
     return (
-      <div className="col-6">
+      <div className="col-12">
         <Row className={classnames('mb-3')}>
           <div className={classnames('col-sm-12', styles.form)}>
             <div
-              className={classnames('text-dark', styles.formHeading)}
+              className={classnames('text-light', styles.formHeading)}
               style={{
                 display: 'flex',
               }}
@@ -25,8 +25,8 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
               {' '}
               Credentials
               <Button
-                className={classnames(styles.editPen, 'ml-auto p-0', {
-                  [`${styles.editPenActive}`]: !listDisabled.isPasswordDisabled,
+                className={classnames(styles.editPen2, 'ml-auto p-0', {
+                  [`${styles.editPen2Active}`]: !listDisabled.isPasswordDisabled,
                 })}
                 onClick={() => {
                   inputEnabler(InputState.isPasswordDisabled, !listDisabled.isPasswordDisabled);
@@ -119,17 +119,13 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                   </div>
                 </div>
               </div>
-              <div
-                className="form-row"
-                style={{
-                  marginTop: '106px',
-                }}
-              >
+              <div className="form-row">
                 <div className="col-12 text-center">
                   <button
                     className="btn btn-success"
                     type="submit"
                     style={{
+                      marginBottom: '10px',
                       width: '100%',
                     }}
                     disabled={listDisabled.isPasswordDisabled}
