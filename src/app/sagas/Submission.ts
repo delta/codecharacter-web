@@ -14,7 +14,7 @@ export function* lockCode(action: ActionType<typeof SubmissionActions.lockCode>)
     const submissionState = yield select(getSubmissionState);
 
     if (submissionState.request !== Request.NONE) return;
-    
+
     yield put(CodeActions.save());
     yield put(NotificationActions.info('Code is being locked...'));
     yield put(GameLogActions.clearAllLogs());

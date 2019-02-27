@@ -121,7 +121,7 @@ export class MatchElement extends React.Component<
               } else if (game.verdict === '2') {
                 gameVerdict = 'LOST';
               } else {
-                gameVerdict = 'RUNTIME ERROR'
+                gameVerdict = 'RUNTIME ERROR';
               }
 
               return (
@@ -129,9 +129,7 @@ export class MatchElement extends React.Component<
                   key={index}
                   className={classnames(styles.game)}
                   onClick={() => getGameLogs(game.id)}
-                  title={
-                    `${this.MAP_NAME[game.mapId - 1]} - ${gameVerdict}`
-                  }
+                  title={`${this.MAP_NAME[game.mapId - 1]} - ${gameVerdict}`}
                 >
                   <img
                     src={`assets/img/maps/${this.MAP_THUMBNAIL[game.mapId - 1]}.png`}
@@ -142,26 +140,25 @@ export class MatchElement extends React.Component<
                         game.verdict === '0'
                           ? '#957f00'
                           : game.verdict === '1'
-                            ? '#047104'
-                            : game.verdict === '2'
-                              ? '#770000'
-                              : 'black'
-                        }`,
-                        marginBottom: 5,
-                        borderRadius: 3,
+                          ? '#047104'
+                          : game.verdict === '2'
+                          ? '#770000'
+                          : 'black'
+                      }`,
+                      borderRadius: 3,
+                      marginBottom: 5,
                     }}
                   />
                 </span>
               );
-            })
-          }
+            })}
           </div>
           {isHoveredOver && isMyMatch ? (
             <div
               className=" d-flex justify-content-start text-capitalize  my-1 mx-3 h6"
               style={{
-                margin: '5px',
                 fontSize: '12px',
+                margin: '5px',
               }}
             >
               {new Date(match.playedAt).toLocaleString()}

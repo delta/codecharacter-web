@@ -34,5 +34,6 @@ export namespace GameLogActions {
   export const updateMatchPlayerId = (matchPlayerId: number) =>
     action(Type.UPDATE_MATCH_PLAYER_ID, { matchPlayerId });
 
-  export const setHideDebugLog = (hideDebugLog: boolean) => action(Type.SET_HIDE_DEBUG_LOG, { hideDebugLog });
+  export const setHideDebugLog = (hideDebugLog: boolean) =>
+    action(Type.SET_HIDE_DEBUG_LOG, { hideDebugLog });
 }

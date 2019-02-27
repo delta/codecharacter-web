@@ -185,9 +185,9 @@ exports[`MatchElement Component Should render 1`] = `
           className=" d-flex justify-content-center w-100"
         >
           <img
-            height={35}
+            height={40}
             src="assets/img/userAvatars/001-baboon.svg"
-            width={35}
+            width={40}
           />
           <span
             className="text-capitalize text-font-weight-bold  h3 mx-3"
@@ -197,9 +197,9 @@ exports[`MatchElement Component Should render 1`] = `
             5
           </span>
           <img
-            height={35}
+            height={40}
             src="assets/img/userAvatars/002-bear.svg"
-            width={35}
+            width={40}
           />
         </div>
         <div

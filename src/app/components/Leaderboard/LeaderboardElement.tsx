@@ -40,14 +40,16 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
               >
                 <Svg />
               </div>
-            ) : <div
-              style={{
-                fontSize: 38,
-              }}
-              className={classnames(styles['leader-ava'])}
-            >
+            ) : (
+              <div
+                style={{
+                  fontSize: 38,
+                }}
+                className={classnames(styles['leader-ava'])}
+              >
                 {player.rank}
-              </div>}
+              </div>
+            )}
             <div className={classnames(styles['leader-content'])}>
               <div
                 className={classnames(styles['leader-name'])}
@@ -62,8 +64,8 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
                     // @ts-ignore
                     src={Avatar[player.avatar]}
                     className={classnames({
-                      [`${styles['leader-avatar']}`]: (currentUsername !== player.username),
-                      [`${styles['leader-avatar-current']}`]: (currentUsername === player.username)
+                      [`${styles['leader-avatar']}`]: currentUsername !== player.username,
+                      [`${styles['leader-avatar-current']}`]: currentUsername === player.username,
                     })}
                   />
                 }
@@ -86,7 +88,7 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
                 >
                   <span>{`${player.username.substr(0, 15)}${
                     player.username.length > 15 ? '...' : ''
-                    }`}</span>
+                  }`}</span>
                 </div>
                 <div
                   className={classnames(styles['leader-score_title'])}
@@ -97,15 +99,14 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
                     marginTop: '5px',
                   }}
                 >
-                  {player.rating}
-                  {' '}
-                  {player.type === 'Student'
-                    ? <FontAwesomeIcon
-                        style={{ fontSize: 18, display: 'inline' }}
-                        icon={faGraduationCap}
-                        title={'Student Participant'}
-                      />
-                    : null}
+                  {player.rating}{' '}
+                  {player.type === 'Student' ? (
+                    <FontAwesomeIcon
+                      style={{ fontSize: 18, display: 'inline' }}
+                      icon={faGraduationCap}
+                      title={'Student Participant'}
+                    />
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -116,8 +117,8 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
               <ReactCountryFlag code={player.country} svg alt={player.country} />
             </div>
 
-            {!(isPlayAgainstDisabled || currentUsername === player.username)
-              ? <Button
+            {!(isPlayAgainstDisabled || currentUsername === player.username) ? (
+              <Button
                 bsStyle="danger"
                 style={{ fontSize: '0.55em' }}
                 bsSize="xsmall"
@@ -126,8 +127,7 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
               >
                 <img src="assets/img/fight.png" width={15} height={15} />
               </Button>
-              : null
-            }
+            ) : null}
           </div>
         </div>
         <div className={classnames('progress', styles['leader-bar'])}>

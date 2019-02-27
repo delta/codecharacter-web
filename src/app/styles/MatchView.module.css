@@ -74,15 +74,15 @@
 }
 
 .loseBackground {
-  border-left: 5px solid #FF3F3F;
+  border-left: 5px solid #ff3f3f;
 }
 
 .winBackground {
-  border-left: 5px solid #56E456;
+  border-left: 5px solid #56e456;
 }
 
 .tieBackground {
-  border-left: 5px solid #5C5C5C;
+  border-left: 5px solid #5c5c5c;
 }
 
 .topMatchesButton {

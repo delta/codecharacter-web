@@ -18,6 +18,14 @@ describe('SideBar Container', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('Should Dispatch setSidePanelTab Docs or None', () => {
+    const button = wrapper.find('.documentation-btn-ctrl').at(1);
+    button.simulate('click');
+    expect(wrapper.find(Sidebar).props().sidePanelTab).toBe(SidePanelTab.DOCS);
+    button.simulate('click');
+    expect(wrapper.find(Sidebar).props().sidePanelTab).toBe(SidePanelTab.NONE);
+  });
+
   it('Should Dispatch setSidePanelTab EditorSettings or None', () => {
     const button = wrapper.find('.editor-settings-btn-ctrl').at(1);
     button.simulate('click');

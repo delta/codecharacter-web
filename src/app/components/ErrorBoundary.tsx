@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
 
-export class ErrorBoundary extends React.Component<{},{ 
-    hasError: boolean 
-}> {
+export class ErrorBoundary extends React.Component<
+  {},
+  {
+    hasError: boolean;
+  }
+> {
   constructor(props: {}) {
     super(props);
     this.state = { hasError: false };
