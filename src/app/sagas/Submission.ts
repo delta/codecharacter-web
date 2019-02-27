@@ -18,6 +18,7 @@ export function* lockCode(action: ActionType<typeof SubmissionActions.lockCode>)
     yield put(CodeActions.save());
     yield put(NotificationActions.info('Code is being locked...'));
     yield put(GameLogActions.clearAllLogs());
+    yield put(GameLogActions.setHideDebugLog(false));
 
     yield put(
       SubmissionActions.changeStateCurrentRequest(
@@ -38,8 +39,10 @@ export function* previousCommitMatch(
     if (submissionState.request !== Request.NONE) return;
 
     yield put(GameLogActions.clearAllLogs());
+    yield put(GameLogActions.setHideDebugLog(false));
 
     yield put(CodeActions.save());
+
     yield put(
       SubmissionActions.changeStateCurrentRequest(
         RequestState.COMPILE_PREVIOUS_COMMIT_CODE,
@@ -60,6 +63,7 @@ export function* selfMatch(action: ActionType<typeof SubmissionActions.selfMatch
     if (submissionState.request !== Request.NONE) return;
 
     yield put(GameLogActions.clearAllLogs());
+    yield put(GameLogActions.setHideDebugLog(false));
 
     yield put(CodeActions.save());
     yield put(
@@ -82,6 +86,7 @@ export function* aiMatch(action: ActionType<typeof SubmissionActions.aiMatch>) {
     if (submissionState.request !== Request.NONE) return;
 
     yield put(GameLogActions.clearAllLogs());
+    yield put(GameLogActions.setHideDebugLog(false));
 
     yield put(CodeActions.save());
     yield put(SubmissionActions.updateCurrentAiId(action.payload.aiId));

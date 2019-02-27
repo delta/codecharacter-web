@@ -1,6 +1,7 @@
 import * as RendererInterfaces from 'app/types/Renderer';
-import * as pako from 'pako';
 import * as React from 'react';
+// import * as zlib from 'zlib';
+import * as pako from 'pako';
 
 // @ts-ignore
 // tslint:disable-next-line:import-name
@@ -28,20 +29,14 @@ export default class Renderer extends React.Component<RendererInterfaces.Props, 
         {logFile !== '' ? (
           <CodecharacterRenderer
             // @ts-ignore
-            logFile={pako.deflate(Buffer.from(JSON.parse(logFile)))}
+            logFile={pako.inflate(Buffer.from(JSON.parse(logFile)))}
             options={{
               logClearFunction: clearLog,
               logFunction: updateLog,
-              player1Log: String.fromCharCode.apply(
-                null,
-                // @ts-ignore
-                pako.deflate(Buffer.from(JSON.parse(player1DebugLog))),
-              ),
-              player2Log: String.fromCharCode.apply(
-                null,
-                // @ts-ignore
-                pako.deflate(Buffer.from(JSON.parse(player2DebugLog))),
-              ),
+              // @ts-ignore
+              player1Log: new TextDecoder("utf-8").decode(pako.inflate(Buffer.from(JSON.parse(player1DebugLog)))),
+              // @ts-ignore
+              player2Log: new TextDecoder("utf-8").decode(pako.inflate(Buffer.from(JSON.parse(player2DebugLog)))),
               playerID: matchPlayerId,
             }}
             style={{ position: 'relative' }}

@@ -8,6 +8,7 @@ export namespace GameLogActions {
     CLEAR_DISPLAY_DEBUG_LOG = 'CLEAR_DISPLAY_DEBUG_LOG',
     UPDATE_MATCH_PLAYER_ID = 'MATCH_PLAYER_ID',
     CLEAR_ALL_LOGS = 'CLEAR_ALL_LOGS',
+    SET_HIDE_DEBUG_LOG = 'SET_HIDE_DEBUG_LOG',
   }
 
   export const updateGameLog = (
@@ -32,4 +33,6 @@ export namespace GameLogActions {
 
   export const updateMatchPlayerId = (matchPlayerId: number) =>
     action(Type.UPDATE_MATCH_PLAYER_ID, { matchPlayerId });
+
+  export const setHideDebugLog = (hideDebugLog: boolean) => action(Type.SET_HIDE_DEBUG_LOG, { hideDebugLog });
 }

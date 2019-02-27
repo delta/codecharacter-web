@@ -4,6 +4,7 @@ import * as GameLogInterfaces from 'app/types/GameLog';
 const gameLogStoreIntialState: GameLogInterfaces.GameLogStoreState = {
   displayDebugLog: '',
   gameLog: '',
+  hideDebugLog: false,
   matchPlayerId: 1,
   player1DebugLog: '',
   player2DebugLog: '',
@@ -28,6 +29,7 @@ export const gameLogReducer = (
       };
     }
     case GameLogActions.Type.UPDATE_DISPLAY_DEBUG_LOG: {
+      if (state.hideDebugLog) return state;
       return {
         ...state,
         displayDebugLog: `${state.displayDebugLog}${action.payload.log}`,
@@ -61,6 +63,12 @@ export const gameLogReducer = (
         gameLog: '',
         player1DebugLog: '',
         player2DebugLog: '',
+      };
+    }
+    case GameLogActions.Type.SET_HIDE_DEBUG_LOG: {
+      return {
+        ...state,
+        hideDebugLog: action.payload.hideDebugLog,
       };
     }
     default:

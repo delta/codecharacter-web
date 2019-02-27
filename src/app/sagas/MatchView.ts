@@ -51,6 +51,7 @@ export function* getGameLogs(action: ActionType<typeof MatchActions.getGameLogs>
     if (res.type === resType.ERROR) {
       yield put(MatchActions.updateError(res.error));
     } else {
+      yield put(GameLogActions.setHideDebugLog(true));
       yield put(GameLogActions.clearDisplayDebugLog());
 
       const logs = res.logs;

@@ -15,6 +15,7 @@ const actions = {
   clearAllLogs: GameLogActions.clearAllLogs,
   clearDisplayDebugLog: GameLogActions.clearDisplayDebugLog,
   resetGameLog: GameLogActions.resetGameLogState,
+  setHideDebugLog: GameLogActions.setHideDebugLog,
   updateDisplayDebugLog: GameLogActions.updateDisplayDebugLog,
   updateGameLog: GameLogActions.updateGameLog,
   updateMatchPlayerId: GameLogActions.updateMatchPlayerId,
@@ -26,6 +27,7 @@ export interface GameLogStoreState {
   player1DebugLog: string;
   player2DebugLog: string;
   matchPlayerId: number;
+  hideDebugLog: boolean;
 }
 
 export type GameLogStoreAction = ActionType<typeof actions>;

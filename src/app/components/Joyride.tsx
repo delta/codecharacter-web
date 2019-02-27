@@ -27,6 +27,17 @@ export default class Joyride extends React.Component<
     {
       content: (
         <p>
+          This is documentation panel. <br />
+          Everything you need to know to understand and play the game can be found here.
+        </p>
+      ),
+      placement: 'right',
+      target: '#docs_button',
+      title: 'Documentation',
+    },
+    {
+      content: (
+        <p>
           This is the editor settings panel. <br />
           You can customize your editor to match your taste.
         </p>

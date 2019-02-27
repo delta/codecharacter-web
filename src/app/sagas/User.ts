@@ -35,6 +35,7 @@ export function* login(action: ActionType<typeof UserActions.login>) {
           username: action.payload.username,
         }),
       );
+      yield put(UserActions.getUserDetails());
       yield put(CodeActions.getLastSaveTime());
     }
   } catch (err) {
