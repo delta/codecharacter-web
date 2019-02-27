@@ -137,7 +137,7 @@
     "@types/commonmark": "^0.27.3",
     "bootstrap": "^4.2.1",
     "classnames": "^2.2.6",
-    "codecharacter-renderer": "2.2.0",
+    "codecharacter-renderer": "2.2.2",
     "commonmark": "^0.28.1",
     "copy-webpack-plugin": "^5.0.0",
     "pako": "^1.0.8",

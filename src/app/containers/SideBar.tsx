@@ -8,6 +8,7 @@ import { Dispatch } from 'redux';
 
 const mapStateToProps = (rootState: RootState) => {
   return {
+    isLoggedIn: rootState.user.isLoggedIn,
     sidePanelTab: rootState.dashboard.sidePanelTab,
   };
 };

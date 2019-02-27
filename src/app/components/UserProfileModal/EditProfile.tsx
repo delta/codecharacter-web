@@ -53,6 +53,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                       minLength={5}
                       value={username}
                       onChange={(e) => onInputChange(InputName.username, e.target.value)}
+                      pattern="[a-zA-Z0-9]+"
                       required
                       disabled={listDisabled.isUserNameDisabled}
                     />

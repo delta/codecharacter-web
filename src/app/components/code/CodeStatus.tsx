@@ -23,9 +23,15 @@ export class CodeStatus extends React.Component<
       // calculate (and subtract) whole days
       const days = Math.floor(delta / 86400);
       if (days > 0) {
-        this.setState({
-          lastSaveMessage: `Saved ${days} days ago`,
-        });
+        if (days >= 30) {
+          this.setState({
+            lastSaveMessage: ``,
+          });
+        } else {
+          this.setState({
+            lastSaveMessage: `Saved ${days} days ago`,
+          });
+        }
         return;
       }
       delta -= days * 86400;

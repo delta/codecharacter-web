@@ -51,11 +51,6 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                       Pragyan
                     </a>{' '}
                     account credentials to login.
-                    <br />
-                    <b>
-                      This site is now on a trial round. You can familiarize with the interface.
-                      Officially game starts next monday.
-                    </b>
                   </div>
                   <div className="input-group">
                     <div className="input-group-prepend">

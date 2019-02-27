@@ -15,6 +15,7 @@ export interface Game {
   id: number;
   verdict: string;
   mapId: number;
+  winType: string;
 }
 
 export interface Match {

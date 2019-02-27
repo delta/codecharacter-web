@@ -1,6 +1,7 @@
 import { SidePanelTab } from 'app/reducers/Dashboard';
 
 export interface StateProps {
+  isLoggedIn: boolean;
   sidePanelTab: SidePanelTab;
 }
 

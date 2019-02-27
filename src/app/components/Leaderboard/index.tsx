@@ -154,7 +154,7 @@ export class Leaderboard extends React.Component<
     const { loading } = this.props;
     const leaderboard = this.leaderboard.current!;
     if (loading) return;
-    if (leaderboard.scrollHeight - leaderboard.scrollTop === leaderboard.clientHeight) {
+    if (leaderboard.scrollHeight - leaderboard.scrollTop === (leaderboard.clientHeight)) {
       this.props.getLeaderboard(this.state.pattern, this.state.nextFetchIndex);
     }
   };

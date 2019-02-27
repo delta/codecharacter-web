@@ -3,8 +3,8 @@ import * as EditorInterfaces from 'app/types/code/Editor';
 
 const editorStoreIntialState: EditorInterfaces.EditorStoreState = {
   editorOptions: {
-    enableBasicAutoCompletion: false,
-    enableSnippets: false,
+    enableBasicAutoCompletion: true,
+    enableSnippets: true,
     fontSize: 16,
     keyboardHandler: 'default',
     theme: 'twilight',

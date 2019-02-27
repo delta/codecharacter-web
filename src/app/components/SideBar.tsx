@@ -20,7 +20,7 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 
 export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
   public render() {
-    const { sidePanelTab, closeSidePanelTab, openSidePanelTab, logout } = this.props;
+    const { isLoggedIn, sidePanelTab, closeSidePanelTab, openSidePanelTab, logout } = this.props;
     return (
       <div className={classnames('h-100', styles.Sidebar)}>
         <ButtonGroup
@@ -78,7 +78,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           >
             <FontAwesomeIcon icon={faTrophy} />
           </Button>
-          <Button
+          { isLoggedIn ? <Button
             className={classnames('py-2 px-auto commitLog-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.COMMIT_LOG,
             })}
@@ -91,8 +91,8 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             }
           >
             <FontAwesomeIcon icon={faCodeBranch} />
-          </Button>
-          <Button
+          </Button> : null }
+          { isLoggedIn ? <Button
             className={classnames('py-2 px-auto match-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.MATCH,
             })}
@@ -105,7 +105,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             }
           >
             <FontAwesomeIcon icon={faTv} />
-          </Button>
+          </Button> : null }
           <Button
             className={classnames('py-2 px-auto', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.USER_EDIT,
@@ -134,7 +134,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           >
             <FontAwesomeIcon icon={faInfoCircle} />
           </Button>
-          <Button
+          { isLoggedIn ? <Button
             className={classnames('py-2 px-auto', styles.customBtn)}
             id="logout_button"
             title={'Logout'}
@@ -144,7 +144,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             }}
           >
             <FontAwesomeIcon icon={faSignOutAlt} />
-          </Button>
+          </Button> : null }
           <Button
             className={classnames('py-2 px-auto', styles.joyRide)}
             id="joyride_button"
