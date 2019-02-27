@@ -37,7 +37,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faCode} />
           </Button>
           <Button
-            className={classnames('py-2 px-auto notification-btn-ctrl', styles.customBtn, {
+            className={classnames('py-2 px-auto documentation-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.DOCS,
             })}
             id="docs_button"
@@ -107,7 +107,9 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faTv} />
           </Button>
           <Button
-            className={classnames('py-2 px-auto', styles.customBtn)}
+            className={classnames('py-2 px-auto', styles.customBtn, {
+              [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.USER_EDIT,
+            })}
             id="user_profile_button"
             title={'Profile'}
             onClick={() => {

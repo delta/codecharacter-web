@@ -62,7 +62,8 @@
 }
 
 .deltaLogo:hover {
-  -webkit-filter: invert(43%) sepia(87%) saturate(1513%) hue-rotate(82deg) brightness(103%) contrast(87%);
+  -webkit-filter: invert(43%) sepia(87%) saturate(1513%) hue-rotate(82deg) brightness(103%)
+    contrast(87%);
   filter: invert(43%) sepia(87%) saturate(1513%) hue-rotate(82deg) brightness(103%) contrast(87%);
 }
 

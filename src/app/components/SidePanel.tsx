@@ -36,6 +36,7 @@ export class SidePanel extends React.Component<SidePanel.Props, {}> {
         break;
       case SidePanelTab.USER_EDIT:
         sidePanel = <UserProfileModal />;
+        break;
       case SidePanelTab.DOCS:
         sidePanel = <Docs />;
     }

@@ -20,7 +20,6 @@ export class UserProfileModal extends React.Component<
     super(props);
     const { userDetails } = this.props;
     this.state = {
-      activeForm: UserProfileInterfaces.editFormType.OWN_PROFILE,
       avatar: userDetails.country,
       country: userDetails.country,
       fullName: userDetails.fullName,
@@ -64,47 +63,12 @@ export class UserProfileModal extends React.Component<
       repeatPassword,
       listDisabled,
       avatar,
-      activeForm,
     } = this.state;
     const { userDetails } = this.props;
     return (
       <Grid fluid={true} className={classnames(styles.UserEdit)}>
         <Row className="justify-content-between py-2 pl-3">
           <Col className="text-light font-weight-bold my-auto">USER DETAILS</Col>
-        </Row>
-        <Row>
-          <div className="col d-flex justify-content-center mb-3">
-            <button
-              className={classnames(styles.customBtn, {
-                [`${styles.buttonActive}`]:
-                  activeForm === UserProfileInterfaces.editFormType.OWN_PROFILE,
-              })}
-              onClick={() => {
-                this.setState({
-                  activeForm: UserProfileInterfaces.editFormType.OWN_PROFILE,
-                });
-              }}
-            >
-              {' '}
-              Your Information{' '}
-            </button>
-          </div>
-          <div className="col d-flex justify-content-center mb-3">
-            <button
-              className={classnames(styles.customBtn, {
-                [`${styles.buttonActive}`]:
-                  activeForm === UserProfileInterfaces.editFormType.OTHER_PROFILE,
-              })}
-              onClick={() => {
-                this.setState({
-                  activeForm: UserProfileInterfaces.editFormType.OTHER_PROFILE,
-                });
-              }}
-            >
-              {' '}
-              Other Users{' '}
-            </button>
-          </div>
         </Row>
         <div className={classnames(styles['userEdit-wrap'], 'row')}>
           <Row
@@ -139,8 +103,6 @@ export class UserProfileModal extends React.Component<
             />
           </Row>
         </div>
-        {activeForm === UserProfileInterfaces.editFormType.OWN_PROFILE ? <Row /> : null}
-        {activeForm === UserProfileInterfaces.editFormType.OWN_PROFILE ? <Row /> : null}
       </Grid>
     );
   }
