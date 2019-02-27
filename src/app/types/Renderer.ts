@@ -2,6 +2,10 @@ export interface OwnProps {
   height: number;
 }
 
+export interface State {
+  hasError: boolean;
+}
+
 export interface StateProps {
   logFile: string;
   player1DebugLog: string;

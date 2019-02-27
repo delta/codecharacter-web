@@ -1,3 +1,4 @@
+import { ErrorBoundary } from 'app/components/ErrorBoundary';
 import Joyride from 'app/components/Joyride';
 import Authentication from 'app/containers/Authentication';
 import CodeStatus from 'app/containers/code/CodeStatus';
@@ -56,13 +57,14 @@ export class Dashboard extends React.Component<
     setTimeout(() => {
       // @ts-ignore
       document.getElementById('preloader-container').style.opacity = '0';
-    }, 2000);
+    }, 1000);
 
     setTimeout(() => {
       // @ts-ignore
       document.getElementById('preloader-container').style.display = 'none';
-    }, 2500);
+    }, 1500);
   }
+
   public render() {
     const {
       editorWidthRatio,
@@ -147,7 +149,9 @@ export class Dashboard extends React.Component<
                 />
               </Row>
               <Row style={{ paddingTop: 42 }} id="renderer">
-                <Renderer height={this.state.rendererHeight - 42} />
+                <ErrorBoundary>
+                  <Renderer height={this.state.rendererHeight - 42} />
+                </ErrorBoundary>
               </Row>
             </Grid>
             <GameLog height={window.innerHeight - this.state.rendererHeight} />
