@@ -14,6 +14,7 @@ export function* checkAuthentication(result: {
         username: '',
       }),
     );
+    yield put(UserActions.setIsAuthenticationOpen(true));
     return false;
   }
   return true;

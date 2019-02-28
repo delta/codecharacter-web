@@ -15,6 +15,7 @@ export namespace UserActions {
     TOGGLE_USER_PROFILE_MODAL = 'TOGGLE_USER_PROFILE_MODAL',
     RESET_USER_STATE = 'RESET_USER_STATE',
     RESET_APP_STATE = 'RESET_APP_STATE',
+    SET_IS_AUTHENTICATION_OPEN = 'SET_IS_AUTHENTICATION_OPEN',
   }
 
   export const login = (username: string, password: string) =>
@@ -64,4 +65,7 @@ export namespace UserActions {
   export const resetUserState = () => action(Type.RESET_USER_STATE);
 
   export const resetAppState = () => action(Type.RESET_APP_STATE);
+
+  export const setIsAuthenticationOpen = (isAuthenticationOpen: boolean) =>
+    action(Type.SET_IS_AUTHENTICATION_OPEN, { isAuthenticationOpen });
 }

@@ -9,8 +9,8 @@ int main() {
   return 0;
 }"
   editorWidth={400}
-  enableBasicAutoCompletion={false}
-  enableSnippets={false}
+  enableBasicAutoCompletion={true}
+  enableSnippets={true}
   fontSize={16}
   getLatestCode={[Function]}
   getUnreadGlobalNotifications={[Function]}

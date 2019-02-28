@@ -6,8 +6,8 @@ exports[`EditorSettings Container Should render EditorSettings 1`] = `
     changeFontSize={[Function]}
     changeKeyboardHandler={[Function]}
     changeTheme={[Function]}
-    enableBasicAutoCompletion={false}
-    enableSnippets={false}
+    enableBasicAutoCompletion={true}
+    enableSnippets={true}
     fontSize={16}
     keyboardHandler="default"
     theme="twilight"
@@ -372,7 +372,7 @@ exports[`EditorSettings Container Should render EditorSettings 1`] = `
                     <select
                       className="form-control auto-complete-control"
                       onChange={[Function]}
-                      value="disabled"
+                      value="enabled"
                     >
                       <option
                         key="enabled"
@@ -415,7 +415,7 @@ exports[`EditorSettings Container Should render EditorSettings 1`] = `
                     <select
                       className="form-control snippets-control"
                       onChange={[Function]}
-                      value="disabled"
+                      value="enabled"
                     >
                       <option
                         key="enabled"

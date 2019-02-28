@@ -76,6 +76,7 @@ exports[`MatchElement Component Should render 1`] = `
                   style={
                     Object {
                       "fontSize": 13,
+                      "margin": 0,
                     }
                   }
                 >
@@ -172,6 +173,7 @@ exports[`MatchElement Component Should render 1`] = `
                   style={
                     Object {
                       "fontSize": 13,
+                      "margin": 0,
                     }
                   }
                 >
@@ -185,9 +187,9 @@ exports[`MatchElement Component Should render 1`] = `
           className=" d-flex justify-content-center w-100"
         >
           <img
-            height={40}
+            height={50}
             src="assets/img/userAvatars/001-baboon.svg"
-            width={40}
+            width={50}
           />
           <span
             className="text-capitalize text-font-weight-bold  h3 mx-3"
@@ -197,11 +199,19 @@ exports[`MatchElement Component Should render 1`] = `
             5
           </span>
           <img
-            height={40}
+            height={50}
             src="assets/img/userAvatars/002-bear.svg"
-            width={40}
+            width={50}
           />
         </div>
+        <div
+          className="d-flex"
+          style={
+            Object {
+              "padding": 10,
+            }
+          }
+        />
         <div
           className="d-flex justify-content-around "
         />

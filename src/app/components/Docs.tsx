@@ -8,15 +8,15 @@ export class Docs extends React.Component<{}, {}> {
       <div style={{ width: '100%', height: '100%' }}>
         <a
           style={{
-            position: 'absolute',
-            display: 'block',
             backgroundColor: 'black',
             color: 'white',
-            padding: '1px 0px 0px 5px',
-            top: '0%',
-            left: 387,
-            width: 25,
+            display: 'block',
             height: 25,
+            left: 387,
+            padding: '1px 0px 0px 5px',
+            position: 'absolute',
+            top: '0%',
+            width: 25,
             zIndex: 1000,
           }}
           target="_blank"
@@ -28,8 +28,8 @@ export class Docs extends React.Component<{}, {}> {
           src="https://code.pragyan.org/docs/overview.html"
           style={{
             border: 0,
+            height: '100%',
             width: '100%',
-            height: '100%'
           }}
         />
       </div>

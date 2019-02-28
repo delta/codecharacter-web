@@ -3,6 +3,7 @@
 exports[`Authentication main Container Should render 1`] = `
 <Authentication
   isLoggedIn={false}
+  setIsAuthenticationOpen={[Function]}
   toggleUserProfileModal={[Function]}
   updateErrorMessage={[Function]}
 />

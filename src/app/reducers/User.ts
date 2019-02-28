@@ -8,6 +8,7 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   email: '',
   errorMessage: '',
   fullName: '',
+  isAuthenticationOpen: true,
   isLoggedIn: false,
   isUserProfileModalOpen: false,
   type: '',
@@ -32,8 +33,20 @@ export const userReducer = (
         type,
         college,
       } = action.payload.userDetails;
+
+      let isAuthenticationOpen = state.isAuthenticationOpen;
+
+      if (!isLoggedIn && state.isLoggedIn) {
+        isAuthenticationOpen = true;
+      }
+
+      if (isLoggedIn && !state.isLoggedIn) {
+        isAuthenticationOpen = false;
+      }
+
       return {
         ...state,
+        isAuthenticationOpen,
         avatar: avatar !== undefined ? avatar : state.avatar,
         college: college !== undefined ? college : state.college,
         country: country !== undefined ? country : state.country,
@@ -60,6 +73,12 @@ export const userReducer = (
       return {
         ...state,
         isUserProfileModalOpen: action.payload.isUserProfileModalOpen,
+      };
+    }
+    case UserActions.Type.SET_IS_AUTHENTICATION_OPEN: {
+      return {
+        ...state,
+        isAuthenticationOpen: action.payload.isAuthenticationOpen,
       };
     }
     case UserActions.Type.RESET_USER_STATE: {

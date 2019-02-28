@@ -37,9 +37,7 @@ export function* getAllGlobalNotifications(
   try {
     const res = yield call(NotificationFetch.getAllGlobalNotifications);
 
-    const isAuthenticated = yield checkAuthentication(res);
-
-    if (isAuthenticated === false) {
+    if (res.type !== 'Success') {
       return;
     }
 

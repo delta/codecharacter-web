@@ -3,6 +3,10 @@ export enum AuthType {
   REGISTER = 'REGISTER',
 }
 
+export interface OwnProps {
+  setIsAuthenticationOpen: (isAuthenticationOpen: boolean) => void;
+}
+
 export interface State {
   authType: AuthType;
 }
@@ -16,4 +20,4 @@ export interface DispatchProps {
   toggleUserProfileModal: (isUserProfileModalOpen: boolean) => void;
 }
 
-export type Props = StateProps & DispatchProps;
+export type Props = OwnProps & StateProps & DispatchProps;

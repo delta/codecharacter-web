@@ -82,15 +82,24 @@ export class MatchElement extends React.Component<
               <p style={{ fontSize: 13, margin: 0 }}>{`${match.username1.substr(0, 15)}${
                 match.username1.length > 15 ? '...' : ''
               }`}</p>
-              { match.rating1 ? <p style={{ fontSize: 16 }}><b>{`${match.rating1}`}</b></p> : null}
+              {match.rating1 ? (
+                <p style={{ fontSize: 16 }}>
+                  <b>{`${match.rating1}`}</b>
+                </p>
+              ) : null}
             </Col>
             <Col sm={2} style={{ textAlign: 'center' }}>
               <FontAwesomeIcon icon={faShieldAlt} />
             </Col>
             <Col sm={5} style={{ textAlign: 'center' }}>
               <p style={{ fontSize: 13, margin: 0 }}>{`${match.username2.substr(0, 15)}${
-                match.username2.length > 15 ? '...' : ''}`}</p>
-              { match.rating2 ? <p style={{ fontSize: 16 }}><b>{`${match.rating2}`}</b></p> : null}
+                match.username2.length > 15 ? '...' : ''
+              }`}</p>
+              {match.rating2 ? (
+                <p style={{ fontSize: 16 }}>
+                  <b>{`${match.rating2}`}</b>
+                </p>
+              ) : null}
             </Col>
           </Row>
           <div className={classnames(' d-flex justify-content-center w-100')}>
@@ -106,12 +115,13 @@ export class MatchElement extends React.Component<
               <img width={50} height={50} src={Avatar[match.avatar2]} />
             }
           </div>
-          {isMyMatch
-            ? (<div className=" d-flex justify-content-center text-capitalize text-font-weight-bold ">
-                {matchResult}
-              </div>)
-            : <div className="d-flex" style={{ padding: 10 }} />
-          }
+          {isMyMatch ? (
+            <div className=" d-flex justify-content-center text-capitalize text-font-weight-bold ">
+              {matchResult}
+            </div>
+          ) : (
+            <div className="d-flex" style={{ padding: 10 }} />
+          )}
           <div className={classnames(styles.body, 'd-flex justify-content-around ')}>
             {match.games.map((game, index) => {
               let gameVerdict = 'TIE';

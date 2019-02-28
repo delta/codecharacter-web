@@ -25,13 +25,18 @@ export interface State {
 export interface StateProps {
   isLoggedIn: boolean;
   sidePanelOpen: boolean;
+  isAuthenticationOpen: boolean;
   isUserProfileModalOpen: boolean;
   logFile: string;
   player1DebugLog: string;
   player2DebugLog: string;
 }
 
-export type Props = StateProps;
+export interface DispatchProps {
+  setIsAuthenticationOpen: (isAuthenticationOpen: boolean) => void;
+}
+
+export type Props = StateProps & DispatchProps;
 
 export type DashboardActions = Omit<typeof DashboardActions, 'Type'>;
 

@@ -36,8 +36,6 @@ export function* getLeaderboard(action: ActionType<typeof LeaderboardActions.get
 export function* getTimerSaga(action: ActionType<typeof LeaderboardActions.getTimer>) {
   try {
     const result = yield call(LeaderboardFetch.getTimer);
-    const isAuthenticated = yield checkAuthentication(result);
-    if (isAuthenticated === false) return;
 
     if (result.type === resType.ERROR) {
       yield put(LeaderboardActions.setTimer(0));

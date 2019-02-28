@@ -5,7 +5,7 @@ import * as React from 'react';
 
 describe('Authentication main Container', () => {
   const { store } = configureStore();
-  const wrapper = shallow(<Authentication />, {
+  const wrapper = shallow(<Authentication setIsAuthenticationOpen={(v: boolean) => undefined} />, {
     context: {
       store,
     },

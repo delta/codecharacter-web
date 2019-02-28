@@ -7,6 +7,7 @@ export interface StateProps {
 
 export interface OwnProps {
   toggleJoyRide: () => void;
+  setIsAuthenticationOpen: (isAuthenticationOpen: boolean) => void;
 }
 
 export interface DispatchProps {

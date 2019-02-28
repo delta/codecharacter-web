@@ -20,7 +20,14 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 
 export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
   public render() {
-    const { isLoggedIn, sidePanelTab, closeSidePanelTab, openSidePanelTab, logout } = this.props;
+    const {
+      setIsAuthenticationOpen,
+      isLoggedIn,
+      sidePanelTab,
+      closeSidePanelTab,
+      openSidePanelTab,
+      logout,
+    } = this.props;
     return (
       <div className={classnames('h-100', styles.Sidebar)}>
         <ButtonGroup
@@ -78,34 +85,38 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           >
             <FontAwesomeIcon icon={faTrophy} />
           </Button>
-          { isLoggedIn ? <Button
-            className={classnames('py-2 px-auto commitLog-btn-ctrl', styles.customBtn, {
-              [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.COMMIT_LOG,
-            })}
-            id="commit_log_button"
-            title={'Commit Log'}
-            onClick={() =>
-              sidePanelTab !== SidePanelTab.COMMIT_LOG
-                ? openSidePanelTab(SidePanelTab.COMMIT_LOG)
-                : closeSidePanelTab()
-            }
-          >
-            <FontAwesomeIcon icon={faCodeBranch} />
-          </Button> : null }
-          { isLoggedIn ? <Button
-            className={classnames('py-2 px-auto match-btn-ctrl', styles.customBtn, {
-              [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.MATCH,
-            })}
-            id="matchView_button"
-            title={'View Matches'}
-            onClick={() =>
-              sidePanelTab !== SidePanelTab.MATCH
-                ? openSidePanelTab(SidePanelTab.MATCH)
-                : closeSidePanelTab()
-            }
-          >
-            <FontAwesomeIcon icon={faTv} />
-          </Button> : null }
+          {isLoggedIn ? (
+            <Button
+              className={classnames('py-2 px-auto commitLog-btn-ctrl', styles.customBtn, {
+                [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.COMMIT_LOG,
+              })}
+              id="commit_log_button"
+              title={'Commit Log'}
+              onClick={() =>
+                sidePanelTab !== SidePanelTab.COMMIT_LOG
+                  ? openSidePanelTab(SidePanelTab.COMMIT_LOG)
+                  : closeSidePanelTab()
+              }
+            >
+              <FontAwesomeIcon icon={faCodeBranch} />
+            </Button>
+          ) : null}
+          {isLoggedIn ? (
+            <Button
+              className={classnames('py-2 px-auto match-btn-ctrl', styles.customBtn, {
+                [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.MATCH,
+              })}
+              id="matchView_button"
+              title={'View Matches'}
+              onClick={() =>
+                sidePanelTab !== SidePanelTab.MATCH
+                  ? openSidePanelTab(SidePanelTab.MATCH)
+                  : closeSidePanelTab()
+              }
+            >
+              <FontAwesomeIcon icon={faTv} />
+            </Button>
+          ) : null}
           <Button
             className={classnames('py-2 px-auto', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.USER_EDIT,
@@ -113,9 +124,15 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             id="user_profile_button"
             title={'Profile'}
             onClick={() => {
-              sidePanelTab !== SidePanelTab.USER_EDIT
-                ? openSidePanelTab(SidePanelTab.USER_EDIT)
-                : closeSidePanelTab();
+              if (!isLoggedIn) {
+                setIsAuthenticationOpen(true);
+                return;
+              }
+              if (sidePanelTab !== SidePanelTab.USER_EDIT) {
+                openSidePanelTab(SidePanelTab.USER_EDIT);
+              } else {
+                closeSidePanelTab();
+              }
             }}
           >
             <FontAwesomeIcon icon={faUser} />
@@ -134,17 +151,19 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           >
             <FontAwesomeIcon icon={faInfoCircle} />
           </Button>
-          { isLoggedIn ? <Button
-            className={classnames('py-2 px-auto', styles.customBtn)}
-            id="logout_button"
-            title={'Logout'}
-            onClick={() => {
-              logout();
-              this.resetCompleteState();
-            }}
-          >
-            <FontAwesomeIcon icon={faSignOutAlt} />
-          </Button> : null }
+          {isLoggedIn ? (
+            <Button
+              className={classnames('py-2 px-auto', styles.customBtn)}
+              id="logout_button"
+              title={'Logout'}
+              onClick={() => {
+                logout();
+                this.resetCompleteState();
+              }}
+            >
+              <FontAwesomeIcon icon={faSignOutAlt} />
+            </Button>
+          ) : null}
           <Button
             className={classnames('py-2 px-auto', styles.joyRide)}
             id="joyride_button"

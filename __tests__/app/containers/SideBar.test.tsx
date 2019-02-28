@@ -8,11 +8,17 @@ import * as React from 'react';
 
 describe('SideBar Container', () => {
   const { store } = configureStore();
-  const wrapper = mount(<SidebarContainer toggleJoyRide={Function} />, {
-    context: {
-      store,
+  const wrapper = mount(
+    <SidebarContainer
+      toggleJoyRide={Function}
+      setIsAuthenticationOpen={(v: boolean) => undefined}
+    />,
+    {
+      context: {
+        store,
+      },
     },
-  });
+  );
 
   it('Should render', () => {
     expect(wrapper).toMatchSnapshot();

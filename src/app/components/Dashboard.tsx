@@ -73,7 +73,7 @@ export class Dashboard extends React.Component<
       splitPaneState,
       isJoyRideActive,
     } = this.state;
-    const { isLoggedIn } = this.props;
+    const { isLoggedIn, isAuthenticationOpen, setIsAuthenticationOpen } = this.props;
 
     let editorWidth;
     switch (splitPaneState) {
@@ -100,9 +100,10 @@ export class Dashboard extends React.Component<
     return (
       <div>
         {isLoggedIn && isJoyRideActive ? <Joyride toggleJoyRide={this.onToggleJoyRide} /> : null}
-        {!isLoggedIn ? <Authentication /> : null}
+        {isAuthenticationOpen ? (
+          <Authentication setIsAuthenticationOpen={setIsAuthenticationOpen} />
+        ) : null}
         {isLoggedIn ? <SocketHandler /> : null}
-        {/* {isUserProfileModalOpen ? <UserProfileModal /> : null} */}
         <SplitPane
           split="vertical"
           minSize={this.minEditorWidth + fixedLeftPaneWidth}
@@ -119,7 +120,10 @@ export class Dashboard extends React.Component<
                   height: '100vh',
                 }}
               >
-                <SideBar toggleJoyRide={this.onToggleJoyRide} />
+                <SideBar
+                  toggleJoyRide={this.onToggleJoyRide}
+                  setIsAuthenticationOpen={setIsAuthenticationOpen}
+                />
               </div>
               <SidePanel sidePanelWidth={this.sidePanelWidth} />
               <div

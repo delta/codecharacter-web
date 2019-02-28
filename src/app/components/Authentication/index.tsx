@@ -1,4 +1,4 @@
-import { faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Login from 'app/containers/Authentication/Login';
 import Register from 'app/containers/Authentication/Register';
@@ -20,7 +20,7 @@ export class Authentication extends React.Component<
 
   public render() {
     const { authType } = this.state;
-    const { isLoggedIn, updateErrorMessage } = this.props;
+    const { isLoggedIn, updateErrorMessage, setIsAuthenticationOpen } = this.props;
     return (
       <div
         className={classnames(styles.Authentication, {
@@ -36,6 +36,18 @@ export class Authentication extends React.Component<
             [`${styles.slideEnter}`]: !isLoggedIn,
           })}
         >
+          <Row className="mt-2">
+            <Col sm={11} />
+            <Col
+              sm={1}
+              style={{ color: 'black', cursor: 'pointer' }}
+              onClick={() => {
+                setIsAuthenticationOpen(false);
+              }}
+            >
+              <FontAwesomeIcon icon={faTimes} />
+            </Col>
+          </Row>
           <Row className="mt-3">
             <Col sm={12}>
               <div className={classnames(styles.buttonPanelBackground)}>
