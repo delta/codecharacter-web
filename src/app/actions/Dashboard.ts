@@ -5,6 +5,7 @@ export namespace DashboardActions {
   export enum Type {
     SET_SIDE_PANEL_TAB = 'SET_SIDE_PANEL_TAB',
     RESET_DASHBOARD_STATE = 'RESET_DASHBOARD_STATE',
+    SET_IS_WELCOME_MODAL_OPEN = 'SET_IS_WELCOME_MODAL_OPEN',
   }
 
   export const setSidePanelTab = (sidePanelTab: SidePanelTab) =>
@@ -13,4 +14,7 @@ export namespace DashboardActions {
     });
 
   export const resetDashboardState = () => action(Type.RESET_DASHBOARD_STATE);
+
+  export const setIsWelcomeModalOpen = (isOpen: boolean) =>
+    action(Type.SET_IS_WELCOME_MODAL_OPEN, { isOpen });
 }

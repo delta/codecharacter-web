@@ -37,6 +37,7 @@
   padding-top: 20px;
   max-height: 80vh;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .matchViewWrap::-webkit-scrollbar-track {

@@ -37,6 +37,7 @@ export function* login(action: ActionType<typeof UserActions.login>) {
       );
       yield put(UserActions.getUserDetails());
       yield put(CodeActions.getLastSaveTime());
+      yield put(DashboardActions.setIsWelcomeModalOpen(true));
     }
   } catch (err) {
     console.error(err);

@@ -13,6 +13,7 @@ export enum SidePanelTab {
 }
 
 const dashboardStoreIntialState: DashboardInterfaces.DashboardStoreState = {
+  isWelcomeModalOpen: false,
   sidePanelTab: SidePanelTab.NONE,
 };
 
@@ -29,6 +30,12 @@ export const dashboardReducer = (
     case DashboardActions.Type.RESET_DASHBOARD_STATE: {
       return {
         ...dashboardStoreIntialState,
+      };
+    }
+    case DashboardActions.Type.SET_IS_WELCOME_MODAL_OPEN: {
+      return {
+        ...state,
+        isWelcomeModalOpen: action.payload.isOpen,
       };
     }
     default:

@@ -39,6 +39,7 @@ export class Authentication extends React.Component<
           <Row className="mt-2">
             <Col sm={11} />
             <Col
+              className={'text-right'}
               sm={1}
               style={{ color: 'black', cursor: 'pointer' }}
               onClick={() => {
@@ -48,7 +49,7 @@ export class Authentication extends React.Component<
               <FontAwesomeIcon icon={faTimes} />
             </Col>
           </Row>
-          <Row className="mt-3">
+          <Row className="mt-1">
             <Col sm={12}>
               <div className={classnames(styles.buttonPanelBackground)}>
                 <Button

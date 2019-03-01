@@ -5,6 +5,7 @@ import {
   faCog,
   faInfoCircle,
   faQuestionCircle,
+  faSignInAlt,
   faSignOutAlt,
   faTrophy,
   faTv,
@@ -122,7 +123,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.USER_EDIT,
             })}
             id="user_profile_button"
-            title={'Profile'}
+            title={isLoggedIn ? 'Profile' : 'Login'}
             onClick={() => {
               if (!isLoggedIn) {
                 setIsAuthenticationOpen(true);
@@ -135,7 +136,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               }
             }}
           >
-            <FontAwesomeIcon icon={faUser} />
+            <FontAwesomeIcon icon={(isLoggedIn) ? faUser : faSignInAlt} />
           </Button>
           <Button
             className={classnames('py-2 px-auto notification-btn-ctrl', styles.customBtn, {

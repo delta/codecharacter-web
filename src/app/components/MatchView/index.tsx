@@ -30,9 +30,19 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
     });
   };
 
+  public compare(match1: MatchInterfaces.Match, match2: MatchInterfaces.Match) {
+    const time1 = new Date(match1.playedAt).getTime();
+    const time2 = new Date(match2.playedAt).getTime();
+
+    return (time2 - time1);
+  }
+
   public render() {
     const { activeMatchViewTab } = this.state;
     const { matches, topMatches, getGameLogs, currentUsername } = this.props;
+
+    matches.sort(this.compare);
+    topMatches.sort(this.compare);
 
     return (
       <Grid fluid={true} className={classnames(styles.MatchView)}>

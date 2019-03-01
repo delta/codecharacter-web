@@ -4,6 +4,7 @@ import { ActionType } from 'typesafe-actions';
 
 const actions = {
   resetDashboardState: DashboardActions.resetDashboardState,
+  setIsWelcomeModalOpen: DashboardActions.setIsWelcomeModalOpen,
   setSidePanelTab: DashboardActions.setSidePanelTab,
 };
 
@@ -27,6 +28,7 @@ export interface StateProps {
   sidePanelOpen: boolean;
   isAuthenticationOpen: boolean;
   isUserProfileModalOpen: boolean;
+  isWelcomeModalOpen: boolean;
   logFile: string;
   player1DebugLog: string;
   player2DebugLog: string;
@@ -34,6 +36,7 @@ export interface StateProps {
 
 export interface DispatchProps {
   setIsAuthenticationOpen: (isAuthenticationOpen: boolean) => void;
+  closeWelcomeModal: () => void;
 }
 
 export type Props = StateProps & DispatchProps;
@@ -42,6 +45,7 @@ export type DashboardActions = Omit<typeof DashboardActions, 'Type'>;
 
 export interface DashboardStoreState {
   sidePanelTab: SidePanelTab;
+  isWelcomeModalOpen: boolean;
 }
 
 export type DashboardStoreAction = ActionType<typeof actions>;
