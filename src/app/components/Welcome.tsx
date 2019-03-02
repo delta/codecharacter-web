@@ -1,7 +1,5 @@
-import { faBook, faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faBook, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import * as styles from 'app/styles/Authentication.module.css';
-// import classnames from 'classnames';
 import * as React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 
@@ -16,7 +14,7 @@ export class Welcome extends React.Component<
       <Modal.Dialog style={{
         marginTop: '10%'
       }}>
-      <Modal.Header>
+        <Modal.Header>
           <Modal.Title>
             <h5 style={{ margin: 0 }}>
               <b>Welcome to Code Character 2019!</b>

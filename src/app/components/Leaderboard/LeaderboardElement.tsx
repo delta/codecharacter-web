@@ -45,7 +45,7 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
                 style={{
                   fontSize: 38,
                 }}
-                className={classnames(styles['leader-ava'])}
+                className={classnames(player.rank <= 10 ? styles['leader-ava'] : styles['leader-ava-l'])}
               >
                 {player.rank}
               </div>

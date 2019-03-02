@@ -18,7 +18,7 @@ export class NotificationElement extends React.Component<NotificationElementInte
             </span>
             <span>{message}</span>
           </div>
-          <div className={classnames('ml-2', 'pl-2', styles.body)}>
+          <div className={classnames('ml-3', 'pl-2', 'mt-2', styles.body)}>
             {new Date(createdAt).toLocaleString()}
           </div>
         </div>

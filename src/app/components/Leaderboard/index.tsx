@@ -125,9 +125,7 @@ export class Leaderboard extends React.Component<
                     runMatch={runMatch}
                     isPlayAgainstDisabled={timerData > 0 ? true : false}
                   />
-                ) : (
-                  <div style={{ padding: '0px 30px' }}>Nothing to show</div>
-                ),
+                ) : null,
               )
             ) : (
               <div style={{ padding: '0px 30px' }}>Nothing to show</div>

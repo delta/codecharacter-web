@@ -8,10 +8,13 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
   private static commitImgType = {
     COMMIT_HEAD: 'assets/img/commit-head.png',
     COMMIT_HEAD_HOVER: 'assets/img/commit-head-hover.png',
+    COMMIT_HEAD_HOVER_SELECT: 'assets/img/commit-head-hover-select.png',
     COMMIT_INITIAL: 'assets/img/commit-initial.png',
     COMMIT_INITIAL_HOVER: 'assets/img/commit-initial-hover.png',
+    COMMIT_INITIAL_HOVER_SELECT: 'assets/img/commit-initial-hover-select.png',
     COMMIT_MIDDLE: 'assets/img/commit.png',
     COMMIT_MIDDLE_HOVER: 'assets/img/commit-hover.png',
+    COMMIT_MIDDLE_HOVER_SELECT: 'assets/img/commit-hover-select.png',
   };
 
   constructor(props: CommitInterfaces.Props) {
@@ -64,13 +67,16 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
     const { isHovered } = this.state;
     let imgType;
     if (index === 0) {
-      if (isHovered || isCurrentHash) imgType = CommitElement.commitImgType.COMMIT_HEAD_HOVER;
+      if (isHovered) imgType = CommitElement.commitImgType.COMMIT_HEAD_HOVER_SELECT;
+      else if (isCurrentHash) imgType = CommitElement.commitImgType.COMMIT_HEAD_HOVER;
       else imgType = CommitElement.commitImgType.COMMIT_HEAD;
     } else if (index === this.props.commitsLength - 1) {
-      if (isHovered || isCurrentHash) imgType = CommitElement.commitImgType.COMMIT_INITIAL_HOVER;
+      if (isHovered) imgType = CommitElement.commitImgType.COMMIT_INITIAL_HOVER_SELECT;
+      else if (isCurrentHash) imgType = CommitElement.commitImgType.COMMIT_INITIAL_HOVER;
       else imgType = CommitElement.commitImgType.COMMIT_INITIAL;
     } else {
-      if (isHovered || isCurrentHash) imgType = CommitElement.commitImgType.COMMIT_MIDDLE_HOVER;
+      if (isHovered) imgType = CommitElement.commitImgType.COMMIT_MIDDLE_HOVER_SELECT;
+      else if (isCurrentHash) imgType = CommitElement.commitImgType.COMMIT_MIDDLE_HOVER;
       else imgType = CommitElement.commitImgType.COMMIT_MIDDLE;
     }
     this.setState({

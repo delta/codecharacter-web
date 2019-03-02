@@ -56,6 +56,11 @@
   position: relative;
 }
 
+.leader-ava-l {
+  padding: 8px;
+  position: relative;
+}
+
 .player-info-1 {
   display: flex;
 }
@@ -94,6 +99,20 @@
 .leader-ava::after {
   content: '';
   left: 0;
+  bottom: 0;
+  display: block;
+  height: 6px;
+  position: absolute;
+  border: 0px transparent solid;
+  border-left-width: 20px;
+  border-right-width: 20px;
+  border-bottom-width: 6px;
+  border-bottom-color: #fff;
+  transition: border-bottom-color 0.2s ease-in-out;
+}
+
+.leader-ava-l::after {
+  content: '';
   bottom: 0;
   display: block;
   height: 6px;

@@ -106,21 +106,21 @@ export class Dashboard extends React.Component<
 
     return (
       <div>
-        {isWelcomeModalOpen ? <Welcome closeWelcomeModal={() => closeWelcomeModal()} /> : null}
+        { isWelcomeModalOpen ? <Welcome closeWelcomeModal={() => closeWelcomeModal()} /> : null }
         {isLoggedIn && isJoyRideActive ? <Joyride toggleJoyRide={this.onToggleJoyRide} /> : null}
         {isAuthenticationOpen ? (
           <Authentication setIsAuthenticationOpen={setIsAuthenticationOpen} />
         ) : null}
         {isLoggedIn ? <SocketHandler /> : null}
         <SplitPane
-          split="vertical"
-          minSize={this.minEditorWidth + fixedLeftPaneWidth}
-          maxSize={windowWidth - this.minRendererWidth}
-          size={this.state.fixedLeftPaneWidth + editorWidth}
           style={{
             filter: `blur(${(isAuthenticationOpen || isWelcomeModalOpen) ? 2 : 0}px)`,
             transition: 'filter 0.7s'
           }}
+          split="vertical"
+          minSize={this.minEditorWidth + fixedLeftPaneWidth}
+          maxSize={windowWidth - this.minRendererWidth}
+          size={this.state.fixedLeftPaneWidth + editorWidth}
           resizerClassName={style.vertical}
           onChange={this.onSplitPaneResize}
           allowResize={splitPaneState === DashboardInterfaces.SplitPaneState.BOTH}

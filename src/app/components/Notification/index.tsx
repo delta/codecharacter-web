@@ -44,7 +44,7 @@ export class Notification extends React.Component<
             </ul>
             <p>
               Go through the{' '}
-              <a href="https://code.pragyan.org/docs" target="_blank">
+              <a href="https://code.pragyan.org/docs/" target="_blank">
                 docs
               </a>{' '}
               and start playing!
