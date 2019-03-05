@@ -20,7 +20,7 @@ export namespace LeaderboardActions {
 
   export const MAX_RATING = 4000;
 
-  export const FETCH_SIZE = 10;
+  export const FETCH_SIZE = 100;
 
   export const updateLoadingStatus = (loadingStatus: boolean) => {
     return action(Type.UPDATE_LOADING_STATUS, { loadingStatus });

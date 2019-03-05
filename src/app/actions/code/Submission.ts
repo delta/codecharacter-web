@@ -10,12 +10,18 @@ export namespace SubmissionActions {
     HANDLE_COMPILE_ERROR = 'HANDLE_COMPILE_ERROR',
     HANDLE_EXECUTE_SUCCESS = 'HANDLE_EXECUTE_SUCCESS',
     HANDLE_EXECUTE_ERROR = 'HANDLE_EXECUTE_ERROR',
+    HANDLE_DEBUG_RUN_SUCCESS = 'HANDLE_DEBUG_RUN_SUCCESS',
+    HANDLE_DEBUG_RUN_ERROR = 'HANDLE_DEBUG_RUN_ERROR',
     UPDATE_MAP_ID = 'UPDATE_MAP_ID',
     UPDATE_CURRENT_AI_ID = 'UPDATE_CURRENT_AI_ID',
+    UPDATE_DEBUG_RUN_REQUEST = 'UPDATE_DEBUG_RUN_REQUEST',
+    UPDATE_DEBUG_RUN_CODE = 'UPDATE_DEBUG_RUN_CODE',
+    UPDATE_DEBUG_RUN_COMMIT_HASH = 'UPDATE_DEBUG_RUN_COMMIT_HASH',
     LOCK_CODE = 'LOCK_CODE',
     PREVIOUS_COMMIT_MATCH = 'PREVIOUS_COMMIT_MATCH',
     SELF_MATCH = 'SELF_MATCH',
     AI_MATCH = 'AI_MATCH',
+    DEBUG_RUN = 'DEBUG_RUN',
     LOAD_MAPS = 'LOAD_MAPS',
     SAVE_MAPS = 'SAVE_MAPS',
     GET_AI_IDS = 'GET_AI_IDS',
@@ -47,6 +53,11 @@ export namespace SubmissionActions {
 
   export const handleExecuteError = (error: string) => action(Type.HANDLE_EXECUTE_ERROR, { error });
 
+  export const handleDebugRunSuccess = (stackTrace: string) =>
+    action(Type.HANDLE_DEBUG_RUN_SUCCESS, { stackTrace });
+
+  export const handleDebugRunError = () => action(Type.HANDLE_EXECUTE_ERROR);
+
   export const updateMapId = (mapId: number) => action(Type.UPDATE_MAP_ID, { mapId });
 
   export const updateCurrentAiId = (aiId: number) => action(Type.UPDATE_CURRENT_AI_ID, { aiId });
@@ -60,6 +71,8 @@ export namespace SubmissionActions {
 
   export const aiMatch = (mapId: number, aiId: number) => action(Type.AI_MATCH, { mapId, aiId });
 
+  export const debugRun = () => action(Type.DEBUG_RUN);
+
   export const resetSubmissionState = () => action(Type.RESET_SUBMISSION_STATE);
 
   export const loadMaps = () => action(Type.LOAD_MAPS);
@@ -67,6 +80,21 @@ export namespace SubmissionActions {
   export const saveMaps = (maps: SubmissionInterfaces.Map[]) =>
     action(Type.SAVE_MAPS, {
       maps,
+    });
+
+  export const updateDebugRunRequest = (request: SubmissionInterfaces.Request) =>
+    action(Type.UPDATE_DEBUG_RUN_REQUEST, {
+      request,
+    });
+
+  export const updateDebugRunCode = (code: string) =>
+    action(Type.UPDATE_DEBUG_RUN_CODE, {
+      code,
+    });
+
+  export const updateDebugRunCommitHash = (commitHash: string) =>
+    action(Type.UPDATE_DEBUG_RUN_COMMIT_HASH, {
+      commitHash,
     });
 
   export const getAiIds = () => action(Type.GET_AI_IDS);

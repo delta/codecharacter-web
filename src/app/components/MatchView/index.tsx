@@ -34,7 +34,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
     const time1 = new Date(match1.playedAt).getTime();
     const time2 = new Date(match2.playedAt).getTime();
 
-    return (time2 - time1);
+    return time2 - time1;
   }
 
   public render() {

@@ -10,6 +10,7 @@ export interface State {
 
 export interface StateProps {
   maps: SubmissionInterfaces.Map[];
+  debugRunAvailable: boolean;
   aiIds: number[];
 }
 
@@ -20,6 +21,7 @@ export interface DispatchProps {
   lockCode: () => void;
   aiMatch: (mapId: number, aiId: number) => void;
   selfMatch: (mapId: number) => void;
+  debugRun: () => void;
   loadMaps: () => void;
   getAiIds: () => void;
   clearLogs: () => void;

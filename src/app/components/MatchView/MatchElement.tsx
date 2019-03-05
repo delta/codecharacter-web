@@ -141,7 +141,11 @@ export class MatchElement extends React.Component<
                   key={index}
                   className={classnames(styles.game)}
                   onClick={() => getGameLogs(game.id)}
-                  title={isMyMatch ? `${this.MAP_NAME[game.mapId - 1]} - ${gameVerdict} - ${game.winType}` : `${this.MAP_NAME[game.mapId - 1]}`}
+                  title={
+                    isMyMatch
+                      ? `${this.MAP_NAME[game.mapId - 1]} - ${gameVerdict} - ${game.winType}`
+                      : `${this.MAP_NAME[game.mapId - 1]}`
+                  }
                 >
                   <img
                     src={`assets/img/maps/${this.MAP_THUMBNAIL[game.mapId - 1]}.png`}

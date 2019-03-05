@@ -11,9 +11,11 @@ export class Welcome extends React.Component<
 > {
   public render() {
     return (
-      <Modal.Dialog style={{
-        marginTop: '10%'
-      }}>
+      <Modal.Dialog
+        style={{
+          marginTop: '10%',
+        }}
+      >
         <Modal.Header>
           <Modal.Title>
             <h5 style={{ margin: 0 }}>

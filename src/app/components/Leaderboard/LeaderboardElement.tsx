@@ -1,6 +1,5 @@
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { LeaderboardActions } from 'app/actions';
 import { Svg } from 'app/components/Leaderboard/Svg';
 import * as styles from 'app/styles/Leaderboard.module.css';
 import { Avatar } from 'app/types/Authentication/Register';
@@ -17,7 +16,6 @@ const colors = ['#FFB900', '#69797E', '#847545', '#038387'];
 export class LeaderboardElement extends React.Component<LeaderboardInterfaces.ElementProps, {}> {
   public render() {
     const { player, index, isPlayAgainstDisabled, runMatch, currentUsername } = this.props;
-    const fetchSize = LeaderboardActions.FETCH_SIZE;
 
     const playerTotalMatches = player.numWin + player.numLoss + player.numTie;
 
@@ -25,7 +23,7 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
       <Col
         sm={12}
         style={{
-          animationDelay: `${(index % fetchSize) * 0.1}s`,
+          animationDelay: `${(index % 10) * 0.1}s`,
         }}
         className={classnames('mb-1', styles.leader)}
       >
@@ -45,7 +43,9 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
                 style={{
                   fontSize: 38,
                 }}
-                className={classnames(player.rank <= 10 ? styles['leader-ava'] : styles['leader-ava-l'])}
+                className={classnames(
+                  player.rank <= 10 ? styles['leader-ava'] : styles['leader-ava-l'],
+                )}
               >
                 {player.rank}
               </div>

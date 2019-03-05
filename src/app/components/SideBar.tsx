@@ -136,7 +136,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               }
             }}
           >
-            <FontAwesomeIcon icon={(isLoggedIn) ? faUser : faSignInAlt} />
+            <FontAwesomeIcon icon={isLoggedIn ? faUser : faSignInAlt} />
           </Button>
           <Button
             className={classnames('py-2 px-auto notification-btn-ctrl', styles.customBtn, {

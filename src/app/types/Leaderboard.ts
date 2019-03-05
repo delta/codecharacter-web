@@ -50,6 +50,7 @@ export type Props = StateProps & DispatchProps;
 
 export interface State {
   nextFetchIndex: number;
+  offset: number;
   pattern: string;
   isSearching: boolean;
 }

@@ -26,6 +26,8 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       sendInfo,
       sendSuccess,
       sendError,
+      sendDebugRunSuccess,
+      sendDebugRunError,
     } = this.props;
 
     this.socket.on('Info', (message: string) => {
@@ -83,6 +85,19 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     this.socket.on('Match Success', (matchLogs: string) => {
       sendSuccess('Match Executed Successfully!');
       sendExecuteSuccess(matchLogs);
+    });
+
+    this.socket.on('Debug Run Info', (message: string) => {
+      sendInfo(message);
+    });
+
+    this.socket.on('Debug Run Success', (stackTrace: string) => {
+      sendDebugRunSuccess(stackTrace);
+    });
+
+    this.socket.on('Debug Run Error', (message: string) => {
+      sendError(`Debug Run Error: ${message}`);
+      sendDebugRunError();
     });
 
     this.socket.on('disconnect', () => {

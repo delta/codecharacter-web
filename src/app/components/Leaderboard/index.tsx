@@ -1,4 +1,4 @@
-import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCaretLeft, faCaretRight, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LeaderboardElement } from 'app/components/Leaderboard/LeaderboardElement';
 import { Timer } from 'app/components/Leaderboard/Timer';
@@ -8,10 +8,13 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 import { BeatLoader } from 'react-spinners';
+// tslint:disable-next-line
+import ReactPaginate from 'react-paginate';
 export class Leaderboard extends React.Component<
   LeaderboardInterfaces.Props,
   LeaderboardInterfaces.State
 > {
+  private static paginationSize = 10;
   private leaderboard = React.createRef<HTMLDivElement>();
   private search = React.createRef<HTMLInputElement>();
 
@@ -20,6 +23,7 @@ export class Leaderboard extends React.Component<
     this.state = {
       isSearching: false,
       nextFetchIndex: 1,
+      offset: 0,
       pattern: '',
     };
   }
@@ -38,6 +42,12 @@ export class Leaderboard extends React.Component<
     }
   }
 
+  public handlePageClick = (data: { selected: number }) => {
+    this.setState({
+      offset: Math.ceil(data.selected * Leaderboard.paginationSize),
+    });
+  };
+
   public render() {
     const {
       players,
@@ -48,6 +58,7 @@ export class Leaderboard extends React.Component<
       runMatch,
       username: currentUsername,
     } = this.props;
+    const renderLeaderboard: LeaderboardInterfaces.Player[] = [...players];
     return (
       <Grid fluid={true} className={classnames(styles.Leaderboard)}>
         {this.state.isSearching ? (
@@ -97,8 +108,7 @@ export class Leaderboard extends React.Component<
         )}
         <div
           ref={this.leaderboard}
-          onScroll={this.trackScrolling}
-          className={styles['leaderboard-wrap']}
+          className={classnames(styles['leaderboard-wrap'], 'container-fluid')}
         >
           <Row>
             <div
@@ -115,7 +125,9 @@ export class Leaderboard extends React.Component<
             </div>
             {players.length ? (
               players.map((player, index) =>
-                player ? (
+                player &&
+                index >= this.state.offset &&
+                index <= this.state.offset + Leaderboard.paginationSize - 1 ? (
                   <LeaderboardElement
                     currentUsername={currentUsername}
                     player={player}
@@ -130,6 +142,33 @@ export class Leaderboard extends React.Component<
             ) : (
               <div style={{ padding: '0px 30px' }}>Nothing to show</div>
             )}
+            <Col
+              className="d-flex justify-content-center"
+              style={{ width: '100vw', margin: '10px' }}
+            >
+              <ReactPaginate
+                previousLabel={
+                  <span>
+                    <FontAwesomeIcon icon={faCaretLeft} /> <FontAwesomeIcon icon={faCaretLeft} />
+                  </span>
+                }
+                nextLabel={
+                  <span>
+                    <FontAwesomeIcon icon={faCaretRight} /> <FontAwesomeIcon icon={faCaretRight} />
+                  </span>
+                }
+                breakLabel={'...'}
+                breakClassName={'break-me'}
+                pageCount={Math.max(renderLeaderboard.length / Leaderboard.paginationSize)}
+                marginPagesDisplayed={1}
+                pageClassName={'atag'}
+                pageRangeDisplayed={2}
+                activeLinkClassName={'active'}
+                onPageChange={this.handlePageClick}
+                containerClassName={'pagination'}
+                activeClassName={'active'}
+              />
+            </Col>
             {loading && (
               <Col sm={12} className="d-flex justify-content-center" style={{ padding: '2px' }}>
                 <BeatLoader
@@ -147,15 +186,6 @@ export class Leaderboard extends React.Component<
       </Grid>
     );
   }
-
-  public trackScrolling = () => {
-    const { loading } = this.props;
-    const leaderboard = this.leaderboard.current!;
-    if (loading) return;
-    if (leaderboard.scrollHeight - leaderboard.scrollTop === leaderboard.clientHeight) {
-      this.props.getLeaderboard(this.state.pattern, this.state.nextFetchIndex);
-    }
-  };
 
   private searchLeaderboard = () => {
     this.props.clearLeaderboard();

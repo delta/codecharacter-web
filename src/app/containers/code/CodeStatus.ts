@@ -31,6 +31,10 @@ const mapStateToProps = (rootState: RootState) => {
       currentState = 'Compiling latest code';
       break;
     }
+    case RequestState.DEBUG_RUN: {
+      currentState = 'Running code in debug mode';
+      break;
+    }
   }
 
   return {

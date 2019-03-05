@@ -78,6 +78,28 @@ export const executePreviousCommitMatch = (mapId: number) => {
     });
 };
 
+export const executeDebugRun = (code: string, mapId: number, type: string, commitHash?: string) => {
+  return fetch(`${API_BASE_URL}simulate/debug`, {
+    body: JSON.stringify({
+      code,
+      mapId,
+      type,
+      commitHash: commitHash ? commitHash : undefined,
+    }),
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  })
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 export const lockCode = () => {
   return fetch(`${API_BASE_URL}code/lock`, {
     credentials: 'include',

@@ -48,26 +48,10 @@ describe('SideBar Container', () => {
     expect(wrapper.find(Sidebar).props().sidePanelTab).toBe(SidePanelTab.NONE);
   });
 
-  it('Should Dispatch setSidePanelTab Match or None', () => {
-    const button = wrapper.find('.match-btn-ctrl').at(1);
-    button.simulate('click');
-    expect(wrapper.find(Sidebar).props().sidePanelTab).toBe(SidePanelTab.MATCH);
-    button.simulate('click');
-    expect(wrapper.find(Sidebar).props().sidePanelTab).toBe(SidePanelTab.NONE);
-  });
-
   it('Should Dispatch setSidePanelTab Notification or None', () => {
     const button = wrapper.find('.notification-btn-ctrl').at(1);
     button.simulate('click');
     expect(wrapper.find(Sidebar).props().sidePanelTab).toBe(SidePanelTab.NOTIFICATION);
-    button.simulate('click');
-    expect(wrapper.find(Sidebar).props().sidePanelTab).toBe(SidePanelTab.NONE);
-  });
-
-  it('Should Dispatch setSidePanelTab CommitLog or None', () => {
-    const button = wrapper.find('.commitLog-btn-ctrl').at(1);
-    button.simulate('click');
-    expect(wrapper.find(Sidebar).props().sidePanelTab).toBe(SidePanelTab.COMMIT_LOG);
     button.simulate('click');
     expect(wrapper.find(Sidebar).props().sidePanelTab).toBe(SidePanelTab.NONE);
   });

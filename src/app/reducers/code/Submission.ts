@@ -4,6 +4,9 @@ import * as SubmissionInterfaces from 'app/types/code/Submission';
 const submissionStoreState: SubmissionInterfaces.SubmissionStoreState = {
   aiIds: [],
   currentAiId: 1,
+  debugRunCode: '',
+  debugRunCommitHash: 'latest',
+  debugRunRequest: SubmissionInterfaces.Request.NONE,
   mapId: 1,
   maps: [],
   request: SubmissionInterfaces.Request.NONE,
@@ -39,10 +42,6 @@ export const submissionReducer = (
         currentAiId: action.payload.aiId,
       };
     }
-    case SubmissionActions.Type.RESET_SUBMISSION_STATE:
-      return {
-        ...submissionStoreState,
-      };
     case SubmissionActions.Type.SAVE_MAPS: {
       return {
         ...state,
@@ -55,6 +54,28 @@ export const submissionReducer = (
         aiIds: action.payload.aiIds,
       };
     }
+    case SubmissionActions.Type.UPDATE_DEBUG_RUN_REQUEST: {
+      return {
+        ...state,
+        debugRunRequest: action.payload.request,
+      };
+    }
+    case SubmissionActions.Type.UPDATE_DEBUG_RUN_CODE: {
+      return {
+        ...state,
+        debugRunCode: action.payload.code,
+      };
+    }
+    case SubmissionActions.Type.UPDATE_DEBUG_RUN_COMMIT_HASH: {
+      return {
+        ...state,
+        debugRunCommitHash: action.payload.commitHash,
+      };
+    }
+    case SubmissionActions.Type.RESET_SUBMISSION_STATE:
+      return {
+        ...submissionStoreState,
+      };
     default:
       return state;
   }

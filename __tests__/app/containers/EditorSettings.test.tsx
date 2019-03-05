@@ -46,11 +46,11 @@ describe('EditorSettings Container', () => {
       },
     });
 
-    expect(wrapper.find('select.auto-complete-control').props().value).toBe('disabled');
+    expect(wrapper.find('select.auto-complete-control').props().value).toBe('enabled');
     wrapper
       .find('select.auto-complete-control')
-      .simulate('change', { target: { value: 'enabled' } });
-    expect(wrapper.find('select.auto-complete-control').props().value).toBe('enabled');
+      .simulate('change', { target: { value: 'disabled' } });
+    expect(wrapper.find('select.auto-complete-control').props().value).toBe('disabled');
   });
 
   it('Should enable snippets', () => {
@@ -60,8 +60,8 @@ describe('EditorSettings Container', () => {
       },
     });
 
-    expect(wrapper.find('select.snippets-control').props().value).toBe('disabled');
-    wrapper.find('select.snippets-control').simulate('change', { target: { value: 'enabled' } });
     expect(wrapper.find('select.snippets-control').props().value).toBe('enabled');
+    wrapper.find('select.snippets-control').simulate('change', { target: { value: 'disabled' } });
+    expect(wrapper.find('select.snippets-control').props().value).toBe('disabled');
   });
 });

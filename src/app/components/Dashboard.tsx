@@ -106,7 +106,7 @@ export class Dashboard extends React.Component<
 
     return (
       <div>
-        { isWelcomeModalOpen ? <Welcome closeWelcomeModal={() => closeWelcomeModal()} /> : null }
+        {isWelcomeModalOpen ? <Welcome closeWelcomeModal={() => closeWelcomeModal()} /> : null}
         {isLoggedIn && isJoyRideActive ? <Joyride toggleJoyRide={this.onToggleJoyRide} /> : null}
         {isAuthenticationOpen ? (
           <Authentication setIsAuthenticationOpen={setIsAuthenticationOpen} />
@@ -114,8 +114,8 @@ export class Dashboard extends React.Component<
         {isLoggedIn ? <SocketHandler /> : null}
         <SplitPane
           style={{
-            filter: `blur(${(isAuthenticationOpen || isWelcomeModalOpen) ? 2 : 0}px)`,
-            transition: 'filter 0.7s'
+            filter: `blur(${isAuthenticationOpen || isWelcomeModalOpen ? 2 : 0}px)`,
+            transition: 'filter 0.7s',
           }}
           split="vertical"
           minSize={this.minEditorWidth + fixedLeftPaneWidth}

@@ -44,14 +44,16 @@ export class RunOptions extends React.Component<
       },
     ];
 
-    aiIds.map((aiId) => {
-      matchOptions.push({
-        aiId,
-        icon: <FontAwesomeIcon icon={faRobot} />,
-        name: `AI ${aiId} Match`,
-        type: SubmissionActions.Type.AI_MATCH,
+    if (aiIds) {
+      aiIds.map((aiId) => {
+        matchOptions.push({
+          aiId,
+          icon: <FontAwesomeIcon icon={faRobot} />,
+          name: `AI ${aiId} Match`,
+          type: SubmissionActions.Type.AI_MATCH,
+        });
       });
-    });
+    }
 
     const mapOptions = (
       <div className={classnames(styles['dropdown-submenu'])}>
@@ -77,9 +79,8 @@ export class RunOptions extends React.Component<
       <div className={classnames(styles.dropdown)}>
         {matchOptions.map((option, index) => {
           return (
-            <div>
+            <div key={index}>
               <div
-                key={index}
                 className={classnames(styles.dropdownItem)}
                 onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                   this.toggleMapOptions(index);

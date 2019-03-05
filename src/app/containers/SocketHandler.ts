@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     sendCompileError: (error: string) => dispatch(SubmissionActions.handleCompileError(error)),
     sendCompileSuccess: () => dispatch(SubmissionActions.handleCompileSuccess()),
+    sendDebugRunError: () => dispatch(SubmissionActions.handleDebugRunError()),
+    sendDebugRunSuccess: (stackTrace: string) =>
+      dispatch(SubmissionActions.handleDebugRunSuccess(stackTrace)),
     sendError: (message: string) => dispatch(NotificationActions.error(message)),
     sendExecuteError: (error: string) => dispatch(SubmissionActions.handleExecuteError(error)),
     sendExecuteSuccess: (logs: string) => dispatch(SubmissionActions.handleExecuteSuccess(logs)),

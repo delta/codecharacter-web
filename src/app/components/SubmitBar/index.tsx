@@ -3,6 +3,7 @@ import {
   faChevronRight,
   faCloud,
   faCodeBranch,
+  faCog,
   faLock,
   faPlay,
   faTrash,
@@ -40,6 +41,7 @@ export class SubmitBar extends React.Component<
       getAiIds,
       aiIds,
       clearLogs,
+      debugRunAvailable,
     } = this.props;
     const { commitMessage, isCommitMessageBoxOpen, isRunOptionsOpen } = this.state;
     return (
@@ -155,6 +157,17 @@ export class SubmitBar extends React.Component<
           </span>
           <span>SUBMIT</span>
         </button>
+        { debugRunAvailable ? <button
+          className={classnames(styles.customBtn)}
+          title="Run debugger on your last runtime error"
+          id="debug_run_button"
+          onClick={this.props.debugRun}
+        >
+          <span className={classnames(styles.icon)}>
+            <FontAwesomeIcon icon={faCog} />
+          </span>
+          <span>DEBUG RUN</span>
+        </button> : null}
         <CommitMessageBox
           commitMessage={commitMessage}
           isCommitMessageBoxOpen={isCommitMessageBoxOpen}

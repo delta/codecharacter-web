@@ -8,12 +8,15 @@ import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
 export const getSubmissionState = (state: RootState) => state.submission;
+export const getUserLatestCode = (state: RootState) => state.code.code;
 
 export function* lockCode(action: ActionType<typeof SubmissionActions.lockCode>) {
   try {
     const submissionState = yield select(getSubmissionState);
 
     if (submissionState.request !== Request.NONE) return;
+
+    yield put(SubmissionActions.updateDebugRunRequest(Request.NONE));
 
     yield put(CodeActions.save());
     yield put(NotificationActions.info('Code is being locked...'));
@@ -37,6 +40,11 @@ export function* previousCommitMatch(
   try {
     const submissionState = yield select(getSubmissionState);
     if (submissionState.request !== Request.NONE) return;
+
+    yield put(SubmissionActions.updateDebugRunRequest(Request.NONE));
+    const latestCode = yield select(getUserLatestCode);
+    yield put(SubmissionActions.updateDebugRunCode(latestCode));
+    yield put(SubmissionActions.updateDebugRunCommitHash(submissionState.commitHash));
 
     yield put(GameLogActions.clearAllLogs());
     yield put(GameLogActions.setHideDebugLog(false));
@@ -62,6 +70,11 @@ export function* selfMatch(action: ActionType<typeof SubmissionActions.selfMatch
 
     if (submissionState.request !== Request.NONE) return;
 
+    yield put(SubmissionActions.updateDebugRunRequest(Request.NONE));
+    const latestCode = yield select(getUserLatestCode);
+    yield put(SubmissionActions.updateDebugRunCode(latestCode));
+    yield put(SubmissionActions.updateDebugRunCommitHash(submissionState.commitHash));
+
     yield put(GameLogActions.clearAllLogs());
     yield put(GameLogActions.setHideDebugLog(false));
 
@@ -79,12 +92,36 @@ export function* selfMatch(action: ActionType<typeof SubmissionActions.selfMatch
   }
 }
 
+export function* debugRun(action: ActionType<typeof SubmissionActions.debugRun>) {
+  try {
+    const submissionState = yield select(getSubmissionState);
+
+    if (submissionState.request !== Request.NONE) return;
+
+    yield put(GameLogActions.clearAllLogs());
+    yield put(GameLogActions.setHideDebugLog(false));
+
+    yield put(CodeActions.save());
+    yield put(
+      SubmissionActions.changeStateCurrentRequest(
+        RequestState.DEBUG_RUN,
+        Request.DEBUG_RUN,
+        'latest',
+        submissionState.mapId,
+      ),
+    );
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export function* aiMatch(action: ActionType<typeof SubmissionActions.aiMatch>) {
   try {
     const submissionState = yield select(getSubmissionState);
 
     if (submissionState.request !== Request.NONE) return;
 
+    yield put(SubmissionActions.updateDebugRunRequest(Request.NONE));
     yield put(GameLogActions.clearAllLogs());
     yield put(GameLogActions.setHideDebugLog(false));
 
@@ -148,6 +185,16 @@ export function* changeStateCurrentRequest(
           SubmissionFetch.executeAiMatch,
           submissionState.mapId,
           submissionState.currentAiId,
+        );
+        break;
+      }
+      case RequestState.DEBUG_RUN: {
+        res = yield call(
+          SubmissionFetch.executeDebugRun,
+          submissionState.debugRunCode,
+          submissionState.mapId,
+          submissionState.debugRunRequest,
+          submissionState.debugRunCommitHash,
         );
         break;
       }
@@ -331,6 +378,51 @@ export function* handleExecuteError(
       return;
     }
 
+    if (currentRequest === Request.PREVIOUS_COMMIT_MATCH || currentRequest === Request.SELF_MATCH) {
+      yield put(SubmissionActions.updateDebugRunRequest(currentRequest));
+    } else {
+      yield put(SubmissionActions.updateDebugRunRequest(Request.NONE));
+    }
+
+    yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export function* handleDebugRunSuccess(
+  action: ActionType<typeof SubmissionActions.handleDebugRunSuccess>,
+) {
+  try {
+    const submissionState = yield select(getSubmissionState);
+    const currentRequest = submissionState.request;
+    const currentState = submissionState.state;
+
+    if (!(currentRequest === Request.DEBUG_RUN && currentState === RequestState.DEBUG_RUN)) {
+      return;
+    }
+
+    yield put(GameLogActions.clearAllLogs());
+    yield put(GameLogActions.updateDisplayDebugLog(action.payload.stackTrace));
+    yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export function* handleDebugRunError(
+  action: ActionType<typeof SubmissionActions.handleDebugRunError>,
+) {
+  try {
+    const submissionState = yield select(getSubmissionState);
+    const currentRequest = submissionState.request;
+    const currentState = submissionState.state;
+
+    if (!(currentRequest === Request.DEBUG_RUN && currentState === RequestState.DEBUG_RUN)) {
+      return;
+    }
+
+    yield put(GameLogActions.clearAllLogs());
     yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
   } catch (err) {
     console.error(err);
@@ -382,5 +474,8 @@ export function* submissionSagas() {
     takeEvery(SubmissionActions.Type.AI_MATCH, aiMatch),
     takeEvery(SubmissionActions.Type.LOAD_MAPS, loadMaps),
     takeEvery(SubmissionActions.Type.GET_AI_IDS, getAiIds),
+    takeEvery(SubmissionActions.Type.DEBUG_RUN, debugRun),
+    takeEvery(SubmissionActions.Type.HANDLE_DEBUG_RUN_SUCCESS, handleDebugRunSuccess),
+    takeEvery(SubmissionActions.Type.HANDLE_DEBUG_RUN_ERROR, handleDebugRunError),
   ]);
 }
