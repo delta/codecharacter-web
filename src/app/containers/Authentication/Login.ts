@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 const mapStateToProps = (rootState: RootState) => {
   return {
     errorMessage: rootState.user.errorMessage,
+    isLoginLoading: rootState.user.isLoginLoading,
   };
 };
 

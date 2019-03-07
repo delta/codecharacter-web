@@ -10,6 +10,7 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   fullName: '',
   isAuthenticationOpen: true,
   isLoggedIn: false,
+  isLoginLoading: false,
   isUserProfileModalOpen: false,
   type: '',
   username: '',
@@ -79,6 +80,12 @@ export const userReducer = (
       return {
         ...state,
         isAuthenticationOpen: action.payload.isAuthenticationOpen,
+      };
+    }
+    case UserActions.Type.SET_IS_LOGIN_LOADING: {
+      return {
+        ...state,
+        isLoginLoading: action.payload.isLoginLoading,
       };
     }
     case UserActions.Type.RESET_USER_STATE: {

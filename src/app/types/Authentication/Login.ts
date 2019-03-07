@@ -10,6 +10,7 @@ export interface ElementOwnProps {
 
 export interface StateProps {
   errorMessage: string;
+  isLoginLoading: boolean;
 }
 
 export interface DispatchProps {

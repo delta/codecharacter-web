@@ -44,6 +44,7 @@ const actions = {
   register: UserActions.register,
   resetUserState: UserActions.resetUserState,
   setIsAuthenticationOpen: UserActions.setIsAuthenticationOpen,
+  setIsLoginLoading: UserActions.setIsLoginLoading,
   toggleUserProfileModal: UserActions.toggleUserProfileModal,
   updateErrorMessage: UserActions.updateErrorMessage,
   updateUserDetails: UserActions.updateUserDetails,
@@ -56,6 +57,7 @@ export interface UserStoreState {
   email: string;
   country: string;
   isLoggedIn: boolean;
+  isLoginLoading: boolean;
   isUserProfileModalOpen: boolean;
   isAuthenticationOpen: boolean;
   college: string;

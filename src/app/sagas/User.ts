@@ -18,6 +18,7 @@ import { ActionType } from 'typesafe-actions';
 
 export function* login(action: ActionType<typeof UserActions.login>) {
   try {
+    yield put(UserActions.setIsLoginLoading(true));
     const res = yield call(UserFetch.userLogin, {
       password: action.payload.password,
       username: action.payload.username,
@@ -38,6 +39,7 @@ export function* login(action: ActionType<typeof UserActions.login>) {
       yield put(UserActions.getUserDetails());
       yield put(CodeActions.getLastSaveTime());
       yield put(DashboardActions.setIsWelcomeModalOpen(true));
+      yield put(UserActions.setIsLoginLoading(false));
     }
   } catch (err) {
     console.error(err);

@@ -1,4 +1,4 @@
-import { faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as styles from 'app/styles/Authentication.module.css';
 import { AuthType } from 'app/types/Authentication/';
@@ -21,7 +21,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
 
   public render() {
     const { username, password } = this.state;
-    const { errorMessage, updateErrorMessage } = this.props;
+    const { errorMessage, updateErrorMessage, isLoginLoading } = this.props;
     return (
       <div>
         <Row>
@@ -116,7 +116,8 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                       width: '100%',
                     }}
                   >
-                    Login
+                    Login &nbsp;
+                    {isLoginLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : null}
                   </button>
                 </div>
               </div>

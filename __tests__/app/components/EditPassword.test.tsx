@@ -29,6 +29,7 @@ describe('EditPassword Component', () => {
         fullName: '',
         isAuthenticationOpen: true,
         isLoggedIn: true,
+        isLoginLoading: false,
         isUserProfileModalOpen: false,
         type: '',
         username: '',

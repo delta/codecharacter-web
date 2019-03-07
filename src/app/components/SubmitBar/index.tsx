@@ -130,6 +130,28 @@ export class SubmitBar extends React.Component<
           </span>
           <span>RUN</span>
         </button>
+        {debugRunAvailable ? (
+          <button
+            className={classnames(styles.customBtn)}
+            style={{
+              backgroundColor: '#dc3545',
+              color: 'white',
+            }}
+            title="Run debugger on your last runtime error"
+            id="debug_run_button"
+            onClick={this.props.debugRun}
+          >
+            <span
+              className={classnames(styles.icon)}
+              style={{
+                borderColor: 'rgb(185, 53, 60)',
+              }}
+            >
+              <FontAwesomeIcon icon={faCog} />
+            </span>
+            <span>DEBUG RUN</span>
+          </button>
+        ) : null}
         <button className={classnames(styles.customBtn)} onClick={saveCode} id="save_button">
           <span className={classnames(styles.icon)}>
             <FontAwesomeIcon icon={faCloud} />
@@ -157,19 +179,6 @@ export class SubmitBar extends React.Component<
           </span>
           <span>SUBMIT</span>
         </button>
-        {debugRunAvailable ? (
-          <button
-            className={classnames(styles.customBtn)}
-            title="Run debugger on your last runtime error"
-            id="debug_run_button"
-            onClick={this.props.debugRun}
-          >
-            <span className={classnames(styles.icon)}>
-              <FontAwesomeIcon icon={faCog} />
-            </span>
-            <span>DEBUG RUN</span>
-          </button>
-        ) : null}
         <CommitMessageBox
           commitMessage={commitMessage}
           isCommitMessageBoxOpen={isCommitMessageBoxOpen}

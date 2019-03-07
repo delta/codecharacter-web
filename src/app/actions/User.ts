@@ -16,6 +16,7 @@ export namespace UserActions {
     RESET_USER_STATE = 'RESET_USER_STATE',
     RESET_APP_STATE = 'RESET_APP_STATE',
     SET_IS_AUTHENTICATION_OPEN = 'SET_IS_AUTHENTICATION_OPEN',
+    SET_IS_LOGIN_LOADING = 'SET_IS_LOGIN_LOADING',
   }
 
   export const login = (username: string, password: string) =>
@@ -68,4 +69,7 @@ export namespace UserActions {
 
   export const setIsAuthenticationOpen = (isAuthenticationOpen: boolean) =>
     action(Type.SET_IS_AUTHENTICATION_OPEN, { isAuthenticationOpen });
+
+  export const setIsLoginLoading = (isLoginLoading: boolean) =>
+    action(Type.SET_IS_LOGIN_LOADING, { isLoginLoading });
 }
