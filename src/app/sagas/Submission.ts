@@ -378,7 +378,10 @@ export function* handleExecuteError(
       return;
     }
 
-    if (currentRequest === Request.PREVIOUS_COMMIT_MATCH || currentRequest === Request.SELF_MATCH) {
+    if (
+      action.payload.error.includes('runtime') &&
+      (currentRequest === Request.PREVIOUS_COMMIT_MATCH || currentRequest === Request.SELF_MATCH)
+    ) {
       yield put(SubmissionActions.updateDebugRunRequest(currentRequest));
     } else {
       yield put(SubmissionActions.updateDebugRunRequest(Request.NONE));
