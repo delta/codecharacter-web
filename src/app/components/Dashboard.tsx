@@ -4,6 +4,7 @@ import Authentication from 'app/containers/Authentication';
 import CodeStatus from 'app/containers/code/CodeStatus';
 import Editor from 'app/containers/code/Editor';
 import GameLog from 'app/containers/GameLog';
+import * as ReactGA from 'react-ga'
 import Renderer from 'app/containers/Renderer';
 import SideBar from 'app/containers/SideBar';
 import SidePanel from 'app/containers/SidePanel';
@@ -12,6 +13,7 @@ import SubmitBar from 'app/containers/SubmitBar';
 import * as style from 'app/styles/Dashboard.css';
 import * as DashboardInterfaces from 'app/types/Dashboard';
 import * as React from 'react';
+import {GOOGLE_ANALYTICS_TRACKING_ID} from '../../config/config';
 import { Grid, Row } from 'react-bootstrap';
 /* tslint:disable-next-line:import-name */
 import SplitPane from 'react-split-pane';
@@ -48,6 +50,10 @@ export class Dashboard extends React.Component<
       window.addEventListener('resize', this.onWindowResize, true);
     }
   }
+  componentDidMount() {
+       ReactGA.initialize(GOOGLE_ANALYTICS_TRACKING_ID);
+       ReactGA.pageview("/");
+   }
 
   public componentWillReceiveProps(nextProps: DashboardInterfaces.Props) {
     const { sidePanelOpen } = nextProps;
