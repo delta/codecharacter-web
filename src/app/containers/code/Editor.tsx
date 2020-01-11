@@ -21,14 +21,11 @@ const editorContainer = connect<
   EditorInterfaces.StateProps,
   EditorInterfaces.DispatchProps,
   EditorInterfaces.OwnProps
->(
-  mapStateToProps,
-  {
-    getLatestCode: CodeActions.getLatestCode,
-    getUnreadGlobalNotifications: NotificationActions.getUnreadGlobalNotifications,
-    save: CodeActions.save,
-    updateCode: CodeActions.updateCode,
-  },
-)(Editor);
+>(mapStateToProps, {
+  getLatestCode: CodeActions.getLatestCode,
+  getUnreadGlobalNotifications: NotificationActions.getUnreadGlobalNotifications,
+  save: CodeActions.save,
+  updateCode: CodeActions.updateCode,
+})(Editor);
 
 export default editorContainer;

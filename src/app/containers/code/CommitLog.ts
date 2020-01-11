@@ -16,15 +16,12 @@ const commitLogContainer = connect<
   CommitLogInterfaces.StateProps,
   CommitLogInterfaces.DispatchProps,
   {}
->(
-  mapStateToProps,
-  {
-    checkoutCode: CodeActions.checkoutCode,
-    forkCode: CodeActions.forkCode,
-    getCommitLog: CodeActions.getCommitLog,
-    loadMaps: SubmissionActions.loadMaps,
-    startPreviousCommitMatch: SubmissionActions.previousCommitMatch,
-  },
-)(CommitLog);
+>(mapStateToProps, {
+  checkoutCode: CodeActions.checkoutCode,
+  forkCode: CodeActions.forkCode,
+  getCommitLog: CodeActions.getCommitLog,
+  loadMaps: SubmissionActions.loadMaps,
+  startPreviousCommitMatch: SubmissionActions.previousCommitMatch,
+})(CommitLog);
 
 export default commitLogContainer;

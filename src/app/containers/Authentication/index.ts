@@ -14,12 +14,9 @@ const authenticationContainer = connect<
   AuthenticationInterfaces.StateProps,
   AuthenticationInterfaces.DispatchProps,
   {}
->(
-  mapStateToProps,
-  {
-    toggleUserProfileModal: UserActions.toggleUserProfileModal,
-    updateErrorMessage: UserActions.updateErrorMessage,
-  },
-)(Authentication);
+>(mapStateToProps, {
+  toggleUserProfileModal: UserActions.toggleUserProfileModal,
+  updateErrorMessage: UserActions.updateErrorMessage,
+})(Authentication);
 
 export default authenticationContainer;

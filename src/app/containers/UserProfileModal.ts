@@ -15,15 +15,12 @@ const userProfileModalContainer = connect<
   UserProfileInterfaces.StateProps,
   UserProfileInterfaces.DispatchProps,
   {}
->(
-  mapStateToProps,
-  {
-    checkUsernameExists: UserActions.checkUsernameExists,
-    editUserPassword: UserActions.editUserPassword,
-    editUserProfile: UserActions.editUserProfile,
-    getUserDetails: UserActions.getUserDetails,
-    toggleUserProfileModal: UserActions.toggleUserProfileModal,
-  },
-)(UserProfileModal);
+>(mapStateToProps, {
+  checkUsernameExists: UserActions.checkUsernameExists,
+  editUserPassword: UserActions.editUserPassword,
+  editUserProfile: UserActions.editUserProfile,
+  getUserDetails: UserActions.getUserDetails,
+  toggleUserProfileModal: UserActions.toggleUserProfileModal,
+})(UserProfileModal);
 
 export default userProfileModalContainer;

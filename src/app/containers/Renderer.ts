@@ -17,12 +17,9 @@ const rendererContainer = connect<
   RendererInterfaces.StateProps,
   RendererInterfaces.DispatchProps,
   {}
->(
-  mapStateToProps,
-  {
-    clearLog: GameLogActions.clearDisplayDebugLog,
-    updateLog: GameLogActions.updateDisplayDebugLog,
-  },
-)(Renderer);
+>(mapStateToProps, {
+  clearLog: GameLogActions.clearDisplayDebugLog,
+  updateLog: GameLogActions.updateDisplayDebugLog,
+})(Renderer);
 
 export default rendererContainer;

@@ -15,12 +15,9 @@ const notificationContainer = connect<
   NotificationInterfaces.StateProps,
   NotificationInterfaces.DispatchProps,
   {}
->(
-  mapStateToProps,
-  {
-    deleteNotificationType: NotificationActions.deleteNotificationType,
-    getAllGlobalNotifications: NotificationActions.getAllGlobalNotifications,
-  },
-)(Notification);
+>(mapStateToProps, {
+  deleteNotificationType: NotificationActions.deleteNotificationType,
+  getAllGlobalNotifications: NotificationActions.getAllGlobalNotifications,
+})(Notification);
 
 export default notificationContainer;

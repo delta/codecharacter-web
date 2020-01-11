@@ -14,13 +14,10 @@ const registerContainer = connect<
   RegisterInterfaces.StateProps,
   RegisterInterfaces.DispatchProps,
   {}
->(
-  mapStateToProps,
-  {
-    checkUsernameExists: UserActions.checkUsernameExists,
-    register: UserActions.register,
-    updateErrorMessage: UserActions.updateErrorMessage,
-  },
-)(Register);
+>(mapStateToProps, {
+  checkUsernameExists: UserActions.checkUsernameExists,
+  register: UserActions.register,
+  updateErrorMessage: UserActions.updateErrorMessage,
+})(Register);
 
 export default registerContainer;

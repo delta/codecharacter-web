@@ -18,15 +18,12 @@ const editorSettingsContainer = connect<
   EditorSettingsInterfaces.StateProps,
   EditorSettingsInterfaces.DispatchProps,
   {}
->(
-  mapStateToProps,
-  {
-    changeFontSize: EditorSettingsActions.changeFontSize,
-    changeKeyboardHandler: EditorSettingsActions.changeKeyboardHandler,
-    changeTheme: EditorSettingsActions.changeTheme,
-    toggleBasicAutoCompletion: EditorSettingsActions.toggleBasicAutoCompletion,
-    toggleSnippets: EditorSettingsActions.toggleSnippets,
-  },
-)(EditorSettings);
+>(mapStateToProps, {
+  changeFontSize: EditorSettingsActions.changeFontSize,
+  changeKeyboardHandler: EditorSettingsActions.changeKeyboardHandler,
+  changeTheme: EditorSettingsActions.changeTheme,
+  toggleBasicAutoCompletion: EditorSettingsActions.toggleBasicAutoCompletion,
+  toggleSnippets: EditorSettingsActions.toggleSnippets,
+})(EditorSettings);
 
 export default editorSettingsContainer;

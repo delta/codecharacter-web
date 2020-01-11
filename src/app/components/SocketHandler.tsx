@@ -7,14 +7,11 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
   private socket: SocketIOClient.Socket;
   constructor(props: SocketHandlerInterfaces.Props) {
     super(props);
-    this.socket = io.connect(
-      SOCKET_BASE_URL,
-      {
-        reconnection: true,
-        reconnectionDelay: 1000,
-        transports: ['websocket'],
-      },
-    );
+    this.socket = io.connect(SOCKET_BASE_URL, {
+      reconnection: true,
+      reconnectionDelay: 1000,
+      transports: ['websocket'],
+    });
   }
 
   public componentDidMount() {
