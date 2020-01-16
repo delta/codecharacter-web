@@ -57,10 +57,12 @@ export class Dashboard extends React.Component<
   }
 
   public componentDidMount() {
-    setTimeout(() => {
+    setInterval(() => {
       // @ts-ignore
-      document.getElementById('preloader-container').style.opacity = '0';
-    }, 1000);
+      document.getElementById('preloader-container').style.opacity =
+      // @ts-ignore
+      document.getElementById('preloader-container').style.opacity-0.1;
+    }, 150);
 
     setTimeout(() => {
       // @ts-ignore

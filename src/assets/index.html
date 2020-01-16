@@ -5,81 +5,193 @@
     <script src="//cdn.polyfill.io/v2/polyfill.min.js"></script>
     <title>Code Character</title>
     <style>
-      #preloader-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        z-index: 100000;
-        background-color: #222;
-        transition: opacity 1s;
-      }
-      .animation {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        width: 60px;
-        height: 60px;
-        
-        animation: 1s spinning infinite;
-      }
-      
-      .animation:before,
-      .animation:after {
-        animation: 1s movingRight infinite;
-        content: "";
-        display: block;
-        height: 20px;
-        border: 20px solid #f90;
-        border-top: none;
-        border-bottom: none;
-        margin-bottom: 20px;
-      }
-      .animation:after {
-        animation-name: movingLeft;
-      }
-      
-      @keyframes spinning {
-        0% {
-          transform: rotate(0deg);
-        }
-        40%,
-        100% {
-          transform: rotate(90deg);
-        }
-      }
-      
-      @keyframes movingLeft {
-        0% {
-          transform: translateX(0%);
-        }
-        40% {
-          transform: translateX(-50%);
-        }
-        100% {
-          transform: translateX(0%);
-        }
-      }
-      @keyframes movingRight {
-        0% {
-          transform: translateX(0%);
-        }
-        40% {
-          transform: translateX(50%);
-        }
-        100% {
-          transform: translateX(0%);
-        }
-      }
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    .artboard {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: absolute;
+  background-color: rgba(0,0,0,0.8);
+}
+#preloader-container{
+ padding: 0;
+ z-index: -1;
+}
+
+
+.domino > div {
+  border-radius: 8px;
+  display: inline-flex;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 50px;
+  height: 50px;
+  -webkit-animation: domino-effect 2.4s infinite ease-in-out;
+          animation: domino-effect 2.4s infinite ease-in-out;
+}
+.domino > div:nth-child(1) {
+  background: #ffa500;
+}
+.domino > div:nth-child(1):after {
+  background: #ffae19;
+    text-shadow: 2px 2px #fe8761;
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+.domino > div:nth-child(2) {
+  background: #ffb732;
+    text-shadow: 2px 2px #fed39f;
+}
+.domino > div:nth-child(2):after {
+  background: #ffc04c;
+    text-shadow: 2px 2px #f6eec9;
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+.domino > div:nth-child(3) {
+  background: #ffc966;
+    text-shadow: 2px 2px #905b5c;
+}
+.domino > div:nth-child(3):after {
+  background: #ffd27f;
+    text-shadow: 2px 2px #905b5c;
+  -webkit-animation-delay: 1.8s;
+          animation-delay: 1.8s;
+}
+.domino > div:nth-child(4) {
+  background: #ffdb99;
+    text-shadow: 2px 2px #fff3af;
+}
+.domino > div:nth-child(4):after {
+  background: #ffe4b2;
+    text-shadow: 2px 2px #bd665e;
+  -webkit-animation-delay: 2.4s;
+          animation-delay: 2.4s;
+}
+.domino > div:nth-child(5) {
+  background: #ffedcc;
+    text-shadow: 2px 2px #fe8761;
+}
+.domino > div:nth-child(5):after {
+  background: #fff6e5;
+    text-shadow: 2px 2px #eb7260;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+.domino > div:nth-child(1) {
+  margin: 23px;
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+.domino > div:nth-child(2) {
+  margin: 23px;
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+.domino > div:nth-child(3) {
+  margin: 23px;
+  -webkit-animation-delay: 1.8s;
+          animation-delay: 1.8s;
+}
+.domino > div:nth-child(4) {
+  margin: 23px;
+  -webkit-animation-delay: 2.4s;
+          animation-delay: 2.4s;
+}
+.domino > div:nth-child(5) {
+  margin: 23px;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+.domino > div:after {
+  content: "";
+  position: relative;
+  top: 0px;
+  left: -70px;
+  opacity: 0;
+  border-radius: 8px;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: illusion 2.4s infinite ease-in-out;
+          animation: illusion 2.4s infinite ease-in-out;
+}
+
+@-webkit-keyframes beat {
+  to {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+}
+
+@keyframes beat {
+  to {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+}
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(140deg);
+            transform: rotate(140deg);
+  }
+}
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(140deg);
+            transform: rotate(140deg);
+  }
+}
+@-webkit-keyframes domino-effect {
+  20%,100% {
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+}
+@keyframes domino-effect {
+  20%,100% {
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+}
+@-webkit-keyframes illusion {
+  0%, 25% {
+    opacity: 1;
+  }
+  26.10%, 33.33%, 100% {
+    opacity: 0;
+  }
+}
+@keyframes illusion {
+  0%, 25% {
+    opacity: 1;
+  }
+  26.10%, 33.33%, 100% {
+    opacity: 0;
+  }
+}
+
+
+
+
     </style>
   </head>
   <body>
     <div id="preloader-container">
-      <i class="animation"></i>
+      <div class="artboard">
+ <div class="domino">
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+ </div>
+</div>
     </div>
     <div id="root"></div>
   </body>
