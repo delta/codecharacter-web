@@ -26,10 +26,13 @@ const styles = (theme: Theme) => ({
   },
 });
 
-class LandingPage extends React.Component<LandingPageInterfaces.Props, LandingPage.State> {
-  public constructor(props: LandingPageInterfaces.Props) {
-    super(props);
-  }
+class LandingPage extends React.Component<
+  LandingPageInterfaces.Props,
+  LandingPageInterfaces.State
+> {
+  // public constructor(props: LandingPageInterfaces.Props) {
+  //   super(props);
+  // }
 
   public render() {
     const { classes } = this.props;
@@ -57,4 +60,6 @@ class LandingPage extends React.Component<LandingPageInterfaces.Props, LandingPa
   }
 }
 
-export default withStyles(styles)(LandingPage);
+const landingPageContainer = withStyles(styles)(LandingPage);
+
+export default landingPageContainer;
