@@ -60,8 +60,8 @@ export class Dashboard extends React.Component<
     setInterval(() => {
       // @ts-ignore
       document.getElementById('preloader-container').style.opacity =
-      // @ts-ignore
-      document.getElementById('preloader-container').style.opacity-0.1;
+        // @ts-ignore
+        document.getElementById('preloader-container').style.opacity - 0.1;
     }, 150);
 
     setTimeout(() => {
