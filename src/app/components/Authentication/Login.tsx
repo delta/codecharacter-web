@@ -6,6 +6,7 @@ import * as LoginInterfaces from 'app/types/Authentication/Login';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 export class Login extends React.Component<LoginInterfaces.Props, LoginInterfaces.State> {
   private loginRef = React.createRef<HTMLFormElement>();
@@ -18,10 +19,27 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
       username: '',
     };
   }
+  public componentDidMount() {
+    setInterval(() => {
+      // @ts-ignore
+      document.getElementById('preloader-container').style.opacity =
+        // @ts-ignore
+        document.getElementById('preloader-container').style.opacity - 0.1;
+    }, 150);
+
+    setTimeout(() => {
+      // @ts-ignore
+      document.getElementById('preloader-container').style.display = 'none';
+    }, 1500);
+  }
 
   public render() {
     const { username, password } = this.state;
-    const { errorMessage, updateErrorMessage, isLoginLoading } = this.props;
+    const { errorMessage, updateErrorMessage, isLoginLoading, isLoggedIn } = this.props;
+    if (isLoggedIn) {
+      return <Redirect from="/login" to="/" />;
+    }
+
     return (
       <div>
         <Row>
