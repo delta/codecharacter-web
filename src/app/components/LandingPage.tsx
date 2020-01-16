@@ -1,16 +1,15 @@
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import { withStyles } from '@material-ui/core/styles';
+import { Theme, withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-/* tslint:disable-next-line */
+/* tslint:disable-next-line:import-name */
 import MenuIcon from '@material-ui/icons/Menu';
 import * as LandingPageInterfaces from 'app/types/LandingPage';
 import * as React from 'react';
 
-/* tslint:disable-next-line */
-const styles = (theme: any) => ({
+const styles = (theme: Theme) => ({
   appBar: {
     backgroundColor: '#f6f9fc',
     borderBottom: '3px solid #ecf0fb',
@@ -53,8 +52,6 @@ class LandingPage extends React.Component<
 
   public componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
-    // alert(document.body.scrollTop);
-    // document.body.scrollTop=200;
   }
 
   public handleScroll = (): void => {
@@ -93,7 +90,7 @@ class LandingPage extends React.Component<
     );
   }
 }
-/* tslint:disable-next-line */
+
 const landingPageContainer = withStyles(styles)(LandingPage);
 
 export default landingPageContainer;
