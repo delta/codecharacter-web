@@ -1,7 +1,9 @@
+import PopUpMenu from 'app/components/PopUpMenu';
 import Login from 'app/containers/Authentication/Login';
 import Register from 'app/containers/Authentication/Register';
 import Dashboard from 'app/containers/Dashboard';
 import LandingPage from 'app/containers/LandingPage';
+
 // @ts-ignore
 import { initializeRendererAssets } from 'codecharacter-renderer';
 import * as React from 'react';
@@ -18,11 +20,12 @@ export const App = hot(module)(() => (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Dashboard} />
-        <Route exact path="/landing" component={LandingPage} />
+        <Route exact path="/home" component={LandingPage} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
       </Switch>
     </BrowserRouter>
+    <PopUpMenu />
     <Sugar background="#484848" color="white" />
   </React.Fragment>
 ));
