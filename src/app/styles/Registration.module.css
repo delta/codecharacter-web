@@ -1,0 +1,70 @@
+.bg-image {
+  background-image: linear-gradient(to bottom left, #5b5656, #4d4646, black);
+  width: 100vw;
+  height: 200vh;
+}
+
+.login-form {
+  position: absolute;
+  width: 70vw;
+
+  top: 25%;
+  left: 15vw;
+  border: 3px solid #66c6ba;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 0 10px #66c6ba;
+  -moz-box-shadow: 0 0 10px #66c6ba;
+  box-shadow: 0 0 10px #66c6ba;
+  text-align: center;
+  padding: 5px;
+  padding-top: 20px;
+}
+
+.login-form h1 {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  margin-bottom: 7px;
+  margin-top: 8px;
+}
+.login-input {
+  width: 80%;
+  background: none;
+  border-radius: 0;
+  height: 50px;
+  border: 0px;
+  border-bottom: 2px solid #a4e5d9;
+  margin: 10px;
+  padding: 5px;
+  color: white;
+}
+.login-input:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 6px #a4e5d9;
+  -moz-box-shadow: 0 0 6px #a4e5d9;
+  box-shadow: 0 0 6px #a4e5d9;
+}
+
+.login-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  position: relative;
+  left: 10px;
+}
+
+.login-button {
+  width: 40%;
+  height: 40px;
+  color: #263859;
+  margin: 10px;
+  border-radius: 20px;
+  background-image: linear-gradient(to bottom left, #c8f4de, #a4e5d9, #66c6ba);
+  -webkit-box-shadow: 0 0 6px #a4e5d9;
+  -moz-box-shadow: 0 0 6px #a4e5d9;
+  box-shadow: 0 0 6px #a4e5d9;
+}
+
+@media (max-width: 600px) {
+  .login-form {
+    width: 100%;
+    left: 0;
+  }
+}

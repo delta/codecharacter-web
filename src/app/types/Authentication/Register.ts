@@ -46,6 +46,7 @@ export interface State {
 }
 export interface StateProps {
   errorMessage: string;
+  isLoggedIn: boolean;
 }
 
 export interface ElementOwnProps {

@@ -13,6 +13,7 @@ import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
 // tslint:disable-next-line:import-name
 import ReCAPTCHA from 'react-google-recaptcha';
+import { Redirect } from 'react-router-dom';
 
 export class Register extends React.Component<RegisterInterfaces.Props, RegisterInterfaces.State> {
   private registerRef = React.createRef<HTMLFormElement>();
@@ -54,7 +55,17 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
     const avatars = Object.keys(RegisterInterfaces.Avatar);
 
-    const { handleSelectPanel, checkUsernameExists, errorMessage, updateErrorMessage } = this.props;
+    const {
+      handleSelectPanel,
+      isLoggedIn,
+      checkUsernameExists,
+      errorMessage,
+      updateErrorMessage,
+    } = this.props;
+    if (isLoggedIn) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div>
         <div className={classnames('col-sm-12', styles.form)}>

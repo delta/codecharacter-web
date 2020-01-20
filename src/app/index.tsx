@@ -1,3 +1,4 @@
+import Reg from 'app/components/Authentication/Reg';
 import PopUpMenu from 'app/components/PopUpMenu';
 import Login from 'app/containers/Authentication/Login';
 import Register from 'app/containers/Authentication/Register';
@@ -22,6 +23,7 @@ export const App = hot(module)(() => (
         <Route exact path="/" component={Dashboard} />
         <Route exact path="/home" component={LandingPage} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/reg" component={Reg} />
         <Route exact path="/register" component={Register} />
       </Switch>
     </BrowserRouter>

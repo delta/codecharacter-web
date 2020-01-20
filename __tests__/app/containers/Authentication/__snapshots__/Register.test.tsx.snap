@@ -4,6 +4,7 @@ exports[`Register Container Should render 1`] = `
 <Register
   checkUsernameExists={[Function]}
   errorMessage=""
+  isLoggedIn={false}
   handleSelectPanel={[Function]}
   register={[Function]}
   updateErrorMessage={[Function]}

@@ -1,5 +1,6 @@
 import { UserActions } from 'app/actions';
-import { Login } from 'app/components/Authentication/Login';
+/* tslint:disable-next-line:import-name */
+import Login from 'app/components/Authentication/Log';
 import { RootState } from 'app/reducers';
 import * as LoginInterfaces from 'app/types/Authentication/Login';
 import { connect } from 'react-redux';

@@ -6,9 +6,9 @@ import ClearIcon from '@material-ui/icons/Clear';
 import DescriptionIcon from '@material-ui/icons/Description';
 /* tslint:disable-next-line:import-name */
 import GitHubIcon from '@material-ui/icons/GitHub';
-
 /* tslint:disable-next-line:import-name */
-import GolfCourseIcon from '@material-ui/icons/GolfCourse';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+
 import * as styles from 'app/styles/PopUpMenu.module.css';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -55,7 +55,7 @@ export default class PopUpMenu extends React.Component<{}, { isPopUpOpen: boolea
           </div>
         </div>
         <button className={classnames(styles['main-button'])} onClick={this.togglePopUp}>
-          <GolfCourseIcon />
+          <HelpOutlineIcon style={{ fontSize: 30 }} />
         </button>
       </div>
     );
