@@ -38,7 +38,8 @@
 }
 
 .leaderboard-wrap::-webkit-scrollbar-thumb {
-  background-color: #ddd;
+  background-color: #292929;
+  border-radius: 40px;
 }
 
 .leader {
@@ -49,6 +50,7 @@
   animation-fill-mode: both;
   animation-timing-function: ease-in-out;
   background: #292929;
+  border-radius: 10px;
 }
 
 .leader-ava {
