@@ -1,5 +1,6 @@
 import { ErrorBoundary } from 'app/components/ErrorBoundary';
-import Joyride from 'app/components/Joyride';
+// import Joyride from 'app/components/Joyride';
+import ReactTour from 'app/components/ReactTour';
 // import Authentication from 'app/containers/Authentication';
 import CodeStatus from 'app/containers/code/CodeStatus';
 import Editor from 'app/containers/code/Editor';
@@ -41,7 +42,7 @@ export class Dashboard extends React.Component<
     this.state = {
       fixedLeftPaneWidth,
       editorWidthRatio: this.initialEditorRatio,
-      isJoyRideActive: false,
+      isJoyRideActive: true,
       rendererHeight: this.initialRendererHeight,
       splitPaneState: DashboardInterfaces.SplitPaneState.BOTH,
       windowWidth: window.innerWidth,
@@ -106,7 +107,7 @@ export class Dashboard extends React.Component<
     return (
       <div>
         {isWelcomeModalOpen ? <Welcome closeWelcomeModal={() => closeWelcomeModal()} /> : null}
-        {isLoggedIn && isJoyRideActive ? <Joyride toggleJoyRide={this.onToggleJoyRide} /> : null}
+        {isLoggedIn && isJoyRideActive && !isWelcomeModalOpen ? <ReactTour /> : null}
         {/*{isAuthenticationOpen ? (
             <Authentication setIsAuthenticationOpen={setIsAuthenticationOpen} />
           ) : null}*/}

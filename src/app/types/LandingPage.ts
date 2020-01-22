@@ -1,6 +1,8 @@
 /* tslint:disable */
 
-export interface State {}
+export interface State {
+  isNavBarDown: boolean;
+}
 
 export interface StateProps {}
 export interface OwnProps {
