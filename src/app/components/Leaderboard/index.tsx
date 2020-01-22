@@ -1,4 +1,4 @@
-import { faCaretLeft, faCaretRight, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faAngleRight, faCaretLeft, faCaretRight, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LeaderboardElement } from 'app/components/Leaderboard/LeaderboardElement';
 import { Timer } from 'app/components/Leaderboard/Timer';
@@ -7,9 +7,66 @@ import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
-import { BeatLoader } from 'react-spinners';
+import { ScaleLoader } from 'react-spinners';
 // tslint:disable-next-line
 import ReactPaginate from 'react-paginate';
+
+const player1={
+  numWin:2,
+  numLoss:3,
+  numTie:4,
+  rank:12,
+  avatar:"jerry",
+  username:"Chethan",
+  fullName:"Chethan Reddy",
+  rating:300,
+  type:"Student",
+  country:"BR",
+  id:1
+}
+
+const player2={
+  numWin:5,
+  numLoss:1,
+  numTie:7,
+  rank:2,
+  avatar:"jerry",
+  username:"Jerry",
+  fullName:"J Jerry",
+  rating:150,
+  type:"Student",
+  country:"US",
+  id:2
+}
+
+const player3={
+  numWin:7,
+  numLoss:1,
+  numTie:4,
+  rank:1,
+  avatar:"jerry",
+  username:"Dhruv",
+  fullName:"Dhruv Iyer",
+  rating:100,
+  type:"Student",
+  country:"US",
+  id:3
+}
+
+const player4={
+  numWin:7,
+  numLoss:5,
+  numTie:4,
+  rank:3,
+  avatar:"jerry",
+  username:"Galla",
+  fullName:"Galla the basketball",
+  rating:110,
+  type:"Student",
+  country:"IND",
+  id:3
+}
+
 export class Leaderboard extends React.Component<
   LeaderboardInterfaces.Props,
   LeaderboardInterfaces.State
@@ -25,6 +82,7 @@ export class Leaderboard extends React.Component<
       nextFetchIndex: 1,
       offset: 0,
       pattern: '',
+      isModelOpen: false
     };
   }
 
@@ -149,12 +207,12 @@ export class Leaderboard extends React.Component<
               <ReactPaginate
                 previousLabel={
                   <span>
-                    <FontAwesomeIcon icon={faCaretLeft} /> <FontAwesomeIcon icon={faCaretLeft} />
+                    <FontAwesomeIcon icon={faAngleLeft} /> <FontAwesomeIcon icon={faCaretLeft} />
                   </span>
                 }
                 nextLabel={
                   <span>
-                    <FontAwesomeIcon icon={faCaretRight} /> <FontAwesomeIcon icon={faCaretRight} />
+                    <FontAwesomeIcon icon={faAngleRight} /> <FontAwesomeIcon icon={faCaretRight} />
                   </span>
                 }
                 breakLabel={'...'}
@@ -171,17 +229,62 @@ export class Leaderboard extends React.Component<
             </Col>
             {loading && (
               <Col sm={12} className="d-flex justify-content-center" style={{ padding: '2px' }}>
-                <BeatLoader
+                <ScaleLoader
                   css={'override'}
-                  margin={'5px'}
-                  sizeUnit={'px'}
-                  size={10}
                   loading={loading}
                   color={'#36D7B7'}
                 />
               </Col>
             )}
           </Row>
+          <h1>Hello World</h1>
+          <h1>Hello World</h1>
+          <h1>Hello World</h1>
+          <h1>Hello World</h1>
+          <h1>Hello World</h1>
+          <h1>Hello World</h1>
+          <h1>Hello World</h1>
+          <h1>Hello World</h1>
+          <h1>Hello World</h1>
+          <h1>Hello World</h1>
+          <h1>Hello World</h1>
+          <h1>Hello World</h1>
+          <LeaderboardElement
+                    currentUsername="Chethan"
+                    player={player1}
+                    rank={1}
+                    index={1}
+                    key={1}
+                    runMatch={runMatch}
+                    isPlayAgainstDisabled={true}
+                  />
+          <LeaderboardElement
+                    currentUsername="Jerry"
+                    player={player2}
+                    rank={1}
+                    index={1}
+                    key={1}
+                    runMatch={runMatch}
+                    isPlayAgainstDisabled={true}
+                  />
+          <LeaderboardElement
+                    currentUsername="Dhruv"
+                    player={player3}
+                    rank={1}
+                    index={1}
+                    key={1}
+                    runMatch={runMatch}
+                    isPlayAgainstDisabled={false}
+                  />
+          <LeaderboardElement
+                    currentUsername="Galla"
+                    player={player4}
+                    rank={1}
+                    index={1}
+                    key={1}
+                    runMatch={runMatch}
+                    isPlayAgainstDisabled={true}
+                  />
         </div>
       </Grid>
     );
