@@ -53,6 +53,7 @@ export interface State {
   offset: number;
   pattern: string;
   isSearching: boolean;
+  isModelOpen: boolean;
 }
 
 export interface ElementOwnProps {

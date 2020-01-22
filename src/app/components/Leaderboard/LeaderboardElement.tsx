@@ -13,7 +13,39 @@ import { Button, Col } from 'react-bootstrap';
 import ReactCountryFlag from 'react-country-flag';
 const colors = ['#FFB900', '#69797E', '#847545', '#038387'];
 
-export class LeaderboardElement extends React.Component<LeaderboardInterfaces.ElementProps, {}> {
+const SmallComponent = ({player,playerTotalMatches}:any) =>{
+  return(
+      <div>
+        <svg height="60" width="100" fill="white">
+          <text x="12" y="35">Won({Math.floor((player.numWin * 100) / playerTotalMatches)}%)</text>
+          <circle cx="30" cy="50" r="5" fill="rgb(40, 167, 69)" />
+        </svg> 
+        <svg height="60" width="100" fill="white">
+          <text x="23" y="35">Tied({Math.floor((player.numTie * 100) / playerTotalMatches)}%)</text>
+          <circle cx="50" cy="50" r="5" fill="rgb(255, 193, 7)" />
+        </svg> 
+        <svg height="60" width="100" fill="white">
+          <text x="28" y="35">Lost({Math.floor((player.numLoss * 100) / playerTotalMatches)}%)</text>
+          <circle cx="70" cy="50" r="5" fill="#DB3444" />
+        </svg> 
+      </div>
+  );
+}
+
+export class LeaderboardElement extends React.Component<LeaderboardInterfaces.ElementProps, {isModelOpen:boolean}> {
+  constructor(props:any){
+    super(props);
+    this.state={
+      isModelOpen:false
+    } 
+  } 
+
+  public handleOnClick = () =>{
+    this.setState((prevState, props) => ({
+      isModelOpen: !prevState.isModelOpen
+    }));
+  }
+
   public render() {
     const { player, index, isPlayAgainstDisabled, runMatch, currentUsername } = this.props;
 
@@ -114,7 +146,7 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
 
           <div className={classnames(styles['player-info-2'])}>
             <div className={classnames(styles['leader-flag'])}>
-              <ReactCountryFlag code={player.country} svg alt={player.country} />
+              <ReactCountryFlag code={player.country} svg alt={player.country}/>
             </div>
 
             {!(isPlayAgainstDisabled || currentUsername === player.username) ? (
@@ -130,7 +162,12 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
             ) : null}
           </div>
         </div>
-        <div className={classnames('progress', styles['leader-bar'])}>
+        <div>
+          {this.state.isModelOpen?(
+            <SmallComponent player={player} playerTotalMatches={playerTotalMatches}/>
+          ):null}
+        </div>
+        <div className={classnames('progress', styles['leader-bar'])} onClick={this.handleOnClick}>
           <div
             className="progress-bar"
             role="progressbar"
