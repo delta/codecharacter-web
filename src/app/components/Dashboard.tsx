@@ -13,6 +13,9 @@ import * as style from 'app/styles/Dashboard.css';
 import * as DashboardInterfaces from 'app/types/Dashboard';
 import * as React from 'react';
 import { Grid, Row } from 'react-bootstrap';
+import * as ReactGA from 'react-ga';
+import { GOOGLE_ANALYTICS_TRACKING_ID } from '../../config/config';
+
 /* tslint:disable-next-line:import-name */
 import SplitPane from 'react-split-pane';
 import { Welcome } from './Welcome';
@@ -47,6 +50,10 @@ export class Dashboard extends React.Component<
     if (window.addEventListener) {
       window.addEventListener('resize', this.onWindowResize, true);
     }
+  }
+  public componentDidMount() {
+    ReactGA.initialize(GOOGLE_ANALYTICS_TRACKING_ID);
+    ReactGA.pageview('/');
   }
 
   public componentWillReceiveProps(nextProps: DashboardInterfaces.Props) {
