@@ -3,13 +3,18 @@ import Dashboard from 'app/containers/Dashboard';
 import { initializeRendererAssets } from 'codecharacter-renderer';
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
+// @ts-ignore
+import { Sugar } from 'react-preloaders';
 import { Route, Switch } from 'react-router';
 
 initializeRendererAssets();
 
 /* tslint:disable-next-line:variable-name */
 export const App = hot(module)(() => (
-  <Switch>
-    <Route path="/" component={Dashboard} />
-  </Switch>
+  <React.Fragment>
+    <Switch>
+      <Route path="/" component={Dashboard} />
+    </Switch>
+    <Sugar background="#484848" color="white" />
+  </React.Fragment>
 ));
