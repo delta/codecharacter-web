@@ -19,19 +19,6 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
       username: '',
     };
   }
-  public componentDidMount() {
-    setInterval(() => {
-      // @ts-ignore
-      document.getElementById('preloader-container').style.opacity =
-        // @ts-ignore
-        document.getElementById('preloader-container').style.opacity - 0.1;
-    }, 150);
-
-    setTimeout(() => {
-      // @ts-ignore
-      document.getElementById('preloader-container').style.display = 'none';
-    }, 1500);
-  }
 
   public render() {
     const { username, password } = this.state;

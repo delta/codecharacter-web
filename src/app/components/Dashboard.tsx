@@ -58,7 +58,6 @@ export class Dashboard extends React.Component<
   }
 
   public componentDidMount() {
-    
     ReactGA.initialize(GOOGLE_ANALYTICS_TRACKING_ID);
     ReactGA.pageview('/');
   }
