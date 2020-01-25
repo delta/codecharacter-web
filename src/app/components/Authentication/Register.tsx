@@ -37,19 +37,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       username: '',
     };
   }
-  public componentDidMount() {
-    setInterval(() => {
-      // @ts-ignore
-      document.getElementById('preloader-container').style.opacity =
-        // @ts-ignore
-        document.getElementById('preloader-container').style.opacity - 0.1;
-    }, 150);
-
-    setTimeout(() => {
-      // @ts-ignore
-      document.getElementById('preloader-container').style.display = 'none';
-    }, 1500);
-  }
 
   public render() {
     const {
@@ -370,6 +357,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             <div className="text-dark">
               Already have an account?{' '}
               <a
+                href="/login"
                 className="text-primary"
                 style={{
                   cursor: 'pointer',

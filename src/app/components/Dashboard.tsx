@@ -52,14 +52,14 @@ export class Dashboard extends React.Component<
     }
   }
 
-  public componentWillReceiveProps(nextProps: DashboardInterfaces.Props) {
-    const { sidePanelOpen } = nextProps;
-    sidePanelOpen ? this.onToggleSidePanel(true) : this.onToggleSidePanel(false);
-  }
-
   public componentDidMount() {
     ReactGA.initialize(GOOGLE_ANALYTICS_TRACKING_ID);
     ReactGA.pageview('/');
+  }
+
+  public componentWillReceiveProps(nextProps: DashboardInterfaces.Props) {
+    const { sidePanelOpen } = nextProps;
+    sidePanelOpen ? this.onToggleSidePanel(true) : this.onToggleSidePanel(false);
   }
 
   public render() {

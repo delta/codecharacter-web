@@ -19,5 +19,6 @@ export const App = hot(module)(() => (
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
     </Switch>
+    <Sugar background="#484848" color="white" />
   </BrowserRouter>
 ));

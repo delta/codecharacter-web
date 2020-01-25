@@ -153,17 +153,19 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faInfoCircle} />
           </Button>
           {isLoggedIn ? (
-            <Button
-              className={classnames('py-2 px-auto', styles.customBtn)}
-              id="logout_button"
-              title={'Logout'}
-              onClick={() => {
-                logout();
-                this.resetCompleteState();
-              }}
-            >
-              <FontAwesomeIcon icon={faSignOutAlt} />
-            </Button>
+            <a href="/login">
+              <Button
+                className={classnames('py-2 px-auto', styles.customBtn)}
+                id="logout_button"
+                title={'Logout'}
+                onClick={() => {
+                  logout();
+                  this.resetCompleteState();
+                }}
+              >
+                <FontAwesomeIcon icon={faSignOutAlt} />
+              </Button>
+            </a>
           ) : null}
           <Button
             className={classnames('py-2 px-auto', styles.joyRide)}

@@ -138,6 +138,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             <div className="text-dark">
               Don't have an account?{' '}
               <a
+                href="/register"
                 className="text-primary"
                 style={{
                   cursor: 'pointer',
