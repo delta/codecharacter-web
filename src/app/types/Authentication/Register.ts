@@ -45,6 +45,7 @@ export interface State {
   type: RegisterType;
 }
 export interface StateProps {
+  isLoggedIn: boolean;
   errorMessage: string;
 }
 

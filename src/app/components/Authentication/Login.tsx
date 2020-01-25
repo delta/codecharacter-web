@@ -158,7 +158,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
   }
 
   private handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
-    const { login } = this.props;
+    const { login, errorMessage } = this.props;
     const { username, password } = this.state;
     const form = this.loginRef.current;
     event.preventDefault();
@@ -167,6 +167,15 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
         login(username, password);
       }
       form.classList.add('was-validated');
+      if (errorMessage) {
+        this.setState(
+          {
+            password: '',
+            username: '',
+          },
+          () => form.classList.remove('was-validated'),
+        );
+      }
     }
   };
 }
