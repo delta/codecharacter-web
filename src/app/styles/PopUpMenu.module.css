@@ -59,6 +59,13 @@
   background-color: #49144b;
   color: white;
 }
+/* .menu-icon-doc{
+  margin-right:15px!important;
+} */
+
+.menu-icon-slack {
+  justify-content: center;
+}
 
 .close-icon {
   position: absolute;

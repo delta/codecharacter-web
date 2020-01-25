@@ -58,9 +58,9 @@ export class Dashboard extends React.Component<
     sidePanelOpen ? this.onToggleSidePanel(true) : this.onToggleSidePanel(false);
   }
   public componentDidMount() {
-     ReactGA.initialize(GOOGLE_ANALYTICS_TRACKING_ID);
-     ReactGA.pageview('/');
-   }
+    ReactGA.initialize(GOOGLE_ANALYTICS_TRACKING_ID);
+    ReactGA.pageview('/');
+  }
 
   public render() {
     const {
