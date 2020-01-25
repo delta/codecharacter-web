@@ -1,6 +1,5 @@
 import { ErrorBoundary } from 'app/components/ErrorBoundary';
 import Joyride from 'app/components/Joyride';
-import Authentication from 'app/containers/Authentication';
 import CodeStatus from 'app/containers/code/CodeStatus';
 import Editor from 'app/containers/code/Editor';
 import GameLog from 'app/containers/GameLog';
@@ -14,6 +13,7 @@ import * as DashboardInterfaces from 'app/types/Dashboard';
 import * as React from 'react';
 import { Grid, Row } from 'react-bootstrap';
 import * as ReactGA from 'react-ga';
+import { Redirect } from 'react-router-dom';
 import { GOOGLE_ANALYTICS_TRACKING_ID } from '../../config/config';
 
 /* tslint:disable-next-line:import-name */
@@ -99,14 +99,15 @@ export class Dashboard extends React.Component<
         editorWidth = 0;
       }
     }
+    if (!isLoggedIn) {
+      return <Redirect from="/" to="/login" />;
+    }
 
     return (
       <div>
         {isWelcomeModalOpen ? <Welcome closeWelcomeModal={() => closeWelcomeModal()} /> : null}
         {isLoggedIn && isJoyRideActive ? <Joyride toggleJoyRide={this.onToggleJoyRide} /> : null}
-        {isAuthenticationOpen ? (
-          <Authentication setIsAuthenticationOpen={setIsAuthenticationOpen} />
-        ) : null}
+
         {isLoggedIn ? <SocketHandler /> : null}
         <SplitPane
           style={{
