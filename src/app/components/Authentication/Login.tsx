@@ -21,6 +21,22 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     };
   }
 
+  public componentWillReceiveProps(newProps: LoginInterfaces.Props) {
+    const { errorMessage } = newProps;
+    const form = this.loginRef.current;
+    if (form && errorMessage) {
+      this.setState(
+        {
+          password: '',
+          username: '',
+        },
+        () => {
+          form.classList.remove('was-validated');
+        },
+      );
+    }
+  }
+
   public render() {
     const { username, password } = this.state;
     const { errorMessage, updateErrorMessage, isLoginLoading, isLoggedIn } = this.props;
@@ -168,11 +184,6 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
         login(username, password);
       }
       form.classList.add('was-validated');
-
-      this.setState({
-        password: '',
-        username: '',
-      });
     }
   };
 }
