@@ -1,4 +1,13 @@
-import { faAngleLeft, faAngleRight, faCaretLeft, faCaretRight, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAngleLeft,
+  faAngleRight,
+  faArrowLeft,
+  faArrowRight,
+  faCaretLeft,
+  faCaretRight,
+  faSearch,
+  faTimes,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LeaderboardElement } from 'app/components/Leaderboard/LeaderboardElement';
 import { Timer } from 'app/components/Leaderboard/Timer';
@@ -11,62 +20,6 @@ import { ScaleLoader } from 'react-spinners';
 // tslint:disable-next-line
 import ReactPaginate from 'react-paginate';
 
-const player1={
-  numWin:2,
-  numLoss:3,
-  numTie:4,
-  rank:12,
-  avatar:"jerry",
-  username:"Chethan",
-  fullName:"Chethan Reddy",
-  rating:300,
-  type:"Student",
-  country:"BR",
-  id:1
-}
-
-const player2={
-  numWin:5,
-  numLoss:1,
-  numTie:7,
-  rank:2,
-  avatar:"jerry",
-  username:"Jerry",
-  fullName:"J Jerry",
-  rating:150,
-  type:"Student",
-  country:"US",
-  id:2
-}
-
-const player3={
-  numWin:7,
-  numLoss:1,
-  numTie:4,
-  rank:1,
-  avatar:"jerry",
-  username:"Dhruv",
-  fullName:"Dhruv Iyer",
-  rating:100,
-  type:"Student",
-  country:"US",
-  id:3
-}
-
-const player4={
-  numWin:7,
-  numLoss:5,
-  numTie:4,
-  rank:3,
-  avatar:"jerry",
-  username:"Galla",
-  fullName:"Galla the basketball",
-  rating:110,
-  type:"Student",
-  country:"IND",
-  id:3
-}
-
 export class Leaderboard extends React.Component<
   LeaderboardInterfaces.Props,
   LeaderboardInterfaces.State
@@ -78,11 +31,11 @@ export class Leaderboard extends React.Component<
   constructor(props: LeaderboardInterfaces.Props) {
     super(props);
     this.state = {
+      isModelOpen: false,
       isSearching: false,
       nextFetchIndex: 1,
       offset: 0,
       pattern: '',
-      isModelOpen: false
     };
   }
 
@@ -154,7 +107,37 @@ export class Leaderboard extends React.Component<
             >
               LEADERBOARD
             </Col>
-            <Col sm={3}>
+            <Col
+              style={{ position: 'absolute', left: '25%' }}
+              className="text-light font-weight-bold my-auto"
+            >
+              RANK
+            </Col>
+            <Col
+              style={{ position: 'absolute', left: '32%' }}
+              className="text-light font-weight-bold my-auto"
+            >
+              RATING
+            </Col>
+            <Col
+              style={{ position: 'absolute', left: '44%' }}
+              className="text-light font-weight-bold my-auto"
+            >
+              WON
+            </Col>
+            <Col
+              style={{ position: 'absolute', left: '52%' }}
+              className="text-light font-weight-bold my-auto"
+            >
+              TIED
+            </Col>
+            <Col
+              style={{ position: 'absolute', left: '59%' }}
+              className="text-light font-weight-bold my-auto"
+            >
+              LOST
+            </Col>
+            <Col style={{ position: 'absolute', right: '10%' }}>
               <button
                 className={styles.button}
                 onClick={() => this.setState({ isSearching: true })}
@@ -181,25 +164,63 @@ export class Leaderboard extends React.Component<
                 <span className="mb-2">Ready to initiate Match</span>
               )}
             </div>
-            {players.length ? (
-              players.map((player, index) =>
-                player &&
-                index >= this.state.offset &&
-                index <= this.state.offset + Leaderboard.paginationSize - 1 ? (
-                  <LeaderboardElement
-                    currentUsername={currentUsername}
-                    player={player}
-                    rank={player.rank}
-                    index={index}
-                    key={index}
-                    runMatch={runMatch}
-                    isPlayAgainstDisabled={timerData > 0 ? true : false}
+            <ReactPaginate
+              previousLabel={
+                <div style={{ position: 'absolute', left: '10%', bottom: '50%' }}>
+                  <FontAwesomeIcon
+                    icon={faArrowLeft}
+                    style={{
+                      color: 'grey',
+                      cursor: 'pointer',
+                      fontSize: '30px',
+                    }}
                   />
-                ) : null,
-              )
-            ) : (
-              <div style={{ padding: '0px 30px' }}>Nothing to show</div>
-            )}
+                </div>
+              }
+              nextLabel={
+                <div style={{ position: 'absolute', right: '10%', bottom: '50%' }}>
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    style={{
+                      color: 'grey',
+                      cursor: 'pointer',
+                      fontSize: '30px',
+                    }}
+                  />
+                </div>
+              }
+              breakLabel={''}
+              breakClassName={'break-me'}
+              pageCount={Math.max(renderLeaderboard.length / Leaderboard.paginationSize)}
+              marginPagesDisplayed={1}
+              pageClassName={classnames(styles.aflag)}
+              pageRangeDisplayed={2}
+              activeLinkClassName={'active'}
+              onPageChange={this.handlePageClick}
+              containerClassName={'pagination'}
+              activeClassName={'active'}
+            />
+            <div style={{ marginLeft: '15%', width: '60%' }}>
+              {players.length ? (
+                players.map((player, index) =>
+                  player &&
+                  index >= this.state.offset &&
+                  index <= this.state.offset + Leaderboard.paginationSize - 1 ? (
+                    <LeaderboardElement
+                      currentUsername={currentUsername}
+                      player={player}
+                      rank={player.rank}
+                      index={index}
+                      key={index}
+                      runMatch={runMatch}
+                      isPlayAgainstDisabled={timerData > 0 ? true : false}
+                    />
+                  ) : null,
+                )
+              ) : (
+                <div style={{ padding: '0px 30px' }}>Nothing to show</div>
+              )}
+            </div>
             <Col
               className="d-flex justify-content-center"
               style={{ width: '100vw', margin: '10px' }}
@@ -229,62 +250,10 @@ export class Leaderboard extends React.Component<
             </Col>
             {loading && (
               <Col sm={12} className="d-flex justify-content-center" style={{ padding: '2px' }}>
-                <ScaleLoader
-                  css={'override'}
-                  loading={loading}
-                  color={'#36D7B7'}
-                />
+                <ScaleLoader css={'override'} loading={loading} color={'#36D7B7'} />
               </Col>
             )}
           </Row>
-          <h1>Hello World</h1>
-          <h1>Hello World</h1>
-          <h1>Hello World</h1>
-          <h1>Hello World</h1>
-          <h1>Hello World</h1>
-          <h1>Hello World</h1>
-          <h1>Hello World</h1>
-          <h1>Hello World</h1>
-          <h1>Hello World</h1>
-          <h1>Hello World</h1>
-          <h1>Hello World</h1>
-          <h1>Hello World</h1>
-          <LeaderboardElement
-                    currentUsername="Chethan"
-                    player={player1}
-                    rank={1}
-                    index={1}
-                    key={1}
-                    runMatch={runMatch}
-                    isPlayAgainstDisabled={true}
-                  />
-          <LeaderboardElement
-                    currentUsername="Jerry"
-                    player={player2}
-                    rank={1}
-                    index={1}
-                    key={1}
-                    runMatch={runMatch}
-                    isPlayAgainstDisabled={true}
-                  />
-          <LeaderboardElement
-                    currentUsername="Dhruv"
-                    player={player3}
-                    rank={1}
-                    index={1}
-                    key={1}
-                    runMatch={runMatch}
-                    isPlayAgainstDisabled={false}
-                  />
-          <LeaderboardElement
-                    currentUsername="Galla"
-                    player={player4}
-                    rank={1}
-                    index={1}
-                    key={1}
-                    runMatch={runMatch}
-                    isPlayAgainstDisabled={true}
-                  />
         </div>
       </Grid>
     );
