@@ -13,6 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SidePanelTab } from 'app/reducers/Dashboard';
+import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Sidebar.module.css';
 import * as SideBarInterfaces from 'app/types/SideBar';
 import classnames from 'classnames';
@@ -153,7 +154,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faInfoCircle} />
           </Button>
           {isLoggedIn ? (
-            <a href="/login">
+            <a href={Routes.LOGIN}>
               <Button
                 className={classnames('py-2 px-auto', styles.customBtn)}
                 id="logout_button"

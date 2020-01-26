@@ -1,6 +1,7 @@
 import { faEnvelope, faFlag, faLock, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
+import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
 import 'app/styles/Register.css';
 import { AuthType } from 'app/types/Authentication';
@@ -63,7 +64,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       isLoggedIn,
     } = this.props;
     if (isLoggedIn) {
-      return <Redirect from="/login" to="/" />;
+      return <Redirect to={Routes.ROOT} />;
     }
 
     return (
@@ -368,7 +369,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             <div className="text-dark">
               Already have an account?{' '}
               <a
-                href="/login"
+                href={Routes.LOGIN}
                 className="text-primary"
                 style={{
                   cursor: 'pointer',

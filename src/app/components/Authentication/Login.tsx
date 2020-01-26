@@ -1,5 +1,6 @@
 import { faLock, faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
 import { AuthType } from 'app/types/Authentication/';
 import * as LoginInterfaces from 'app/types/Authentication/Login';
@@ -24,7 +25,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     const { username, password } = this.state;
     const { errorMessage, updateErrorMessage, isLoginLoading, isLoggedIn } = this.props;
     if (isLoggedIn) {
-      return <Redirect from="/login" to="/" />;
+      return <Redirect to={Routes.ROOT} />;
     }
 
     return (
@@ -138,7 +139,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             <div className="text-dark">
               Don't have an account?{' '}
               <a
-                href="/register"
+                href={Routes.REGISTER}
                 className="text-primary"
                 style={{
                   cursor: 'pointer',
@@ -158,7 +159,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
   }
 
   private handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
-    const { login, errorMessage } = this.props;
+    const { login } = this.props;
     const { username, password } = this.state;
     const form = this.loginRef.current;
     event.preventDefault();
@@ -167,15 +168,11 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
         login(username, password);
       }
       form.classList.add('was-validated');
-      if (errorMessage) {
-        this.setState(
-          {
-            password: '',
-            username: '',
-          },
-          () => form.classList.remove('was-validated'),
-        );
-      }
+
+      this.setState({
+        password: '',
+        username: '',
+      });
     }
   };
 }

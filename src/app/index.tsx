@@ -1,6 +1,7 @@
 import Login from 'app/containers/Authentication/Login';
 import Register from 'app/containers/Authentication/Register';
 import Dashboard from 'app/containers/Dashboard';
+import { Routes } from 'app/routes';
 // @ts-ignore
 import { initializeRendererAssets } from 'codecharacter-renderer';
 import * as React from 'react';
@@ -15,9 +16,9 @@ initializeRendererAssets();
 export const App = hot(module)(() => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={Dashboard} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/register" component={Register} />
+      <Route exact path={Routes.ROOT} component={Dashboard} />
+      <Route exact path={Routes.LOGIN} component={Login} />
+      <Route exact path={Routes.REGISTER} component={Register} />
     </Switch>
     <Sugar background="#484848" color="white" />
   </BrowserRouter>

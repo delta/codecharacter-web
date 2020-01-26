@@ -8,6 +8,7 @@ import SideBar from 'app/containers/SideBar';
 import SidePanel from 'app/containers/SidePanel';
 import SocketHandler from 'app/containers/SocketHandler';
 import SubmitBar from 'app/containers/SubmitBar';
+import { Routes } from 'app/routes';
 import * as style from 'app/styles/Dashboard.css';
 import * as DashboardInterfaces from 'app/types/Dashboard';
 import * as React from 'react';
@@ -100,7 +101,7 @@ export class Dashboard extends React.Component<
       }
     }
     if (!isLoggedIn) {
-      return <Redirect from="/" to="/login" />;
+      return <Redirect from="/" to={Routes.LOGIN} />;
     }
 
     return (
