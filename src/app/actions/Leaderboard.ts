@@ -13,6 +13,12 @@ export namespace LeaderboardActions {
     START_MATCH = 'START_MATCH',
   }
 
+  export enum colors {
+    GOLD = '',
+    SILVER = '#C0C0C0',
+    BRONZE = '#cd7f32',
+  }
+
   export enum updateType {
     APPEND = 'APPEND',
     REPLACE = 'REPLACE',

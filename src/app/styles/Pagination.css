@@ -2,23 +2,25 @@
 .next,
 .previous {
   border-radius: 20px;
-  border: 2px solid white;
+  border: 2px solid #1c1c1c;
   margin: 4px;
   line-height: 20px;
   user-select: none;
 }
 
-.atag:hover,
-.next:hover,
+.next,
 .previous:hover {
   cursor: pointer;
+  color: red !important;
+}
+
+.atag:hover {
+  cursor: pointer;
   background-color: white;
-  color: black !important;
+  color: red !important;
 }
 
 .atag:hover a,
-.next:hover a,
-.previous:hover a,
 .atag.active a {
   color: black;
 }
@@ -48,9 +50,6 @@
   outline: none;
 }
 
-.atag a:hover,
-.next a:hover,
-.previous a:hover,
 .atag.active {
   color: black;
   background-color: white;

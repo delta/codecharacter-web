@@ -1,74 +1,118 @@
-import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import { faCrown, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Svg } from 'app/components/Leaderboard/Svg';
+import { IconsComponent } from 'app/components/Leaderboard/IconElement';
 import * as styles from 'app/styles/Leaderboard.module.css';
 import { Avatar } from 'app/types/Authentication/Register';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import classnames from 'classnames';
 import * as React from 'react';
-import { Button, Col } from 'react-bootstrap';
+/* tslint:disable-next-line:import-name */
+import Chart from 'react-apexcharts';
+import { Col } from 'react-bootstrap';
 
 // @ts-ignore
 // tslint:disable-next-line:import-name
 import ReactCountryFlag from 'react-country-flag';
-const colors = ['#FFB900', '#69797E', '#847545', '#038387'];
 
-const SmallComponent = ({player,playerTotalMatches}:any) =>{
-  return(
-      <div>
-        <svg height="60" width="100" fill="white">
-          <text x="12" y="35">Won({Math.floor((player.numWin * 100) / playerTotalMatches)}%)</text>
-          <circle cx="30" cy="50" r="5" fill="rgb(40, 167, 69)" />
-        </svg> 
-        <svg height="60" width="100" fill="white">
-          <text x="23" y="35">Tied({Math.floor((player.numTie * 100) / playerTotalMatches)}%)</text>
-          <circle cx="50" cy="50" r="5" fill="rgb(255, 193, 7)" />
-        </svg> 
-        <svg height="60" width="100" fill="white">
-          <text x="28" y="35">Lost({Math.floor((player.numLoss * 100) / playerTotalMatches)}%)</text>
-          <circle cx="70" cy="50" r="5" fill="#DB3444" />
-        </svg> 
-      </div>
-  );
-}
+const colors = ['#ffd700', '#ffd700', '#C0C0C0', '#cd7f32'];
 
-export class LeaderboardElement extends React.Component<LeaderboardInterfaces.ElementProps, {isModelOpen:boolean}> {
-  constructor(props:any){
+export class LeaderboardElement extends React.Component<
+  LeaderboardInterfaces.ElementProps,
+  { isModelOpen: boolean; onHover: boolean; options: object }
+> {
+  // tslint:disable-next-line
+  constructor(props: any) {
     super(props);
-    this.state={
-      isModelOpen:false
-    } 
-  } 
-
-  public handleOnClick = () =>{
-    this.setState((prevState, props) => ({
-      isModelOpen: !prevState.isModelOpen
-    }));
+    this.state = {
+      isModelOpen: false,
+      onHover: false,
+      options: {
+        chart: {
+          foreColor: 'gray',
+        },
+        dataLabels: {
+          markers: {
+            colors: ['rgb(0, 143, 251)', 'rgb(0, 227, 150)', 'rgb(254, 176, 25)'],
+          },
+          style: {
+            colors: ['#000000', '#000000', '#000000'],
+          },
+        },
+        fill: {
+          colors: ['rgb(0, 143, 251)', 'rgb(0, 227, 150)', 'rgb(254, 176, 25)'],
+        },
+        labels: ['Tied', 'Won', 'Lost'],
+        plotOptions: {
+          pie: {
+            donut: {
+              labels: {
+                show: true,
+                total: {
+                  show: true,
+                  showAlways: true,
+                },
+              },
+            },
+          },
+        },
+      },
+    };
   }
+
+  public componentDidMount() {
+    setTimeout(() => {
+      // @ts-ignore
+      document.getElementById('preloader-container').style.opacity = '0';
+    }, 1000);
+
+    setTimeout(() => {
+      // @ts-ignore
+      document.getElementById('preloader-container').style.display = 'none';
+    }, 1500);
+  }
+
+  public handleOnClick = () => {
+    this.setState((prevState, props) => ({
+      isModelOpen: !prevState.isModelOpen,
+    }));
+  };
+
+  public handleOnMouseEnter = () => {
+    this.setState((prevState, props) => ({
+      onHover: true,
+    }));
+  };
+
+  public handleOnMouseLeave = () => {
+    this.setState((prevState, props) => ({
+      onHover: false,
+    }));
+  };
 
   public render() {
     const { player, index, isPlayAgainstDisabled, runMatch, currentUsername } = this.props;
 
-    const playerTotalMatches = player.numWin + player.numLoss + player.numTie;
-
     return (
       <Col
-        sm={12}
+        md={26}
         style={{
-          animationDelay: `${(index % 10) * 0.1}s`,
+          animationDelay: `${(index % 10) * 0.15}s`,
+          position: 'relative',
         }}
         className={classnames('mb-1', styles.leader)}
+        onClick={this.handleOnClick}
+        onMouseEnter={this.handleOnMouseEnter}
+        onMouseLeave={this.handleOnMouseLeave}
       >
         <div className={classnames(styles['leader-wrap'])}>
           <div className={classnames(styles['player-info-1'])}>
             {player.rank <= 3 ? (
-              <div
-                style={{
-                  backgroundColor: colors[player.rank - 1],
-                }}
-                className={classnames(styles['leader-ava'])}
-              >
-                <Svg />
+              <div style={{ position: 'relative', top: '20%', color: colors[player.rank] }}>
+                <FontAwesomeIcon
+                  style={{ fontSize: 29, display: 'inline' }}
+                  icon={faCrown}
+                  title={'Student Participant'}
+                />
               </div>
             ) : (
               <div
@@ -118,7 +162,7 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
                   }}
                   title={player.username}
                 >
-                  <span>{`${player.username.substr(0, 15)}${
+                  <span style={{ fontFamily: 'Lato' }}>{`${player.username.substr(0, 15)}${
                     player.username.length > 15 ? '...' : ''
                   }`}</span>
                 </div>
@@ -146,52 +190,39 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
 
           <div className={classnames(styles['player-info-2'])}>
             <div className={classnames(styles['leader-flag'])}>
-              <ReactCountryFlag code={player.country} svg alt={player.country}/>
+              <ReactCountryFlag code={player.country} svg alt={player.country} />
             </div>
 
             {!(isPlayAgainstDisabled || currentUsername === player.username) ? (
-              <Button
-                bsStyle="danger"
-                style={{ fontSize: '0.55em' }}
-                bsSize="xsmall"
+              <div
+                style={{ fontSize: '0.55em', cursor: 'pointer' }}
                 onClick={() => runMatch(player.id)}
                 title={`Start match`}
               >
-                <img src="assets/img/fight.png" width={15} height={15} />
-              </Button>
+                {this.state.onHover ? (
+                  <img
+                    src="assets/img/fight.png"
+                    onClick={() => runMatch(player.id)}
+                    width={15}
+                    height={15}
+                  />
+                ) : null}
+              </div>
             ) : null}
           </div>
         </div>
         <div>
-          {this.state.isModelOpen?(
-            <SmallComponent player={player} playerTotalMatches={playerTotalMatches}/>
-          ):null}
+          <IconsComponent player={player} />
         </div>
-        <div className={classnames('progress', styles['leader-bar'])} onClick={this.handleOnClick}>
-          <div
-            className="progress-bar"
-            role="progressbar"
-            style={{
-              backgroundColor: '#28A745',
-              width: `${(player.numWin * 100) / playerTotalMatches}%`,
-            }}
-          />
-          <div
-            className="progress-bar"
-            role="progressbar"
-            style={{
-              backgroundColor: '#FFC107',
-              width: `${(player.numTie * 100) / playerTotalMatches}%`,
-            }}
-          />
-          <div
-            className="progress-bar"
-            role="progressbar"
-            style={{
-              backgroundColor: '#DB3444',
-              width: `${(player.numLoss * 100) / playerTotalMatches}%`,
-            }}
-          />
+        <div>
+          {this.state.isModelOpen ? (
+            <Chart
+              options={this.state.options}
+              series={[player.numTie, player.numWin, player.numLoss]}
+              type="donut"
+              width="380"
+            />
+          ) : null}
         </div>
       </Col>
     );
