@@ -74,16 +74,12 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <FontAwesomeIcon icon={faCog} />
           </Button>
           <Button
+            href="/leaderboard"
             className={classnames('py-2 px-auto leaderboard-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.LEADERBOARD,
             })}
             id="leaderboard_button"
             title={'Leaderboard'}
-            onClick={() =>
-              sidePanelTab !== SidePanelTab.LEADERBOARD
-                ? openSidePanelTab(SidePanelTab.LEADERBOARD)
-                : closeSidePanelTab()
-            }
           >
             <FontAwesomeIcon icon={faTrophy} />
           </Button>
