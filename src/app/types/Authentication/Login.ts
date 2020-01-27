@@ -17,6 +17,7 @@ export interface StateProps {
 export interface DispatchProps {
   login: (username: string, password: string) => void;
   updateErrorMessage: (errorMessage: string) => void;
+  setErrorMessageToNull: () => void;
 }
 
 export type Props = ElementOwnProps & StateProps & DispatchProps;

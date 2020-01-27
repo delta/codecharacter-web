@@ -6,8 +6,7 @@ import { gameLogReducer } from 'app/reducers/GameLog';
 import { leaderboardReducer } from 'app/reducers/Leaderboard';
 import { matchesReducer } from 'app/reducers/MatchView';
 import { notificationReducer } from 'app/reducers/Notification';
-/* tslint:disable-next-line:import-name */
-import userReducer from 'app/reducers/User';
+import { userReducer } from 'app/reducers/User';
 import * as CodeInterfaces from 'app/types/code/Code';
 import * as EditorInterfaces from 'app/types/code/Editor';
 import * as SubmissionInterfaces from 'app/types/code/Submission';

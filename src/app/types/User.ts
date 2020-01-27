@@ -43,6 +43,7 @@ const actions = {
   logout: UserActions.logout,
   register: UserActions.register,
   resetUserState: UserActions.resetUserState,
+  setErrorMessageToNull: UserActions.setErrorMessageToNull,
   setIsAuthenticationOpen: UserActions.setIsAuthenticationOpen,
   setIsLoginLoading: UserActions.setIsLoginLoading,
   toggleUserProfileModal: UserActions.toggleUserProfileModal,

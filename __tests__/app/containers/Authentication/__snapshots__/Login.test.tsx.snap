@@ -7,6 +7,7 @@ exports[`Login Container Should render 1`] = `
   isLoggedIn={false}
   isLoginLoading={false}
   login={[Function]}
+  setErrorMessageToNull={[Function]}
   updateErrorMessage={[Function]}
 />
 `;

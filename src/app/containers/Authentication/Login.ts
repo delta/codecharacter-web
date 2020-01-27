@@ -16,6 +16,7 @@ const loginContainer = connect<LoginInterfaces.StateProps, LoginInterfaces.Dispa
   mapStateToProps,
   {
     login: UserActions.login,
+    setErrorMessageToNull: UserActions.setErrorMessageToNull,
     updateErrorMessage: UserActions.updateErrorMessage,
   },
 )(Login);

@@ -19,6 +19,16 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
       password: '',
       username: '',
     };
+    this.componentCleanup = this.componentCleanup.bind(this);
+  }
+
+  public componentCleanup() {
+    const { setErrorMessageToNull } = this.props;
+    setErrorMessageToNull();
+  }
+
+  public componentDidMount() {
+    window.addEventListener('beforeunload', this.componentCleanup);
   }
 
   public componentWillReceiveProps(newProps: LoginInterfaces.Props) {
@@ -35,6 +45,11 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
         },
       );
     }
+  }
+
+  public componentWillUnmount() {
+    this.componentCleanup();
+    window.removeEventListener('beforeunload', this.componentCleanup);
   }
 
   public render() {
