@@ -6,7 +6,8 @@ import { gameLogReducer } from 'app/reducers/GameLog';
 import { leaderboardReducer } from 'app/reducers/Leaderboard';
 import { matchesReducer } from 'app/reducers/MatchView';
 import { notificationReducer } from 'app/reducers/Notification';
-import { userReducer } from 'app/reducers/User';
+/* tslint:disable-next-line:import-name */
+import userReducer from 'app/reducers/User';
 import * as CodeInterfaces from 'app/types/code/Code';
 import * as EditorInterfaces from 'app/types/code/Editor';
 import * as SubmissionInterfaces from 'app/types/code/Submission';
@@ -18,14 +19,6 @@ import * as NotificationInterfaces from 'app/types/Notification';
 import * as UserInterfaces from 'app/types/User';
 import { routerReducer, RouterState } from 'react-router-redux';
 import { combineReducers } from 'redux';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-
-const userPersistConfig = {
-  storage,
-  blacklist: ['errorMessage'],
-  key: 'user',
-};
 
 export const rootReducer = combineReducers({
   code: codeReducer,
@@ -37,7 +30,7 @@ export const rootReducer = combineReducers({
   notification: notificationReducer,
   router: routerReducer,
   submission: submissionReducer,
-  user: persistReducer(userPersistConfig, userReducer),
+  user: userReducer,
 });
 
 export interface RootState {

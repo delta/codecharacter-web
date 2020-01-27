@@ -1,5 +1,13 @@
 import { UserActions } from 'app/actions';
 import * as UserInterfaces from 'app/types/User';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+const userPersistConfig = {
+  storage,
+  blacklist: ['errorMessage'],
+  key: 'user',
+};
 
 const userStoreIntialState: UserInterfaces.UserStoreState = {
   avatar: '',
@@ -16,10 +24,7 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   username: '',
 };
 
-export const userReducer = (
-  state = userStoreIntialState,
-  action: UserInterfaces.UserStoreAction,
-) => {
+const userReducer = (state = userStoreIntialState, action: UserInterfaces.UserStoreAction) => {
   switch (action.type) {
     case UserActions.Type.UPDATE_USER_DETAILS: {
       const {
@@ -97,3 +102,5 @@ export const userReducer = (
       return state;
   }
 };
+
+export default persistReducer(userPersistConfig, userReducer);
