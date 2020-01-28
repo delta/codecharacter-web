@@ -37,13 +37,14 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       type: RegisterInterfaces.RegisterType.Professional,
       username: '',
     };
-    this.componentCleanup = this.componentCleanup.bind(this);
+  
   }
 
-  public componentCleanup() {
+  public componentCleanup = () => {
     const { updateErrorMessage } = this.props;
     updateErrorMessage('');
-  }
+  };
+
   public componentDidMount() {
     window.addEventListener('beforeunload', this.componentCleanup);
   }
