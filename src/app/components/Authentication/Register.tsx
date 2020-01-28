@@ -38,6 +38,28 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       type: RegisterInterfaces.RegisterType.Professional,
       username: '',
     };
+    this.componentCleanup = this.componentCleanup.bind(this);
+  }
+
+  public componentCleanup() {
+    const { updateErrorMessage } = this.props;
+    updateErrorMessage('');
+  }
+  public componentDidMount() {
+    window.addEventListener('beforeunload', this.componentCleanup);
+  }
+  public componentWillReceiveProps(newProps: RegisterInterfaces.Props) {
+    const { errorMessage } = newProps;
+    if (errorMessage === 'Username/email already taken') {
+      this.setState({
+        email: '',
+        username: '',
+      });
+    }
+  }
+
+  public componentWillUnmount() {
+    window.removeEventListener('beforeunload', this.componentCleanup);
   }
 
   public render() {
@@ -296,13 +318,14 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                 <div className="text-center text-dark">Choose your spirit animal</div>
                 <div className={classnames(styles['avatar-select-container'])}>
                   <section className={classnames(styles['avatar-section'])}>
-                    {avatars.map((avatar: string) => (
+                    {avatars.map((avatar: string, index: number) => (
                       <div
                         className={
                           avatar === this.state.avatar
                             ? classnames(styles['avatar-img-active'])
                             : classnames(styles['avatar-img'])
                         }
+                        key={index}
                         onClick={() => {
                           this.setState({
                             avatar,
