@@ -93,12 +93,6 @@ export const userReducer = (
         ...userStoreIntialState,
       };
     }
-    case UserActions.Type.SET_ERROR_MESSAGE_TO_NULL: {
-      return {
-        ...state,
-        errorMessage: '',
-      };
-    }
     default:
       return state;
   }

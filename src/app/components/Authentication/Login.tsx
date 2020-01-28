@@ -23,8 +23,8 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
   }
 
   public componentCleanup() {
-    const { setErrorMessageToNull } = this.props;
-    setErrorMessageToNull();
+    const { updateErrorMessage } = this.props;
+    updateErrorMessage('');
   }
 
   public componentDidMount() {
@@ -48,7 +48,6 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
   }
 
   public componentWillUnmount() {
-    this.componentCleanup();
     window.removeEventListener('beforeunload', this.componentCleanup);
   }
 
