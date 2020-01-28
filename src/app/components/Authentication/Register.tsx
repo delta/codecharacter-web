@@ -4,7 +4,6 @@ import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
 import 'app/styles/Register.css';
-import { AuthType } from 'app/types/Authentication';
 import * as RegisterInterfaces from 'app/types/Authentication/Register';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -78,13 +77,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
     const avatars = Object.keys(RegisterInterfaces.Avatar);
 
-    const {
-      handleSelectPanel,
-      checkUsernameExists,
-      errorMessage,
-      updateErrorMessage,
-      isLoggedIn,
-    } = this.props;
+    const { checkUsernameExists, errorMessage, updateErrorMessage, isLoggedIn } = this.props;
     if (isLoggedIn) {
       return <Redirect to={Routes.ROOT} />;
     }
@@ -399,7 +392,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                 }}
                 onClick={() => {
                   updateErrorMessage('');
-                  handleSelectPanel(AuthType.LOGIN);
                 }}
               >
                 Login now
@@ -418,7 +410,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   };
 
   private handleRegister = async (event: React.FormEvent<HTMLFormElement>) => {
-    const { register, errorMessage, handleSelectPanel } = this.props;
+    const { register } = this.props;
     const {
       avatar,
       repeatPassword,
@@ -449,10 +441,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           type,
           username,
         });
-
-        if (errorMessage === '') {
-          handleSelectPanel(AuthType.LOGIN);
-        }
       }
       form.classList.add('was-validated');
       this.setState({
