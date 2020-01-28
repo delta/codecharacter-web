@@ -19,10 +19,9 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
       password: '',
       username: '',
     };
-    this.componentCleanup = this.componentCleanup.bind(this);
   }
 
-  public componentCleanup() {
+  public componentCleanup= ()=>{
     const { updateErrorMessage } = this.props;
     updateErrorMessage('');
   }
