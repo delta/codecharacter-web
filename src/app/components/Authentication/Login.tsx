@@ -21,10 +21,10 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     };
   }
 
-  public componentCleanup= ()=>{
+  public componentCleanup = () => {
     const { updateErrorMessage } = this.props;
     updateErrorMessage('');
-  }
+  };
 
   public componentDidMount() {
     window.addEventListener('beforeunload', this.componentCleanup);
