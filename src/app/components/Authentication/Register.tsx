@@ -37,7 +37,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       type: RegisterInterfaces.RegisterType.Professional,
       username: '',
     };
-  
   }
 
   public componentCleanup = () => {
