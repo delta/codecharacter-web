@@ -18,9 +18,9 @@ export class Welcome extends React.Component<
       >
         <Modal.Header>
           <Modal.Title>
-            <h5 style={{ margin: 0 }}>
+            <div style={{ margin: 0 }}>
               <b>Welcome to Code Character 2019!</b>
-            </h5>
+            </div>
           </Modal.Title>
           <button
             style={{ border: 0, padding: 0, margin: 0, backgroundColor: 'white' }}

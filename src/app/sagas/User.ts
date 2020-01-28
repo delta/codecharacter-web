@@ -26,6 +26,7 @@ export function* login(action: ActionType<typeof UserActions.login>) {
 
     // res.error is empty if res.type != 'Error'
     yield put(UserActions.updateErrorMessage(res.error));
+    yield put(UserActions.setIsLoginLoading(false));
 
     if (res.type !== resType.ERROR) {
       yield put(
@@ -39,7 +40,6 @@ export function* login(action: ActionType<typeof UserActions.login>) {
       yield put(UserActions.getUserDetails());
       yield put(CodeActions.getLastSaveTime());
       yield put(DashboardActions.setIsWelcomeModalOpen(true));
-      yield put(UserActions.setIsLoginLoading(false));
     }
   } catch (err) {
     console.error(err);

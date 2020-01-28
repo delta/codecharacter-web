@@ -1,9 +1,9 @@
 import { faEnvelope, faFlag, faLock, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
+import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
 import 'app/styles/Register.css';
-import { AuthType } from 'app/types/Authentication';
 import * as RegisterInterfaces from 'app/types/Authentication/Register';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -13,6 +13,7 @@ import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
 // tslint:disable-next-line:import-name
 import ReCAPTCHA from 'react-google-recaptcha';
+import { Redirect } from 'react-router-dom';
 
 export class Register extends React.Component<RegisterInterfaces.Props, RegisterInterfaces.State> {
   private registerRef = React.createRef<HTMLFormElement>();
@@ -38,6 +39,28 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     };
   }
 
+  public componentCleanup = () => {
+    const { updateErrorMessage } = this.props;
+    updateErrorMessage('');
+  };
+
+  public componentDidMount() {
+    window.addEventListener('beforeunload', this.componentCleanup);
+  }
+  public componentWillReceiveProps(newProps: RegisterInterfaces.Props) {
+    const { errorMessage } = newProps;
+    if (errorMessage === 'Username/email already taken') {
+      this.setState({
+        email: '',
+        username: '',
+      });
+    }
+  }
+
+  public componentWillUnmount() {
+    window.removeEventListener('beforeunload', this.componentCleanup);
+  }
+
   public render() {
     const {
       repeatPassword,
@@ -54,7 +77,11 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
     const avatars = Object.keys(RegisterInterfaces.Avatar);
 
-    const { handleSelectPanel, checkUsernameExists, errorMessage, updateErrorMessage } = this.props;
+    const { checkUsernameExists, errorMessage, updateErrorMessage, isLoggedIn } = this.props;
+    if (isLoggedIn) {
+      return <Redirect to={Routes.ROOT} />;
+    }
+
     return (
       <div>
         <div className={classnames('col-sm-12', styles.form)}>
@@ -284,13 +311,14 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                 <div className="text-center text-dark">Choose your spirit animal</div>
                 <div className={classnames(styles['avatar-select-container'])}>
                   <section className={classnames(styles['avatar-section'])}>
-                    {avatars.map((avatar: string) => (
+                    {avatars.map((avatar: string, index: number) => (
                       <div
                         className={
                           avatar === this.state.avatar
                             ? classnames(styles['avatar-img-active'])
                             : classnames(styles['avatar-img'])
                         }
+                        key={index}
                         onClick={() => {
                           this.setState({
                             avatar,
@@ -357,13 +385,13 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             <div className="text-dark">
               Already have an account?{' '}
               <a
+                href={Routes.LOGIN}
                 className="text-primary"
                 style={{
                   cursor: 'pointer',
                 }}
                 onClick={() => {
                   updateErrorMessage('');
-                  handleSelectPanel(AuthType.LOGIN);
                 }}
               >
                 Login now
@@ -382,7 +410,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   };
 
   private handleRegister = async (event: React.FormEvent<HTMLFormElement>) => {
-    const { register, errorMessage, handleSelectPanel } = this.props;
+    const { register } = this.props;
     const {
       avatar,
       repeatPassword,
@@ -413,10 +441,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           type,
           username,
         });
-
-        if (errorMessage === '') {
-          handleSelectPanel(AuthType.LOGIN);
-        }
       }
       form.classList.add('was-validated');
       this.setState({

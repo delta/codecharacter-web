@@ -1,11 +1,13 @@
 import { faLock, faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
 import { AuthType } from 'app/types/Authentication/';
 import * as LoginInterfaces from 'app/types/Authentication/Login';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 export class Login extends React.Component<LoginInterfaces.Props, LoginInterfaces.State> {
   private loginRef = React.createRef<HTMLFormElement>();
@@ -19,9 +21,42 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     };
   }
 
+  public componentCleanup = () => {
+    const { updateErrorMessage } = this.props;
+    updateErrorMessage('');
+  };
+
+  public componentDidMount() {
+    window.addEventListener('beforeunload', this.componentCleanup);
+  }
+
+  public componentWillReceiveProps(newProps: LoginInterfaces.Props) {
+    const { errorMessage } = newProps;
+    const form = this.loginRef.current;
+    if (form && errorMessage) {
+      this.setState(
+        {
+          password: '',
+          username: '',
+        },
+        () => {
+          form.classList.remove('was-validated');
+        },
+      );
+    }
+  }
+
+  public componentWillUnmount() {
+    window.removeEventListener('beforeunload', this.componentCleanup);
+  }
+
   public render() {
     const { username, password } = this.state;
-    const { errorMessage, updateErrorMessage, isLoginLoading } = this.props;
+    const { errorMessage, updateErrorMessage, isLoginLoading, isLoggedIn } = this.props;
+    if (isLoggedIn) {
+      return <Redirect to={Routes.ROOT} />;
+    }
+
     return (
       <div>
         <Row>
@@ -133,6 +168,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             <div className="text-dark">
               Don't have an account?{' '}
               <a
+                href={Routes.REGISTER}
                 className="text-primary"
                 style={{
                   cursor: 'pointer',
