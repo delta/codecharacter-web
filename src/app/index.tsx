@@ -1,4 +1,3 @@
-
 import Login from 'app/containers/Authentication/Login';
 import Register from 'app/containers/Authentication/Register';
 
@@ -37,5 +36,4 @@ export const App = hot(module)(() => (
     <PopUpMenu />
     <Sugar background="#484848" color="white" />
   </React.Fragment>
-
 ));

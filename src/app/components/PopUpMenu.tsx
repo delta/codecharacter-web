@@ -11,7 +11,8 @@ import * as styles from 'app/styles/PopUpMenu.module.css';
 import classnames from 'classnames';
 import * as React from 'react';
 
-const slackSvg = () => {
+// tslint:disable-next-line:variable-name
+const SlackSvg = () => {
   return (
     <svg
       viewBox="0 0 40 40"
@@ -66,7 +67,7 @@ export default class PopUpMenu extends React.Component<{}, { isPopUpOpen: boolea
           </div>
           <div className={classnames(styles['menu-item'], styles['menu-item-slack'])}>
             <div className={classnames(styles['menu-icon'], styles['menu-icon-slack'])}>
-              <slackSvg />
+              <SlackSvg />
             </div>
             Slack
           </div>
