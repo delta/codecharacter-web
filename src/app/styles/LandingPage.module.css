@@ -1,0 +1,42 @@
+.root {
+  background-color: #fff9f0;
+  width: 100vw;
+  height: 200vh;
+  position: absolute;
+  top: 0;
+}
+
+.main-nav {
+  position: fixed !important;
+  background-color: #fff9f0 !important;
+  width: 90% !important;
+  margin-left: 5% !important;
+  margin-top: 20px !important;
+  border-radius: 40px !important;
+  height: 70px !important;
+  z-index: 100000 !important;
+}
+
+.main-nav-down {
+  position: fixed !important;
+  background-color: white !important;
+  margin-left: 5% !important;
+  width: 90% !important;
+  height: 70px !important;
+  margin-top: 20px !important;
+  border-radius: 10px !important;
+  box-shadow: 5px !important;
+  -webkit-box-shadow: 0 0 4px grey !important;
+  -moz-box-shadow: 0 0 4px grey !important;
+  box-shadow: 0 0 4px grey !important;
+  z-index: 100000 !important;
+}
+
+.main-title {
+  position: relative !important;
+  left: 5% !important;
+}
+
+.first-cont {
+  margin-top: 140px;
+}

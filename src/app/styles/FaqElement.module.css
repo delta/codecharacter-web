@@ -1,0 +1,118 @@
+@keyframes example {
+  0% {
+    height: 0%;
+  }
+  25% {
+    height: 20%;
+  }
+  50% {
+    height: 60%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+.faq-element {
+  background-color: white;
+  margin: 30px;
+  border: 2px solid #fdd33d;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 17px;
+  cursor: pointer;
+  animation-name: example;
+  animation-duration: 1s;
+
+  transition: all 1s ease;
+}
+.faq-body {
+  /* animation-name: example;
+  animation-duration: 1s; */
+  transition: 1s;
+}
+@keyframes grow {
+  from {
+    height: 30%;
+  }
+  to {
+    height: 90%;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.faq-body-inactive {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 1s;
+  -moz-transition: max-height 1s;
+  transition: max-height 1s;
+}
+.faq-body-active {
+  max-height: 200px;
+}
+/* .faq-body-down{
+  display: inline-block;
+  animation: fade 4s;
+}  */
+
+.faq-heading {
+  margin: auto;
+  margin-bottom: 0;
+  width: 90%;
+}
+.heading-text {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  /* margin-bottom: 10px; */
+}
+
+.cont {
+  display: inline-block;
+  cursor: pointer;
+  transform: scale(0.6, 0.6);
+  position: relative;
+  right: 5%;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #6bc8b0;
+  color: #6bc8b0;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change {
+  transition: 1s;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+.faq-down {
+  border: 2px solid #8166cd;
+  /* animation: grow 2s; */
+}
