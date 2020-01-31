@@ -1,3 +1,23 @@
+@font-face {
+  font-family: 'Yellow Ginger';
+  src: url('./fonts/yellow-ginger-regular.ttf');
+}
+@font-face {
+  font-family: 'You Are The One';
+  src: url('./fonts/you-are-the-one.ttf');
+}
+@font-face {
+  font-family: 'Axiforma';
+  src: url('./fonts/Axiforma-regular.ttf');
+}
+@font-face {
+  font-family: 'Flesh';
+  src: url('./fonts/feast-of-flesh-bb.regular.ttf');
+}
+@font-face {
+  font-family: 'Under';
+  src: url('./fonts/underground.regular.ttf');
+}
 #root {
   font-family: 'Karla', sans-serif;
 }

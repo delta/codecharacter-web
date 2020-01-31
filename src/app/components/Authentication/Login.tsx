@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
+import * as navStyles from 'app/styles/LandingPage.module.css';
 import * as registerStyles from 'app/styles/Register.module.css';
 import * as LoginInterfaces from 'app/types/Authentication/Login';
 import classnames from 'classnames';
@@ -66,6 +67,24 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
 
     return (
       <div className={classnames(styles.loginRoot)}>
+        <div className={classnames(navStyles.nav)}>
+          <input type="checkbox" className={classnames(navStyles['nav-check'])} id="nav-check" />
+          <div className={classnames(navStyles['nav-header'])}>
+            <div className={classnames(navStyles['nav-title'])}>CodeCharacter</div>
+          </div>
+          <div className={classnames(navStyles['nav-btn'])}>
+            <label htmlFor="nav-check">
+              <span></span>
+              <span></span>
+              <span></span>
+            </label>
+          </div>
+
+          <div className={classnames(navStyles['nav-links'])}>
+            <a href={Routes.HOME}>Home</a>
+            <a href={Routes.REGISTER}>Register</a>
+          </div>
+        </div>
         <div className={classnames(styles.welcomeBack)}>
           <h1> Welcome! </h1>
           <p> Log in to access your dashboard and profile </p>
