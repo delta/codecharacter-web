@@ -28,7 +28,7 @@ export class Leaderboard extends React.Component<
     };
   }
 
-  public componentWillMount(): void {
+  public componentDidMount(): void {
     this.props.clearLeaderboard();
     this.props.getLeaderboard('', this.state.nextFetchIndex);
     this.props.getTimer();
