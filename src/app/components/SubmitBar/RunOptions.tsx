@@ -20,13 +20,10 @@ export class RunOptions extends React.Component<
 
   public componentDidMount(): void {
     window.addEventListener('click', this.props.closeOptions, false);
-  }
-
-  public componentWillMount(): void {
     this.props.loadMaps();
     this.props.getAiIds();
   }
-
+  
   public componentWillUnmount(): void {
     window.removeEventListener('click', this.props.closeOptions, false);
   }

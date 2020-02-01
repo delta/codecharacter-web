@@ -37,20 +37,25 @@ export class UserProfileModal extends React.Component<
     this.props.getUserDetails();
   }
 
+  public componentDidUpdate(nextProps: UserProfileInterfaces.Props){
+    // const { country } = this.state;
+    // const { userDetails } = nextProps;
+    // if (this.reactFlagRef.current) {
+    //   this.reactFlagRef.current.updateSelected(
+    //     userDetails.country !== country ? userDetails.country : country,
+    //   );
+    // }
+  }
+
   public componentWillReceiveProps(nextProps: UserProfileInterfaces.Props) {
-    const { country, username, fullName, avatar } = this.state;
-    const { userDetails } = nextProps;
-    this.setState({
-      avatar: userDetails.avatar !== avatar ? userDetails.avatar : avatar,
-      country: userDetails.country !== country ? userDetails.country : country,
-      fullName: userDetails.fullName !== fullName ? userDetails.fullName : fullName,
-      username: userDetails.username !== country ? username : userDetails.username,
-    });
-    if (this.reactFlagRef.current) {
-      this.reactFlagRef.current.updateSelected(
-        userDetails.country !== country ? userDetails.country : country,
-      );
-    }
+    // const { country, username, fullName, avatar } = this.state;
+    // const { userDetails } = nextProps;
+    // this.setState({
+    //   avatar: userDetails.avatar !== avatar ? userDetails.avatar : avatar,
+    //   country: userDetails.country !== country ? userDetails.country : country,
+    //   fullName: userDetails.fullName !== fullName ? userDetails.fullName : fullName,
+    //   username: userDetails.username !== country ? username : userDetails.username,
+    // });
   }
 
   public render() {
