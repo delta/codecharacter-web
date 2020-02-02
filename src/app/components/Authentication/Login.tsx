@@ -1,4 +1,4 @@
-import { faLock, faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
@@ -58,11 +58,16 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     }
 
     return (
-      <div>
+      <div className={classnames(styles.root)}>
+        <div className={classnames(styles.welcomeBack)}>
+          <h1> Welcome back! </h1>
+          <p> Log in to access your dashboard, settings, published projects and Snacks. </p>
+        </div>
+
         <Row>
           <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
             <form
-              className={classnames('loginForm')}
+              className={classnames(styles.loginForm)}
               noValidate
               ref={this.loginRef}
               onSubmit={this.handleLogin}
@@ -72,6 +77,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                   <div
                     className="text-center text-dark mb-2"
                     style={{
+                      fontFamily: 'Overpass',
                       fontSize: '12px',
                     }}
                   >
@@ -80,6 +86,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                       target="blank"
                       href="https://pragyan.org"
                       style={{
+                        color: '#4630eb',
                         textDecoration: 'none',
                       }}
                     >
@@ -88,14 +95,9 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                     account credentials to login.
                   </div>
                   <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text" id="inputGroupPrepend">
-                        <FontAwesomeIcon icon={faUser} />
-                      </span>
-                    </div>
                     <input
                       type="email"
-                      className="form-control"
+                      className={classnames('form-control', styles['login-input'])}
                       id="validationUsername"
                       placeholder="Email"
                       aria-describedby="inputGroupPrepend"
@@ -114,14 +116,9 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               <div className="form-row">
                 <div className="col mb-1">
                   <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text" id="inputGroupPrepend">
-                        <FontAwesomeIcon icon={faLock} />
-                      </span>
-                    </div>
                     <input
                       type="password"
-                      className="form-control"
+                      className={classnames('form-control', styles['login-input'])}
                       id="validationPassword"
                       placeholder="Password"
                       aria-describedby="inputGroupPrepend"
@@ -145,7 +142,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               <div className="form-row">
                 <div className="col text-center">
                   <button
-                    className="btn btn-info"
+                    className={classnames('btn btn-info', styles.loginButton)}
                     type="submit"
                     style={{
                       width: '100%',
@@ -159,18 +156,14 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             </form>
           </div>
         </Row>
-        <Row
-          style={{
-            borderTop: '2px solid #999',
-          }}
-        >
+        <Row>
           <Col className="text-center my-3 ml-auto mr-auto">
             <div className="text-dark">
               Don't have an account?{' '}
               <a
                 href={Routes.REGISTER}
-                className="text-primary"
                 style={{
+                  color: '#4630eb',
                   cursor: 'pointer',
                 }}
                 onClick={() => {

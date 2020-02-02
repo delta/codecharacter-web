@@ -135,3 +135,27 @@
 .avatar-section::-webkit-scrollbar-thumb {
   background-color: darkgrey;
 }
+
+.loginForm {
+  margin: auto !important;
+  width: 40% !important;
+}
+
+.root {
+  text-align: center;
+}
+
+.welcomeBack {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-family: 'Overpass', sans-serif;
+}
+
+.login-input {
+  height: 50px;
+  border: 1px solid black;
+}
+
+.loginButton {
+  background-color: #4630eb;
+}
