@@ -115,6 +115,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             </Button>
           ) : null}
           <Button
+            href="/profile"
             className={classnames('py-2 px-auto', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.USER_EDIT,
             })}
@@ -124,11 +125,6 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               if (!isLoggedIn) {
                 setIsAuthenticationOpen(true);
                 return;
-              }
-              if (sidePanelTab !== SidePanelTab.USER_EDIT) {
-                openSidePanelTab(SidePanelTab.USER_EDIT);
-              } else {
-                closeSidePanelTab();
               }
             }}
           >

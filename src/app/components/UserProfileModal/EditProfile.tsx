@@ -1,4 +1,4 @@
-import { faFlag, faPen, faUser, faUserTie } from '@fortawesome/free-solid-svg-icons';
+import { faFlag, faUser, faUserTie ,faLock,faUnlock} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as styles from 'app/styles/UserProfileModal.module.css';
 import { Avatar } from 'app/types/Authentication/Register';
@@ -6,12 +6,20 @@ import { InputName, InputState } from 'app/types/UserProfileModal';
 import * as EditProfileInterfaces from 'app/types/UserProfileModal/EditProfile';
 import classnames from 'classnames';
 import * as React from 'react';
-import { Row } from 'react-bootstrap';
 // tslint:disable-next-line:import-name
 import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
 
-export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}> {
+export class EditProfile extends React.Component<EditProfileInterfaces.Props, 
+      {isUsernameClicked:boolean,isNameClicked:boolean,isFlagClicked:boolean}> {
+  public constructor(props:any){
+    super(props);
+    this.state={
+      isUsernameClicked:false,
+      isNameClicked:false,
+      isFlagClicked:false
+    }
+  }
   public render() {
     const { handleEditProfile, onInputChange, inputEnabler } = this.props;
     const { editProfileRef, reactFlagRef } = this.props;
@@ -25,10 +33,9 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
     } = this.props;
     const avatars = Object.keys(Avatar);
     return (
-      <div className="col-12">
-        <Row className="mb-3">
+      <div className="col-6">
           <div className={classnames('col-sm-12', styles.form)}>
-            <div className={classnames('text-light', styles.formHeading)}> Basic Information </div>
+            <div className={classnames('text-dark', styles.formHeading)}> Basic Information </div>
             <form
               className={'editForm'}
               noValidate
@@ -67,9 +74,12 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                             InputState.isUserNameDisabled,
                             !listDisabled.isUserNameDisabled,
                           );
+                          this.setState( (prevState) => ({
+                            isUsernameClicked:!prevState.isUsernameClicked
+                          }))
                         }}
                       >
-                        <FontAwesomeIcon icon={faPen} />
+                        {this.state.isUsernameClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
                       </span>
                     </div>
                     <div className="invalid-feedback">Username must have minimum 5 characters.</div>
@@ -107,9 +117,12 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                             InputState.isFullNameDisabled,
                             !listDisabled.isFullNameDisabled,
                           );
+                          this.setState( (prevState) => ({
+                            isNameClicked:!prevState.isNameClicked
+                          }))
                         }}
                       >
-                        <FontAwesomeIcon icon={faPen} />
+                        {this.state.isNameClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
                       </span>
                     </div>
                     <div className="invalid-feedback">Name must have minimum 5 characters.</div>
@@ -145,9 +158,12 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                             InputState.isFlagSelectDisabled,
                             !listDisabled.isFlagSelectDisabled,
                           );
+                          this.setState( (prevState) => ({
+                            isFlagClicked:!prevState.isFlagClicked
+                          }))
                         }}
                       >
-                        <FontAwesomeIcon icon={faPen} />
+                        {this.state.isFlagClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
                       </span>
                     </div>
                     <div className="invalid-feedback">Please select a country.</div>
@@ -191,6 +207,8 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                     type="submit"
                     style={{
                       width: '100%',
+                      backgroundColor: 'rgb(70, 48, 235)',
+                      borderColor: 'rgb(70, 48, 235)'
                     }}
                     disabled={
                       listDisabled.isFullNameDisabled &&
@@ -205,7 +223,6 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
               </div>
             </form>
           </div>
-        </Row>
       </div>
     );
   }
