@@ -31,6 +31,7 @@ export enum Avatar {
 
 export interface State {
   avatar: string;
+  currentStep: number;
   collegeName?: string;
   isCaptchaValidated: boolean;
   isFormSubmitted: boolean;
