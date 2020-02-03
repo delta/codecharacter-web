@@ -112,13 +112,13 @@
 }
 
 .avatar-img:hover {
-  background-color: #117a8b;
+  background-color: #4630eb;
   cursor: pointer;
 }
 
 .avatar-img-active {
   padding: 5px;
-  background-color: #117a8b;
+  background-color: #4630eb;
   cursor: pointer;
 }
 
@@ -134,4 +134,69 @@
 
 .avatar-section::-webkit-scrollbar-thumb {
   background-color: darkgrey;
+}
+
+.register-input {
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 5px !important;
+}
+
+.root {
+  text-align: center;
+}
+
+.registerMessage {
+  font-family: 'Overpass';
+}
+
+.stage-div {
+  margin: auto;
+  width: 40%;
+  display: block;
+}
+.stage-form {
+}
+
+.register-input {
+  margin: 15px 0;
+}
+
+.button-tab {
+  position: relative;
+  height: 50px;
+
+  font-family: 'Overpass';
+}
+
+.button-tab-next {
+  position: absolute;
+  color: white;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background-color: #004445;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.button-tab-previous {
+  position: absolute;
+  color: white;
+  left: 0;
+  width: 30%;
+  height: 100%;
+  background-color: #f8b400;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.register-button {
+  background-color: #4630eb;
+  color: white;
+  width: 10%;
+  display: block;
+  position: absolute;
+  height: 50px;
+  bottom: 11px;
+  right: 27%;
 }
