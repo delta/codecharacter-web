@@ -37,25 +37,15 @@ export class UserProfileModal extends React.Component<
     this.props.getUserDetails();
   }
 
-  public componentDidUpdate(nextProps: UserProfileInterfaces.Props){
-    // const { country } = this.state;
-    // const { userDetails } = nextProps;
-    // if (this.reactFlagRef.current) {
-    //   this.reactFlagRef.current.updateSelected(
-    //     userDetails.country !== country ? userDetails.country : country,
-    //   );
-    // }
-  }
-
   public componentWillReceiveProps(nextProps: UserProfileInterfaces.Props) {
-    // const { country, username, fullName, avatar } = this.state;
-    // const { userDetails } = nextProps;
-    // this.setState({
-    //   avatar: userDetails.avatar !== avatar ? userDetails.avatar : avatar,
-    //   country: userDetails.country !== country ? userDetails.country : country,
-    //   fullName: userDetails.fullName !== fullName ? userDetails.fullName : fullName,
-    //   username: userDetails.username !== country ? username : userDetails.username,
-    // });
+    const { country, username, fullName, avatar } = this.state;
+    const { userDetails } = nextProps;
+    this.setState({
+      avatar: userDetails.avatar !== avatar ? userDetails.avatar : avatar,
+      country: userDetails.country !== country ? userDetails.country : country,
+      fullName: userDetails.fullName !== fullName ? userDetails.fullName : fullName,
+      username: userDetails.username !== country ? username : userDetails.username,
+    });
   }
 
   public render() {
@@ -72,16 +62,18 @@ export class UserProfileModal extends React.Component<
     const { userDetails } = this.props;
     return (
       <Grid fluid={true} className={classnames(styles.UserEdit)}>
-        <Row className="justify-content-between py-2 pl-3">
-          <Col className="text-light font-weight-bold my-auto">USER DETAILS</Col>
+        <Row style={{ "boxShadow" : "0 2px 4px rgba(0,0,0,0.05)" }} className="justify-content-between py-2 pl-3">
+          <Col className="text-dark font-weight-bold my-auto">USER DETAILS</Col>
         </Row>
         <div className={classnames(styles['userEdit-wrap'], 'row')}>
           <Row
             style={{
               overflowX: 'hidden',
               paddingLeft: '10px',
+              paddingRight: '10px'
             }}
           >
+            <div style={{ 'position':'relative','top':'9%','width':'100%' }}>
             <EditProfile
               handleEditProfile={this.handleEditProfile}
               onInputChange={this.onInputChange}
@@ -95,6 +87,8 @@ export class UserProfileModal extends React.Component<
               country={country}
               avatar={avatar}
             />
+            </div>
+            <div style={{ 'position':'relative','left':'55%','bottom':'47%','width':'100%' }}>
             <EditPassword
               handleEditPassword={this.handleEditPassword}
               onInputChange={this.onInputChange}
@@ -106,6 +100,7 @@ export class UserProfileModal extends React.Component<
               repeatPassword={repeatPassword}
               userDetails={userDetails}
             />
+            </div>
           </Row>
         </div>
       </Grid>

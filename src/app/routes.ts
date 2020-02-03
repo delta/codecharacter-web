@@ -2,5 +2,6 @@ export enum Routes {
   ROOT = '/',
   LOGIN = '/login',
   REGISTER = '/register',
-  LEADERBOARD = '/leaderboard'
+  LEADERBOARD = '/leaderboard',
+  USERPROFILEMODEL = '/profile',
 }

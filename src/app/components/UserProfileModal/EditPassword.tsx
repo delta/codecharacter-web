@@ -1,4 +1,4 @@
-import { faLock, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faPen ,faUnlock} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as styles from 'app/styles/UserProfileModal.module.css';
 import { InputName, InputState } from 'app/types/UserProfileModal';
@@ -7,17 +7,23 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Button, Row } from 'react-bootstrap';
 
-export class EditPassword extends React.Component<EditPasswordInterfaces.Props, {}> {
+export class EditPassword extends React.Component<EditPasswordInterfaces.Props, {isClicked:boolean}> {
+  public constructor(props:any){
+    super(props);
+    this.state={
+      isClicked:false,
+    }
+  }
   public render() {
     const { handleEditPassword, onInputChange, inputEnabler } = this.props;
     const { editPasswordRef } = this.props;
     const { listDisabled, oldPassword, password, repeatPassword } = this.props;
     return (
-      <div className="col-12">
+      <div className="col-5">
         <Row className={classnames('mb-3')}>
           <div className={classnames('col-sm-12', styles.form)}>
             <div
-              className={classnames('text-light', styles.formHeading)}
+              className={classnames('text-dark', styles.formHeading)}
               style={{
                 display: 'flex',
               }}
@@ -25,11 +31,17 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
               {' '}
               Credentials
               <Button
+                style={{
+                  'color':'grey',
+                }}
                 className={classnames(styles.editPen2, 'ml-auto p-0', {
                   [`${styles.editPen2Active}`]: !listDisabled.isPasswordDisabled,
                 })}
                 onClick={() => {
                   inputEnabler(InputState.isPasswordDisabled, !listDisabled.isPasswordDisabled);
+                  this.setState( (prevState) => ({
+                    isClicked:!prevState.isClicked
+                  }))
                 }}
               >
                 <FontAwesomeIcon icon={faPen} />
@@ -46,7 +58,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                   <div className="input-group">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroupPrepend">
-                        <FontAwesomeIcon icon={faLock} />
+                        {this.state.isClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
                       </span>
                     </div>
                     <input
@@ -72,7 +84,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                   <div className="input-group">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroupPrepend">
-                        <FontAwesomeIcon icon={faLock} />
+                        {this.state.isClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
                       </span>
                     </div>
                     <input
@@ -98,7 +110,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                   <div className="input-group">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroupPrepend">
-                        <FontAwesomeIcon icon={faLock} />
+                        {this.state.isClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
                       </span>
                     </div>
                     <input
@@ -127,6 +139,8 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                     style={{
                       marginBottom: '10px',
                       width: '100%',
+                      backgroundColor:'rgb(70, 48, 235)',
+                      borderColor:'rgb(70, 48, 235)',
                     }}
                     disabled={listDisabled.isPasswordDisabled}
                   >
