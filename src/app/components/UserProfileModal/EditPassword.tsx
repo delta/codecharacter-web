@@ -1,4 +1,4 @@
-import { faLock, faPen ,faUnlock} from '@fortawesome/free-solid-svg-icons';
+import { faLock, faPen ,faUnlock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as styles from 'app/styles/UserProfileModal.module.css';
 import { InputName, InputState } from 'app/types/UserProfileModal';
