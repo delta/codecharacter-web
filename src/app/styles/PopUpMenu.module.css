@@ -1,7 +1,7 @@
 .main-button {
   position: absolute;
   bottom: 20px;
-  right: 100px;
+  left: 100px;
   width: 50px;
   height: 50px;
   font-size: 85%;
@@ -11,13 +11,16 @@
   box-shadow: 1px 1px #c0c0c0;
   position: fixed;
 }
+.main-button:focus {
+  outline: none;
+}
 
 .pop-up {
   width: 200px;
   height: 200px;
   background-color: white;
   position: absolute;
-  right: 30px;
+  left: 30px;
   bottom: 80px;
   border-radius: 10px;
   border: 1px solid black;
@@ -29,22 +32,28 @@
 
 .menu-item {
   margin: 15px;
-  color: white;
-  background-color: black;
+  color: black;
+  background-color: white;
   padding: 5px;
   text-align: center;
   font-family: 'Roboto';
   border-radius: 30px;
   margin-left: 15px;
+  display: flex;
+  flex-direction: row;
 }
 
 .menu-item-github {
   margin-top: 35px;
+  border: 1px solid black;
+  margin-right: 20px;
 }
 
 .menu-icon {
-  position: absolute;
-  left: 20px;
+  /* position: absolute; */
+  /* left: 25px; */
+  font-size: 20px;
+  margin-right: 10px;
 }
 
 .menu-item-documentation {
@@ -59,9 +68,6 @@
   background-color: #49144b;
   color: white;
 }
-/* .menu-icon-doc{
-  margin-right:15px!important;
-} */
 
 .menu-icon-slack {
   justify-content: center;
