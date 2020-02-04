@@ -56,11 +56,11 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
               <div className="form-row">
                 <div className="col mb-3">
                   <div className="input-group">
+                    <label className="labeltext">Old Password</label>
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroupPrepend">
                         {this.state.isClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
                       </span>
-                    </div>
                     <input
                       type="password"
                       className="form-control"
@@ -73,6 +73,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                       required
                       disabled={listDisabled.isPasswordDisabled}
                     />
+                    </div>
                     <div className="invalid-feedback">
                       Password should have minimum 5 characters.
                     </div>
@@ -82,11 +83,11 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
               <div className="form-row">
                 <div className="col mb-3">
                   <div className="input-group">
+                  <label className="labeltext">New Password</label>
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroupPrepend">
                         {this.state.isClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
                       </span>
-                    </div>
                     <input
                       type="password"
                       className="form-control"
@@ -99,6 +100,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                       required
                       disabled={listDisabled.isPasswordDisabled}
                     />
+                    </div>
                     {listDisabled.isPasswordDisabled ? (
                       <div className="invalid-feedback">Passwords should match.</div>
                     ) : null}
@@ -108,11 +110,11 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
               <div className="form-row">
                 <div className="col mb-3">
                   <div className="input-group">
+                  <label className="labeltext">Confirm Password</label>
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroupPrepend">
                         {this.state.isClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
                       </span>
-                    </div>
                     <input
                       type="password"
                       className="form-control"
@@ -125,6 +127,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                       required
                       disabled={listDisabled.isPasswordDisabled}
                     />
+                    </div>
                     {listDisabled.isPasswordDisabled ? (
                       <div className="invalid-feedback">Passwords should match.</div>
                     ) : null}
