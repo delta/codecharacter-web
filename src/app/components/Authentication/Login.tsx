@@ -62,6 +62,27 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
         <div className={classnames(styles.welcomeBack)}>
           <h1> Welcome! </h1>
           <p> Log in to access your dashboard and profile </p>
+          <div
+            className="text-center text-dark mb-2"
+            style={{
+              fontFamily: 'Poppins',
+              fontSize: '12px',
+              marginTop: '0',
+            }}
+          >
+            You can use your{' '}
+            <a
+              target="blank"
+              href="https://pragyan.org"
+              style={{
+                color: '#4630eb',
+                textDecoration: 'none',
+              }}
+            >
+              Pragyan
+            </a>{' '}
+            account credentials to login.
+          </div>
         </div>
 
         <Row>
@@ -74,32 +95,15 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             >
               <div className="form-row">
                 <div className="col mb-4">
-                  <div
-                    className="text-center text-dark mb-2"
-                    style={{
-                      fontFamily: 'Overpass',
-                      fontSize: '12px',
-                    }}
-                  >
-                    You can use your{' '}
-                    <a
-                      target="blank"
-                      href="https://pragyan.org"
-                      style={{
-                        color: '#4630eb',
-                        textDecoration: 'none',
-                      }}
-                    >
-                      Pragyan
-                    </a>{' '}
-                    account credentials to login.
+                  <div className={classnames(styles['login-label'])} style={{ right: '153px' }}>
+                    {' '}
+                    Username:{' '}
                   </div>
                   <div className="input-group">
                     <input
                       type="email"
                       className={classnames('form-control', styles['login-input'])}
                       id="validationUsername"
-                      placeholder="Email"
                       aria-describedby="inputGroupPrepend"
                       required
                       value={username}
@@ -118,12 +122,12 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               </div>
               <div className="form-row">
                 <div className="col mb-1">
+                  <div className={classnames(styles['login-label'])}> Password: </div>
                   <div className="input-group">
                     <input
                       type="password"
                       className={classnames('form-control', styles['login-input'])}
                       id="validationPassword"
-                      placeholder="Password"
                       aria-describedby="inputGroupPrepend"
                       minLength={5}
                       value={password}
