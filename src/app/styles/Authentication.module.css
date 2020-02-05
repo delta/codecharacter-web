@@ -138,7 +138,13 @@
 
 .loginForm {
   margin: auto !important;
-  width: 40% !important;
+  width: 36.5% !important;
+}
+
+.login-error {
+  background-color: #fee5d4;
+  padding: 9px;
+  margin-top: 0;
 }
 
 .root {
@@ -154,8 +160,26 @@
 .login-input {
   height: 50px;
   border: 1px solid black;
+  border-radius: 3px !important;
+}
+.loginInput:focus,
+.loginInput:active {
+  box-shadow: none;
+}
+.loginButton:hover {
+  background-color: #4630eb;
 }
 
 .loginButton {
   background-color: #4630eb;
+}
+
+.loginButton:focus {
+  background-color: #4630eb;
+}
+
+.loginButton:focus,
+.loginButton:active {
+  outline: none !important;
+  box-shadow: none;
 }

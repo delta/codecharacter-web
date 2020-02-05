@@ -60,8 +60,8 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     return (
       <div className={classnames(styles.root)}>
         <div className={classnames(styles.welcomeBack)}>
-          <h1> Welcome back! </h1>
-          <p> Log in to access your dashboard, settings, published projects and Snacks. </p>
+          <h1> Welcome! </h1>
+          <p> Log in to access your dashboard and profile </p>
         </div>
 
         <Row>
@@ -109,7 +109,10 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                         })
                       }
                     />
-                    <div className="invalid-feedback">Please enter a valid Email.</div>
+                    <div className={classnames('invalid-feedback', styles['login-error'])}>
+                      {' '}
+                      Please enter a valid Email.{' '}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -131,7 +134,9 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                       }
                       required
                     />
-                    <div className="invalid-feedback">Please enter the correct password.</div>
+                    <div className={classnames('invalid-feedback', styles['login-error'])}>
+                      Please enter the correct password.
+                    </div>
                   </div>
                 </div>
               </div>
