@@ -1,11 +1,9 @@
-import { faLock, faPen ,faUnlock } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as styles from 'app/styles/UserProfileModal.module.css';
-import { InputName, InputState } from 'app/types/UserProfileModal';
+import { InputName } from 'app/types/UserProfileModal';
 import * as EditPasswordInterfaces from 'app/types/UserProfileModal/EditPassword';
 import classnames from 'classnames';
 import * as React from 'react';
-import { Button, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 export class EditPassword extends React.Component<EditPasswordInterfaces.Props, {isClicked:boolean}> {
   public constructor(props:any){
@@ -15,9 +13,9 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
     }
   }
   public render() {
-    const { handleEditPassword, onInputChange, inputEnabler } = this.props;
+    const { handleEditPassword, onInputChange } = this.props;
     const { editPasswordRef } = this.props;
-    const { listDisabled, oldPassword, password, repeatPassword } = this.props;
+    const { oldPassword, password, repeatPassword } = this.props;
     return (
       <div className="col-5">
         <Row className={classnames('mb-3')}>
@@ -30,22 +28,6 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
             >
               {' '}
               Credentials
-              <Button
-                style={{
-                  'color':'grey',
-                }}
-                className={classnames(styles.editPen2, 'ml-auto p-0', {
-                  [`${styles.editPen2Active}`]: !listDisabled.isPasswordDisabled,
-                })}
-                onClick={() => {
-                  inputEnabler(InputState.isPasswordDisabled, !listDisabled.isPasswordDisabled);
-                  this.setState( (prevState) => ({
-                    isClicked:!prevState.isClicked
-                  }))
-                }}
-              >
-                <FontAwesomeIcon icon={faPen} />
-              </Button>
             </div>
             <form
               className={'editpasswordForm'}
@@ -58,9 +40,6 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                   <div className="input-group">
                     <label className="labeltext">Old Password</label>
                     <div className="input-group-prepend">
-                      <span className="input-group-text" id="inputGroupPrepend">
-                        {this.state.isClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
-                      </span>
                     <input
                       type="password"
                       className="form-control"
@@ -71,7 +50,6 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                       value={oldPassword}
                       onChange={(e) => onInputChange(InputName.oldPassword, e.target.value)}
                       required
-                      disabled={listDisabled.isPasswordDisabled}
                     />
                     </div>
                     <div className="invalid-feedback">
@@ -85,9 +63,6 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                   <div className="input-group">
                   <label className="labeltext">New Password</label>
                     <div className="input-group-prepend">
-                      <span className="input-group-text" id="inputGroupPrepend">
-                        {this.state.isClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
-                      </span>
                     <input
                       type="password"
                       className="form-control"
@@ -98,12 +73,9 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                       value={password}
                       onChange={(e) => onInputChange(InputName.password, e.target.value)}
                       required
-                      disabled={listDisabled.isPasswordDisabled}
                     />
                     </div>
-                    {listDisabled.isPasswordDisabled ? (
-                      <div className="invalid-feedback">Passwords should match.</div>
-                    ) : null}
+                    <div className="invalid-feedback">Passwords should match.</div>
                   </div>
                 </div>
               </div>
@@ -112,9 +84,6 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                   <div className="input-group">
                   <label className="labeltext">Confirm Password</label>
                     <div className="input-group-prepend">
-                      <span className="input-group-text" id="inputGroupPrepend">
-                        {this.state.isClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
-                      </span>
                     <input
                       type="password"
                       className="form-control"
@@ -125,12 +94,9 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                       value={repeatPassword}
                       onChange={(e) => onInputChange(InputName.repeatPassword, e.target.value)}
                       required
-                      disabled={listDisabled.isPasswordDisabled}
                     />
                     </div>
-                    {listDisabled.isPasswordDisabled ? (
-                      <div className="invalid-feedback">Passwords should match.</div>
-                    ) : null}
+                    <div className="invalid-feedback">Passwords should match.</div>
                   </div>
                 </div>
               </div>
@@ -145,7 +111,6 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                       backgroundColor:'rgb(70, 48, 235)',
                       borderColor:'rgb(70, 48, 235)',
                     }}
-                    disabled={listDisabled.isPasswordDisabled}
                   >
                     Save Changes
                   </button>

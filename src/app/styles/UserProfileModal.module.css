@@ -188,4 +188,20 @@
 .userEdit-wrap::-webkit-scrollbar-thumb {
   background-color: #ddd;
 }
+
+.editProfileElement{
+  overflow-x: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 30%;
+  margin-top: 5%;
+}
+
+.editPasswordElement{
+  overflow-x: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 33%;
+  margin-top: 5%;
+}
   
