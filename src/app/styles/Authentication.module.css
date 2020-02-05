@@ -160,7 +160,7 @@
 }
 
 .welcomeBack {
-  margin-top: 50px;
+  margin-top: 57px;
   margin-bottom: 10px;
   font-family: 'Poppins', sans-serif;
 }
@@ -173,7 +173,7 @@
 .login-input:focus,
 .login-input:active {
   outline: none !important;
-  box-shadow: none;
+  box-shadow: none !important;
 }
 .loginButton {
   background-color: #4630eb;
