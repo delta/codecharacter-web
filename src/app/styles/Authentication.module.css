@@ -148,8 +148,7 @@
   margin-top: 0;
 }
 .login-label {
-  position: relative;
-  right: 153px;
+  text-align: left;
   margin-bottom: 3px;
   font-weight: bold;
   font-family: 'Poppins';

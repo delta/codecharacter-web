@@ -137,7 +137,6 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                 </div>
               </div>
               <div className="form-row">
-                <div className="input-group" />
                 <div className="col text-center mt -0 mb-2 errorMessage">{errorMessage}</div>
               </div>
               <div className="form-row">
