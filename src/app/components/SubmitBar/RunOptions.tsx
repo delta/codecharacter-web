@@ -23,7 +23,7 @@ export class RunOptions extends React.Component<
     this.props.loadMaps();
     this.props.getAiIds();
   }
-  
+
   public componentWillUnmount(): void {
     window.removeEventListener('click', this.props.closeOptions, false);
   }

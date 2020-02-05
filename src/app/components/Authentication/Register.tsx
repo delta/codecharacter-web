@@ -192,7 +192,9 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       })
                     }
                   />
-                  <label className="flaglabel" htmlFor="switch">Toggle</label>
+                  <label className="flaglabel" htmlFor="switch">
+                    Toggle
+                  </label>
                 </span>
               </div>
               {isStudent ? (

@@ -70,12 +70,12 @@ input:checked + .flaglabel:after {
   width: 20px;
 }
 
-.input-group{
-  display:block !important;
+.input-group {
+  display: block !important;
 }
 
-.labeltext{
-  color:rgba(0, 0, 32, 0.8);
+.labeltext {
+  color: rgba(0, 0, 32, 0.8);
   font-size: 14px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;

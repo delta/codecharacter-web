@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 // tslint:disable-next-line:import-name
-import ReactFlagsSelect from 'react-flags-select'; 
+import ReactFlagsSelect from 'react-flags-select';
 
 export class UserProfileModal extends React.Component<
   UserProfileInterfaces.Props,
@@ -27,7 +27,7 @@ export class UserProfileModal extends React.Component<
       password: '',
       repeatPassword: '',
       username: userDetails.username,
-      isPasswordPage:false
+      isPasswordPage: false,
     };
     this.props.getUserDetails();
   }
@@ -45,39 +45,45 @@ export class UserProfileModal extends React.Component<
     const { userDetails } = this.props;
     return (
       <Grid fluid={true} className={classnames(styles.UserEdit)}>
-        <Row style={{ "boxShadow" : "0 2px 4px rgba(0,0,0,0.05)" }} className="justify-content-between py-2 pl-3">
+        <Row
+          style={{ boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}
+          className="justify-content-between py-2 pl-3"
+        >
           <Col className="text-dark font-weight-bold my-auto">USER DETAILS</Col>
         </Row>
 
-          <Row
-            className={this.state.isPasswordPage ? classnames(styles.editProfileElement) : classnames(styles.editPasswordElement)}
-          >
-              {this.state.isPasswordPage?(
-                <EditProfile
-                handleEditProfile={this.handleEditProfile}
-                onInputChange={this.onInputChange}
-                editProfileRef={this.editProfileRef}
-                reactFlagRef={this.reactFlagRef}
-                username={username}
-                fullName={fullName}
-                userDetails={userDetails}
-                country={country}
-                avatar={avatar}
-              />
-              ):
-              (
-              <EditPassword
-                handleEditPassword={this.handleEditPassword}
-                onInputChange={this.onInputChange}
-                editPasswordRef={this.editPasswordRef}
-                oldPassword={oldPassword}
-                password={password}
-                repeatPassword={repeatPassword}
-                userDetails={userDetails}
-              />
-              )}  
-            {this.props.userDetails.errorMessage}
-          </Row>
+        <Row
+          className={
+            this.state.isPasswordPage
+              ? classnames(styles.editProfileElement)
+              : classnames(styles.editPasswordElement)
+          }
+        >
+          {this.state.isPasswordPage ? (
+            <EditProfile
+              handleEditProfile={this.handleEditProfile}
+              onInputChange={this.onInputChange}
+              editProfileRef={this.editProfileRef}
+              reactFlagRef={this.reactFlagRef}
+              username={username}
+              fullName={fullName}
+              userDetails={userDetails}
+              country={country}
+              avatar={avatar}
+            />
+          ) : (
+            <EditPassword
+              handleEditPassword={this.handleEditPassword}
+              onInputChange={this.onInputChange}
+              editPasswordRef={this.editPasswordRef}
+              oldPassword={oldPassword}
+              password={password}
+              repeatPassword={repeatPassword}
+              userDetails={userDetails}
+            />
+          )}
+          {this.props.userDetails.errorMessage}
+        </Row>
       </Grid>
     );
   }
@@ -111,8 +117,8 @@ export class UserProfileModal extends React.Component<
       if (form.checkValidity()) {
         if (password === repeatPassword) {
           editUserPassword({
-              oldPassword,
-              password,
+            oldPassword,
+            password,
           });
         }
       }

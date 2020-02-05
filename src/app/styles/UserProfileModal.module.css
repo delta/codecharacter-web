@@ -125,7 +125,7 @@
   font-size: 20px;
   border-bottom: 2px solid #ebebeb;
   margin: 0 0 10px 0px;
-  width:100%;
+  width: 100%;
 }
 
 .avatar-select-container {
@@ -189,7 +189,7 @@
   background-color: #ddd;
 }
 
-.editProfileElement{
+.editProfileElement {
   overflow-x: hidden;
   padding-left: 10px;
   padding-right: 10px;
@@ -197,11 +197,10 @@
   margin-top: 5%;
 }
 
-.editPasswordElement{
+.editPasswordElement {
   overflow-x: hidden;
   padding-left: 10px;
   padding-right: 10px;
   margin-left: 33%;
   margin-top: 5%;
 }
-  
