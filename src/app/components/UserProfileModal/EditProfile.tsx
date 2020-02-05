@@ -1,9 +1,6 @@
-import { faPen,faLock,faUnlock} from '@fortawesome/free-solid-svg-icons';
-import { Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as styles from 'app/styles/UserProfileModal.module.css';
 import { Avatar } from 'app/types/Authentication/Register';
-import { InputName, InputState } from 'app/types/UserProfileModal';
+import { InputName } from 'app/types/UserProfileModal';
 import * as EditProfileInterfaces from 'app/types/UserProfileModal/EditProfile';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -11,24 +8,14 @@ import * as React from 'react';
 import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
 
-export class EditProfile extends React.Component<EditProfileInterfaces.Props, 
-      {isUsernameClicked:boolean,isNameClicked:boolean,isFlagClicked:boolean}> {
-  public constructor(props:any){
-    super(props);
-    this.state={
-      isUsernameClicked:false,
-      isNameClicked:false,
-      isFlagClicked:false
-    }
-  }
+export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}> {
   public render() {
-    const { handleEditProfile, onInputChange, inputEnabler } = this.props;
+    const { handleEditProfile, onInputChange } = this.props;
     const { editProfileRef, reactFlagRef } = this.props;
     const {
-      username,
-      listDisabled,
-      fullName,
-      country,
+      username:currentUsername,
+      fullName:currentFullName,
+      country:currentCountry,
       userDetails,
       avatar: currentAvatar,
     } = this.props;
@@ -38,36 +25,6 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props,
           <div className={classnames('col-sm-12', styles.form)}>
             <div style={{display:'flex'}}>
             <div className={classnames('text-dark', styles.formHeading)}> Basic Information
-            <Button
-                style={{
-                  'color':'grey',
-                  marginLeft:'100px !'
-                }}
-                className={classnames(styles.editPen2, 'ml-auto p-0', {
-                  [`${styles.editPen2Active}`]: !listDisabled.isPasswordDisabled,
-                })}
-                onClick={() => {
-                  inputEnabler(
-                    InputState.isFullNameDisabled,
-                    !listDisabled.isFullNameDisabled,
-                  );
-                  inputEnabler(
-                    InputState.isUserNameDisabled,
-                    !listDisabled.isUserNameDisabled,
-                  );
-                  inputEnabler(
-                    InputState.isFlagSelectDisabled,
-                    !listDisabled.isFlagSelectDisabled,
-                  );
-                  this.setState( (prevState) => ({
-                    isNameClicked:!prevState.isNameClicked,
-                    isUsernameClicked:!prevState.isUsernameClicked,
-                    isFlagClicked:!prevState.isFlagClicked
-                  }))
-                }}
-              >
-                <FontAwesomeIcon icon={faPen} />
-            </Button>
            </div>
             </div>
             <form
@@ -89,21 +46,11 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props,
                       aria-describedby="inputGroupPrepend"
                       maxLength={50}
                       minLength={5}
-                      value={username}
+                      value={currentUsername}
                       onChange={(e) => onInputChange(InputName.username, e.target.value)}
                       pattern="[a-zA-Z0-9]+"
                       required
-                      disabled={listDisabled.isUserNameDisabled}
                     />
-                    <div className="input-group-append">
-                      <span
-                        className={classnames('input-group-text', styles.editPen, {
-                          [`${styles.editPenActive}`]: !listDisabled.isUserNameDisabled,
-                        })}
-                      >
-                        {this.state.isUsernameClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
-                      </span>
-                    </div>
                   </div>            
                     <div className="invalid-feedback">Username must have minimum 5 characters.</div>
                   </div>
@@ -123,23 +70,13 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props,
                       aria-describedby="inputGroupPrepend"
                       maxLength={50}
                       minLength={5}
-                      value={fullName}
+                      value={currentFullName}
                       onChange={(e) => {
                         onInputChange(InputName.fullName, e.target.value)
                         console.log(InputName.fullName)}
                       }
                       required
-                      disabled={listDisabled.isFullNameDisabled}
                     />
-                    <div className="input-group-append">
-                      <span
-                        className={classnames('input-group-text', styles.editPen, {
-                          [`${styles.editPenActive}`]: !listDisabled.isFullNameDisabled,
-                        })}
-                      >
-                        {this.state.isNameClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
-                      </span>
-                    </div>
                     <div className="invalid-feedback">Name must have minimum 5 characters.</div>
                   </div>
                   </div>
@@ -155,22 +92,12 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props,
                       searchable={true}
                       placeholder="Search for a country"
                       className="customFlag"
-                      defaultCountry={country}
+                      defaultCountry={currentCountry}
                       onSelect={(countryCode: string) =>
                         onInputChange(InputName.country, countryCode)
                       }
                       ref={reactFlagRef}
-                      disabled={listDisabled.isFlagSelectDisabled}
                     />
-                    <div className="input-group-append">
-                      <span
-                        className={classnames('input-group-text', styles.editPen, {
-                          [`${styles.editPenActive}`]: !listDisabled.isFlagSelectDisabled,
-                        })}
-                      >
-                        {this.state.isFlagClicked?<FontAwesomeIcon icon={faUnlock} />:<FontAwesomeIcon icon={faLock} />}
-                      </span>
-                    </div>
                     </div>
                     <div className="invalid-feedback">Please select a country.</div>
                   </div>
@@ -218,19 +145,12 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props,
                       backgroundColor: 'rgb(70, 48, 235)',
                       borderColor: 'rgb(70, 48, 235)'
                     }}
-                    disabled={
-                      listDisabled.isFullNameDisabled &&
-                      listDisabled.isFlagSelectDisabled &&
-                      listDisabled.isUserNameDisabled &&
-                      currentAvatar === userDetails.avatar
+                    disabled = {  
+                      currentAvatar === userDetails.avatar &&
+                      currentFullName === userDetails.fullName &&
+                      currentUsername === userDetails.username &&
+                      currentCountry === userDetails.country 
                     }
-                    onClick={() => {
-                      this.setState( (prevState) => ({
-                        isNameClicked:!prevState.isNameClicked,
-                        isUsernameClicked:!prevState.isUsernameClicked,
-                        isFlagClicked:!prevState.isFlagClicked
-                      }))
-                    }}
                   >
                     Save Changes
                   </button>
