@@ -188,7 +188,7 @@
   box-shadow: none !important;
 }
 .loginButton {
-  background-color: #4630eb;
+  background-color: #4630eb !important ;
   margin-top: 10px;
   width: 100%;
 }
