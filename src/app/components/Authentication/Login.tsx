@@ -63,21 +63,13 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           <h1> Welcome! </h1>
           <p> Log in to access your dashboard and profile </p>
           <div
-            className="text-center text-dark mb-2"
-            style={{
-              fontFamily: 'Poppins',
-              fontSize: '12px',
-              marginTop: '0',
-            }}
+            className={classnames("text-center text-dark mb-2",styles['pragyan-login'])}
           >
             You can use your{' '}
             <a
               target="blank"
               href="https://pragyan.org"
-              style={{
-                color: '#4630eb',
-                textDecoration: 'none',
-              }}
+              className={classnames(styles['create-one-button'])}
             >
               Pragyan
             </a>{' '}
@@ -97,7 +89,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                 <div className="col mb-4">
                   <div className={classnames(styles['login-label'])} style={{ right: '153px' }}>
                     {' '}
-                    Username:{' '}
+                    Username{' '}
                   </div>
                   <div className="input-group">
                     <input
@@ -122,7 +114,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               </div>
               <div className="form-row">
                 <div className="col mb-1">
-                  <div className={classnames(styles['login-label'])}> Password: </div>
+                  <div className={classnames(styles['login-label'])}> Password </div>
                   <div className="input-group">
                     <input
                       type="password"
@@ -153,9 +145,6 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                   <button
                     className={classnames('btn btn-info', styles.loginButton)}
                     type="submit"
-                    style={{
-                      width: '100%',
-                    }}
                   >
                     Login &nbsp;
                     {isLoginLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : null}
@@ -171,10 +160,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               Don't have an account?{' '}
               <a
                 href={Routes.REGISTER}
-                style={{
-                  color: '#4630eb',
-                  cursor: 'pointer',
-                }}
+                className={classnames(styles['create-one-button'])}
                 onClick={() => {
                   updateErrorMessage('');
                   this.props.handleSelectPanel(AuthType.REGISTER);

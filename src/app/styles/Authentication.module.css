@@ -164,6 +164,19 @@
   margin-bottom: 10px;
   font-family: 'Poppins', sans-serif;
 }
+.pragyan-login{
+  font-family: 'Poppins';
+  font-size: 12px;
+  margin-top: 0;
+}
+
+.create-one-button{
+  color: #4630eb;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
 
 .login-input {
   height: 50px;
@@ -178,6 +191,7 @@
 .loginButton {
   background-color: #4630eb;
   margin-top: 10px;
+  width: 100%;
 }
 
 .loginButton:hover {
