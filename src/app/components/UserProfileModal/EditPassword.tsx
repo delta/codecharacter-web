@@ -5,12 +5,15 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Row } from 'react-bootstrap';
 
-export class EditPassword extends React.Component<EditPasswordInterfaces.Props, {isClicked:boolean}> {
-  public constructor(props:any){
+export class EditPassword extends React.Component<
+  EditPasswordInterfaces.Props,
+  { isClicked: boolean }
+> {
+  public constructor(props: any) {
     super(props);
-    this.state={
-      isClicked:false,
-    }
+    this.state = {
+      isClicked: false,
+    };
   }
   public render() {
     const { handleEditPassword, onInputChange } = this.props;
@@ -40,17 +43,17 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                   <div className="input-group">
                     <label className="labeltext">Old Password</label>
                     <div className="input-group-prepend">
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="editValidationOldPassword"
-                      placeholder="Old Password"
-                      aria-describedby="inputGroupPrepend"
-                      minLength={5}
-                      value={oldPassword}
-                      onChange={(e) => onInputChange(InputName.oldPassword, e.target.value)}
-                      required
-                    />
+                      <input
+                        type="password"
+                        className="form-control"
+                        id="editValidationOldPassword"
+                        placeholder="Old Password"
+                        aria-describedby="inputGroupPrepend"
+                        minLength={5}
+                        value={oldPassword}
+                        onChange={(e) => onInputChange(InputName.oldPassword, e.target.value)}
+                        required
+                      />
                     </div>
                     <div className="invalid-feedback">
                       Password should have minimum 5 characters.
@@ -61,19 +64,19 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
               <div className="form-row">
                 <div className="col mb-3">
                   <div className="input-group">
-                  <label className="labeltext">New Password</label>
+                    <label className="labeltext">New Password</label>
                     <div className="input-group-prepend">
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="editValidationPassword"
-                      placeholder="New Password"
-                      aria-describedby="inputGroupPrepend"
-                      minLength={5}
-                      value={password}
-                      onChange={(e) => onInputChange(InputName.password, e.target.value)}
-                      required
-                    />
+                      <input
+                        type="password"
+                        className="form-control"
+                        id="editValidationPassword"
+                        placeholder="New Password"
+                        aria-describedby="inputGroupPrepend"
+                        minLength={5}
+                        value={password}
+                        onChange={(e) => onInputChange(InputName.password, e.target.value)}
+                        required
+                      />
                     </div>
                     <div className="invalid-feedback">Passwords should match.</div>
                   </div>
@@ -82,19 +85,19 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
               <div className="form-row">
                 <div className="col mb-3">
                   <div className="input-group">
-                  <label className="labeltext">Confirm Password</label>
+                    <label className="labeltext">Confirm Password</label>
                     <div className="input-group-prepend">
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="editValidationRepeatPassword"
-                      placeholder="Confirm Password"
-                      aria-describedby="inputGroupPrepend"
-                      minLength={5}
-                      value={repeatPassword}
-                      onChange={(e) => onInputChange(InputName.repeatPassword, e.target.value)}
-                      required
-                    />
+                      <input
+                        type="password"
+                        className="form-control"
+                        id="editValidationRepeatPassword"
+                        placeholder="Confirm Password"
+                        aria-describedby="inputGroupPrepend"
+                        minLength={5}
+                        value={repeatPassword}
+                        onChange={(e) => onInputChange(InputName.repeatPassword, e.target.value)}
+                        required
+                      />
                     </div>
                     <div className="invalid-feedback">Passwords should match.</div>
                   </div>
@@ -108,8 +111,8 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                     style={{
                       marginBottom: '10px',
                       width: '100%',
-                      backgroundColor:'rgb(70, 48, 235)',
-                      borderColor:'rgb(70, 48, 235)',
+                      backgroundColor: 'rgb(70, 48, 235)',
+                      borderColor: 'rgb(70, 48, 235)',
                     }}
                   >
                     Save Changes
