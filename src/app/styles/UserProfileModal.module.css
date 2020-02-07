@@ -122,9 +122,10 @@
 
 .formHeading {
   padding: 0px 10px;
-  font-size: 20px;
-  border-bottom: 2px solid #ebebeb;
-  margin: 0 0 10px 0px;
+  font-size: 30px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center !important;
+  margin-bottom: 5% !important;
   width: 100%;
 }
 
@@ -194,7 +195,7 @@
   padding-left: 10px;
   padding-right: 10px;
   margin-left: 30%;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 
 .editPasswordElement {

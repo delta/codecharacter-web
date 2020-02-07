@@ -4,8 +4,9 @@ import * as styles from 'app/styles/UserProfileModal.module.css';
 import * as UserProfileInterfaces from 'app/types/UserProfileModal';
 import classnames from 'classnames';
 import * as React from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
-// tslint:disable-next-line:import-name
+import { Grid, Row } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
+// tslint:disable-next-line
 import ReactFlagsSelect from 'react-flags-select';
 
 export class UserProfileModal extends React.Component<
@@ -23,11 +24,11 @@ export class UserProfileModal extends React.Component<
       avatar: userDetails.country,
       country: userDetails.country,
       fullName: userDetails.fullName,
+      isPasswordPage: true,
       oldPassword: '',
       password: '',
       repeatPassword: '',
       username: userDetails.username,
-      isPasswordPage: false,
     };
     this.props.getUserDetails();
   }
@@ -45,13 +46,6 @@ export class UserProfileModal extends React.Component<
     const { userDetails } = this.props;
     return (
       <Grid fluid={true} className={classnames(styles.UserEdit)}>
-        <Row
-          style={{ boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}
-          className="justify-content-between py-2 pl-3"
-        >
-          <Col className="text-dark font-weight-bold my-auto">USER DETAILS</Col>
-        </Row>
-
         <Row
           className={
             this.state.isPasswordPage
@@ -82,8 +76,31 @@ export class UserProfileModal extends React.Component<
               userDetails={userDetails}
             />
           )}
-          {this.props.userDetails.errorMessage}
         </Row>
+        <Row>
+          <a
+            className="labeltext"
+            style={{ marginLeft: this.state.isPasswordPage ? '34%' : '36%', cursor: 'pointer' }}
+            onClick={() => {
+              this.setState((prevState) => ({
+                isPasswordPage: !prevState.isPasswordPage,
+              }));
+            }}
+          >
+            {this.state.isPasswordPage ? 'Want to change Credentials?' : 'Want to change Info?'}
+          </a>
+        </Row>
+        {this.state.isPasswordPage ? (
+          <Row>
+            {this.props.userDetails.errorMessage === 'Unauthorised' ? (
+              <Redirect to="login" />
+            ) : (
+              <p style={{ color: 'red', marginLeft: '40%' }}>
+                {this.props.userDetails.errorMessage}
+              </p>
+            )}
+          </Row>
+        ) : null}
       </Grid>
     );
   }
@@ -97,10 +114,10 @@ export class UserProfileModal extends React.Component<
     if (form) {
       if (form.checkValidity()) {
         editUserProfile({
+          avatar,
           country,
           fullName,
           username,
-          avatar,
         });
       }
       form.classList.add('was-validated');

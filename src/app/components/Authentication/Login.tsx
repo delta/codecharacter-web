@@ -62,9 +62,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
         <div className={classnames(styles.welcomeBack)}>
           <h1> Welcome! </h1>
           <p> Log in to access your dashboard and profile </p>
-          <div
-            className={classnames("text-center text-dark mb-2",styles['pragyan-login'])}
-          >
+          <div className={classnames('text-center text-dark mb-2', styles['pragyan-login'])}>
             You can use your{' '}
             <a
               target="blank"
@@ -87,10 +85,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             >
               <div className="form-row">
                 <div className="col mb-4">
-                  <div className={classnames(styles['login-label'])}>
-                    {' '}
-                    Username{' '}
-                  </div>
+                  <div className={classnames(styles['login-label'])}> Username </div>
                   <div className="input-group">
                     <input
                       type="email"
@@ -141,10 +136,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               </div>
               <div className="form-row">
                 <div className="col text-center">
-                  <button
-                    className={classnames('btn btn-info', styles.loginButton)}
-                    type="submit"
-                  >
+                  <button className={classnames('btn btn-info', styles.loginButton)} type="submit">
                     Login &nbsp;
                     {isLoginLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : null}
                   </button>

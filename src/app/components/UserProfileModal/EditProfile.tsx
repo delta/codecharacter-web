@@ -1,3 +1,4 @@
+import * as styles1 from 'app/styles/Authentication.module.css';
 import * as styles from 'app/styles/UserProfileModal.module.css';
 import { Avatar } from 'app/types/Authentication/Register';
 import { InputName } from 'app/types/UserProfileModal';
@@ -24,7 +25,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
       <div className="col-6">
         <div className={classnames('col-sm-12', styles.form)}>
           <div style={{ display: 'flex' }}>
-            <div className={classnames('text-dark', styles.formHeading)}> Basic Information</div>
+            <div className={classnames('text-dark', styles.formHeading)}>User Details</div>
           </div>
           <form className={'editForm'} noValidate ref={editProfileRef} onSubmit={handleEditProfile}>
             <div className="form-row">
@@ -33,12 +34,11 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                   <label style={{ display: 'block' }} className="labeltext">
                     Username
                   </label>
-                  <div style={{ display: 'flex' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <input
                       type="text"
-                      className="form-control"
+                      className={classnames('form-control', styles1['login-input'])}
                       id="editValidationUsername"
-                      placeholder="Username"
                       aria-describedby="inputGroupPrepend"
                       maxLength={50}
                       minLength={5}
@@ -47,8 +47,10 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                       pattern="[a-zA-Z0-9]+"
                       required
                     />
+                    <div className={classnames('invalid-feedback', styles1['login-error'])}>
+                      Username must have minimum 5 characters.
+                    </div>
                   </div>
-                  <div className="invalid-feedback">Username must have minimum 5 characters.</div>
                 </div>
               </div>
             </div>
@@ -57,23 +59,23 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
               <div className="col mb-3">
                 <div className="input-group">
                   <label className="labeltext">Name</label>
-                  <div style={{ display: 'flex' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <input
                       type="text"
-                      className="form-control"
+                      className={classnames('form-control', styles1['login-input'])}
                       id="editValidationFullname"
-                      placeholder="Name"
                       aria-describedby="inputGroupPrepend"
                       maxLength={50}
                       minLength={5}
                       value={currentFullName}
                       onChange={(e) => {
                         onInputChange(InputName.fullName, e.target.value);
-                        console.log(InputName.fullName);
                       }}
                       required
                     />
-                    <div className="invalid-feedback">Name must have minimum 5 characters.</div>
+                    <div className={classnames('invalid-feedback', styles1['login-error'])}>
+                      Name must have minimum 5 characters.
+                    </div>
                   </div>
                 </div>
               </div>
@@ -82,12 +84,11 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
             <div className="form-row" id="react-flag">
               <div className="col sm={12} mb-3">
                 <div className="input-group">
-                  <label className="labeltext">Flag</label>
-                  <div style={{ display: 'flex' }}>
+                  <label className="labeltext">Nationality</label>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <ReactFlagsSelect
                       searchable={true}
-                      placeholder="Search for a country"
-                      className="customFlag"
+                      className={classnames('customFlag', styles1['login-input'])}
                       defaultCountry={currentCountry}
                       onSelect={(countryCode: string) =>
                         onInputChange(InputName.country, countryCode)
@@ -95,7 +96,9 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                       ref={reactFlagRef}
                     />
                   </div>
-                  <div className="invalid-feedback">Please select a country.</div>
+                  <div className={classnames('invalid-feedback', styles1['login-error'])}>
+                    Please select a country.
+                  </div>
                 </div>
               </div>
             </div>
@@ -134,12 +137,12 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
             <div className="form-row">
               <div className="col text-center mb-2">
                 <button
-                  className="btn btn-success"
+                  className={classnames('btn btn-success', styles1.loginButton)}
                   type="submit"
                   style={{
-                    width: '100%',
                     backgroundColor: 'rgb(70, 48, 235)',
                     borderColor: 'rgb(70, 48, 235)',
+                    width: '100%',
                   }}
                   disabled={
                     currentAvatar === userDetails.avatar &&
