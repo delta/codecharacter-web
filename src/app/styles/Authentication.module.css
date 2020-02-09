@@ -135,3 +135,72 @@
 .avatar-section::-webkit-scrollbar-thumb {
   background-color: darkgrey;
 }
+
+.loginForm {
+  margin: auto !important;
+  width: 390px !important;
+  margin-top: 3% !important;
+}
+
+.login-error {
+  background-color: #fee5d4;
+  padding: 9px;
+  margin-top: 0;
+}
+.login-label {
+  text-align: left;
+  margin-bottom: 3px;
+  font-weight: bold;
+  font-family: 'Poppins';
+}
+
+.root {
+  text-align: center;
+}
+
+.welcomeBack {
+  margin-top: 57px;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+.pragyan-login {
+  font-family: 'Poppins';
+  font-size: 12px;
+  margin-top: 0;
+}
+
+.create-one-button {
+  color: #4630eb;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.login-input {
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 3px !important;
+}
+.login-input:focus,
+.login-input:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.loginButton {
+  background-color: #4630eb !important ;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.loginButton:hover {
+  background-color: #4630eb;
+}
+
+.loginButton:focus {
+  background-color: #4630eb;
+}
+
+.loginButton:focus,
+.loginButton:active {
+  outline: none !important;
+  box-shadow: none;
+}

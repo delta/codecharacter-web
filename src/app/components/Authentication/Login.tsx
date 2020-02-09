@@ -1,4 +1,4 @@
-import { faLock, faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
@@ -58,46 +58,39 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     }
 
     return (
-      <div>
+      <div className={classnames(styles.root)}>
+        <div className={classnames(styles.welcomeBack)}>
+          <h1> Welcome! </h1>
+          <p> Log in to access your dashboard and profile </p>
+          <div className={classnames('text-center text-dark mb-2', styles['pragyan-login'])}>
+            You can use your{' '}
+            <a
+              target="blank"
+              href="https://pragyan.org"
+              className={classnames(styles['create-one-button'])}
+            >
+              Pragyan
+            </a>{' '}
+            account credentials to login.
+          </div>
+        </div>
+
         <Row>
           <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
             <form
-              className={classnames('loginForm')}
+              className={classnames(styles.loginForm)}
               noValidate
               ref={this.loginRef}
               onSubmit={this.handleLogin}
             >
               <div className="form-row">
                 <div className="col mb-4">
-                  <div
-                    className="text-center text-dark mb-2"
-                    style={{
-                      fontSize: '12px',
-                    }}
-                  >
-                    You can use your{' '}
-                    <a
-                      target="blank"
-                      href="https://pragyan.org"
-                      style={{
-                        textDecoration: 'none',
-                      }}
-                    >
-                      Pragyan
-                    </a>{' '}
-                    account credentials to login.
-                  </div>
+                  <div className={classnames(styles['login-label'])}> Username </div>
                   <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text" id="inputGroupPrepend">
-                        <FontAwesomeIcon icon={faUser} />
-                      </span>
-                    </div>
                     <input
                       type="email"
-                      className="form-control"
+                      className={classnames('form-control', styles['login-input'])}
                       id="validationUsername"
-                      placeholder="Email"
                       aria-describedby="inputGroupPrepend"
                       required
                       value={username}
@@ -107,23 +100,21 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                         })
                       }
                     />
-                    <div className="invalid-feedback">Please enter a valid Email.</div>
+                    <div className={classnames('invalid-feedback', styles['login-error'])}>
+                      {' '}
+                      Please enter a valid Email.{' '}
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="form-row">
                 <div className="col mb-1">
+                  <div className={classnames(styles['login-label'])}> Password </div>
                   <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text" id="inputGroupPrepend">
-                        <FontAwesomeIcon icon={faLock} />
-                      </span>
-                    </div>
                     <input
                       type="password"
-                      className="form-control"
+                      className={classnames('form-control', styles['login-input'])}
                       id="validationPassword"
-                      placeholder="Password"
                       aria-describedby="inputGroupPrepend"
                       minLength={5}
                       value={password}
@@ -134,23 +125,18 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                       }
                       required
                     />
-                    <div className="invalid-feedback">Please enter the correct password.</div>
+                    <div className={classnames('invalid-feedback', styles['login-error'])}>
+                      Please enter the correct password.
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="form-row">
-                <div className="input-group" />
                 <div className="col text-center mt -0 mb-2 errorMessage">{errorMessage}</div>
               </div>
               <div className="form-row">
                 <div className="col text-center">
-                  <button
-                    className="btn btn-info"
-                    type="submit"
-                    style={{
-                      width: '100%',
-                    }}
-                  >
+                  <button className={classnames('btn btn-info', styles.loginButton)} type="submit">
                     Login &nbsp;
                     {isLoginLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : null}
                   </button>
@@ -159,20 +145,13 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             </form>
           </div>
         </Row>
-        <Row
-          style={{
-            borderTop: '2px solid #999',
-          }}
-        >
+        <Row>
           <Col className="text-center my-3 ml-auto mr-auto">
             <div className="text-dark">
               Don't have an account?{' '}
               <a
                 href={Routes.REGISTER}
-                className="text-primary"
-                style={{
-                  cursor: 'pointer',
-                }}
+                className={classnames(styles['create-one-button'])}
                 onClick={() => {
                   updateErrorMessage('');
                   this.props.handleSelectPanel(AuthType.REGISTER);

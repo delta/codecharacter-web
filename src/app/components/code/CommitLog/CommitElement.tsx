@@ -155,4 +155,4 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
       </div>
     );
   }
-} 
+}
