@@ -1,7 +1,6 @@
 // tslint:disable-next-line:max-line-length
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
@@ -15,14 +14,7 @@ import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
 // tslint:disable-next-line:import-name
 import ReCAPTCHA from 'react-google-recaptcha';
-import HorizontalTimeline from 'react-horizontal-timeline';
 import { Redirect } from 'react-router-dom';
-
-const stepLabel = {
-  0: 'Name,Email',
-  1: 'Password',
-  2: 'Others',
-};
 
 export class Register extends React.Component<RegisterInterfaces.Props, RegisterInterfaces.State> {
   private registerRef = React.createRef<HTMLFormElement>();
@@ -162,7 +154,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             className={'registerForm d-flex flex-wrap'}
             noValidate
             ref={this.registerRef}
-            onSubmit={this.handleRegister}
             style={{ marginTop: '20px' }}
           >
             {currentStep === 0 && (
@@ -333,7 +324,9 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                           })
                         }
                       />
-                      <label htmlFor="switch">Toggle</label>
+                      <label htmlFor="switch" style={{ backgroundColor: '#4630eb' }}>
+                        Toggle
+                      </label>
                     </span>
                   </div>
                   {isStudent && (
@@ -361,13 +354,15 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                     </div>
                   )}
                   <div className="input-group">
-                    <ReactFlagsSelect
-                      searchable={true}
-                      placeholder="Search for a country"
-                      className={classnames('customFlag', styles['register-input'])}
-                      defaultCountry="IN"
-                      onSelect={this.onSelectFlag}
-                    />
+                    <div className={classnames(styles['register-input'])}>
+                      <ReactFlagsSelect
+                        searchable={true}
+                        placeholder="Search for a country"
+                        className="customFlag"
+                        defaultCountry="IN"
+                        onSelect={this.onSelectFlag}
+                      />
+                    </div>
                     <div className={classnames('invalid-feedback', styles['register-error'])}>
                       Please Select a country
                     </div>
@@ -416,32 +411,101 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       Please fill recaptcha.
                     </div>
                   </div>
+                  <div
+                    className={
+                      !errorMessage
+                        ? classnames(
+                            'col text-center mt -0 mb-2 errorMessage',
+                            styles['register-error-inactive'],
+                          )
+                        : classnames(
+                            'col text-center mt -0 mb-2 errorMessage',
+                            styles['register-error-active'],
+                          )
+                    }
+                  >
+                    {errorMessage}
+                  </div>
                   <div className="input-group d-flex justify-content-center input-group">
-                    <button onClick={this.handelRegister}>Register</button>
+                    <button
+                      onClick={this.handleRegister}
+                      className={classnames(styles['register-button'])}
+                    >
+                      Register
+                    </button>
                   </div>
                 </form>
               </div>
             )}
           </form>
         </div>
+        {/*
+    <Row>
+      <div style={{ width: '50%', height: '100px', margin: '10px', marginLeft: '25%' }}>
+        <HorizontalTimeline
+          index={this.state.currentStep}
+          indexClick={(index: number) => {
+            this.handelStepChange(this.state.currentStep, index);
+          }}
+          styles={{background:'white',foreground: '#7b9d6f'}}
+          getLabel={(index:number) => {
+            if(index===0){
+              return "Name,Email"
+            }
+            else if(index===1){
+              return "Password"
+            }
+            else {
+              return "Others"
+            }
+          }}
+          values={[0, 1, 2]}
+          minEventPadding={120}
+          linePadding={49}
+        />
+      </div>
+    </Row>
+    */}
 
         <Row>
-          <div style={{ width: '50%', height: '100px', margin: '10px', marginLeft: '25%' }}>
-            <HorizontalTimeline
-              index={this.state.currentStep}
-              indexClick={(index: number) => {
-                this.handelStepChange(this.state.currentStep, index);
-              }}
-              getLabel={function(date: string) {
-                return stepLabel[date];
-              }}
-              values={['0', '1', '2']}
-              minEventPadding={120}
-              linePadding={49}
-            />
+          <div
+            className={classnames(styles['left-arrow'])}
+            onClick={() =>
+              this.handelStepChange(this.state.currentStep, this.state.currentStep - 1)
+            }
+          >
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </div>
+          <ul className={classnames(styles['list-unstyled'], styles['multi-steps'])}>
+            <li
+              className={this.state.currentStep === 0 ? classnames(styles['is-active']) : undefined}
+              onClick={() => this.handelStepChange(this.state.currentStep, 0)}
+            >
+              {' '}
+              <p style={{ color: 'black' }}>User Details</p>
+            </li>
+            <li
+              className={this.state.currentStep === 1 ? classnames(styles['is-active']) : undefined}
+              onClick={() => this.handelStepChange(this.state.currentStep, 1)}
+            >
+              <p style={{ color: 'black' }}>Credentials</p>
+            </li>
+            <li
+              className={this.state.currentStep === 2 ? classnames(styles['is-active']) : undefined}
+              onClick={() => this.handelStepChange(this.state.currentStep, 2)}
+            >
+              <p style={{ color: 'black' }}>Other Details</p>
+            </li>
+          </ul>
+          <div
+            className={classnames(styles['right-arrow'])}
+            onClick={() =>
+              this.handelStepChange(this.state.currentStep, this.state.currentStep + 1)
+            }
+          >
+            <FontAwesomeIcon icon={faChevronRight} />
           </div>
         </Row>
-
         <Row>
           <Col className="ml-auto  my-3 mr-auto">
             <div className="text-dark">
@@ -470,7 +534,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       if (newStep === 1 || newStep === 2) {
         if (this.register1Ref.current) {
           this.register1Ref.current.classList.add('was-validated');
-          if (this.register1Ref.current.checkValidity() && !this.props.errorMessage) {
+          if (this.register1Ref.current.checkValidity()) {
             this.setState({
               currentStep: 1,
             });
@@ -520,7 +584,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     });
   };
 
-  private handleRegister = async (event: React.FormEvent<HTMLFormElement>) => {
+  private handleRegister = async (event: React.MouseEvent) => {
     const { register } = this.props;
     const {
       avatar,

@@ -203,10 +203,40 @@
 .register-input {
   margin: 0 !important;
   height: 50px;
+  width: 100%;
   border: 1px solid black;
   border-radius: 3px !important;
   margin-bottom: 10px !important;
 }
+.left-arrow {
+  position: relative;
+  left: 14%;
+  top: 4px;
+  border-radius: 50%;
+  border: 2px solid #4630eb;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.right-arrow {
+  position: relative;
+  right: 14%;
+  top: 4px;
+  border-radius: 50%;
+  border: 2px solid #4630eb;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.right-arrow:hover {
+  background-color: #4630eb;
+  color: white;
+}
+.left-arrow:hover {
+  background-color: #4630eb;
+  color: white;
+}
+
 .register-input:focus,
 .register-input:active {
   outline: none !important;
@@ -289,8 +319,6 @@
 }
 
 .login-section1 {
-  height: 350px;
-
   box-sizing: content-box;
 }
 
@@ -301,12 +329,80 @@
 }
 
 .register-button {
+  margin: 10px;
+  width: 100px;
+  height: 40px;
   background-color: #4630eb;
   color: white;
-  width: 10%;
+}
+
+.multi-steps > li.is-active:before,
+.multi-steps > li.is-active ~ li:before {
+  content: counter(stepNum);
+  font-family: inherit;
+  font-weight: 700;
+}
+.multi-steps > li.is-active:after,
+.multi-steps > li.is-active ~ li:after {
+  background-color: #ededed;
+}
+
+.multi-steps {
+  display: table;
+  table-layout: fixed;
+  width: 70%;
+  margin: auto;
+  cursor: pointer;
+  font-family: 'Poppins';
+  padding: 0;
+}
+.multi-steps > li {
+  counter-increment: stepNum;
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  color: #4bb543;
+}
+.multi-steps > li:before {
+  content: '\2713';
   display: block;
+  margin: 0 auto 4px;
+  background-color: #fff;
+  width: 36px;
+  height: 36px;
+  line-height: 32px;
+  text-align: center;
+  font-weight: bold;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #4bb543;
+  border-radius: 50%;
+}
+.multi-steps > li:after {
+  content: '';
+  height: 2px;
+  width: 100%;
+  background-color: #4bb543;
   position: absolute;
-  height: 50px;
-  bottom: 11px;
-  right: 27%;
+  top: 16px;
+  left: 50%;
+  z-index: -1;
+}
+.multi-steps li.is-active {
+  color: #4630eb;
+}
+
+.multi-steps > li:last-child:after {
+  display: none;
+}
+.multi-steps > li.is-active:before {
+  background-color: #fff;
+  border-color: #4630eb;
+}
+.multi-steps > li.is-active ~ li {
+  color: #808080;
+}
+.multi-steps > li.is-active ~ li:before {
+  background-color: #ededed;
+  border-color: #ededed;
 }
