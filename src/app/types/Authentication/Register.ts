@@ -49,7 +49,6 @@ export interface StateProps {
   isLoggedIn: boolean;
   errorMessage: string;
 }
-
 export interface ElementOwnProps {
   handleSelectPanel: (authType: AuthType) => void;
 }

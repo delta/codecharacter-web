@@ -1,4 +1,7 @@
 // tslint:disable-next-line:max-line-length
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
@@ -12,7 +15,19 @@ import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
 // tslint:disable-next-line:import-name
 import ReCAPTCHA from 'react-google-recaptcha';
+import HorizontalTimeline from 'react-horizontal-timeline';
 import { Redirect } from 'react-router-dom';
+
+
+const stepLabel = {
+  0:"Name,Email",
+  1:"Password",
+  2:"Others"
+}
+
+
+
+
 
 export class Register extends React.Component<RegisterInterfaces.Props, RegisterInterfaces.State> {
   private registerRef = React.createRef<HTMLFormElement>();
@@ -20,6 +35,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   private register2Ref = React.createRef<HTMLFormElement>();
   private register3Ref = React.createRef<HTMLFormElement>();
   private recaptchaRef = React.createRef<ReCAPTCHA>();
+  private passwordErrorRef = React.createRef<HTMLDivElement>();
 
   constructor(props: RegisterInterfaces.Props) {
     super(props);
@@ -70,7 +86,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     if (currentStep === 0) {
       if (this.register1Ref.current) {
         this.register1Ref.current.classList.add('was-validated');
-        if (this.register1Ref.current.checkValidity()) {
+        if (this.register1Ref.current.checkValidity() && !this.props.errorMessage) {
           this.setState({
             currentStep: 1,
           });
@@ -78,11 +94,24 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       }
     } else if (currentStep === 1) {
       if (this.register2Ref.current) {
-        this.register2Ref.current.classList.add('was-validated');
-        if (this.register2Ref.current.checkValidity()) {
-          this.setState({
-            currentStep: 2,
-          });
+        if (this.state.password === this.state.repeatPassword) {
+          if (this.passwordErrorRef.current) {
+            this.passwordErrorRef.current.classList.remove(
+              classnames(styles['register-error-active']),
+            );
+          }
+          this.register2Ref.current.classList.add('was-validated');
+          if (this.register2Ref.current.checkValidity()) {
+            this.setState({
+              currentStep: 2,
+            });
+          }
+        } else {
+          if (this.passwordErrorRef.current && this.register2Ref.current.checkValidity()) {
+            this.passwordErrorRef.current.classList.add(
+              classnames(styles['register-error-active']),
+            );
+          }
         }
       }
     }
@@ -128,7 +157,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     }
 
     return (
-      <div className={classnames(styles.root)}>
+      <div className={classnames(styles.root)}  >
         <div className={classnames(styles.registerMessage)}>
           <h1 style={{ marginTop: '30px' }}> Register to CodeCharacter! </h1>
           <p> Register now and code your way through!! </p>
@@ -139,6 +168,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             noValidate
             ref={this.registerRef}
             onSubmit={this.handleRegister}
+            style={{ marginTop: '20px' }}
           >
             {currentStep === 0 && (
               <div className={classnames(styles['stage-div'])}>
@@ -147,68 +177,85 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   noValidate
                   ref={this.register1Ref}
                 >
-                  <div className="input-group">
-                    <input
-                      type="text"
-                      className={classnames('form-control', styles['register-input'])}
-                      id="registerValidationFullname"
-                      placeholder="Name"
-                      aria-describedby="inputGroupPrepend"
-                      pattern=".{5,50}"
-                      value={fullName}
-                      onChange={(e) =>
-                        this.setState({
-                          fullName: e.target.value,
-                        })
+                  <div className={classnames(styles['login-section1'])}>
+                    <div className={classnames(styles['login-label'])}> Full Name </div>
+                    <div className="input-group">
+                      <input
+                        type="text"
+                        className={classnames('form-control', styles['register-input'])}
+                        id="registerValidationFullname"
+                        aria-describedby="inputGroupPrepend"
+                        pattern=".{5,50}"
+                        value={fullName}
+                        onChange={(e) =>
+                          this.setState({
+                            fullName: e.target.value,
+                          })
+                        }
+                        required
+                      />
+                      <div className={classnames('invalid-feedback', styles['register-error'])}>
+                        Name must have minimum 5 characters.
+                      </div>
+                    </div>
+                    <div className={classnames(styles['login-label'])}> Username </div>
+                    <div className="input-group">
+                      <input
+                        type="text"
+                        className={classnames('form-control', styles['register-input'])}
+                        id="registerValidationUsername"
+                        aria-describedby="inputGroupPrepend"
+                        pattern=".{5,50}"
+                        value={username}
+                        onChange={(e) => {
+                          checkUsernameExists(e.target.value);
+                          this.setState({
+                            username: e.target.value,
+                          });
+                        }}
+                        required
+                      />
+                      <div className={classnames('invalid-feedback', styles['register-error'])}>
+                        Username must have minimum 5 characters.
+                      </div>
+                    </div>
+                    <div className={classnames(styles['login-label'])}>Email </div>
+                    <div className="input-group">
+                      <input
+                        type="email"
+                        className={classnames('form-control', styles['register-input'])}
+                        id="registerValidationEmail"
+                        aria-describedby="inputGroupPrepend"
+                        value={email}
+                        onChange={(e) =>
+                          this.setState({
+                            email: e.target.value,
+                          })
+                        }
+                        required
+                      />
+                      <div className={classnames('invalid-feedback', styles['register-error'])}>
+                        Please enter a valid Email ID.
+                      </div>
+                    </div>
+
+                    <div
+                      className={
+                        !errorMessage
+                          ? classnames(
+                              'col text-center mt -0 mb-2 errorMessage',
+                              styles['register-error-inactive'],
+                            )
+                          : classnames(
+                              'col text-center mt -0 mb-2 errorMessage',
+                              styles['register-error-active'],
+                            )
                       }
-                      required
-                    />
-                    <div className="invalid-feedback">Name must have minimum 5 characters.</div>
-                  </div>
-                  <div className="input-group">
-                    <input
-                      type="text"
-                      className={classnames('form-control', styles['register-input'])}
-                      id="registerValidationUsername"
-                      placeholder="Username"
-                      aria-describedby="inputGroupPrepend"
-                      pattern=".{5,50}"
-                      value={username}
-                      onChange={(e) => {
-                        checkUsernameExists(e.target.value);
-                        this.setState({
-                          username: e.target.value,
-                        });
-                      }}
-                      required
-                    />
-                    <div className="invalid-feedback">Username must have minimum 5 characters.</div>
-                  </div>
-                  <div className="input-group">
-                    <input
-                      type="email"
-                      className={classnames('form-control', styles['register-input'])}
-                      id="registerValidationEmail"
-                      placeholder="Email"
-                      aria-describedby="inputGroupPrepend"
-                      value={email}
-                      onChange={(e) =>
-                        this.setState({
-                          email: e.target.value,
-                        })
-                      }
-                      required
-                    />
-                    <div className="invalid-feedback">Please enter a valid Email ID.</div>
-                  </div>
-                  <div className={classnames(styles['button-tab'])}>
-                    <button
-                      className={classnames(styles['button-tab-next'])}
-                      onClick={this.handleNext}
                     >
-                      Next
-                    </button>
+                      {errorMessage}
+                    </div>
                   </div>
+
                 </form>
               </div>
             )}
@@ -219,12 +266,12 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   noValidate
                   ref={this.register2Ref}
                 >
+                  <div className={classnames(styles['login-label'])}> Password </div>
                   <div className="input-group">
                     <input
                       type="password"
                       className={classnames('form-control', styles['register-input'])}
                       id="registerValidationPassword"
-                      placeholder="Password"
                       aria-describedby="inputGroupPrepend"
                       pattern=".{5,}"
                       value={password}
@@ -235,16 +282,16 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       }
                       required
                     />
-                    <div className="invalid-feedback">
+                    <div className={classnames('invalid-feedback', styles['register-error'])}>
                       Password should have minimum 5 characters.
                     </div>
                   </div>
+                  <div className={classnames(styles['login-label'])}> Confirm Password </div>
                   <div className="input-group">
                     <input
                       type="password"
                       className={classnames('form-control', styles['register-input'])}
                       id="registerValidationrepeatPassword"
-                      placeholder="Confirm Password"
                       aria-describedby="inputGroupPrepend"
                       pattern=".{5,}"
                       value={repeatPassword}
@@ -255,23 +302,18 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       }
                       required
                     />
-                    <div className="invalid-feedback">Passwords should match.</div>
                   </div>
 
-                  <div className={classnames(styles['button-tab'])}>
-                    <button
-                      className={classnames(styles['button-tab-previous'])}
-                      onClick={this.handlePrevious}
-                    >
-                      Previous
-                    </button>
-                    <button
-                      className={classnames(styles['button-tab-next'])}
-                      onClick={this.handleNext}
-                    >
-                      Next
-                    </button>
+                  <div
+                    className={classnames('form-row', styles['register-error-inactive'])}
+                    ref={this.passwordErrorRef}
+                  >
+                    <div className="col text-center mt -0 mb-2 errorMessage">
+                      Password and confirm passwords have different values
+                    </div>
                   </div>
+
+
                 </form>
               </div>
             )}
@@ -303,24 +345,26 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                     </span>
                   </div>
                   {isStudent && (
-                    <div className="input-group">
-                      <input
-                        type="text"
-                        className={classnames('form-control', styles['register-input'])}
-                        id="collegeNameValidation"
-                        placeholder="College Name"
-                        aria-describedby="inputGroupPrepend"
-                        pattern=".{5,50}|[a-zA-Z0-9\s]+"
-                        value={collegeName}
-                        onChange={(e) =>
-                          this.setState({
-                            collegeName: e.target.value,
-                          })
-                        }
-                        required
-                      />
-                      <div className="invalid-feedback">
-                        College Name should have minimum 5 characters.
+                    <div>
+                      <div className={classnames(styles['login-label'])}> College Name </div>
+                      <div className="input-group">
+                        <input
+                          type="text"
+                          className={classnames('form-control', styles['register-input'])}
+                          id="collegeNameValidation"
+                          aria-describedby="inputGroupPrepend"
+                          pattern=".{5,50}|[a-zA-Z0-9\s]+"
+                          value={collegeName}
+                          onChange={(e) =>
+                            this.setState({
+                              collegeName: e.target.value,
+                            })
+                          }
+                          required
+                        />
+                        <div className={classnames('invalid-feedback', styles['register-error'])}>
+                          College Name should have minimum 5 characters.
+                        </div>
                       </div>
                     </div>
                   )}
@@ -332,9 +376,11 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       defaultCountry="IN"
                       onSelect={this.onSelectFlag}
                     />
-                    <div className="invalid-feedback">Please Select a country</div>
+                    <div className={classnames('invalid-feedback', styles['register-error'])}>
+                      Please Select a country
+                    </div>
                   </div>
-                  <div className="form-row" style={{ padding: '10px 0px', fontFamily: 'Overpass' }}>
+                  <div className="form-row" style={{ padding: '10px 0px', fontFamily: 'Poppinss' }}>
                     <div className="text-center text-dark">Choose your spirit animal</div>
                     <div className={classnames(styles['avatar-select-container'])}>
                       <section className={classnames(styles['avatar-section'])}>
@@ -378,31 +424,40 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       Please fill recaptcha.
                     </div>
                   </div>
-                  <div className="form-row">
-                    <div className="input-group" />
-                    <div className="col text-center mt -0 mb-2 errorMessage">{errorMessage}</div>
-                  </div>
+                  <div className="input-group d-flex justify-content-center input-group">
 
-                  <div className={classnames(styles['button-tab'])}>
-                    <button
-                      className={classnames(styles['button-tab-previous'])}
-                      onClick={this.handlePrevious}
-                    >
-                      Previous
+                    <button onClick={this.handelRegister} >
+                         Register
                     </button>
                   </div>
+
+
                 </form>
               </div>
             )}
-            {currentStep === 2 && (
-              <button type="submit" className={classnames(styles['register-button'])}>
-                Register
-              </button>
-            )}
+
+
+
+
+
           </form>
         </div>
 
-        <Row />
+        <Row >
+        <div style={{ width: '50%', height: '100px',margin:"10px" ,marginLeft:"25%" }}>
+          <HorizontalTimeline
+            index={this.state.currentStep}
+            indexClick={(index:number) => {
+              this.handelStepChange(this.state.currentStep,index);
+            }}
+            getLabel={function(date:string) { return stepLabel[date]; }}
+            values={ ["0","1","2"] }
+            minEventPadding={120}
+            linePadding={49}
+            />
+        </div>
+        </Row>
+
         <Row>
           <Col className="ml-auto  my-3 mr-auto">
             <div className="text-dark">
@@ -422,8 +477,63 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             </div>
           </Col>
         </Row>
+
+
+
+
+
       </div>
     );
+  }
+
+
+  private handelStepChange = (oldStep:number ,newStep:number ) => {
+    if(oldStep===0){
+      if(newStep===1 || newStep===2){
+        if (this.register1Ref.current) {
+          this.register1Ref.current.classList.add('was-validated');
+          if (this.register1Ref.current.checkValidity() && !this.props.errorMessage) {
+            this.setState({
+              currentStep: 1,
+            });
+          }
+        }
+      }
+    }else if(oldStep ===1){
+      if(newStep===0){
+        if (this.register2Ref.current) {
+          this.setState({
+            currentStep: 0,
+          });
+        }
+      }else if(newStep===2){
+        if (this.register2Ref.current) {
+          if (this.state.password === this.state.repeatPassword) {
+            if (this.passwordErrorRef.current) {
+              this.passwordErrorRef.current.classList.remove(
+                classnames(styles['register-error-active']),
+              );
+            }
+            this.register2Ref.current.classList.add('was-validated');
+            if (this.register2Ref.current.checkValidity()) {
+              this.setState({
+                currentStep: 2,
+              });
+            }
+          } else {
+            if (this.passwordErrorRef.current ) {
+              this.passwordErrorRef.current.classList.add(
+                classnames(styles['register-error-active']),
+              );
+            }
+          }
+        }
+      }
+    }else if (oldStep===2){
+      this.setState({
+        currentStep:newStep
+      })
+    }
   }
 
   private onSelectFlag = (countryCode: string) => {
@@ -448,9 +558,11 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       collegeName: college,
     } = this.state;
     const form = this.registerRef.current;
+    const form3 = this.register3Ref.current;
     event.preventDefault();
 
-    if (form) {
+    if (form && form3) {
+      form3.classList.add('was-validated');
       if (form.checkValidity() && isCaptchaValidated) {
         await register({
           avatar,

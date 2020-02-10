@@ -147,6 +147,21 @@
   padding: 9px;
   margin-top: 0;
 }
+.register-error {
+  background-color: #fee5d4;
+  padding: 9px;
+  margin-top: -10px;
+}
+
+.register-error-inactive {
+  display: none;
+}
+.register-error-active {
+  background-color: #fee5d4;
+  padding: 9px;
+  display: block;
+}
+
 .login-label {
   text-align: left;
   margin-bottom: 3px;
@@ -185,6 +200,19 @@
   outline: none !important;
   box-shadow: none !important;
 }
+.register-input {
+  margin: 0 !important;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 3px !important;
+  margin-bottom: 10px !important;
+}
+.register-input:focus,
+.register-input:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 .loginButton {
   background-color: #4630eb !important ;
   margin-top: 10px;
@@ -203,9 +231,9 @@
 .loginButton:active {
   outline: none !important;
   box-shadow: none;
-
+}
 .registerMessage {
-  font-family: 'Overpass';
+  font-family: 'Poppins';
 }
 
 .stage-div {
@@ -224,28 +252,52 @@
   position: relative;
   height: 50px;
 
-  font-family: 'Overpass';
+  font-family: 'Poppins';
 }
 
 .button-tab-next {
   position: absolute;
   color: white;
   right: 0;
-  width: 30%;
-  height: 100%;
-  background-color: #004445;
+  width: 50px;
+  height: 50px;
+  border: 3px solid #bada56;
+  border-radius: 50% !important;
+  color: #bada56;
   border-radius: 5px;
   margin-top: 10px;
+}
+.button-tab-next:hover {
+  color: white;
+  background-color: #bada56;
 }
 .button-tab-previous {
   position: absolute;
   color: white;
   left: 0;
-  width: 30%;
-  height: 100%;
-  background-color: #f8b400;
-  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50% !important;
+  color: #f8b400;
+  border: 3px solid #f8b400;
   margin-top: 10px;
+}
+
+.button-tab-previous:hover {
+  color: white;
+  background-color: #f8b400;
+}
+
+.login-section1 {
+  height: 350px;
+
+  box-sizing: content-box;
+}
+
+.button-tab-previous:focus,
+.register-button:focus,
+.button-tab-next:focus {
+  outline: none;
 }
 
 .register-button {
@@ -257,5 +309,4 @@
   height: 50px;
   bottom: 11px;
   right: 27%;
-
 }

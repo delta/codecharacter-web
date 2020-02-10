@@ -149,6 +149,7 @@
     "react-flags-select": "^1.1.10",
     "react-ga": "^2.7.0",
     "react-google-recaptcha": "^1.0.5",
+    "react-horizontal-timeline": "^1.5.3",
     "react-joyride": "^2.0.4",
     "react-markdown": "^4.0.6",
     "react-monaco-editor": "^0.22.0",
