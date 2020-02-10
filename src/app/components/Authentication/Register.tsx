@@ -18,16 +18,11 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import HorizontalTimeline from 'react-horizontal-timeline';
 import { Redirect } from 'react-router-dom';
 
-
 const stepLabel = {
-  0:"Name,Email",
-  1:"Password",
-  2:"Others"
-}
-
-
-
-
+  0: 'Name,Email',
+  1: 'Password',
+  2: 'Others',
+};
 
 export class Register extends React.Component<RegisterInterfaces.Props, RegisterInterfaces.State> {
   private registerRef = React.createRef<HTMLFormElement>();
@@ -157,7 +152,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     }
 
     return (
-      <div className={classnames(styles.root)}  >
+      <div className={classnames(styles.root)}>
         <div className={classnames(styles.registerMessage)}>
           <h1 style={{ marginTop: '30px' }}> Register to CodeCharacter! </h1>
           <p> Register now and code your way through!! </p>
@@ -255,7 +250,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       {errorMessage}
                     </div>
                   </div>
-
                 </form>
               </div>
             )}
@@ -312,8 +306,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       Password and confirm passwords have different values
                     </div>
                   </div>
-
-
                 </form>
               </div>
             )}
@@ -425,37 +417,29 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                     </div>
                   </div>
                   <div className="input-group d-flex justify-content-center input-group">
-
-                    <button onClick={this.handelRegister} >
-                         Register
-                    </button>
+                    <button onClick={this.handelRegister}>Register</button>
                   </div>
-
-
                 </form>
               </div>
             )}
-
-
-
-
-
           </form>
         </div>
 
-        <Row >
-        <div style={{ width: '50%', height: '100px',margin:"10px" ,marginLeft:"25%" }}>
-          <HorizontalTimeline
-            index={this.state.currentStep}
-            indexClick={(index:number) => {
-              this.handelStepChange(this.state.currentStep,index);
-            }}
-            getLabel={function(date:string) { return stepLabel[date]; }}
-            values={ ["0","1","2"] }
-            minEventPadding={120}
-            linePadding={49}
+        <Row>
+          <div style={{ width: '50%', height: '100px', margin: '10px', marginLeft: '25%' }}>
+            <HorizontalTimeline
+              index={this.state.currentStep}
+              indexClick={(index: number) => {
+                this.handelStepChange(this.state.currentStep, index);
+              }}
+              getLabel={function(date: string) {
+                return stepLabel[date];
+              }}
+              values={['0', '1', '2']}
+              minEventPadding={120}
+              linePadding={49}
             />
-        </div>
+          </div>
         </Row>
 
         <Row>
@@ -477,19 +461,13 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             </div>
           </Col>
         </Row>
-
-
-
-
-
       </div>
     );
   }
 
-
-  private handelStepChange = (oldStep:number ,newStep:number ) => {
-    if(oldStep===0){
-      if(newStep===1 || newStep===2){
+  private handelStepChange = (oldStep: number, newStep: number) => {
+    if (oldStep === 0) {
+      if (newStep === 1 || newStep === 2) {
         if (this.register1Ref.current) {
           this.register1Ref.current.classList.add('was-validated');
           if (this.register1Ref.current.checkValidity() && !this.props.errorMessage) {
@@ -499,14 +477,14 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           }
         }
       }
-    }else if(oldStep ===1){
-      if(newStep===0){
+    } else if (oldStep === 1) {
+      if (newStep === 0) {
         if (this.register2Ref.current) {
           this.setState({
             currentStep: 0,
           });
         }
-      }else if(newStep===2){
+      } else if (newStep === 2) {
         if (this.register2Ref.current) {
           if (this.state.password === this.state.repeatPassword) {
             if (this.passwordErrorRef.current) {
@@ -521,7 +499,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
               });
             }
           } else {
-            if (this.passwordErrorRef.current ) {
+            if (this.passwordErrorRef.current) {
               this.passwordErrorRef.current.classList.add(
                 classnames(styles['register-error-active']),
               );
@@ -529,12 +507,12 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           }
         }
       }
-    }else if (oldStep===2){
+    } else if (oldStep === 2) {
       this.setState({
-        currentStep:newStep
-      })
+        currentStep: newStep,
+      });
     }
-  }
+  };
 
   private onSelectFlag = (countryCode: string) => {
     this.setState({
