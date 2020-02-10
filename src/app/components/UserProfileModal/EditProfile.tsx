@@ -106,7 +106,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
             <div className="form-row">
               <div className="col sm={12} mb-3">
                 <div className="input-group">
-                  <div className="text-center text-light">Edit your spirit animal</div>
+                  <label className="labeltext">Avatar</label>
                   <div className={classnames(styles['avatar-select-container'])}>
                     <section className={classnames(styles['avatar-section'])}>
                       {avatars.map((avatar: string) => (
@@ -153,6 +153,9 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                 >
                   Save Changes
                 </button>
+               {userDetails.errorMessage!=''?<div className={classnames(styles1['login-error'],styles['UsernameError'])}>
+                      {userDetails.errorMessage}
+                </div>:null}
               </div>
             </div>
           </form>

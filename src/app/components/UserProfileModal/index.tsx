@@ -96,7 +96,7 @@ export class UserProfileModal extends React.Component<
               <Redirect to="login" />
             ) : (
               <p style={{ color: 'red', marginLeft: '40%' }}>
-                {this.props.userDetails.errorMessage}
+                { '' }
               </p>
             )}
           </Row>

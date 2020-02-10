@@ -205,3 +205,9 @@
   margin-left: 33%;
   margin-top: 5%;
 }
+
+.UsernameError{
+  width: 100%;
+  font-size: 85%;
+  color: #dc3545
+}
