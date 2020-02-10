@@ -1,5 +1,5 @@
 // tslint:disable-next-line:max-line-length
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
 import { Routes } from 'app/routes';
@@ -474,7 +474,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
               this.handelStepChange(this.state.currentStep, this.state.currentStep - 1)
             }
           >
-            <FontAwesomeIcon icon={faChevronLeft} />
+            <FontAwesomeIcon icon={faChevronCircleLeft} />
           </div>
           <ul className={classnames(styles['list-unstyled'], styles['multi-steps'])}>
             <li
@@ -503,7 +503,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
               this.handelStepChange(this.state.currentStep, this.state.currentStep + 1)
             }
           >
-            <FontAwesomeIcon icon={faChevronRight} />
+            <FontAwesomeIcon icon={faChevronCircleRight} />
           </div>
         </Row>
         <Row>

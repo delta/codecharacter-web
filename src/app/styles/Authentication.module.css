@@ -142,6 +142,10 @@
   margin-top: 3% !important;
 }
 
+.register-form{
+  width:390px !important;
+}
+
 .login-error {
   background-color: #fee5d4;
   padding: 9px;
@@ -150,7 +154,7 @@
 .register-error {
   background-color: #fee5d4;
   padding: 9px;
-  margin-top: -10px;
+  margin-top: -20px;
 }
 
 .register-error-inactive {
@@ -204,38 +208,32 @@
   margin: 0 !important;
   height: 50px;
   width: 100%;
+  margin-left: 10%;
   border: 1px solid black;
   border-radius: 3px !important;
-  margin-bottom: 10px !important;
+  margin-bottom: 20px !important;
 }
 .left-arrow {
   position: relative;
   left: 14%;
-  top: 4px;
   border-radius: 50%;
-  border: 2px solid #4630eb;
-  width: 30px;
-  height: 30px;
+  /* border: 2px solid #4630eb; */
+  color:#4630eb;
+  font-size: 30px;
+  bottom: 5px;
   cursor: pointer;
 }
 .right-arrow {
   position: relative;
   right: 14%;
-  top: 4px;
+  bottom: 5px;
   border-radius: 50%;
-  border: 2px solid #4630eb;
-  width: 30px;
-  height: 30px;
+  /* border: 2px solid #4630eb; */
+  color:#4630eb;
+  font-size: 30px;
   cursor: pointer;
 }
-.right-arrow:hover {
-  background-color: #4630eb;
-  color: white;
-}
-.left-arrow:hover {
-  background-color: #4630eb;
-  color: white;
-}
+
 
 .register-input:focus,
 .register-input:active {
@@ -268,10 +266,11 @@
 
 .stage-div {
   margin: auto;
-  width: 40%;
+  width: 30%;
   display: block;
 }
 .stage-form {
+
 }
 
 .register-input {
