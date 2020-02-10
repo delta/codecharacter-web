@@ -136,6 +136,10 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
 
             <div className="form-row">
               <div className="col text-center mb-2">
+                <div style={{display:'flex',flexDirection:'column'}}>
+              {userDetails.errorMessage!=''?<div style={{ margin:'0px'}}className={classnames(styles1['login-error'],styles['UsernameError'])}>
+                      {userDetails.errorMessage}
+                </div>:null}
                 <button
                   className={classnames('btn btn-success', styles1.loginButton)}
                   type="submit"
@@ -143,6 +147,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                     backgroundColor: 'rgb(70, 48, 235)',
                     borderColor: 'rgb(70, 48, 235)',
                     width: '100%',
+                    margin:'0px'
                   }}
                   disabled={
                     currentAvatar === userDetails.avatar &&
@@ -153,9 +158,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                 >
                   Save Changes
                 </button>
-               {userDetails.errorMessage!=''?<div className={classnames(styles1['login-error'],styles['UsernameError'])}>
-                      {userDetails.errorMessage}
-                </div>:null}
+                </div>
               </div>
             </div>
           </form>
