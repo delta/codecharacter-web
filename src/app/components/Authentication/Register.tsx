@@ -386,7 +386,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
         <Row>
           <div
             className={classnames(styles['left-arrow'])}
-            onClick={() => this.handleStepChange(currentStep, currentStep - 1)}
+            onClick={() => { if(currentStep!==RegisterInterfaces.Steps.USER_DETAILS) this.handleStepChange(currentStep, currentStep - 1)  }}
           >
             <FontAwesomeIcon icon={faChevronCircleLeft} />
           </div>
@@ -429,7 +429,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           </ul>
           <div
             className={classnames(styles['right-arrow'])}
-            onClick={() => this.handleStepChange(currentStep, currentStep + 1)}
+            onClick={() => { if(currentStep!==RegisterInterfaces.Steps.OTHERS) this.handleStepChange(currentStep, currentStep + 1)  }  }
           >
             <FontAwesomeIcon icon={faChevronCircleRight} />
           </div>
@@ -455,25 +455,24 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   }
 
   private handleStepChange = (oldStep: number, newStep: number) => {
-    if(newStep!==-1 && newStep!==3){
     switch (oldStep) {
       case RegisterInterfaces.Steps.USER_DETAILS: {
         if (this.register1Ref.current) {
           this.register1Ref.current.classList.add('was-validated');
           if (this.register1Ref.current.checkValidity()) {
             this.setState({
-              currentStep: 1,
+              currentStep: RegisterInterfaces.Steps.CREDENTIALS,
             });
           }
         }
         break;
       }
       case RegisterInterfaces.Steps.CREDENTIALS: {
-        if (newStep === 0) {
+        if (newStep === RegisterInterfaces.Steps.USER_DETAILS) {
           this.setState({
-            currentStep: 0,
+            currentStep: RegisterInterfaces.Steps.USER_DETAILS,
           });
-        } else if (newStep === 2) {
+        } else if (newStep === RegisterInterfaces.Steps.OTHERS) {
           if (this.state.password === this.state.repeatPassword) {
             if (this.passwordErrorRef.current) {
               this.passwordErrorRef.current.classList.remove(
@@ -485,7 +484,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
               this.register2Ref.current.classList.add('was-validated');
               if (this.register2Ref.current.checkValidity()) {
                 this.setState({
-                  currentStep: 2,
+                  currentStep: RegisterInterfaces.Steps.OTHERS,
                 });
               }
             }
@@ -505,7 +504,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
         });
         break;
       }
-    }}
+    }
   };
 
   private onSelectFlag = (countryCode: string) => {
