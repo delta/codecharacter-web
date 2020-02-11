@@ -30,7 +30,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       avatar: 'BABOON',
       collegeName: '',
       country: 'IN',
-      currentStep: RegisterInterfaces.Steps.USERDETAILS,
+      currentStep: RegisterInterfaces.Steps.USER_DETAILS,
       email: '',
       fullName: '',
       isCaptchaValidated: false,
@@ -100,7 +100,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             noValidate
             ref={this.registerRef}
           >
-            {currentStep === RegisterInterfaces.Steps.USERDETAILS && (
+            {currentStep === RegisterInterfaces.Steps.USER_DETAILS && (
               <div className={classnames(styles['stage-div'])}>
                 <form
                   className={classnames(styles['stage-form'])}
@@ -393,12 +393,12 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           <ul className={classnames(styles['list-unstyled'], styles['multi-steps'])}>
             <li
               className={
-                currentStep === RegisterInterfaces.Steps.USERDETAILS
+                currentStep === RegisterInterfaces.Steps.USER_DETAILS
                   ? classnames(styles['is-active'])
                   : undefined
               }
               onClick={() =>
-                this.handleStepChange(currentStep, RegisterInterfaces.Steps.USERDETAILS)
+                this.handleStepChange(currentStep, RegisterInterfaces.Steps.USER_DETAILS)
               }
             >
               {' '}
@@ -456,7 +456,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
   private handleStepChange = (oldStep: number, newStep: number) => {
     switch (oldStep) {
-      case RegisterInterfaces.Steps.USERDETAILS: {
+      case RegisterInterfaces.Steps.USER_DETAILS: {
         if (this.register1Ref.current) {
           this.register1Ref.current.classList.add('was-validated');
           if (this.register1Ref.current.checkValidity()) {
@@ -504,8 +504,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
         });
         break;
       }
-      default:
-        return;
+
     }
   };
 
@@ -550,7 +549,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           username,
         });
       }
-      //  form.classList.add('was-validated');
       this.setState({
         isFormSubmitted: true,
       });

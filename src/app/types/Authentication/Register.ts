@@ -30,7 +30,7 @@ export enum Avatar {
 }
 
 export enum Steps {
-  USERDETAILS = 0,
+  USER_DETAILS = 0,
   CREDENTIALS = 1,
   OTHERS = 2,
 }
