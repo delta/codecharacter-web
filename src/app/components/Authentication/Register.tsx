@@ -298,7 +298,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                     </div>
                   )}
                   <div className="input-group">
-                    
+
                       <ReactFlagsSelect
                         searchable={true}
                         placeholder="Search for a country"
@@ -347,7 +347,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       ref={this.recaptchaRef}
                     />
                     <div
-                      className="invalid-feedback text-center"
+                      className={classnames(styles['register-error-active'],"invalid-feedback text-center")}
                       style={{
                         display: !isCaptchaValidated && isFormSubmitted ? 'block' : 'none',
                       }}
@@ -357,7 +357,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   </div>
                   <div
                     className={
-                      !errorMessage
+                      errorMessage===""
                         ? classnames(
                             'col text-center mt -0 mb-2 errorMessage',
                             styles['register-error-inactive'],

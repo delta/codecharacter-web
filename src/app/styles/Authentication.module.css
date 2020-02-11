@@ -176,6 +176,7 @@
 }
 
 .root {
+  user-select: none;
   text-align: center;
 }
 
@@ -328,6 +329,7 @@
 .register-button:focus,
 .button-tab-next:focus {
   outline: none;
+  box-shadow: none;
 }
 
 .register-button {
@@ -338,6 +340,8 @@
   color: white;
   border-radius: 5px;
 }
+
+
 
 .multi-steps > li.is-active:before,
 .multi-steps > li.is-active ~ li:before {
