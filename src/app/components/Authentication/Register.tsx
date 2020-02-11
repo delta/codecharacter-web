@@ -298,7 +298,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                     </div>
                   )}
                   <div className="input-group">
-                    <div className={classnames(styles['register-input'])}>
+                    
                       <ReactFlagsSelect
                         searchable={true}
                         placeholder="Search for a country"
@@ -306,7 +306,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         defaultCountry="IN"
                         onSelect={this.onSelectFlag}
                       />
-                    </div>
+
                     <div className={classnames('invalid-feedback', styles['register-error'])}>
                       Please Select a country
                     </div>
@@ -455,6 +455,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   }
 
   private handleStepChange = (oldStep: number, newStep: number) => {
+    if(newStep!==-1 && newStep!==3){
     switch (oldStep) {
       case RegisterInterfaces.Steps.USER_DETAILS: {
         if (this.register1Ref.current) {
@@ -504,7 +505,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
         });
         break;
       }
-    }
+    }}
   };
 
   private onSelectFlag = (countryCode: string) => {
