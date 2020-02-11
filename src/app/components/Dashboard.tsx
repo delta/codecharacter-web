@@ -44,7 +44,7 @@ export class Dashboard extends React.Component<
     this.state = {
       fixedLeftPaneWidth,
       editorWidthRatio: this.initialEditorRatio,
-      isJoyRideActive: true,
+      isJoyRideActive: false,
       rendererHeight: this.initialRendererHeight,
       splitPaneState: DashboardInterfaces.SplitPaneState.BOTH,
       windowWidth: window.innerWidth,
@@ -109,7 +109,7 @@ export class Dashboard extends React.Component<
     return (
       <div>
         {isWelcomeModalOpen ? <Welcome closeWelcomeModal={() => closeWelcomeModal()} /> : null}
-        {isLoggedIn && isJoyRideActive && !isWelcomeModalOpen ? <ReactTour /> : null}
+        {isLoggedIn && isJoyRideActive && !isWelcomeModalOpen ? <ReactTour/> : null}
         {/*{isAuthenticationOpen ? (
             <Authentication setIsAuthenticationOpen={setIsAuthenticationOpen} />
           ) : null}*/}
