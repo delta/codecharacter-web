@@ -215,7 +215,7 @@
 }
 .left-arrow {
   position: relative;
-  left: 23%;
+  left: 30%;
   border-radius: 50%;
   color: #4630eb;
   font-size: 30px;
@@ -224,7 +224,7 @@
 }
 .right-arrow {
   position: relative;
-  right: 23%;
+  right: 30%;
   bottom: 5px;
   border-radius: 50%;
   color: #4630eb;
@@ -343,7 +343,7 @@
 .multi-steps {
   display: table;
   table-layout: fixed;
-  width: 50%;
+  width: 34%;
   margin: auto;
   cursor: pointer;
   font-family: 'Poppins';
