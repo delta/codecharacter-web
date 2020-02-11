@@ -107,6 +107,11 @@
   overflow-y: hidden !important;
 }
 
+.stage-form{
+  width:390px;
+
+}
+
 .avatar-img {
   padding: 5px;
 }
@@ -142,9 +147,6 @@
   margin-top: 3% !important;
 }
 
-.register-form {
-  width: 390px !important;
-}
 
 .login-error {
   background-color: #fee5d4;
