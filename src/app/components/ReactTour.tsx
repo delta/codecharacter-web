@@ -142,6 +142,58 @@ const tourConfig: any = [
     ),
     position: 'bottom',
   },
+  {
+    selector: '[id="commit_button"]',
+    content: ({ goTo, inDOM }: any) => (
+      <div>
+        <h6>Commit</h6>
+        <p style={{ fontSize: '12px', fontWeight: 442 }}>
+        Create a new snapshot of your code. It will be saved forever, unless our servers get
+        bombed by a nuclear explosion.
+        </p>
+      </div>
+    ),
+    position: 'bottom',
+  },
+  {
+    selector: '[id="submit_button"]',
+    content: ({ goTo, inDOM }: any) => (
+      <div>
+        <h6>Submit</h6>
+        <p style={{ fontSize: '12px', fontWeight: 442 }}>
+        This will submit your code as your current competitive AI. All your challenges with other
+        players will be played using this code.
+        <br />
+        You have to submit your code before challenging an opponent.
+        </p>
+      </div>
+    ),
+    position: 'bottom',
+  },
+  {
+    selector: '[id="logout_button"]',
+    content: ({ goTo, inDOM }: any) => (
+      <div>
+        <h6>Logout</h6>
+        <p style={{ fontSize: '12px', fontWeight: 442 }}>
+          Log out of your Code Character account. It's good to take a break once in a while 😀 !
+        </p>
+      </div>
+    ),
+    position: 'right',
+  },
+  {
+    selector: '[id="joyride_button"]',
+    content: ({ goTo, inDOM }: any) => (
+      <div>
+        <h6>Help</h6>
+        <p style={{ fontSize: '12px', fontWeight: 442 }}>
+        Take this tour again, in case you forget what's where
+        </p>
+      </div>
+    ),
+    position: 'right',
+  },
 ];
 
 export default class ReactTour extends React.Component<{}, { isTourOpen: boolean }> {
