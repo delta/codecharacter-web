@@ -1,5 +1,6 @@
 import * as styles1 from 'app/styles/Authentication.module.css';
 import * as styles from 'app/styles/UserProfileModal.module.css';
+import 'app/styles/Flags.css'
 import { Avatar } from 'app/types/Authentication/Register';
 import { InputName } from 'app/types/UserProfileModal';
 import * as EditProfileInterfaces from 'app/types/UserProfileModal/EditProfile';

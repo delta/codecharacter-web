@@ -80,7 +80,7 @@ export class UserProfileModal extends React.Component<
         <Row>
           <a
             className="labeltext"
-            style={{ marginLeft: this.state.isPasswordPage ? '34%' : '36%', cursor: 'pointer' }}
+            style={{ marginLeft: this.state.isPasswordPage ? '36%' : '38%', cursor: 'pointer' }}
             onClick={() => {
               this.setState((prevState) => ({
                 isPasswordPage: !prevState.isPasswordPage,

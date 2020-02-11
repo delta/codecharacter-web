@@ -18,6 +18,7 @@ import * as SideBarInterfaces from 'app/types/SideBar';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
+import { Routes } from 'app/routes'
 
 export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
   public render() {
@@ -119,10 +120,8 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             </Button>
           ) : null}
           <Button
-            href="/profile"
-            className={classnames('py-2 px-auto', styles.customBtn, {
-              [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.USER_EDIT,
-            })}
+            href={Routes.USERPROFILEMODEL}
+            className={classnames('py-2 px-auto', styles.customBtn)}
             id="user_profile_button"
             title={isLoggedIn ? 'Profile' : 'Login'}
             onClick={() => {

@@ -8,15 +8,8 @@ import { Row } from 'react-bootstrap';
 
 export class EditPassword extends React.Component<
   EditPasswordInterfaces.Props,
-  { isClicked: boolean }
+  {}
 > {
-  // tslint:disable-next-line
-  public constructor(props: any) {
-    super(props);
-    this.state = {
-      isClicked: false,
-    };
-  }
   public render() {
     const { handleEditPassword, onInputChange } = this.props;
     const { editPasswordRef } = this.props;
@@ -97,8 +90,7 @@ export class EditPassword extends React.Component<
                   <div className="input-group">
                     <label className="labeltext">Confirm Password</label>
                     <div
-                      className="input-group-prepend"
-                      style={{ display: 'flex', flexDirection: 'column' }}
+                      className={classnames('input-group-prepend',styles['passwordInput'])}
                     >
                       <input
                         type="password"
