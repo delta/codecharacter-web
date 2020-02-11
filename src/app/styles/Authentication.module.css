@@ -398,8 +398,8 @@
 .multi-steps li.is-active {
   color: #4630eb;
 }
-.multi-steps li:active{
-  transform: scale(0.9);
+.multi-steps li:active:before{
+  transform: translateY(2px);
 }
 
 .multi-steps > li:last-child:after {
