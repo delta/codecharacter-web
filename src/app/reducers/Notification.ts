@@ -2,29 +2,6 @@ import { NotificationActions } from 'app/actions';
 import * as NotificationInterfaces from 'app/types/Notification';
 
 // @ts-ignore
-import PNotify from 'pnotify/dist/es/PNotify';
-import 'pnotify/dist/es/PNotifyButtons';
-import 'pnotify/dist/PNotifyBrightTheme.css';
-
-const stackBottomRight = {
-  ...PNotify.defaultStack,
-  dir1: 'up',
-  dir2: 'left',
-};
-
-const pnotifyOptions = (title: string) => {
-  return {
-    title,
-    addclass: 'stack-bottomright',
-    buttons: {
-      closer: true,
-      sticker: true,
-    },
-    delay: 5000,
-    stack: stackBottomRight,
-    text: false,
-  };
-};
 
 const notificationInitialState: NotificationInterfaces.NotificationStoreState = {
   loading: false,
@@ -37,17 +14,17 @@ export const notificationReducer = (
 ) => {
   switch (action.type) {
     case NotificationActions.Type.INFO: {
-      PNotify.info(pnotifyOptions(action.payload.message));
+      // addToast(action.payload.message, { appearance: 'info' });
       return state;
     }
 
     case NotificationActions.Type.SUCCESS: {
-      PNotify.success(pnotifyOptions(action.payload.message));
+      // addToast(action.payload.message, { appearance: 'success' });
       return state;
     }
 
     case NotificationActions.Type.ERROR: {
-      PNotify.error(pnotifyOptions(action.payload.message));
+      // addToast(action.payload.message, { appearance: 'error' });
       return state;
     }
 

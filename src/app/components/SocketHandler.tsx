@@ -1,112 +1,104 @@
 import { SOCKET_BASE_URL } from 'app/../config/config';
 import * as SocketHandlerInterfaces from 'app/types/SocketHandler';
 import * as React from 'react';
+import { useToasts } from 'react-toast-notifications';
 import * as io from 'socket.io-client';
 
-export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props, {}> {
-  private socket: SocketIOClient.Socket;
-  constructor(props: SocketHandlerInterfaces.Props) {
-    super(props);
-    this.socket = io.connect(SOCKET_BASE_URL, {
-      reconnection: true,
-      reconnectionDelay: 1000,
-      transports: ['websocket'],
-    });
-  }
+// tslint:disable-next-line: variable-name
+export const SocketHandler = (props: SocketHandlerInterfaces.Props) => {
+  const { addToast } = useToasts();
+  const socket: SocketIOClient.Socket = io.connect(SOCKET_BASE_URL, {
+    reconnection: true,
+    reconnectionDelay: 1000,
+    transports: ['websocket'],
+  });
 
-  public componentDidMount() {
+  React.useEffect(() => {
     const {
       sendCompileError,
       sendCompileSuccess,
       sendExecuteError,
       sendExecuteSuccess,
-      sendInfo,
-      sendSuccess,
-      sendError,
       sendDebugRunSuccess,
       sendDebugRunError,
-    } = this.props;
+    } = props;
 
-    this.socket.on('Info', (message: string) => {
-      sendInfo(message);
+    socket.on('Info', (message: string) => {
+      addToast(message, { appearance: 'info', autoDismiss: true });
     });
 
-    this.socket.on('Success', (message: string) => {
-      sendSuccess(message);
+    socket.on('Success', (message: string) => {
+      addToast(message, { appearance: 'success', autoDismiss: true });
     });
 
-    this.socket.on('Error', (message: string) => {
-      sendError(message);
+    socket.on('Error', (message: string) => {
+      addToast(message, { appearance: 'error', autoDismiss: true });
     });
 
-    this.socket.on('connect', () => {
-      sendSuccess('Connected to Server!');
+    socket.on('connect', () => {
+      addToast('Connected to Server!', { appearance: 'success', autoDismiss: true });
     });
 
-    this.socket.on('Compile Info', (message: string) => {
-      sendInfo(message);
+    socket.on('Compile Info', (message: string) => {
+      addToast(message, { appearance: 'info', autoDismiss: true });
     });
 
-    this.socket.on('Compile Success', () => {
-      sendSuccess('Compiled Successfully!');
+    socket.on('Compile Success', () => {
+      addToast('Compiled Successfully!', { appearance: 'success', autoDismiss: true });
       sendCompileSuccess();
     });
 
-    this.socket.on('Compile Error', (message: string) => {
-      sendError(`Compile Error: ${message}`);
-      sendCompileError('');
+    socket.on('Compile Error', (message: string) => {
+      addToast(`Compile Error: ${message}`, { appearance: 'error', autoDismiss: true }),
+        sendCompileError('');
     });
 
-    this.socket.on('Compile Error Log', (log: string) => {
-      sendError('Compile Error');
-      sendCompileError(log);
+    socket.on('Compile Error Log', (log: string) => {
+      addToast('Compile Error', { appearance: 'error', autoDismiss: true }), sendCompileError(log);
     });
 
-    this.socket.on('Match Info', (message: string) => {
-      sendInfo(message);
+    socket.on('Match Info', (message: string) => {
+      addToast(message, { appearance: 'info', autoDismiss: true });
     });
 
-    this.socket.on('Match Error', (message: string) => {
-      sendError(message);
-      sendExecuteError(message);
+    socket.on('Match Error', (message: string) => {
+      addToast(message, { appearance: 'error', autoDismiss: true }), sendExecuteError(message);
     });
 
-    this.socket.on('Match Result Success', (result: string) => {
-      sendSuccess(result);
+    socket.on('Match Result Success', (result: string) => {
+      addToast(result, { appearance: 'success', autoDismiss: true });
     });
 
-    this.socket.on('Match Result Error', (result: string) => {
-      sendError(result);
+    socket.on('Match Result Error', (result: string) => {
+      addToast(result, { appearance: 'error', autoDismiss: true });
     });
 
-    this.socket.on('Match Success', (matchLogs: string) => {
-      sendSuccess('Match Executed Successfully!');
+    socket.on('Match Success', (matchLogs: string) => {
+      addToast('Match Executed Successfully!', { appearance: 'success', autoDismiss: true });
       sendExecuteSuccess(matchLogs);
     });
 
-    this.socket.on('Debug Run Info', (message: string) => {
-      sendInfo(message);
+    socket.on('Debug Run Info', (message: string) => {
+      addToast(message, { appearance: 'info', autoDismiss: true });
     });
 
-    this.socket.on('Debug Run Success', (stackTrace: string) => {
+    socket.on('Debug Run Success', (stackTrace: string) => {
       sendDebugRunSuccess(stackTrace);
     });
 
-    this.socket.on('Debug Run Error', (message: string) => {
-      sendError(`Debug Run Error: ${message}`);
-      sendDebugRunError();
+    socket.on('Debug Run Error', (message: string) => {
+      addToast(`Debug Run Error: ${message}`, { appearance: 'error', autoDismiss: true }),
+        sendDebugRunError();
     });
 
-    this.socket.on('disconnect', () => {
-      sendError('Disconnected');
+    socket.on('disconnect', () => {
+      addToast('Disconnected', { appearance: 'error', autoDismiss: true });
     });
-  }
 
-  public componentWillUnmount() {
-    this.socket.disconnect();
-  }
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
 
-  public render() {
-    return null;
-  }
-}
+  return null;
+};
