@@ -140,7 +140,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   {userDetails.errorMessage != '' ? (
                     <div
-                      style={{ margin: '0px',marginTop: '10px'}}
+                      style={{ margin: '0px',marginBottom: '10px'}}
                       className={classnames(styles1['login-error'], styles['UsernameError'])}
                     >
                       {userDetails.errorMessage}
