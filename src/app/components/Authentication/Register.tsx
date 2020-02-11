@@ -1,4 +1,3 @@
-// tslint:disable-next-line:max-line-length
 import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
@@ -31,7 +30,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       avatar: 'BABOON',
       collegeName: '',
       country: 'IN',
-      currentStep: 0,
+      currentStep: RegisterInterfaces.Steps.USERDETAILS,
       email: '',
       fullName: '',
       isCaptchaValidated: false,
@@ -67,60 +66,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     window.removeEventListener('beforeunload', this.componentCleanup);
   }
 
-  public handleNext = () => {
-    const { currentStep } = this.state;
-
-    if (currentStep === 0) {
-      if (this.register1Ref.current) {
-        this.register1Ref.current.classList.add('was-validated');
-        if (this.register1Ref.current.checkValidity() && !this.props.errorMessage) {
-          this.setState({
-            currentStep: 1,
-          });
-        }
-      }
-    } else if (currentStep === 1) {
-      if (this.register2Ref.current) {
-        if (this.state.password === this.state.repeatPassword) {
-          if (this.passwordErrorRef.current) {
-            this.passwordErrorRef.current.classList.remove(
-              classnames(styles['register-error-active']),
-            );
-          }
-          this.register2Ref.current.classList.add('was-validated');
-          if (this.register2Ref.current.checkValidity()) {
-            this.setState({
-              currentStep: 2,
-            });
-          }
-        } else {
-          if (this.passwordErrorRef.current && this.register2Ref.current.checkValidity()) {
-            this.passwordErrorRef.current.classList.add(
-              classnames(styles['register-error-active']),
-            );
-          }
-        }
-      }
-    }
-  };
-
-  public handlePrevious = () => {
-    const { currentStep } = this.state;
-    if (currentStep === 1) {
-      if (this.register2Ref.current) {
-        this.setState({
-          currentStep: 0,
-        });
-      }
-    } else if (currentStep === 2) {
-      if (this.register3Ref.current) {
-        this.setState({
-          currentStep: 1,
-        });
-      }
-    }
-  };
-
   public render() {
     const {
       repeatPassword,
@@ -146,17 +91,16 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     return (
       <div className={classnames(styles.root)}>
         <div className={classnames(styles.registerMessage)}>
-          <h1 style={{ marginTop: '30px' }}> Register to CodeCharacter! </h1>
+          <h1 className={classnames(styles['register-h1'])}> Register to CodeCharacter! </h1>
           <p> Register now and code your way through!! </p>
         </div>
         <div className={classnames('col-sm-12', styles.form)}>
           <form
-            className={'registerForm d-flex flex-wrap'}
+            className={classnames('registerForm d-flex flex-wrap', styles['main-register-form'])}
             noValidate
             ref={this.registerRef}
-            style={{ marginTop: '20px' }}
           >
-            {currentStep === 0 && (
+            {currentStep === RegisterInterfaces.Steps.USERDETAILS && (
               <div className={classnames(styles['stage-div'])}>
                 <form
                   className={classnames(styles['stage-form'])}
@@ -244,7 +188,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                 </form>
               </div>
             )}
-            {currentStep === 1 && (
+            {currentStep === RegisterInterfaces.Steps.CREDENTIALS && (
               <div className={classnames(styles['stage-div'])}>
                 <form
                   className={classnames(styles['stage-form'])}
@@ -300,7 +244,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                 </form>
               </div>
             )}
-            {currentStep === 2 && (
+            {currentStep === RegisterInterfaces.Steps.OTHERS && (
               <div className={classnames(styles['stage-div'])}>
                 <form
                   className={classnames(styles['stage-form'])}
@@ -367,7 +311,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       Please Select a country
                     </div>
                   </div>
-                  <div className="form-row" style={{ padding: '10px 0px', fontFamily: 'Poppinss' }}>
+                  <div className="form-row" style={{ padding: '10px 0px', fontFamily: 'Poppins' }}>
                     <div className="text-center text-dark">Choose your spirit animal</div>
                     <div className={classnames(styles['avatar-select-container'])}>
                       <section className={classnames(styles['avatar-section'])}>
@@ -439,69 +383,53 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             )}
           </form>
         </div>
-        {/*
-    <Row>
-      <div style={{ width: '50%', height: '100px', margin: '10px', marginLeft: '25%' }}>
-        <HorizontalTimeline
-          index={this.state.currentStep}
-          indexClick={(index: number) => {
-            this.handelStepChange(this.state.currentStep, index);
-          }}
-          styles={{background:'white',foreground: '#7b9d6f'}}
-          getLabel={(index:number) => {
-            if(index===0){
-              return "Name,Email"
-            }
-            else if(index===1){
-              return "Password"
-            }
-            else {
-              return "Others"
-            }
-          }}
-          values={[0, 1, 2]}
-          minEventPadding={120}
-          linePadding={49}
-        />
-      </div>
-    </Row>
-    */}
-
         <Row>
           <div
             className={classnames(styles['left-arrow'])}
-            onClick={() =>
-              this.handelStepChange(this.state.currentStep, this.state.currentStep - 1)
-            }
+            onClick={() => this.handleStepChange(currentStep, currentStep - 1)}
           >
             <FontAwesomeIcon icon={faChevronCircleLeft} />
           </div>
           <ul className={classnames(styles['list-unstyled'], styles['multi-steps'])}>
             <li
-              className={this.state.currentStep === 0 ? classnames(styles['is-active']) : undefined}
-              onClick={() => this.handelStepChange(this.state.currentStep, 0)}
+              className={
+                currentStep === RegisterInterfaces.Steps.USERDETAILS
+                  ? classnames(styles['is-active'])
+                  : undefined
+              }
+              onClick={() =>
+                this.handleStepChange(currentStep, RegisterInterfaces.Steps.USERDETAILS)
+              }
             >
               {' '}
               <p style={{ color: 'black' }}>User Details</p>
             </li>
             <li
-              className={this.state.currentStep === 1 ? classnames(styles['is-active']) : undefined}
-              onClick={() => this.handelStepChange(this.state.currentStep, 1)}
+              className={
+                currentStep === RegisterInterfaces.Steps.CREDENTIALS
+                  ? classnames(styles['is-active'])
+                  : undefined
+              }
+              onClick={() =>
+                this.handleStepChange(currentStep, RegisterInterfaces.Steps.CREDENTIALS)
+              }
             >
               <p style={{ color: 'black' }}>Credentials</p>
             </li>
             <li
-              className={this.state.currentStep === 2 ? classnames(styles['is-active']) : undefined}
-              onClick={() => this.handelStepChange(this.state.currentStep, 2)}
+              className={
+                currentStep === RegisterInterfaces.Steps.OTHERS
+                  ? classnames(styles['is-active'])
+                  : undefined
+              }
+              onClick={() => this.handleStepChange(currentStep, RegisterInterfaces.Steps.OTHERS)}
             >
               <p style={{ color: 'black' }}>Other Details</p>
             </li>
           </ul>
           <div
             className={classnames(styles['right-arrow'])}
-            onClick={() =>
-              this.handelStepChange(this.state.currentStep, this.state.currentStep + 1)
-            }
+            onClick={() => this.handleStepChange(currentStep, currentStep + 1)}
           >
             <FontAwesomeIcon icon={faChevronCircleRight} />
           </div>
@@ -512,10 +440,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
               Already have an account?{' '}
               <a
                 href={Routes.LOGIN}
-                style={{
-                  color: '#4630eb',
-                  cursor: 'pointer',
-                }}
+                className={classnames(styles['create-one-button'])}
                 onClick={() => {
                   updateErrorMessage('');
                 }}
@@ -529,9 +454,9 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     );
   }
 
-  private handelStepChange = (oldStep: number, newStep: number) => {
-    if (oldStep === 0) {
-      if (newStep === 1 || newStep === 2) {
+  private handleStepChange = (oldStep: number, newStep: number) => {
+    switch (oldStep) {
+      case RegisterInterfaces.Steps.USERDETAILS: {
         if (this.register1Ref.current) {
           this.register1Ref.current.classList.add('was-validated');
           if (this.register1Ref.current.checkValidity()) {
@@ -540,27 +465,28 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             });
           }
         }
+        break;
       }
-    } else if (oldStep === 1) {
-      if (newStep === 0) {
-        if (this.register2Ref.current) {
+      case RegisterInterfaces.Steps.CREDENTIALS: {
+        if (newStep === 0) {
           this.setState({
             currentStep: 0,
           });
-        }
-      } else if (newStep === 2) {
-        if (this.register2Ref.current) {
+        } else if (newStep === 2) {
           if (this.state.password === this.state.repeatPassword) {
             if (this.passwordErrorRef.current) {
               this.passwordErrorRef.current.classList.remove(
                 classnames(styles['register-error-active']),
               );
             }
-            this.register2Ref.current.classList.add('was-validated');
-            if (this.register2Ref.current.checkValidity()) {
-              this.setState({
-                currentStep: 2,
-              });
+
+            if (this.register2Ref.current) {
+              this.register2Ref.current.classList.add('was-validated');
+              if (this.register2Ref.current.checkValidity()) {
+                this.setState({
+                  currentStep: 2,
+                });
+              }
             }
           } else {
             if (this.passwordErrorRef.current) {
@@ -570,11 +496,16 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             }
           }
         }
+        break;
       }
-    } else if (oldStep === 2) {
-      this.setState({
-        currentStep: newStep,
-      });
+      case RegisterInterfaces.Steps.OTHERS: {
+        this.setState({
+          currentStep: newStep,
+        });
+        break;
+      }
+      default:
+        return;
     }
   };
 

@@ -29,9 +29,15 @@ export enum Avatar {
   MONKEY = 'assets/img/userAvatars/020-monkey.svg',
 }
 
+export enum Steps {
+  USERDETAILS = 0,
+  CREDENTIALS = 1,
+  OTHERS = 2,
+}
+
 export interface State {
   avatar: string;
-  currentStep: number;
+  currentStep: Steps;
   collegeName?: string;
   isCaptchaValidated: boolean;
   isFormSubmitted: boolean;
