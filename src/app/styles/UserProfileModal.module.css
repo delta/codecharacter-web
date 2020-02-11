@@ -118,7 +118,7 @@
 
 .form {
   padding: 10px 25px;
-  width:90%;
+  width: 90%;
   margin-left: 5%;
 }
 
@@ -126,8 +126,8 @@
   padding: 0px 10px;
   font-size: 30px;
   font-family: 'Poppins', sans-serif;
-  text-align: center ;
-  margin-bottom: 5% ;
+  text-align: center;
+  margin-bottom: 5%;
   width: 100%;
 }
 
@@ -208,13 +208,13 @@
   margin-top: 5%;
 }
 
-.UsernameError{
+.UsernameError {
   width: 100%;
   font-size: 85%;
-  color: #dc3545
+  color: #dc3545;
 }
 
-.passwordInput{
-  display: flex; 
+.passwordInput {
+  display: flex;
   flex-direction: column;
 }

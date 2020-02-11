@@ -18,7 +18,7 @@ import * as SideBarInterfaces from 'app/types/SideBar';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
-import { Routes } from 'app/routes'
+import { Routes } from 'app/routes';
 
 export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
   public render() {

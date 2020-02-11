@@ -1,6 +1,6 @@
 import * as styles1 from 'app/styles/Authentication.module.css';
 import * as styles from 'app/styles/UserProfileModal.module.css';
-import 'app/styles/Flags.css'
+import 'app/styles/Flags.css';
 import { Avatar } from 'app/types/Authentication/Register';
 import { InputName } from 'app/types/UserProfileModal';
 import * as EditProfileInterfaces from 'app/types/UserProfileModal/EditProfile';
@@ -137,28 +137,33 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
 
             <div className="form-row">
               <div className="col text-center mb-2">
-                <div style={{display:'flex',flexDirection:'column'}}>
-              {userDetails.errorMessage!=''?<div style={{ margin:'0px'}}className={classnames(styles1['login-error'],styles['UsernameError'])}>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  {userDetails.errorMessage != '' ? (
+                    <div
+                      style={{ margin: '0px' }}
+                      className={classnames(styles1['login-error'], styles['UsernameError'])}
+                    >
                       {userDetails.errorMessage}
-                </div>:null}
-                <button
-                  className={classnames('btn btn-success', styles1.loginButton)}
-                  type="submit"
-                  style={{
-                    backgroundColor: 'rgb(70, 48, 235)',
-                    borderColor: 'rgb(70, 48, 235)',
-                    width: '100%',
-                    margin:'0px'
-                  }}
-                  disabled={
-                    currentAvatar === userDetails.avatar &&
-                    currentFullName === userDetails.fullName &&
-                    currentUsername === userDetails.username &&
-                    currentCountry === userDetails.country
-                  }
-                >
-                  Save Changes
-                </button>
+                    </div>
+                  ) : null}
+                  <button
+                    className={classnames('btn btn-success', styles1.loginButton)}
+                    type="submit"
+                    style={{
+                      backgroundColor: 'rgb(70, 48, 235)',
+                      borderColor: 'rgb(70, 48, 235)',
+                      width: '100%',
+                      margin: '0px',
+                    }}
+                    disabled={
+                      currentAvatar === userDetails.avatar &&
+                      currentFullName === userDetails.fullName &&
+                      currentUsername === userDetails.username &&
+                      currentCountry === userDetails.country
+                    }
+                  >
+                    Save Changes
+                  </button>
                 </div>
               </div>
             </div>

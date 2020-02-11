@@ -18,7 +18,7 @@ export class RunOptions extends React.Component<
     };
   }
 
-  public componentDidMount(): void {
+  public componentWillMount(): void {
     window.addEventListener('click', this.props.closeOptions, false);
     this.props.loadMaps();
     this.props.getAiIds();

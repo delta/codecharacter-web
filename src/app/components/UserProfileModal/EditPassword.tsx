@@ -6,10 +6,7 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Row } from 'react-bootstrap';
 
-export class EditPassword extends React.Component<
-  EditPasswordInterfaces.Props,
-  {}
-> {
+export class EditPassword extends React.Component<EditPasswordInterfaces.Props, {}> {
   public render() {
     const { handleEditPassword, onInputChange } = this.props;
     const { editPasswordRef } = this.props;
@@ -89,9 +86,7 @@ export class EditPassword extends React.Component<
                 <div className="col mb-3">
                   <div className="input-group">
                     <label className="labeltext">Confirm Password</label>
-                    <div
-                      className={classnames('input-group-prepend',styles['passwordInput'])}
-                    >
+                    <div className={classnames('input-group-prepend', styles['passwordInput'])}>
                       <input
                         type="password"
                         className={classnames('form-control', styles1['login-input'])}

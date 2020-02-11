@@ -95,9 +95,7 @@ export class UserProfileModal extends React.Component<
             {this.props.userDetails.errorMessage === 'Unauthorised' ? (
               <Redirect to="login" />
             ) : (
-              <p style={{ color: 'red', marginLeft: '40%' }}>
-                { '' }
-              </p>
+              <p style={{ color: 'red', marginLeft: '40%' }}>{''}</p>
             )}
           </Row>
         ) : null}
