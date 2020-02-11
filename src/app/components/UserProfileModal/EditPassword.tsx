@@ -18,9 +18,8 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
             <div
               className={classnames('text-dark', styles.formHeading)}
               style={{
-                display: 'flex',
                 marginBottom: '5%',
-                marginLeft: '10%',
+                marginLeft: '-1px',
                 textAlign: 'center',
               }}
             >
