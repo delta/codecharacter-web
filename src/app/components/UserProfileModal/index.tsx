@@ -79,8 +79,7 @@ export class UserProfileModal extends React.Component<
         </Row>
         <Row>
           <a
-            className="labeltext"
-            style={{ marginLeft: this.state.isPasswordPage ? '38%' : '37%', cursor: 'pointer' }}
+             className={this.state.isPasswordPage?classnames("labeltext",styles["loginPageLink"]):classnames("labeltext",styles["passwordPageLink"])}
             onClick={() => {
               this.setState((prevState) => ({
                 isPasswordPage: !prevState.isPasswordPage,
@@ -95,7 +94,7 @@ export class UserProfileModal extends React.Component<
             {this.props.userDetails.errorMessage === 'Unauthorised' ? (
               <Redirect to="login" />
             ) : (
-              <p style={{ color: 'red', marginLeft: '40%' }}>{''}</p>
+              <p>{''}</p>
             )}
           </Row>
         ) : null}

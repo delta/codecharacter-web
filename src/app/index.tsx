@@ -22,7 +22,7 @@ export const App = hot(module)(() => (
       <Route exact path={Routes.LOGIN} component={Login} />
       <Route exact path={Routes.REGISTER} component={Register} />
       <Route exact path={Routes.LEADERBOARD} component={Leaderboard} />
-      <Route exact path={Routes.USERPROFILEMODEL} component={UserProfileModal} />
+      <Route exact path={Routes.USER_PROFILE_MODEL} component={UserProfileModal} />
     </Switch>
     <Sugar background="#484848" color="white" />
   </BrowserRouter>

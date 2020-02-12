@@ -35,7 +35,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                   <label style={{ display: 'block' }} className="labeltext">
                     Username
                   </label>
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <div className={styles.inputGroup}>
                     <input
                       type="text"
                       className={classnames('form-control', styles1['login-input'])}
@@ -60,7 +60,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
               <div className="col mb-3">
                 <div className="input-group">
                   <label className="labeltext">Name</label>
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <div className={styles.inputGroup}>
                     <input
                       type="text"
                       className={classnames('form-control', styles1['login-input'])}
@@ -86,7 +86,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
               <div className="col sm={12} mb-3">
                 <div className="input-group">
                   <label className="labeltext">Nationality</label>
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <div className={styles.inputGroup}>
                     <ReactFlagsSelect
                       searchable={true}
                       className={classnames('customFlag', styles1['login-input'])}
@@ -137,10 +137,9 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
 
             <div className="form-row">
               <div className="col text-center mb-2">
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className={styles.inputGroup}>
                   {userDetails.errorMessage != '' ? (
                     <div
-                      style={{ margin: '0px',marginBottom: '10px'}}
                       className={classnames(styles1['login-error'], styles['UsernameError'])}
                     >
                       {userDetails.errorMessage}

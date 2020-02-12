@@ -120,7 +120,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             </Button>
           ) : null}
           <Button
-            href={Routes.USERPROFILEMODEL}
+            href={Routes.USER_PROFILE_MODEL}
             className={classnames('py-2 px-auto', styles.customBtn)}
             id="user_profile_button"
             title={isLoggedIn ? 'Profile' : 'Login'}

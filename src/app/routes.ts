@@ -3,5 +3,5 @@ export enum Routes {
   LOGIN = '/login',
   REGISTER = '/register',
   LEADERBOARD = '/leaderboard',
-  USERPROFILEMODEL = '/profile',
+  USER_PROFILE_MODEL = '/profile',
 }
