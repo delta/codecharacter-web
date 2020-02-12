@@ -5,13 +5,6 @@ export interface StateProps {
   userDetails: UserInterfaces.UserStoreState;
 }
 
-export interface ListDisabled {
-  isUserNameDisabled?: boolean;
-  isFullNameDisabled?: boolean;
-  isFlagSelectDisabled?: boolean;
-  isPasswordDisabled?: boolean;
-}
-
 export interface State {
   avatar: string;
   username: string;
@@ -20,7 +13,7 @@ export interface State {
   repeatPassword: string;
   country: string;
   fullName: string;
-  listDisabled: ListDisabled;
+  isPasswordPage: boolean;
 }
 
 export enum InputName {
@@ -31,7 +24,6 @@ export enum InputName {
   repeatPassword = 'repeatPassword',
   country = 'country',
   fullName = 'fullName',
-  listDisabled = 'listDisabled',
 }
 
 export enum InputState {

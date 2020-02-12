@@ -9,7 +9,6 @@ export enum SidePanelTab {
   MATCH = 'MATCH',
   NOTIFICATION = 'NOTIFICATION',
   NONE = 'NONE',
-  USER_EDIT = 'USER_EDIT',
 }
 
 const dashboardStoreIntialState: DashboardInterfaces.DashboardStoreState = {

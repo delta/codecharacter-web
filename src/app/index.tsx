@@ -1,6 +1,8 @@
 import Login from 'app/containers/Authentication/Login';
 import Register from 'app/containers/Authentication/Register';
 import Dashboard from 'app/containers/Dashboard';
+import Leaderboard from 'app/containers/Leaderboard';
+import UserProfileModal from 'app/containers/UserProfileModal';
 import { Routes } from 'app/routes';
 // @ts-ignore
 import { initializeRendererAssets } from 'codecharacter-renderer';
@@ -19,6 +21,8 @@ export const App = hot(module)(() => (
       <Route exact path={Routes.ROOT} component={Dashboard} />
       <Route exact path={Routes.LOGIN} component={Login} />
       <Route exact path={Routes.REGISTER} component={Register} />
+      <Route exact path={Routes.LEADERBOARD} component={Leaderboard} />
+      <Route exact path={Routes.USER_PROFILE_MODEL} component={UserProfileModal} />
     </Switch>
     <Sugar background="#484848" color="white" />
   </BrowserRouter>
