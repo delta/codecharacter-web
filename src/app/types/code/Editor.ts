@@ -12,6 +12,14 @@ const actions = {
   updateCode: CodeActions.updateCode,
 };
 
+export const keyboardHandlers = ['emacs', 'vim', 'default'];
+
+export enum KeyboardHandler {
+  EMACS,
+  VIM,
+  DEFAULT,
+}
+
 export const themes = [
   'monokai',
   'github',

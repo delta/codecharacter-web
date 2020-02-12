@@ -1,6 +1,6 @@
 import * as styles1 from 'app/styles/Authentication.module.css';
-import * as styles from 'app/styles/UserProfileModal.module.css';
 import 'app/styles/Flags.css';
+import * as styles from 'app/styles/UserProfileModal.module.css';
 import { Avatar } from 'app/types/Authentication/Register';
 import { InputName } from 'app/types/UserProfileModal';
 import * as EditProfileInterfaces from 'app/types/UserProfileModal/EditProfile';
@@ -138,8 +138,8 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
             <div className="form-row">
               <div className="col text-center mb-2">
                 <div className={styles.inputGroup}>
-                  {userDetails.errorMessage != '' ? (
-                    <div className={classnames(styles1['login-error'], styles['UsernameError'])}>
+                  {userDetails.errorMessage !== '' ? (
+                    <div className={classnames(styles1['login-error'], styles.UsernameError)}>
                       {userDetails.errorMessage}
                     </div>
                   ) : null}
@@ -149,8 +149,8 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                     style={{
                       backgroundColor: 'rgb(70, 48, 235)',
                       borderColor: 'rgb(70, 48, 235)',
-                      width: '100%',
                       margin: '0px',
+                      width: '100%',
                     }}
                     disabled={
                       currentAvatar === userDetails.avatar &&

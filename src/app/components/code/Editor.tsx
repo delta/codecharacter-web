@@ -8,13 +8,11 @@ import 'brace/ext/searchbox';
 import 'brace/mode/c_cpp';
 import 'brace/snippets/c_cpp';
 
-export const keyboardHandlers = ['emacs', 'vim', 'default'];
-
 EditorInterfaces.themes.forEach((theme) => {
   require(`brace/theme/${theme}`);
 });
 
-keyboardHandlers.forEach((keyboardHandler) => {
+EditorInterfaces.keyboardHandlers.forEach((keyboardHandler) => {
   if (keyboardHandler !== 'default') {
     require(`brace/keybinding/${keyboardHandler}`);
   }
@@ -50,7 +48,6 @@ export class Editor extends React.Component<EditorInterfaces.Props, EditorInterf
       enableLiveAutocompletion: enableBasicAutocompletion,
       showLineNumbers: true,
       tabSize: 2,
-      theme: 'ace/theme/tomorrow_night',
     };
 
     return (

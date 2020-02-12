@@ -1,13 +1,19 @@
 import { EditorSettingsActions } from 'app/actions';
 import * as EditorInterfaces from 'app/types/code/Editor';
-import { EditorThemeTypes, themes } from 'app/types/code/Editor.ts';
+import {
+  EditorThemeTypes,
+  // tslint:disable-next-line
+  keyboardHandlers,
+  KeyboardHandler,
+  themes,
+} from 'app/types/code/Editor.ts';
 
 const editorStoreIntialState: EditorInterfaces.EditorStoreState = {
   editorOptions: {
     enableBasicAutoCompletion: true,
     enableSnippets: true,
     fontSize: 16,
-    keyboardHandler: 'default',
+    keyboardHandler: keyboardHandlers[KeyboardHandler.DEFAULT],
     theme: themes[EditorThemeTypes.SOLARIZED_LIGHT],
   },
 };
