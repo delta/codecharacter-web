@@ -79,7 +79,11 @@ export class UserProfileModal extends React.Component<
         </Row>
         <Row>
           <a
-             className={this.state.isPasswordPage?classnames("labeltext",styles["loginPageLink"]):classnames("labeltext",styles["passwordPageLink"])}
+            className={
+              this.state.isPasswordPage
+                ? classnames('labeltext', styles['loginPageLink'])
+                : classnames('labeltext', styles['passwordPageLink'])
+            }
             onClick={() => {
               this.setState((prevState) => ({
                 isPasswordPage: !prevState.isPasswordPage,

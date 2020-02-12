@@ -228,24 +228,24 @@
   flex-direction: column;
 }
 
-.inputGroup{
-  display: flex; 
+.inputGroup {
+  display: flex;
   flex-direction: column;
 }
 
-.loginButton{
+.loginButton {
   background-color: rgb(70, 48, 235);
   border-color: rgb(70, 48, 235);
   margin-bottom: 10px;
   width: 100%;
 }
 
-.loginPageLink{
+.loginPageLink {
   cursor: pointer;
   margin-left: 38%;
 }
 
-.passwordPageLink{
+.passwordPageLink {
   cursor: pointer;
   margin-left: 37%;
 }

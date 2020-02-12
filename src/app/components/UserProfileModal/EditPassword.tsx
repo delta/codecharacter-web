@@ -35,9 +35,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                 <div className="col mb-3">
                   <div className="input-group">
                     <label className="labeltext">Old Password</label>
-                    <div
-                      className={classnames("input-group-prepend",styles['inputGroup'])}
-                    >
+                    <div className={classnames('input-group-prepend', styles['inputGroup'])}>
                       <input
                         type="password"
                         className={classnames('form-control', styles1['login-input'])}
@@ -59,9 +57,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
                 <div className="col mb-3">
                   <div className="input-group">
                     <label className="labeltext">New Password</label>
-                    <div
-                      className={classnames("input-group-prepend",styles['inputGroup'])}
-                    >
+                    <div className={classnames('input-group-prepend', styles['inputGroup'])}>
                       <input
                         type="password"
                         className={classnames('form-control', styles1['login-input'])}
@@ -104,7 +100,11 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
               <div className="form-row">
                 <div className="col-12 text-center">
                   <button
-                    className={classnames('btn btn-success', styles1.loginButton, styles.loginButton)}
+                    className={classnames(
+                      'btn btn-success',
+                      styles1.loginButton,
+                      styles.loginButton,
+                    )}
                     type="submit"
                   >
                     Save Changes
