@@ -268,7 +268,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                           })
                         }
                       />
-                      <label htmlFor="switch" style={{ backgroundColor: '#4630eb' }}>
+                      <label htmlFor="switch" className="flaglabel"  style={{ backgroundColor: '#4630eb' }}>
                         Toggle
                       </label>
                     </span>
@@ -302,7 +302,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       <ReactFlagsSelect
                         searchable={true}
                         placeholder="Search for a country"
-                        className="customFlag"
+                        className={classnames(styles["customFlag" ])}
                         defaultCountry="IN"
                         onSelect={this.onSelectFlag}
                       />
