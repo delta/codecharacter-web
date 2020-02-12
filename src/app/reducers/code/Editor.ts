@@ -1,5 +1,6 @@
 import { EditorSettingsActions } from 'app/actions';
 import * as EditorInterfaces from 'app/types/code/Editor';
+import { EditorThemeTypes, themes } from 'app/types/code/Editor.ts';
 
 const editorStoreIntialState: EditorInterfaces.EditorStoreState = {
   editorOptions: {
@@ -7,7 +8,7 @@ const editorStoreIntialState: EditorInterfaces.EditorStoreState = {
     enableSnippets: true,
     fontSize: 16,
     keyboardHandler: 'default',
-    theme: 'twilight',
+    theme: themes[EditorThemeTypes.SOLARIZED_LIGHT],
   },
 };
 

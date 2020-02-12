@@ -8,26 +8,9 @@ import 'brace/ext/searchbox';
 import 'brace/mode/c_cpp';
 import 'brace/snippets/c_cpp';
 
-export const themes = [
-  'monokai',
-  'github',
-  'tomorrow',
-  'kuroir',
-  'twilight',
-  'xcode',
-  'textmate',
-  'solarized_dark',
-  'solarized_light',
-  'terminal',
-  'chaos',
-  'chrome',
-  'eclipse',
-  'dracula',
-];
-
 export const keyboardHandlers = ['emacs', 'vim', 'default'];
 
-themes.forEach((theme) => {
+EditorInterfaces.themes.forEach((theme) => {
   require(`brace/theme/${theme}`);
 });
 
@@ -67,6 +50,7 @@ export class Editor extends React.Component<EditorInterfaces.Props, EditorInterf
       enableLiveAutocompletion: enableBasicAutocompletion,
       showLineNumbers: true,
       tabSize: 2,
+      theme: 'ace/theme/tomorrow_night',
     };
 
     return (

@@ -1,4 +1,5 @@
-import { keyboardHandlers, themes } from 'app/components/code/Editor';
+import { keyboardHandlers } from 'app/components/code/Editor';
+import { themes } from 'app/types/code/Editor';
 import * as styles from 'app/styles/EditorSettings.module.css';
 import * as EditorSettingsInterfaces from 'app/types/code/EditorSettings';
 import classnames from 'classnames';
