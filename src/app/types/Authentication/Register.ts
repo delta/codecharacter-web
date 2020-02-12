@@ -29,8 +29,15 @@ export enum Avatar {
   MONKEY = 'assets/img/userAvatars/020-monkey.svg',
 }
 
+export enum Steps {
+  USER_DETAILS = 0,
+  CREDENTIALS = 1,
+  OTHERS = 2,
+}
+
 export interface State {
   avatar: string;
+  currentStep: Steps;
   collegeName?: string;
   isCaptchaValidated: boolean;
   isFormSubmitted: boolean;
@@ -48,7 +55,6 @@ export interface StateProps {
   isLoggedIn: boolean;
   errorMessage: string;
 }
-
 export interface ElementOwnProps {
   handleSelectPanel: (authType: AuthType) => void;
 }
