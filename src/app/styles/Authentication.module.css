@@ -399,7 +399,7 @@
   color: #4630eb;
 }
 .multi-steps li:active:before{
-  transform: translateY(2px);
+  transform: scale(0.9);
 }
 
 .multi-steps > li:last-child:after {
