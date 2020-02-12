@@ -1,11 +1,16 @@
 import { FaqElement } from 'app/components/FaqElement';
+import { FAQ } from 'app/FAQ';
 import * as styles from 'app/styles/LandingPage.module.css';
+import * as LandingPageInterfaces from 'app/types/LandingPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import classnames from 'classnames';
 import * as React from 'react';
 
-export class LandingPage extends React.Component<{}, { isNavBarDown: boolean }> {
-  public constructor(props: {}) {
+export class LandingPage extends React.Component<
+  LandingPageInterfaces.Props,
+  LandingPageInterfaces.State
+> {
+  public constructor(props: LandingPageInterfaces.Props) {
     super(props);
     this.state = {
       isNavBarDown: false,
@@ -66,19 +71,27 @@ export class LandingPage extends React.Component<{}, { isNavBarDown: boolean }> 
 
         <div className={classnames('container', styles['first-cont'])}>
           <div className="row">
+            <h1 className={classnames(styles['landing-heading'])}> Code Character </h1>
+          </div>
+
+          <div className="row">
             <div className="col-lg-6 col-sm-12">
-              <FaqElement
-                question={'LOREM IPSUM'}
-                answer={
-                  'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'
+              {FAQ.map((element, index) => {
+                if (index % 2 === 0) {
+                  return (
+                    <FaqElement key={index} question={element.question} answer={element.answer} />
+                  );
                 }
-              />
+              })}
             </div>
             <div className="col-lg-6 col-sm-12">
-              <FaqElement question={'HELLO WORLD'} answer={'HELLLLLLLOOOOO'} />
-            </div>
-            <div className="col-lg-6 col-sm-12">
-              <FaqElement question={'HELLO WORLD'} answer={'HELLLLLLLOOOOO'} />
+              {FAQ.map((element, index) => {
+                if (index % 2 === 1) {
+                  return (
+                    <FaqElement key={index} question={element.question} answer={element.answer} />
+                  );
+                }
+              })}
             </div>
           </div>
         </div>

@@ -1,9 +1,15 @@
 .root {
   background-color: #fff9f0;
   width: 100vw;
-  height: 200vh;
+  height: 300vh;
   position: absolute;
   top: 0;
+}
+
+.landing-heading {
+  font-size: 5rem;
+  font-family: 'Poppins';
+  margin: auto;
 }
 
 .main-nav {

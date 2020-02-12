@@ -23,7 +23,7 @@
   cursor: pointer;
   animation-name: example;
   animation-duration: 1s;
-
+  width: 100%;
   transition: all 1s ease;
 }
 .faq-body {
@@ -51,12 +51,12 @@
 .faq-body-inactive {
   max-height: 0;
   overflow: hidden;
-  -webkit-transition: max-height 1s;
-  -moz-transition: max-height 1s;
-  transition: max-height 1s;
+  -webkit-transition: max-height 0.5s;
+  -moz-transition: max-height 0.5s;
+  transition: max-height 0.5s;
 }
 .faq-body-active {
-  max-height: 200px;
+  max-height: 50px;
 }
 /* .faq-body-down{
   display: inline-block;
@@ -67,11 +67,15 @@
   margin: auto;
   margin-bottom: 0;
   width: 90%;
+  position: relative;
 }
 .heading-text {
   position: absolute;
+  top: 8px;
+  left: 10px;
+  /* position: absolute;
   top: 50px;
-  left: 100px;
+  left: 100px; */
   /* margin-bottom: 10px; */
 }
 
