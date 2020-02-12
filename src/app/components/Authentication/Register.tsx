@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
-import * as styles1 from 'app/styles/Register.module.css';
+import * as RegisterModuleStyles from 'app/styles/Register.module.css';
 import * as RegisterInterfaces from 'app/types/Authentication/Register';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -109,7 +109,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                 >
                   <div className={classnames(styles['login-section1'])}>
                     <div className={classnames(styles['login-label'])}> Full Name </div>
-                    <div className={classnames(styles1['input-group'])}>
+                    <div className={classnames(RegisterModuleStyles['input-group'])}>
                       <input
                         type="text"
                         className={classnames('form-control', styles['register-input'])}
@@ -129,7 +129,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       </div>
                     </div>
                     <div className={classnames(styles['login-label'])}> Username </div>
-                    <div className={classnames(styles1['input-group'])}>
+                    <div className={classnames(RegisterModuleStyles['input-group'])}>
                       <input
                         type="text"
                         className={classnames('form-control', styles['register-input'])}
@@ -150,7 +150,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       </div>
                     </div>
                     <div className={classnames(styles['login-label'])}>Email </div>
-                    <div className={classnames(styles1['input-group'])}>
+                    <div className={classnames(RegisterModuleStyles['input-group'])}>
                       <input
                         type="email"
                         className={classnames('form-control', styles['register-input'])}
@@ -175,12 +175,12 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                           ? classnames(
                               'col text-center mt -0 mb-2 ',
                               styles['register-error-inactive'],
-                              styles1.errorMessage,
+                              RegisterModuleStyles.errorMessage,
                             )
                           : classnames(
                               'col text-center mt -0 mb-2 errorMessage',
                               styles['register-error-active'],
-                              styles1.errorMessage,
+                              RegisterModuleStyles.errorMessage,
                             )
                       }
                     >
@@ -198,7 +198,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   ref={this.register2Ref}
                 >
                   <div className={classnames(styles['login-label'])}> Password </div>
-                  <div className={classnames(styles1['input-group'])}>
+                  <div className={classnames(RegisterModuleStyles['input-group'])}>
                     <input
                       type="password"
                       className={classnames('form-control', styles['register-input'])}
@@ -218,7 +218,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                     </div>
                   </div>
                   <div className={classnames(styles['login-label'])}> Confirm Password </div>
-                  <div className={classnames(styles1['input-group'])}>
+                  <div className={classnames(RegisterModuleStyles['input-group'])}>
                     <input
                       type="password"
                       className={classnames('form-control', styles['register-input'])}
@@ -242,7 +242,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                     <div
                       className={classnames(
                         'col text-center mt -0 mb-2 errorMessage',
-                        styles1.errorMessage,
+                        RegisterModuleStyles.errorMessage,
                       )}
                     >
                       Password and confirm passwords have different values
@@ -264,7 +264,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       <input
                         type="checkbox"
                         id="switch"
-                        className={classnames(styles1['checkbox-input'])}
+                        className={classnames(RegisterModuleStyles['checkbox-input'])}
                         checked={isStudent}
                         onChange={() =>
                           this.setState({
@@ -278,7 +278,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       />
                       <label
                         htmlFor="switch"
-                        className={classnames(styles1.flaglabel)}
+                        className={classnames(RegisterModuleStyles.flaglabel)}
                         style={{ backgroundColor: '#4630eb' }}
                       >
                         Toggle
@@ -288,7 +288,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   {isStudent && (
                     <div>
                       <div className={classnames(styles['login-label'])}> College Name </div>
-                      <div className={classnames(styles1['input-group'])}>
+                      <div className={classnames(RegisterModuleStyles['input-group'])}>
                         <input
                           type="text"
                           className={classnames('form-control', styles['register-input'])}
@@ -309,7 +309,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       </div>
                     </div>
                   )}
-                  <div className={classnames(styles1['input-group'])}>
+                  <div className={classnames(RegisterModuleStyles['input-group'])}>
                     <ReactFlagsSelect
                       searchable={true}
                       placeholder="Search for a country"
@@ -343,7 +343,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                           >
                             {
                               <img
-                                className={classnames(styles1.img)}
+                                className={classnames(RegisterModuleStyles.img)}
                                 width={50}
                                 height={50}
                                   // @ts-ignore
@@ -357,7 +357,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   </div>
                   <div
                     className={classnames(
-                      styles1['input-group'],
+                      RegisterModuleStyles['input-group'],
                       styles.captcha,
                       'd-flex justify-content-center',
                     )}
@@ -386,19 +386,19 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         ? classnames(
                             'col text-center mt -0 mb-2 errorMessage',
                             styles['register-error-inactive'],
-                            styles1.errorMessage,
+                            RegisterModuleStyles.errorMessage,
                           )
                         : classnames(
                             'col text-center mt -0 mb-2 errorMessage',
                             styles['register-error-active'],
-                            styles1.errorMessage,
+                            RegisterModuleStyles.errorMessage,
                           )
                     }
                   >
                     {errorMessage}
                   </div>
                   <div
-                    className={classnames(styles1['input-group'], 'd-flex justify-content-center')}
+                    className={classnames(RegisterModuleStyles['input-group'], 'd-flex justify-content-center')}
                   >
                     <button
                       onClick={this.handleRegister}
