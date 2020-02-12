@@ -342,11 +342,11 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                             title={avatar}
                           >
                             {
-                              // @ts-ignore
                               <img
                                 className={classnames(styles1.img)}
                                 width={50}
                                 height={50}
+                                  // @ts-ignore
                                 src={RegisterInterfaces.Avatar[avatar]}
                               />
                             }
