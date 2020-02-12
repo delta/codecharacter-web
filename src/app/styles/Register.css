@@ -1,8 +1,13 @@
 .customFlag {
-  width: 89%;
   background: #fff;
   padding: 8px;
-  border: 1px solid #ced4da;
+  margin: 0 !important;
+  height: 50px;
+  width: 100%;
+  margin-left: 10%;
+  border: 1px solid black;
+  border-radius: 3px !important;
+  margin-bottom: 20px !important;
 }
 
 img {
