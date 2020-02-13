@@ -200,7 +200,7 @@
 }
 .customFlag {
   background: #fff;
-  padding: 8px;
+  padding: 8px !important;
   margin: 0 !important;
   height: 50px;
   width: 100%;
@@ -208,6 +208,11 @@
   border: 1px solid black;
   border-radius: 3px !important;
   margin-bottom: 20px !important;
+}
+
+.captcha{
+  display: flex;
+  justify-content: center;
 }
 
 .login-input {

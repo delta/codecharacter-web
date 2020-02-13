@@ -362,7 +362,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   </div>
                   <div
                     className={classnames(
-                      registerStyles['input-group'],
+                      authStyles['captcha'],
                       'd-flex justify-content-center',
                     )}
                   >
