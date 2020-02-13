@@ -136,7 +136,7 @@ const tourConfig: any = [
       <div>
         <h6>Save</h6>
         <p style={{ fontSize: '12px', fontWeight: 442 }}>
-          Click to same your code. Your last saved code is the version that is compiled!
+          Click to save your code. Your last saved code is the version that is compiled!
         </p>
       </div>
     ),
