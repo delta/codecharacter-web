@@ -1,5 +1,5 @@
-import { keyboardHandlers, themes } from 'app/components/code/Editor';
 import * as styles from 'app/styles/EditorSettings.module.css';
+import { keyboardHandlers, themes } from 'app/types/code/Editor';
 import * as EditorSettingsInterfaces from 'app/types/code/EditorSettings';
 import classnames from 'classnames';
 import * as React from 'react';

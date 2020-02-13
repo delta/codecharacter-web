@@ -139,7 +139,7 @@ State PlayerCode::Update(State state) {
   isLoggedIn={false}
   keyboardHandler="default"
   save={[Function]}
-  theme="twilight"
+  theme="solarized_light"
   updateCode={[Function]}
   viewOnly={false}
 />
