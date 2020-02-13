@@ -139,7 +139,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
               <div className="col text-center mb-2">
                 <div className={styles.inputGroup}>
                   {userDetails.errorMessage !== '' ? (
-                    <div className={classnames(styles1['login-error'], styles.UsernameError)}>
+                    <div className={classnames(styles1['login-error'], styles.usernameError)}>
                       {userDetails.errorMessage}
                     </div>
                   ) : null}

@@ -2,8 +2,8 @@ import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/free-sol
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
 import { Routes } from 'app/routes';
-import * as styles from 'app/styles/Authentication.module.css';
-import * as RegisterModuleStyles from 'app/styles/Register.module.css';
+import * as authStyles from 'app/styles/Authentication.module.css';
+import * as registerStyles from 'app/styles/Register.module.css';
 import * as RegisterInterfaces from 'app/types/Authentication/Register';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -89,30 +89,33 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     }
 
     return (
-      <div className={classnames(styles.root)}>
-        <div className={classnames(styles.registerMessage)}>
-          <h1 className={classnames(styles['register-h1'])}> Register to CodeCharacter! </h1>
+      <div className={classnames(authStyles.root)}>
+        <div className={classnames(authStyles.registerMessage)}>
+          <h1 className={classnames(authStyles['register-h1'])}> Register to CodeCharacter! </h1>
           <p> Register now and code your way through!! </p>
         </div>
-        <div className={classnames('col-sm-12', styles.form)}>
+        <div className={classnames('col-sm-12', authStyles.form)}>
           <form
-            className={classnames('registerForm d-flex flex-wrap', styles['main-register-form'])}
+            className={classnames(
+              'registerForm d-flex flex-wrap',
+              authStyles['main-register-form'],
+            )}
             noValidate
             ref={this.registerRef}
           >
             {currentStep === RegisterInterfaces.Steps.USER_DETAILS && (
-              <div className={classnames(styles['stage-div'])}>
+              <div className={classnames(authStyles['stage-div'])}>
                 <form
-                  className={classnames(styles['stage-form'])}
+                  className={classnames(authStyles['stage-form'])}
                   noValidate
                   ref={this.register1Ref}
                 >
-                  <div className={classnames(styles['login-section1'])}>
-                    <div className={classnames(styles['login-label'])}> Full Name </div>
-                    <div className={classnames(RegisterModuleStyles['input-group'])}>
+                  <div className={classnames(authStyles['login-section1'])}>
+                    <div className={classnames(authStyles['login-label'])}> Full Name </div>
+                    <div className={classnames(registerStyles['input-group'])}>
                       <input
                         type="text"
-                        className={classnames('form-control', styles['register-input'])}
+                        className={classnames('form-control', authStyles['register-input'])}
                         id="registerValidationFullname"
                         aria-describedby="inputGroupPrepend"
                         pattern=".{5,50}"
@@ -124,15 +127,15 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         }
                         required
                       />
-                      <div className={classnames('invalid-feedback', styles['register-error'])}>
+                      <div className={classnames('invalid-feedback', authStyles['register-error'])}>
                         Name must have minimum 5 characters.
                       </div>
                     </div>
-                    <div className={classnames(styles['login-label'])}> Username </div>
-                    <div className={classnames(RegisterModuleStyles['input-group'])}>
+                    <div className={classnames(authStyles['login-label'])}> Username </div>
+                    <div className={classnames(registerStyles['input-group'])}>
                       <input
                         type="text"
-                        className={classnames('form-control', styles['register-input'])}
+                        className={classnames('form-control', authStyles['register-input'])}
                         id="registerValidationUsername"
                         aria-describedby="inputGroupPrepend"
                         pattern=".{5,50}"
@@ -145,15 +148,15 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         }}
                         required
                       />
-                      <div className={classnames('invalid-feedback', styles['register-error'])}>
+                      <div className={classnames('invalid-feedback', authStyles['register-error'])}>
                         Username must have minimum 5 characters.
                       </div>
                     </div>
-                    <div className={classnames(styles['login-label'])}>Email </div>
-                    <div className={classnames(RegisterModuleStyles['input-group'])}>
+                    <div className={classnames(authStyles['login-label'])}>Email </div>
+                    <div className={classnames(registerStyles['input-group'])}>
                       <input
                         type="email"
-                        className={classnames('form-control', styles['register-input'])}
+                        className={classnames('form-control', authStyles['register-input'])}
                         id="registerValidationEmail"
                         aria-describedby="inputGroupPrepend"
                         value={email}
@@ -164,7 +167,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         }
                         required
                       />
-                      <div className={classnames('invalid-feedback', styles['register-error'])}>
+                      <div className={classnames('invalid-feedback', authStyles['register-error'])}>
                         Please enter a valid Email ID.
                       </div>
                     </div>
@@ -174,13 +177,13 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         !errorMessage
                           ? classnames(
                               'col text-center mt -0 mb-2 ',
-                              styles['register-error-inactive'],
-                              RegisterModuleStyles.errorMessage,
+                              authStyles['register-error-inactive'],
+                              registerStyles.errorMessage,
                             )
                           : classnames(
                               'col text-center mt -0 mb-2 errorMessage',
-                              styles['register-error-active'],
-                              RegisterModuleStyles.errorMessage,
+                              authStyles['register-error-active'],
+                              registerStyles.errorMessage,
                             )
                       }
                     >
@@ -191,17 +194,17 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
               </div>
             )}
             {currentStep === RegisterInterfaces.Steps.CREDENTIALS && (
-              <div className={classnames(styles['stage-div'])}>
+              <div className={classnames(authStyles['stage-div'])}>
                 <form
-                  className={classnames(styles['stage-form'])}
+                  className={classnames(authStyles['stage-form'])}
                   noValidate
                   ref={this.register2Ref}
                 >
-                  <div className={classnames(styles['login-label'])}> Password </div>
-                  <div className={classnames(RegisterModuleStyles['input-group'])}>
+                  <div className={classnames(authStyles['login-label'])}> Password </div>
+                  <div className={classnames(registerStyles['input-group'])}>
                     <input
                       type="password"
-                      className={classnames('form-control', styles['register-input'])}
+                      className={classnames('form-control', authStyles['register-input'])}
                       id="registerValidationPassword"
                       aria-describedby="inputGroupPrepend"
                       pattern=".{5,}"
@@ -213,15 +216,15 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       }
                       required
                     />
-                    <div className={classnames('invalid-feedback', styles['register-error'])}>
+                    <div className={classnames('invalid-feedback', authStyles['register-error'])}>
                       Password should have minimum 5 characters.
                     </div>
                   </div>
-                  <div className={classnames(styles['login-label'])}> Confirm Password </div>
-                  <div className={classnames(RegisterModuleStyles['input-group'])}>
+                  <div className={classnames(authStyles['login-label'])}> Confirm Password </div>
+                  <div className={classnames(registerStyles['input-group'])}>
                     <input
                       type="password"
-                      className={classnames('form-control', styles['register-input'])}
+                      className={classnames('form-control', authStyles['register-input'])}
                       id="registerValidationrepeatPassword"
                       aria-describedby="inputGroupPrepend"
                       pattern=".{5,}"
@@ -236,13 +239,13 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   </div>
 
                   <div
-                    className={classnames('form-row', styles['register-error-inactive'])}
+                    className={classnames('form-row', authStyles['register-error-inactive'])}
                     ref={this.passwordErrorRef}
                   >
                     <div
                       className={classnames(
                         'col text-center mt -0 mb-2 errorMessage',
-                        RegisterModuleStyles.errorMessage,
+                        registerStyles.errorMessage,
                       )}
                     >
                       Password and confirm passwords have different values
@@ -252,9 +255,9 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
               </div>
             )}
             {currentStep === RegisterInterfaces.Steps.OTHERS && (
-              <div className={classnames(styles['stage-div'])}>
+              <div className={classnames(authStyles['stage-div'])}>
                 <form
-                  className={classnames(styles['stage-form'])}
+                  className={classnames(authStyles['stage-form'])}
                   noValidate
                   ref={this.register3Ref}
                 >
@@ -264,7 +267,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       <input
                         type="checkbox"
                         id="switch"
-                        className={classnames(RegisterModuleStyles['checkbox-input'])}
+                        className={classnames(registerStyles['checkbox-input'])}
                         checked={isStudent}
                         onChange={() =>
                           this.setState({
@@ -278,7 +281,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       />
                       <label
                         htmlFor="switch"
-                        className={classnames(RegisterModuleStyles.flaglabel)}
+                        className={classnames(registerStyles.flaglabel)}
                         style={{ backgroundColor: '#4630eb' }}
                       >
                         Toggle
@@ -287,11 +290,11 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   </div>
                   {isStudent && (
                     <div>
-                      <div className={classnames(styles['login-label'])}> College Name </div>
-                      <div className={classnames(RegisterModuleStyles['input-group'])}>
+                      <div className={classnames(authStyles['login-label'])}> College Name </div>
+                      <div className={classnames(registerStyles['input-group'])}>
                         <input
                           type="text"
-                          className={classnames('form-control', styles['register-input'])}
+                          className={classnames('form-control', authStyles['register-input'])}
                           id="collegeNameValidation"
                           aria-describedby="inputGroupPrepend"
                           pattern=".{5,50}|[a-zA-Z0-9\s]+"
@@ -303,35 +306,37 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                           }
                           required
                         />
-                        <div className={classnames('invalid-feedback', styles['register-error'])}>
+                        <div
+                          className={classnames('invalid-feedback', authStyles['register-error'])}
+                        >
                           College Name should have minimum 5 characters.
                         </div>
                       </div>
                     </div>
                   )}
-                  <div className={classnames(RegisterModuleStyles['input-group'])}>
+                  <div className={classnames(registerStyles['input-group'])}>
                     <ReactFlagsSelect
                       searchable={true}
                       placeholder="Search for a country"
-                      className={classnames(styles.customFlag)}
+                      className={classnames(authStyles.customFlag)}
                       defaultCountry="IN"
                       onSelect={this.onSelectFlag}
                     />
 
-                    <div className={classnames('invalid-feedback', styles['register-error'])}>
+                    <div className={classnames('invalid-feedback', authStyles['register-error'])}>
                       Please Select a country
                     </div>
                   </div>
                   <div className="form-row" style={{ padding: '10px 0px', fontFamily: 'Poppins' }}>
                     <div className="text-center text-dark">Choose your spirit animal</div>
-                    <div className={classnames(styles['avatar-select-container'])}>
-                      <section className={classnames(styles['avatar-section'])}>
+                    <div className={classnames(authStyles['avatar-select-container'])}>
+                      <section className={classnames(authStyles['avatar-section'])}>
                         {avatars.map((avatar: string, index: number) => (
                           <div
                             className={
                               avatar === this.state.avatar
-                                ? classnames(styles['avatar-img-active'])
-                                : classnames(styles['avatar-img'])
+                                ? classnames(authStyles['avatar-img-active'])
+                                : classnames(authStyles['avatar-img'])
                             }
                             key={index}
                             onClick={() => {
@@ -343,10 +348,10 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                           >
                             {
                               <img
-                                className={classnames(RegisterModuleStyles.img)}
+                                className={classnames(registerStyles.img)}
                                 width={50}
                                 height={50}
-                                  // @ts-ignore
+                                // @ts-ignore
                                 src={RegisterInterfaces.Avatar[avatar]}
                               />
                             }
@@ -357,8 +362,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   </div>
                   <div
                     className={classnames(
-                      RegisterModuleStyles['input-group'],
-                      styles.captcha,
+                      registerStyles['input-group'],
                       'd-flex justify-content-center',
                     )}
                   >
@@ -370,7 +374,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                     />
                     <div
                       className={classnames(
-                        styles['register-error-active'],
+                        authStyles['register-error-active'],
                         'invalid-feedback text-center',
                       )}
                       style={{
@@ -385,24 +389,27 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       errorMessage === ''
                         ? classnames(
                             'col text-center mt -0 mb-2 errorMessage',
-                            styles['register-error-inactive'],
-                            RegisterModuleStyles.errorMessage,
+                            authStyles['register-error-inactive'],
+                            registerStyles.errorMessage,
                           )
                         : classnames(
                             'col text-center mt -0 mb-2 errorMessage',
-                            styles['register-error-active'],
-                            RegisterModuleStyles.errorMessage,
+                            authStyles['register-error-active'],
+                            registerStyles.errorMessage,
                           )
                     }
                   >
                     {errorMessage}
                   </div>
                   <div
-                    className={classnames(RegisterModuleStyles['input-group'], 'd-flex justify-content-center')}
+                    className={classnames(
+                      registerStyles['input-group'],
+                      'd-flex justify-content-center',
+                    )}
                   >
                     <button
                       onClick={this.handleRegister}
-                      className={classnames(styles['register-button'])}
+                      className={classnames(authStyles['register-button'])}
                     >
                       Register
                     </button>
@@ -414,7 +421,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
         </div>
         <Row>
           <div
-            className={classnames(styles['left-arrow'])}
+            className={classnames(authStyles['left-arrow'])}
             onClick={() => {
               if (currentStep !== RegisterInterfaces.Steps.USER_DETAILS) {
                 this.handleStepChange(currentStep, currentStep - 1);
@@ -423,11 +430,11 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           >
             <FontAwesomeIcon icon={faChevronCircleLeft} />
           </div>
-          <ul className={classnames(styles['list-unstyled'], styles['multi-steps'])}>
+          <ul className={classnames(authStyles['list-unstyled'], authStyles['multi-steps'])}>
             <li
               className={
                 currentStep === RegisterInterfaces.Steps.USER_DETAILS
-                  ? classnames(styles['is-active'])
+                  ? classnames(authStyles['is-active'])
                   : undefined
               }
               onClick={() =>
@@ -440,7 +447,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             <li
               className={
                 currentStep === RegisterInterfaces.Steps.CREDENTIALS
-                  ? classnames(styles['is-active'])
+                  ? classnames(authStyles['is-active'])
                   : undefined
               }
               onClick={() =>
@@ -452,7 +459,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             <li
               className={
                 currentStep === RegisterInterfaces.Steps.OTHERS
-                  ? classnames(styles['is-active'])
+                  ? classnames(authStyles['is-active'])
                   : undefined
               }
               onClick={() => this.handleStepChange(currentStep, RegisterInterfaces.Steps.OTHERS)}
@@ -461,7 +468,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             </li>
           </ul>
           <div
-            className={classnames(styles['right-arrow'])}
+            className={classnames(authStyles['right-arrow'])}
             onClick={() => {
               if (currentStep !== RegisterInterfaces.Steps.OTHERS) {
                 this.handleStepChange(currentStep, currentStep + 1);
@@ -477,7 +484,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
               Already have an account?{' '}
               <a
                 href={Routes.LOGIN}
-                className={classnames(styles['create-one-button'])}
+                className={classnames(authStyles['create-one-button'])}
                 onClick={() => {
                   updateErrorMessage('');
                 }}
@@ -513,7 +520,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           if (this.state.password === this.state.repeatPassword) {
             if (this.passwordErrorRef.current) {
               this.passwordErrorRef.current.classList.remove(
-                classnames(styles['register-error-active']),
+                classnames(authStyles['register-error-active']),
               );
             }
 
@@ -528,7 +535,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           } else {
             if (this.passwordErrorRef.current) {
               this.passwordErrorRef.current.classList.add(
-                classnames(styles['register-error-active']),
+                classnames(authStyles['register-error-active']),
               );
             }
           }
