@@ -362,16 +362,21 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   </div>
                   <div
                     className={classnames(
-                      authStyles['captcha'],
+                      registerStyles['input-group'],
                       'd-flex justify-content-center',
                     )}
                   >
-                    <ReCAPTCHA
-                      sitekey={RECAPTCHA_SITE_KEY}
-                      data-theme={'dark'}
-                      onChange={this.onChange}
-                      ref={this.recaptchaRef}
-                    />
+                  <div className="form-row d-flex justify-content-center my-1">
+                    <div className="d-flex justify-content-center input-group">
+                      <ReCAPTCHA
+                        sitekey={RECAPTCHA_SITE_KEY}
+                        data-theme={'dark'}
+                        onChange={this.onChange}
+                        ref={this.recaptchaRef}
+                      />
+                    
+                    </div>
+                  </div>
                     <div
                       className={classnames(
                         authStyles['register-error-active'],
