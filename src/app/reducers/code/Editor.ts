@@ -2,9 +2,8 @@ import { EditorSettingsActions } from 'app/actions';
 import * as EditorInterfaces from 'app/types/code/Editor';
 import {
   EditorThemeTypes,
-  // tslint:disable-next-line
-  keyboardHandlers,
   KeyboardHandler,
+  keyboardHandlers,
   themes,
 } from 'app/types/code/Editor.ts';
 
