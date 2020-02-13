@@ -12,6 +12,48 @@ const actions = {
   updateCode: CodeActions.updateCode,
 };
 
+export const keyboardHandlers = ['emacs', 'vim', 'default'];
+
+export enum KeyboardHandler {
+  EMACS,
+  VIM,
+  DEFAULT,
+}
+
+export const themes = [
+  'monokai',
+  'github',
+  'tomorrow',
+  'kuroir',
+  'twilight',
+  'xcode',
+  'textmate',
+  'solarized_dark',
+  'solarized_light',
+  'terminal',
+  'chaos',
+  'chrome',
+  'eclipse',
+  'dracula',
+];
+
+export enum EditorThemeTypes {
+  MONOKAI,
+  GITHUB,
+  TOMORROW,
+  KUROIR,
+  TWILIGHT,
+  XCODE,
+  TEXTMATE,
+  SOLARIZED_DARK,
+  SOLARIZED_LIGHT,
+  TERMINAL,
+  CHAOS,
+  CHROME,
+  ECLIPSE,
+  DRACULA,
+}
+
 export interface State {
   code: string;
 }

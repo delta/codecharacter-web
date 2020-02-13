@@ -13,12 +13,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SidePanelTab } from 'app/reducers/Dashboard';
+import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Sidebar.module.css';
 import * as SideBarInterfaces from 'app/types/SideBar';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
-import { Routes } from 'app/routes';
 
 export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
   public render() {

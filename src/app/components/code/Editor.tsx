@@ -8,30 +8,11 @@ import 'brace/ext/searchbox';
 import 'brace/mode/c_cpp';
 import 'brace/snippets/c_cpp';
 
-export const themes = [
-  'monokai',
-  'github',
-  'tomorrow',
-  'kuroir',
-  'twilight',
-  'xcode',
-  'textmate',
-  'solarized_dark',
-  'solarized_light',
-  'terminal',
-  'chaos',
-  'chrome',
-  'eclipse',
-  'dracula',
-];
-
-export const keyboardHandlers = ['emacs', 'vim', 'default'];
-
-themes.forEach((theme) => {
+EditorInterfaces.themes.forEach((theme) => {
   require(`brace/theme/${theme}`);
 });
 
-keyboardHandlers.forEach((keyboardHandler) => {
+EditorInterfaces.keyboardHandlers.forEach((keyboardHandler) => {
   if (keyboardHandler !== 'default') {
     require(`brace/keybinding/${keyboardHandler}`);
   }

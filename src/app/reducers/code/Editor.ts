@@ -1,13 +1,19 @@
 import { EditorSettingsActions } from 'app/actions';
 import * as EditorInterfaces from 'app/types/code/Editor';
+import {
+  EditorThemeTypes,
+  KeyboardHandler,
+  keyboardHandlers,
+  themes,
+} from 'app/types/code/Editor.ts';
 
 const editorStoreIntialState: EditorInterfaces.EditorStoreState = {
   editorOptions: {
     enableBasicAutoCompletion: true,
     enableSnippets: true,
     fontSize: 16,
-    keyboardHandler: 'default',
-    theme: 'twilight',
+    keyboardHandler: keyboardHandlers[KeyboardHandler.DEFAULT],
+    theme: themes[EditorThemeTypes.SOLARIZED_LIGHT],
   },
 };
 
