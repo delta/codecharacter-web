@@ -70,6 +70,6 @@ input:checked + .flaglabel:after {
 .labeltext {
   color: rgba(0, 0, 32, 0.8);
   font-size: 14px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'B612 Mono', monospace;
   font-weight: 600;
 }
