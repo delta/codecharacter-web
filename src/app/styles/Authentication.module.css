@@ -111,6 +111,11 @@
   overflow-y: hidden !important;
 }
 
+.avatar-select-form-row {
+  width: 100%;
+  margin: auto;
+}
+
 .stage-form {
   width: 390px;
 }
@@ -159,6 +164,7 @@
   background-color: #fee5d4;
   padding: 9px;
   margin-top: -20px;
+  margin-bottom: 10px;
 }
 
 .register-error-inactive {
@@ -169,7 +175,8 @@
   padding: 9px;
   display: block;
   width: 100%;
-  margin:auto;
+  margin: auto;
+  margin-top: 10px;
 }
 
 .login-label {
@@ -209,10 +216,9 @@
   margin-left: 10%;
   border: 1px solid black;
   border-radius: 3px !important;
-  margin-bottom: 20px !important;
 }
 
-.captcha{
+.captcha {
   display: flex;
   justify-content: center;
   margin: 10px 0 20px 0;

@@ -327,8 +327,13 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       Please Select a country
                     </div>
                   </div>
-                  <div className="form-row" style={{ padding: '10px 0px', fontFamily: 'Poppins' }}>
-                    <div className="text-center text-dark">Choose your spirit animal</div>
+                  <div
+                    className={classnames('form-row', authStyles['avatar-select-form-row'])}
+                    style={{ padding: '10px 0px', fontFamily: 'Poppins' }}
+                  >
+                    <div className={classnames(authStyles['login-label'])}>
+                      Choose your spirit animal
+                    </div>
                     <div className={classnames(authStyles['avatar-select-container'])}>
                       <section className={classnames(authStyles['avatar-section'])}>
                         {avatars.map((avatar: string, index: number) => (
@@ -366,17 +371,16 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       'd-flex justify-content-center',
                     )}
                   >
-                  <div className="form-row d-flex justify-content-center my-1">
-                    <div className="d-flex justify-content-center input-group">
-                      <ReCAPTCHA
-                        sitekey={RECAPTCHA_SITE_KEY}
-                        data-theme={'dark'}
-                        onChange={this.onChange}
-                        ref={this.recaptchaRef}
-                      />
-                    
+                    <div className="form-row d-flex justify-content-center my-1">
+                      <div className="d-flex justify-content-center input-group">
+                        <ReCAPTCHA
+                          sitekey={RECAPTCHA_SITE_KEY}
+                          data-theme={'dark'}
+                          onChange={this.onChange}
+                          ref={this.recaptchaRef}
+                        />
+                      </div>
                     </div>
-                  </div>
                     <div
                       className={classnames(
                         authStyles['register-error-active'],
