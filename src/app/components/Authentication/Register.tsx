@@ -35,10 +35,10 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       fullName: '',
       isCaptchaValidated: false,
       isFormSubmitted: false,
+      isRegistered: false,
       isStudent: false,
       password: '',
       pragyanId: '',
-      registered: false,
       repeatPassword: '',
       type: RegisterInterfaces.RegisterType.Professional,
       username: '',
@@ -70,7 +70,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   public render() {
     const {
       repeatPassword,
-      registered,
+      isRegistered,
       email,
       password,
       username,
@@ -89,7 +89,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     if (isLoggedIn) {
       return <Redirect to={Routes.ROOT} />;
     }
-    if (registered) {
+    if (isRegistered) {
       return <Redirect to={Routes.LOGIN} />;
     }
 
@@ -519,7 +519,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       case RegisterInterfaces.Steps.USER_DETAILS: {
         if (this.register1Ref.current) {
           this.register1Ref.current.classList.add('was-validated');
-          if (this.register1Ref.current.checkValidity() && errorMessage==='' ) {
+          if (this.register1Ref.current.checkValidity() && errorMessage === '') {
             this.setState({
               currentStep: RegisterInterfaces.Steps.CREDENTIALS,
             });
@@ -608,7 +608,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           username,
         });
         this.setState({
-          registered: true,
+          isRegistered: true,
         });
       }
       this.setState({

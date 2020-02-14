@@ -285,6 +285,10 @@
   width: 100%;
 }
 
+.input-group {
+  display: block !important;
+}
+
 .loginButton:hover {
   background-color: #4630eb;
 }

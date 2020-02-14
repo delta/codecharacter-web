@@ -31,7 +31,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
           <form className={'editForm'} noValidate ref={editProfileRef} onSubmit={handleEditProfile}>
             <div className="form-row">
               <div className="col mb-3">
-                <div className="input-group">
+                <div className={classnames(styles1['input-group'])}>
                   <label style={{ display: 'block' }} className="labeltext">
                     Username
                   </label>
@@ -58,7 +58,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
 
             <div className="form-row">
               <div className="col mb-3">
-                <div className="input-group">
+                <div className={classnames(styles1['input-group'])}>
                   <label className="labeltext">Name</label>
                   <div className={styles.inputGroup}>
                     <input
@@ -84,7 +84,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
 
             <div className="form-row" id="react-flag">
               <div className="col sm={12} mb-3">
-                <div className="input-group">
+                <div className={classnames(styles1['input-group'])}>
                   <label className="labeltext">Nationality</label>
                   <div className={styles.inputGroup}>
                     <ReactFlagsSelect
@@ -106,7 +106,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
 
             <div className="form-row">
               <div className="col sm={12} mb-3">
-                <div className="input-group">
+                <div className={classnames(styles1['input-group'])}>
                   <label className="labeltext">Avatar</label>
                   <div className={classnames(styles['avatar-select-container'])}>
                     <section className={classnames(styles['avatar-section'])}>
