@@ -514,11 +514,12 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   }
 
   private handleStepChange = (oldStep: number, newStep: number) => {
+    const { errorMessage } = this.props;
     switch (oldStep) {
       case RegisterInterfaces.Steps.USER_DETAILS: {
         if (this.register1Ref.current) {
           this.register1Ref.current.classList.add('was-validated');
-          if (this.register1Ref.current.checkValidity()) {
+          if (this.register1Ref.current.checkValidity() && errorMessage==='' ) {
             this.setState({
               currentStep: RegisterInterfaces.Steps.CREDENTIALS,
             });
