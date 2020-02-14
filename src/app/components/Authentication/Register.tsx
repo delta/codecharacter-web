@@ -38,6 +38,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       isStudent: false,
       password: '',
       pragyanId: '',
+      registered: false,
       repeatPassword: '',
       type: RegisterInterfaces.RegisterType.Professional,
       username: '',
@@ -69,6 +70,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   public render() {
     const {
       repeatPassword,
+      registered,
       email,
       password,
       username,
@@ -86,6 +88,9 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     const { checkUsernameExists, errorMessage, updateErrorMessage, isLoggedIn } = this.props;
     if (isLoggedIn) {
       return <Redirect to={Routes.ROOT} />;
+    }
+    if (registered) {
+      return <Redirect to={Routes.LOGIN} />;
     }
 
     return (
@@ -138,7 +143,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         className={classnames('form-control', authStyles['register-input'])}
                         id="registerValidationUsername"
                         aria-describedby="inputGroupPrepend"
-                        pattern=".{5,50}"
+                        pattern="[a-zA-Z0-9]{5,50}"
                         value={username}
                         onChange={(e) => {
                           checkUsernameExists(e.target.value);
@@ -149,7 +154,8 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         required
                       />
                       <div className={classnames('invalid-feedback', authStyles['register-error'])}>
-                        Username must have minimum 5 characters.
+                        Enter a valid username.It should have a minimum of 5 characters and must be
+                        alphanumeric
                       </div>
                     </div>
                     <div className={classnames(authStyles['login-label'])}>Email </div>
@@ -567,7 +573,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   };
 
   private handleRegister = async (event: React.MouseEvent) => {
-    const { register } = this.props;
+    const { register, errorMessage } = this.props;
     const {
       avatar,
       repeatPassword,
@@ -587,7 +593,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
     if (form && form3) {
       form3.classList.add('was-validated');
-      if (form.checkValidity() && isCaptchaValidated) {
+      if (form.checkValidity() && isCaptchaValidated && errorMessage === '') {
         await register({
           avatar,
           college,
@@ -599,6 +605,9 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           repeatPassword,
           type,
           username,
+        });
+        this.setState({
+          registered: true,
         });
       }
       this.setState({
