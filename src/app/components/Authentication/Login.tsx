@@ -2,6 +2,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
+import * as registerStyles from 'app/styles/Register.module.css';
 import { AuthType } from 'app/types/Authentication/';
 import * as LoginInterfaces from 'app/types/Authentication/Login';
 import classnames from 'classnames';
@@ -134,12 +135,17 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               <div className="form-row">
                 <div
                   className={
-                    errorMessage
+                    !errorMessage
                       ? classnames(
+                          'col text-center mt -0 mb-2 ',
+                          styles['register-error-inactive'],
+                          registerStyles.errorMessage,
+                        )
+                      : classnames(
                           'col text-center mt -0 mb-2 errorMessage',
                           styles['register-error-active'],
+                          registerStyles.errorMessage,
                         )
-                      : ''
                   }
                 >
                   {errorMessage}

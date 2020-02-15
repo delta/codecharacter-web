@@ -33,7 +33,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
             >
               <div className="form-row">
                 <div className="col mb-3">
-                  <div className="input-group">
+                  <div className={classnames(styles1['input-group'])}>
                     <label className="labeltext">Old Password</label>
                     <div className={classnames('input-group-prepend', styles.inputGroup)}>
                       <input
@@ -55,7 +55,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
               </div>
               <div className="form-row">
                 <div className="col mb-3">
-                  <div className="input-group">
+                  <div className={classnames(styles1['input-group'])}>
                     <label className="labeltext">New Password</label>
                     <div className={classnames('input-group-prepend', styles.inputGroup)}>
                       <input
@@ -77,7 +77,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
               </div>
               <div className="form-row">
                 <div className="col mb-3">
-                  <div className="input-group">
+                  <div className={classnames(styles1['input-group'])}>
                     <label className="labeltext">Confirm Password</label>
                     <div className={classnames('input-group-prepend', styles.passwordInput)}>
                       <input

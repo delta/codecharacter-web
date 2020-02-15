@@ -44,6 +44,7 @@ export interface State {
   username: string;
   isStudent: boolean;
   password: string;
+  isRegistered: boolean;
   repeatPassword: string;
   email: string;
   country: string;

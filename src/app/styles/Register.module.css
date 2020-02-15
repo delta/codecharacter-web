@@ -10,7 +10,7 @@
   margin-bottom: 20px !important;
 }
 
-img {
+.img {
   vertical-align: top !important;
 }
 
@@ -21,7 +21,7 @@ img {
   color: #dc3545;
 }
 
-input[type='checkbox'] {
+.checkbox-input {
   height: 0;
   width: 0;
   visibility: hidden;
