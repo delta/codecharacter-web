@@ -68,12 +68,6 @@
   color: #fff;
 }
 
-.topMatchElement {
-  animation: pulse 1.5s infinite;
-  animation-direction: alternate;
-  margin-bottom: 10px;
-}
-
 .loseBackground {
   border-left: 5px solid #ff3f3f;
 }
@@ -86,34 +80,4 @@
   border-left: 5px solid #5c5c5c;
 }
 
-.topMatchesButton {
-  animation: pulse 1.5s infinite;
-  animation-direction: alternate;
-}
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 16px #fc6ecc, -2px 0 16px #f66acd, 2px 0 16px #e15cd4;
-  }
-  15% {
-    box-shadow: 0 0 16px #f66acd, -2px 0 16px #e15cd4, 2px 0 16px #bf45de;
-  }
-  30% {
-    box-shadow: 0 0 16px #e15cd4, -2px 0 16px #bf45de, 2px 0 16px #b841e0;
-  }
-  45% {
-    box-shadow: 0 0 16px #bf45de, -2px 0 16px #b841e0, 2px 0 16px #a132e8;
-  }
-  60% {
-    box-shadow: 0 0 16px #b841e0, -2px 0 16px #a132e8, 2px 0 16px #831ef0;
-  }
-  75% {
-    box-shadow: 0 0 16px #a132e8, -2px 0 16px #831ef0, 2px 0 16px #7011f6;
-  }
-  90% {
-    box-shadow: 0 0 16px #831ef0, -2px 0 16px #7011f6, 2px 0 16px #670cf9;
-  }
-  100% {
-    box-shadow: 0 0 16px #7011f6, -2px 0 16px #670cf9, 2px 0 16px #6315ff;
-  }
-}
