@@ -268,7 +268,11 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                           })
                         }
                       />
-                      <label htmlFor="switch" className="flaglabel"  style={{ backgroundColor: '#4630eb' }}>
+                      <label
+                        htmlFor="switch"
+                        className="flaglabel"
+                        style={{ backgroundColor: '#4630eb' }}
+                      >
                         Toggle
                       </label>
                     </span>
@@ -298,14 +302,13 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                     </div>
                   )}
                   <div className="input-group">
-
-                      <ReactFlagsSelect
-                        searchable={true}
-                        placeholder="Search for a country"
-                        className={classnames(styles["customFlag" ])}
-                        defaultCountry="IN"
-                        onSelect={this.onSelectFlag}
-                      />
+                    <ReactFlagsSelect
+                      searchable={true}
+                      placeholder="Search for a country"
+                      className={classnames(styles.customFlag)}
+                      defaultCountry="IN"
+                      onSelect={this.onSelectFlag}
+                    />
 
                     <div className={classnames('invalid-feedback', styles['register-error'])}>
                       Please Select a country
@@ -347,7 +350,10 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       ref={this.recaptchaRef}
                     />
                     <div
-                      className={classnames(styles['register-error-active'],"invalid-feedback text-center")}
+                      className={classnames(
+                        styles['register-error-active'],
+                        'invalid-feedback text-center',
+                      )}
                       style={{
                         display: !isCaptchaValidated && isFormSubmitted ? 'block' : 'none',
                       }}
@@ -357,7 +363,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   </div>
                   <div
                     className={
-                      errorMessage===""
+                      errorMessage === ''
                         ? classnames(
                             'col text-center mt -0 mb-2 errorMessage',
                             styles['register-error-inactive'],
@@ -386,7 +392,11 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
         <Row>
           <div
             className={classnames(styles['left-arrow'])}
-            onClick={() => { if(currentStep!==RegisterInterfaces.Steps.USER_DETAILS) this.handleStepChange(currentStep, currentStep - 1)  }}
+            onClick={() => {
+              if (currentStep !== RegisterInterfaces.Steps.USER_DETAILS) {
+                this.handleStepChange(currentStep, currentStep - 1);
+              }
+            }}
           >
             <FontAwesomeIcon icon={faChevronCircleLeft} />
           </div>
@@ -429,7 +439,11 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           </ul>
           <div
             className={classnames(styles['right-arrow'])}
-            onClick={() => { if(currentStep!==RegisterInterfaces.Steps.OTHERS) this.handleStepChange(currentStep, currentStep + 1)  }  }
+            onClick={() => {
+              if (currentStep !== RegisterInterfaces.Steps.OTHERS) {
+                this.handleStepChange(currentStep, currentStep + 1);
+              }
+            }}
           >
             <FontAwesomeIcon icon={faChevronCircleRight} />
           </div>
