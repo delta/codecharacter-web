@@ -109,7 +109,7 @@ export class Dashboard extends React.Component<
     return (
       <div>
         {isWelcomeModalOpen ? <Welcome closeWelcomeModal={() => closeWelcomeModal()} /> : null}
-        {isLoggedIn && isJoyRideActive && !isWelcomeModalOpen ? <ReactTour/> : null}
+        {isLoggedIn && isJoyRideActive && !isWelcomeModalOpen ? <ReactTour toggleJoyRide={this.onToggleJoyRide} /> : null}
         {/*{isAuthenticationOpen ? (
             <Authentication setIsAuthenticationOpen={setIsAuthenticationOpen} />
           ) : null}*/}
