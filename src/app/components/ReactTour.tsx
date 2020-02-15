@@ -1,13 +1,12 @@
-/* tslint:disable */
 import * as styles from 'app/styles/ReactTour.module.css';
 import classnames from 'classnames';
 import * as React from 'react';
-import Tour from 'reactour';
+// tslint:disable-next-line:import-name
+import Tour, { ReactourStep } from 'reactour';
 
-const tourConfig: any = [
+const tourConfig: ReactourStep[] = [
   {
-    selector: '[name="editor_div"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Editor</h6>
         <p className={classnames(styles['step-description'])}>
@@ -17,10 +16,10 @@ const tourConfig: any = [
         </p>
       </div>
     ),
+    selector: '[name="editor_div"]',
   },
   {
-    selector: '[id="docs_button"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Documentation</h6>
         <p className={classnames(styles['step-description'])}>
@@ -29,11 +28,12 @@ const tourConfig: any = [
         </p>
       </div>
     ),
+    selector: '[id="docs_button"]',
+
     style: {},
   },
   {
-    selector: '[id="editor_settings_button"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Editor Settings</h6>
         <p className={classnames(styles['step-description'])}>
@@ -42,10 +42,10 @@ const tourConfig: any = [
         </p>
       </div>
     ),
+    selector: '[id="editor_settings_button"]',
   },
   {
-    selector: '[id="leaderboard_button"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Leaderboard</h6>
         <p className={classnames(styles['step-description'])}>
@@ -54,10 +54,10 @@ const tourConfig: any = [
         </p>
       </div>
     ),
+    selector: '[id="leaderboard_button"]',
   },
   {
-    selector: '[id="commit_log_button"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Commit Logs</h6>
         <p className={classnames(styles['step-description'])}>
@@ -67,10 +67,10 @@ const tourConfig: any = [
         </p>
       </div>
     ),
+    selector: '[id="commit_log_button"]',
   },
   {
-    selector: '[id="matchView_button"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Battle TV</h6>
         <p className={classnames(styles['step-description'])}>
@@ -80,10 +80,10 @@ const tourConfig: any = [
         </p>
       </div>
     ),
+    selector: '[id="matchView_button"]',
   },
   {
-    selector: '[id="user_profile_button"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Profile</h6>
         <p className={classnames(styles['step-description'])}>
@@ -92,10 +92,10 @@ const tourConfig: any = [
         </p>
       </div>
     ),
+    selector: '[id="user_profile_button"]',
   },
   {
-    selector: '[id="toggle_button"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Toggle Editor/Renderer</h6>
         <p className={classnames(styles['step-description'])}>
@@ -105,12 +105,12 @@ const tourConfig: any = [
       </div>
     ),
     position: 'bottom',
+    selector: '[id="toggle_button"]',
 
     style: {},
   },
   {
-    selector: '[id="clear_gamelog_button"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Clear Game Logs</h6>
         <p className={classnames(styles['step-description'])}>
@@ -119,10 +119,10 @@ const tourConfig: any = [
       </div>
     ),
     position: 'bottom',
+    selector: '[id="clear_gamelog_button"]',
   },
   {
-    selector: '[id="run_button"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Run Game</h6>
         <p className={classnames(styles['step-description'])}>
@@ -131,10 +131,10 @@ const tourConfig: any = [
       </div>
     ),
     position: 'bottom',
+    selector: '[id="run_button"]',
   },
   {
-    selector: '[id="save_button"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Save</h6>
         <p className={classnames(styles['step-description'])}>
@@ -143,10 +143,10 @@ const tourConfig: any = [
       </div>
     ),
     position: 'bottom',
+    selector: '[id="save_button"]',
   },
   {
-    selector: '[id="commit_button"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Commit</h6>
         <p className={classnames(styles['step-description'])}>
@@ -156,10 +156,10 @@ const tourConfig: any = [
       </div>
     ),
     position: 'bottom',
+    selector: '[id="commit_button"]',
   },
   {
-    selector: '[id="submit_button"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Submit</h6>
         <p className={classnames(styles['step-description'])}>
@@ -171,10 +171,10 @@ const tourConfig: any = [
       </div>
     ),
     position: 'bottom',
+    selector: '[id="submit_button"]',
   },
   {
-    selector: '[id="logout_button"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Logout</h6>
         <p className={classnames(styles['step-description'])}>
@@ -183,10 +183,10 @@ const tourConfig: any = [
       </div>
     ),
     position: 'right',
+    selector: '[id="logout_button"]',
   },
   {
-    selector: '[id="joyride_button"]',
-    content: ({ goTo, inDOM }: any) => (
+    content: () => (
       <div>
         <h6>Help</h6>
         <p className={classnames(styles['step-description'])}>
@@ -195,6 +195,7 @@ const tourConfig: any = [
       </div>
     ),
     position: 'right',
+    selector: '[id="joyride_button"]',
   },
 ];
 
