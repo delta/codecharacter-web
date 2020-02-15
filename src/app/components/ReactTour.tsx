@@ -10,7 +10,7 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Editor</h6>
-        <p  className={classnames(styles['step-description'])}   >
+        <p className={classnames(styles['step-description'])}>
           You can type your code here.
           <br />
           Ctrl - S to save
@@ -23,7 +23,7 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Documentation</h6>
-        <p  className={classnames(styles['step-description'])} >
+        <p className={classnames(styles['step-description'])}>
           This is documentation panel. <br />
           Everything you need to know to understand and play the game can be found here.
         </p>
@@ -36,7 +36,7 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Editor Settings</h6>
-        <p  className={classnames(styles['step-description'])} >
+        <p className={classnames(styles['step-description'])}>
           This is the editor settings panel. <br />
           You can customize your editor to match your taste.
         </p>
@@ -48,7 +48,7 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Leaderboard</h6>
-        <p  className={classnames(styles['step-description'])} >
+        <p className={classnames(styles['step-description'])}>
           This is the leaderboard panel. <br />
           View current ratings and challenge other players!
         </p>
@@ -60,7 +60,7 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Commit Logs</h6>
-        <p  className={classnames(styles['step-description'])} >
+        <p className={classnames(styles['step-description'])}>
           This is the commit log panel. <br />
           You can store a linear commit history, and checkout to old code. You can even simulate a
           match between two versions of your own code.
@@ -73,7 +73,7 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Battle TV</h6>
-        <p  className={classnames(styles['step-description'])} >
+        <p className={classnames(styles['step-description'])}>
           This is the View Matches panel. <br />
           You can replay your previous matches and view top rated matches too. If you played a epic
           match, chances are your match will be featured here!
@@ -86,7 +86,7 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Profile</h6>
-        <p  className={classnames(styles['step-description'])} >
+        <p className={classnames(styles['step-description'])}>
           This is the User Profile page <br />
           View and edit your details and credentials.
         </p>
@@ -98,7 +98,7 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Toggle Editor/Renderer</h6>
-        <p  className={classnames(styles['step-description'])} >
+        <p className={classnames(styles['step-description'])}>
           Click to toggle off the Editor or Renderer. You can also drag the split panes to adjust
           the sizes.
         </p>
@@ -113,7 +113,7 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Clear Game Logs</h6>
-        <p  className={classnames(styles['step-description'])} >
+        <p className={classnames(styles['step-description'])}>
           Click here to clear the game logs, in case it's getting too messy
         </p>
       </div>
@@ -125,7 +125,7 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Run Game</h6>
-        <p  className={classnames(styles['step-description'])} >
+        <p className={classnames(styles['step-description'])}>
           Click to compile code and run the game simulation
         </p>
       </div>
@@ -137,7 +137,7 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Save</h6>
-        <p  className={classnames(styles['step-description'])} >
+        <p className={classnames(styles['step-description'])}>
           Click to save your code. Your last saved code is the version that is compiled!
         </p>
       </div>
@@ -149,9 +149,9 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Commit</h6>
-        <p  className={classnames(styles['step-description'])} >
-        Create a new snapshot of your code. It will be saved forever, unless our servers get
-        bombed by a nuclear explosion.
+        <p className={classnames(styles['step-description'])}>
+          Create a new snapshot of your code. It will be saved forever, unless our servers get
+          bombed by a nuclear explosion.
         </p>
       </div>
     ),
@@ -162,11 +162,11 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Submit</h6>
-        <p  className={classnames(styles['step-description'])} >
-        This will submit your code as your current competitive AI. All your challenges with other
-        players will be played using this code.
-        <br />
-        You have to submit your code before challenging an opponent.
+        <p className={classnames(styles['step-description'])}>
+          This will submit your code as your current competitive AI. All your challenges with other
+          players will be played using this code.
+          <br />
+          You have to submit your code before challenging an opponent.
         </p>
       </div>
     ),
@@ -177,7 +177,7 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Logout</h6>
-        <p  className={classnames(styles['step-description'])} >
+        <p className={classnames(styles['step-description'])}>
           Log out of your Code Character account. It's good to take a break once in a while 😀 !
         </p>
       </div>
@@ -189,8 +189,8 @@ const tourConfig: any = [
     content: ({ goTo, inDOM }: any) => (
       <div>
         <h6>Help</h6>
-        <p  className={classnames(styles['step-description'])} >
-        Take this tour again, in case you forget what's where
+        <p className={classnames(styles['step-description'])}>
+          Take this tour again, in case you forget what's where
         </p>
       </div>
     ),
@@ -198,7 +198,10 @@ const tourConfig: any = [
   },
 ];
 
-export default class ReactTour extends React.Component<{ toggleJoyRide: ()=>void }, { isTourOpen: boolean }> {
+export default class ReactTour extends React.Component<
+  { toggleJoyRide: () => void },
+  { isTourOpen: boolean }
+> {
   /* tslint:disable-next-line */
   public constructor(props: any) {
     super(props);
