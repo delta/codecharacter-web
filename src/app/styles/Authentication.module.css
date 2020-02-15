@@ -107,9 +107,8 @@
   overflow-y: hidden !important;
 }
 
-.stage-form{
-  width:390px;
-
+.stage-form {
+  width: 390px;
 }
 
 .avatar-img {
@@ -246,11 +245,13 @@
   cursor: pointer;
 }
 
-.left-arrow:active ,.left-arrow:focus {
+.left-arrow:active,
+.left-arrow:focus {
   transform: scale(0.9);
 }
 
-.right-arrow:active , .right-arrow:focus{
+.right-arrow:active,
+.right-arrow:focus {
   transform: scale(0.9);
 }
 
@@ -352,8 +353,6 @@
   border-radius: 5px;
 }
 
-
-
 .multi-steps > li.is-active:before,
 .multi-steps > li.is-active ~ li:before {
   content: counter(stepNum);
@@ -409,7 +408,7 @@
 .multi-steps li.is-active {
   color: #4630eb;
 }
-.multi-steps li:active:before{
+.multi-steps li:active:before {
   transform: scale(0.9);
 }
 

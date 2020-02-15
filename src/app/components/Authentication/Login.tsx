@@ -132,7 +132,18 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                 </div>
               </div>
               <div className="form-row">
-                <div className={ errorMessage ? classnames("col text-center mt -0 mb-2 errorMessage" ,styles['register-error-active']):""}  >{errorMessage}</div>
+                <div
+                  className={
+                    errorMessage
+                      ? classnames(
+                          'col text-center mt -0 mb-2 errorMessage',
+                          styles['register-error-active'],
+                        )
+                      : ''
+                  }
+                >
+                  {errorMessage}
+                </div>
               </div>
               <div className="form-row">
                 <div className="col text-center">
