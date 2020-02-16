@@ -1,7 +1,5 @@
 import { ErrorBoundary } from 'app/components/ErrorBoundary';
-// import Joyride from 'app/components/Joyride';
 import ReactTour from 'app/components/ReactTour';
-// import Authentication from 'app/containers/Authentication';
 import CodeStatus from 'app/containers/code/CodeStatus';
 import Editor from 'app/containers/code/Editor';
 import GameLog from 'app/containers/GameLog';
@@ -112,9 +110,6 @@ export class Dashboard extends React.Component<
         {isLoggedIn && isJoyRideActive && !isWelcomeModalOpen ? (
           <ReactTour toggleJoyRide={this.onToggleJoyRide} />
         ) : null}
-        {/*{isAuthenticationOpen ? (
-            <Authentication setIsAuthenticationOpen={setIsAuthenticationOpen} />
-          ) : null}*/}
         {isLoggedIn ? <SocketHandler /> : null}
         <SplitPane
           style={{

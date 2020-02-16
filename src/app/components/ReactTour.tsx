@@ -1,4 +1,5 @@
 import * as styles from 'app/styles/ReactTour.module.css';
+import * as ReactTourInterfaces from 'app/types/ReactTour.ts';
 import classnames from 'classnames';
 import * as React from 'react';
 // tslint:disable-next-line:import-name
@@ -16,7 +17,8 @@ const tourConfig: ReactourStep[] = [
         </p>
       </div>
     ),
-    selector: '[name="editor_div"]',
+
+    selector: '[id="editor_div"]',
   },
   {
     content: () => (
@@ -200,14 +202,13 @@ const tourConfig: ReactourStep[] = [
 ];
 
 export default class ReactTour extends React.Component<
-  { toggleJoyRide: () => void },
-  { isTourOpen: boolean }
+  ReactTourInterfaces.Props,
+  ReactTourInterfaces.State
 > {
-  /* tslint:disable-next-line */
-  public constructor(props: any) {
+  public constructor(props: ReactTourInterfaces.Props) {
     super(props);
     this.state = {
-      isTourOpen: false,
+      isTourOpen: true,
     };
     this.closeTour = this.closeTour.bind(this);
     this.openTour = this.openTour.bind(this);

@@ -51,33 +51,35 @@ export class Editor extends React.Component<EditorInterfaces.Props, EditorInterf
     };
 
     return (
-      <AceEditor
-        mode="c_cpp"
-        theme={theme}
-        name="editor_div"
-        fontSize={fontSize}
-        wrapEnabled={true}
-        showPrintMargin={true}
-        showGutter={true}
-        highlightActiveLine={true}
-        setOptions={options}
-        readOnly={viewOnly}
-        keyboardHandler={keyboardHandler !== 'default' ? keyboardHandler : ''}
-        editorProps={{ $blockScrolling: true }}
-        width={`${editorWidth.toString()}px`}
-        height={'96.5vh'}
-        value={code}
-        onChange={updateCode}
-        commands={[
-          {
-            bindKey: { win: 'Ctrl-S', mac: 'Command-S' },
-            exec: () => {
-              save(code);
+      <div id="editor_div">
+        <AceEditor
+          mode="c_cpp"
+          theme={theme}
+          name="editor_div"
+          fontSize={fontSize}
+          wrapEnabled={true}
+          showPrintMargin={true}
+          showGutter={true}
+          highlightActiveLine={true}
+          setOptions={options}
+          readOnly={viewOnly}
+          keyboardHandler={keyboardHandler !== 'default' ? keyboardHandler : ''}
+          editorProps={{ $blockScrolling: true }}
+          width={`${editorWidth.toString()}px`}
+          height={'96.5vh'}
+          value={code}
+          onChange={updateCode}
+          commands={[
+            {
+              bindKey: { win: 'Ctrl-S', mac: 'Command-S' },
+              exec: () => {
+                save(code);
+              },
+              name: 'Save',
             },
-            name: 'Save',
-          },
-        ]}
-      />
+          ]}
+        />
+      </div>
     );
   }
 }
