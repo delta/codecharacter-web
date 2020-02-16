@@ -8,6 +8,11 @@
   z-index: 10;
 }
 
+.root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .Authentication .customBtn:focus,
 .buttonPanel:focus {
   outline: none;
@@ -160,12 +165,15 @@
   padding: 9px;
   margin-top: 0;
   text-align: left;
+  color: #7a0825;
 }
 .register-error {
   background-color: #fee5d4;
   padding: 9px;
   margin-top: -20px;
   margin-bottom: 10px;
+  text-align: left;
+  color: #7a0825;
 }
 
 .register-error-inactive {
@@ -173,12 +181,13 @@
 }
 .register-error-active {
   background-color: #fee5d4;
-  padding: 9px;
+  padding: 9px !important;
   display: block;
   width: 100%;
   margin: auto;
   margin-top: 10px;
-  color: red;
+  color: #7a0825 !important;
+  text-align: left !important;
 }
 
 .login-label {
@@ -456,4 +465,13 @@
 
 .main-register-form {
   margin-top: 20px;
+}
+
+.error-row {
+  width: 100%;
+}
+
+.login-error-active {
+  position: relative;
+  left: 1%;
 }
