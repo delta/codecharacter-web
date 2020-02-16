@@ -335,7 +335,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   </div>
                   <div
                     className={classnames('form-row', authStyles['avatar-select-form-row'])}
-                    style={{ padding: '10px 0px', fontFamily: 'Poppins' }}
+                    style={{ padding: '10px 0px', fontFamily: 'Karla' }}
                   >
                     <div className={classnames(authStyles['login-label'])}>
                       Choose your spirit animal

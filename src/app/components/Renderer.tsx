@@ -62,7 +62,7 @@ export default class Renderer extends React.Component<RendererInterfaces.Props, 
             </Row>
             <Row>
               <Col sm={12} className="text-center">
-                <h2 style={{ fontFamily: 'Courier New', color: '#f9ee80', margin: 30 }}>
+                <h2 style={{ fontFamily: 'Karla', color: '#f9ee80', margin: 30 }}>
                   Waiting to run your code...
                 </h2>
               </Col>
