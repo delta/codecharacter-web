@@ -55,7 +55,8 @@ export const SocketHandler = (props: SocketHandlerInterfaces.Props) => {
     });
 
     socket.on('Compile Error Log', (log: string) => {
-      addToast('Compile Error', { appearance: 'error', autoDismiss: true }), sendCompileError(log);
+      addToast('Compile Error', { appearance: 'error', autoDismiss: true });
+      sendCompileError(log);
     });
 
     socket.on('Match Info', (message: string) => {
@@ -63,7 +64,8 @@ export const SocketHandler = (props: SocketHandlerInterfaces.Props) => {
     });
 
     socket.on('Match Error', (message: string) => {
-      addToast(message, { appearance: 'error', autoDismiss: true }), sendExecuteError(message);
+      addToast(message, { appearance: 'error', autoDismiss: true });
+      sendExecuteError(message);
     });
 
     socket.on('Match Result Success', (result: string) => {

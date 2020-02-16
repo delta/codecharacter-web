@@ -1,8 +1,6 @@
 import { NotificationActions } from 'app/actions';
 import * as NotificationInterfaces from 'app/types/Notification';
 
-// @ts-ignore
-
 const notificationInitialState: NotificationInterfaces.NotificationStoreState = {
   loading: false,
   notifications: [],
@@ -14,17 +12,14 @@ export const notificationReducer = (
 ) => {
   switch (action.type) {
     case NotificationActions.Type.INFO: {
-      // addToast(action.payload.message, { appearance: 'info' });
       return state;
     }
 
     case NotificationActions.Type.SUCCESS: {
-      // addToast(action.payload.message, { appearance: 'success' });
       return state;
     }
 
     case NotificationActions.Type.ERROR: {
-      // addToast(action.payload.message, { appearance: 'error' });
       return state;
     }
 
