@@ -14,7 +14,7 @@ export class EditPassword extends React.Component<EditPasswordInterfaces.Props, 
     return (
       <div className="col-5">
         <Row className={classnames('mb-3')}>
-          <div className={classnames('col-sm-12', styles.form)}>
+          <div className={classnames('col-sm-12', styles.passwordForm)}>
             <div
               className={classnames('text-dark', styles.formHeading)}
               style={{
