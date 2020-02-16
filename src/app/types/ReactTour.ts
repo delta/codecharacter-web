@@ -1,5 +1,5 @@
 export interface Props {
-  toggleJoyRide: () => void;
+  toggleReactTour: () => void;
 }
 
 export interface State {

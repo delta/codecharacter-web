@@ -10,7 +10,7 @@ describe('SideBar Container', () => {
   const { store } = configureStore();
   const wrapper = mount(
     <SidebarContainer
-      toggleJoyRide={Function}
+      toggleReactTour={Function}
       setIsAuthenticationOpen={(v: boolean) => undefined}
     />,
     {

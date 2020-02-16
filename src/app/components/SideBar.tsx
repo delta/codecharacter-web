@@ -164,7 +164,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             className={classnames('py-2 px-auto', styles.joyRide)}
             id="joyride_button"
             title={'Take a tour'}
-            onClick={() => this.props.toggleJoyRide()}
+            onClick={() => this.props.toggleReactTour()}
           >
             <FontAwesomeIcon icon={faQuestionCircle} />
           </Button>

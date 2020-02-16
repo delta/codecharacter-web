@@ -20,7 +20,7 @@ export interface State {
   rendererHeight: number;
   splitPaneState: SplitPaneState;
   windowWidth: number;
-  isJoyRideActive: boolean;
+  isReactTourActive: boolean;
 }
 
 export interface StateProps {

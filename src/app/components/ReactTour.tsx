@@ -31,8 +31,6 @@ const tourConfig: ReactourStep[] = [
       </div>
     ),
     selector: '[id="docs_button"]',
-
-    style: {},
   },
   {
     content: () => (
@@ -108,8 +106,6 @@ const tourConfig: ReactourStep[] = [
     ),
     position: 'bottom',
     selector: '[id="toggle_button"]',
-
-    style: {},
   },
   {
     content: () => (
@@ -210,17 +206,8 @@ export default class ReactTour extends React.Component<
     this.state = {
       isTourOpen: true,
     };
-    this.closeTour = this.closeTour.bind(this);
-    this.openTour = this.openTour.bind(this);
   }
-  public closeTour = () => {
-    this.props.toggleJoyRide();
-    this.setState({ isTourOpen: false });
-  };
 
-  public openTour = () => {
-    this.setState({ isTourOpen: true });
-  };
   public componentDidMount = () => {
     this.setState({ isTourOpen: true });
   };
@@ -240,4 +227,8 @@ export default class ReactTour extends React.Component<
       />
     );
   }
+  private closeTour = () => {
+    this.props.toggleReactTour();
+    this.setState({ isTourOpen: false });
+  };
 }
