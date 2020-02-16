@@ -1,5 +1,5 @@
 import * as authStyles from 'app/styles/Authentication.module.css';
-import 'app/styles/Flags.css';
+import 'app/styles/ReactFlagsSelect.css';
 import * as profileStyles from 'app/styles/UserProfileModal.module.css';
 import { Avatar } from 'app/types/Authentication/Register';
 import { InputName } from 'app/types/UserProfileModal';

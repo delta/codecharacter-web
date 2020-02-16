@@ -1,0 +1,4 @@
+/* Overriding the react-toast-notifications package-styles */
+.react-toast-notifications__container {
+  overflow: hidden !important;
+}

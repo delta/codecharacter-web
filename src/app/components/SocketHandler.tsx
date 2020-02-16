@@ -1,4 +1,5 @@
 import { SOCKET_BASE_URL } from 'app/../config/config';
+import 'app/styles/ReactToastNotifications.css';
 import * as SocketHandlerInterfaces from 'app/types/SocketHandler';
 import * as React from 'react';
 import { useToasts } from 'react-toast-notifications';
