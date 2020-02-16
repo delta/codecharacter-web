@@ -24,7 +24,7 @@ export class ErrorBoundary extends React.Component<
         <div style={{ width: '100%', minWidth: '280px' }}>
           <Row>
             <Col sm={12} className="text-center">
-              <h2 style={{ fontFamily: 'Courier New', color: '#f9ee80', margin: 50 }}>
+              <h2 style={{ fontFamily: 'Karla', color: '#f9ee80', margin: 50 }}>
                 {'Uh Oh... Something went wrong!'}
               </h2>
             </Col>

@@ -1,11 +1,11 @@
 import {
   faChevronLeft,
   faChevronRight,
-  faCloud,
   faCodeBranch,
   faCog,
   faLock,
   faPlay,
+  faSave,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -154,7 +154,7 @@ export class SubmitBar extends React.Component<
         ) : null}
         <button className={classnames(styles.customBtn)} onClick={saveCode} id="save_button">
           <span className={classnames(styles.icon)}>
-            <FontAwesomeIcon icon={faCloud} />
+            <FontAwesomeIcon icon={faSave} />
           </span>
           <span>SAVE</span>
         </button>

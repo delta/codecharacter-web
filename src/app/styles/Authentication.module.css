@@ -185,7 +185,7 @@
   text-align: left;
   margin-bottom: 3px;
   font-weight: bold;
-  font-family: 'B612 Mono', monospace;
+  font-family: 'Karla', sans-serif;
 }
 
 .root {
@@ -196,10 +196,10 @@
 .welcomeBack {
   margin-top: 57px;
   margin-bottom: 10px;
-  font-family: 'B612 Mono', monospace;
+  font-family: 'Karla', sans-serif;
 }
 .pragyan-login {
-  font-family: 'B612 Mono', monospace;
+  font-family: 'Karla', sans-serif;
   font-size: 12px;
   margin-top: 0;
 }
@@ -304,7 +304,7 @@
   box-shadow: none;
 }
 .registerMessage {
-  font-family: 'B612 Mono', monospace;
+  font-family: 'Karla', sans-serif;
 }
 
 .stage-div {
@@ -319,7 +319,7 @@
 .button-tab {
   position: relative;
   height: 50px;
-  font-family: 'B612 Mono', monospace;
+  font-family: 'Karla', sans-serif;
 }
 
 .button-tab-next {
@@ -393,7 +393,7 @@
   width: 34%;
   margin: auto;
   cursor: pointer;
-  font-family: 'B612 Mono', monospace;
+  font-family: 'Karla', sans-serif;
   padding: 0;
 }
 .multi-steps > li {
