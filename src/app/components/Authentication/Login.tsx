@@ -59,7 +59,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     }
 
     return (
-      <div className={classnames(styles.root)}>
+      <div className={classnames(styles.loginRoot)}>
         <div className={classnames(styles.welcomeBack)}>
           <h1> Welcome! </h1>
           <p> Log in to access your dashboard and profile </p>

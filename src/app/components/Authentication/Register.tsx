@@ -94,7 +94,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     }
 
     return (
-      <div className={classnames(authStyles.root)}>
+      <div className={classnames(authStyles.registerRoot)}>
         <div className={classnames(authStyles.registerMessage)}>
           <h1 className={classnames(authStyles['register-h1'])}> Register to CodeCharacter! </h1>
           <p> Register now and code your way through!! </p>

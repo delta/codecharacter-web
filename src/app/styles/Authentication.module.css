@@ -8,9 +8,18 @@
   z-index: 10;
 }
 
-.root {
+.loginRoot {
   max-width: 100%;
   overflow-x: hidden;
+  user-select: none;
+  text-align: center;
+}
+
+.registerRoot {
+  max-width: 100%;
+  overflow-x: hidden;
+  user-select: none;
+  text-align: center;
 }
 
 .Authentication .customBtn:focus,
@@ -195,11 +204,6 @@
   margin-bottom: 3px;
   font-weight: bold;
   font-family: 'Karla', sans-serif;
-}
-
-.root {
-  user-select: none;
-  text-align: center;
 }
 
 .welcomeBack {
