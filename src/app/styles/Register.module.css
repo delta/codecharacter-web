@@ -16,9 +16,17 @@
 
 .errorMessage {
   width: 100%;
-  margin-top: 0.25rem;
+  margin-bottom: 0 !important;
   font-size: 80%;
-  color: #dc3545;
+  color: #7a0825;
+  text-align: left !important;
+}
+
+.errorMessageLogin {
+  width: 100%;
+  margin-top: 1.7rem;
+  font-size: 80%;
+  color: #7a0825;
 }
 
 .checkbox-input {

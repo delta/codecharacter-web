@@ -59,7 +59,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     }
 
     return (
-      <div className={classnames(styles.root)}>
+      <div className={classnames(styles.loginRoot)}>
         <div className={classnames(styles.welcomeBack)}>
           <h1> Welcome! </h1>
           <p> Log in to access your dashboard and profile </p>
@@ -132,7 +132,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                   </div>
                 </div>
               </div>
-              <div className="form-row">
+              <div className={classnames('form-row', styles['error-row'])}>
                 <div
                   className={
                     !errorMessage
@@ -144,7 +144,8 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                       : classnames(
                           'col text-center mt -0 mb-2 errorMessage',
                           styles['register-error-active'],
-                          registerStyles.errorMessage,
+                          registerStyles.errorMessageLogin,
+                          styles['login-error-active'],
                         )
                   }
                 >

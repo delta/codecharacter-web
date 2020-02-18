@@ -8,6 +8,14 @@
   z-index: 10;
 }
 
+.loginRoot,.registerRoot {
+  max-width: 100%;
+  overflow-x: hidden;
+  user-select: none;
+  text-align: center;
+}
+
+
 .Authentication .customBtn:focus,
 .buttonPanel:focus {
   outline: none;
@@ -160,12 +168,15 @@
   padding: 9px;
   margin-top: 0;
   text-align: left;
+  color: #7a0825;
 }
 .register-error {
   background-color: #fee5d4;
   padding: 9px;
   margin-top: -20px;
   margin-bottom: 10px;
+  text-align: left;
+  color: #7a0825;
 }
 
 .register-error-inactive {
@@ -173,12 +184,13 @@
 }
 .register-error-active {
   background-color: #fee5d4;
-  padding: 9px;
+  padding: 9px !important;
   display: block;
   width: 100%;
   margin: auto;
   margin-top: 10px;
-  color: red;
+  color: #7a0825 !important;
+  text-align: left !important;
 }
 
 .login-label {
@@ -186,11 +198,6 @@
   margin-bottom: 3px;
   font-weight: bold;
   font-family: 'Karla', sans-serif;
-}
-
-.root {
-  user-select: none;
-  text-align: center;
 }
 
 .welcomeBack {
@@ -456,4 +463,15 @@
 
 .main-register-form {
   margin-top: 20px;
+}
+
+.error-row {
+  width: 100%;
+  margin-right: 0;
+  margin-left: -3px;
+}
+
+.login-error-active {
+  position: relative;
+  left: 1%;
 }

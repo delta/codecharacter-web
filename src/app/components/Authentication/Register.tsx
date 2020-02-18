@@ -94,7 +94,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     }
 
     return (
-      <div className={classnames(authStyles.root)}>
+      <div className={classnames(authStyles.registerRoot)}>
         <div className={classnames(authStyles.registerMessage)}>
           <h1 className={classnames(authStyles['register-h1'])}> Register to CodeCharacter! </h1>
           <p> Register now and code your way through!! </p>
@@ -154,7 +154,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         required
                       />
                       <div className={classnames('invalid-feedback', authStyles['register-error'])}>
-                        Enter a valid username.It should have a minimum of 5 characters and must be
+                        Enter a valid username. It should have a minimum of 5 characters and must be
                         alphanumeric
                       </div>
                     </div>
