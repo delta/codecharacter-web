@@ -154,7 +154,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         required
                       />
                       <div className={classnames('invalid-feedback', authStyles['register-error'])}>
-                        Enter a valid username.It should have a minimum of 5 characters and must be
+                        Enter a valid username. It should have a minimum of 5 characters and must be
                         alphanumeric
                       </div>
                     </div>
