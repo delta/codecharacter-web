@@ -8,13 +8,13 @@
   z-index: 10;
 }
 
-.loginRoot,.registerRoot {
+.loginRoot,
+.registerRoot {
   max-width: 100%;
   overflow-x: hidden;
   user-select: none;
   text-align: center;
 }
-
 
 .Authentication .customBtn:focus,
 .buttonPanel:focus {
@@ -261,6 +261,15 @@
   bottom: 5px;
   cursor: pointer;
 }
+.left-arrow-disable {
+  position: relative;
+  left: 30%;
+  border-radius: 50%;
+  color: grey;
+  font-size: 30px;
+  bottom: 5px;
+}
+
 .right-arrow {
   position: relative;
   right: 30%;
@@ -269,6 +278,14 @@
   color: #4630eb;
   font-size: 30px;
   cursor: pointer;
+}
+.right-arrow-disable {
+  position: relative;
+  right: 30%;
+  bottom: 5px;
+  border-radius: 50%;
+  color: grey;
+  font-size: 30px;
 }
 
 .left-arrow:active,
@@ -458,11 +475,11 @@
 }
 
 .register-h1 {
-  margin-top: 30px;
+  margin-top: 6%;
 }
 
 .main-register-form {
-  margin-top: 20px;
+  margin-top: 1%;
 }
 
 .error-row {

@@ -436,7 +436,11 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
         </div>
         <Row>
           <div
-            className={classnames(authStyles['left-arrow'])}
+            className={
+              currentStep === RegisterInterfaces.Steps.USER_DETAILS
+                ? classnames(authStyles['left-arrow-disable'])
+                : classnames(authStyles['left-arrow'])
+            }
             onClick={() => {
               if (currentStep !== RegisterInterfaces.Steps.USER_DETAILS) {
                 this.handleStepChange(currentStep, currentStep - 1);
@@ -483,7 +487,11 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             </li>
           </ul>
           <div
-            className={classnames(authStyles['right-arrow'])}
+            className={
+              currentStep === RegisterInterfaces.Steps.OTHERS
+                ? classnames(authStyles['right-arrow-disable'])
+                : classnames(authStyles['right-arrow'])
+            }
             onClick={() => {
               if (currentStep !== RegisterInterfaces.Steps.OTHERS) {
                 this.handleStepChange(currentStep, currentStep + 1);
