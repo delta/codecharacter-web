@@ -1,9 +1,9 @@
 import Login from 'app/containers/Authentication/Login';
 import Register from 'app/containers/Authentication/Register';
 import Dashboard from 'app/containers/Dashboard';
+import LandingPage from 'app/containers/LandingPage';
 import Leaderboard from 'app/containers/Leaderboard';
 import UserProfileModal from 'app/containers/UserProfileModal';
-import LandingPage from 'app/containers/LandingPage';
 import { Routes } from 'app/routes';
 // @ts-ignore
 import { initializeRendererAssets } from 'codecharacter-renderer';

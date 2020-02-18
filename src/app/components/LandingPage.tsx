@@ -17,7 +17,7 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
         <div className={classnames(styles.nav)}>
           <input type="checkbox" className={classnames(styles['nav-check'])} id="nav-check" />
           <div className={classnames(styles['nav-header'])}>
-            <div className={classnames(styles['nav-title'])}>JoGeek</div>
+            <div className={classnames(styles['nav-title'])}>CodeCharacter</div>
           </div>
           <div className={classnames(styles['nav-btn'])}>
             <label htmlFor="nav-check">
@@ -40,9 +40,6 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
             <a href="https://codepen.io/jo_Geek/" target="_blank">
               Codepen
             </a>
-            <a href="https://jsfiddle.net/user/jo_Geek/" target="_blank">
-              JsFiddle
-            </a>
           </div>
         </div>
 
@@ -58,8 +55,6 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
                   return (
                     <FaqElement key={index} question={element.question} answer={element.answer} />
                   );
-                } else {
-                  return null;
                 }
               })}
             </div>
@@ -69,8 +64,6 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
                   return (
                     <FaqElement key={index} question={element.question} answer={element.answer} />
                   );
-                } else {
-                  return null;
                 }
               })}
             </div>

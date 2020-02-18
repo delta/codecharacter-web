@@ -1,6 +1,7 @@
 .root {
   background-color: #fff9f0;
-  width: 100vw;
+  width: 100%;
+  overflow-x: hidden;
   height: 300vh;
   position: absolute;
   top: 0;
@@ -15,8 +16,10 @@
 .nav {
   height: 50px;
   width: 100%;
-  background-color: #4d4d4d;
+  background-color: #fff;
   position: relative;
+  font-family: 'Karla';
+  box-shadow: 2px darkgrey;
 }
 
 .nav > .nav-header {
@@ -26,7 +29,7 @@
 .nav > .nav-header > .nav-title {
   display: inline-block;
   font-size: 22px;
-  color: #fff;
+  color: black;
   padding: 10px 10px 10px 10px;
 }
 
@@ -44,7 +47,7 @@
   display: inline-block;
   padding: 13px 10px 13px 10px;
   text-decoration: none;
-  color: #efefef;
+  color: black;
 }
 
 .nav > .nav-links > a:hover {
@@ -82,7 +85,7 @@
     margin-top: -3px;
     display: block;
     width: 100%;
-    background-color: #333;
+    background-color: white;
     height: 0px;
     transition: all 0.3s ease-in;
     overflow-y: hidden;
