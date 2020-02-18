@@ -55,7 +55,7 @@
   display: none;
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
   .nav > .nav-btn {
     display: inline-block;
     position: absolute;
@@ -68,7 +68,8 @@
     height: 50px;
     padding: 13px;
   }
-  .nav > .nav-btn > label:hover,.nav  .nav-check:checked ~ .nav-btn > label {
+  .nav > .nav-btn > label:hover,
+  .nav .nav-check:checked ~ .nav-btn > label {
     background-color: rgba(0, 0, 0, 0.3);
   }
   .nav > .nav-btn > label > span {
@@ -100,8 +101,6 @@
     overflow-y: auto;
   }
 }
-
-
 
 .main-nav {
   position: fixed !important;
