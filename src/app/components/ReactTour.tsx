@@ -218,10 +218,11 @@ export default class ReactTour extends React.Component<
     return (
       <Tour
         accentColor={'#5b5656'}
-        className="helper"
         isOpen={isTourOpen}
         maskClassName="mask"
+        disableInteraction
         onRequestClose={this.closeTour}
+        highlightedMaskClassName={classnames(styles['mask-highlight'])}
         rounded={5}
         steps={tourConfig}
       />
