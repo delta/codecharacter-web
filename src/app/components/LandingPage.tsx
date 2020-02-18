@@ -6,68 +6,46 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import classnames from 'classnames';
 import * as React from 'react';
 
+
 export class LandingPage extends React.Component<
   LandingPageInterfaces.Props,
-  LandingPageInterfaces.State
+  {}
 > {
   public constructor(props: LandingPageInterfaces.Props) {
     super(props);
-    this.state = {
-      isNavBarDown: false,
-    };
   }
 
-  public componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-  }
 
-  public handleScroll = (): void => {
-    if (window.pageYOffset > 100) {
-      this.setState({ isNavBarDown: true });
-    } else {
-      this.setState({ isNavBarDown: false });
-    }
-  };
+
 
   public render() {
     return (
       <div className={classnames(styles.root)}>
-        <nav
-          className={
-            !this.state.isNavBarDown
-              ? classnames('navbar navbar-expand-lg navbar-light ', styles['main-nav'])
-              : classnames('navbar navbar-expand-lg navbar-light ', styles['main-nav-down'])
-          }
-        >
-          <a className={classnames('navbar-brand', styles['main-title'])} href="#">
-            CodeCharacter
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Login
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  SignUp
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+
+      <div className={classnames(styles.nav)}>
+ <input type="checkbox" className={classnames(styles["nav-check"])} id="nav-check"/>
+ <div className={classnames(styles["nav-header"])}>
+   <div className={classnames(styles["nav-title"])}>
+     JoGeek
+   </div>
+ </div>
+ <div className={classnames(styles["nav-btn"])}>
+   <label htmlFor="nav-check">
+     <span></span>
+     <span></span>
+     <span></span>
+   </label>
+ </div>
+
+ <div className={classnames(styles["nav-links"])}>
+   <a href="//github.io/jo_geek" target="_blank">Github</a>
+   <a href="http://stackoverflow.com/users/4084003/" target="_blank">Stackoverflow</a>
+   <a href="https://in.linkedin.com/in/jonesvinothjoseph" target="_blank">LinkedIn</a>
+   <a href="https://codepen.io/jo_Geek/" target="_blank">Codepen</a>
+   <a href="https://jsfiddle.net/user/jo_Geek/" target="_blank">JsFiddle</a>
+ </div>
+</div>
+
 
         <div className={classnames('container', styles['first-cont'])}>
           <div className="row">
@@ -81,6 +59,8 @@ export class LandingPage extends React.Component<
                   return (
                     <FaqElement key={index} question={element.question} answer={element.answer} />
                   );
+                }else{
+                  return null;
                 }
               })}
             </div>
@@ -90,6 +70,8 @@ export class LandingPage extends React.Component<
                   return (
                     <FaqElement key={index} question={element.question} answer={element.answer} />
                   );
+                }else{
+                  return null;
                 }
               })}
             </div>

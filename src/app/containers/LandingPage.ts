@@ -9,11 +9,7 @@ const mapStateToProps = (rootState: RootState) => {
   };
 };
 
-const landingPageContainer = connect<
-  LandingPageInterfaces.StateProps,
-  LandingPageInterfaces.DispatchProps,
-  {}
->(
+const landingPageContainer = connect<LandingPageInterfaces.StateProps, {}, {}>(
   mapStateToProps,
   {},
 )(LandingPage);
