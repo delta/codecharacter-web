@@ -3,7 +3,7 @@
 exports[`SideBar Container Should render 1`] = `
 <Connect(Sidebar)
   setIsAuthenticationOpen={[Function]}
-  toggleJoyRide={[Function]}
+  toggleReactTour={[Function]}
 >
   <Sidebar
     closeSidePanelTab={[Function]}
@@ -13,7 +13,7 @@ exports[`SideBar Container Should render 1`] = `
     resetAppState={[Function]}
     setIsAuthenticationOpen={[Function]}
     sidePanelTab="NONE"
-    toggleJoyRide={[Function]}
+    toggleReactTour={[Function]}
     toggleUserProfileModal={[Function]}
   >
     <div

@@ -1,5 +1,5 @@
 import { ErrorBoundary } from 'app/components/ErrorBoundary';
-import Joyride from 'app/components/Joyride';
+import ReactTour from 'app/components/ReactTour';
 import CodeStatus from 'app/containers/code/CodeStatus';
 import Editor from 'app/containers/code/Editor';
 import GameLog from 'app/containers/GameLog';
@@ -42,7 +42,7 @@ export class Dashboard extends React.Component<
     this.state = {
       fixedLeftPaneWidth,
       editorWidthRatio: this.initialEditorRatio,
-      isJoyRideActive: false,
+      isReactTourActive: false,
       rendererHeight: this.initialRendererHeight,
       splitPaneState: DashboardInterfaces.SplitPaneState.BOTH,
       windowWidth: window.innerWidth,
@@ -69,7 +69,7 @@ export class Dashboard extends React.Component<
       windowWidth,
       fixedLeftPaneWidth,
       splitPaneState,
-      isJoyRideActive,
+      isReactTourActive,
     } = this.state;
     const {
       isLoggedIn,
@@ -107,8 +107,9 @@ export class Dashboard extends React.Component<
     return (
       <div>
         {isWelcomeModalOpen ? <Welcome closeWelcomeModal={() => closeWelcomeModal()} /> : null}
-        {isLoggedIn && isJoyRideActive ? <Joyride toggleJoyRide={this.onToggleJoyRide} /> : null}
-
+        {isLoggedIn && isReactTourActive && !isWelcomeModalOpen ? (
+          <ReactTour toggleReactTour={this.onToggleReactTour} />
+        ) : null}
         {isLoggedIn ? <SocketHandler /> : null}
         <SplitPane
           style={{
@@ -131,7 +132,7 @@ export class Dashboard extends React.Component<
                 }}
               >
                 <SideBar
-                  toggleJoyRide={this.onToggleJoyRide}
+                  toggleReactTour={this.onToggleReactTour}
                   setIsAuthenticationOpen={setIsAuthenticationOpen}
                 />
               </div>
@@ -143,7 +144,9 @@ export class Dashboard extends React.Component<
               >
                 <CodeStatus width={editorWidth} />
                 {this.state.splitPaneState !== DashboardInterfaces.SplitPaneState.RENDERER ? (
-                  <Editor editorWidth={editorWidth} />
+                  <div id="editor_div">
+                    <Editor editorWidth={editorWidth} />
+                  </div>
                 ) : null}
               </div>
             </Row>
@@ -208,9 +211,9 @@ export class Dashboard extends React.Component<
     });
   };
 
-  private onToggleJoyRide = (): void => {
+  private onToggleReactTour = (): void => {
     this.setState({
-      isJoyRideActive: !this.state.isJoyRideActive,
+      isReactTourActive: !this.state.isReactTourActive,
     });
   };
 }

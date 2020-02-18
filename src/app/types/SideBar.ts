@@ -6,7 +6,7 @@ export interface StateProps {
 }
 
 export interface OwnProps {
-  toggleJoyRide: () => void;
+  toggleReactTour: () => void;
   setIsAuthenticationOpen: (isAuthenticationOpen: boolean) => void;
 }
 
