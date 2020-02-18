@@ -8,19 +8,13 @@
   z-index: 10;
 }
 
-.loginRoot {
+.loginRoot,.registerRoot {
   max-width: 100%;
   overflow-x: hidden;
   user-select: none;
   text-align: center;
 }
 
-.registerRoot {
-  max-width: 100%;
-  overflow-x: hidden;
-  user-select: none;
-  text-align: center;
-}
 
 .Authentication .customBtn:focus,
 .buttonPanel:focus {
