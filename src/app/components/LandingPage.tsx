@@ -56,6 +56,7 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
                     <FaqElement key={index} question={element.question} answer={element.answer} />
                   );
                 }
+                return null;
               })}
             </div>
             <div className="col-lg-6 col-sm-12">
@@ -65,6 +66,7 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
                     <FaqElement key={index} question={element.question} answer={element.answer} />
                   );
                 }
+                return null;
               })}
             </div>
           </div>

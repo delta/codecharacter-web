@@ -73,13 +73,13 @@
   }
   .nav > .nav-btn > label:hover,
   .nav .nav-check:checked ~ .nav-btn > label {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #fff9f0;
   }
   .nav > .nav-btn > label > span {
     display: block;
     width: 25px;
     height: 10px;
-    border-top: 2px solid #eee;
+    border-top: 2px solid #6bc8b0;
   }
   .nav > .nav-links {
     margin-top: -3px;
@@ -100,7 +100,7 @@
     height: 0px;
   }
   .nav > .nav-check:checked ~ .nav-links {
-    height: 45vh;
+    height: 37vh;
     overflow-y: auto;
   }
 }

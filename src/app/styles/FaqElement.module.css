@@ -15,7 +15,7 @@
 
 .faq-element {
   background-color: white;
-  margin: 30px;
+  margin-top: 15px;
   border: 2px solid #fdd33d;
   border-radius: 5px;
   padding: 10px;
@@ -27,8 +27,6 @@
   transition: all 1s ease;
 }
 .faq-body {
-  /* animation-name: example;
-  animation-duration: 1s; */
   transition: 1s;
 }
 @keyframes grow {
@@ -58,10 +56,6 @@
 .faq-body-active {
   max-height: 50px;
 }
-/* .faq-body-down{
-  display: inline-block;
-  animation: fade 4s;
-}  */
 
 .faq-heading {
   margin: auto;
@@ -73,10 +67,6 @@
   position: absolute;
   top: 8px;
   left: 10px;
-  /* position: absolute;
-  top: 50px;
-  left: 100px; */
-  /* margin-bottom: 10px; */
 }
 
 .cont {
@@ -118,5 +108,4 @@
 
 .faq-down {
   border: 2px solid #8166cd;
-  /* animation: grow 2s; */
 }
