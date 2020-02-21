@@ -20,18 +20,15 @@ initializeRendererAssets();
 /* tslint:disable-next-line:variable-name */
 export const App = hot(module)(() => (
   <React.Fragment>
-  <BrowserRouter>
-    <Switch>
-      <Route exact path={Routes.ROOT} component={Dashboard} />
-      <Route exact path={Routes.LOGIN} component={Login} />
-      <Route exact path={Routes.REGISTER} component={Register} />
-      <Route exact path={Routes.LEADERBOARD} component={Leaderboard} />
-      <Route exact path={Routes.USER_PROFILE_MODEL} component={UserProfileModal} />
-    </Switch>
-
-
-
-  </BrowserRouter>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path={Routes.ROOT} component={Dashboard} />
+        <Route exact path={Routes.LOGIN} component={Login} />
+        <Route exact path={Routes.REGISTER} component={Register} />
+        <Route exact path={Routes.LEADERBOARD} component={Leaderboard} />
+        <Route exact path={Routes.USER_PROFILE_MODEL} component={UserProfileModal} />
+      </Switch>
+    </BrowserRouter>
 
     <PopUpMenu />
     <Sugar background="#484848" color="white" />
