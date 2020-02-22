@@ -13,6 +13,7 @@ const actions = {
   updateDebugRunCommitHash: SubmissionActions.updateDebugRunCommitHash,
   updateDebugRunRequest: SubmissionActions.updateDebugRunRequest,
   updateMapId: SubmissionActions.updateMapId,
+  updatePlayerId2: SubmissionActions.updatePlayerId2,
 };
 
 export enum Request {
@@ -22,6 +23,7 @@ export enum Request {
   AI_MATCH = 'AI',
   LOCK_CODE = 'LOCK_CODE',
   DEBUG_RUN = 'DEBUG_RUN',
+  MANUAL = 'MANUAL',
 }
 
 export enum RequestState {

@@ -81,6 +81,12 @@ export const submissionReducer = (
         commitHash: action.payload.commitHash,
       };
     }
+    case SubmissionActions.Type.UPDATE_PLAYER_ID2: {
+      return {
+        ...state,
+        playerId2: action.payload.playerId2,
+      };
+    }
     case SubmissionActions.Type.RESET_SUBMISSION_STATE:
       return {
         ...submissionStoreState,

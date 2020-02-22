@@ -43,8 +43,7 @@ describe('SideBar Container', () => {
   it('Should Dispatch setSidePanelTab Leaderboard or None', () => {
     // const button = wrapper.find('.leaderboard-btn-ctrl').at(1);
     // button.simulate('click');
-    // TODO: Remove this. Added for hot_fix branch.
-    // expect(wrapper.find(Sidebar).props().sidePanelTab).toBe(SidePanelTab.LEADERBOARD);
+    // expect(wrapper.find(Sidebar).props().sidePanelTab).toBe(SidePanelTab.NONE);
     // button.simulate('click');
     // expect(wrapper.find(Sidebar).props().sidePanelTab).toBe(SidePanelTab.NONE);
   });

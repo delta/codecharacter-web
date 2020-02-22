@@ -27,6 +27,7 @@ export namespace SubmissionActions {
     GET_AI_IDS = 'GET_AI_IDS',
     UPDATE_AI_IDS = 'UPDATE_AI_IDS',
     UPDATE_COMMIT_HASH = 'UPDATE_COMMIT_HASH',
+    UPDATE_PLAYER_ID2 = 'UPDATE_PLAYER_ID2',
     RESET_SUBMISSION_STATE = 'RESET_SUBMISSION_STATE',
   }
 
@@ -102,4 +103,8 @@ export namespace SubmissionActions {
 
   export const updateCommitHash = (commitHash: string) =>
     action(Type.UPDATE_COMMIT_HASH, { commitHash });
+
+  export const updatePlayerId2 = (playerId2: number) => {
+    return action(Type.UPDATE_PLAYER_ID2, { playerId2 });
+  };
 }

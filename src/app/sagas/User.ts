@@ -44,7 +44,6 @@ export function* login(action: ActionType<typeof UserActions.login>) {
       email: action.payload.email,
       password: action.payload.password,
     });
-
     // res.error is empty if res.type != 'Error'
     const { body: responseBody } = res;
     let errorMessage;
