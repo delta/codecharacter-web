@@ -1,7 +1,8 @@
+/* tslint:disable */
+import LandingPage from 'app/containers/LandingPage';
 import Login from 'app/containers/Authentication/Login';
 import Register from 'app/containers/Authentication/Register';
 import Dashboard from 'app/containers/Dashboard';
-import LandingPage from 'app/containers/LandingPage';
 import Leaderboard from 'app/containers/Leaderboard';
 import UserProfileModal from 'app/containers/UserProfileModal';
 import { Routes } from 'app/routes';
@@ -12,7 +13,7 @@ import { hot } from 'react-hot-loader';
 // @ts-ignore
 import { Sugar } from 'react-preloaders';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
+/* tslint:enable */
 initializeRendererAssets();
 
 /* tslint:disable-next-line:variable-name */
