@@ -50,8 +50,16 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     updateErrorMessage('');
   };
 
+  public respondOnKeypress = (event: KeyboardEvent) => {
+    const { currentStep } = this.state;
+    if (event.keyCode === 13) {
+      this.handleStepChange(currentStep, currentStep + 1);
+    }
+  };
+
   public componentDidMount() {
     window.addEventListener('beforeunload', this.componentCleanup);
+    window.addEventListener('keydown', this.respondOnKeypress);
   }
   public componentWillReceiveProps(newProps: RegisterInterfaces.Props) {
     const { errorMessage } = newProps;
