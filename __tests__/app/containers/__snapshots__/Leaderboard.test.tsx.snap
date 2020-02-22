@@ -4,6 +4,10 @@ exports[`Leaderboard Container Should render Leaderboard 1`] = `
 <Leaderboard
   clearLeaderboard={[Function]}
   getLeaderboard={[Function]}
+  getLeaderboardByDivAndType={[Function]}
+  getLeaderboardByDivType={[Function]}
+  getLeaderboardByUserType={[Function]}
+  getLeaderboardByUsername={[Function]}
   getTimer={[Function]}
   loading={false}
   players={Array []}

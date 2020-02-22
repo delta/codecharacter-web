@@ -18,8 +18,26 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     clearLeaderboard: () =>
       dispatch(LeaderboardActions.updateLeaderboard([], LeaderboardActions.updateType.REPLACE)),
-    getLeaderboard: (pattern: string, start: number) =>
-      dispatch(LeaderboardActions.getLeaderboard(pattern, start)),
+    getLeaderboard: (pageNo: number, pageSize: number) =>
+      dispatch(LeaderboardActions.getLeaderboard(pageNo, pageSize)),
+    getLeaderboardByDivAndType: (
+      div: LeaderboardInterfaces.DivisionType,
+      pageNo: number,
+      pageSize: number,
+      userType: LeaderboardInterfaces.UserType,
+    ) => dispatch(LeaderboardActions.getLeaderboardByDivAndType(div, pageNo, pageSize, userType)),
+    getLeaderboardByDivType: (
+      pageNo: number,
+      pageSize: number,
+      div: LeaderboardInterfaces.DivisionType,
+    ) => dispatch(LeaderboardActions.getLeaderboardByDiv(div, pageNo, pageSize)),
+    getLeaderboardByUserType: (
+      pageNo: number,
+      pageSize: number,
+      userType: LeaderboardInterfaces.UserType,
+    ) => dispatch(LeaderboardActions.getLeaderboardByUserType(userType, pageNo, pageSize)),
+    getLeaderboardByUsername: (username: string, pageNo: number, pageSize: number) =>
+      dispatch(LeaderboardActions.getLeaderboardByUserName(username, pageNo, pageSize)),
     getTimer: () => dispatch(LeaderboardActions.getTimer()),
     runMatch: (opponentId: number) => dispatch(LeaderboardActions.runMatch(opponentId)),
     setTimer: (timerData: number) => dispatch(LeaderboardActions.setTimer(timerData)),
