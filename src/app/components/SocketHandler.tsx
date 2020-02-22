@@ -97,6 +97,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
   public componentDidUpdate() {
     // tslint:disable-next-line: no-console
     const { request, mapId, playerId1, playerId2, commitHash, updateRequest, userId } = this.props;
+    // tslint:disable-next-line: no-console
     switch (request) {
       case SubmissionInterfaces.Request.PREVIOUS_COMMIT_MATCH: {
         // tslint:disable-next-line: no-console
@@ -136,6 +137,16 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
         );
         updateRequest(SubmissionInterfaces.Request.NONE);
         break;
+      }
+      case SubmissionInterfaces.Request.MANUAL: {
+        this.initiateMatch(
+          playerId1,
+          playerId2,
+          SubmissionInterfaces.Request.MANUAL,
+          mapId,
+          commitHash,
+        );
+        updateRequest(SubmissionInterfaces.Request.NONE);
       }
     }
   }

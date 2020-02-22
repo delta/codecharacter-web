@@ -4,6 +4,10 @@ export namespace LeaderboardActions {
   export enum Type {
     UPDATE_LOADING_STATUS = 'UPDATE_LOADING_STATUS',
     GET_LEADERBOARD = 'GET_LEADERBOARD',
+    GET_LEADERBOARD_BY_DIV = 'GET_LEADERBOARD_BY_DIV',
+    GET_LEADERBOARD_BY_USER_TYPE = 'GET_LEADERBOARD_BY_USER_TYPE',
+    GET_LEADERBOARD_BY_DIV_AND_TYPE = 'GET_LEADERBOARD_BY_DIV_AND_TYPE',
+    GET_LEADERBOARD_BY_USERNAME = 'GET_LEADERBOARD_BY_USERNAME',
     UPDATE_ERROR = 'UPDATE_ERROR',
     UPDATE_LEADERBOARD = 'UPDATE_LEADERBOARD',
     TOGGLE_USER_PROFILE_MODAL = 'TOGGLE_USER_PROFILE_MODAL',
@@ -11,6 +15,12 @@ export namespace LeaderboardActions {
     GET_TIMER = 'GET_TIMER',
     SET_TIMER = 'SET_TIMER',
     START_MATCH = 'START_MATCH',
+  }
+
+  export enum colors {
+    GOLD = '',
+    SILVER = '#C0C0C0',
+    BRONZE = '#cd7f32',
   }
 
   export enum updateType {
@@ -37,11 +47,56 @@ export namespace LeaderboardActions {
     return action(Type.UPDATE_ERROR, err);
   };
 
-  export const getLeaderboard = (pattern: string, start: number) => {
+  export const getLeaderboard = (pageNo: number, pageSize: number) => {
     return action(Type.GET_LEADERBOARD, {
-      pattern,
-      start,
-      end: start + FETCH_SIZE - 1,
+      pageNo,
+      pageSize,
+    });
+  };
+
+  export const getLeaderboardByDiv = (
+    div: LeaderboardInterfaces.DivisionType,
+    pageNo: number,
+    pageSize: number,
+  ) => {
+    return action(Type.GET_LEADERBOARD_BY_DIV, {
+      div,
+      pageNo,
+      pageSize,
+    });
+  };
+
+  export const getLeaderboardByUserType = (
+    userType: LeaderboardInterfaces.UserType,
+    pageNo: number,
+    pageSize: number,
+  ) => {
+    return action(Type.GET_LEADERBOARD_BY_USER_TYPE, {
+      pageNo,
+      pageSize,
+      userType,
+    });
+  };
+
+  export const getLeaderboardByDivAndType = (
+    div: LeaderboardInterfaces.DivisionType,
+    pageNo: number,
+    pageSize: number,
+    userType: LeaderboardInterfaces.UserType,
+  ) => {
+    return action(Type.GET_LEADERBOARD_BY_DIV_AND_TYPE, {
+      div,
+      pageNo,
+      pageSize,
+      userType,
+    });
+  };
+
+  export const getLeaderboardByUserName = (username: string, pageNo: number, pageSize: number) => {
+    return action(Type.GET_LEADERBOARD_BY_USERNAME, {
+      pageNo,
+      pageSize,
+      username,
     });
   };
 
