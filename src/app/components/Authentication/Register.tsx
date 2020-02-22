@@ -37,7 +37,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       currentStep: RegisterInterfaces.Steps.USER_DETAILS,
       email: '',
       fullName: '',
-      isCaptchaValidated: false,
+      isCaptchaValidated: true,
       isFormSubmitted: false,
       isRegistered: false,
       isStudent: false,
@@ -102,7 +102,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
     const avatars = Object.keys(RegisterInterfaces.Avatar);
 
-    const { checkUsernameExists, errorMessage, updateErrorMessage, isLoggedIn } = this.props;
+    const { /*checkUsernameExists,*/ errorMessage, updateErrorMessage, isLoggedIn } = this.props;
     if (isLoggedIn) {
       return <Redirect to={Routes.ROOT} />;
     }
@@ -163,7 +163,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         pattern="[a-zA-Z0-9]{5,50}"
                         value={username}
                         onChange={(e) => {
-                          checkUsernameExists(e.target.value);
+                          // checkUsernameExists(e.target.value);
                           this.setState({
                             username: e.target.value,
                           });
@@ -605,15 +605,12 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     const { register, errorMessage } = this.props;
     const {
       avatar,
-      repeatPassword,
       country,
       email,
       fullName,
       password,
       username,
-      pragyanId,
       isCaptchaValidated,
-      type,
       collegeName: college,
     } = this.state;
     const registerForm = this.registerFormRef.current;
@@ -623,16 +620,14 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       otherDetailsForm.classList.add('was-validated');
       if (registerForm.checkValidity() && isCaptchaValidated && errorMessage === '') {
         await register({
-          avatar,
           college,
           country,
           email,
           fullName,
           password,
-          pragyanId,
-          repeatPassword,
-          type,
           username,
+          // @ts-ignore
+          avatarId: RegisterInterfaces.AvatarId[avatar],
         });
         this.setState({
           isRegistered: true,

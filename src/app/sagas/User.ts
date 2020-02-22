@@ -28,7 +28,9 @@ export function* login(action: ActionType<typeof UserActions.login>) {
     yield put(UserActions.updateErrorMessage(res.error));
     yield put(UserActions.setIsLoginLoading(false));
 
-    if (res.type !== resType.ERROR) {
+    console.log('response in api');
+    console.log(res);
+    if (res.status === 302) {
       yield put(
         UserActions.updateUserDetails({
           country: '',
@@ -53,8 +55,7 @@ export function* logout(action: ActionType<typeof UserActions.logout>) {
     const isAuthenticated = yield checkAuthentication(res);
     if (isAuthenticated === false) return;
 
-    // res.error is empty if res.type != 'Error'
-    yield put(UserActions.updateErrorMessage(res.error));
+    yield put(UserActions.updateErrorMessage(res.message));
 
     if (res.type !== resType.ERROR) {
       yield put(

@@ -1,18 +1,14 @@
 import { UserActions } from 'app/actions';
-import * as RegisterInterfaces from 'app/types/Authentication/Register';
 import { ActionType } from 'typesafe-actions';
 
 export interface Register {
-  avatar?: string;
-  username: string;
-  password: string;
-  repeatPassword: string;
-  email: string;
-  country: string;
-  fullName: string;
-  pragyanId?: string;
-  type: RegisterInterfaces.RegisterType;
+  avatarId: number;
   college?: string;
+  country: string;
+  email: string;
+  fullName: string;
+  password: string;
+  username: string;
 }
 
 export interface EditUserDetails {
