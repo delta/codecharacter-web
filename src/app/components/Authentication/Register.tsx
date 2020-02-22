@@ -16,7 +16,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { Redirect } from 'react-router-dom';
 
 enum KeyCode {
-  ENTER = 13
+  ENTER = 13,
 }
 
 export class Register extends React.Component<RegisterInterfaces.Props, RegisterInterfaces.State> {
@@ -567,9 +567,11 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
         break;
       }
       case RegisterInterfaces.Steps.OTHERS: {
-        this.setState({
-          currentStep: newStep,
-        });
+        if (newStep < 2) {
+          this.setState({
+            currentStep: newStep,
+          });
+        }
         break;
       }
     }
