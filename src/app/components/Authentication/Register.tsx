@@ -320,6 +320,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       </div>
                     </div>
                   )}
+                  <div className={classnames(authStyles['login-label'])}> Your country </div>
                   <div className={classnames(registerStyles['input-group'])}>
                     <ReactFlagsSelect
                       searchable={true}
@@ -567,7 +568,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
         break;
       }
       case RegisterInterfaces.Steps.OTHERS: {
-        if (newStep < 2) {
+        if (newStep < RegisterInterfaces.Steps.OTHERS) {
           this.setState({
             currentStep: newStep,
           });
@@ -583,7 +584,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     });
   };
 
-  private handleRegister = async (event: React.MouseEvent) => {
+  private handleRegister = async () => {
     const { register, errorMessage } = this.props;
     const {
       avatar,
@@ -600,7 +601,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     } = this.state;
     const registerForm = this.registerFormRef.current;
     const otherDetailsForm = this.otherDetailsFormRef.current;
-    event.preventDefault();
 
     if (registerForm && otherDetailsForm) {
       otherDetailsForm.classList.add('was-validated');
@@ -643,6 +643,9 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   private handleKeyPress = (event: KeyboardEvent) => {
     const { currentStep } = this.state;
     if (event.keyCode === KeyCode.ENTER) {
+      if (currentStep === RegisterInterfaces.Steps.OTHERS) {
+        this.handleRegister();
+      }
       this.handleStepChange(currentStep, currentStep + 1);
     }
   };
