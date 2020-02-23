@@ -6,7 +6,9 @@ import { useToasts } from 'react-toast-notifications';
 import * as io from 'socket.io-client';
 
 // tslint:disable-next-line: variable-name
-export const SocketHandler = (props: SocketHandlerInterfaces.Props) => {
+export const SocketHandler: React.FunctionComponent<SocketHandlerInterfaces.Props> = (
+  props: SocketHandlerInterfaces.Props,
+) => {
   const { addToast } = useToasts();
   const socket: SocketIOClient.Socket = io.connect(SOCKET_BASE_URL, {
     reconnection: true,
