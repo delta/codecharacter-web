@@ -102,6 +102,27 @@ export const userEditPassword = (body: UserInterfaces.EditUserPassword) => {
     });
 };
 
+export const userForgotPassword = (body: UserInterfaces.ForgotPassword) => {
+  return fetch(`${API_BASE_URL}user/forgot-password`, {
+    body: JSON.stringify(body),
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 export const userGetDetails = () => {
   return fetch(`${API_BASE_URL}user/profile`, {
     credentials: 'include',

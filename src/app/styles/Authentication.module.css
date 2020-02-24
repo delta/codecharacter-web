@@ -492,3 +492,11 @@
   position: relative;
   left: 1%;
 }
+
+.forgot-your-password {
+  cursor: pointer;
+}
+
+.forgot-your-password:hover {
+  color: #4630eb !important;
+}

@@ -35,9 +35,14 @@ export interface Login {
   password: string;
 }
 
+export interface ForgotPassword {
+  email: string;
+}
+
 const actions = {
   editUserPassword: UserActions.editUserPassword,
   editUserProfile: UserActions.editUserProfile,
+  forgotPassword: UserActions.forgotPassword,
   getUserDetails: UserActions.getUserDetails,
   login: UserActions.login,
   logout: UserActions.logout,
