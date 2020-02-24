@@ -9,6 +9,13 @@ const global = {
   fetch,
 };
 
+// import Enzyme from 'enzyme';
+// import Adapter from 'enzyme-adapter-react-16';
+
+// Enzyme.configure({ adapter: new Adapter() })
+
 import { configure } from 'enzyme';
-import * as EnzymeAdapter from 'enzyme-adapter-react-16';
-configure({ adapter: new EnzymeAdapter() });
+import * as ReactSixteenAdapter from 'enzyme-adapter-react-16';
+// tslint:disable:no-any
+const adapter = ReactSixteenAdapter as any;
+configure({ adapter: new adapter.default() });
