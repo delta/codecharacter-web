@@ -1,9 +1,15 @@
 import { NotificationTabType } from 'app/types/Notification';
 
-export interface DispatchProps {
-  message: string;
+export interface StateProps {
   type: NotificationTabType;
-  createdAt: Date;
+
+  id: number;
+  text: string;
+  title: string;
 }
 
-export type Props = DispatchProps;
+export interface DispatchProps {
+  deleteNotification: (id: number) => void;
+}
+
+export type Props = DispatchProps & StateProps;

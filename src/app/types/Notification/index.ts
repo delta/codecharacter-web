@@ -29,6 +29,9 @@ export interface Notification {
   id: number;
   message: string;
   createdAt: Date;
+  type: NotificationTabType;
+  title: string;
+  text: string;
 }
 
 export interface NotificationStoreState {
