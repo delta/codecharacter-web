@@ -50,7 +50,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   }
 
   public handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
-
     const { currentStep } = this.state;
     const otherDetailsForm = this.otherDetailsFormRef.current;
 
@@ -112,9 +111,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     }
 
     return (
-      <div className={classnames(authStyles.registerRoot)}
-        onKeyDown={this.handleKeyPress}
-      >
+      <div className={classnames(authStyles.registerRoot)} onKeyDown={this.handleKeyPress}>
         <div className={classnames(authStyles.registerMessage)}>
           <h1 className={classnames(authStyles['register-h1'])}> Register to CodeCharacter! </h1>
           <p> Register now and code your way through!! </p>
