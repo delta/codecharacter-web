@@ -642,9 +642,17 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
   private handleKeyPress = (event: KeyboardEvent) => {
     const { currentStep } = this.state;
+    const otherDetailsForm = this.otherDetailsFormRef.current;
+
     if (event.keyCode === KeyCode.ENTER) {
+      event.preventDefault();
       if (currentStep === RegisterInterfaces.Steps.OTHERS) {
-        this.handleRegister();
+        if (otherDetailsForm) {
+          if (otherDetailsForm.checkValidity()) {
+            this.handleRegister();
+          }
+          otherDetailsForm.classList.add('was-validated');
+        }
       }
       this.handleStepChange(currentStep, currentStep + 1);
     }
