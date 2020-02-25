@@ -65,6 +65,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
   public componentWillUnmount() {
     window.removeEventListener('beforeunload', this.resetErrorMessage);
+    window.removeEventListener('keypress', this.handleKeyPress);
   }
 
   public render() {
