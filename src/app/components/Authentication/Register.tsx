@@ -16,7 +16,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { Redirect } from 'react-router-dom';
 
 enum KeyCode {
-  ENTER = 13,
+  ENTER = 'Enter',
 }
 
 export class Register extends React.Component<RegisterInterfaces.Props, RegisterInterfaces.State> {
@@ -49,9 +49,27 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     };
   }
 
+  public handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
+
+    const { currentStep } = this.state;
+    const otherDetailsForm = this.otherDetailsFormRef.current;
+
+    if (event.key === KeyCode.ENTER) {
+      event.preventDefault();
+      if (currentStep === RegisterInterfaces.Steps.OTHERS) {
+        if (otherDetailsForm) {
+          if (otherDetailsForm.checkValidity()) {
+            this.handleRegister();
+          }
+          otherDetailsForm.classList.add('was-validated');
+        }
+      }
+      this.handleStepChange(currentStep, currentStep + 1);
+    }
+  };
+
   public componentDidMount() {
     window.addEventListener('beforeunload', this.resetErrorMessage);
-    window.addEventListener('keypress', this.handleKeyPress);
   }
   public componentWillReceiveProps(newProps: RegisterInterfaces.Props) {
     const { errorMessage } = newProps;
@@ -65,7 +83,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
   public componentWillUnmount() {
     window.removeEventListener('beforeunload', this.resetErrorMessage);
-    window.removeEventListener('keypress', this.handleKeyPress);
   }
 
   public render() {
@@ -95,7 +112,9 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     }
 
     return (
-      <div className={classnames(authStyles.registerRoot)}>
+      <div className={classnames(authStyles.registerRoot)}
+        onKeyDown={this.handleKeyPress}
+      >
         <div className={classnames(authStyles.registerMessage)}>
           <h1 className={classnames(authStyles['register-h1'])}> Register to CodeCharacter! </h1>
           <p> Register now and code your way through!! </p>
@@ -639,23 +658,5 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   private resetErrorMessage = () => {
     const { updateErrorMessage } = this.props;
     updateErrorMessage('');
-  };
-
-  private handleKeyPress = (event: KeyboardEvent) => {
-    const { currentStep } = this.state;
-    const otherDetailsForm = this.otherDetailsFormRef.current;
-
-    if (event.keyCode === KeyCode.ENTER) {
-      event.preventDefault();
-      if (currentStep === RegisterInterfaces.Steps.OTHERS) {
-        if (otherDetailsForm) {
-          if (otherDetailsForm.checkValidity()) {
-            this.handleRegister();
-          }
-          otherDetailsForm.classList.add('was-validated');
-        }
-      }
-      this.handleStepChange(currentStep, currentStep + 1);
-    }
   };
 }
