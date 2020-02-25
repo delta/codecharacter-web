@@ -79,9 +79,9 @@ export class MatchElement extends React.Component<
         >
           <Row className="d-flex justify-content-around ">
             <Col sm={5} style={{ textAlign: 'center' }}>
-              <p
-                style={{ fontSize: 13, margin: 0, fontFamily: "'Montserrat', sans-serif" }}
-              >{`${match.username1.substr(0, 15)}${match.username1.length > 15 ? '...' : ''}`}</p>
+              <p style={{ fontSize: 13, margin: 0 }}>{`${match.username1.substr(0, 15)}${
+                match.username1.length > 15 ? '...' : ''
+              }`}</p>
               {match.rating1 ? (
                 <p style={{ fontSize: 16 }}>
                   <b>{`${match.rating1}`}</b>

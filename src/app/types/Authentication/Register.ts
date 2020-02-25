@@ -7,28 +7,24 @@ export enum RegisterType {
 }
 
 export enum Avatar {
-  ALIEN = 'assets/img/userAvatars/Alien.svg',
-  CHERON = 'assets/img/userAvatars/Cheron.svg',
-  CLANG = 'assets/img/userAvatars/Clang.svg',
   CRUNCH = 'assets/img/userAvatars/Crunch.svg',
-  ERROR404 = 'assets/img/userAvatars/Error404.svg',
-  GRANDPA = 'assets/img/userAvatars/Grandpa.svg',
-  HELLBOI = 'assets/img/userAvatars/HellBoi.svg',
-  JINX = 'assets/img/userAvatars/Jinx.svg',
-  MALMA = 'assets/img/userAvatars/Malma.svg',
+  EVORTRON = 'assets/img/userAvatars/Evortron.svg',
+  GERTY = 'assets/img/userAvatars/Gerty.svg',
+  GRAMPY = 'assets/img/userAvatars/Grampy.svg',
+  MANTUS = 'assets/img/userAvatars/Mantus.svg',
+  METALMOLLY = 'assets/img/userAvatars/MetalMolly.svg',
   METALPAW = 'assets/img/userAvatars/MetalPaw.svg',
-  MIKE = 'assets/img/userAvatars/Mike.svg',
   NIGHTOWL = 'assets/img/userAvatars/NightOwl.svg',
-  NINTURTLE = 'assets/img/userAvatars/NinTurtle.svg',
-  NORRISIV = 'assets/img/userAvatars/NorrisIV.svg',
   SETH = 'assets/img/userAvatars/Seth.svg',
   SONOROUS = 'assets/img/userAvatars/Sonorous.svg',
   SPARK = 'assets/img/userAvatars/Spark.svg',
   STEELJAW = 'assets/img/userAvatars/SteelJaw.svg',
+  TENEL = 'assets/img/userAvatars/Tenel.svg',
   TORRIS = 'assets/img/userAvatars/Torris.svg',
-  UNKNOWN = 'assets/img/userAvatars/Unknown.svg',
+  TWOBIT = 'assets/img/userAvatars/Twobit.svg',
   VALENTINA = 'assets/img/userAvatars/Valentina.svg',
-  WALLEE = 'assets/img/userAvatars/Wall-ee.svg',
+  VORIAN = 'assets/img/userAvatars/Vorian.svg',
+  WEEBO = 'assets/img/userAvatars/Weebo.svg',
 }
 
 export enum Steps {
