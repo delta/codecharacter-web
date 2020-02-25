@@ -188,7 +188,6 @@ exports[`MatchElement Component Should render 1`] = `
         >
           <img
             height={50}
-            src="assets/img/userAvatars/001-baboon.svg"
             width={50}
           />
           <span
@@ -200,7 +199,6 @@ exports[`MatchElement Component Should render 1`] = `
           </span>
           <img
             height={50}
-            src="assets/img/userAvatars/002-bear.svg"
             width={50}
           />
         </div>

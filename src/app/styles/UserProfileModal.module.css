@@ -152,13 +152,13 @@
 }
 
 .avatar-img:hover {
-  background-color: #117a8b;
+  background-color: rgb(215, 212, 234);
   cursor: pointer;
 }
 
 .avatar-img-active {
   padding: 5px;
-  background-color: #117a8b;
+  background-color: rgb(215, 212, 234);
   cursor: pointer;
 }
 
