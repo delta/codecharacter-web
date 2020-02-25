@@ -1,4 +1,4 @@
-.UserProfileModal {
+  .UserProfileModal {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -152,13 +152,13 @@
 }
 
 .avatar-img:hover {
-  background-color: #117a8b;
+  background-color: rgb(70, 48, 235)  ;
   cursor: pointer;
 }
 
 .avatar-img-active {
   padding: 5px;
-  background-color: #117a8b;
+  background-color: rgb(70, 48, 235)  ;
   cursor: pointer;
 }
 
