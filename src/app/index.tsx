@@ -1,8 +1,6 @@
+import PopUpMenu from 'app/components/PopUpMenu';
 import Login from 'app/containers/Authentication/Login';
 import Register from 'app/containers/Authentication/Register';
-
-import PopUpMenu from 'app/components/PopUpMenu';
-
 import Dashboard from 'app/containers/Dashboard';
 import Leaderboard from 'app/containers/Leaderboard';
 import UserProfileModal from 'app/containers/UserProfileModal';
@@ -19,7 +17,6 @@ initializeRendererAssets();
 
 /* tslint:disable-next-line:variable-name */
 export const App = hot(module)(() => (
-  <React.Fragment>
     <BrowserRouter>
       <Switch>
         <Route exact path={Routes.ROOT} component={Dashboard} />
@@ -28,9 +25,7 @@ export const App = hot(module)(() => (
         <Route exact path={Routes.LEADERBOARD} component={Leaderboard} />
         <Route exact path={Routes.USER_PROFILE_MODEL} component={UserProfileModal} />
       </Switch>
+      <PopUpMenu />
+      <Sugar background="#484848" color="white" />
     </BrowserRouter>
-
-    <PopUpMenu />
-    <Sugar background="#484848" color="white" />
-  </React.Fragment>
 ));

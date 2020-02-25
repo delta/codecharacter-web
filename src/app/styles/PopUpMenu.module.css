@@ -1,19 +1,21 @@
 .main-button {
-  position: absolute;
-  bottom: 20px;
-  right: 48px;
+  bottom: 45px;
+  right: 55px;
   width: 50px;
   height: 50px;
   font-size: 85%;
   border-radius: 50%;
+  border: 0px;
   background-color: #4630eb;
   color: white;
   z-index: 1000 !important;
   position: fixed;
+  transition: all .15s ease;
+  box-shadow: 6px 6px 6px rgba(0,0,0,.236);
 }
 .main-button:active {
   outline: none;
-  transform: scale(0.9);
+  transform: scale(0.95);
 }
 
 .main-button:focus {
@@ -22,17 +24,16 @@
 
 .pop-up {
   width: 205px;
-  height: 210px;
+  height: 219px;
   background-color: white;
   position: absolute;
-  right: 30px;
-  bottom: 80px;
-  border-radius: 5px;
-  border: 0.5px solid black;
-  -webkit-box-shadow: 0 0 2px grey;
-  -moz-box-shadow: 0 0 2px grey;
+  right: 50px;
+  bottom: 105px;
+  border-radius: 4px;
+  border: 1px solid #e4e4e4;
   box-shadow: 0 0 2px grey;
   font-family: 'Karla', sans-serif;
+  box-shadow: -9.2px 36.9px 57px 0 rgba(0,0,0,.13)
 }
 .pop-up-display-none {
   display: none;
@@ -54,11 +55,13 @@
 
 .menu-item-pragyan:hover {
   color: white;
-  background-image: linear-gradient(to bottom left, #181252, #75167d);
+  background-image: linear-gradient(to bottom left, #5e579e, #c51ad4);
   text-decoration: none;
 }
 .menu-item-discourse:hover {
+  color: white;
   background-image: linear-gradient(to right, #27b2ea, #51c4ce, #acd8ac, #ede794);
+  text-decoration: none;
 }
 
 .menu-icon-documentation {
@@ -67,13 +70,15 @@
 }
 
 .menu-item-documentation:hover {
+  text-decoration: none;
   background-color: orange;
   color: white;
 }
 
 .menu-item-pragyan {
   margin-top: 27px;
-  border: 1px solid black;
+  border: 1px solid #7e7e7e;
+
 }
 
 .menu-icon {
@@ -84,11 +89,13 @@
 .menu-item-documentation {
   background-color: white;
   color: black;
-  border: 1px solid black;
+  border: 1px solid #7e7e7e;
+
 }
 
 .menu-item-discourse {
-  border: 1px solid black;
+  border: 1px solid #7e7e7e;
+
 }
 .menu-icon-discourse {
   margin-right: 2px;
@@ -110,9 +117,16 @@
 
 .close-icon {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 6px;
+  right: 6px;
   width: 12px;
   height: 12px;
   cursor: pointer;
 }
+
+/* TODO: Change the jsx to remove `a` tag and use button. */
+
+ a:hover {
+   text-decoration: none !important;
+   color: none !important;
+ }
