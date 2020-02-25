@@ -92,9 +92,9 @@ export class MatchElement extends React.Component<
               <FontAwesomeIcon icon={faShieldAlt} />
             </Col>
             <Col sm={5} style={{ textAlign: 'center' }}>
-              <p
-                style={{ fontSize: 13, margin: 0, fontFamily: "'Montserrat', sans-serif" }}
-              >{`${match.username2.substr(0, 15)}${match.username2.length > 15 ? '...' : ''}`}</p>
+              <p style={{ fontSize: 13, margin: 0 }}>{`${match.username2.substr(0, 15)}${
+                match.username2.length > 15 ? '...' : ''
+              }`}</p>
               {match.rating2 ? (
                 <p style={{ fontSize: 16 }}>
                   <b>{`${match.rating2}`}</b>

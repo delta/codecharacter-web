@@ -172,7 +172,6 @@ exports[`MatchElement Component Should render 1`] = `
                 <p
                   style={
                     Object {
-                      "fontFamily": "'Montserrat', sans-serif",
                       "fontSize": 13,
                       "margin": 0,
                     }
