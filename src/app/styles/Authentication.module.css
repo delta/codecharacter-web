@@ -254,7 +254,7 @@
 }
 .left-arrow {
   position: relative;
-  left: 30%;
+  left: 35%;
   border-radius: 50%;
   color: #4630eb;
   font-size: 30px;
@@ -263,7 +263,7 @@
 }
 .left-arrow-disable {
   position: relative;
-  left: 30%;
+  left: 35%;
   border-radius: 50%;
   color: grey;
   font-size: 30px;
@@ -272,7 +272,7 @@
 
 .right-arrow {
   position: relative;
-  right: 30%;
+  right: 35%;
   bottom: 5px;
   border-radius: 50%;
   color: #4630eb;
@@ -281,7 +281,7 @@
 }
 .right-arrow-disable {
   position: relative;
-  right: 30%;
+  right: 35%;
   bottom: 5px;
   border-radius: 50%;
   color: grey;
@@ -414,7 +414,7 @@
 .multi-steps {
   display: table;
   table-layout: fixed;
-  width: 34%;
+  width: 25%;
   margin: auto;
   cursor: pointer;
   font-family: 'Karla', sans-serif;

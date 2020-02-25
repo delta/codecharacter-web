@@ -15,13 +15,17 @@ import 'react-flags-select/css/react-flags-select.css';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Redirect } from 'react-router-dom';
 
+enum KeyCode {
+  ENTER = 'Enter',
+}
+
 export class Register extends React.Component<RegisterInterfaces.Props, RegisterInterfaces.State> {
-  private registerRef = React.createRef<HTMLFormElement>();
-  private register1Ref = React.createRef<HTMLFormElement>();
-  private register2Ref = React.createRef<HTMLFormElement>();
-  private register3Ref = React.createRef<HTMLFormElement>();
+  private registerFormRef = React.createRef<HTMLFormElement>();
+  private userDetailsFormRef = React.createRef<HTMLFormElement>();
+  private credentialsFormRef = React.createRef<HTMLFormElement>();
+  private otherDetailsFormRef = React.createRef<HTMLFormElement>();
   private recaptchaRef = React.createRef<ReCAPTCHA>();
-  private passwordErrorRef = React.createRef<HTMLDivElement>();
+  private passwordErrorDivRef = React.createRef<HTMLDivElement>();
 
   constructor(props: RegisterInterfaces.Props) {
     super(props);
@@ -45,13 +49,26 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     };
   }
 
-  public componentCleanup = () => {
-    const { updateErrorMessage } = this.props;
-    updateErrorMessage('');
+  public handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    const { currentStep } = this.state;
+    const otherDetailsForm = this.otherDetailsFormRef.current;
+
+    if (event.key === KeyCode.ENTER) {
+      event.preventDefault();
+      if (currentStep === RegisterInterfaces.Steps.OTHERS) {
+        if (otherDetailsForm) {
+          if (otherDetailsForm.checkValidity()) {
+            this.handleRegister();
+          }
+          otherDetailsForm.classList.add('was-validated');
+        }
+      }
+      this.handleStepChange(currentStep, currentStep + 1);
+    }
   };
 
   public componentDidMount() {
-    window.addEventListener('beforeunload', this.componentCleanup);
+    window.addEventListener('beforeunload', this.resetErrorMessage);
   }
   public componentWillReceiveProps(newProps: RegisterInterfaces.Props) {
     const { errorMessage } = newProps;
@@ -64,7 +81,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   }
 
   public componentWillUnmount() {
-    window.removeEventListener('beforeunload', this.componentCleanup);
+    window.removeEventListener('beforeunload', this.resetErrorMessage);
   }
 
   public render() {
@@ -94,7 +111,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     }
 
     return (
-      <div className={classnames(authStyles.registerRoot)}>
+      <div className={classnames(authStyles.registerRoot)} onKeyDown={this.handleKeyDown}>
         <div className={classnames(authStyles.registerMessage)}>
           <h1 className={classnames(authStyles['register-h1'])}> Register to CodeCharacter! </h1>
           <p> Register now and code your way through!! </p>
@@ -106,14 +123,14 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
               authStyles['main-register-form'],
             )}
             noValidate
-            ref={this.registerRef}
+            ref={this.registerFormRef}
           >
             {currentStep === RegisterInterfaces.Steps.USER_DETAILS && (
               <div className={classnames(authStyles['stage-div'])}>
                 <form
                   className={classnames(authStyles['stage-form'])}
                   noValidate
-                  ref={this.register1Ref}
+                  ref={this.userDetailsFormRef}
                 >
                   <div className={classnames(authStyles['login-section1'])}>
                     <div className={classnames(authStyles['login-label'])}> Full Name </div>
@@ -204,7 +221,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                 <form
                   className={classnames(authStyles['stage-form'])}
                   noValidate
-                  ref={this.register2Ref}
+                  ref={this.credentialsFormRef}
                 >
                   <div className={classnames(authStyles['login-label'])}> Password </div>
                   <div className={classnames(registerStyles['input-group'])}>
@@ -246,7 +263,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
                   <div
                     className={classnames('form-row', authStyles['register-error-inactive'])}
-                    ref={this.passwordErrorRef}
+                    ref={this.passwordErrorDivRef}
                   >
                     <div
                       className={classnames(
@@ -265,7 +282,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                 <form
                   className={classnames(authStyles['stage-form'])}
                   noValidate
-                  ref={this.register3Ref}
+                  ref={this.otherDetailsFormRef}
                 >
                   <div className="text-center text-dark">
                     Are you a student ?{' '}
@@ -320,6 +337,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       </div>
                     </div>
                   )}
+                  <div className={classnames(authStyles['login-label'])}> Your country </div>
                   <div className={classnames(registerStyles['input-group'])}>
                     <ReactFlagsSelect
                       searchable={true}
@@ -525,9 +543,9 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     const { errorMessage } = this.props;
     switch (oldStep) {
       case RegisterInterfaces.Steps.USER_DETAILS: {
-        if (this.register1Ref.current) {
-          this.register1Ref.current.classList.add('was-validated');
-          if (this.register1Ref.current.checkValidity() && errorMessage === '') {
+        if (this.userDetailsFormRef.current) {
+          this.userDetailsFormRef.current.classList.add('was-validated');
+          if (this.userDetailsFormRef.current.checkValidity() && errorMessage === '') {
             this.setState({
               currentStep: RegisterInterfaces.Steps.CREDENTIALS,
             });
@@ -542,23 +560,23 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           });
         } else if (newStep === RegisterInterfaces.Steps.OTHERS) {
           if (this.state.password === this.state.repeatPassword) {
-            if (this.passwordErrorRef.current) {
-              this.passwordErrorRef.current.classList.remove(
+            if (this.passwordErrorDivRef.current) {
+              this.passwordErrorDivRef.current.classList.remove(
                 classnames(authStyles['register-error-active']),
               );
             }
 
-            if (this.register2Ref.current) {
-              this.register2Ref.current.classList.add('was-validated');
-              if (this.register2Ref.current.checkValidity()) {
+            if (this.credentialsFormRef.current) {
+              this.credentialsFormRef.current.classList.add('was-validated');
+              if (this.credentialsFormRef.current.checkValidity()) {
                 this.setState({
                   currentStep: RegisterInterfaces.Steps.OTHERS,
                 });
               }
             }
           } else {
-            if (this.passwordErrorRef.current) {
-              this.passwordErrorRef.current.classList.add(
+            if (this.passwordErrorDivRef.current) {
+              this.passwordErrorDivRef.current.classList.add(
                 classnames(authStyles['register-error-active']),
               );
             }
@@ -567,9 +585,11 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
         break;
       }
       case RegisterInterfaces.Steps.OTHERS: {
-        this.setState({
-          currentStep: newStep,
-        });
+        if (newStep < RegisterInterfaces.Steps.OTHERS) {
+          this.setState({
+            currentStep: newStep,
+          });
+        }
         break;
       }
     }
@@ -581,7 +601,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     });
   };
 
-  private handleRegister = async (event: React.MouseEvent) => {
+  private handleRegister = async () => {
     const { register, errorMessage } = this.props;
     const {
       avatar,
@@ -596,13 +616,12 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       type,
       collegeName: college,
     } = this.state;
-    const form = this.registerRef.current;
-    const form3 = this.register3Ref.current;
-    event.preventDefault();
+    const registerForm = this.registerFormRef.current;
+    const otherDetailsForm = this.otherDetailsFormRef.current;
 
-    if (form && form3) {
-      form3.classList.add('was-validated');
-      if (form.checkValidity() && isCaptchaValidated && errorMessage === '') {
+    if (registerForm && otherDetailsForm) {
+      otherDetailsForm.classList.add('was-validated');
+      if (registerForm.checkValidity() && isCaptchaValidated && errorMessage === '') {
         await register({
           avatar,
           college,
@@ -631,5 +650,10 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
         isCaptchaValidated: true,
       });
     }
+  };
+
+  private resetErrorMessage = () => {
+    const { updateErrorMessage } = this.props;
+    updateErrorMessage('');
   };
 }
