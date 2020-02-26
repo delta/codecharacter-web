@@ -8,7 +8,7 @@ import * as React from 'react';
 export const IconsComponent = ({ player }: any) => {
   return (
     <div style={{ fontSize: '1.5rem' }}>
-      <div style={{ position: 'absolute', left: '40%', top: '15px', textAlign: 'center' }}>
+      <div style={{ position: 'absolute', left: '50%', top: '15px', textAlign: 'center' }}>
         <FontAwesomeIcon
           title="Won"
           icon={faTrophy}
@@ -17,7 +17,7 @@ export const IconsComponent = ({ player }: any) => {
         />
         <p style={{ color: 'grey' }}>{player.numWin}</p>
       </div>
-      <div style={{ position: 'absolute', left: '55%', top: '15px', textAlign: 'center' }}>
+      <div style={{ position: 'absolute', left: '65%', top: '15px', textAlign: 'center' }}>
         <FontAwesomeIcon
           title="Tied"
           icon={faHandshake}
@@ -26,7 +26,7 @@ export const IconsComponent = ({ player }: any) => {
         />
         <p style={{ color: 'grey' }}>{player.numTie}</p>
       </div>
-      <div style={{ position: 'absolute', left: '70%', top: '15px', textAlign: 'center' }}>
+      <div style={{ position: 'absolute', left: '80%', top: '15px', textAlign: 'center' }}>
         <FontAwesomeIcon
           title="Lost"
           icon={faThumbsDown}

@@ -16,6 +16,11 @@
   display: flex;
   flex-flow: row;
   justify-content: space-between;
+  margin-left: 15px;
+}
+
+.leader-wrap:hover {
+  cursor: pointer;
 }
 
 .leaderboard-wrap {
@@ -83,6 +88,8 @@
 .leader-flag {
   image-resolution: normal;
   margin: 8px;
+  margin-top: -4px;
+  padding-left: 2px;
 }
 
 .leader-score {
@@ -218,4 +225,10 @@
 
 .aflag {
   display: none;
+}
+
+.apexcharts-canvas,
+.apexcharts-zoomable,
+.hovering-zoom {
+  margin-left: -17% !important;
 }

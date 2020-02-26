@@ -1,4 +1,9 @@
-import { faCrown, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCaretDown,
+  faCaretUp,
+  faCrown,
+  faGraduationCap,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconsComponent } from 'app/components/Leaderboard/IconElement';
 import * as styles from 'app/styles/Leaderboard.module.css';
@@ -18,7 +23,13 @@ const colors = ['#ffd700', '#ffd700', '#C0C0C0', '#cd7f32'];
 
 export class LeaderboardElement extends React.Component<
   LeaderboardInterfaces.ElementProps,
-  { isModelOpen: boolean; onHover: boolean; options: object }
+  {
+    isModelOpen: boolean;
+    onHover: boolean;
+    optionsPie: object;
+    optionsLine: object;
+    series: object[];
+  }
 > {
   // tslint:disable-next-line
   constructor(props: any) {
@@ -26,9 +37,32 @@ export class LeaderboardElement extends React.Component<
     this.state = {
       isModelOpen: false,
       onHover: false,
-      options: {
+      optionsLine: {
         chart: {
           foreColor: 'gray',
+          height: 40,
+          id: 'basic-bar',
+          toolbar: {
+            show: false,
+          },
+        },
+        dataLabels: {
+          enabled: false,
+          markers: {
+            colors: ['rgb(0, 143, 251)', 'rgb(0, 227, 150)', 'rgb(254, 176, 25)'],
+          },
+          style: {
+            colors: ['#000000', '#000000', '#000000'],
+          },
+        },
+        xaxis: {
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+        },
+      },
+      optionsPie: {
+        chart: {
+          foreColor: 'gray',
+          width: '50%',
         },
         dataLabels: {
           markers: {
@@ -56,6 +90,12 @@ export class LeaderboardElement extends React.Component<
           },
         },
       },
+      series: [
+        {
+          data: [30, 40, 45, 50, 49, 60, 70, 91],
+          name: 'series-1',
+        },
+      ],
     };
   }
 
@@ -106,8 +146,31 @@ export class LeaderboardElement extends React.Component<
       >
         <div className={classnames(styles['leader-wrap'])}>
           <div className={classnames(styles['player-info-1'])}>
+            <FontAwesomeIcon
+              style={{
+                color:
+                  player.rating[player.rating.length - 1] > player.rating[player.rating.length - 2]
+                    ? 'green'
+                    : 'red ',
+                display: 'inline',
+                fontSize: 29,
+                marginTop: '20px',
+              }}
+              icon={
+                player.rating[player.rating.length - 1] > player.rating[player.rating.length - 2]
+                  ? faCaretUp
+                  : faCaretDown
+              }
+            />
             {player.rank <= 3 ? (
-              <div style={{ position: 'relative', top: '20%', color: colors[player.rank] }}>
+              <div
+                style={{
+                  color: colors[player.rank],
+                  marginLeft: '4px',
+                  position: 'relative',
+                  top: '20%',
+                }}
+              >
                 <FontAwesomeIcon
                   style={{ fontSize: 29, display: 'inline' }}
                   icon={faCrown}
@@ -118,6 +181,7 @@ export class LeaderboardElement extends React.Component<
               <div
                 style={{
                   fontSize: 38,
+                  marginLeft: '4px',
                 }}
                 className={classnames(
                   player.rank <= 10 ? styles['leader-ava'] : styles['leader-ava-l'],
@@ -153,18 +217,23 @@ export class LeaderboardElement extends React.Component<
                   display: 'inline-block',
                 }}
               >
-                <div
-                  className={classnames('text-light', styles['leader-score_title'])}
-                  style={{
-                    display: 'block',
-                    fontSize: '16px',
-                    whiteSpace: 'nowrap',
-                  }}
-                  title={player.username}
-                >
-                  <span style={{ fontFamily: 'Lato' }}>{`${player.username.substr(0, 15)}${
-                    player.username.length > 15 ? '...' : ''
-                  }`}</span>
+                <div style={{ display: 'flex' }}>
+                  <div
+                    className={classnames('text-light', styles['leader-score_title'])}
+                    style={{
+                      display: 'block',
+                      fontSize: '16px',
+                      whiteSpace: 'nowrap',
+                    }}
+                    title={player.username}
+                  >
+                    <span style={{ fontFamily: 'Lato' }}>{`${player.username.substr(0, 15)}${
+                      player.username.length > 15 ? '...' : ''
+                    }`}</span>
+                  </div>
+                  <div className={classnames(styles['leader-flag'])}>
+                    <ReactCountryFlag code={player.country} svg alt={player.country} />
+                  </div>
                 </div>
                 <div
                   className={classnames(styles['leader-score_title'])}
@@ -175,7 +244,7 @@ export class LeaderboardElement extends React.Component<
                     marginTop: '5px',
                   }}
                 >
-                  {player.rating}{' '}
+                  {player.rating[player.rating.length - 1]}{' '}
                   {player.type === 'Student' ? (
                     <FontAwesomeIcon
                       style={{ fontSize: 18, display: 'inline' }}
@@ -189,10 +258,6 @@ export class LeaderboardElement extends React.Component<
           </div>
 
           <div className={classnames(styles['player-info-2'])}>
-            <div className={classnames(styles['leader-flag'])}>
-              <ReactCountryFlag code={player.country} svg alt={player.country} />
-            </div>
-
             {!(isPlayAgainstDisabled || currentUsername === player.username) ? (
               <div
                 style={{ fontSize: '0.55em', cursor: 'pointer' }}
@@ -202,7 +267,10 @@ export class LeaderboardElement extends React.Component<
                 {this.state.onHover ? (
                   <img
                     src="assets/img/fight.png"
-                    onClick={() => runMatch(player.id)}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      runMatch(player.id);
+                    }}
                     width={15}
                     height={15}
                   />
@@ -214,14 +282,47 @@ export class LeaderboardElement extends React.Component<
         <div>
           <IconsComponent player={player} />
         </div>
-        <div>
+        <div
+          style={{
+            borderTop: `${this.state.isModelOpen ? '1px solid grey' : ''}`,
+            display: 'flex',
+          }}
+        >
           {this.state.isModelOpen ? (
-            <Chart
-              options={this.state.options}
-              series={[player.numTie, player.numWin, player.numLoss]}
-              type="donut"
-              width="380"
-            />
+            <div
+              style={{ marginLeft: '-2% !important', right: '0px !important ' }}
+              onClick={(event) => {
+                event.stopPropagation();
+              }}
+            >
+              <Chart
+                options={this.state.optionsPie}
+                series={[player.numTie, player.numWin, player.numLoss]}
+                type="donut"
+                width="380"
+              />
+            </div>
+          ) : null}
+
+          {this.state.isModelOpen ? (
+            <div
+              onClick={(event) => {
+                event.stopPropagation();
+              }}
+              style={{ transform: 'scaleX(0.7) translate(50px)', marginLeft: '-20% !important' }}
+              className={classnames(
+                styles['apexcharts-canvas'],
+                styles['apexcharts-zoomable'],
+                styles['hovering-zoom'],
+              )}
+            >
+              <Chart
+                options={this.state.optionsLine}
+                series={this.state.series}
+                type="line"
+                width="500"
+              />
+            </div>
           ) : null}
         </div>
       </Col>

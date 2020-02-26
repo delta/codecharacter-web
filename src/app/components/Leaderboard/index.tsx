@@ -72,6 +72,15 @@ export class Leaderboard extends React.Component<
     const renderLeaderboard: LeaderboardInterfaces.Player[] = [...players];
     return (
       <Grid fluid={true} className={classnames(styles.Leaderboard)}>
+        <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
+          <Col
+            sm={9}
+            className="text-light font-weight-bold my-auto"
+            style={{ left: '45%', height: '10%' }}
+          >
+            LEADERBOARD
+          </Col>
+        </Row>
         {this.state.isSearching ? (
           <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
             <Col
@@ -101,38 +110,31 @@ export class Leaderboard extends React.Component<
         ) : (
           <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
             <Col
-              sm={9}
-              className="text-light font-weight-bold my-auto"
-              style={{ paddingLeft: '25px' }}
-            >
-              LEADERBOARD
-            </Col>
-            <Col
-              style={{ position: 'absolute', left: '25%' }}
+              style={{ position: 'absolute', left: '27%' }}
               className="text-light font-weight-bold my-auto"
             >
               RANK
             </Col>
             <Col
-              style={{ position: 'absolute', left: '32%' }}
+              style={{ position: 'absolute', left: '35%' }}
               className="text-light font-weight-bold my-auto"
             >
               RATING
             </Col>
             <Col
-              style={{ position: 'absolute', left: '44%' }}
+              style={{ position: 'absolute', left: '49%' }}
               className="text-light font-weight-bold my-auto"
             >
               WON
             </Col>
             <Col
-              style={{ position: 'absolute', left: '52%' }}
+              style={{ position: 'absolute', left: '57%' }}
               className="text-light font-weight-bold my-auto"
             >
               TIED
             </Col>
             <Col
-              style={{ position: 'absolute', left: '59%' }}
+              style={{ position: 'absolute', left: '66%' }}
               className="text-light font-weight-bold my-auto"
             >
               LOST
@@ -156,12 +158,16 @@ export class Leaderboard extends React.Component<
               className="col-12 text-center"
               style={{
                 fontSize: '10px',
+                marginTop: '20px',
+                paddingBottom: '15px',
               }}
             >
               {timerData > 0 ? (
                 <Timer timerData={timerData} getTimer={getTimer} setTimer={setTimer} />
               ) : (
-                <span className="mb-2">Ready to initiate Match</span>
+                <span className="mb-2" style={{ paddingBottom: '5px' }}>
+                  Ready to initiate Match
+                </span>
               )}
             </div>
             <ReactPaginate
@@ -201,6 +207,69 @@ export class Leaderboard extends React.Component<
               activeClassName={'active'}
             />
             <div style={{ marginLeft: '15%', width: '60%' }}>
+              <LeaderboardElement
+                currentUsername={currentUsername}
+                player={{
+                  avatar: 'baboon',
+                  country: 'IN',
+                  fullName: 'CH Chethan Reddy',
+                  id: 1,
+                  numLoss: 5,
+                  numTie: 2,
+                  numWin: 3,
+                  rank: 1,
+                  rating: [200, 300, 400, 556],
+                  type: 'student',
+                  username: 'Chethan2k1',
+                }}
+                rank={1}
+                index={1}
+                key={1}
+                runMatch={runMatch}
+                isPlayAgainstDisabled={timerData > 0 ? true : false}
+              />
+              <LeaderboardElement
+                currentUsername={currentUsername}
+                player={{
+                  avatar: 'string',
+                  country: 'US',
+                  fullName: 'Ram Narayanan',
+                  id: 2,
+                  numLoss: 6,
+                  numTie: 1,
+                  numWin: 2,
+                  rank: 2,
+                  rating: [200, 300, 500, 449],
+                  type: 'student',
+                  username: 'RamTheGod',
+                }}
+                rank={2}
+                index={2}
+                key={2}
+                runMatch={runMatch}
+                isPlayAgainstDisabled={timerData > 0 ? true : false}
+              />
+              <LeaderboardElement
+                currentUsername={currentUsername}
+                player={{
+                  avatar: 'string',
+                  country: 'BZ',
+                  fullName: 'KUMARAN',
+                  id: 3,
+                  numLoss: 7,
+                  numTie: 1,
+                  numWin: 1,
+                  rank: 4,
+                  rating: [200, 300, 400, 556],
+                  type: 'student',
+                  username: 'Kums@123',
+                }}
+                rank={4}
+                index={3}
+                key={3}
+                runMatch={runMatch}
+                isPlayAgainstDisabled={timerData > 0 ? true : false}
+              />
               {players.length ? (
                 players.map((player, index) =>
                   player &&
@@ -218,7 +287,7 @@ export class Leaderboard extends React.Component<
                   ) : null,
                 )
               ) : (
-                <div style={{ padding: '0px 30px' }}>Nothing to show</div>
+                <div style={{ padding: '0px 30px', textAlign: 'center' }}>Nothing to show</div>
               )}
             </div>
             <Col

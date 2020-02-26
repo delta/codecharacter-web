@@ -6,7 +6,7 @@ export interface Player {
   rank: number;
   country: string;
   username: string;
-  rating: number;
+  rating: number[];
   fullName: string;
   avatar: string;
   type: string;
