@@ -7,6 +7,18 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 
+const time = new Date();
+
+const notifications = [
+  {
+    createdAt: time,
+    id: 0,
+    text: 'SUPP',
+    title: 'Hello world',
+    type: NotificationInterfaces.NotificationTabType.SUCCESS,
+  },
+];
+
 export class Notification extends React.Component<
   NotificationInterfaces.Props,
   NotificationInterfaces.State
@@ -19,7 +31,7 @@ export class Notification extends React.Component<
   }
   public render() {
     const { activeNotificationTab } = this.state;
-    const { notifications, deleteNotificationType } = this.props;
+    const { deleteNotificationType } = this.props;
     const activeNotifications = notifications.filter((notification) => {
       switch (activeNotificationTab) {
         case NotificationInterfaces.NotificationTabType.ALL: {
@@ -113,8 +125,15 @@ export class Notification extends React.Component<
           </div>
         </Row>
         <Row className={classnames('mb-2', styles.notificationWrap)}>
-          {activeNotifications.map(({ id, title, text, type }) => (
-            <NotificationElement key={id} id={id} title={title} text={text} type={type} />
+          {activeNotifications.map(({ id, title, text, type, createdAt }) => (
+            <NotificationElement
+              createdAt={createdAt}
+              key={id}
+              id={id}
+              title={title}
+              text={text}
+              type={type}
+            />
           ))}
         </Row>
       </Grid>

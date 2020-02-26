@@ -2,8 +2,8 @@ import { NotificationTabType } from 'app/types/Notification';
 
 export interface StateProps {
   type: NotificationTabType;
-
   id: number;
+  createdAt: Date;
   text: string;
   title: string;
 }
