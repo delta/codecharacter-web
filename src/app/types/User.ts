@@ -35,7 +35,12 @@ export interface Login {
   password: string;
 }
 
+export interface ActivateUser {
+  activationCode: string;
+}
+
 const actions = {
+  ActivateUser: UserActions.activateUser,
   editUserPassword: UserActions.editUserPassword,
   editUserProfile: UserActions.editUserProfile,
   getUserDetails: UserActions.getUserDetails,

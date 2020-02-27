@@ -17,6 +17,18 @@ import { resType } from 'app/types/sagas';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
+export function* activateUser(action: ActionType<typeof UserActions.activateUser>) {
+  try {
+    const res = yield call(UserFetch.activateUser, {
+      activationCode: action.payload.activationCode,
+    });
+    yield put(UserActions.updateErrorMessage(res.message));
+    // check res.status to ckeck if it was succussful
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export function* login(action: ActionType<typeof UserActions.login>) {
   try {
     yield put(UserActions.setIsLoginLoading(true));
@@ -229,6 +241,7 @@ export function* resetAppState(action: ActionType<typeof UserActions.resetAppSta
 
 export function* userSagas() {
   yield all([
+    takeEvery(UserActions.Type.ACTIVATE_USER, activateUser),
     takeEvery(UserActions.Type.REGISTER, register),
     takeEvery(UserActions.Type.EDIT_USER_PROFILE, editUserProfile),
     takeEvery(UserActions.Type.EDIT_USER_PASSWORD, editUserPassword),

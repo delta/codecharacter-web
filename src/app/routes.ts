@@ -6,4 +6,5 @@ export enum Routes {
   USER_PROFILE_MODEL = '/profile',
   GITHUB_OAUTH = '/login/github',
   GOOGLE_OAUTH = '/login/google',
+  USER_ACTIVATION = '/activate',
 }
