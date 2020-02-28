@@ -191,6 +191,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     event.preventDefault();
     if (form) {
       if (form.checkValidity()) {
+        console.log("I'm valid !!!");
         login(username, password);
       }
       form.classList.add('was-validated');

@@ -109,22 +109,24 @@ export function* register(action: ActionType<typeof UserActions.register>) {
 export function* getUserDetails(action: ActionType<typeof UserActions.getUserDetails>) {
   try {
     const res = yield call(UserFetch.userGetDetails);
-
+    console.log('This is the response : ', res);
     // res.error has error string if type = 'Error', else empty
     yield put(UserActions.updateErrorMessage(res.error));
 
     const isAuthenticated = yield checkAuthentication(res);
+    console.log('isAuthenticated : ', isAuthenticated);
     if (isAuthenticated === false) return;
     if (res.type !== resType.ERROR) {
+      console.log('This is the new res : ', res);
       yield put(
         UserActions.updateUserDetails({
-          avatar: res.userDetails.avatar,
-          college: res.userDetails.college,
-          country: res.userDetails.country,
-          fullName: res.userDetails.fullName,
+          avatar: res.body.avatar,
+          college: res.body.college,
+          country: res.body.country,
+          fullName: res.body.fullName,
           isLoggedIn: true,
-          type: res.userDetails.type,
-          username: res.userDetails.username,
+          type: res.body.userType,
+          username: res.body.username,
         }),
       );
     }
