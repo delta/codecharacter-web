@@ -2,8 +2,8 @@ import { AuthType } from 'app/types/Authentication';
 import * as UserInterfaces from 'app/types/User';
 
 export enum RegisterType {
-  Student = 'Student',
-  Professional = 'Professional',
+  Student = 'STUDENT',
+  Professional = 'PROFESSIONAL',
 }
 
 export enum Avatar {
@@ -27,6 +27,29 @@ export enum Avatar {
   'WEEBO' = 'assets/img/userAvatars/Weebo.svg',
 }
 
+export enum AvatarId {
+  BABOON = 0,
+  BEAR = 2,
+  BISON = 3,
+  BOAR = 4,
+  BUFFALO = 5,
+  CAT = 6,
+  CHIPMUNK = 7,
+  DEER = 8,
+  DOG = 9,
+  ELEPHANT = 10,
+  FOX = 11,
+  GORILLA = 12,
+  HAMSTER = 13,
+  HORSE = 14,
+  JAGUAR = 15,
+  KANGAROO = 16,
+  KOALA = 17,
+  LION = 18,
+  MOLE = 19,
+  MONKEY = 20,
+}
+
 export enum Steps {
   USER_DETAILS = 0,
   CREDENTIALS = 1,
@@ -48,7 +71,7 @@ export interface State {
   country: string;
   fullName: string;
   pragyanId?: string;
-  type: RegisterType;
+  userType: RegisterType;
 }
 export interface StateProps {
   isLoggedIn: boolean;
@@ -59,7 +82,7 @@ export interface ElementOwnProps {
 }
 
 export interface DispatchProps {
-  checkUsernameExists: (username: string) => void;
+  checkEmailExists: (email: string) => void;
   register: (registerDetails: UserInterfaces.Register) => void;
   updateErrorMessage: (errorMessage: string) => void;
 }

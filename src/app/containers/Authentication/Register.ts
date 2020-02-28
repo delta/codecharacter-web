@@ -16,7 +16,7 @@ const registerContainer = connect<
   RegisterInterfaces.DispatchProps,
   {}
 >(mapStateToProps, {
-  checkUsernameExists: UserActions.checkUsernameExists,
+  checkEmailExists: UserActions.checkEmailExists,
   register: UserActions.register,
   updateErrorMessage: UserActions.updateErrorMessage,
 })(Register);

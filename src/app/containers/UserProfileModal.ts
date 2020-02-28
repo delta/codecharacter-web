@@ -16,7 +16,7 @@ const userProfileModalContainer = connect<
   UserProfileInterfaces.DispatchProps,
   {}
 >(mapStateToProps, {
-  checkUsernameExists: UserActions.checkUsernameExists,
+  checkEmailExists: UserActions.checkEmailExists,
   editUserPassword: UserActions.editUserPassword,
   editUserProfile: UserActions.editUserProfile,
   getUserDetails: UserActions.getUserDetails,

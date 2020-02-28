@@ -44,7 +44,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       password: '',
       pragyanId: '',
       repeatPassword: '',
-      type: RegisterInterfaces.RegisterType.Professional,
+      userType: RegisterInterfaces.RegisterType.Professional,
       username: '',
     };
   }
@@ -96,13 +96,13 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       isFormSubmitted,
       isStudent,
       collegeName,
-      type,
+      userType,
       currentStep,
     } = this.state;
 
     const avatars = Object.keys(RegisterInterfaces.Avatar);
 
-    const { checkUsernameExists, errorMessage, updateErrorMessage, isLoggedIn } = this.props;
+    const { checkEmailExists, errorMessage, updateErrorMessage, isLoggedIn } = this.props;
     if (isLoggedIn) {
       return <Redirect to={Routes.ROOT} />;
     }
@@ -163,7 +163,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         pattern="[a-zA-Z0-9]{5,50}"
                         value={username}
                         onChange={(e) => {
-                          checkUsernameExists(e.target.value);
                           this.setState({
                             username: e.target.value,
                           });
@@ -183,11 +182,15 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         id="registerValidationEmail"
                         aria-describedby="inputGroupPrepend"
                         value={email}
-                        onChange={(e) =>
+                        onChange={(e) => {
+                          const registerForm = this.registerFormRef.current;
+                          if (registerForm && registerForm.checkValidity()) {
+                            checkEmailExists(e.target.value);
+                          }
                           this.setState({
                             email: e.target.value,
-                          })
-                        }
+                          });
+                        }}
                         required
                       />
                       <div className={classnames('invalid-feedback', authStyles['register-error'])}>
@@ -295,8 +298,8 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         onChange={() =>
                           this.setState({
                             isStudent: !isStudent,
-                            type:
-                              type === RegisterInterfaces.RegisterType.Student
+                            userType:
+                              userType === RegisterInterfaces.RegisterType.Student
                                 ? RegisterInterfaces.RegisterType.Professional
                                 : RegisterInterfaces.RegisterType.Student,
                           })
@@ -605,15 +608,12 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     const { register, errorMessage } = this.props;
     const {
       avatar,
-      repeatPassword,
       country,
       email,
       fullName,
       password,
       username,
-      pragyanId,
       isCaptchaValidated,
-      type,
       collegeName: college,
     } = this.state;
     const registerForm = this.registerFormRef.current;
@@ -623,16 +623,14 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       otherDetailsForm.classList.add('was-validated');
       if (registerForm.checkValidity() && isCaptchaValidated && errorMessage === '') {
         await register({
-          avatar,
           college,
           country,
           email,
           fullName,
           password,
-          pragyanId,
-          repeatPassword,
-          type,
           username,
+          // @ts-ignore
+          avatarId: RegisterInterfaces.AvatarId[avatar],
         });
         this.setState({
           isRegistered: true,

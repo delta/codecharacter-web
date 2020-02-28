@@ -20,21 +20,33 @@ export function* login(action: ActionType<typeof UserActions.login>) {
   try {
     yield put(UserActions.setIsLoginLoading(true));
     const res = yield call(UserFetch.userLogin, {
+      email: action.payload.email,
       password: action.payload.password,
-      username: action.payload.username,
     });
 
     // res.error is empty if res.type != 'Error'
-    yield put(UserActions.updateErrorMessage(res.error));
+    const { body: responseBody } = res;
+    let errorMessage;
+    switch (responseBody.message) {
+      case 'Bad credentials':
+        errorMessage = 'Your email or password was incorrect.';
+        break;
+      case 'User not activated':
+        errorMessage = 'Please activate your account.';
+        break;
+      default:
+        errorMessage = '';
+        break;
+    }
+    yield put(UserActions.updateErrorMessage(errorMessage));
     yield put(UserActions.setIsLoginLoading(false));
 
     if (res.type !== resType.ERROR) {
       yield put(
         UserActions.updateUserDetails({
           country: '',
-          email: '',
+          email: action.payload.email,
           isLoggedIn: true,
-          username: action.payload.username,
         }),
       );
       yield put(UserActions.getUserDetails());
@@ -42,6 +54,7 @@ export function* login(action: ActionType<typeof UserActions.login>) {
       yield put(DashboardActions.setIsWelcomeModalOpen(true));
     }
   } catch (err) {
+    yield put(UserActions.setIsLoginLoading(false));
     console.error(err);
   }
 }
@@ -53,8 +66,7 @@ export function* logout(action: ActionType<typeof UserActions.logout>) {
     const isAuthenticated = yield checkAuthentication(res);
     if (isAuthenticated === false) return;
 
-    // res.error is empty if res.type != 'Error'
-    yield put(UserActions.updateErrorMessage(res.error));
+    yield put(UserActions.updateErrorMessage(res.message));
 
     if (res.type !== resType.ERROR) {
       yield put(
@@ -76,7 +88,7 @@ export function* register(action: ActionType<typeof UserActions.register>) {
     const res = yield call(UserFetch.userRegister, action.payload.registerDetails);
 
     // res.error has error string if type = 'Error', else empty
-    yield put(UserActions.updateErrorMessage(res.error));
+    yield put(UserActions.updateErrorMessage(res.error ? res.body.message : ''));
 
     if (res.type !== resType.ERROR) {
       yield put(
@@ -171,11 +183,11 @@ export function* editUserPassword(action: ActionType<typeof UserActions.editUser
   }
 }
 
-export function* checkUsernameExists(action: ActionType<typeof UserActions.checkUsernameExists>) {
+export function* checkEmailExists(action: ActionType<typeof UserActions.checkEmailExists>) {
   try {
-    const res = yield call(UserFetch.checkUsernameExists, action.payload.username);
+    const res = yield call(UserFetch.checkEmailExists, action.payload.email);
 
-    // Call returns error if username already exists, else empty
+    // Call returns error if email already exists, else empty
     yield put(UserActions.updateErrorMessage(res.error));
   } catch (err) {
     console.error(err);
@@ -205,7 +217,7 @@ export function* userSagas() {
     takeEvery(UserActions.Type.EDIT_USER_PASSWORD, editUserPassword),
     takeEvery(UserActions.Type.LOGIN, login),
     takeEvery(UserActions.Type.LOGOUT, logout),
-    takeEvery(UserActions.Type.CHECK_USERNAME_EXISTS, checkUsernameExists),
+    takeEvery(UserActions.Type.CHECK_EMAIL_EXISTS, checkEmailExists),
     takeEvery(UserActions.Type.GET_USER_DETAILS, getUserDetails),
     takeEvery(UserActions.Type.RESET_APP_STATE, resetAppState),
   ]);
