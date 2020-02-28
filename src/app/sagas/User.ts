@@ -25,9 +25,20 @@ export function* login(action: ActionType<typeof UserActions.login>) {
     });
 
     // res.error is empty if res.type != 'Error'
-    yield put(
-      UserActions.updateErrorMessage(res.error ? 'Your email or password was incorrect.' : ''),
-    );
+    const { body: responseBody } = res;
+    let errorMessage;
+    switch (responseBody.message) {
+      case 'Bad credentials':
+        errorMessage = 'Your email or password was incorrect.';
+        break;
+      case 'User not activated':
+        errorMessage = 'Please activate your account.';
+        break;
+      default:
+        errorMessage = '';
+        break;
+    }
+    yield put(UserActions.updateErrorMessage(errorMessage));
     yield put(UserActions.setIsLoginLoading(false));
 
     if (res.type !== resType.ERROR) {
@@ -77,7 +88,7 @@ export function* register(action: ActionType<typeof UserActions.register>) {
     const res = yield call(UserFetch.userRegister, action.payload.registerDetails);
 
     // res.error has error string if type = 'Error', else empty
-    yield put(UserActions.updateErrorMessage(res.error));
+    yield put(UserActions.updateErrorMessage(res.error ? res.body.message : ''));
 
     if (res.type !== resType.ERROR) {
       yield put(

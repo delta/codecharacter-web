@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+/* tslint:disable:no-any*/
 /* tslint:disable:no-console*/
 import { resType } from 'app/types/sagas';
 
@@ -8,7 +8,8 @@ export function jsonResponseWrapper(response: any) {
       console.log(response);
       let type: string = resType.SUCCESS;
       let error: string = '';
-      if (response.status === 302 || response.status === 200) {
+      // resource : found || fetched || created
+      if (response.status !== 302 && response.status !== 200 && response.status !== 201) {
         type = resType.ERROR;
         error = data.error;
       }

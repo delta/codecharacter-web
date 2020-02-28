@@ -2,8 +2,8 @@ import { AuthType } from 'app/types/Authentication';
 import * as UserInterfaces from 'app/types/User';
 
 export enum RegisterType {
-  Student = 'Student',
-  Professional = 'Professional',
+  Student = 'STUDENT',
+  Professional = 'PROFESSIONAL',
 }
 
 export enum Avatar {
@@ -71,7 +71,7 @@ export interface State {
   country: string;
   fullName: string;
   pragyanId?: string;
-  type: RegisterType;
+  userType: RegisterType;
 }
 export interface StateProps {
   isLoggedIn: boolean;

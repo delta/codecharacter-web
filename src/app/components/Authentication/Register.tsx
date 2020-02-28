@@ -37,14 +37,14 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       currentStep: RegisterInterfaces.Steps.USER_DETAILS,
       email: '',
       fullName: '',
-      isCaptchaValidated: true,
+      isCaptchaValidated: false,
       isFormSubmitted: false,
       isRegistered: false,
       isStudent: false,
       password: '',
       pragyanId: '',
       repeatPassword: '',
-      type: RegisterInterfaces.RegisterType.Professional,
+      userType: RegisterInterfaces.RegisterType.Professional,
       username: '',
     };
   }
@@ -96,7 +96,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       isFormSubmitted,
       isStudent,
       collegeName,
-      type,
+      userType,
       currentStep,
     } = this.state;
 
@@ -298,8 +298,8 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         onChange={() =>
                           this.setState({
                             isStudent: !isStudent,
-                            type:
-                              type === RegisterInterfaces.RegisterType.Student
+                            userType:
+                              userType === RegisterInterfaces.RegisterType.Student
                                 ? RegisterInterfaces.RegisterType.Professional
                                 : RegisterInterfaces.RegisterType.Student,
                           })

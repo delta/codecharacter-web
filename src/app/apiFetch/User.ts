@@ -47,9 +47,8 @@ export const userLogout = () => {
 };
 
 export const userRegister = (body: UserInterfaces.Register) => {
-  return fetch(`${API_BASE_URL}user`, {
+  return fetch(`${API_BASE_URL}user/`, {
     body: JSON.stringify(body),
-    credentials: 'include',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -57,7 +56,7 @@ export const userRegister = (body: UserInterfaces.Register) => {
     method: 'POST',
   })
     .then((response) => {
-      return response.json();
+      return jsonResponseWrapper(response);
     })
     .then((data) => {
       return data;
@@ -131,12 +130,9 @@ export const checkEmailExists = (email: string) => {
     method: 'HEAD',
   })
     .then((response) => {
-      // return responseWrapper(response);
-      console.log(response);
       return headResponseWrapper(response);
     })
     .then((data) => {
-      console.log(data);
       return data;
     })
     .catch((error) => {
