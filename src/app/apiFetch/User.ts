@@ -23,8 +23,6 @@ export const userLogin = (body: UserInterfaces.Login) => {
       return jsonResponseWrapper(response);
     })
     .then((data) => {
-      console.log('data');
-      console.log(data);
       return data;
     })
     .catch((error) => {
@@ -53,7 +51,6 @@ export const userRegister = (body: UserInterfaces.Register) => {
     body: JSON.stringify(body),
     headers: {
       Accept: 'application/json',
-      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
     },
     method: 'POST',
@@ -62,12 +59,9 @@ export const userRegister = (body: UserInterfaces.Register) => {
       return jsonResponseWrapper(response);
     })
     .then((data) => {
-      console.log('data');
-      console.log(data);
       return data;
     })
     .catch((error) => {
-      console.error('error');
       console.error(error);
     });
 };

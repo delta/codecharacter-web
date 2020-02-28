@@ -41,9 +41,7 @@ export function* login(action: ActionType<typeof UserActions.login>) {
     yield put(UserActions.updateErrorMessage(errorMessage));
     yield put(UserActions.setIsLoginLoading(false));
 
-    console.log('response in api');
-    console.log(res);
-    if (res.status === 302) {
+    if (res.type !== resType.ERROR) {
       yield put(
         UserActions.updateUserDetails({
           country: '',
