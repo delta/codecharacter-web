@@ -19,7 +19,7 @@ export const getLeaderboard = (body: LeaderboardInterfaces.GetLeaderboard) => {
 };
 
 export const getTimer = () => {
-  return fetch(`${API_BASE_URL}leaderboard/timer`, {
+  return fetch(`${API_BASE_URL}user/wait-time`, {
     credentials: 'include',
     headers: {
       Accept: 'application/json',

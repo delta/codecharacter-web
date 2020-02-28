@@ -108,6 +108,17 @@ export function* logout(action: ActionType<typeof UserActions.logout>) {
   }
 }
 
+export function* getUserRatings(action: ActionType<typeof UserActions.getUserRatings>) {
+  try {
+    const res = yield call(UserFetch.userGetRatings, action.payload.username);
+
+    console.log('ratings res');
+    console.log(res);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export function* register(action: ActionType<typeof UserActions.register>) {
   try {
     const res = yield call(UserFetch.userRegister, action.payload.registerDetails);
@@ -259,5 +270,6 @@ export function* userSagas() {
     takeEvery(UserActions.Type.CHECK_USERNAME_EXISTS, checkUsernameExists),
     takeEvery(UserActions.Type.GET_USER_DETAILS, getUserDetails),
     takeEvery(UserActions.Type.RESET_APP_STATE, resetAppState),
+    takeEvery(UserActions.Type.GET_USER_RATINGS, getUserRatings),
   ]);
 }

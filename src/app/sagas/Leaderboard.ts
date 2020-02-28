@@ -37,10 +37,14 @@ export function* getTimerSaga(action: ActionType<typeof LeaderboardActions.getTi
   try {
     const result = yield call(LeaderboardFetch.getTimer);
 
-    if (result.type === resType.ERROR) {
+    // remove after testing
+    console.log('get timer : result');
+    console.log(result);
+    if (result.status !== 200) {
       yield put(LeaderboardActions.setTimer(0));
     } else {
-      yield put(LeaderboardActions.setTimer(result.timer));
+      // ALERT: not sure about result.data have to check with backend
+      yield put(LeaderboardActions.setTimer(result.data));
     }
   } catch (err) {
     console.error(err);

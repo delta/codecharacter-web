@@ -65,6 +65,22 @@ export const userLogout = () => {
     });
 };
 
+export const userGetRatings = (username: string) => {
+  const myHeaders = new Headers();
+  return fetch(`${API_BASE_URL}user/ratings/${username}`, {
+    headers: myHeaders,
+    method: 'GET',
+    redirect: 'follow',
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => console.log('error', error));
+};
+
 export const userRegister = (body: UserInterfaces.Register) => {
   return fetch(`${API_BASE_URL}user/`, {
     body: JSON.stringify(body),

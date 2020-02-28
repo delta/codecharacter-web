@@ -8,6 +8,7 @@ export namespace UserActions {
     LOGOUT = 'LOGOUT',
     REGISTER = 'REGISTER',
     GET_USER_DETAILS = 'GET_USER_DETAILS',
+    GET_USER_RATINGS = 'GET_USER_RATINGS',
     EDIT_USER_PROFILE = 'EDIT_USER_PROFILE',
     EDIT_USER_PASSWORD = 'EDIT_USER_PASSWORD',
     UPDATE_ERROR_MESSAGE = 'UPDATE_ERROR_MESSAGE',
@@ -40,6 +41,8 @@ export namespace UserActions {
 
   export const updateErrorMessage = (errorMessage: string) =>
     action(Type.UPDATE_ERROR_MESSAGE, { errorMessage });
+
+  export const getUserRatings = (username: string) => action(Type.GET_USER_RATINGS, { username });
 
   interface UserDetails {
     isLoggedIn: boolean;
