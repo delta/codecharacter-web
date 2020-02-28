@@ -32,3 +32,5 @@ export function* checkAccountActivated(result: {
   }
   return true;
 }
+
+// User not activated
