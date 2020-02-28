@@ -19,10 +19,10 @@ export namespace UserActions {
     SET_IS_LOGIN_LOADING = 'SET_IS_LOGIN_LOADING',
   }
 
-  export const login = (username: string, password: string) =>
+  export const login = (email: string, password: string) =>
     action(Type.LOGIN, {
+      email,
       password,
-      username,
     });
 
   export const logout = () => action(Type.LOGOUT);

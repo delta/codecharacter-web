@@ -1,36 +1,28 @@
 /* tslint:disable:no-console*/
+import { responseWrapper } from 'app/apiFetch/utils';
 import * as UserInterfaces from 'app/types/User';
 import { API_BASE_URL } from '../../config/config';
 
 export const userLogin = (body: UserInterfaces.Login) => {
-  const formBody = [];
-
-  let key = encodeURIComponent('email');
-  let value = encodeURIComponent(body.username);
-  formBody.push(`${key}=${value}`);
-
-  key = encodeURIComponent('password');
-  value = encodeURIComponent(body.password);
-  formBody.push(`${key}=${value}`);
-
-  const str = formBody.join('&');
+  const formBody: string[] = [];
+  Object.keys(body).forEach((key) =>
+    // @ts-ignore
+    formBody.push(`${encodeURIComponent(key)}=${encodeURIComponent(body[key])}`),
+  );
+  const encodedString = formBody.join('&');
 
   return fetch(`${API_BASE_URL}login`, {
-    body: str,
-    //  credentials: 'include',
+    body: encodedString,
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
     },
     method: 'POST',
   })
     .then((response) => {
-      console.log('response');
-      console.log(response);
-      return response.json();
+      return responseWrapper(response);
     })
     .then((data) => {
-      console.log('data');
-      console.log(data);
       return data;
     })
     .catch((error) => {
@@ -57,26 +49,20 @@ export const userLogout = () => {
 export const userRegister = (body: UserInterfaces.Register) => {
   return fetch(`${API_BASE_URL}user`, {
     body: JSON.stringify(body),
-    // credentials: 'include',
+    credentials: 'include',
     headers: {
       Accept: 'application/json',
-      'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
     },
     method: 'POST',
   })
     .then((response) => {
-      console.log('response');
-      console.log(response);
       return response.json();
     })
     .then((data) => {
-      console.log('data');
-      console.log(data);
       return data;
     })
     .catch((error) => {
-      console.error('error');
       console.error(error);
     });
 };

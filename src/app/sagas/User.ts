@@ -20,23 +20,20 @@ export function* login(action: ActionType<typeof UserActions.login>) {
   try {
     yield put(UserActions.setIsLoginLoading(true));
     const res = yield call(UserFetch.userLogin, {
+      email: action.payload.email,
       password: action.payload.password,
-      username: action.payload.username,
     });
 
     // res.error is empty if res.type != 'Error'
     yield put(UserActions.updateErrorMessage(res.error));
     yield put(UserActions.setIsLoginLoading(false));
 
-    console.log('response in api');
-    console.log(res);
-    if (res.status === 302) {
+    if (res.type !== resType.ERROR) {
       yield put(
         UserActions.updateUserDetails({
           country: '',
-          email: '',
+          email: action.payload.email,
           isLoggedIn: true,
-          username: action.payload.username,
         }),
       );
       yield put(UserActions.getUserDetails());
@@ -44,6 +41,7 @@ export function* login(action: ActionType<typeof UserActions.login>) {
       yield put(DashboardActions.setIsWelcomeModalOpen(true));
     }
   } catch (err) {
+    yield put(UserActions.setIsLoginLoading(false));
     console.error(err);
   }
 }
