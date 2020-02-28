@@ -102,7 +102,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
     const avatars = Object.keys(RegisterInterfaces.Avatar);
 
-    const { /*checkUsernameExists,*/ errorMessage, updateErrorMessage, isLoggedIn } = this.props;
+    const { checkEmailExists, errorMessage, updateErrorMessage, isLoggedIn } = this.props;
     if (isLoggedIn) {
       return <Redirect to={Routes.ROOT} />;
     }
@@ -163,7 +163,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         pattern="[a-zA-Z0-9]{5,50}"
                         value={username}
                         onChange={(e) => {
-                          // checkUsernameExists(e.target.value);
                           this.setState({
                             username: e.target.value,
                           });
@@ -183,11 +182,15 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         id="registerValidationEmail"
                         aria-describedby="inputGroupPrepend"
                         value={email}
-                        onChange={(e) =>
+                        onChange={(e) => {
+                          const registerForm = this.registerFormRef.current;
+                          if (registerForm && registerForm.checkValidity()) {
+                            checkEmailExists(e.target.value);
+                          }
                           this.setState({
                             email: e.target.value,
-                          })
-                        }
+                          });
+                        }}
                         required
                       />
                       <div className={classnames('invalid-feedback', authStyles['register-error'])}>

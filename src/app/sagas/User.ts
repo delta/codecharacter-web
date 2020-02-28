@@ -25,7 +25,9 @@ export function* login(action: ActionType<typeof UserActions.login>) {
     });
 
     // res.error is empty if res.type != 'Error'
-    yield put(UserActions.updateErrorMessage(res.error));
+    yield put(
+      UserActions.updateErrorMessage(res.error ? 'Your email or password was incorrect.' : ''),
+    );
     yield put(UserActions.setIsLoginLoading(false));
 
     if (res.type !== resType.ERROR) {
@@ -170,11 +172,11 @@ export function* editUserPassword(action: ActionType<typeof UserActions.editUser
   }
 }
 
-export function* checkUsernameExists(action: ActionType<typeof UserActions.checkUsernameExists>) {
+export function* checkEmailExists(action: ActionType<typeof UserActions.checkEmailExists>) {
   try {
-    const res = yield call(UserFetch.checkUsernameExists, action.payload.username);
+    const res = yield call(UserFetch.checkEmailExists, action.payload.email);
 
-    // Call returns error if username already exists, else empty
+    // Call returns error if email already exists, else empty
     yield put(UserActions.updateErrorMessage(res.error));
   } catch (err) {
     console.error(err);
@@ -204,7 +206,7 @@ export function* userSagas() {
     takeEvery(UserActions.Type.EDIT_USER_PASSWORD, editUserPassword),
     takeEvery(UserActions.Type.LOGIN, login),
     takeEvery(UserActions.Type.LOGOUT, logout),
-    takeEvery(UserActions.Type.CHECK_USERNAME_EXISTS, checkUsernameExists),
+    takeEvery(UserActions.Type.CHECK_EMAIL_EXISTS, checkEmailExists),
     takeEvery(UserActions.Type.GET_USER_DETAILS, getUserDetails),
     takeEvery(UserActions.Type.RESET_APP_STATE, resetAppState),
   ]);

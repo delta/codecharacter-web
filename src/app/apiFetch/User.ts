@@ -1,5 +1,5 @@
 /* tslint:disable:no-console*/
-import { responseWrapper } from 'app/apiFetch/utils';
+import { headResponseWrapper, jsonResponseWrapper } from 'app/apiFetch/utils';
 import * as UserInterfaces from 'app/types/User';
 import { API_BASE_URL } from '../../config/config';
 
@@ -20,7 +20,7 @@ export const userLogin = (body: UserInterfaces.Login) => {
     method: 'POST',
   })
     .then((response) => {
-      return responseWrapper(response);
+      return jsonResponseWrapper(response);
     })
     .then((data) => {
       return data;
@@ -125,14 +125,18 @@ export const userGetDetails = () => {
     });
 };
 
-export const checkUsernameExists = (username: string) => {
-  return fetch(`${API_BASE_URL}user/checkusername/${username}`, {
-    method: 'GET',
+export const checkEmailExists = (email: string) => {
+  const URL = `${API_BASE_URL}user/email/${encodeURIComponent(email)}`;
+  return fetch(URL, {
+    method: 'HEAD',
   })
     .then((response) => {
-      return response.json();
+      // return responseWrapper(response);
+      console.log(response);
+      return headResponseWrapper(response);
     })
     .then((data) => {
+      console.log(data);
       return data;
     })
     .catch((error) => {
