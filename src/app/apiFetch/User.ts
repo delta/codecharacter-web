@@ -133,6 +133,7 @@ export const checkEmailExists = (email: string) => {
       return headResponseWrapper(response);
     })
     .then((data) => {
+      console.log(data);
       return data;
     })
     .catch((error) => {
