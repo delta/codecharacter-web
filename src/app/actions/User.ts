@@ -10,6 +10,7 @@ export namespace UserActions {
     GET_USER_DETAILS = 'GET_USER_DETAILS',
     EDIT_USER_PROFILE = 'EDIT_USER_PROFILE',
     EDIT_USER_PASSWORD = 'EDIT_USER_PASSWORD',
+    CHANGE_USER_PASSWORD = 'CHANGE_USER_PASSWORD',
     UPDATE_ERROR_MESSAGE = 'UPDATE_ERROR_MESSAGE',
     UPDATE_USER_DETAILS = 'UPDATE_USER_DETAILS',
     CHECK_EMAIL_EXISTS = 'CHECK_EMAIL_EXISTS',
@@ -69,6 +70,9 @@ export namespace UserActions {
 
   export const checkUsernameExists = (username: string) =>
     action(Type.CHECK_USERNAME_EXISTS, { username });
+
+  export const changeUserPassword = (changePasswordDetails: UserInterfaces.ChangeUserPassword) =>
+    action(Type.CHANGE_USER_PASSWORD, changePasswordDetails);
 
   export const toggleUserProfileModal = (isUserProfileModalOpen: boolean) =>
     action(Type.TOGGLE_USER_PROFILE_MODAL, { isUserProfileModalOpen });

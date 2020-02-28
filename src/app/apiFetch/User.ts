@@ -131,6 +131,29 @@ export const userEditPassword = (body: UserInterfaces.EditUserPassword) => {
     });
 };
 
+export const changeUserPassword = (body: UserInterfaces.ChangeUserPassword) => {
+  return fetch(`${API_BASE_URL}user/password`, {
+    body: JSON.stringify(body),
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => {
+      console.log('api fetch response');
+      console.log(response);
+      return response.json();
+    })
+    .then((data) => {
+      console.log('api fetch data');
+      console.log(data);
+      return data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 export const userGetDetails = () => {
   return fetch(`${API_BASE_URL}user`, {
     credentials: 'include',
