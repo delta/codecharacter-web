@@ -12,6 +12,7 @@ import {
 } from 'app/actions';
 import * as UserFetch from 'app/apiFetch/User';
 import { checkAuthentication } from 'app/sagas/utils';
+import { avatarName } from 'app/types/Authentication/Register';
 import { resType } from 'app/types/sagas';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
@@ -111,13 +112,12 @@ export function* getUserDetails(action: ActionType<typeof UserActions.getUserDet
     const res = yield call(UserFetch.userGetDetails);
     // res.error has error string if type = 'Error', else empty
     yield put(UserActions.updateErrorMessage(res.error));
-
     const isAuthenticated = yield checkAuthentication(res);
     if (isAuthenticated === false) return;
     if (res.type !== resType.ERROR) {
       yield put(
         UserActions.updateUserDetails({
-          avatar: res.body.avatar,
+          avatar: avatarName[res.body.avatarId],
           college: res.body.college,
           country: res.body.country,
           fullName: res.body.fullName,
