@@ -26,15 +26,8 @@ export enum InputName {
   fullName = 'fullName',
 }
 
-export enum InputState {
-  isUserNameDisabled = 'isUserNameDisabled',
-  isFullNameDisabled = 'isFullNameDisabled',
-  isFlagSelectDisabled = 'isFlagSelectDisabled',
-  isPasswordDisabled = 'isPasswordDisabled',
-}
-
 export interface DispatchProps {
-  checkUsernameExists: (username: string) => void;
+  checkEmailExists: (email: string) => void;
   editUserPassword: (editUserPasswordDetails: UserInterfaces.EditUserPassword) => void;
   editUserProfile: (editUserDetails: UserInterfaces.EditUserDetails) => void;
   getUserDetails: () => void;
