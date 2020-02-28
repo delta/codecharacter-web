@@ -30,6 +30,11 @@ export interface EditUserPassword {
   oldPassword?: string;
 }
 
+export interface ChangeUserPassword {
+  newPassword: string;
+  passwordResetToken: string;
+}
+
 export interface Login {
   email: string;
   password: string;

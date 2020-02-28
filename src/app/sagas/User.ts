@@ -14,6 +14,7 @@ import * as UserFetch from 'app/apiFetch/User';
 import { checkAuthentication } from 'app/sagas/utils';
 import { avatarName } from 'app/types/Authentication/Register';
 import { resType } from 'app/types/sagas';
+import { push } from 'react-router-redux';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
@@ -209,6 +210,18 @@ export function* editUserPassword(action: ActionType<typeof UserActions.editUser
   }
 }
 
+export function* changeUserPassword(action: ActionType<typeof UserActions.changeUserPassword>) {
+  try {
+    const res = yield call(UserFetch.changeUserPassword, action.payload);
+
+    if (res.status === 200 || res.status === 201) {
+      yield put(push('/login'));
+    } else yield put(UserActions.updateErrorMessage(res.message));
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export function* checkEmailExists(action: ActionType<typeof UserActions.checkEmailExists>) {
   try {
     const res = yield call(UserFetch.checkEmailExists, action.payload.email);
@@ -253,6 +266,7 @@ export function* userSagas() {
     takeEvery(UserActions.Type.REGISTER, register),
     takeEvery(UserActions.Type.EDIT_USER_PROFILE, editUserProfile),
     takeEvery(UserActions.Type.EDIT_USER_PASSWORD, editUserPassword),
+    takeEvery(UserActions.Type.CHANGE_USER_PASSWORD, changeUserPassword),
     takeEvery(UserActions.Type.LOGIN, login),
     takeEvery(UserActions.Type.LOGOUT, logout),
     takeEvery(UserActions.Type.CHECK_EMAIL_EXISTS, checkEmailExists),
