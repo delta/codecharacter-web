@@ -33,7 +33,7 @@ export const deleteGlobalNotifications = (notificationId: number) => {
 };
 
 export const getAllGlobalNotifications = () => {
-  return fetch(`${API_BASE_URL}notifications/global/all`, {
+  return fetch(`${API_BASE_URL}notifications`, {
     credentials: 'include',
     headers: {
       Accept: 'application/json',

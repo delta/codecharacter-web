@@ -27,11 +27,13 @@ export enum NotificationTabType {
 
 export interface Notification {
   id: number;
-  message: string;
+  isRead: boolean;
+  content: string;
   createdAt: Date;
+  message: string;
+  userId: number;
   type: NotificationTabType;
   title: string;
-  text: string;
 }
 
 export interface NotificationStoreState {

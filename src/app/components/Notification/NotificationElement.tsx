@@ -13,6 +13,10 @@ import * as React from 'react';
 import { Col } from 'react-bootstrap';
 
 function get_time_difference(earlierDate: Date) {
+  if (!earlierDate) {
+    // @ts-ignore
+    earlierDate = new Date();
+  }
   const laterDate = new Date();
   const oDiff = {
     days: 0,
@@ -53,7 +57,7 @@ function get_time_difference(earlierDate: Date) {
 
 export class NotificationElement extends React.Component<NotificationElementInterfaces.Props, {}> {
   public render() {
-    const { id, title, text, type, createdAt, deleteNotification } = this.props;
+    const { id, title, content, type, createdAt, deleteNotification } = this.props;
 
     return (
       <Col sm={12} className={classnames('mb-1')}>
@@ -90,7 +94,7 @@ export class NotificationElement extends React.Component<NotificationElementInte
               </span>
             </div>
 
-            <div className={classnames('ml-2', styles.body)}>{text}</div>
+            <div className={classnames('ml-2', styles.body)}>{content}</div>
             <div className={classnames('ml-2', styles.body, styles.date)}>
               {get_time_difference(createdAt)}
             </div>

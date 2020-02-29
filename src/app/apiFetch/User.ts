@@ -50,7 +50,7 @@ export const userLogin = (body: UserInterfaces.Login) => {
 };
 
 export const userLogout = () => {
-  return fetch(`${API_BASE_URL}user/logout`, {
+  return fetch(`${API_BASE_URL}logout`, {
     credentials: 'include',
     method: 'POST',
   })

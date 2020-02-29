@@ -42,7 +42,6 @@ export function* getAllGlobalNotifications(
     }
 
     const notifications = res.notifications;
-
     yield put(NotificationActions.updateGlobalNotifications(notifications));
   } catch (err) {
     throw err;

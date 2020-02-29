@@ -4,7 +4,7 @@ export interface StateProps {
   type: NotificationTabType;
   id: number;
   createdAt: Date;
-  text: string;
+  content: string;
   title: string;
 }
 
