@@ -1,11 +1,6 @@
 import { AuthType } from 'app/types/Authentication';
 import * as UserInterfaces from 'app/types/User';
 
-export enum RegisterType {
-  Student = 'STUDENT',
-  Professional = 'PROFESSIONAL',
-}
-
 export enum Avatar {
   'CRUNCH' = 'assets/img/userAvatars/Crunch.svg',
   'EVORTRON' = 'assets/img/userAvatars/Evortron.svg',
@@ -90,7 +85,7 @@ export interface State {
   country: string;
   fullName: string;
   pragyanId?: string;
-  userType: RegisterType;
+  userType: UserInterfaces.UserType;
 }
 export interface StateProps {
   isLoggedIn: boolean;

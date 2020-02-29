@@ -64,7 +64,10 @@ export function* logout(action: ActionType<typeof UserActions.logout>) {
   try {
     const res = yield call(UserFetch.userLogout);
 
-    const isAuthenticated = yield checkAuthentication(res);
+    const isAuthenticated = yield checkAuthentication({
+      error: res.error,
+      type: res.type,
+    });
     if (isAuthenticated === false) return;
 
     yield put(UserActions.updateErrorMessage(res.message));
@@ -115,15 +118,16 @@ export function* getUserDetails(action: ActionType<typeof UserActions.getUserDet
     const isAuthenticated = yield checkAuthentication(res);
     if (isAuthenticated === false) return;
     if (res.type !== resType.ERROR) {
+      const { avatarId, college, country, fullName, userType, username } = res.body;
       yield put(
         UserActions.updateUserDetails({
-          avatar: avatarName[res.body.avatarId],
-          college: res.body.college,
-          country: res.body.country,
-          fullName: res.body.fullName,
+          college,
+          country,
+          fullName,
+          userType,
+          username,
+          avatar: avatarName[avatarId],
           isLoggedIn: true,
-          type: res.body.userType,
-          username: res.body.username,
         }),
       );
     }

@@ -37,7 +37,7 @@ export namespace UserActions {
     isLoggedIn: boolean;
     avatar?: string;
     college?: string;
-    type?: string;
+    userType?: UserInterfaces.UserType;
     fullName?: string;
     username?: string;
     email?: string;

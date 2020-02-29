@@ -1,6 +1,13 @@
 import { UserActions } from 'app/actions';
 import * as UserInterfaces from 'app/types/User';
 
+export enum ErrorMessage {
+  FORBIDDEN = 'Forbidden',
+  UNAUTHORISED = 'Unauthorised',
+  INTERNAL_SERVER_ERROR = 'Internal Server Error',
+  NULL = '',
+}
+
 const userStoreIntialState: UserInterfaces.UserStoreState = {
   avatar: '',
   college: '',
@@ -12,7 +19,7 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   isLoggedIn: false,
   isLoginLoading: false,
   isUserProfileModalOpen: false,
-  type: '',
+  userType: UserInterfaces.UserType.STUDENT,
   username: '',
 };
 
@@ -31,8 +38,8 @@ export const userReducer = (
         isUserProfileModalOpen,
         errorMessage,
         avatar,
-        type,
         college,
+        userType,
       } = action.payload.userDetails;
 
       let isAuthenticationOpen = state.isAuthenticationOpen;
@@ -59,15 +66,23 @@ export const userReducer = (
           isUserProfileModalOpen !== undefined
             ? isUserProfileModalOpen
             : state.isUserProfileModalOpen,
-        type: type !== undefined ? type : state.type,
+        userType: userType !== undefined ? userType : state.userType,
         username: username !== undefined ? username : state.username,
       };
     }
 
     case UserActions.Type.UPDATE_ERROR_MESSAGE: {
+      let errorMessage = action.payload.errorMessage;
+      switch (action.payload.errorMessage) {
+        case ErrorMessage.FORBIDDEN:
+        case ErrorMessage.UNAUTHORISED:
+        case ErrorMessage.INTERNAL_SERVER_ERROR:
+          errorMessage = ErrorMessage.NULL;
+          break;
+      }
       return {
         ...state,
-        errorMessage: action.payload.errorMessage ? action.payload.errorMessage : '',
+        errorMessage: errorMessage ? errorMessage : '',
       };
     }
     case UserActions.Type.TOGGLE_USER_PROFILE_MODAL: {

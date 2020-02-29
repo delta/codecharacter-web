@@ -5,6 +5,7 @@ import { Routes } from 'app/routes';
 import * as authStyles from 'app/styles/Authentication.module.css';
 import * as registerStyles from 'app/styles/Register.module.css';
 import * as RegisterInterfaces from 'app/types/Authentication/Register';
+import { UserType } from 'app/types/User';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
@@ -37,14 +38,14 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       currentStep: RegisterInterfaces.Steps.USER_DETAILS,
       email: '',
       fullName: '',
-      isCaptchaValidated: true,
+      isCaptchaValidated: false,
       isFormSubmitted: false,
       isRegistered: false,
       isStudent: false,
       password: '',
       pragyanId: '',
       repeatPassword: '',
-      userType: RegisterInterfaces.RegisterType.Professional,
+      userType: UserType.PROFESSIONAL,
       username: '',
     };
   }
@@ -299,9 +300,9 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                           this.setState({
                             isStudent: !isStudent,
                             userType:
-                              userType === RegisterInterfaces.RegisterType.Student
-                                ? RegisterInterfaces.RegisterType.Professional
-                                : RegisterInterfaces.RegisterType.Student,
+                              userType === UserType.STUDENT
+                                ? UserType.PROFESSIONAL
+                                : UserType.STUDENT,
                           })
                         }
                       />
