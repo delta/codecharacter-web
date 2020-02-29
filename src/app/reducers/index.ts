@@ -45,6 +45,6 @@ export interface RootState {
   router: RouterState;
   gameLog: GameLogInterfaces.GameLogStoreState;
   user: UserInterfaces.UserStoreState;
-  profileuser: ProfileUserInterfaces.ProfileUserStoreState;
+  profileUser: ProfileUserInterfaces.ProfileUserStoreState;
   submission: SubmissionInterfaces.SubmissionStoreState;
 }

@@ -13,7 +13,7 @@ export function* getMatchStats(action: ActionType<typeof ProfileUserActions.getM
     if (res.type !== resType.ERROR) {
       const { avatarId, college, country, fullName, userType, username } = res.body;
       yield put(
-        ProfileUserActions.updateUserDetails({
+        ProfileUserActions.updateProfileUserDetails({
           college,
           country,
           fullName,

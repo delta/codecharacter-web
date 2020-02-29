@@ -18,18 +18,8 @@ export interface EditProfileUserDetails {
 
 const actions = {
   getUserDetails: ProfileUserActions.getUserDetails,
-  updateUserDetails: ProfileUserActions.updateUserDetails,
+  updateProfileUserDetails: ProfileUserActions.updateProfileUserDetails,
 };
-
-export interface ProfileUserStoreState {
-  fullName: string;
-  username: string;
-  email: string;
-  country: string;
-  college: string;
-  userType: ProfileUserType;
-  avatar: string;
-}
 
 export interface ProfileUserStoreState {
   avatar: string;
@@ -38,7 +28,19 @@ export interface ProfileUserStoreState {
   email: string;
   fullName: string;
   type: string;
+  userType: ProfileUserType;
   username: string;
 }
+
+export interface StateProps {
+  profileUserDetails: ProfileUserStoreState;
+}
+
+export interface DispatchProps {
+  updateProfileUserDetails: (updateProfileUserDetails: EditProfileUserDetails) => void;
+  getUserDetails: () => void;
+  getMatchStats: (username: string) => void;
+}
+export type Props = StateProps & DispatchProps;
 
 export type ProfileUserStoreAction = ActionType<typeof actions>;

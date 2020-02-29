@@ -18,7 +18,7 @@ export namespace ProfileUserActions {
     country?: string;
   }
 
-  export const updateUserDetails = (profileuserDetails: ProfileUserDetails) =>
+  export const updateProfileUserDetails = (profileuserDetails: ProfileUserDetails) =>
     action(Type.UPDATE_PROFILE_USER_DETAILS, { profileuserDetails });
 
   export const getUserDetails = () => action(Type.GET_PROFILE_USER_DETAILS);
