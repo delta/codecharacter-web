@@ -31,7 +31,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
     super(props);
 
     this.state = {
-      avatar: 'BABOON',
+      avatar: 'CRUNCH',
       collegeName: '',
       country: 'IN',
       currentStep: RegisterInterfaces.Steps.USER_DETAILS,
