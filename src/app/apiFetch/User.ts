@@ -23,7 +23,6 @@ export const userLogin = (body: UserInterfaces.Login) => {
       return jsonResponseWrapper(response);
     })
     .then((data) => {
-      console.log(data);
       return data;
     })
     .catch((error) => {
