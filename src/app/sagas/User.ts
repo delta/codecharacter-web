@@ -12,6 +12,7 @@ import {
 } from 'app/actions';
 import * as UserFetch from 'app/apiFetch/User';
 import { checkAuthentication } from 'app/sagas/utils';
+import { avatarName } from 'app/types/Authentication/Register';
 import { resType } from 'app/types/sagas';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
@@ -63,7 +64,10 @@ export function* logout(action: ActionType<typeof UserActions.logout>) {
   try {
     const res = yield call(UserFetch.userLogout);
 
-    const isAuthenticated = yield checkAuthentication(res);
+    const isAuthenticated = yield checkAuthentication({
+      error: res.error,
+      type: res.type,
+    });
     if (isAuthenticated === false) return;
 
     yield put(UserActions.updateErrorMessage(res.message));
@@ -109,22 +113,21 @@ export function* register(action: ActionType<typeof UserActions.register>) {
 export function* getUserDetails(action: ActionType<typeof UserActions.getUserDetails>) {
   try {
     const res = yield call(UserFetch.userGetDetails);
-
     // res.error has error string if type = 'Error', else empty
     yield put(UserActions.updateErrorMessage(res.error));
-
     const isAuthenticated = yield checkAuthentication(res);
     if (isAuthenticated === false) return;
     if (res.type !== resType.ERROR) {
+      const { avatarId, college, country, fullName, userType, username } = res.body;
       yield put(
         UserActions.updateUserDetails({
-          avatar: res.userDetails.avatar,
-          college: res.userDetails.college,
-          country: res.userDetails.country,
-          fullName: res.userDetails.fullName,
+          college,
+          country,
+          fullName,
+          userType,
+          username,
+          avatar: avatarName[avatarId],
           isLoggedIn: true,
-          type: res.userDetails.type,
-          username: res.userDetails.username,
         }),
       );
     }

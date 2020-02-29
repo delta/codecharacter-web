@@ -1,10 +1,12 @@
 import { NotificationActions, UserActions } from 'app/actions';
 import { put } from 'redux-saga/effects';
 
-export function* checkAuthentication(result: {
+export interface ResponseStructure {
   type: string | undefined;
   error: string | undefined;
-}) {
+}
+
+export function* checkAuthentication(result: ResponseStructure) {
   if (result && result.error && result.error === 'Unauthorised') {
     yield put(
       UserActions.updateUserDetails({
@@ -20,10 +22,7 @@ export function* checkAuthentication(result: {
   return true;
 }
 
-export function* checkAccountActivated(result: {
-  type: string | undefined;
-  error: string | undefined;
-}) {
+export function* checkAccountActivated(result: ResponseStructure) {
   if (result && result.error && result.error === 'Email not activated') {
     yield put(
       NotificationActions.info('Your account has not been activated yet. Please check your email.'),

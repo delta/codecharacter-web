@@ -1,4 +1,5 @@
 import { EditPassword } from 'app/components/UserProfileModal/EditPassword';
+import { UserType } from 'app/types/User';
 import { InputName } from 'app/types/UserProfileModal';
 import { mount } from 'enzyme';
 import * as React from 'react';
@@ -17,7 +18,7 @@ describe('EditPassword Component', () => {
       password={'password'}
       repeatPassword={'repeatPassword'}
       userDetails={{
-        avatar: '',
+        avatar: 'CRUNCH',
         college: '',
         country: 'IN',
         email: '',
@@ -27,7 +28,7 @@ describe('EditPassword Component', () => {
         isLoggedIn: true,
         isLoginLoading: false,
         isUserProfileModalOpen: false,
-        type: '',
+        userType: UserType.STUDENT,
         username: '',
       }}
     />,
