@@ -24,7 +24,6 @@ export const App = hot(module)(() => (
       <Route exact path={Routes.REGISTER} component={Register} />
       <Route exact path={Routes.LEADERBOARD} component={Leaderboard} />
       <Route exact path={Routes.USER_PROFILE_MODEL} component={UserProfileModal} />
-      {/* the path will not be exact as the activation code will follow the path */}
       <Route path={Routes.USER_ACTIVATION} component={ActivateUser} />
     </Switch>
     <Sugar background="#484848" color="white" />

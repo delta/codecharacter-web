@@ -5,7 +5,8 @@ import * as React from 'react';
 export const ActivateUser: React.FunctionComponent<Props> = (props: Props) => {
   React.useEffect(() => {
     // get the activation code from url
-    props.activateUser('activation-code');
+    const token = props.location.search.split('=')[1];
+    props.activateUser(token);
   });
   return <h1>{props.message}</h1>;
 };

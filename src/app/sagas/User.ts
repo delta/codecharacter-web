@@ -14,6 +14,7 @@ import * as UserFetch from 'app/apiFetch/User';
 import { checkAuthentication } from 'app/sagas/utils';
 import { avatarName } from 'app/types/Authentication/Register';
 import { resType } from 'app/types/sagas';
+import { push } from 'react-router-redux';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
@@ -22,8 +23,8 @@ export function* activateUser(action: ActionType<typeof UserActions.activateUser
     const res = yield call(UserFetch.activateUser, {
       activationCode: action.payload.activationCode,
     });
+    if (res.status === 201) yield put(push('/login'));
     yield put(UserActions.updateErrorMessage(res.message));
-    // check res.status to ckeck if it was succussful
   } catch (err) {
     console.log(err);
   }
