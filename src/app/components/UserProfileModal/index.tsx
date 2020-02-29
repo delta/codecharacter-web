@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import PopUpMenu from 'app/components/PopUpMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine, faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+=======
+import { faChartLine, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+>>>>>>> Add State,Type,actions,reducers,apifetch,sagas for ProfileUser
 import { EditPassword } from 'app/components/UserProfileModal/EditPassword';
 import { EditProfile } from 'app/components/UserProfileModal/EditProfile';
 import * as styles from 'app/styles/UserProfileModal.module.css';
@@ -21,16 +26,33 @@ export class UserProfileModal extends React.Component<
   private editPasswordRef = React.createRef<HTMLFormElement>();
   private reactFlagRef = React.createRef<ReactFlagsSelect>();
 
+  constructor(props: UserProfileInterfaces.Props) {
+    super(props);
+    const { userDetails } = this.props;
+    this.state = {
+      avatar: userDetails.avatar,
+      country: userDetails.country,
+      currentPage: UserProfileInterfaces.SelectedPage.EDITPROFILE,
+      fullName: userDetails.fullName,
+      isPasswordPage: true,
+      oldPassword: '',
+      password: '',
+      repeatPassword: '',
+      username: userDetails.username,
+    };
+  }
+
   public renderSwitch(
-    param: any,
-    username: any,
-    fullName: any,
+    param: UserProfileInterfaces.SelectedPage,
+    username: string,
+    fullName: string,
+    // tslint:disable-next-line
     userDetails: any,
-    country: any,
-    avatar: any,
-    oldPassword: any,
-    password: any,
-    repeatPassword: any,
+    country: string,
+    avatar: string,
+    oldPassword: string,
+    password: string,
+    repeatPassword: string,
   ) {
     switch (param) {
       case UserProfileInterfaces.SelectedPage.EDITPROFILE:
@@ -68,22 +90,6 @@ export class UserProfileModal extends React.Component<
     }
   }
 
-  constructor(props: UserProfileInterfaces.Props) {
-    super(props);
-    const { userDetails } = this.props;
-    this.state = {
-      avatar: userDetails.avatar,
-      country: userDetails.country,
-      fullName: userDetails.fullName,
-      currentPage: UserProfileInterfaces.SelectedPage.EDITPROFILE,
-      isPasswordPage: true,
-      oldPassword: '',
-      password: '',
-      repeatPassword: '',
-      username: userDetails.username,
-    };
-  }
-
   public render() {
     const {
       fullName,
@@ -99,6 +105,7 @@ export class UserProfileModal extends React.Component<
       <Grid fluid={true} className={classnames(styles.UserEdit)}>
         <div
           style={{
+<<<<<<< HEAD
             display: 'flex',
             flexDirection: 'column',
             justifyContent: '',
@@ -106,6 +113,15 @@ export class UserProfileModal extends React.Component<
             marginLeft: '10%',
             marginTop: '10%',
             borderRight: '2px solid #D3D3D3',
+=======
+            borderRight: '2px solid #D3D3D3',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: '',
+            marginLeft: '10%',
+            marginTop: '10%',
+            position: 'absolute',
+>>>>>>> Add State,Type,actions,reducers,apifetch,sagas for ProfileUser
           }}
         >
           <div
@@ -173,7 +189,11 @@ export class UserProfileModal extends React.Component<
                 : classnames('labeltext', styles.passwordPageLink)
             }
             onClick={() => {
+<<<<<<< HEAD
               let newState =
+=======
+              const newState =
+>>>>>>> Add State,Type,actions,reducers,apifetch,sagas for ProfileUser
                 this.state.currentPage === UserProfileInterfaces.SelectedPage.EDITPROFILE
                   ? UserProfileInterfaces.SelectedPage.EDITPASSWORD
                   : UserProfileInterfaces.SelectedPage.EDITPROFILE;

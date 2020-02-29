@@ -6,6 +6,7 @@ import { gameLogReducer } from 'app/reducers/GameLog';
 import { leaderboardReducer } from 'app/reducers/Leaderboard';
 import { matchesReducer } from 'app/reducers/MatchView';
 import { notificationReducer } from 'app/reducers/Notification';
+import { profileuserReducer } from 'app/reducers/ProfileUser';
 import { userReducer } from 'app/reducers/User';
 import * as CodeInterfaces from 'app/types/code/Code';
 import * as EditorInterfaces from 'app/types/code/Editor';
@@ -15,6 +16,7 @@ import * as GameLogInterfaces from 'app/types/GameLog';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import * as MatchInterfaces from 'app/types/MatchView';
 import * as NotificationInterfaces from 'app/types/Notification';
+import * as ProfileUserInterfaces from 'app/types/ProfileUser';
 import * as UserInterfaces from 'app/types/User';
 import { routerReducer, RouterState } from 'react-router-redux';
 import { combineReducers } from 'redux';
@@ -27,6 +29,7 @@ export const rootReducer = combineReducers({
   leaderboard: leaderboardReducer,
   match: matchesReducer,
   notification: notificationReducer,
+  profileUser: profileuserReducer,
   router: routerReducer,
   submission: submissionReducer,
   user: userReducer,
@@ -42,5 +45,6 @@ export interface RootState {
   router: RouterState;
   gameLog: GameLogInterfaces.GameLogStoreState;
   user: UserInterfaces.UserStoreState;
+  profileuser: ProfileUserInterfaces.ProfileUserStoreState;
   submission: SubmissionInterfaces.SubmissionStoreState;
 }
