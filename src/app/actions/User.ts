@@ -71,8 +71,11 @@ export namespace UserActions {
   export const checkUsernameExists = (username: string) =>
     action(Type.CHECK_USERNAME_EXISTS, { username });
 
-  export const changeUserPassword = (changePasswordDetails: UserInterfaces.ChangeUserPassword) =>
-    action(Type.CHANGE_USER_PASSWORD, changePasswordDetails);
+  export const changeUserPassword = (newPassword: string, passwordResetToken: string) =>
+    action(Type.CHANGE_USER_PASSWORD, {
+      newPassword,
+      passwordResetToken,
+    });
 
   export const toggleUserProfileModal = (isUserProfileModalOpen: boolean) =>
     action(Type.TOGGLE_USER_PROFILE_MODAL, { isUserProfileModalOpen });
