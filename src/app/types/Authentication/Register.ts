@@ -97,6 +97,7 @@ export interface ElementOwnProps {
 
 export interface DispatchProps {
   checkEmailExists: (email: string) => void;
+  checkUsernameExists: (username: string) => void;
   register: (registerDetails: UserInterfaces.Register) => void;
   updateErrorMessage: (errorMessage: string) => void;
 }

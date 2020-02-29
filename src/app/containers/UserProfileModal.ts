@@ -17,6 +17,7 @@ const userProfileModalContainer = connect<
   {}
 >(mapStateToProps, {
   checkEmailExists: UserActions.checkEmailExists,
+  checkUsernameExists: UserActions.checkUsernameExists,
   editUserPassword: UserActions.editUserPassword,
   editUserProfile: UserActions.editUserProfile,
   getUserDetails: UserActions.getUserDetails,

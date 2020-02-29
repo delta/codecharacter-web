@@ -28,6 +28,7 @@ export enum InputName {
 
 export interface DispatchProps {
   checkEmailExists: (email: string) => void;
+  checkUsernameExists: (username: string) => void;
   editUserPassword: (editUserPasswordDetails: UserInterfaces.EditUserPassword) => void;
   editUserProfile: (editUserDetails: UserInterfaces.EditUserDetails) => void;
   getUserDetails: () => void;
