@@ -14,7 +14,7 @@ import { Col } from 'react-bootstrap';
 
 function get_time_difference(earlierDate: Date) {
   if (!earlierDate) {
-    // @ts-ignore
+    /* tslint:disable-next-line:no-parameter-reassignment */
     earlierDate = new Date();
   }
   const laterDate = new Date();
