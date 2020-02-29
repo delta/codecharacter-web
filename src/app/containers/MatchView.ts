@@ -18,8 +18,10 @@ const mapStateToProps = (rootState: RootState) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     getGameLogs: (gameId: number) => dispatch(MatchActions.getGameLogs(gameId)),
-    getMatches: () => dispatch(MatchActions.getMatches()),
-    getTopMatches: () => dispatch(MatchActions.getTopMatches()),
+    getMatches: (pageNo: number, pageSize: number) =>
+      dispatch(MatchActions.getMatches(pageNo, pageSize)),
+    getTopMatches: (pageNo: number, pageSize: number) =>
+      dispatch(MatchActions.getTopMatches(pageNo, pageSize)),
   };
 };
 

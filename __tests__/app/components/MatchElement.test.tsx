@@ -12,6 +12,7 @@ describe('MatchElement Component', () => {
         avatar1: 'BABOON',
         avatar2: 'BEAR',
         games: [],
+        match_mode: 'SELF',
         playedAt: 'date string',
         score1: 1,
         score2: 5,
