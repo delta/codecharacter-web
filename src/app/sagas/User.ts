@@ -29,6 +29,7 @@ export function* login(action: ActionType<typeof UserActions.login>) {
     const { body: responseBody } = res;
     let errorMessage;
     switch (responseBody.message) {
+      case 'User is disabled':
       case 'Bad credentials':
         errorMessage = 'Your email or password was incorrect.';
         break;
@@ -147,14 +148,16 @@ export function* editUserProfile(action: ActionType<typeof UserActions.editUserP
     if (isAuthenticated === false) return;
 
     if (res.type !== resType.ERROR) {
+      const { avatarId, country, fullName, username, college } = action.payload.editUserDetails;
       yield put(
         UserActions.updateUserDetails({
-          avatar: action.payload.editUserDetails.avatar,
-          country: action.payload.editUserDetails.country,
-          email: action.payload.editUserDetails.email,
-          fullName: action.payload.editUserDetails.fullName,
+          college,
+          country,
+          fullName,
+          username,
+          // @ts-ignore
+          avatar: avatarName[avatarId],
           isLoggedIn: true,
-          username: action.payload.editUserDetails.username,
         }),
       );
     }

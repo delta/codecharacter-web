@@ -23,6 +23,7 @@ export const userLogin = (body: UserInterfaces.Login) => {
       return jsonResponseWrapper(response);
     })
     .then((data) => {
+      console.log(data);
       return data;
     })
     .catch((error) => {
@@ -67,17 +68,17 @@ export const userRegister = (body: UserInterfaces.Register) => {
 };
 
 export const userEditProfile = (body: UserInterfaces.EditUserDetails) => {
-  return fetch(`${API_BASE_URL}user/profile/update`, {
+  return fetch(`${API_BASE_URL}user`, {
     body: JSON.stringify(body),
     credentials: 'include',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    method: 'POST',
+    method: 'PUT',
   })
     .then((response) => {
-      return response.json();
+      return jsonResponseWrapper(response);
     })
     .then((data) => {
       return data;

@@ -1,13 +1,14 @@
 import { EditPassword } from 'app/components/UserProfileModal/EditPassword';
 import { EditProfile } from 'app/components/UserProfileModal/EditProfile';
 import * as styles from 'app/styles/UserProfileModal.module.css';
+import { AvatarId } from 'app/types/Authentication/Register';
 import * as UserProfileInterfaces from 'app/types/UserProfileModal';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Grid, Row } from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
 // tslint:disable-next-line
 import ReactFlagsSelect from 'react-flags-select';
+import { Redirect } from 'react-router-dom';
 
 export class UserProfileModal extends React.Component<
   UserProfileInterfaces.Props,
@@ -115,10 +116,11 @@ export class UserProfileModal extends React.Component<
     if (form) {
       if (form.checkValidity()) {
         editUserProfile({
-          avatar,
           country,
           fullName,
           username,
+          // @ts-ignore
+          avatarId: AvatarId[avatar],
         });
       }
       form.classList.add('was-validated');

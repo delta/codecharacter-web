@@ -18,12 +18,11 @@ export interface Register {
 
 export interface EditUserDetails {
   username?: string;
-  email?: string;
   country?: string;
   fullName?: string;
   college?: string;
   type?: string;
-  avatar?: string;
+  avatarId?: string;
 }
 
 export interface EditUserPassword {
