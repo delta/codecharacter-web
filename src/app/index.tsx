@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import ActivateUser from 'app/containers/Authentication/ActivateUser';
-=======
 import ChangePassword from 'app/containers/Authentication/ChangePassword';
->>>>>>> Add ChangePassword component
 import Login from 'app/containers/Authentication/Login';
 import Register from 'app/containers/Authentication/Register';
 import Dashboard from 'app/containers/Dashboard';

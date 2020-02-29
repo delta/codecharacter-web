@@ -1,11 +1,16 @@
-import { ChangeUserPassword } from 'app/types/User';
+import { RouteComponentProps } from 'react-router-dom';
 
+export interface ChangePasswordState {
+  password: string;
+  repeatPassword: string;
+  passwordError: string;
+}
 export interface StateProps {
   errorMessage: string;
 }
 
 export interface DispatchProps {
-  changePassword: (changePasswordDetails: ChangeUserPassword) => void;
+  changePassword: (password: string, passwordResetToken: string) => void;
 }
 
-export type changePasswordProps = StateProps & DispatchProps;
+export type changePasswordProps = StateProps & DispatchProps & RouteComponentProps;

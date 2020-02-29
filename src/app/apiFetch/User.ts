@@ -138,6 +138,7 @@ export const changeUserPassword = (body: UserInterfaces.ChangeUserPassword) => {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
+    method: 'POST',
   })
     .then((response) => {
       console.log('api fetch response');
