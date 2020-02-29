@@ -197,6 +197,17 @@ export function* checkEmailExists(action: ActionType<typeof UserActions.checkEma
   }
 }
 
+export function* checkUsernameExists(action: ActionType<typeof UserActions.checkUsernameExists>) {
+  try {
+    const res = yield call(UserFetch.checkUsernameExists, action.payload.username);
+
+    // Call returns error if email already exists, else empty
+    yield put(UserActions.updateErrorMessage(res.error));
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export function* resetAppState(action: ActionType<typeof UserActions.resetAppState>) {
   try {
     yield put(CodeActions.resetCodeState());
@@ -221,6 +232,7 @@ export function* userSagas() {
     takeEvery(UserActions.Type.LOGIN, login),
     takeEvery(UserActions.Type.LOGOUT, logout),
     takeEvery(UserActions.Type.CHECK_EMAIL_EXISTS, checkEmailExists),
+    takeEvery(UserActions.Type.CHECK_USERNAME_EXISTS, checkUsernameExists),
     takeEvery(UserActions.Type.GET_USER_DETAILS, getUserDetails),
     takeEvery(UserActions.Type.RESET_APP_STATE, resetAppState),
   ]);

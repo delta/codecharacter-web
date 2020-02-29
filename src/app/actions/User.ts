@@ -12,6 +12,7 @@ export namespace UserActions {
     UPDATE_ERROR_MESSAGE = 'UPDATE_ERROR_MESSAGE',
     UPDATE_USER_DETAILS = 'UPDATE_USER_DETAILS',
     CHECK_EMAIL_EXISTS = 'CHECK_EMAIL_EXISTS',
+    CHECK_USERNAME_EXISTS = 'CHECK_USERNAME_EXISTS',
     TOGGLE_USER_PROFILE_MODAL = 'TOGGLE_USER_PROFILE_MODAL',
     RESET_USER_STATE = 'RESET_USER_STATE',
     RESET_APP_STATE = 'RESET_APP_STATE',
@@ -58,6 +59,9 @@ export namespace UserActions {
     action(Type.EDIT_USER_PASSWORD, { editUserPasswordDetails });
 
   export const checkEmailExists = (email: string) => action(Type.CHECK_EMAIL_EXISTS, { email });
+
+  export const checkUsernameExists = (username: string) =>
+    action(Type.CHECK_USERNAME_EXISTS, { username });
 
   export const toggleUserProfileModal = (isUserProfileModalOpen: boolean) =>
     action(Type.TOGGLE_USER_PROFILE_MODAL, { isUserProfileModalOpen });

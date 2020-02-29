@@ -1,5 +1,5 @@
 /* tslint:disable:no-console*/
-import { headResponseWrapper, jsonResponseWrapper } from 'app/apiFetch/utils';
+import { HeadReqType, headResponseWrapper, jsonResponseWrapper } from 'app/apiFetch/utils';
 import * as UserInterfaces from 'app/types/User';
 import { API_BASE_URL } from '../../config/config';
 
@@ -130,7 +130,23 @@ export const checkEmailExists = (email: string) => {
     method: 'HEAD',
   })
     .then((response) => {
-      return headResponseWrapper(response);
+      return headResponseWrapper(response, HeadReqType.EMAIL);
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+export const checkUsernameExists = (username: string) => {
+  const URL = `${API_BASE_URL}user/username/${encodeURIComponent(username)}`;
+  return fetch(URL, {
+    method: 'HEAD',
+  })
+    .then((response) => {
+      return headResponseWrapper(response, HeadReqType.USERNAME);
     })
     .then((data) => {
       return data;

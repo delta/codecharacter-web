@@ -103,7 +103,13 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
     const avatars = Object.keys(RegisterInterfaces.Avatar);
 
-    const { checkEmailExists, errorMessage, updateErrorMessage, isLoggedIn } = this.props;
+    const {
+      checkEmailExists,
+      checkUsernameExists,
+      errorMessage,
+      updateErrorMessage,
+      isLoggedIn,
+    } = this.props;
     if (isLoggedIn) {
       return <Redirect to={Routes.ROOT} />;
     }
@@ -164,6 +170,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                         pattern="[a-zA-Z0-9]{5,50}"
                         value={username}
                         onChange={(e) => {
+                          checkUsernameExists(e.target.value);
                           this.setState({
                             username: e.target.value,
                           });
