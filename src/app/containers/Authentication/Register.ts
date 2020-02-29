@@ -17,6 +17,7 @@ const registerContainer = connect<
   {}
 >(mapStateToProps, {
   checkEmailExists: UserActions.checkEmailExists,
+  checkUsernameExists: UserActions.checkUsernameExists,
   register: UserActions.register,
   updateErrorMessage: UserActions.updateErrorMessage,
 })(Register);

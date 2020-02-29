@@ -146,8 +146,8 @@ export class UserProfileModal extends React.Component<
 
   private onInputChange = (inputName: UserProfileInterfaces.InputName, value: string) => {
     if (inputName === UserProfileInterfaces.InputName.username) {
-      const { checkEmailExists } = this.props;
-      checkEmailExists(value);
+      const { checkUsernameExists } = this.props;
+      checkUsernameExists(value);
     }
     this.setState(this.updateInputState(inputName, value));
   };

@@ -2,6 +2,11 @@
 /* tslint:disable:no-console*/
 import { resType } from 'app/types/sagas';
 
+export enum HeadReqType {
+  EMAIL = 'EMAIL',
+  USERNAME = 'USERNAME',
+}
+
 export function jsonResponseWrapper(response: any) {
   return response.json().then((data: any) => {
     return new Promise((resolve, reject) => {
@@ -21,13 +26,16 @@ export function jsonResponseWrapper(response: any) {
   });
 }
 
-export function headResponseWrapper(response: any) {
+export function headResponseWrapper(response: any, headReqType: HeadReqType) {
   return new Promise((resolve, reject) => {
     let type: string = resType.SUCCESS;
     let error: string = '';
     switch (response.status) {
-      case 200:
-        error = 'Email already registered';
+      case 302:
+        error =
+          headReqType === HeadReqType.EMAIL
+            ? 'Email already registered.'
+            : 'Username already taken.';
         type = resType.ERROR;
         break;
     }
