@@ -5,7 +5,6 @@ import { resType } from 'app/types/sagas';
 export function jsonResponseWrapper(response: any) {
   return response.json().then((data: any) => {
     return new Promise((resolve, reject) => {
-      console.log(response);
       let type: string = resType.SUCCESS;
       let error: string = '';
       // resource : found || fetched || created
@@ -24,7 +23,6 @@ export function jsonResponseWrapper(response: any) {
 
 export function headResponseWrapper(response: any) {
   return new Promise((resolve, reject) => {
-    console.log(response);
     let type: string = resType.SUCCESS;
     let error: string = '';
     switch (response.status) {

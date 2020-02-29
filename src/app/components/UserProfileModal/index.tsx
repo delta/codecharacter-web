@@ -21,7 +21,7 @@ export class UserProfileModal extends React.Component<
     super(props);
     const { userDetails } = this.props;
     this.state = {
-      avatar: userDetails.country,
+      avatar: userDetails.avatar,
       country: userDetails.country,
       fullName: userDetails.fullName,
       isPasswordPage: true,

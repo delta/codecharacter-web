@@ -1,6 +1,11 @@
 import { UserActions } from 'app/actions';
 import { ActionType } from 'typesafe-actions';
 
+export enum UserType {
+  STUDENT = 'STUDENT',
+  PROFESSIONAL = 'PROFESSIONAL',
+}
+
 export interface Register {
   avatarId: number;
   college?: string;
@@ -57,7 +62,7 @@ export interface UserStoreState {
   isUserProfileModalOpen: boolean;
   isAuthenticationOpen: boolean;
   college: string;
-  type: string;
+  userType: UserType;
   avatar: string;
 }
 

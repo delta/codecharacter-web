@@ -109,12 +109,12 @@ export const userEditPassword = (body: UserInterfaces.EditUserPassword) => {
 };
 
 export const userGetDetails = () => {
-  return fetch(`${API_BASE_URL}user/profile`, {
+  return fetch(`${API_BASE_URL}user`, {
     credentials: 'include',
     method: 'GET',
   })
     .then((response) => {
-      return response.json();
+      return jsonResponseWrapper(response);
     })
     .then((data) => {
       return data;
