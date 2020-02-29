@@ -1,24 +1,29 @@
 /* tslint:disable:no-console*/
 import { API_BASE_URL } from '../../config/config';
+import { jsonResponseWrapper, setRequestHeaders } from './utils';
 
-export const getMatches = () => {
-  return fetch(`${API_BASE_URL}match/all`, {
+export const getMatches = (pageNo: number, pageSize: number) => {
+  return fetch(`${API_BASE_URL}user/match/${pageNo}/${pageSize}`, {
     credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
+    headers: setRequestHeaders(),
     method: 'GET',
   })
-    .then((response) => response.json())
-    .then((data) => data)
+    .then((response) => {
+      console.log('match response');
+      console.log(response);
+
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
     .catch((error) => {
       console.error(error);
     });
 };
 
-export const getTopMatches = () => {
-  return fetch(`${API_BASE_URL}match/pro`, {
+export const getTopMatches = (pageNo: number, pageSize: number) => {
+  return fetch(`${API_BASE_URL}match/top/${pageNo}/${pageSize}`, {
     credentials: 'include',
     headers: {
       Accept: 'application/json',
@@ -26,23 +31,30 @@ export const getTopMatches = () => {
     },
     method: 'GET',
   })
-    .then((response) => response.json())
-    .then((data) => data)
+    .then((response) => {
+      console.log('top response');
+      console.log(response);
+
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
     .catch((error) => {
       console.error(error);
     });
 };
 
 export const getGameLogs = (gameId: number) => {
-  return fetch(`${API_BASE_URL}match/log/${gameId}`, {
+  return fetch(`${API_BASE_URL}game/log/${gameId}`, {
     credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
+    headers: setRequestHeaders(),
     method: 'GET',
   })
-    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      return jsonResponseWrapper(response);
+    })
     .then((data) => data)
     .catch((error) => {
       console.error(error);

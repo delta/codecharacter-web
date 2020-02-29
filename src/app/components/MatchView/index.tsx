@@ -6,8 +6,6 @@ import * as MatchInterfaces from 'app/types/MatchView';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
-// tslint:disable-next-line
-import ReactPaginate from 'react-paginate';
 
 export class Match extends React.Component<MatchInterfaces.Props, MatchInterfaces.State> {
   private static paginationSize = 15;
@@ -15,19 +13,26 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
     super(props);
     this.state = {
       activeMatchViewTab: MatchInterfaces.MatchViewTabType.MY_MATCHES,
-      offset: 0,
+      pageNo: 1,
     };
   }
 
   public componentDidMount() {
-    this.props.getMatches();
-    this.props.getTopMatches();
+    this.props.getMatches(this.state.pageNo, Match.paginationSize);
+    this.props.getTopMatches(1, Match.paginationSize);
   }
 
-  public handlePageClick = (data: { selected: number }) => {
-    this.setState({
-      offset: Math.ceil(data.selected * Match.paginationSize),
-    });
+  public handlePageClick = (dir: number) => {
+    const { pageNo } = this.state;
+    if (
+      (dir === -1 && pageNo + dir > 0) ||
+      (dir === 1 && this.props.matches.length === Match.paginationSize)
+    ) {
+      this.setState({
+        pageNo: pageNo + dir,
+      });
+      this.getMatches(pageNo + dir);
+    }
   };
 
   public compare(match1: MatchInterfaces.Match, match2: MatchInterfaces.Match) {
@@ -58,7 +63,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
               })}
               onClick={() => {
                 this.toggleNotificationTab(MatchInterfaces.MatchViewTabType.MY_MATCHES);
-                this.props.getMatches();
+                this.props.getMatches(this.state.pageNo, Match.paginationSize);
               }}
             >
               {' '}
@@ -73,7 +78,7 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
               })}
               onClick={() => {
                 this.toggleNotificationTab(MatchInterfaces.MatchViewTabType.TOP_MATCHES);
-                this.props.getTopMatches();
+                this.props.getTopMatches(1, Match.paginationSize);
               }}
             >
               {' '}
@@ -86,17 +91,14 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
             matches && matches.length ? (
               matches.map((match, index) =>
                 match ? (
-                  index >= this.state.offset &&
-                  index <= this.state.offset + Match.paginationSize - 1 ? (
-                    <MatchElement
-                      match={match}
-                      index={index - 1}
-                      key={index - 1}
-                      getGameLogs={getGameLogs}
-                      currentUserMatch={match.username1 === currentUsername}
-                      type={MatchInterfaces.MatchViewTabType.MY_MATCHES}
-                    />
-                  ) : null
+                  <MatchElement
+                    match={match}
+                    index={index - 1}
+                    key={index - 1}
+                    getGameLogs={getGameLogs}
+                    currentUserMatch={match.username1 === currentUsername}
+                    type={MatchInterfaces.MatchViewTabType.MY_MATCHES}
+                  />
                 ) : (
                   <div className="ml-5"> Nothing to show </div>
                 ),
@@ -107,17 +109,14 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
           ) : topMatches && topMatches.length ? (
             topMatches.map((match, index) =>
               match ? (
-                index >= this.state.offset &&
-                index <= this.state.offset + Match.paginationSize - 1 ? (
-                  <MatchElement
-                    match={match}
-                    index={index - 1}
-                    key={index - 1}
-                    getGameLogs={getGameLogs}
-                    currentUserMatch={false}
-                    type={MatchInterfaces.MatchViewTabType.TOP_MATCHES}
-                  />
-                ) : null
+                <MatchElement
+                  match={match}
+                  index={index - 1}
+                  key={index - 1}
+                  getGameLogs={getGameLogs}
+                  currentUserMatch={false}
+                  type={MatchInterfaces.MatchViewTabType.TOP_MATCHES}
+                />
               ) : (
                 <div className="ml-5"> Nothing to show </div>
               ),
@@ -126,39 +125,52 @@ export class Match extends React.Component<MatchInterfaces.Props, MatchInterface
             <div className="ml-5"> Nothing to show </div>
           )}
         </Row>
-        {activeMatchViewTab === MatchInterfaces.MatchViewTabType.MY_MATCHES ? (
+        {activeMatchViewTab === MatchInterfaces.MatchViewTabType.MY_MATCHES &&
+        matches.length > 0 ? (
           <Row>
             <Col
               className="d-flex justify-content-center"
               style={{ width: '100vw', margin: '10px' }}
             >
-              <ReactPaginate
-                previousLabel={
-                  <span>
-                    <FontAwesomeIcon icon={faCaretLeft} /> <FontAwesomeIcon icon={faCaretLeft} />
-                  </span>
-                }
-                nextLabel={
-                  <span>
-                    <FontAwesomeIcon icon={faCaretRight} /> <FontAwesomeIcon icon={faCaretRight} />
-                  </span>
-                }
-                breakLabel={'...'}
-                breakClassName={'break-me'}
-                marginPagesDisplayed={1}
-                pageClassName={'atag'}
-                pageRangeDisplayed={2}
-                pageCount={Math.ceil(matches.length / Match.paginationSize)}
-                activeLinkClassName={'active'}
-                onPageChange={this.handlePageClick}
-                containerClassName={'pagination'}
-                activeClassName={'active'}
-              />
+              <div>
+                <span
+                  className={classnames('px-2 py-1 border border-white')}
+                  style={{ borderRadius: '16px', cursor: 'pointer' }}
+                  onClick={() => this.handlePageClick(-1)}
+                >
+                  <FontAwesomeIcon icon={faCaretLeft} /> <FontAwesomeIcon icon={faCaretLeft} />
+                </span>
+                <span
+                  className={classnames('mx-3 px-3 py-1')}
+                  style={{
+                    backgroundColor: 'white',
+                    borderRadius: '16px',
+                    color: 'black',
+                    fontFamily: 'Karla',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  {this.state.pageNo}
+                </span>
+                <span
+                  className={classnames('px-2 py-1 border border-white')}
+                  onClick={() => this.handlePageClick(1)}
+                  style={{ borderRadius: '16px', cursor: 'pointer' }}
+                >
+                  <FontAwesomeIcon icon={faCaretRight} /> <FontAwesomeIcon icon={faCaretRight} />
+                </span>
+              </div>
             </Col>
           </Row>
         ) : null}
       </Grid>
     );
+  }
+
+  private getMatches(page: number) {
+    if (this.state.activeMatchViewTab === MatchInterfaces.MatchViewTabType.MY_MATCHES) {
+      this.props.getMatches(page, Match.paginationSize);
+    }
   }
 
   private toggleNotificationTab = (activeMatchViewTab: MatchInterfaces.MatchViewTabType) => {
