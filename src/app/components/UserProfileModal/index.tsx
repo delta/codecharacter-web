@@ -108,7 +108,7 @@ export class UserProfileModal extends React.Component<
   }
 
   private handleEditProfile = (event: React.FormEvent<HTMLFormElement>) => {
-    const { editUserProfile } = this.props;
+    const { editUserProfile, userDetails } = this.props;
     const { country, fullName, username, avatar } = this.state;
     const form = this.editProfileRef.current;
     event.preventDefault();
@@ -118,7 +118,7 @@ export class UserProfileModal extends React.Component<
         editUserProfile({
           country,
           fullName,
-          username,
+          ...(userDetails.username !== username && { username }),
           // @ts-ignore
           avatarId: AvatarId[avatar],
         });

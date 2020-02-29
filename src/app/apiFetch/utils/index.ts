@@ -5,6 +5,7 @@ import { resType } from 'app/types/sagas';
 export enum HeadReqType {
   EMAIL = 'EMAIL',
   USERNAME = 'USERNAME',
+  PROFILE = 'PROFILE',
 }
 
 export function jsonResponseWrapper(response: any) {
@@ -36,6 +37,13 @@ export function headResponseWrapper(response: any, headReqType: HeadReqType) {
           headReqType === HeadReqType.EMAIL
             ? 'Email already registered.'
             : 'Username already taken.';
+        type = resType.ERROR;
+        break;
+      case 409:
+        error =
+          headReqType === HeadReqType.PROFILE
+            ? 'Update not successful. Please try again'
+            : 'Please try again';
         type = resType.ERROR;
         break;
     }

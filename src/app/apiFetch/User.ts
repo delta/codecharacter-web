@@ -77,7 +77,7 @@ export const userEditProfile = (body: UserInterfaces.EditUserDetails) => {
     method: 'PUT',
   })
     .then((response) => {
-      return jsonResponseWrapper(response);
+      return headResponseWrapper(response, HeadReqType.PROFILE);
     })
     .then((data) => {
       return data;
@@ -88,14 +88,14 @@ export const userEditProfile = (body: UserInterfaces.EditUserDetails) => {
 };
 
 export const userEditPassword = (body: UserInterfaces.EditUserPassword) => {
-  return fetch(`${API_BASE_URL}user/profile/updatePassword`, {
+  return fetch(`${API_BASE_URL}user/updatePassword`, {
     body: JSON.stringify(body),
     credentials: 'include',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    method: 'POST',
+    method: 'PATCH',
   })
     .then((response) => {
       return response.json();
