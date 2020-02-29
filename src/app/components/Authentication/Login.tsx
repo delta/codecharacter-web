@@ -9,6 +9,7 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
+import { API_BASE_URL } from '../../../config/config';
 
 export class Login extends React.Component<LoginInterfaces.Props, LoginInterfaces.State> {
   private loginRef = React.createRef<HTMLFormElement>();
@@ -75,8 +76,48 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             account credentials to login.
           </div>
         </div>
-
-        <Row>
+        <div className={classnames('container px-0 justify-content-center', styles.loginForm)}>
+          <Row
+            onClick={(e) => {
+              window.location.href = `${API_BASE_URL}login/google`;
+            }}
+            className={classnames(
+              styles['google-btn'],
+              'border justify-content-center my-3',
+              styles.oauth_btn,
+              styles.no_margin,
+            )}
+          >
+            <div className={classnames('col-auto my-2', styles.img_div)}>
+              <img src="assets/img/google.png" height="24" width="24" />
+            </div>
+            <p className="col-auto">Log in with Google</p>
+          </Row>
+          <Row
+            onClick={(e) => {
+              window.location.href = `${API_BASE_URL}login/github`;
+            }}
+            className={classnames(
+              'justify-content-center',
+              styles['github-btn'],
+              styles.oauth_btn,
+              styles.no_margin,
+            )}
+          >
+            <div className={classnames('col-auto my-2', styles.img_div)}>
+              <img src="assets/img/github.png" height="24" width="24" />
+            </div>
+            <p className="col-auto">Log in with Github</p>
+          </Row>
+          <Row className={classnames(styles.no_margin)}>
+            <div className={classnames(styles.separator)}>
+              <div className={classnames(styles.wordWithLine)}>
+                <span className={classnames(styles.text)}>or</span>
+              </div>
+            </div>
+          </Row>
+        </div>
+        <Row className={classnames(styles.no_margin)}>
           <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
             <form
               className={classnames(styles.loginForm)}
@@ -163,7 +204,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             </form>
           </div>
         </Row>
-        <Row>
+        <Row className={classnames(styles.no_margin)}>
           <Col className="text-center my-3 ml-auto mr-auto">
             <div className="text-dark">
               Don't have an account?{' '}

@@ -1,5 +1,5 @@
 .Authentication {
-  width: 100vw;
+  width: 390vw;
   height: 100vh;
   position: fixed;
   display: flex;
@@ -160,7 +160,6 @@
 .loginForm {
   margin: auto !important;
   width: 390px !important;
-  margin-top: 3% !important;
 }
 
 .login-error {
@@ -491,4 +490,81 @@
 .login-error-active {
   position: relative;
   left: 1%;
+}
+.google-btn {
+  font-size: 18px;
+  background-color: white;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.google-btn p {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  margin: 0 !important;
+}
+
+.google-btn:hover {
+  box-shadow: 0px 3px 2px #888888;
+  user-select: none;
+}
+
+.github-btn {
+  font-size: 18px;
+  background-color: black;
+  color: white;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.github-btn:hover {
+  box-shadow: 0px 3px 2px #888888;
+  user-select: none;
+}
+
+.github-btn p {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  margin: 0 !important;
+}
+
+.no_margin {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.oauth_btn {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.oauth_btn .img_div {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+.oauth_btn:hover {
+  cursor: pointer;
+}
+
+.separator {
+  margin: 30px 0 0 0;
+  text-align: center;
+  width: 100%;
+}
+
+.wordWithLine {
+  border-bottom: 1px solid #e5e7e8;
+  line-height: 0.1em;
+  width: 60%;
+  margin: auto;
+}
+
+.text {
+  color: #9ca3a8;
+  font-size: 1rem;
+  background: #fff;
+  padding: 0 10px;
 }
