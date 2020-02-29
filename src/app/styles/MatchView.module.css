@@ -79,3 +79,12 @@
 .tieBackground {
   border-left: 5px solid #5c5c5c;
 }
+
+.corner_icon {
+  height: 21px;
+  position: absolute;
+  right: 5%;
+  bottom: 0;
+  color: white;
+  cursor: pointer;
+}

@@ -10,6 +10,7 @@ exports[`MatchElement Component Should render 1`] = `
       "avatar1": "BABOON",
       "avatar2": "BEAR",
       "games": Array [],
+      "match_mode": "SELF",
       "playedAt": "date string",
       "score1": 1,
       "score2": 5,
@@ -24,28 +25,108 @@ exports[`MatchElement Component Should render 1`] = `
     bsClass="col"
     className="mb-1"
     componentClass="div"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
     sm={12}
     style={
       Object {
         "borderRadius": 5,
+        "userSelect": "none",
       }
     }
   >
     <div
       className="mb-1 col-sm-12"
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       style={
         Object {
           "borderRadius": 5,
+          "userSelect": "none",
         }
       }
     >
       <div
-        className="w-100"
+        className="w-100 container-fluid px-0"
       >
+        <div
+          className=" d-flex justify-content-center w-100 row mx-0"
+        >
+          <div
+            className="d-flex col-4 justify-content-end"
+          >
+            <img
+              height={50}
+              width={50}
+            />
+          </div>
+          <div
+            className="col-4 container-fluid justify-content-center px-0"
+          >
+            <span
+              className="text-capitalize text-font-weight-bold  h3 row justify-content-center m-0"
+            >
+              1
+               - 
+              5
+            </span>
+            <span
+              className="row justify-content-center"
+            >
+              <FontAwesomeIcon
+                border={false}
+                className=""
+                fixedWidth={false}
+                flip={null}
+                icon={
+                  Object {
+                    "icon": Array [
+                      512,
+                      512,
+                      Array [],
+                      "f3ed",
+                      "M496 128c0 221.282-135.934 344.645-221.539 380.308a48 48 0 0 1-36.923 0C130.495 463.713 16 326.487 16 128a48 48 0 0 1 29.539-44.308l192-80a48 48 0 0 1 36.923 0l192 80A48 48 0 0 1 496 128zM256 446.313l.066.034c93.735-46.689 172.497-156.308 175.817-307.729L256 65.333v380.98z",
+                    ],
+                    "iconName": "shield-alt",
+                    "prefix": "fas",
+                  }
+                }
+                inverse={false}
+                listItem={false}
+                mask={null}
+                pull={null}
+                pulse={false}
+                rotation={null}
+                size={null}
+                spin={false}
+                symbol={false}
+                title=""
+                transform={null}
+              >
+                <svg
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-shield-alt fa-w-16 "
+                  data-icon="shield-alt"
+                  data-prefix="fas"
+                  role="img"
+                  style={Object {}}
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M496 128c0 221.282-135.934 344.645-221.539 380.308a48 48 0 0 1-36.923 0C130.495 463.713 16 326.487 16 128a48 48 0 0 1 29.539-44.308l192-80a48 48 0 0 1 36.923 0l192 80A48 48 0 0 1 496 128zM256 446.313l.066.034c93.735-46.689 172.497-156.308 175.817-307.729L256 65.333v380.98z"
+                    fill="currentColor"
+                    style={Object {}}
+                  />
+                </svg>
+              </FontAwesomeIcon>
+            </span>
+          </div>
+          <div
+            className="col-4 justify-content-start"
+          >
+            <img
+              height={50}
+              width={50}
+            />
+          </div>
+        </div>
         <Row
           bsClass="row"
           className="d-flex justify-content-around "
@@ -86,70 +167,22 @@ exports[`MatchElement Component Should render 1`] = `
             </Col>
             <Col
               bsClass="col"
+              className="d-flex"
               componentClass="div"
-              sm={2}
               style={
                 Object {
-                  "textAlign": "center",
+                  "padding": 10,
                 }
               }
             >
               <div
-                className="col-sm-2"
+                className="d-flex"
                 style={
                   Object {
-                    "textAlign": "center",
+                    "padding": 10,
                   }
                 }
-              >
-                <FontAwesomeIcon
-                  border={false}
-                  className=""
-                  fixedWidth={false}
-                  flip={null}
-                  icon={
-                    Object {
-                      "icon": Array [
-                        512,
-                        512,
-                        Array [],
-                        "f3ed",
-                        "M496 128c0 221.282-135.934 344.645-221.539 380.308a48 48 0 0 1-36.923 0C130.495 463.713 16 326.487 16 128a48 48 0 0 1 29.539-44.308l192-80a48 48 0 0 1 36.923 0l192 80A48 48 0 0 1 496 128zM256 446.313l.066.034c93.735-46.689 172.497-156.308 175.817-307.729L256 65.333v380.98z",
-                      ],
-                      "iconName": "shield-alt",
-                      "prefix": "fas",
-                    }
-                  }
-                  inverse={false}
-                  listItem={false}
-                  mask={null}
-                  pull={null}
-                  pulse={false}
-                  rotation={null}
-                  size={null}
-                  spin={false}
-                  symbol={false}
-                  title=""
-                  transform={null}
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="svg-inline--fa fa-shield-alt fa-w-16 "
-                    data-icon="shield-alt"
-                    data-prefix="fas"
-                    role="img"
-                    style={Object {}}
-                    viewBox="0 0 512 512"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M496 128c0 221.282-135.934 344.645-221.539 380.308a48 48 0 0 1-36.923 0C130.495 463.713 16 326.487 16 128a48 48 0 0 1 29.539-44.308l192-80a48 48 0 0 1 36.923 0l192 80A48 48 0 0 1 496 128zM256 446.313l.066.034c93.735-46.689 172.497-156.308 175.817-307.729L256 65.333v380.98z"
-                      fill="currentColor"
-                      style={Object {}}
-                    />
-                  </svg>
-                </FontAwesomeIcon>
-              </div>
+              />
             </Col>
             <Col
               bsClass="col"
@@ -184,35 +217,59 @@ exports[`MatchElement Component Should render 1`] = `
           </div>
         </Row>
         <div
-          className=" d-flex justify-content-center w-100"
-        >
-          <img
-            height={50}
-            width={50}
-          />
-          <span
-            className="text-capitalize text-font-weight-bold  h3 mx-3"
-          >
-            1
-             - 
-            5
-          </span>
-          <img
-            height={50}
-            width={50}
-          />
-        </div>
-        <div
-          className="d-flex"
-          style={
+          className="d-flex justify-content-around"
+        />
+      </div>
+      <div
+        onClick={[Function]}
+      >
+        <FontAwesomeIcon
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon={
             Object {
-              "padding": 10,
+              "icon": Array [
+                448,
+                512,
+                Array [],
+                "f150",
+                "M448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zM92.5 220.5l123 123c4.7 4.7 12.3 4.7 17 0l123-123c7.6-7.6 2.2-20.5-8.5-20.5H101c-10.7 0-16.1 12.9-8.5 20.5z",
+              ],
+              "iconName": "caret-square-down",
+              "prefix": "fas",
             }
           }
-        />
-        <div
-          className="d-flex justify-content-around "
-        />
+          inverse={false}
+          listItem={false}
+          mask={null}
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          title=""
+          transform={null}
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-caret-square-down fa-w-14 "
+            data-icon="caret-square-down"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zM92.5 220.5l123 123c4.7 4.7 12.3 4.7 17 0l123-123c7.6-7.6 2.2-20.5-8.5-20.5H101c-10.7 0-16.1 12.9-8.5 20.5z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </FontAwesomeIcon>
       </div>
     </div>
   </Col>

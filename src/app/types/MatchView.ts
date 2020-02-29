@@ -8,7 +8,7 @@ export enum MatchViewTabType {
 
 export interface OwnState {
   activeMatchViewTab: MatchViewTabType;
-  offset: number;
+  pageNo: number;
 }
 
 export interface Game {
@@ -29,6 +29,7 @@ export interface Match {
   rating2?: number;
   verdict: string;
   playedAt: string;
+  match_mode: string;
   games: Game[];
 }
 
@@ -40,8 +41,8 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-  getMatches: () => void;
-  getTopMatches: () => void;
+  getMatches: (pageNo: number, pageSize: number) => void;
+  getTopMatches: (pageNo: number, pageSize: number) => void;
   getGameLogs: (gameId: number) => void;
 }
 
@@ -58,7 +59,7 @@ export interface ElementOwnProps {
 }
 
 export interface ElementState {
-  isHoveredOver: boolean;
+  isSelected: boolean;
 }
 
 export type ElementProps = ElementOwnProps;
@@ -77,6 +78,31 @@ export interface MatchStoreState {
   loading: boolean;
   matches: Match[];
   topMatches: Match[];
+}
+
+export interface RecievedGame {
+  createdAt: string;
+  id: number;
+  interestingness: number;
+  mapId: number;
+  matchId: number;
+  points1: number;
+  points2: number;
+  status: string;
+  verdict: string;
+}
+
+export interface RecievedMatch {
+  avatar1: number;
+  avatar2: number;
+  games: RecievedGame[];
+  matchMode: string;
+  playedAt: string;
+  score1: number;
+  score2: number;
+  username1: string;
+  username2: string;
+  verdict: string;
 }
 
 export type MatchStoreAction = ActionType<typeof actions>;

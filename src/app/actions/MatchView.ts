@@ -14,9 +14,11 @@ export namespace MatchActions {
     RESET_MATCH_VIEW = 'RESET_MATCH_VIEW',
   }
 
-  export const getMatches = () => action(Type.GET_MATCHES);
+  export const getMatches = (pageNo: number, pageSize: number) =>
+    action(Type.GET_MATCHES, { pageNo, pageSize });
 
-  export const getTopMatches = () => action(Type.GET_TOP_MATCHES);
+  export const getTopMatches = (pageNo: number, pageSize: number) =>
+    action(Type.GET_TOP_MATCHES, { pageNo, pageSize });
 
   export const getGameLogs = (gameId: number) => action(Type.GET_GAME_LOGS, { gameId });
 
