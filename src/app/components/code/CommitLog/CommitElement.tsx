@@ -146,7 +146,7 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
             ) : null}
           </div>
           <p className={classnames('mb-2', styles.CommitDate)}>
-            {new Date(commitDetails.date).toUTCString()}
+            {`${new Date(commitDetails.date).toLocaleString()}`}
           </p>
         </div>
         <div style={{ width: '20%', marginLeft: '80%' }}>

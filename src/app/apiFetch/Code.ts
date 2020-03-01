@@ -1,6 +1,11 @@
 /* tslint:disable:no-console*/
+import {
+  getReqHeaders,
+  HeadReqType,
+  headResponseWrapper,
+  jsonResponseWrapper,
+} from 'app/apiFetch/utils';
 import { API_BASE_URL } from '../../config/config';
-import { getReqHeaders, HeadReqType, headResponseWrapper } from './utils';
 
 export const saveCode = (code: string) => {
   return fetch(`${API_BASE_URL}code`, {
@@ -22,18 +27,13 @@ export const saveCode = (code: string) => {
 
 export const commitCode = (commitMessage: string) => {
   return fetch(`${API_BASE_URL}code/commit`, {
-    body: JSON.stringify({
-      commitMessage,
-    }),
+    body: commitMessage,
     credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
+    headers: getReqHeaders(),
     method: 'POST',
   })
     .then((response) => {
-      return response.json();
+      return jsonResponseWrapper(response);
     })
     .then((data) => {
       return data;
@@ -73,7 +73,7 @@ export const getCommitLog = () => {
     method: 'GET',
   })
     .then((response) => {
-      return response.json();
+      return jsonResponseWrapper(response);
     })
     .then((data) => {
       return data;

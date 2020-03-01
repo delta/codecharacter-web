@@ -7,6 +7,12 @@ import { resType } from 'app/types/sagas';
 import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
+export interface CommitResponse {
+  timestamp: string;
+  commitHash: string;
+  commitName: string;
+}
+
 export function* save(action: ActionType<typeof CodeActions.save>) {
   try {
     const code = yield select((state: RootState) => state.code.code);
@@ -66,7 +72,18 @@ export function* getCommitLog(action: ActionType<typeof CodeActions.getCommitLog
     if (res.type === resType.ERROR) {
       yield put(CodeActions.updateStatusMessage(res.error));
     } else {
-      yield put(CodeActions.updateCommitLog(res.log));
+      const commitLogData = res.body;
+      yield put(
+        CodeActions.updateCommitLog(
+          commitLogData.map((commitData: CommitResponse) => {
+            return {
+              date: commitData.timestamp,
+              hash: commitData.commitHash,
+              message: commitData.commitName,
+            };
+          }),
+        ),
+      );
     }
   } catch (err) {
     console.error(err);
