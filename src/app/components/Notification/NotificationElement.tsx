@@ -13,46 +13,46 @@ import * as React from 'react';
 import { Col } from 'react-bootstrap';
 
 function get_time_difference(earlierDate: Date) {
-  if (!earlierDate) {
-    /* tslint:disable-next-line:no-parameter-reassignment */
-    earlierDate = new Date();
-  }
-  const laterDate = new Date();
-  const oDiff = {
-    days: 0,
-    duration: '',
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  };
+  // if (!earlierDate) {
+  //   /* tslint:disable-next-line:no-parameter-reassignment */
+  //   earlierDate = new Date();
+  // }
+  // const laterDate = new Date();
+  // const oDiff = {
+  //   days: 0,
+  //   duration: '',
+  //   hours: 0,
+  //   minutes: 0,
+  //   seconds: 0,
+  // };
 
-  let answer = '';
+  // let answer = '';
 
-  let nTotalDiff = laterDate.getTime() - earlierDate.getTime();
+  // let nTotalDiff = laterDate.getTime() - earlierDate.getTime();
 
-  oDiff.days = Math.floor(nTotalDiff / 1000 / 60 / 60 / 24);
-  nTotalDiff -= oDiff.days * 1000 * 60 * 60 * 24;
+  // oDiff.days = Math.floor(nTotalDiff / 1000 / 60 / 60 / 24);
+  // nTotalDiff -= oDiff.days * 1000 * 60 * 60 * 24;
 
-  oDiff.hours = Math.floor(nTotalDiff / 1000 / 60 / 60);
-  nTotalDiff -= oDiff.hours * 1000 * 60 * 60;
+  // oDiff.hours = Math.floor(nTotalDiff / 1000 / 60 / 60);
+  // nTotalDiff -= oDiff.hours * 1000 * 60 * 60;
 
-  oDiff.minutes = Math.floor(nTotalDiff / 1000 / 60);
-  nTotalDiff -= oDiff.minutes * 1000 * 60;
+  // oDiff.minutes = Math.floor(nTotalDiff / 1000 / 60);
+  // nTotalDiff -= oDiff.minutes * 1000 * 60;
 
-  oDiff.seconds = Math.floor(nTotalDiff / 1000);
-  if (oDiff.days !== 0) {
-    answer = `${oDiff.days} Days`;
-  } else if (oDiff.hours !== 0) {
-    answer = `${oDiff.hours} Hours`;
-  } else if (oDiff.hours !== 0) {
-    answer = `${oDiff.hours} Hours`;
-  } else if (oDiff.minutes !== 0) {
-    answer = `${oDiff.minutes} mins`;
-  } else {
-    answer = `${oDiff.seconds} s`;
-  }
+  // oDiff.seconds = Math.floor(nTotalDiff / 1000);
+  // if (oDiff.days !== 0) {
+  //   answer = `${oDiff.days} Days`;
+  // } else if (oDiff.hours !== 0) {
+  //   answer = `${oDiff.hours} Hours`;
+  // } else if (oDiff.hours !== 0) {
+  //   answer = `${oDiff.hours} Hours`;
+  // } else if (oDiff.minutes !== 0) {
+  //   answer = `${oDiff.minutes} mins`;
+  // } else {
+  //   answer = `${oDiff.seconds} s`;
+  // }
 
-  return answer;
+  return 'answer';
 }
 
 export class NotificationElement extends React.Component<NotificationElementInterfaces.Props, {}> {

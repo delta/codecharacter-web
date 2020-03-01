@@ -11,7 +11,7 @@ const mapStateToProps = (rootState: RootState) => {
 const notificationElementContainer = connect<{}, NotificationElementInterfaces.DispatchProps, {}>(
   mapStateToProps,
   {
-    deleteNotification: NotificationActions.deleteNotification,
+    deleteNotification: NotificationActions.deleteNotificationFromBackend,
   },
 )(NotificationElement);
 

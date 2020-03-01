@@ -8,6 +8,7 @@ export namespace NotificationActions {
     ERROR = 'ERROR',
     ADD = 'ADD',
     DELETE_NOTIFICATION = 'DELETE_NOTIFICATION',
+    DELETE_NOTIFICATION_FROM_BACKEND = 'DELETE_NOTIFICATION_FROM_BACKEND',
     DELETE_NOTIFICATION_TYPE = 'DELETE_NOTIFICATION_TYPE',
     RESET_NOTIFICATION_STATE = 'RESET_NOTIFICATION_STATE',
     GET_UNREAD_GLOBAL_NOTIFICATIONS = 'GET_GLOBAL_NOTIFICATIONS',
@@ -55,4 +56,8 @@ export namespace NotificationActions {
 
   export const updateGlobalNotifications = (notifications: Notification[]) =>
     action(Type.UPDATE_GLOBAL_NOTIFICATIONS, { notifications });
+
+  export const deleteNotificationFromBackend = (id: number) => {
+    return action(Type.DELETE_NOTIFICATION_FROM_BACKEND, { id });
+  };
 }

@@ -1,4 +1,5 @@
 import { API_BASE_URL } from '../../config/config';
+import { jsonResponseWrapper } from './utils';
 
 export const getUnreadNotifications = () => {
   return fetch(`${API_BASE_URL}notifications/global/`, {
@@ -17,7 +18,7 @@ export const getUnreadNotifications = () => {
 };
 
 export const deleteGlobalNotifications = (notificationId: number) => {
-  return fetch(`${API_BASE_URL}notifications/global/${notificationId}`, {
+  return fetch(`${API_BASE_URL}notifications/${notificationId}`, {
     credentials: 'include',
     headers: {
       Accept: 'application/json',
@@ -41,7 +42,7 @@ export const getAllGlobalNotifications = () => {
     },
     method: 'GET',
   })
-    .then((response) => response.json())
+    .then((response) => jsonResponseWrapper(response))
     .then((data) => data)
     .catch((error) => {
       throw error;

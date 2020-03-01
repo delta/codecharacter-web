@@ -121,7 +121,9 @@
 }
 
 .notificationContent {
-  padding: 10px;
+  padding: 0px;
+  padding-top: 3px;
+  padding-left: 5px;
   width: 100%;
 }
 

@@ -36,13 +36,19 @@ export function* getAllGlobalNotifications(
 ) {
   try {
     const res = yield call(NotificationFetch.getAllGlobalNotifications);
-
-    if (res.type !== 'Success') {
-      return;
-    }
-
-    const notifications = res.notifications;
+    const notifications = res.body;
     yield put(NotificationActions.updateGlobalNotifications(notifications));
+  } catch (err) {
+    throw err;
+  }
+}
+
+export function* deleteNotificationFromBackend(
+  action: ActionType<typeof NotificationActions.deleteNotificationFromBackend>,
+) {
+  try {
+    yield call(NotificationFetch.deleteGlobalNotifications, action.payload.id);
+    yield put(NotificationActions.deleteNotification(action.payload.id));
   } catch (err) {
     throw err;
   }
@@ -55,5 +61,9 @@ export function* notificationSagas() {
       getUnreadGlobalNotifications,
     ),
     takeEvery(NotificationActions.Type.GET_ALL_GLOBAL_NOTIFICATIONS, getAllGlobalNotifications),
+    takeEvery(
+      NotificationActions.Type.DELETE_NOTIFICATION_FROM_BACKEND,
+      deleteNotificationFromBackend,
+    ),
   ]);
 }
