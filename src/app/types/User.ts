@@ -36,7 +36,8 @@ export interface Login {
 }
 
 export interface ActivateUser {
-  activationCode: string;
+  authToken: string;
+  userId: number;
 }
 
 const actions = {

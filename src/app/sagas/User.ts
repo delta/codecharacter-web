@@ -20,13 +20,20 @@ import { ActionType } from 'typesafe-actions';
 
 export function* activateUser(action: ActionType<typeof UserActions.activateUser>) {
   try {
+    yield put(UserActions.updateErrorMessage(''));
     const res = yield call(UserFetch.activateUser, {
-      activationCode: action.payload.activationCode,
+      authToken: action.payload.authToken,
+      userId: action.payload.userId,
     });
-    if (res.status === 201) yield put(push('/login'));
-    yield put(UserActions.updateErrorMessage(res.message));
+
+    if (res.status === 201) {
+      yield put(push('/login'));
+    }
+    if (res.status !== 200) {
+      yield put(UserActions.updateErrorMessage(res.message));
+    } else yield put(UserActions.updateErrorMessage('Already Activated, Please Login'));
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 

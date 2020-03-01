@@ -6,6 +6,8 @@ import { matchSagas } from 'app/sagas/MatchView';
 import { notificationSagas } from 'app/sagas/Notification';
 import { submissionSagas } from 'app/sagas/Submission';
 import { userSagas } from 'app/sagas/User';
+import createBrowserHistory from 'history/createBrowserHistory';
+import { routerMiddleware } from 'react-router-redux';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistReducer, persistStore } from 'redux-persist';
@@ -15,7 +17,8 @@ import createSagaMiddleware from 'redux-saga';
 
 export function configureStore(initialState?: object) {
   const sagaMiddleware = createSagaMiddleware();
-  let middleware = applyMiddleware(logger, sagaMiddleware);
+  const history = createBrowserHistory();
+  let middleware = applyMiddleware(logger, sagaMiddleware, routerMiddleware(history));
 
   if (process.env.NODE_ENV !== 'production') {
     middleware = composeWithDevTools(middleware);

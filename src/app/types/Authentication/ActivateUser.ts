@@ -5,7 +5,7 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-  activateUser: (activationCode: string) => void;
+  activateUser: (activationCode: string, userId: number) => void;
 }
 
 export type Props = StateProps & DispatchProps & RouteComponentProps;

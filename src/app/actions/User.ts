@@ -21,9 +21,10 @@ export namespace UserActions {
     SET_IS_LOGIN_LOADING = 'SET_IS_LOGIN_LOADING',
   }
 
-  export const activateUser = (activationCode: string) =>
+  export const activateUser = (authToken: string, userId: number) =>
     action(Type.ACTIVATE_USER, {
-      activationCode,
+      authToken,
+      userId,
     });
 
   export const login = (email: string, password: string) =>

@@ -7,13 +7,12 @@ export const activateUser = (body: UserInterfaces.ActivateUser) => {
   return fetch(`${API_BASE_URL}user/activate`, {
     body: JSON.stringify(body),
     headers: {
-      Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     method: 'POST',
   })
     .then((response) => {
-      return response.json();
+      return response;
     })
     .then((data) => {
       return data;
