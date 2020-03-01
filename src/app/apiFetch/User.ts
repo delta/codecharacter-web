@@ -12,9 +12,15 @@ export const activateUser = (body: UserInterfaces.ActivateUser) => {
     method: 'POST',
   })
     .then((response) => {
-      return response;
+      console.log('api response');
+      console.log(response);
+      console.log('api wrapper response');
+      console.log(headResponseWrapper(response, HeadReqType.USERNAME));
+      return headResponseWrapper(response, HeadReqType.USERNAME);
     })
     .then((data) => {
+      console.log('api data');
+      console.log(data);
       return data;
     })
     .catch((error) => {
@@ -75,7 +81,7 @@ export const userRegister = (body: UserInterfaces.Register) => {
     method: 'POST',
   })
     .then((response) => {
-      return jsonResponseWrapper(response);
+      return headResponseWrapper(response, HeadReqType.USERNAME);
     })
     .then((data) => {
       return data;

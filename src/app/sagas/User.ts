@@ -14,7 +14,6 @@ import * as UserFetch from 'app/apiFetch/User';
 import { checkAuthentication } from 'app/sagas/utils';
 import { avatarName } from 'app/types/Authentication/Register';
 import { resType } from 'app/types/sagas';
-import { push } from 'react-router-redux';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
@@ -26,12 +25,15 @@ export function* activateUser(action: ActionType<typeof UserActions.activateUser
       userId: action.payload.userId,
     });
 
-    if (res.status === 201) {
-      yield put(push('/login'));
+    console.log('saga res');
+    console.log(res);
+
+    yield put(UserActions.updateErrorMessage(res.error ? res.body.message : ''));
+
+    if (res.type !== resType.ERROR) {
+      window.location.assign('/login');
+      yield put(NotificationActions.success('Account activated sucessfully'));
     }
-    if (res.status !== 200) {
-      yield put(UserActions.updateErrorMessage(res.message));
-    } else yield put(UserActions.updateErrorMessage('Already Activated, Please Login'));
   } catch (err) {
     console.error(err);
   }

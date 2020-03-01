@@ -35,7 +35,8 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
   };
 
   public componentDidMount() {
-    window.addEventListener('beforeunload', this.componentCleanup);
+    console.log('login mount');
+    // window.addEventListener('beforeunload', this.componentCleanup);
   }
 
   public componentWillReceiveProps(newProps: LoginInterfaces.Props) {
