@@ -1,6 +1,11 @@
 /* tslint:disable:no-console*/
+import {
+  getReqHeaders,
+  HeadReqType,
+  headResponseWrapper,
+  jsonResponseWrapper,
+} from 'app/apiFetch/utils';
 import { API_BASE_URL } from '../../config/config';
-import { getReqHeaders, HeadReqType, headResponseWrapper, jsonResponseWrapper } from './utils';
 
 export const saveCode = (code: string) => {
   return fetch(`${API_BASE_URL}code`, {

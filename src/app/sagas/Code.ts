@@ -8,7 +8,7 @@ import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
 export interface CommitResponse {
-  timestamp: Date;
+  timestamp: string;
   commitHash: string;
   commitName: string;
 }
@@ -77,7 +77,7 @@ export function* getCommitLog(action: ActionType<typeof CodeActions.getCommitLog
         CodeActions.updateCommitLog(
           commitLogData.map((commitData: CommitResponse) => {
             return {
-              data: commitData.timestamp,
+              date: commitData.timestamp,
               hash: commitData.commitHash,
               message: commitData.commitName,
             };
