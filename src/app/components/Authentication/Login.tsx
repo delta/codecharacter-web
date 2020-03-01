@@ -11,6 +11,10 @@ import { Col, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import { API_BASE_URL } from '../../../config/config';
 
+export enum OAUTH_ROUTES {
+  GOOGLE = 'login/google',
+  GITHUB = 'login/github',
+}
 export class Login extends React.Component<LoginInterfaces.Props, LoginInterfaces.State> {
   private loginRef = React.createRef<HTMLFormElement>();
   private forgotPasswordRef = React.createRef<HTMLFormElement>();
@@ -81,7 +85,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           <div className={classnames('container px-0 justify-content-center', styles.loginForm)}>
             <Row
               onClick={(e) => {
-                window.location.href = `${API_BASE_URL}${Routes.GOOGLE_OAUTH}`;
+                window.location.href = `${API_BASE_URL}${OAUTH_ROUTES.GOOGLE}`;
               }}
               className={classnames(
                 styles['google-btn'],
@@ -97,7 +101,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             </Row>
             <Row
               onClick={(e) => {
-                window.location.href = `${API_BASE_URL}${Routes.GITHUB_OAUTH}`;
+                window.location.href = `${API_BASE_URL}${OAUTH_ROUTES.GITHUB}`;
               }}
               className={classnames(
                 'justify-content-center',
