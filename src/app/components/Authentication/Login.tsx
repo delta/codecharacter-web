@@ -1,7 +1,5 @@
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { API_BASE_URL } from 'app/../config/config';
-import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
 import * as registerStyles from 'app/styles/Register.module.css';
@@ -11,11 +9,7 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
-
-export enum OAUTH_ROUTES {
-  GOOGLE = 'login/google',
-  GITHUB = 'login/github',
-}
+import { API_BASE_URL } from '../../../config/config';
 
 export class Login extends React.Component<LoginInterfaces.Props, LoginInterfaces.State> {
   private loginRef = React.createRef<HTMLFormElement>();
@@ -61,7 +55,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
   }
 
   public render() {
-    const { isForgotPassword, username, password } = this.state;
+    const { username, password, isForgotPassword } = this.state;
     const { errorMessage, updateErrorMessage, isLoginLoading, isLoggedIn } = this.props;
     if (isLoggedIn) {
       return <Redirect to={Routes.ROOT} />;
@@ -84,80 +78,48 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               account credentials to login.
             </div>
           </div>
-<<<<<<< HEAD
-        </div>
-        <div className={classnames('container px-0 justify-content-center', styles.loginForm)}>
-          <Row
-            onClick={(e) => {
-              window.location.href = `${API_BASE_URL}${OAUTH_ROUTES.GOOGLE}`;
-            }}
-            className={classnames(
-              styles['google-btn'],
-              'border justify-content-center my-3',
-              styles.oauth_btn,
-              styles.no_margin,
-            )}
-          >
-            <div className={classnames('col-auto my-2', styles.img_div)}>
-              <img src="assets/img/google.png" height="24" width="24" />
-            </div>
-            <p className="col-auto">Log in with Google</p>
-          </Row>
-          <Row
-            onClick={(e) => {
-              window.location.href = `${API_BASE_URL}${OAUTH_ROUTES.GITHUB}`;
-            }}
-            className={classnames(
-              'justify-content-center',
-              styles['github-btn'],
-              styles.oauth_btn,
-              styles.no_margin,
-            )}
-          >
-            <div className={classnames('col-auto my-2', styles.img_div)}>
-              <img src="assets/img/github.png" height="24" width="24" />
-            </div>
-            <p className="col-auto">Log in with Github</p>
-          </Row>
-          <Row className={classnames(styles.no_margin)}>
-            <div className={classnames(styles.separator)}>
-              <div className={classnames(styles.wordWithLine)}>
-                <span className={classnames(styles.text)}>or</span>
-              </div>
-            </div>
-          </Row>
-        </div>
-        <Row className={classnames(styles.no_margin)}>
-          <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
-            <form
-              className={classnames(styles.loginForm)}
-              noValidate
-              ref={this.loginRef}
-              onSubmit={this.handleLogin}
+          <div className={classnames('container px-0 justify-content-center', styles.loginForm)}>
+            <Row
+              onClick={(e) => {
+                window.location.href = `${API_BASE_URL}${Routes.GOOGLE_OAUTH}`;
+              }}
+              className={classnames(
+                styles['google-btn'],
+                'border justify-content-center my-3',
+                styles.oauth_btn,
+                styles.no_margin,
+              )}
             >
-              <div className="form-row">
-                <div className="col mb-4">
-                  <div className={classnames(styles['login-label'])}> Email </div>
-                  <div className="input-group">
-                    <input
-                      type="email"
-                      className={classnames('form-control', styles['login-input'])}
-                      id="validationUsername"
-                      aria-describedby="inputGroupPrepend"
-                      required
-                      value={username}
-                      onChange={(e) =>
-                        this.setState({
-                          username: e.target.value,
-                        })
-                      }
-                    />
-                    <div className={classnames('invalid-feedback', styles['login-error'])}>
-                      {' '}
-                      Please enter a valid Email.{' '}
-=======
-
-          <Row>
+              <div className={classnames('col-auto my-2', styles.img_div)}>
+                <img src="assets/img/google.png" height="24" width="24" />
+              </div>
+              <p className="col-auto">Log in with Google</p>
+            </Row>
+            <Row
+              onClick={(e) => {
+                window.location.href = `${API_BASE_URL}${Routes.GITHUB_OAUTH}`;
+              }}
+              className={classnames(
+                'justify-content-center',
+                styles['github-btn'],
+                styles.oauth_btn,
+                styles.no_margin,
+              )}
+            >
+              <div className={classnames('col-auto my-2', styles.img_div)}>
+                <img src="assets/img/github.png" height="24" width="24" />
+              </div>
+              <p className="col-auto">Log in with Github</p>
+            </Row>
+            <Row className={classnames(styles.no_margin)}>
+              <div className={classnames(styles.separator)}>
+                <div className={classnames(styles.wordWithLine)}>
+                  <span className={classnames(styles.text)}>or</span>
+                </div>
+              </div>
+            </Row>
+          </div>
+          <Row className={classnames(styles.no_margin)}>
             <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
               <form
                 className={classnames(styles.loginForm)}
@@ -186,7 +148,6 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                         {' '}
                         Please enter a valid Email.{' '}
                       </div>
->>>>>>> add forgot password in login
                     </div>
                   </div>
                 </div>
@@ -261,7 +222,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           <Row>
             <Col className="text-center my-3 ml-auto mr-auto">
               <div className="text-dark">
-                Don't have an account?{' '}
+                Don't have an account?
                 <a
                   href={Routes.REGISTER}
                   className={classnames(styles['create-one-button'])}
@@ -284,91 +245,87 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           <div className={classnames(styles.welcomeBack)}>
             <h1> Forgot your password? </h1>
           </div>
-<<<<<<< HEAD
-        </Row>
-        <Row className={classnames(styles.no_margin)}>
-          <Col className="text-center my-3 ml-auto mr-auto">
-            <div className="text-dark">
-              Don't have an account?{' '}
-              <a
-                href={Routes.REGISTER}
-                className={classnames(styles['create-one-button'])}
-                onClick={() => {
-                  updateErrorMessage('');
-                  this.props.handleSelectPanel(AuthType.REGISTER);
-                }}
-=======
           <Row>
-            <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
-              <form
-                className={classnames(styles.loginForm)}
-                noValidate
-                ref={this.forgotPasswordRef}
-                onSubmit={this.handleForgotPassword}
->>>>>>> add forgot password in login
-              >
-                <div className="form-row">
-                  <div className="col mb-4">
-                    <div className={classnames(styles['login-label'])}> Your Email: </div>
-                    <div className="input-group">
-                      <input
-                        type="email"
-                        className={classnames('form-control', styles['login-input'])}
-                        id="validationUsername"
-                        aria-describedby="inputGroupPrepend"
-                        required
-                        value={username}
-                        onChange={(e) =>
-                          this.setState({
-                            username: e.target.value,
-                          })
-                        }
-                      />
-                      <div className={classnames('invalid-feedback', styles['login-error'])}>
-                        {' '}
-                        Please enter a valid Email.{' '}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className={classnames('form-row', styles['error-row'])}>
-                  <div
-                    className={
-                      !errorMessage
-                        ? classnames(
-                            'col text-center mt -0 mb-2 ',
-                            styles['register-error-inactive'],
-                            registerStyles.errorMessage,
-                          )
-                        : classnames(
-                            'col text-center mt -0 mb-2 errorMessage',
-                            styles['register-error-active'],
-                            registerStyles.errorMessageLogin,
-                            styles['login-error-active'],
-                          )
-                    }
-                  >
-                    {errorMessage}
-                  </div>
-                </div>
-                <div className="form-row">
-                  <div className="col text-center">
-                    <button
-                      className={classnames('btn btn-info', styles.loginButton)}
-                      type="submit"
+            <Col className="text-center my-3 ml-auto mr-auto">
+              <div className="text-dark">
+                Don't have an account?
+                <a
+                  href={Routes.REGISTER}
+                  className={classnames(styles['create-one-button'])}
+                  onClick={() => {
+                    updateErrorMessage('');
+                    this.props.handleSelectPanel(AuthType.REGISTER);
+                  }}
+                >
+                  Create one
+                </a>
+                <Row>
+                  <div className={classnames('col-sm-10', styles.form)}>
+                    <form
+                      className={classnames(styles.loginForm)}
+                      noValidate
+                      ref={this.forgotPasswordRef}
+                      onSubmit={this.handleForgotPassword}
                     >
-                      Reset Password&nbsp;
-                    </button>
+                      <div className="form-row">
+                        <div className="col mb-4">
+                          <div className={classnames(styles['login-label'])}> Your Email: </div>
+                          <div className="input-group">
+                            <input
+                              type="email"
+                              className={classnames('form-control', styles['login-input'])}
+                              id="validationUsername"
+                              aria-describedby="inputGroupPrepend"
+                              required
+                              value={username}
+                              onChange={(e) =>
+                                this.setState({
+                                  username: e.target.value,
+                                })
+                              }
+                            />
+                            <div className={classnames('invalid-feedback', styles['login-error'])}>
+                              {' '}
+                              Please enter a valid Email.{' '}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className={classnames('form-row', styles['error-row'])}>
+                        <div
+                          className={
+                            !errorMessage
+                              ? classnames(
+                                  'col text-center mt -0 mb-2 ',
+                                  styles['register-error-inactive'],
+                                  registerStyles.errorMessage,
+                                )
+                              : classnames(
+                                  'col text-center mt -0 mb-2 errorMessage',
+                                  styles['register-error-active'],
+                                  registerStyles.errorMessageLogin,
+                                  styles['login-error-active'],
+                                )
+                          }
+                        >
+                          {errorMessage}
+                        </div>
+                      </div>
+                      <div className="form-row">
+                        <div className="col text-center">
+                          <button
+                            className={classnames('btn btn-info', styles.loginButton)}
+                            type="submit"
+                          >
+                            Reset Password&nbsp;
+                          </button>
+                        </div>
+                      </div>
+                    </form>
                   </div>
-                </div>
-              </form>
-            </div>
-<<<<<<< HEAD
-          </Col>
-        </Row>
-        <PopUpMenu />
-=======
+                </Row>
+              </div>
+            </Col>
           </Row>
           <Row>
             <Col className="text-center my-3 ml-auto mr-auto">
@@ -383,7 +340,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           <Row>
             <Col className="text-center my-3 ml-auto mr-auto">
               <div className="text-dark">
-                Don't have an account?{' '}
+                Don't have an account?
                 <a
                   href={Routes.REGISTER}
                   className={classnames(styles['create-one-button'])}
@@ -398,7 +355,6 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             </Col>
           </Row>
         </div>
->>>>>>> add forgot password in login
       </div>
     );
   }

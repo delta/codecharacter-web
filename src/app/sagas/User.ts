@@ -14,8 +14,6 @@ import * as UserFetch from 'app/apiFetch/User';
 import { checkAuthentication } from 'app/sagas/utils';
 import { avatarName } from 'app/types/Authentication/Register';
 import { resType } from 'app/types/sagas';
-import { push } from 'react-router-redux';
-// import { push } from 'react-router-redux';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
@@ -216,9 +214,13 @@ export function* changeUserPassword(action: ActionType<typeof UserActions.change
     const res = yield call(UserFetch.changeUserPassword, action.payload);
     yield put(UserActions.updateErrorMessage(res.error ? res.body.message : ''));
 
-    if (res.type !== resType.ERROR) {
-      yield put(push('/login'));
+    if (res.status === 200) {
+      window.location.assign('/login');
     }
+
+    // if (res.type !== resType.ERROR) {
+    //   window.location.assign("/login")
+    // }
   } catch (err) {
     console.error(err);
   }

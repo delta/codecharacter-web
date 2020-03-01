@@ -491,7 +491,6 @@
   position: relative;
   left: 1%;
 }
-<<<<<<< HEAD
 .google-btn {
   font-size: 18px;
   background-color: white;
@@ -568,7 +567,7 @@
   font-size: 1rem;
   background: #fff;
   padding: 0 10px;
-=======
+}
 
 .forgot-your-password {
   cursor: pointer;
@@ -576,5 +575,4 @@
 
 .forgot-your-password:hover {
   color: #4630eb !important;
->>>>>>> add forgot password in login
 }
