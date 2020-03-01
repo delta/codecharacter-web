@@ -3,7 +3,6 @@ import { API_BASE_URL } from '../../config/config';
 import { getReqHeaders, HeadReqType, headResponseWrapper } from './utils';
 
 export const saveCode = (code: string) => {
-  console.log('code .');
   return fetch(`${API_BASE_URL}code`, {
     body: code,
     credentials: 'include',
@@ -11,7 +10,7 @@ export const saveCode = (code: string) => {
     method: 'PUT',
   })
     .then((response) => {
-      return headResponseWrapper(response, HeadReqType.USERNAME);
+      return headResponseWrapper(response, HeadReqType.OTHERS);
     })
     .then((data) => {
       return data;
