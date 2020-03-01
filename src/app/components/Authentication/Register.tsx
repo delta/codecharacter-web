@@ -1,6 +1,7 @@
 import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
+import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
 import * as authStyles from 'app/styles/Authentication.module.css';
 import * as registerStyles from 'app/styles/Register.module.css';
@@ -546,6 +547,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
             </div>
           </Col>
         </Row>
+        <PopUpMenu />
       </div>
     );
   }
