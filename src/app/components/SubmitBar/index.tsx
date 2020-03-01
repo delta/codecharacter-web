@@ -1,7 +1,6 @@
 import {
   faChevronLeft,
   faChevronRight,
-  faCodeBranch,
   faCog,
   faLock,
   faPlay,
@@ -158,16 +157,7 @@ export class SubmitBar extends React.Component<
           </span>
           <span>SAVE</span>
         </button>
-        <button
-          id="commit_button"
-          className={classnames(styles.customBtn)}
-          onClick={() => this.toggleCommitMessageBox(!isCommitMessageBoxOpen)}
-        >
-          <span className={classnames(styles.icon)}>
-            <FontAwesomeIcon icon={faCodeBranch} />
-          </span>
-          <span>COMMIT</span>
-        </button>
+
         <button
           className={classnames(styles.customBtn)}
           title="Submit Code"
