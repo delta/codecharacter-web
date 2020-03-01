@@ -10,7 +10,7 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-  changePassword: (password: string, passwordResetToken: string) => void;
+  changePassword: (password: string, passwordResetToken: string, userId: number) => void;
 }
 
 export type changePasswordProps = StateProps & DispatchProps & RouteComponentProps;

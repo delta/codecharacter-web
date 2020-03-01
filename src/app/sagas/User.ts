@@ -15,6 +15,7 @@ import { checkAuthentication } from 'app/sagas/utils';
 import { avatarName } from 'app/types/Authentication/Register';
 import { resType } from 'app/types/sagas';
 import { push } from 'react-router-redux';
+// import { push } from 'react-router-redux';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
@@ -213,10 +214,11 @@ export function* editUserPassword(action: ActionType<typeof UserActions.editUser
 export function* changeUserPassword(action: ActionType<typeof UserActions.changeUserPassword>) {
   try {
     const res = yield call(UserFetch.changeUserPassword, action.payload);
+    yield put(UserActions.updateErrorMessage(res.error ? res.body.message : ''));
 
-    if (res.status === 200 || res.status === 201) {
+    if (res.type !== resType.ERROR) {
       yield put(push('/login'));
-    } else yield put(UserActions.updateErrorMessage(res.message));
+    }
   } catch (err) {
     console.error(err);
   }
@@ -239,6 +241,17 @@ export function* checkUsernameExists(action: ActionType<typeof UserActions.check
 
     // Call returns error if email already exists, else empty
     yield put(UserActions.updateErrorMessage(res.error));
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export function* forgotPassword(action: ActionType<typeof UserActions.forgotPassword>) {
+  try {
+    const res = yield call(UserFetch.userForgotPassword, action.payload.email);
+
+    // Call returns error if username already exists, else empty
+    yield put(UserActions.updateErrorMessage(res));
   } catch (err) {
     console.error(err);
   }
@@ -273,5 +286,6 @@ export function* userSagas() {
     takeEvery(UserActions.Type.CHECK_USERNAME_EXISTS, checkUsernameExists),
     takeEvery(UserActions.Type.GET_USER_DETAILS, getUserDetails),
     takeEvery(UserActions.Type.RESET_APP_STATE, resetAppState),
+    takeEvery(UserActions.Type.FORGOT_PASSWORD, forgotPassword),
   ]);
 }

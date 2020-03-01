@@ -19,11 +19,13 @@ export enum OAUTH_ROUTES {
 
 export class Login extends React.Component<LoginInterfaces.Props, LoginInterfaces.State> {
   private loginRef = React.createRef<HTMLFormElement>();
+  private forgotPasswordRef = React.createRef<HTMLFormElement>();
 
   constructor(props: LoginInterfaces.Props) {
     super(props);
 
     this.state = {
+      isForgotPassword: false,
       password: '',
       username: '',
     };
@@ -59,28 +61,30 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
   }
 
   public render() {
-    const { username, password } = this.state;
+    const { isForgotPassword, username, password } = this.state;
     const { errorMessage, updateErrorMessage, isLoginLoading, isLoggedIn } = this.props;
     if (isLoggedIn) {
       return <Redirect to={Routes.ROOT} />;
     }
-
-    return (
-      <div className={classnames(styles.loginRoot)}>
-        <div className={classnames(styles.welcomeBack)}>
-          <h1> Welcome! </h1>
-          <p> Log in to access your dashboard and profile </p>
-          <div className={classnames('text-center text-dark mb-2', styles['pragyan-login'])}>
-            You can use your{' '}
-            <a
-              target="blank"
-              href="https://pragyan.org"
-              className={classnames(styles['create-one-button'])}
-            >
-              Pragyan
-            </a>{' '}
-            account credentials to login.
+    if (!isForgotPassword) {
+      return (
+        <div className={classnames(styles.loginRoot)}>
+          <div className={classnames(styles.welcomeBack)}>
+            <h1> Welcome! </h1>
+            <p> Log in to access your dashboard and profile </p>
+            <div className={classnames('text-center text-dark mb-2', styles['pragyan-login'])}>
+              You can use your{' '}
+              <a
+                target="blank"
+                href="https://pragyan.org"
+                className={classnames(styles['create-one-button'])}
+              >
+                Pragyan
+              </a>{' '}
+              account credentials to login.
+            </div>
           </div>
+<<<<<<< HEAD
         </div>
         <div className={classnames('container px-0 justify-content-center', styles.loginForm)}>
           <Row
@@ -151,64 +155,136 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                     <div className={classnames('invalid-feedback', styles['login-error'])}>
                       {' '}
                       Please enter a valid Email.{' '}
+=======
+
+          <Row>
+            <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
+              <form
+                className={classnames(styles.loginForm)}
+                noValidate
+                ref={this.loginRef}
+                onSubmit={this.handleLogin}
+              >
+                <div className="form-row">
+                  <div className="col mb-4">
+                    <div className={classnames(styles['login-label'])}> Email </div>
+                    <div className="input-group">
+                      <input
+                        type="email"
+                        className={classnames('form-control', styles['login-input'])}
+                        id="validationUsername"
+                        aria-describedby="inputGroupPrepend"
+                        required
+                        value={username}
+                        onChange={(e) =>
+                          this.setState({
+                            username: e.target.value,
+                          })
+                        }
+                      />
+                      <div className={classnames('invalid-feedback', styles['login-error'])}>
+                        {' '}
+                        Please enter a valid Email.{' '}
+                      </div>
+>>>>>>> add forgot password in login
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="form-row">
-                <div className="col mb-1">
-                  <div className={classnames(styles['login-label'])}> Password </div>
-                  <div className="input-group">
-                    <input
-                      type="password"
-                      className={classnames('form-control', styles['login-input'])}
-                      id="validationPassword"
-                      aria-describedby="inputGroupPrepend"
-                      minLength={5}
-                      value={password}
-                      onChange={(e) =>
-                        this.setState({
-                          password: e.target.value,
-                        })
-                      }
-                      required
-                    />
-                    <div className={classnames('invalid-feedback', styles['login-error'])}>
-                      Please enter the correct password.
+                <div className="form-row">
+                  <div className="col mb-1">
+                    <div className={classnames(styles['login-label'])}> Password </div>
+                    <div className="input-group">
+                      <input
+                        type="password"
+                        className={classnames('form-control', styles['login-input'])}
+                        id="validationPassword"
+                        aria-describedby="inputGroupPrepend"
+                        minLength={5}
+                        value={password}
+                        onChange={(e) =>
+                          this.setState({
+                            password: e.target.value,
+                          })
+                        }
+                        required
+                      />
+                      <div className={classnames('invalid-feedback', styles['login-error'])}>
+                        Please enter the correct password.
+                      </div>
                     </div>
                   </div>
                 </div>
+                <div className={classnames('form-row', styles['error-row'])}>
+                  <div
+                    className={
+                      !errorMessage
+                        ? classnames(
+                            'col text-center mt -0 mb-2 ',
+                            styles['register-error-inactive'],
+                            registerStyles.errorMessage,
+                          )
+                        : classnames(
+                            'col text-center mt -0 mb-2 errorMessage',
+                            styles['register-error-active'],
+                            registerStyles.errorMessageLogin,
+                            styles['login-error-active'],
+                          )
+                    }
+                  >
+                    {errorMessage}
+                  </div>
+                </div>
+                <div className="form-row">
+                  <div className="col text-center">
+                    <button
+                      className={classnames('btn btn-info', styles.loginButton)}
+                      type="submit"
+                    >
+                      Login &nbsp;
+                      {isLoginLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : null}
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </Row>
+          <Row>
+            <Col className="text-center my-3 ml-auto mr-auto">
+              <div
+                className={classnames('text-dark', styles['forgot-your-password'])}
+                onClick={() => this.setState({ isForgotPassword: true })}
+              >
+                Forgot Your Password?{' '}
               </div>
-              <div className={classnames('form-row', styles['error-row'])}>
-                <div
-                  className={
-                    !errorMessage
-                      ? classnames(
-                          'col text-center mt -0 mb-2 ',
-                          styles['register-error-inactive'],
-                          registerStyles.errorMessage,
-                        )
-                      : classnames(
-                          'col text-center mt -0 mb-2 errorMessage',
-                          styles['register-error-active'],
-                          registerStyles.errorMessageLogin,
-                          styles['login-error-active'],
-                        )
-                  }
+            </Col>
+          </Row>
+          <Row>
+            <Col className="text-center my-3 ml-auto mr-auto">
+              <div className="text-dark">
+                Don't have an account?{' '}
+                <a
+                  href={Routes.REGISTER}
+                  className={classnames(styles['create-one-button'])}
+                  onClick={() => {
+                    updateErrorMessage('');
+                    this.props.handleSelectPanel(AuthType.REGISTER);
+                  }}
                 >
-                  {errorMessage}
-                </div>
+                  Create one
+                </a>
               </div>
-              <div className="form-row">
-                <div className="col text-center">
-                  <button className={classnames('btn btn-info', styles.loginButton)} type="submit">
-                    Login &nbsp;
-                    {isLoginLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : null}
-                  </button>
-                </div>
-              </div>
-            </form>
+            </Col>
+          </Row>
+        </div>
+      );
+    }
+    return (
+      <div>
+        <div className={classnames(styles.loginRoot)}>
+          <div className={classnames(styles.welcomeBack)}>
+            <h1> Forgot your password? </h1>
           </div>
+<<<<<<< HEAD
         </Row>
         <Row className={classnames(styles.no_margin)}>
           <Col className="text-center my-3 ml-auto mr-auto">
@@ -221,16 +297,125 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                   updateErrorMessage('');
                   this.props.handleSelectPanel(AuthType.REGISTER);
                 }}
+=======
+          <Row>
+            <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
+              <form
+                className={classnames(styles.loginForm)}
+                noValidate
+                ref={this.forgotPasswordRef}
+                onSubmit={this.handleForgotPassword}
+>>>>>>> add forgot password in login
               >
-                Create one
-              </a>
+                <div className="form-row">
+                  <div className="col mb-4">
+                    <div className={classnames(styles['login-label'])}> Your Email: </div>
+                    <div className="input-group">
+                      <input
+                        type="email"
+                        className={classnames('form-control', styles['login-input'])}
+                        id="validationUsername"
+                        aria-describedby="inputGroupPrepend"
+                        required
+                        value={username}
+                        onChange={(e) =>
+                          this.setState({
+                            username: e.target.value,
+                          })
+                        }
+                      />
+                      <div className={classnames('invalid-feedback', styles['login-error'])}>
+                        {' '}
+                        Please enter a valid Email.{' '}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={classnames('form-row', styles['error-row'])}>
+                  <div
+                    className={
+                      !errorMessage
+                        ? classnames(
+                            'col text-center mt -0 mb-2 ',
+                            styles['register-error-inactive'],
+                            registerStyles.errorMessage,
+                          )
+                        : classnames(
+                            'col text-center mt -0 mb-2 errorMessage',
+                            styles['register-error-active'],
+                            registerStyles.errorMessageLogin,
+                            styles['login-error-active'],
+                          )
+                    }
+                  >
+                    {errorMessage}
+                  </div>
+                </div>
+                <div className="form-row">
+                  <div className="col text-center">
+                    <button
+                      className={classnames('btn btn-info', styles.loginButton)}
+                      type="submit"
+                    >
+                      Reset Password&nbsp;
+                    </button>
+                  </div>
+                </div>
+              </form>
             </div>
+<<<<<<< HEAD
           </Col>
         </Row>
         <PopUpMenu />
+=======
+          </Row>
+          <Row>
+            <Col className="text-center my-3 ml-auto mr-auto">
+              <div
+                className={classnames('text-dark', styles['forgot-your-password'])}
+                onClick={() => this.setState({ isForgotPassword: false })}
+              >
+                Back{' '}
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col className="text-center my-3 ml-auto mr-auto">
+              <div className="text-dark">
+                Don't have an account?{' '}
+                <a
+                  href={Routes.REGISTER}
+                  className={classnames(styles['create-one-button'])}
+                  onClick={() => {
+                    updateErrorMessage('');
+                    this.props.handleSelectPanel(AuthType.REGISTER);
+                  }}
+                >
+                  Create one
+                </a>
+              </div>
+            </Col>
+          </Row>
+        </div>
+>>>>>>> add forgot password in login
       </div>
     );
   }
+
+  private handleForgotPassword = (event: React.FormEvent<HTMLFormElement>) => {
+    const { username } = this.state;
+    const { forgotPassword } = this.props;
+    const form = this.forgotPasswordRef.current;
+
+    event.preventDefault();
+    if (form) {
+      if (form.checkValidity()) {
+        forgotPassword(username);
+      }
+      form.classList.add('was-validated');
+    }
+  };
 
   private handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     const { login } = this.props;

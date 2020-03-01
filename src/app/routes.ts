@@ -7,5 +7,5 @@ export enum Routes {
   GITHUB_OAUTH = '/login/github',
   GOOGLE_OAUTH = '/login/google',
   USER_ACTIVATION = '/user-activate',
-  CHANGE_PASSWORD = '/forgot-password',
+  CHANGE_PASSWORD = '/reset-password',
 }

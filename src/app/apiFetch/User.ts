@@ -135,19 +135,32 @@ export const changeUserPassword = (body: UserInterfaces.ChangeUserPassword) => {
   return fetch(`${API_BASE_URL}user/password`, {
     body: JSON.stringify(body),
     headers: {
-      Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     method: 'POST',
   })
     .then((response) => {
-      console.log('api fetch response');
-      console.log(response);
-      return response.json();
+      return headResponseWrapper(response, HeadReqType.USERNAME);
     })
     .then((data) => {
-      console.log('api fetch data');
-      console.log(data);
+      return data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+export const userForgotPassword = (email: string) => {
+  return fetch(`${API_BASE_URL}user/forgot-password`, {
+    body: email,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  })
+    .then((response) => {
+      return response.text();
+    })
+    .then((data) => {
       return data;
     })
     .catch((error) => {
