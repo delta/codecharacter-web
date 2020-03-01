@@ -18,7 +18,7 @@ export const getUnreadNotifications = () => {
 };
 
 export const deleteGlobalNotifications = (notificationId: number) => {
-  return fetch(`${API_BASE_URL}notifications/${notificationId}`, {
+  return fetch(`${API_BASE_URL}notifications/${notificationId}/`, {
     credentials: 'include',
     headers: {
       Accept: '*',
@@ -35,6 +35,22 @@ export const deleteGlobalNotifications = (notificationId: number) => {
 
 export const getAllGlobalNotifications = () => {
   return fetch(`${API_BASE_URL}notifications`, {
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'GET',
+  })
+    .then((response) => jsonResponseWrapper(response))
+    .then((data) => data)
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const getAllGlobalAnnouncements = () => {
+  return fetch(`${API_BASE_URL}announcements/`, {
     credentials: 'include',
     headers: {
       Accept: 'application/json',

@@ -27,6 +27,7 @@ const pnotifyOptions = (title: string) => {
 };
 
 const notificationInitialState: NotificationInterfaces.NotificationStoreState = {
+  announcements: [],
   loading: false,
   notifications: [],
 };
@@ -79,6 +80,13 @@ export const notificationReducer = (
         notifications: action.payload.notifications,
       };
     }
+    case NotificationActions.Type.UPDATE_GLOBAL_ANNOUNCEMENTS: {
+      return {
+        ...state,
+        announcements: action.payload.announcements,
+      };
+    }
+
     case NotificationActions.Type.RESET_NOTIFICATION_STATE: {
       return {
         ...notificationInitialState,

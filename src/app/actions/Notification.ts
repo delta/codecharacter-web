@@ -1,4 +1,9 @@
-import { Notification, NotificationTabType, NotificationType } from 'app/types/Notification';
+import {
+  Announcement,
+  Notification,
+  NotificationTabType,
+  NotificationType,
+} from 'app/types/Notification';
 import { action } from 'typesafe-actions';
 
 export namespace NotificationActions {
@@ -13,7 +18,9 @@ export namespace NotificationActions {
     RESET_NOTIFICATION_STATE = 'RESET_NOTIFICATION_STATE',
     GET_UNREAD_GLOBAL_NOTIFICATIONS = 'GET_GLOBAL_NOTIFICATIONS',
     GET_ALL_GLOBAL_NOTIFICATIONS = 'GET_ALL_GLOBAL_NOTIFICATIONS',
+    GET_ALL_GLOBAL_ANNOUNCEMENTS = 'GET_ALL_GLOBAL_ANNOUNCEMENTS',
     UPDATE_GLOBAL_NOTIFICATIONS = 'UPDATE_GLOBAL_NOTIFICATIONS',
+    UPDATE_GLOBAL_ANNOUNCEMENTS = 'UPDATE_GLOBAL_ANNOUNCEMENTS',
   }
 
   export const info = (message: string) =>
@@ -54,10 +61,14 @@ export namespace NotificationActions {
 
   export const getAllGlobalNotifications = () => action(Type.GET_ALL_GLOBAL_NOTIFICATIONS);
 
+  export const getAllGlobalAnnouncements = () => action(Type.GET_ALL_GLOBAL_ANNOUNCEMENTS);
+
   export const updateGlobalNotifications = (notifications: Notification[]) =>
     action(Type.UPDATE_GLOBAL_NOTIFICATIONS, { notifications });
 
   export const deleteNotificationFromBackend = (id: number) => {
     return action(Type.DELETE_NOTIFICATION_FROM_BACKEND, { id });
   };
+  export const updateGlobalAnnouncements = (announcements: Announcement[]) =>
+    action(Type.UPDATE_GLOBAL_ANNOUNCEMENTS, { announcements });
 }

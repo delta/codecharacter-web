@@ -127,6 +127,31 @@
   width: 100%;
 }
 
+.announcement-div {
+  min-height: 70px;
+  color: #104300;
+  background: white;
+  border-radius: 2px;
+  border: 3px solid #31d8c2;
+  display: flex;
+  margin-top: 5px;
+}
+
+.announcement-content {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 5px;
+}
+
+.tab-active {
+  background-color: gray;
+}
+
+.tab-active:hover,
+.tab-inactive:hover {
+  cursor: pointer;
+}
+
 .sideContainer {
   width: 55px;
   border-top-right-radius: 50%;

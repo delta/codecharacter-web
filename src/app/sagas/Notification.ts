@@ -43,6 +43,18 @@ export function* getAllGlobalNotifications(
   }
 }
 
+export function* getAllGlobalAnnouncements(
+  action: ActionType<typeof NotificationActions.getAllGlobalAnnouncements>,
+) {
+  try {
+    const res = yield call(NotificationFetch.getAllGlobalAnnouncements);
+    const announcements = res.body;
+    yield put(NotificationActions.updateGlobalAnnouncements(announcements));
+  } catch (err) {
+    throw err;
+  }
+}
+
 export function* deleteNotificationFromBackend(
   action: ActionType<typeof NotificationActions.deleteNotificationFromBackend>,
 ) {
@@ -65,5 +77,6 @@ export function* notificationSagas() {
       NotificationActions.Type.DELETE_NOTIFICATION_FROM_BACKEND,
       deleteNotificationFromBackend,
     ),
+    takeEvery(NotificationActions.Type.GET_ALL_GLOBAL_ANNOUNCEMENTS, getAllGlobalAnnouncements),
   ]);
 }

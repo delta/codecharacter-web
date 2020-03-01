@@ -20,11 +20,13 @@ export class Notification extends React.Component<
   }
   public componentDidMount() {
     this.props.getAllGlobalNotifications();
+    this.props.getAllGlobalAnnouncements();
   }
 
   public render() {
     const { activeNotificationTab } = this.state;
-    const { notifications, deleteNotificationType } = this.props;
+    const { announcements, notifications, deleteNotificationType } = this.props;
+    // let r :Array<NotificationInterfaces.Notification>=[];
     const activeNotifications = notifications.filter((notification) => {
       switch (activeNotificationTab) {
         case NotificationInterfaces.NotificationTabType.ALL: {
@@ -48,13 +50,21 @@ export class Notification extends React.Component<
       <Grid fluid={true} className={classnames(styles.Notification)}>
         <Row className="justify-content-between py-2 px-3">
           <Col
-            className="text-light font-weight-bold my-auto"
+            className={
+              this.state.tabType === NotificationInterfaces.TabType.NOTIFICATIONS
+                ? classnames('text-light font-weight-bold my-auto', styles['tab-active'])
+                : classnames('justify-content-between py-2 px-3', styles['tab-inactive'])
+            }
             onClick={() => this.setState({ tabType: NotificationInterfaces.TabType.NOTIFICATIONS })}
           >
             NOTIFICATIONS
           </Col>
           <Col
-            className="text-light font-weight-bold my-auto"
+            className={
+              this.state.tabType === NotificationInterfaces.TabType.ANNOUNCEMENTS
+                ? classnames('text-light font-weight-bold my-auto', styles['tab-active'])
+                : classnames('justify-content-between py-2 px-3', styles['tab-inactive'])
+            }
             onClick={() => this.setState({ tabType: NotificationInterfaces.TabType.ANNOUNCEMENTS })}
           >
             ANNOUNCEMENTS
@@ -145,7 +155,15 @@ export class Notification extends React.Component<
             </Row>
           </>
         ) : (
-          <></>
+          <>
+            {announcements.map(({ id, message }) => (
+              <div key={id} className={styles['announcement-div']}>
+                <div className={styles['announcement-content']}>
+                  {message.replace(/['"]+/g, '')}
+                </div>
+              </div>
+            ))}
+          </>
         )}
       </Grid>
     );

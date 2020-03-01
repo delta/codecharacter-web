@@ -9,6 +9,7 @@ const actions = {
   info: NotificationActions.info,
   resetNotificationState: NotificationActions.resetNotificationState,
   success: NotificationActions.success,
+  updateGlobalAnnouncements: NotificationActions.updateGlobalAnnouncements,
   updateGlobalNotifications: NotificationActions.updateGlobalNotifications,
 };
 
@@ -41,7 +42,15 @@ export interface Notification {
   title: string;
 }
 
+export interface Announcement {
+  adminUserId: number;
+  date: Date | string;
+  id: number;
+  message: string;
+}
+
 export interface NotificationStoreState {
+  announcements: Announcement[];
   notifications: Notification[];
   loading: boolean;
 }
@@ -54,11 +63,13 @@ export interface State {
 export interface StateProps {
   loading: boolean;
   notifications: Notification[];
+  announcements: Announcement[];
 }
 
 export interface DispatchProps {
   deleteNotificationType: (type: NotificationTabType) => void;
   getAllGlobalNotifications: () => void;
+  getAllGlobalAnnouncements: () => void;
 }
 
 export type Props = StateProps & DispatchProps;
