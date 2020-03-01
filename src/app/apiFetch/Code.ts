@@ -1,20 +1,17 @@
 /* tslint:disable:no-console*/
 import { API_BASE_URL } from '../../config/config';
+import { getReqHeaders, HeadReqType, headResponseWrapper } from './utils';
 
 export const saveCode = (code: string) => {
-  return fetch(`${API_BASE_URL}code/save`, {
-    body: JSON.stringify({
-      code,
-    }),
+  console.log('code .');
+  return fetch(`${API_BASE_URL}code`, {
+    body: code,
     credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    method: 'POST',
+    headers: getReqHeaders(),
+    method: 'PUT',
   })
     .then((response) => {
-      return response.json();
+      return headResponseWrapper(response, HeadReqType.USERNAME);
     })
     .then((data) => {
       return data;
