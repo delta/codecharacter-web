@@ -140,7 +140,7 @@ export const changeUserPassword = (body: UserInterfaces.ChangeUserPassword) => {
     method: 'POST',
   })
     .then((response) => {
-      return headResponseWrapper(response, HeadReqType.USERNAME);
+      return response;
     })
     .then((data) => {
       return data;
