@@ -15,6 +15,7 @@ const mapStateToProps = (rootState: RootState) => {
 const loginContainer = connect<LoginInterfaces.StateProps, LoginInterfaces.DispatchProps, {}>(
   mapStateToProps,
   {
+    forgotPassword: UserActions.forgotPassword,
     login: UserActions.login,
     updateErrorMessage: UserActions.updateErrorMessage,
   },

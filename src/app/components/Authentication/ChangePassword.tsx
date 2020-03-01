@@ -7,6 +7,7 @@ import * as React from 'react';
 export class ChangePassword extends React.Component<changePasswordProps, ChangePasswordState> {
   private credentialsFormRef = React.createRef<HTMLFormElement>();
   private passwordResetToken = '';
+  private userId = 0;
   constructor(props: changePasswordProps) {
     super(props);
     this.state = {
@@ -19,7 +20,9 @@ export class ChangePassword extends React.Component<changePasswordProps, ChangeP
   public componentDidMount() {
     // get string from url
     const search = this.props.location.search;
-    this.passwordResetToken = search.split('=')[1];
+    const urlParams = search.split('&');
+    this.passwordResetToken = urlParams[0].split('=')[1];
+    this.userId = parseInt(urlParams[1].split('=')[1], 0);
   }
 
   public render() {
@@ -83,7 +86,7 @@ export class ChangePassword extends React.Component<changePasswordProps, ChangeP
 
                 <div
                   className={
-                    this.state.passwordError !== ''
+                    this.state.passwordError !== '' || this.props.errorMessage !== ''
                       ? classnames('form-row', authStyles['register-error-active'])
                       : classnames('form-row', authStyles['register-error-inactive'])
                   }
@@ -130,7 +133,7 @@ export class ChangePassword extends React.Component<changePasswordProps, ChangeP
             ...this.state,
             passwordError: '',
           });
-          this.props.changePassword(this.state.password, this.passwordResetToken);
+          this.props.changePassword(this.state.password, this.passwordResetToken, this.userId);
         }
       }
     } else {
