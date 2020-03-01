@@ -1,4 +1,3 @@
-import PopUpMenu from 'app/components/PopUpMenu';
 import Login from 'app/containers/Authentication/Login';
 import Register from 'app/containers/Authentication/Register';
 import Dashboard from 'app/containers/Dashboard';
@@ -25,7 +24,6 @@ export const App = hot(module)(() => (
       <Route exact path={Routes.LEADERBOARD} component={Leaderboard} />
       <Route exact path={Routes.USER_PROFILE_MODEL} component={UserProfileModal} />
     </Switch>
-    <PopUpMenu />
     <Sugar background="#484848" color="white" />
   </BrowserRouter>
 ));
