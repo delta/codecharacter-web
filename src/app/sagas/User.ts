@@ -25,9 +25,6 @@ export function* activateUser(action: ActionType<typeof UserActions.activateUser
       userId: action.payload.userId,
     });
 
-    console.log('saga res');
-    console.log(res);
-
     yield put(UserActions.updateErrorMessage(res.error ? res.body.message : ''));
 
     if (res.type !== resType.ERROR) {
