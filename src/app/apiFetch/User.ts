@@ -88,8 +88,12 @@ export const userEditProfile = (body: UserInterfaces.EditUserDetails) => {
 };
 
 export const userEditPassword = (body: UserInterfaces.EditUserPassword) => {
-  return fetch(`${API_BASE_URL}user/updatePassword`, {
-    body: JSON.stringify(body),
+  const requestPayLoad = {
+    newPassword: body.password,
+    oldPassword: body.oldPassword,
+  };
+  return fetch(`${API_BASE_URL}user/password`, {
+    body: JSON.stringify(requestPayLoad),
     credentials: 'include',
     headers: {
       Accept: 'application/json',
@@ -98,7 +102,7 @@ export const userEditPassword = (body: UserInterfaces.EditUserPassword) => {
     method: 'PATCH',
   })
     .then((response) => {
-      return response.json();
+      return headResponseWrapper(response, HeadReqType.PASSWORD);
     })
     .then((data) => {
       return data;
