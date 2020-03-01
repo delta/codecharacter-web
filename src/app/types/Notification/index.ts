@@ -25,6 +25,11 @@ export enum NotificationTabType {
   ERROR = 'ERROR',
 }
 
+export enum TabType {
+  NOTIFICATIONS = 0,
+  ANNOUNCEMENTS = 1,
+}
+
 export interface Notification {
   id: number;
   isRead: boolean;
@@ -43,6 +48,7 @@ export interface NotificationStoreState {
 
 export interface State {
   activeNotificationTab: NotificationTabType;
+  tabType: TabType;
 }
 
 export interface StateProps {

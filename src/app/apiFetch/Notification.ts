@@ -21,7 +21,7 @@ export const deleteGlobalNotifications = (notificationId: number) => {
   return fetch(`${API_BASE_URL}notifications/${notificationId}`, {
     credentials: 'include',
     headers: {
-      Accept: 'application/json',
+      Accept: '*',
       'Content-Type': 'application/json',
     },
     method: 'DELETE',

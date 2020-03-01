@@ -15,6 +15,7 @@ export class Notification extends React.Component<
     super(props);
     this.state = {
       activeNotificationTab: NotificationInterfaces.NotificationTabType.ALL,
+      tabType: NotificationInterfaces.TabType.NOTIFICATIONS,
     };
   }
   public componentDidMount() {
@@ -46,7 +47,18 @@ export class Notification extends React.Component<
     return (
       <Grid fluid={true} className={classnames(styles.Notification)}>
         <Row className="justify-content-between py-2 px-3">
-          <Col className="text-light font-weight-bold my-auto">NOTIFICATIONS</Col>
+          <Col
+            className="text-light font-weight-bold my-auto"
+            onClick={() => this.setState({ tabType: NotificationInterfaces.TabType.NOTIFICATIONS })}
+          >
+            NOTIFICATIONS
+          </Col>
+          <Col
+            className="text-light font-weight-bold my-auto"
+            onClick={() => this.setState({ tabType: NotificationInterfaces.TabType.ANNOUNCEMENTS })}
+          >
+            ANNOUNCEMENTS
+          </Col>
           <Col className="text-light font-weight-bold my-auto">
             <button
               className={classnames(styles.customBtn)}
@@ -59,76 +71,82 @@ export class Notification extends React.Component<
             </button>
           </Col>
         </Row>
-        <Row>
-          <div className="col mb-2">
-            <button
-              className={classnames(styles.customBtn, {
-                [`${styles.buttonActive}`]:
-                  activeNotificationTab === NotificationInterfaces.NotificationTabType.ALL,
-              })}
-              onClick={() =>
-                this.toggleNotificationTab(NotificationInterfaces.NotificationTabType.ALL)
-              }
-            >
-              {' '}
-              All{' '}
-            </button>
-          </div>
-          <div className="col">
-            <button
-              className={classnames(styles.customBtn, {
-                [`${styles.buttonActive}`]:
-                  activeNotificationTab === NotificationInterfaces.NotificationTabType.INFO,
-              })}
-              onClick={() =>
-                this.toggleNotificationTab(NotificationInterfaces.NotificationTabType.INFO)
-              }
-            >
-              {' '}
-              Info
-            </button>
-          </div>
-          <div className="col">
-            <button
-              className={classnames(styles.customBtn, {
-                [`${styles.buttonActive}`]:
-                  activeNotificationTab === NotificationInterfaces.NotificationTabType.SUCCESS,
-              })}
-              onClick={() =>
-                this.toggleNotificationTab(NotificationInterfaces.NotificationTabType.SUCCESS)
-              }
-            >
-              {' '}
-              Success{' '}
-            </button>
-          </div>
-          <div className="col">
-            <button
-              className={classnames(styles.customBtn, {
-                [`${styles.buttonActive}`]:
-                  activeNotificationTab === NotificationInterfaces.NotificationTabType.ERROR,
-              })}
-              onClick={() =>
-                this.toggleNotificationTab(NotificationInterfaces.NotificationTabType.ERROR)
-              }
-            >
-              {' '}
-              Error{' '}
-            </button>
-          </div>
-        </Row>
-        <Row className={classnames('mb-2', styles.notificationWrap)}>
-          {activeNotifications.map(({ id, title, content, type, createdAt }) => (
-            <NotificationElement
-              createdAt={createdAt}
-              key={id}
-              id={id}
-              title={title}
-              content={content}
-              type={type}
-            />
-          ))}
-        </Row>
+        {this.state.tabType === NotificationInterfaces.TabType.NOTIFICATIONS ? (
+          <>
+            <Row>
+              <div className="col mb-2">
+                <button
+                  className={classnames(styles.customBtn, {
+                    [`${styles.buttonActive}`]:
+                      activeNotificationTab === NotificationInterfaces.NotificationTabType.ALL,
+                  })}
+                  onClick={() =>
+                    this.toggleNotificationTab(NotificationInterfaces.NotificationTabType.ALL)
+                  }
+                >
+                  {' '}
+                  All{' '}
+                </button>
+              </div>
+              <div className="col">
+                <button
+                  className={classnames(styles.customBtn, {
+                    [`${styles.buttonActive}`]:
+                      activeNotificationTab === NotificationInterfaces.NotificationTabType.INFO,
+                  })}
+                  onClick={() =>
+                    this.toggleNotificationTab(NotificationInterfaces.NotificationTabType.INFO)
+                  }
+                >
+                  {' '}
+                  Info
+                </button>
+              </div>
+              <div className="col">
+                <button
+                  className={classnames(styles.customBtn, {
+                    [`${styles.buttonActive}`]:
+                      activeNotificationTab === NotificationInterfaces.NotificationTabType.SUCCESS,
+                  })}
+                  onClick={() =>
+                    this.toggleNotificationTab(NotificationInterfaces.NotificationTabType.SUCCESS)
+                  }
+                >
+                  {' '}
+                  Success{' '}
+                </button>
+              </div>
+              <div className="col">
+                <button
+                  className={classnames(styles.customBtn, {
+                    [`${styles.buttonActive}`]:
+                      activeNotificationTab === NotificationInterfaces.NotificationTabType.ERROR,
+                  })}
+                  onClick={() =>
+                    this.toggleNotificationTab(NotificationInterfaces.NotificationTabType.ERROR)
+                  }
+                >
+                  {' '}
+                  Error{' '}
+                </button>
+              </div>
+            </Row>
+            <Row className={classnames('mb-2', styles.notificationWrap)}>
+              {activeNotifications.map(({ id, title, content, type, createdAt }) => (
+                <NotificationElement
+                  createdAt={createdAt}
+                  key={id}
+                  id={id}
+                  title={title}
+                  content={content}
+                  type={type}
+                />
+              ))}
+            </Row>
+          </>
+        ) : (
+          <></>
+        )}
       </Grid>
     );
   }
