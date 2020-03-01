@@ -7,6 +7,7 @@ export enum HeadReqType {
   USERNAME = 'USERNAME',
   PROFILE = 'PROFILE',
   PASSWORD = 'PASSWORD',
+  OTHERS = 'OTHERS',
 }
 
 export function jsonResponseWrapper(response: any) {
@@ -54,10 +55,41 @@ export function headResponseWrapper(response: any, headReqType: HeadReqType) {
             : 'Please try again with correct password';
         type = resType.ERROR;
         break;
+      case 500:
+      case 403:
+        error = headReqType === HeadReqType.OTHERS ? '' : '';
+        type = resType.ERROR;
     }
     resolve({
       error,
       type,
     });
   });
+}
+
+export function getReqHeaders() {
+  const getCookie = (name: string) => {
+    const cookies = Object.assign(
+      {},
+      ...document.cookie.split('; ').map((cookie) => {
+        const key = cookie.split('=')[0];
+        const value = cookie.split('=')[1];
+
+        return { [key]: value };
+      }),
+    );
+    return cookies[name];
+  };
+  const headersConfig = new Headers();
+  headersConfig.append('Content-Type', 'application/json');
+  headersConfig.append(SET_COOKIE.XSRF, getCookie(GET_COOKIE.XSRF));
+  return headersConfig;
+}
+
+export enum SET_COOKIE {
+  XSRF = 'X-XSRF-TOKEN',
+}
+
+export enum GET_COOKIE {
+  XSRF = 'XSRF-TOKEN',
 }
