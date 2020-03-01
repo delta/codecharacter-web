@@ -1,6 +1,7 @@
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { API_BASE_URL } from 'app/../config/config';
+import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
 import * as registerStyles from 'app/styles/Register.module.css';
@@ -226,6 +227,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             </div>
           </Col>
         </Row>
+        <PopUpMenu />
       </div>
     );
   }

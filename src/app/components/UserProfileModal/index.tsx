@@ -1,3 +1,4 @@
+import PopUpMenu from 'app/components/PopUpMenu';
 import { EditPassword } from 'app/components/UserProfileModal/EditPassword';
 import { EditProfile } from 'app/components/UserProfileModal/EditProfile';
 import * as styles from 'app/styles/UserProfileModal.module.css';
@@ -103,6 +104,7 @@ export class UserProfileModal extends React.Component<
             )}
           </Row>
         ) : null}
+        <PopUpMenu />
       </Grid>
     );
   }
