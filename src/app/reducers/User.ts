@@ -5,6 +5,7 @@ export enum ErrorMessage {
   FORBIDDEN = 'Forbidden',
   UNAUTHORISED = 'Unauthorised',
   INTERNAL_SERVER_ERROR = 'Internal Server Error',
+  METHOD_NOT_SUPPORTED = "Request method 'POST' not supported",
   NULL = '',
 }
 
@@ -77,6 +78,7 @@ export const userReducer = (
         case ErrorMessage.FORBIDDEN:
         case ErrorMessage.UNAUTHORISED:
         case ErrorMessage.INTERNAL_SERVER_ERROR:
+        case ErrorMessage.METHOD_NOT_SUPPORTED:
           errorMessage = ErrorMessage.NULL;
           break;
       }
