@@ -1,5 +1,6 @@
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { API_BASE_URL } from 'app/../config/config';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
 import * as registerStyles from 'app/styles/Register.module.css';
@@ -9,7 +10,11 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
-import { API_BASE_URL } from '../../../config/config';
+
+export enum OAUTH_ROUTES {
+  GOOGLE = 'login/google',
+  GITHUB = 'login/github',
+}
 
 export class Login extends React.Component<LoginInterfaces.Props, LoginInterfaces.State> {
   private loginRef = React.createRef<HTMLFormElement>();
@@ -79,7 +84,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
         <div className={classnames('container px-0 justify-content-center', styles.loginForm)}>
           <Row
             onClick={(e) => {
-              window.location.href = `${API_BASE_URL}login/google`;
+              window.location.href = `${API_BASE_URL}${OAUTH_ROUTES.GOOGLE}`;
             }}
             className={classnames(
               styles['google-btn'],
@@ -95,7 +100,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           </Row>
           <Row
             onClick={(e) => {
-              window.location.href = `${API_BASE_URL}login/github`;
+              window.location.href = `${API_BASE_URL}${OAUTH_ROUTES.GITHUB}`;
             }}
             className={classnames(
               'justify-content-center',
