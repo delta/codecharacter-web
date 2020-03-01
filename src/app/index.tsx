@@ -3,8 +3,8 @@ import Login from 'app/containers/Authentication/Login';
 import Register from 'app/containers/Authentication/Register';
 import Dashboard from 'app/containers/Dashboard';
 import Leaderboard from 'app/containers/Leaderboard';
+import ProfileUsersStats from 'app/containers/ProfileUsersStats';
 import UserProfileModal from 'app/containers/UserProfileModal';
-import profileUserContainer from 'app/containers/ProfileUsersStats'
 import { Routes } from 'app/routes';
 // @ts-ignore
 import { initializeRendererAssets } from 'codecharacter-renderer';
@@ -25,11 +25,8 @@ export const App = hot(module)(() => (
       <Route exact path={Routes.REGISTER} component={Register} />
       <Route exact path={Routes.LEADERBOARD} component={Leaderboard} />
       <Route exact path={Routes.USER_PROFILE_MODEL} component={UserProfileModal} />
-<<<<<<< HEAD
       <Route path={Routes.USER_ACTIVATION} component={ActivateUser} />
-=======
-      <Route exact path={Routes.PROFILE_USER_STATS} component={profileUserContainer} />
->>>>>>> Add route for /profile/:user and Add the required container
+      <Route exact path={Routes.PROFILE_USER_STATS} component={ProfileUsersStats} />
     </Switch>
     <Sugar background="#484848" color="white" />
   </BrowserRouter>

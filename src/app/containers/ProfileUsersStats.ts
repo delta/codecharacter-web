@@ -1,5 +1,5 @@
 import { ProfileUserActions } from 'app/actions';
-import { ProfileUserStats } from 'app/components/ProfileUserStats';
+import ProfileUserStats from 'app/components/ProfileUserStats';
 import { RootState } from 'app/reducers';
 import * as ProfileUserInterfaces from 'app/types/ProfileUser';
 import { connect } from 'react-redux';
