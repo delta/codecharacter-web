@@ -31,8 +31,9 @@ export class CodeStatus extends React.Component<
           this.setState({
             lastSaveMessage: `Saved ${days} days ago`,
           });
+          return;
         }
-        return;
+        
       }
       delta -= days * 86400;
 
