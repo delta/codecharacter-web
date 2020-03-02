@@ -56,7 +56,7 @@ export function* getLatestCode(action: ActionType<typeof CodeActions.getLatestCo
     if (res.type === resType.ERROR) {
       yield put(CodeActions.updateStatusMessage(res.error));
     } else {
-      yield put(CodeActions.updateCode(res.code));
+      yield put(CodeActions.updateCode(res.body));
     }
   } catch (err) {
     console.error(err);

@@ -1,9 +1,10 @@
 /* tslint:disable:no-console*/
 import {
-  getReqHeaders,
   HeadReqType,
   headResponseWrapper,
   jsonResponseWrapper,
+  setRequestHeaders,
+  textResponseWrapper,
 } from 'app/apiFetch/utils';
 import { API_BASE_URL } from '../../config/config';
 
@@ -11,7 +12,7 @@ export const saveCode = (code: string) => {
   return fetch(`${API_BASE_URL}code`, {
     body: code,
     credentials: 'include',
-    headers: getReqHeaders(),
+    headers: setRequestHeaders(),
     method: 'PUT',
   })
     .then((response) => {
@@ -29,7 +30,7 @@ export const commitCode = (commitMessage: string) => {
   return fetch(`${API_BASE_URL}code/commit`, {
     body: commitMessage,
     credentials: 'include',
-    headers: getReqHeaders(),
+    headers: setRequestHeaders(),
     method: 'POST',
   })
     .then((response) => {
@@ -46,14 +47,11 @@ export const commitCode = (commitMessage: string) => {
 export const getLatestCode = () => {
   return fetch(`${API_BASE_URL}code/latest`, {
     credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
+    headers: setRequestHeaders(),
     method: 'GET',
   })
     .then((response) => {
-      return response.json();
+      return textResponseWrapper(response);
     })
     .then((data) => {
       return data;
