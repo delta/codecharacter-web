@@ -1,5 +1,6 @@
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { API_BASE_URL } from 'app/../config/config';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
 import * as registerStyles from 'app/styles/Register.module.css';
@@ -9,7 +10,6 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
-import { API_BASE_URL } from '../../../config/config';
 
 export enum OAUTH_ROUTES {
   GOOGLE = 'login/google',
@@ -23,7 +23,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     super(props);
 
     this.state = {
-      isForgotPassword: false,
+      isForgotPasswordOpen: false,
       password: '',
       username: '',
     };
@@ -59,12 +59,12 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
   }
 
   public render() {
-    const { username, password, isForgotPassword } = this.state;
+    const { username, password, isForgotPasswordOpen } = this.state;
     const { errorMessage, updateErrorMessage, isLoginLoading, isLoggedIn } = this.props;
     if (isLoggedIn) {
       return <Redirect to={Routes.ROOT} />;
     }
-    if (!isForgotPassword) {
+    if (!isForgotPasswordOpen) {
       return (
         <div className={classnames(styles.loginRoot)}>
           <div className={classnames(styles.welcomeBack)}>
@@ -217,7 +217,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             <Col className="text-center my-3 ml-auto mr-auto">
               <div
                 className={classnames('text-dark', styles['forgot-your-password'])}
-                onClick={() => this.setState({ isForgotPassword: true })}
+                onClick={() => this.setState({ isForgotPasswordOpen: true })}
               >
                 Forgot Your Password?{' '}
               </div>
@@ -226,7 +226,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           <Row>
             <Col className="text-center my-3 ml-auto mr-auto">
               <div className="text-dark">
-                Don't have an account?
+                Don't have an account?{' '}
                 <a
                   href={Routes.REGISTER}
                   className={classnames(styles['create-one-button'])}
@@ -335,7 +335,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             <Col className="text-center my-3 ml-auto mr-auto">
               <div
                 className={classnames('text-dark', styles['forgot-your-password'])}
-                onClick={() => this.setState({ isForgotPassword: false })}
+                onClick={() => this.setState({ isForgotPasswordOpen: false })}
               >
                 Back{' '}
               </div>
@@ -344,7 +344,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           <Row>
             <Col className="text-center my-3 ml-auto mr-auto">
               <div className="text-dark">
-                Don't have an account?
+                Don't have an account?{' '}
                 <a
                   href={Routes.REGISTER}
                   className={classnames(styles['create-one-button'])}

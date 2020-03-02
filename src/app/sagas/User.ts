@@ -214,13 +214,9 @@ export function* changeUserPassword(action: ActionType<typeof UserActions.change
     const res = yield call(UserFetch.changeUserPassword, action.payload);
     yield put(UserActions.updateErrorMessage(res.error ? res.body.message : ''));
 
-    if (res.status === 200) {
+    if (res.type !== resType.ERROR) {
       window.location.assign('/login');
     }
-
-    // if (res.type !== resType.ERROR) {
-    //   window.location.assign("/login")
-    // }
   } catch (err) {
     console.error(err);
   }
@@ -253,7 +249,7 @@ export function* forgotPassword(action: ActionType<typeof UserActions.forgotPass
     const res = yield call(UserFetch.userForgotPassword, action.payload.email);
 
     // Call returns error if username already exists, else empty
-    yield put(UserActions.updateErrorMessage(res));
+    yield put(UserActions.updateErrorMessage(res.error));
   } catch (err) {
     console.error(err);
   }

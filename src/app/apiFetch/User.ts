@@ -140,7 +140,7 @@ export const changeUserPassword = (body: UserInterfaces.ChangeUserPassword) => {
     method: 'POST',
   })
     .then((response) => {
-      return response;
+      return jsonResponseWrapper(response);
     })
     .then((data) => {
       return data;
@@ -158,7 +158,7 @@ export const userForgotPassword = (email: string) => {
     method: 'POST',
   })
     .then((response) => {
-      return response.text();
+      return headResponseWrapper(response, HeadReqType.OTHERS);
     })
     .then((data) => {
       return data;
