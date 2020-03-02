@@ -158,7 +158,7 @@ export const userForgotPassword = (email: string) => {
     method: 'POST',
   })
     .then((response) => {
-      return headResponseWrapper(response, HeadReqType.OTHERS);
+      return response.text();
     })
     .then((data) => {
       return data;
