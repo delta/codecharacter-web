@@ -9,7 +9,7 @@ import { SOCKET_BASE_URL } from '../../config/config';
 
 export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props, {}> {
   private readonly socket: WebSocket;
-  private stompClient : Stomp;
+  private stompClient: Stomp;
 
   constructor(props: SocketHandlerInterfaces.Props) {
     super(props);
@@ -20,20 +20,29 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       // TODO: Change to user's actual id
       const userId = 4;
       // @ts-ignore
-      this.stompClient.subscribe(`/response/${userId}`, (message: { body: string; }) => {
+      this.stompClient.subscribe(`/response/${userId}`, (message: { body: string }) => {
         // tslint:disable-next-line:no-console
         console.log(`Received message: ${message.body}`);
       });
     });
   }
 
-  public initiateMatch(playerId1: number, playerId2: number, matchMode: string, mapId: number): void {
+  public initiateMatch(
+    playerId1: number,
+    playerId2: number,
+    matchMode: string,
+    mapId: number,
+  ): void {
     // @ts-ignore
-    this.stompClient.send('/request/match', {}, JSON.stringify({
-      'matchMode': matchMode,
-      'playerId1': playerId1,
-      'playerId2': playerId2
-    }));
+    this.stompClient.send(
+      '/request/match',
+      {},
+      JSON.stringify({
+        matchMode,
+        playerId1,
+        playerId2,
+      }),
+    );
   }
 
   public componentWillUnmount(): void {
