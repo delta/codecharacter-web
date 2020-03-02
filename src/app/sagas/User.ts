@@ -248,8 +248,20 @@ export function* forgotPassword(action: ActionType<typeof UserActions.forgotPass
   try {
     const res = yield call(UserFetch.userForgotPassword, action.payload.email);
 
+    if (res === 'Password Reset URL sent to the registered email!') {
+      yield put(
+        NotificationActions.success(`Password reset URL have been sent to ${action.payload.email}`),
+      );
+    }
+
     // Call returns error if username already exists, else empty
-    yield put(UserActions.updateErrorMessage(res.error));
+    const message =
+      res === 'Invalid email'
+        ? 'Email is not registered'
+        : res === 'Password Reset URL sent to the registered email!'
+        ? ' '
+        : res;
+    yield put(UserActions.updateErrorMessage(message));
   } catch (err) {
     console.error(err);
   }

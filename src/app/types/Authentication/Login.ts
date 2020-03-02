@@ -21,4 +21,12 @@ export interface DispatchProps {
   updateErrorMessage: (errorMessage: string) => void;
 }
 
+export interface ForgotPasswordProps {
+  updateErrorMessage: (errorMessage: string) => void;
+  handleSelectPanel: (authType: AuthType) => void;
+  closeForgotPassword: () => void;
+  errorMessage: string;
+  forgotPassword: (email: string) => void;
+}
+
 export type Props = ElementOwnProps & StateProps & DispatchProps;

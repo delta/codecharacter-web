@@ -1,6 +1,7 @@
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { API_BASE_URL } from 'app/../config/config';
+import ForgotPassword from 'app/components/Authentication/ForgotPassword';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
 import * as registerStyles from 'app/styles/Register.module.css';
@@ -17,7 +18,6 @@ export enum OAUTH_ROUTES {
 }
 export class Login extends React.Component<LoginInterfaces.Props, LoginInterfaces.State> {
   private loginRef = React.createRef<HTMLFormElement>();
-  private forgotPasswordRef = React.createRef<HTMLFormElement>();
 
   constructor(props: LoginInterfaces.Props) {
     super(props);
@@ -35,6 +35,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
   };
 
   public componentDidMount() {
+    this.props.updateErrorMessage('');
     window.addEventListener('beforeunload', this.componentCleanup);
   }
 
@@ -63,6 +64,12 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     const { errorMessage, updateErrorMessage, isLoginLoading, isLoggedIn } = this.props;
     if (isLoggedIn) {
       return <Redirect to={Routes.ROOT} />;
+    }
+    if (this.props.errorMessage === ' ' && this.state.isForgotPasswordOpen) {
+      this.setState({
+        isForgotPasswordOpen: false,
+      });
+      updateErrorMessage('');
     }
     if (!isForgotPasswordOpen) {
       return (
@@ -182,14 +189,14 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                 <div className={classnames('form-row', styles['error-row'])}>
                   <div
                     className={
-                      !errorMessage
+                      errorMessage.trim().length === 0
                         ? classnames(
-                            'col text-center mt -0 mb-2 ',
+                            'col text-center mt-0 mb-2 ',
                             styles['register-error-inactive'],
                             registerStyles.errorMessage,
                           )
                         : classnames(
-                            'col text-center mt -0 mb-2 errorMessage',
+                            'col text-center mt-0 mb-2 errorMessage',
                             styles['register-error-active'],
                             registerStyles.errorMessageLogin,
                             styles['login-error-active'],
@@ -244,138 +251,19 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
       );
     }
     return (
-      <div>
-        <div className={classnames(styles.loginRoot)}>
-          <div className={classnames(styles.welcomeBack)}>
-            <h1> Forgot your password? </h1>
-          </div>
-          <Row>
-            <Col className="text-center my-3 ml-auto mr-auto">
-              <div className="text-dark">
-                Don't have an account?
-                <a
-                  href={Routes.REGISTER}
-                  className={classnames(styles['create-one-button'])}
-                  onClick={() => {
-                    updateErrorMessage('');
-                    this.props.handleSelectPanel(AuthType.REGISTER);
-                  }}
-                >
-                  Create one
-                </a>
-                <Row>
-                  <div className={classnames('col-sm-10', styles.form)}>
-                    <form
-                      className={classnames(styles.loginForm)}
-                      noValidate
-                      ref={this.forgotPasswordRef}
-                      onSubmit={this.handleForgotPassword}
-                    >
-                      <div className="form-row">
-                        <div className="col mb-4">
-                          <div className={classnames(styles['login-label'])}> Your Email: </div>
-                          <div className="input-group">
-                            <input
-                              type="email"
-                              className={classnames('form-control', styles['login-input'])}
-                              id="validationUsername"
-                              aria-describedby="inputGroupPrepend"
-                              required
-                              value={username}
-                              onChange={(e) =>
-                                this.setState({
-                                  username: e.target.value,
-                                })
-                              }
-                            />
-                            <div className={classnames('invalid-feedback', styles['login-error'])}>
-                              {' '}
-                              Please enter a valid Email.{' '}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className={classnames('form-row', styles['error-row'])}>
-                        <div
-                          className={
-                            !errorMessage
-                              ? classnames(
-                                  'col text-center mt -0 mb-2 ',
-                                  styles['register-error-inactive'],
-                                  registerStyles.errorMessage,
-                                )
-                              : classnames(
-                                  'col text-center mt -0 mb-2 errorMessage',
-                                  styles['register-error-active'],
-                                  registerStyles.errorMessageLogin,
-                                  styles['login-error-active'],
-                                )
-                          }
-                        >
-                          {errorMessage}
-                        </div>
-                      </div>
-                      <div className="form-row">
-                        <div className="col text-center">
-                          <button
-                            className={classnames('btn btn-info', styles.loginButton)}
-                            type="submit"
-                          >
-                            Reset Password&nbsp;
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </Row>
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col className="text-center my-3 ml-auto mr-auto">
-              <div
-                className={classnames('text-dark', styles['forgot-your-password'])}
-                onClick={() => this.setState({ isForgotPasswordOpen: false })}
-              >
-                Back{' '}
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col className="text-center my-3 ml-auto mr-auto">
-              <div className="text-dark">
-                Don't have an account?{' '}
-                <a
-                  href={Routes.REGISTER}
-                  className={classnames(styles['create-one-button'])}
-                  onClick={() => {
-                    updateErrorMessage('');
-                    this.props.handleSelectPanel(AuthType.REGISTER);
-                  }}
-                >
-                  Create one
-                </a>
-              </div>
-            </Col>
-          </Row>
-        </div>
-      </div>
+      <ForgotPassword
+        updateErrorMessage={updateErrorMessage}
+        handleSelectPanel={this.props.handleSelectPanel}
+        errorMessage={this.props.errorMessage}
+        forgotPassword={this.props.forgotPassword}
+        closeForgotPassword={() =>
+          this.setState({
+            isForgotPasswordOpen: false,
+          })
+        }
+      />
     );
   }
-
-  private handleForgotPassword = (event: React.FormEvent<HTMLFormElement>) => {
-    const { username } = this.state;
-    const { forgotPassword } = this.props;
-    const form = this.forgotPasswordRef.current;
-
-    event.preventDefault();
-    if (form) {
-      if (form.checkValidity()) {
-        forgotPassword(username);
-      }
-      form.classList.add('was-validated');
-    }
-  };
 
   private handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     const { login } = this.props;
