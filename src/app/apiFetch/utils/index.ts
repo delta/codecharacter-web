@@ -82,7 +82,7 @@ export function headResponseWrapper(response: any, headReqType: HeadReqType) {
  * @param headReqType
  */
 export function textResponseWrapper(response: any) {
-  response.text().then((data: any) => {
+  return response.text().then((data: any) => {
     return new Promise((resolve, reject) => {
       let type: string = resType.SUCCESS;
       let error: string = '';
