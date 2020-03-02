@@ -3,6 +3,7 @@ import { action } from 'typesafe-actions';
 
 export namespace UserActions {
   export enum Type {
+    ACTIVATE_USER = 'ACTIVATE_USER',
     LOGIN = 'LOGIN',
     LOGOUT = 'LOGOUT',
     REGISTER = 'REGISTER',
@@ -19,6 +20,12 @@ export namespace UserActions {
     SET_IS_AUTHENTICATION_OPEN = 'SET_IS_AUTHENTICATION_OPEN',
     SET_IS_LOGIN_LOADING = 'SET_IS_LOGIN_LOADING',
   }
+
+  export const activateUser = (authToken: string, userId: number) =>
+    action(Type.ACTIVATE_USER, {
+      authToken,
+      userId,
+    });
 
   export const login = (email: string, password: string) =>
     action(Type.LOGIN, {

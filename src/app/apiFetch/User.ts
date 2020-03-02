@@ -3,6 +3,25 @@ import { HeadReqType, headResponseWrapper, jsonResponseWrapper } from 'app/apiFe
 import * as UserInterfaces from 'app/types/User';
 import { API_BASE_URL } from '../../config/config';
 
+export const activateUser = (body: UserInterfaces.ActivateUser) => {
+  return fetch(`${API_BASE_URL}user/activate`, {
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  })
+    .then((response) => {
+      return headResponseWrapper(response, HeadReqType.USERNAME);
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 export const userLogin = (body: UserInterfaces.Login) => {
   const formBody: string[] = [];
   Object.keys(body).forEach((key) =>
@@ -56,7 +75,7 @@ export const userRegister = (body: UserInterfaces.Register) => {
     method: 'POST',
   })
     .then((response) => {
-      return jsonResponseWrapper(response);
+      return headResponseWrapper(response, HeadReqType.USERNAME);
     })
     .then((data) => {
       return data;
