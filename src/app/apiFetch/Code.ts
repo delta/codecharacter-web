@@ -122,18 +122,16 @@ export const forkCode = (commitHash: string) => {
 };
 
 export const getLastSaveTime = () => {
-  return fetch(`${API_BASE_URL}code/lastsave`, {
+  return fetch(`${API_BASE_URL}code/last-saved-at`, {
     credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
+    headers: setRequestHeaders(),
     method: 'GET',
   })
     .then((response) => {
-      return response.json();
+      return textResponseWrapper(response);
     })
     .then((data) => {
+      console.log(data);
       return data;
     })
     .catch((error) => {

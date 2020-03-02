@@ -133,7 +133,7 @@ export function* getLastSaveTime(action: ActionType<typeof CodeActions.getLastSa
     if (res.type === resType.ERROR) {
       yield put(CodeActions.updateStatusMessage(res.error));
     } else {
-      yield put(CodeActions.updateLastSaveTime(new Date(res.lastSavedAt)));
+      yield put(CodeActions.updateLastSaveTime(res.body));
     }
   } catch (err) {
     console.error(err);
