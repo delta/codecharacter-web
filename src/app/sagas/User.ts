@@ -28,6 +28,7 @@ export function* activateUser(action: ActionType<typeof UserActions.activateUser
     yield put(UserActions.updateErrorMessage(res.error ? res.body.message : ''));
 
     if (res.type !== resType.ERROR) {
+      // FIXME : use declarative packages to manipulate browser urls
       window.location.assign('/login');
       yield put(NotificationActions.success('Account activated sucessfully'));
     }
