@@ -17,6 +17,26 @@ import { resType } from 'app/types/sagas';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
+export function* activateUser(action: ActionType<typeof UserActions.activateUser>) {
+  try {
+    yield put(UserActions.updateErrorMessage(''));
+    const res = yield call(UserFetch.activateUser, {
+      authToken: action.payload.authToken,
+      userId: action.payload.userId,
+    });
+
+    yield put(UserActions.updateErrorMessage(res.error ? res.body.message : ''));
+
+    if (res.type !== resType.ERROR) {
+      // FIXME : use declarative packages to manipulate browser urls
+      window.location.assign('/login');
+      yield put(NotificationActions.success('Account activated sucessfully'));
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export function* login(action: ActionType<typeof UserActions.login>) {
   try {
     yield put(UserActions.setIsLoginLoading(true));
@@ -229,6 +249,7 @@ export function* resetAppState(action: ActionType<typeof UserActions.resetAppSta
 
 export function* userSagas() {
   yield all([
+    takeEvery(UserActions.Type.ACTIVATE_USER, activateUser),
     takeEvery(UserActions.Type.REGISTER, register),
     takeEvery(UserActions.Type.EDIT_USER_PROFILE, editUserProfile),
     takeEvery(UserActions.Type.EDIT_USER_PASSWORD, editUserPassword),
