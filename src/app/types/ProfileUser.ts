@@ -1,4 +1,5 @@
 import { ProfileUserActions } from 'app/actions';
+import { RouteComponentProps } from 'react-router-dom';
 import { ActionType } from 'typesafe-actions';
 
 export enum ProfileUserType {
@@ -17,7 +18,9 @@ export interface EditProfileUserDetails {
 }
 
 const actions = {
+  getMatchStats: ProfileUserActions.getMatchStats,
   getUserDetails: ProfileUserActions.getUserDetails,
+  updateMatchStats: ProfileUserActions.updateMatchStats,
   updateProfileUserDetails: ProfileUserActions.updateProfileUserDetails,
 };
 
@@ -30,6 +33,22 @@ export interface ProfileUserStoreState {
   type: string;
   userType: ProfileUserType;
   username: string;
+  matchStats: ProfileMatchStats;
+}
+
+export interface MatchStatsItem {
+  wins: number;
+  losses: number;
+  ties: number;
+}
+
+export interface ProfileMatchStats {
+  auto: MatchStatsItem;
+  faced: MatchStatsItem;
+  initiated: MatchStatsItem;
+  lastMatchAt: string;
+  numMatchches: number;
+  userId: number;
 }
 
 export interface StateProps {
@@ -38,9 +57,14 @@ export interface StateProps {
 
 export interface DispatchProps {
   updateProfileUserDetails: (updateProfileUserDetails: EditProfileUserDetails) => void;
-  getUserDetails: () => void;
+  getUserDetails: (username: string) => void;
   getMatchStats: (username: string) => void;
 }
-export type Props = StateProps & DispatchProps;
+
+interface UrlMatchParams {
+  username: string;
+}
+
+export type Props = StateProps & DispatchProps & RouteComponentProps<UrlMatchParams>;
 
 export type ProfileUserStoreAction = ActionType<typeof actions>;

@@ -14,7 +14,7 @@ const mapStateToProps = (rootState: RootState) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     getMatchStats: (username: string) => dispatch(ProfileUserActions.getMatchStats(username)),
-    getUserDetails: () => dispatch(ProfileUserActions.getUserDetails()),
+    getUserDetails: (username: string) => dispatch(ProfileUserActions.getUserDetails(username)),
     updateProfileUserDetails: (
       updateProfileUserDetails: ProfileUserInterfaces.EditProfileUserDetails,
     ) => dispatch(ProfileUserActions.updateProfileUserDetails(updateProfileUserDetails)),

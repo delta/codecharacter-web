@@ -1,6 +1,6 @@
-import PopUpMenu from 'app/components/PopUpMenu';
+import { faChartLine, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartLine, faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import PopUpMenu from 'app/components/PopUpMenu';
 import { EditPassword } from 'app/components/UserProfileModal/EditPassword';
 import { EditProfile } from 'app/components/UserProfileModal/EditProfile';
 import { UserStats } from 'app/components/UserProfileModal/UserStats';
