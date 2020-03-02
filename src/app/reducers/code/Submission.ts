@@ -1,5 +1,6 @@
 import { SubmissionActions } from 'app/actions';
 import * as SubmissionInterfaces from 'app/types/code/Submission';
+import * as SubmitBarInterfaces from 'app/types/SubmitBar';
 
 const submissionStoreState: SubmissionInterfaces.SubmissionStoreState = {
   aiIds: [],
@@ -10,6 +11,7 @@ const submissionStoreState: SubmissionInterfaces.SubmissionStoreState = {
   mapId: 1,
   maps: [],
   request: SubmissionInterfaces.Request.NONE,
+  selectedMap: SubmitBarInterfaces.Map.MAP1,
   state: SubmissionInterfaces.RequestState.IDLE,
 };
 
@@ -34,6 +36,12 @@ export const submissionReducer = (
       return {
         ...state,
         mapId: action.payload.mapId,
+      };
+    }
+    case SubmissionActions.Type.UPDATE_MAP: {
+      return {
+        ...state,
+        selectedMap: action.payload.map,
       };
     }
     case SubmissionActions.Type.UPDATE_CURRENT_AI_ID: {

@@ -23,6 +23,9 @@ export class SubmitBar extends React.Component<
   SubmitBarInterfaces.Props,
   SubmitBarInterfaces.State
 > {
+  private faqBodyStyle = {
+    maxHeight: '0',
+  };
   constructor(props: SubmitBarInterfaces.Props) {
     super(props);
     this.state = {
@@ -32,6 +35,24 @@ export class SubmitBar extends React.Component<
       isRunOptionsOpen: false,
     };
   }
+
+  public expandDropDown = () => {
+    const { isMapOptionsOpen } = this.state;
+
+    if (!isMapOptionsOpen) {
+      this.faqBodyStyle = {
+        maxHeight: '168px',
+      };
+    } else {
+      this.faqBodyStyle = {
+        maxHeight: '0px',
+      };
+    }
+
+    this.setState({
+      isMapOptionsOpen: !isMapOptionsOpen,
+    });
+  };
 
   public render() {
     const {
@@ -44,6 +65,8 @@ export class SubmitBar extends React.Component<
       aiIds,
       clearLogs,
       debugRunAvailable,
+      map,
+      updateMap,
     } = this.props;
     const {
       commitMessage,
@@ -125,8 +148,11 @@ export class SubmitBar extends React.Component<
             <FontAwesomeIcon icon={faTrash} />
           </span>
         </button>
-        {isMapOptionsOpen ? <div>HELLO WORLD</div> : null}
-        <button className={classnames(styles.customBtn)} id="map_dropdown">
+        <button
+          className={classnames(styles.customBtn)}
+          id="map_dropdown"
+          onClick={this.expandDropDown}
+        >
           <span
             className={classnames(styles.icon)}
             style={{ padding: 0, margin: 0, border: 0 }}
@@ -216,6 +242,59 @@ export class SubmitBar extends React.Component<
             closeOptions={this.closeRunOptions}
           />
         ) : null}
+
+        <div className={classnames(styles.mapDropdown)} style={this.faqBodyStyle}>
+          <div
+            className={
+              map === SubmitBarInterfaces.Map.MAP1
+                ? classnames(styles.mapItem, styles.mapItemActive)
+                : classnames(styles.mapItem)
+            }
+            onClick={() => updateMap(SubmitBarInterfaces.Map.MAP1)}
+          >
+            MAP 1
+          </div>
+          <div
+            className={
+              map === SubmitBarInterfaces.Map.MAP2
+                ? classnames(styles.mapItem, styles.mapItemActive)
+                : classnames(styles.mapItem)
+            }
+            onClick={() => updateMap(SubmitBarInterfaces.Map.MAP2)}
+          >
+            MAP 2
+          </div>
+          <div
+            className={
+              map === SubmitBarInterfaces.Map.MAP3
+                ? classnames(styles.mapItem, styles.mapItemActive)
+                : classnames(styles.mapItem)
+            }
+            onClick={() => updateMap(SubmitBarInterfaces.Map.MAP3)}
+          >
+            MAP 3
+          </div>
+          <div
+            className={
+              map === SubmitBarInterfaces.Map.MAP4
+                ? classnames(styles.mapItem, styles.mapItemActive)
+                : classnames(styles.mapItem)
+            }
+            onClick={() => updateMap(SubmitBarInterfaces.Map.MAP4)}
+          >
+            MAP 4
+          </div>
+          <div
+            className={
+              map === SubmitBarInterfaces.Map.MAP5
+                ? classnames(styles.mapItem, styles.mapItemActive)
+                : classnames(styles.mapItem)
+            }
+            onClick={() => updateMap(SubmitBarInterfaces.Map.MAP5)}
+          >
+            MAP 5
+          </div>
+        </div>
       </div>
     );
   }
