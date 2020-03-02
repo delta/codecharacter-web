@@ -1,5 +1,4 @@
 /* tslint:disable:no-any*/
-/* tslint:disable:no-console*/
 import { resType } from 'app/types/sagas';
 
 export enum HeadReqType {
@@ -10,6 +9,10 @@ export enum HeadReqType {
   OTHERS = 'OTHERS',
 }
 
+/**
+ * Middleware to access response object and resolved response data
+ * @param response
+ */
 export function jsonResponseWrapper(response: any) {
   return response.json().then((data: any) => {
     return new Promise((resolve, reject) => {
@@ -29,6 +32,11 @@ export function jsonResponseWrapper(response: any) {
   });
 }
 
+/**
+ *  Middleware to handle non-json and head type responses and return normalised object similar to json wrapper middleware
+ * @param response
+ * @param headReqType
+ */
 export function headResponseWrapper(response: any, headReqType: HeadReqType) {
   return new Promise((resolve, reject) => {
     let type: string = resType.SUCCESS;
@@ -63,11 +71,43 @@ export function headResponseWrapper(response: any, headReqType: HeadReqType) {
     resolve({
       error,
       type,
+      body: response.text(),
     });
   });
 }
 
-export function getReqHeaders() {
+/**
+ *  Middleware to handle non-json and head type responses and return normalised object similar to json wrapper middleware
+ * @param response
+ * @param headReqType
+ */
+export function textResponseWrapper(response: any) {
+  response.text().then((data: any) => {
+    return new Promise((resolve, reject) => {
+      let type: string = resType.SUCCESS;
+      let error: string = '';
+      switch (response.status) {
+        case 302:
+        case 409:
+        case 401:
+        case 500:
+        case 403:
+          error = 'Oops! Something went wrong.';
+          type = resType.ERROR;
+      }
+      resolve({
+        error,
+        type,
+        body: data,
+      });
+    });
+  });
+}
+
+/**
+ * Function to set header and set cross site request forgery cookies
+ */
+export function setRequestHeaders() {
   const getCookie = (name: string) => {
     const cookies = Object.assign(
       {},
@@ -80,10 +120,10 @@ export function getReqHeaders() {
     );
     return cookies[name];
   };
-  const headersConfig = new Headers();
-  headersConfig.append('Content-Type', 'application/json');
-  headersConfig.append(SET_COOKIE.XSRF, getCookie(GET_COOKIE.XSRF));
-  return headersConfig;
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  headers.append(SET_COOKIE.XSRF, getCookie(GET_COOKIE.XSRF));
+  return headers;
 }
 
 export enum SET_COOKIE {
