@@ -3,6 +3,7 @@
 exports[`Notification Container Should render Notification 1`] = `
 <Notification
   announcements={Array []}
+  deleteNotification={[Function]}
   deleteNotificationType={[Function]}
   getAllGlobalAnnouncements={[Function]}
   getAllGlobalNotifications={[Function]}

@@ -6,6 +6,7 @@ const actions = {
   deleteNotification: NotificationActions.deleteNotification,
   deleteNotificationType: NotificationActions.deleteNotificationType,
   error: NotificationActions.error,
+  hideNotification: NotificationActions.hideNotification,
   info: NotificationActions.info,
   resetNotificationState: NotificationActions.resetNotificationState,
   success: NotificationActions.success,
@@ -27,8 +28,8 @@ export enum NotificationTabType {
 }
 
 export enum TabType {
-  NOTIFICATIONS = 0,
-  ANNOUNCEMENTS = 1,
+  NOTIFICATIONS,
+  ANNOUNCEMENTS,
 }
 
 export interface Notification {
@@ -44,7 +45,7 @@ export interface Notification {
 
 export interface Announcement {
   adminUserId: number;
-  date: Date | string;
+  date: Date;
   id: number;
   message: string;
 }
@@ -67,6 +68,7 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
+  deleteNotification: (id: number) => void;
   deleteNotificationType: (type: NotificationTabType) => void;
   getAllGlobalNotifications: () => void;
   getAllGlobalAnnouncements: () => void;

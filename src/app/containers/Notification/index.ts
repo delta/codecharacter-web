@@ -17,6 +17,7 @@ const notificationContainer = connect<
   NotificationInterfaces.DispatchProps,
   {}
 >(mapStateToProps, {
+  deleteNotification: NotificationActions.deleteNotification,
   deleteNotificationType: NotificationActions.deleteNotificationType,
   getAllGlobalAnnouncements: NotificationActions.getAllGlobalAnnouncements,
   getAllGlobalNotifications: NotificationActions.getAllGlobalNotifications,

@@ -1,5 +1,5 @@
+import { jsonResponseWrapper, setRequestHeaders } from 'app/apiFetch/utils';
 import { API_BASE_URL } from '../../config/config';
-import { jsonResponseWrapper } from './utils';
 
 export const getUnreadNotifications = () => {
   return fetch(`${API_BASE_URL}notifications/global/`, {
@@ -13,17 +13,15 @@ export const getUnreadNotifications = () => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      /* tslint:disable-next-line:no-console */
+      console.log(error);
     });
 };
 
 export const deleteGlobalNotifications = (notificationId: number) => {
   return fetch(`${API_BASE_URL}notifications/${notificationId}/`, {
     credentials: 'include',
-    headers: {
-      Accept: '*',
-      'Content-Type': 'application/json',
-    },
+    headers: setRequestHeaders(),
     method: 'DELETE',
   })
     .then((response) => response.json())

@@ -66,7 +66,7 @@ export const notificationReducer = (
       };
     }
 
-    case NotificationActions.Type.DELETE_NOTIFICATION: {
+    case NotificationActions.Type.HIDE_NOTIFICATION: {
       return {
         ...state,
         notifications: state.notifications.filter(

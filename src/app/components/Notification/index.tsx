@@ -25,7 +25,7 @@ export class Notification extends React.Component<
 
   public render() {
     const { activeNotificationTab } = this.state;
-    const { announcements, notifications, deleteNotificationType } = this.props;
+    const { announcements, notifications, deleteNotificationType, deleteNotification } = this.props;
     // let r :Array<NotificationInterfaces.Notification>=[];
     const activeNotifications = notifications.filter((notification) => {
       switch (activeNotificationTab) {
@@ -150,6 +150,7 @@ export class Notification extends React.Component<
                   title={title}
                   content={content}
                   type={type}
+                  deleteNotification={deleteNotification}
                 />
               ))}
             </Row>

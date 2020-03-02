@@ -56,11 +56,11 @@ export function* getAllGlobalAnnouncements(
 }
 
 export function* deleteNotificationFromBackend(
-  action: ActionType<typeof NotificationActions.deleteNotificationFromBackend>,
+  action: ActionType<typeof NotificationActions.deleteNotification>,
 ) {
   try {
     yield call(NotificationFetch.deleteGlobalNotifications, action.payload.id);
-    yield put(NotificationActions.deleteNotification(action.payload.id));
+    yield put(NotificationActions.hideNotification(action.payload.id));
   } catch (err) {
     throw err;
   }
@@ -73,10 +73,7 @@ export function* notificationSagas() {
       getUnreadGlobalNotifications,
     ),
     takeEvery(NotificationActions.Type.GET_ALL_GLOBAL_NOTIFICATIONS, getAllGlobalNotifications),
-    takeEvery(
-      NotificationActions.Type.DELETE_NOTIFICATION_FROM_BACKEND,
-      deleteNotificationFromBackend,
-    ),
+    takeEvery(NotificationActions.Type.DELETE_NOTIFICATION, deleteNotificationFromBackend),
     takeEvery(NotificationActions.Type.GET_ALL_GLOBAL_ANNOUNCEMENTS, getAllGlobalAnnouncements),
   ]);
 }

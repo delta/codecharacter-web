@@ -8,8 +8,8 @@ export interface StateProps {
   title: string;
 }
 
-export interface DispatchProps {
+export interface OwnProps {
   deleteNotification: (id: number) => void;
 }
 
-export type Props = DispatchProps & StateProps;
+export type Props = OwnProps & StateProps;
