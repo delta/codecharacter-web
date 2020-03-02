@@ -4,6 +4,7 @@ import {
   faCodeBranch,
   faCog,
   faLock,
+  faMap,
   faPlay,
   faSave,
   faTrash,
@@ -27,6 +28,7 @@ export class SubmitBar extends React.Component<
     this.state = {
       commitMessage: '',
       isCommitMessageBoxOpen: false,
+      isMapOptionsOpen: false,
       isRunOptionsOpen: false,
     };
   }
@@ -43,7 +45,12 @@ export class SubmitBar extends React.Component<
       clearLogs,
       debugRunAvailable,
     } = this.props;
-    const { commitMessage, isCommitMessageBoxOpen, isRunOptionsOpen } = this.state;
+    const {
+      commitMessage,
+      isCommitMessageBoxOpen,
+      isMapOptionsOpen,
+      isRunOptionsOpen,
+    } = this.state;
     return (
       <div
         className={classnames(styles.SubmitBar, {
@@ -111,10 +118,24 @@ export class SubmitBar extends React.Component<
             className={classnames(styles.icon)}
             style={{ padding: 0, margin: 0, border: 0 }}
             title={'Clear Renderer Log'}
+            onClick={() => {
+              this.setState({ isMapOptionsOpen: !isMapOptionsOpen });
+            }}
           >
             <FontAwesomeIcon icon={faTrash} />
           </span>
         </button>
+        {isMapOptionsOpen ? <div>HELLO WORLD</div> : null}
+        <button className={classnames(styles.customBtn)} id="map_dropdown">
+          <span
+            className={classnames(styles.icon)}
+            style={{ padding: 0, margin: 0, border: 0 }}
+            title={'Show Maps'}
+          >
+            <FontAwesomeIcon icon={faMap} />
+          </span>
+        </button>
+
         <button
           className={classnames(styles.customBtn)}
           id="run_button"
