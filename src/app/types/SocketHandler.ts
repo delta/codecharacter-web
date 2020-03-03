@@ -11,6 +11,8 @@ export interface DispatchProps {
   sendInfo: (message: string) => void;
   sendSuccess: (message: string) => void;
   updateRequest: (request: SubmissionInterfaces.Request) => void;
+  updateGameLog: (player1DebugLog: string, player2DebugLog: string, gameLog: string) => void;
+  updateMatchPlayerId: (matchPlayerId: number) => void;
 }
 
 export enum MatchMode {

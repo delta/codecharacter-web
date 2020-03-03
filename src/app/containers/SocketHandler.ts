@@ -1,4 +1,4 @@
-import { NotificationActions, SubmissionActions } from 'app/actions';
+import { GameLogActions, NotificationActions, SubmissionActions } from 'app/actions';
 import { SocketHandler } from 'app/components/SocketHandler';
 import { RootState } from 'app/reducers';
 import * as SubmissionInterfaces from 'app/types/code/Submission';
@@ -28,6 +28,10 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     sendExecuteSuccess: (logs: string) => dispatch(SubmissionActions.handleExecuteSuccess(logs)),
     sendInfo: (message: string) => dispatch(NotificationActions.info(message)),
     sendSuccess: (message: string) => dispatch(NotificationActions.success(message)),
+    updateGameLog: (player1DebugLog: string, player2DebugLog: string, gameLog: string) =>
+      dispatch(GameLogActions.updateGameLog(player1DebugLog, player2DebugLog, gameLog)),
+    updateMatchPlayerId: (matchPlayerId: number) =>
+      dispatch(GameLogActions.updateMatchPlayerId(matchPlayerId)),
     updateRequest: (request: SubmissionInterfaces.Request) =>
       dispatch(SubmissionActions.changeCurrentRequest(request)),
   };
