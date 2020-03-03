@@ -52,7 +52,7 @@ export default class Renderer extends React.Component<RendererInterfaces.Props, 
                   style={{ display: 'inline-block', borderRadius: 120, backgroundColor: '#d3d3d3' }}
                 >
                   <img
-                    src="assets/img/mascotgif.gif"
+                    src="assets/img/mascot.png"
                     height={190}
                     width={130}
                     style={{ padding: 10, margin: '10px 40px' }}
