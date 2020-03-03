@@ -1,5 +1,10 @@
 /* tslint:disable:no-console*/
-import { HeadReqType, headResponseWrapper, jsonResponseWrapper } from 'app/apiFetch/utils';
+import {
+  HeadReqType,
+  headResponseWrapper,
+  jsonResponseWrapper,
+  textResponseWrapper,
+} from 'app/apiFetch/utils';
 import * as UserInterfaces from 'app/types/User';
 import { API_BASE_URL } from '../../config/config';
 
@@ -140,7 +145,7 @@ export const changeUserPassword = (body: UserInterfaces.ChangeUserPassword) => {
     method: 'POST',
   })
     .then((response) => {
-      return jsonResponseWrapper(response);
+      return textResponseWrapper(response);
     })
     .then((data) => {
       return data;

@@ -1,16 +1,15 @@
+import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
+import * as registerStyles from 'app/styles/Register.module.css';
+import { AuthType } from 'app/types/Authentication';
+import * as LoginInterfaces from 'app/types/Authentication/Login';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import * as registerStyles from 'app/styles/Register.module.css';
-import { Routes } from 'app/routes';
-import * as LoginInterfaces from 'app/types/Authentication/Login';
-import { AuthType } from 'app/types/Authentication';
 
 // tslint:disable-next-line: variable-name
 const ForgotPassword = (props: LoginInterfaces.ForgotPasswordProps) => {
   const forgotPasswordRef = React.createRef<HTMLFormElement>();
-  const [username, setUsername] = React.useState('');
 
   const handleForgotPassword = (event: React.FormEvent<HTMLFormElement>) => {
     const form = forgotPasswordRef.current;
@@ -18,7 +17,7 @@ const ForgotPassword = (props: LoginInterfaces.ForgotPasswordProps) => {
     event.preventDefault();
     if (form) {
       if (form.checkValidity()) {
-        props.forgotPassword(username);
+        props.forgotPassword(props.username);
       }
       form.classList.add('was-validated');
     }
@@ -62,8 +61,8 @@ const ForgotPassword = (props: LoginInterfaces.ForgotPasswordProps) => {
                             id="validationUsername"
                             aria-describedby="inputGroupPrepend"
                             required
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            value={props.username}
+                            onChange={(e) => props.setUsername(e.target.value)}
                           />
                           <div className={classnames('invalid-feedback', styles['login-error'])}>
                             {' '}
