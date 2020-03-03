@@ -92,7 +92,12 @@ export function* getCommitLog(action: ActionType<typeof CodeActions.getCommitLog
 
 export function* checkoutCode(action: ActionType<typeof CodeActions.checkoutCode>) {
   try {
-    const res = yield call(codeFetch.getCommitCode, action.payload.commitHash);
+    let res;
+    if (action.payload.commitHash === 'latest') {
+      res = yield call(codeFetch.getLatestCode);
+    } else {
+      res = yield call(codeFetch.getCommitCode, action.payload.commitHash);
+    }
     const isAuthenticated = yield checkAuthentication(res);
     if (isAuthenticated === false) return;
 
