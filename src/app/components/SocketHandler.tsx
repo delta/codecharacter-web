@@ -19,7 +19,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     // @ts-ignore
     this.stompClient.connect({}, (frame) => {
       // TODO: Change to user's actual id
-      const userId = 4;
+      const userId = 13;
       // @ts-ignore
       this.stompClient.subscribe(`/response/alert/${userId}`, (message: { body: string }) => {
         // tslint:disable-next-line:no-console
@@ -59,10 +59,10 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       '/request/match',
       {},
       JSON.stringify({
-        mapId,
-        matchMode,
-        playerId1,
-        playerId2,
+        mapId: 1,
+        matchMode : 'SELF',
+        playerId1: 13,
+        playerId2: 13,
       }),
     );
   }
