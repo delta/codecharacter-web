@@ -119,11 +119,13 @@ export class SubmitBar extends React.Component<
           className={classnames(styles.customBtn)}
           id="run_button"
           onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-            this.setState({
-              isRunOptionsOpen: !isRunOptionsOpen,
-            });
+
+            // this.setState({
+              // isRunOptionsOpen: !isRunOptionsOpen,
+            // });
             event.stopPropagation();
           }}
+          disabled
         >
           <span className={classnames(styles.icon)}>
             <FontAwesomeIcon icon={faPlay} />
@@ -172,7 +174,11 @@ export class SubmitBar extends React.Component<
           className={classnames(styles.customBtn)}
           title="Submit Code"
           id="submit_button"
-          onClick={this.props.lockCode}
+          onClick={(e) => {
+            // FIXME: remove this.
+            // this.props.lockCode
+          }}
+          disabled
         >
           <span className={classnames(styles.icon)}>
             <FontAwesomeIcon icon={faLock} />

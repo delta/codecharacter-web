@@ -1,6 +1,6 @@
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { API_BASE_URL } from 'app/../config/config';
+// import { API_BASE_URL } from 'app/../config/config';
 import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
@@ -83,7 +83,9 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           </div>
         </div>
         <div className={classnames('container px-0 justify-content-center', styles.loginForm)}>
-          <Row
+{/* {       
+            // TODO: Remove this on OAuth Integration.   
+            <Row
             onClick={(e) => {
               window.location.href = `${API_BASE_URL}${OAUTH_ROUTES.GOOGLE}`;
             }}
@@ -114,7 +116,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               <img src="assets/img/github.png" height="24" width="24" />
             </div>
             <p className="col-auto">Log in with Github</p>
-          </Row>
+          </Row>} 
           <Row className={classnames(styles.no_margin)}>
             <div className={classnames(styles.separator)}>
               <div className={classnames(styles.wordWithLine)}>
@@ -122,6 +124,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               </div>
             </div>
           </Row>
+          */}
         </div>
         <Row className={classnames(styles.no_margin)}>
           <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
