@@ -6,7 +6,7 @@ import Leaderboard from 'app/containers/Leaderboard';
 import UserProfileModal from 'app/containers/UserProfileModal';
 import { Routes } from 'app/routes';
 // @ts-ignore
-import { initializeRendererAssets } from 'codecharacter-renderer';
+import { initializeRendererAssets } from 'code-character-renderer-20';
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
 // @ts-ignore
