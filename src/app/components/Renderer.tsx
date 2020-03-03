@@ -47,15 +47,19 @@ export default class Renderer extends React.Component<RendererInterfaces.Props, 
         ) : (
           <div style={{ width: '100%', minWidth: '280px' }}>
             <Row>
-              <Col sm={12} className="text-center">
+              <Col sm={12} className="text-center mt-3">
                 <div
-                  style={{ display: 'inline-block', borderRadius: 120, backgroundColor: '#d3d3d3' }}
+                  style={{
+                    backgroundColor: '#d3d3d3',
+                    borderRadius: `50%`,
+                    display: 'inline-block',
+                  }}
                 >
                   <img
                     src="assets/img/mascot.png"
                     height={240}
                     width={190}
-                    style={{ padding: 10, margin: '10px 40px' }}
+                    style={{ padding: 10, margin: '10px 36px 10px 50px' }}
                   />
                 </div>
               </Col>
