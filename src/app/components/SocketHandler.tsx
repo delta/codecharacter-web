@@ -30,6 +30,12 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
         // @ts-ignore
         // tslint:disable-next-line: no-console
         console.log('Received match object', message.body);
+        const { updateGameLog, updateMatchPlayerId } = this.props;
+        const { debugLog1, debugLog2, gameLog, matchPlayerId } = JSON.parse(message.body);
+
+        updateGameLog('', '', '');
+        updateGameLog(debugLog1, debugLog2, gameLog);
+        updateMatchPlayerId(matchPlayerId);
       });
     });
   }
