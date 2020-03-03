@@ -1,4 +1,5 @@
 import ActivateUser from 'app/containers/Authentication/ActivateUser';
+import ChangePassword from 'app/containers/Authentication/ChangePassword';
 import Login from 'app/containers/Authentication/Login';
 import Register from 'app/containers/Authentication/Register';
 import Dashboard from 'app/containers/Dashboard';
@@ -25,6 +26,7 @@ export const App = hot(module)(() => (
       <Route exact path={Routes.LEADERBOARD} component={Leaderboard} />
       <Route exact path={Routes.USER_PROFILE_MODEL} component={UserProfileModal} />
       <Route path={Routes.USER_ACTIVATION} component={ActivateUser} />
+      <Route path={Routes.CHANGE_PASSWORD} component={ChangePassword} />
     </Switch>
     <Sugar background="#484848" color="white" />
   </BrowserRouter>

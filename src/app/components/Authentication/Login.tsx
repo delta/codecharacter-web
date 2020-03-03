@@ -1,6 +1,7 @@
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { API_BASE_URL } from 'app/../config/config';
+import ForgotPassword from 'app/components/Authentication/ForgotPassword';
 import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
@@ -16,7 +17,6 @@ export enum OAUTH_ROUTES {
   GOOGLE = 'login/google',
   GITHUB = 'login/github',
 }
-
 export class Login extends React.Component<LoginInterfaces.Props, LoginInterfaces.State> {
   private loginRef = React.createRef<HTMLFormElement>();
 
@@ -24,6 +24,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     super(props);
 
     this.state = {
+      isForgotPasswordOpen: false,
       password: '',
       username: '',
     };
@@ -35,6 +36,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
   };
 
   public componentDidMount() {
+    this.props.updateErrorMessage('');
     window.addEventListener('beforeunload', this.componentCleanup);
   }
 
@@ -59,174 +61,216 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
   }
 
   public render() {
-    const { username, password } = this.state;
+    const { username, password, isForgotPasswordOpen } = this.state;
     const { errorMessage, updateErrorMessage, isLoginLoading, isLoggedIn } = this.props;
     if (isLoggedIn) {
       return <Redirect to={Routes.ROOT} />;
     }
-
-    return (
-      <div className={classnames(styles.loginRoot)}>
-        <div className={classnames(styles.welcomeBack)}>
-          <h1> Welcome! </h1>
-          <p> Log in to access your dashboard and profile </p>
-          <div className={classnames('text-center text-dark mb-2', styles['pragyan-login'])}>
-            You can use your{' '}
-            <a
-              target="blank"
-              href="https://pragyan.org"
-              className={classnames(styles['create-one-button'])}
-            >
-              Pragyan
-            </a>{' '}
-            account credentials to login.
-          </div>
-        </div>
-        <div className={classnames('container px-0 justify-content-center', styles.loginForm)}>
-          <Row
-            onClick={(e) => {
-              window.location.href = `${API_BASE_URL}${OAUTH_ROUTES.GOOGLE}`;
-            }}
-            className={classnames(
-              styles['google-btn'],
-              'border justify-content-center my-3',
-              styles.oauth_btn,
-              styles.no_margin,
-            )}
-          >
-            <div className={classnames('col-auto my-2', styles.img_div)}>
-              <img src="assets/img/google.png" height="24" width="24" />
-            </div>
-            <p className="col-auto">Log in with Google</p>
-          </Row>
-          <Row
-            onClick={(e) => {
-              window.location.href = `${API_BASE_URL}${OAUTH_ROUTES.GITHUB}`;
-            }}
-            className={classnames(
-              'justify-content-center',
-              styles['github-btn'],
-              styles.oauth_btn,
-              styles.no_margin,
-            )}
-          >
-            <div className={classnames('col-auto my-2', styles.img_div)}>
-              <img src="assets/img/github.png" height="24" width="24" />
-            </div>
-            <p className="col-auto">Log in with Github</p>
-          </Row>
-          <Row className={classnames(styles.no_margin)}>
-            <div className={classnames(styles.separator)}>
-              <div className={classnames(styles.wordWithLine)}>
-                <span className={classnames(styles.text)}>or</span>
-              </div>
-            </div>
-          </Row>
-        </div>
-        <Row className={classnames(styles.no_margin)}>
-          <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
-            <form
-              className={classnames(styles.loginForm)}
-              noValidate
-              ref={this.loginRef}
-              onSubmit={this.handleLogin}
-            >
-              <div className="form-row">
-                <div className="col mb-4">
-                  <div className={classnames(styles['login-label'])}> Email </div>
-                  <div className="input-group">
-                    <input
-                      type="email"
-                      className={classnames('form-control', styles['login-input'])}
-                      id="validationUsername"
-                      aria-describedby="inputGroupPrepend"
-                      required
-                      value={username}
-                      onChange={(e) =>
-                        this.setState({
-                          username: e.target.value,
-                        })
-                      }
-                    />
-                    <div className={classnames('invalid-feedback', styles['login-error'])}>
-                      {' '}
-                      Please enter a valid Email.{' '}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="col mb-1">
-                  <div className={classnames(styles['login-label'])}> Password </div>
-                  <div className="input-group">
-                    <input
-                      type="password"
-                      className={classnames('form-control', styles['login-input'])}
-                      id="validationPassword"
-                      aria-describedby="inputGroupPrepend"
-                      minLength={5}
-                      value={password}
-                      onChange={(e) =>
-                        this.setState({
-                          password: e.target.value,
-                        })
-                      }
-                      required
-                    />
-                    <div className={classnames('invalid-feedback', styles['login-error'])}>
-                      Please enter the correct password.
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className={classnames('form-row', styles['error-row'])}>
-                <div
-                  className={
-                    !errorMessage
-                      ? classnames(
-                          'col text-center mt -0 mb-2 ',
-                          styles['register-error-inactive'],
-                          registerStyles.errorMessage,
-                        )
-                      : classnames(
-                          'col text-center mt -0 mb-2 errorMessage',
-                          styles['register-error-active'],
-                          registerStyles.errorMessageLogin,
-                          styles['login-error-active'],
-                        )
-                  }
-                >
-                  {errorMessage}
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="col text-center">
-                  <button className={classnames('btn btn-info', styles.loginButton)} type="submit">
-                    Login &nbsp;
-                    {isLoginLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : null}
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </Row>
-        <Row className={classnames(styles.no_margin)}>
-          <Col className="text-center my-3 ml-auto mr-auto">
-            <div className="text-dark">
-              Don't have an account?{' '}
+    if (errorMessage === ' ' && isForgotPasswordOpen) {
+      this.setState({
+        isForgotPasswordOpen: false,
+      });
+      updateErrorMessage('');
+    }
+    if (!isForgotPasswordOpen) {
+      return (
+        <div className={classnames(styles.loginRoot)}>
+          <div className={classnames(styles.welcomeBack)}>
+            <h1> Welcome! </h1>
+            <p> Log in to access your dashboard and profile </p>
+            <div className={classnames('text-center text-dark mb-2', styles['pragyan-login'])}>
+              You can use your{' '}
               <a
-                href={Routes.REGISTER}
+                target="blank"
+                href="https://pragyan.org"
                 className={classnames(styles['create-one-button'])}
-                onClick={() => {
-                  updateErrorMessage('');
-                  this.props.handleSelectPanel(AuthType.REGISTER);
-                }}
               >
-                Create one
-              </a>
+                Pragyan
+              </a>{' '}
+              account credentials to login.
             </div>
-          </Col>
-        </Row>
+          </div>
+          <div className={classnames('container px-0 justify-content-center', styles.loginForm)}>
+            <Row
+              onClick={(e) => {
+                window.location.href = `${API_BASE_URL}${OAUTH_ROUTES.GOOGLE}`;
+              }}
+              className={classnames(
+                styles['google-btn'],
+                'border justify-content-center my-3',
+                styles.oauth_btn,
+                styles.no_margin,
+              )}
+            >
+              <div className={classnames('col-auto my-2', styles.img_div)}>
+                <img src="assets/img/google.png" height="24" width="24" />
+              </div>
+              <p className="col-auto">Log in with Google</p>
+            </Row>
+            <Row
+              onClick={(e) => {
+                window.location.href = `${API_BASE_URL}${OAUTH_ROUTES.GITHUB}`;
+              }}
+              className={classnames(
+                'justify-content-center',
+                styles['github-btn'],
+                styles.oauth_btn,
+                styles.no_margin,
+              )}
+            >
+              <div className={classnames('col-auto my-2', styles.img_div)}>
+                <img src="assets/img/github.png" height="24" width="24" />
+              </div>
+              <p className="col-auto">Log in with Github</p>
+            </Row>
+            <Row className={classnames(styles.no_margin)}>
+              <div className={classnames(styles.separator)}>
+                <div className={classnames(styles.wordWithLine)}>
+                  <span className={classnames(styles.text)}>or</span>
+                </div>
+              </div>
+            </Row>
+          </div>
+          <Row className={classnames(styles.no_margin)}>
+            <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
+              <form
+                className={classnames(styles.loginForm)}
+                noValidate
+                ref={this.loginRef}
+                onSubmit={this.handleLogin}
+              >
+                <div className="form-row">
+                  <div className="col mb-4">
+                    <div className={classnames(styles['login-label'])}> Email </div>
+                    <div className="input-group">
+                      <input
+                        type="email"
+                        className={classnames('form-control', styles['login-input'])}
+                        id="validationUsername"
+                        aria-describedby="inputGroupPrepend"
+                        required
+                        value={username}
+                        onChange={(e) =>
+                          this.setState({
+                            username: e.target.value,
+                          })
+                        }
+                      />
+                      <div className={classnames('invalid-feedback', styles['login-error'])}>
+                        {' '}
+                        Please enter a valid Email.{' '}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="form-row">
+                  <div className="col mb-1">
+                    <div className={classnames(styles['login-label'])}> Password </div>
+                    <div className="input-group">
+                      <input
+                        type="password"
+                        className={classnames('form-control', styles['login-input'])}
+                        id="validationPassword"
+                        aria-describedby="inputGroupPrepend"
+                        minLength={5}
+                        value={password}
+                        onChange={(e) =>
+                          this.setState({
+                            password: e.target.value,
+                          })
+                        }
+                        required
+                      />
+                      <div className={classnames('invalid-feedback', styles['login-error'])}>
+                        Please enter the correct password.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className={classnames('form-row', styles['error-row'])}>
+                  <div
+                    className={
+                      errorMessage.trim().length === 0
+                        ? classnames(
+                            'col text-center mt-0 mb-2 ',
+                            styles['register-error-inactive'],
+                            registerStyles.errorMessage,
+                          )
+                        : classnames(
+                            'col text-center mt-0 mb-2 errorMessage',
+                            styles['register-error-active'],
+                            registerStyles.errorMessageLogin,
+                            styles['login-error-active'],
+                          )
+                    }
+                  >
+                    {errorMessage}
+                  </div>
+                </div>
+                <div className="form-row">
+                  <div className="col text-center">
+                    <button
+                      className={classnames('btn btn-info', styles.loginButton)}
+                      type="submit"
+                    >
+                      Login &nbsp;
+                      {isLoginLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : null}
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </Row>
+          <Row>
+            <Col className="text-center my-3 ml-auto mr-auto">
+              <div
+                className={classnames('text-dark', styles['forgot-your-password'])}
+                onClick={() => this.setState({ isForgotPasswordOpen: true })}
+              >
+                Forgot Your Password?{' '}
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col className="text-center my-3 ml-auto mr-auto">
+              <div className="text-dark">
+                Don't have an account?{' '}
+                <a
+                  href={Routes.REGISTER}
+                  className={classnames(styles['create-one-button'])}
+                  onClick={() => {
+                    updateErrorMessage('');
+                    this.props.handleSelectPanel(AuthType.REGISTER);
+                  }}
+                >
+                  Create one
+                </a>
+              </div>
+            </Col>
+          </Row>
+          <PopUpMenu />
+        </div>
+      );
+    }
+    return (
+      <div>
+        <ForgotPassword
+          updateErrorMessage={updateErrorMessage}
+          handleSelectPanel={this.props.handleSelectPanel}
+          errorMessage={this.props.errorMessage}
+          forgotPassword={this.props.forgotPassword}
+          username={username}
+          setUsername={(newUsername) =>
+            this.setState({
+              username: newUsername,
+            })
+          }
+          closeForgotPassword={() =>
+            this.setState({
+              isForgotPasswordOpen: false,
+            })
+          }
+        />
         <PopUpMenu />
       </div>
     );

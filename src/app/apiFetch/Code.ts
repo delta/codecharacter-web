@@ -128,7 +128,6 @@ export const getLastSaveTime = () => {
       return textResponseWrapper(response);
     })
     .then((data) => {
-      console.log(data);
       return data;
     })
     .catch((error) => {

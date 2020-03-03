@@ -1,5 +1,10 @@
 /* tslint:disable:no-console*/
-import { HeadReqType, headResponseWrapper, jsonResponseWrapper } from 'app/apiFetch/utils';
+import {
+  HeadReqType,
+  headResponseWrapper,
+  jsonResponseWrapper,
+  textResponseWrapper,
+} from 'app/apiFetch/utils';
 import * as UserInterfaces from 'app/types/User';
 import { API_BASE_URL } from '../../config/config';
 
@@ -122,6 +127,43 @@ export const userEditPassword = (body: UserInterfaces.EditUserPassword) => {
   })
     .then((response) => {
       return headResponseWrapper(response, HeadReqType.PASSWORD);
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+export const changeUserPassword = (body: UserInterfaces.ChangeUserPassword) => {
+  return fetch(`${API_BASE_URL}user/password`, {
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  })
+    .then((response) => {
+      return textResponseWrapper(response);
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+export const userForgotPassword = (email: string) => {
+  return fetch(`${API_BASE_URL}user/forgot-password`, {
+    body: email,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+  })
+    .then((response) => {
+      return response.text();
     })
     .then((data) => {
       return data;

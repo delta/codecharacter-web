@@ -30,6 +30,12 @@ export interface EditUserPassword {
   oldPassword?: string;
 }
 
+export interface ChangeUserPassword {
+  newPassword: string;
+  passwordResetToken: string;
+  userId: number;
+}
+
 export interface Login {
   email: string;
   password: string;
@@ -39,11 +45,15 @@ export interface ActivateUser {
   authToken: string;
   userId: number;
 }
+export interface ForgotPassword {
+  email: string;
+}
 
 const actions = {
   ActivateUser: UserActions.activateUser,
   editUserPassword: UserActions.editUserPassword,
   editUserProfile: UserActions.editUserProfile,
+  forgotPassword: UserActions.forgotPassword,
   getUserDetails: UserActions.getUserDetails,
   login: UserActions.login,
   logout: UserActions.logout,

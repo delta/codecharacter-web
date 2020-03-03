@@ -209,6 +209,19 @@ export function* editUserPassword(action: ActionType<typeof UserActions.editUser
   }
 }
 
+export function* changeUserPassword(action: ActionType<typeof UserActions.changeUserPassword>) {
+  try {
+    const res = yield call(UserFetch.changeUserPassword, action.payload);
+    yield put(UserActions.updateErrorMessage(res.error ? res.body.message : ''));
+
+    if (res.type !== resType.ERROR) {
+      window.location.assign('/login');
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export function* checkEmailExists(action: ActionType<typeof UserActions.checkEmailExists>) {
   try {
     const res = yield call(UserFetch.checkEmailExists, action.payload.email);
@@ -226,6 +239,29 @@ export function* checkUsernameExists(action: ActionType<typeof UserActions.check
 
     // Call returns error if email already exists, else empty
     yield put(UserActions.updateErrorMessage(res.error));
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export function* forgotPassword(action: ActionType<typeof UserActions.forgotPassword>) {
+  try {
+    const res = yield call(UserFetch.userForgotPassword, action.payload.email);
+
+    if (res === 'Password Reset URL sent to the registered email!') {
+      yield put(
+        NotificationActions.success(`Password reset URL have been sent to ${action.payload.email}`),
+      );
+    }
+
+    // Call returns error if username already exists, else empty
+    const message =
+      res === 'Invalid email'
+        ? 'Email is not registered'
+        : res === 'Password Reset URL sent to the registered email!'
+        ? ' '
+        : res;
+    yield put(UserActions.updateErrorMessage(message));
   } catch (err) {
     console.error(err);
   }
@@ -253,11 +289,13 @@ export function* userSagas() {
     takeEvery(UserActions.Type.REGISTER, register),
     takeEvery(UserActions.Type.EDIT_USER_PROFILE, editUserProfile),
     takeEvery(UserActions.Type.EDIT_USER_PASSWORD, editUserPassword),
+    takeEvery(UserActions.Type.CHANGE_USER_PASSWORD, changeUserPassword),
     takeEvery(UserActions.Type.LOGIN, login),
     takeEvery(UserActions.Type.LOGOUT, logout),
     takeEvery(UserActions.Type.CHECK_EMAIL_EXISTS, checkEmailExists),
     takeEvery(UserActions.Type.CHECK_USERNAME_EXISTS, checkUsernameExists),
     takeEvery(UserActions.Type.GET_USER_DETAILS, getUserDetails),
     takeEvery(UserActions.Type.RESET_APP_STATE, resetAppState),
+    takeEvery(UserActions.Type.FORGOT_PASSWORD, forgotPassword),
   ]);
 }

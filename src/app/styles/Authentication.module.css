@@ -568,3 +568,11 @@
   background: #fff;
   padding: 0 10px;
 }
+
+.forgot-your-password {
+  cursor: pointer;
+}
+
+.forgot-your-password:hover {
+  color: #4630eb !important;
+}

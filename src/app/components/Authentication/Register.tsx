@@ -70,6 +70,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
   };
 
   public componentDidMount() {
+    this.props.updateErrorMessage('');
     window.addEventListener('beforeunload', this.resetErrorMessage);
   }
   public componentWillReceiveProps(newProps: RegisterInterfaces.Props) {
