@@ -28,8 +28,9 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       // @ts-ignore
       this.stompClient.subscribe(`/response/match/${userId}`, (message: { body: string }) => {
         // @ts-ignore
-        // tslint:disable-next-line: no-console
+        // tslint:disable: no-console
         console.log('Received match object', message.body);
+        console.log(`Match json object`, JSON.parse(message.body))
       });
     });
   }
@@ -53,7 +54,6 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       '/request/match',
       {},
       JSON.stringify({
-        mapId,
         matchMode,
         playerId1,
         playerId2,
