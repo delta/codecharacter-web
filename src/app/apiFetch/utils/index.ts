@@ -123,6 +123,8 @@ export function setRequestHeaders() {
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
   headers.append(SET_COOKIE.XSRF, getCookie(GET_COOKIE.XSRF));
+  // tslint:disable-next-line: no-console
+  console.log('dfsdfgadfgs', GET_COOKIE.XSRF);
   return headers;
 }
 
