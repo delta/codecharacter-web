@@ -99,7 +99,7 @@ export function* checkoutCode(action: ActionType<typeof CodeActions.checkoutCode
     if (res.type === resType.ERROR) {
       yield put(CodeActions.updateStatusMessage(res.error));
     } else {
-      yield put(CodeActions.updateCode(res.code));
+      yield put(CodeActions.updateCode(res.body));
       yield put(CodeActions.setCurrentCommitHash(action.payload.commitHash));
     }
   } catch (err) {

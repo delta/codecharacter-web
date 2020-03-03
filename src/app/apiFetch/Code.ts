@@ -82,7 +82,7 @@ export const getCommitLog = () => {
 };
 
 export const getCommitCode = (commitHash: string) => {
-  return fetch(`${API_BASE_URL}code/view/${commitHash}`, {
+  return fetch(`${API_BASE_URL}code/commit/${commitHash}`, {
     credentials: 'include',
     headers: {
       Accept: 'application/json',
@@ -91,7 +91,7 @@ export const getCommitCode = (commitHash: string) => {
     method: 'GET',
   })
     .then((response) => {
-      return response.json();
+      return textResponseWrapper(response);
     })
     .then((data) => {
       return data;
@@ -104,14 +104,11 @@ export const getCommitCode = (commitHash: string) => {
 export const forkCode = (commitHash: string) => {
   return fetch(`${API_BASE_URL}code/fork/${commitHash}`, {
     credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    method: 'GET',
+    headers: setRequestHeaders(),
+    method: 'POST',
   })
     .then((response) => {
-      return response.json();
+      return jsonResponseWrapper(response);
     })
     .then((data) => {
       return data;

@@ -85,7 +85,7 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
   }
 
   public render() {
-    const { commitDetails, forkCode, checkoutCode, maps, startMatch } = this.props;
+    const { commitDetails, checkoutCode, maps, startMatch } = this.props;
     const { isMapListOpen } = this.state;
 
     return (
@@ -124,12 +124,6 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
                   }}
                   src="assets/img/commit-match.png"
                   title="Fight this code"
-                />
-                <img
-                  className={classnames(styles.ForkLogo)}
-                  onClick={forkCode}
-                  src="assets/img/fork.png"
-                  title="Checkout as current code"
                 />
               </div>
             ) : null}
