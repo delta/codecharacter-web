@@ -4,131 +4,106 @@ import * as CodeInterfaces from 'app/types/code/Code';
 const codeStoreInitialState: CodeInterfaces.CodeStoreState = {
   code: `#include "player_code/player_code.h"
 
-namespace player_code {
-
-using namespace player_state;
-
-State PlayerCode::Update(State state) {
-
-	// Hello and Welcome to Code Character!!
-
-	// Code Character is a strategy code writing competition, where you'll be
-	// controlling some robots that will face off against each other
-
-	// We have two kinds of units, villagers and soldiers. You start out only
-	// with some villagers though. Let's print some information about your
-	// villagers.
-	logr << "Number of villagers : " << state.villagers.size() << "\n";
-
-	// logr is like std::cout. Use it to print information to your console
-	// As you can see, we have an object called state, that contains some info
-	// State has a vector named villagers, that contains information about all
-	// our villagers.
-
-	// We can give commands to our villagers to have them perform actions.
-	// Remember to check if your villager is alive before you make it perform
-	// anything!
-
-	// Villagers can mine gold from goldmines present on the map.
-	// Let's have them mine from the first gold mine if we're running low on
-	// gold.
-	if (state.gold < 1000) {
-
-		// Range based loops are convenient to use. We use a reference to
-		// ensure that our changes are reflected and not made on a copy!
-		for (auto &villager : state.villagers) {
-
-			villager.mine(state.gold_mine_offsets[0]);
-			// State has a vector that has the locations of goldmines on the
-			// map. A villager asked to mine a region will automatically go
-			// there using the shortest path found and start mining for gold.
-		}
-	} else {
-
-		// Let's say we want two villagers to always mine gold
-		// Notice we use index based loop here and check for the size of
-		// villagers
-		for (int i = 0; i < 2 && i < state.villagers.size(); ++i) {
-			state.villagers[i].mine(state.gold_mine_offsets[0]);
-		}
-
-		// Aside from moving, mining and attacking,
-		// villagers can build factories.
-		// A factory can produces units - villagers and soldiers.
-
-		// Let's check how many built factories there are in the current state
-		int num_factories = 0;
-		for (auto &factory : state.factories) {
-			if (factory.state != FactoryState::UNBUILT) {
-				num_factories++;
-			}
-		}
-
-		// If we don't have any factories, let's built one
-		if (num_factories == 0) {
-			for (int i = 2; i < state.villagers.size(); ++i) {
-
-				// The map has LAND, WATER and GOLD_MINE.
-				// Let's say we want to build the factory at tile (2, 3)
-				// Naturally, we can only build factories on land,
-				// so let's check!
-				if (state.map[2][3] == TerrainType::LAND) {
-
-					// Vec2D is a handy utility class to represent 2D vectors.
-					state.villagers[i].build(Vec2D(2, 3),
-								 FactoryProduction::SOLDIER);
-
-					// Remember, the X-axis is from left to right, and
-					// Y-axis is from top to bottom of the map.
-				}
-
-				// FactoryProduction lets you specify what it should produce.
-				// You can switch between soldiers and villagers for the same
-				// factory!
-			}
-		}
-	}
-
-	// Your opponent is probably building soldiers to destroy your units.
-	// Quite like villagers, State has a vector named factories, that contains
-	// information about all our factories.
-	for (auto &factory : state.factories) {
-
-		// You can change what the factory produces at any turn.
-		if (state.villagers.size() < 5)
-			factory.produce_villagers();
-		else
-			factory.produce_soldiers();
-	}
-
-	// Whenever our soldiers do get built, we might want to have them move
-	// around and attack our opponent. Your opponent is probably using their
-	// soldiers to destroy your units too!
-	for (auto &soldier : state.soldiers) {
-
-		// If the opponent has any villagers, let's attack the first one
-		if (!state.enemy_villagers.empty()) {
-			// Each unit has a state associated with it. SoldierState for
-			// soldiers, VillagerState for villagers and FactoryState for
-			// factories. Here a soldier is commanded to attack an enemy
-			// soldier, only if it's in the IDLE state right now
-			if (soldier.state == SoldierState::IDLE) {
-				soldier.attack(state.enemy_villagers[0]);
-				break;
-			}
-		}
-	}
-
-	// While this should give you a decent start, we highly recommend
-	// reading the docs provided. It should get you up to date with
-	// all there is to State and we have some helper snippets and methods
-	// so you start competing right away!
-
-	return state;
-}
-} // namespace player_code
-
-`,
+  namespace player_code {
+  
+  using namespace player_state;
+  
+  State PlayerCode::update(State state) {
+  
+	  // Hello and Welcome to Code Character 2020!!
+  
+	  // Code Character is a strategy code writing competition, where you'll be
+	  // controlling some robots that will face off against each other
+  
+	  // We have two kinds of units, bots and towers. You start out only
+	  // with some bots though. Let's print some information about your
+	  // bots.
+	  logr << "Number of bots: " << state.bots.size() << endl;
+  
+	  // logr is like cout. Use it to print information to your console on the
+	  // panel to the bottom right
+  
+	  // As you can see, we have an object called state, that contains some info
+  
+	  // State has a vector named bots, that contains information about all
+	  // our bots.
+  
+	  // We can give commands to our bots to have them perform actions.
+	  // Remember to check if your bot is alive before you make it perform
+	  // anything!
+  
+	  // Bots can move to any reachable location on the map.
+	  // Let's make bots move to all flag locations
+  
+	  // You can use auto instead of an explicit type
+	  size_t used_bots = 0;
+  
+	  // Range based loops are convenient to use. We use a reference to
+	  // ensure that our changes are reflected and not made on a copy!
+	  for (auto &bot : state.bots) {
+		  // Let's not use up all our bots just for these. So, we will only use a
+		  // maximum of 15 bots here.
+		  if (used_bots >= state.flag_offsets.size())
+			  break;
+  
+		  // State has a vector that has the locations of flag locations on the
+		  // map. A bot asked to move to a location will automatically go
+		  // there using the shortest path found and start mining for gold.
+		  bot.move(state.flag_offsets[used_bots]);
+		  used_bots++;
+	  }
+  
+	  // Let's say you want one of the remaining bots to blast at the spawn
+	  // position of the enemies.
+  
+	  // Before that we ensure that we have atleast one extra bot left
+	  if (state.bots.size() > used_bots) {
+		  // See the usage of constant value PLAYER2_BASE_POSITION
+		  state.bots[used_bots].blast(PLAYER2_BASE_POSITION);
+		  used_bots++;
+	  }
+  
+	  // Other than blasting and moving, bots can also transform into towers
+	  // Let's try to transform all of the remaining bots near the other end of
+	  // the map i.e., (MAP_SIZE - 1, MAP_SIZE - 1) Note that you cannot construct
+	  // / move to coordinates where either x = MAP_SIZE or y = MAP_SIZE
+	  int x = MAP_SIZE - 1, y = MAP_SIZE - 5;
+  
+	  // The bots can also be traversed like a usual array using an index
+	  for (size_t i = used_bots; i < state.bots.size(); i++) {
+		  if (y != (MAP_SIZE - 1)) {
+  
+			  // You can use the DoubleVec2D class to define positions and
+			  // distances
+			  state.bots[i].transform(DoubleVec2D(x, y));
+			  x--;
+			  y++;
+		  }
+	  }
+  
+	  // State also has the vector of player towers
+	  // We'll blast all towers once they are constructed
+	  for (auto &tower : state.towers) {
+		  tower.blast();
+	  }
+  
+	  // We will also check on every turn how many of the opponent towers are left
+  
+	  // Note that the state is not updated yet. It is not your usual program.
+	  // For this entire turn, your state values will be the same, the changes are
+	  // only reflected the next turn this update function runs.
+	  logr << "Number of enemy towers: " << state.enemy_towers.size() << endl;
+  
+	  // While this should give you a decent start, we highly recommend
+	  // reading the docs provided. It should get you up to date with
+	  // all there is to State and we have some helper snippets and methods
+	  // so you start competing right away!
+  
+	  return state;
+  }
+  
+  } // namespace player_code
+  `,
   commitLog: [],
   currentCommitHash: 'latest',
   debugLog1: '',
