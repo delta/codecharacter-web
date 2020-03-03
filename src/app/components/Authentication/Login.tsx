@@ -87,7 +87,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             // TODO: Remove this on OAuth Integration.   
             <Row
             onClick={(e) => {
-              window.location.href = `${API_BASE_URL}${OAUTH_ROUTES.GOOGLE}`;
+              window.location.href = `https://code.pragyan.org/api/${OAUTH_ROUTES.GOOGLE}`;
             }}
             className={classnames(
               styles['google-btn'],
