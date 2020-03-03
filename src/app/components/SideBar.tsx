@@ -3,7 +3,6 @@ import {
   faCode,
   faCodeBranch,
   faCog,
-  faInfoCircle,
   faQuestionCircle,
   faSignInAlt,
   faSignOutAlt,
@@ -79,10 +78,12 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             })}
             id="leaderboard_button"
             title={'Leaderboard'}
-            onClick={() =>
-              sidePanelTab !== SidePanelTab.LEADERBOARD
-                ? openSidePanelTab(SidePanelTab.LEADERBOARD)
-                : closeSidePanelTab()
+            onClick={() => {
+
+              // sidePanelTab !== SidePanelTab.LEADERBOARD
+                // ? openSidePanelTab(SidePanelTab.LEADERBOARD)
+                // : closeSidePanelTab()
+            }
             }
             disabled
           >
@@ -111,10 +112,11 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               })}
               id="matchView_button"
               title={'View Matches'}
-              onClick={() =>
-                sidePanelTab !== SidePanelTab.MATCH
-                  ? openSidePanelTab(SidePanelTab.MATCH)
-                  : closeSidePanelTab()
+              onClick={() => {
+                // sidePanelTab !== SidePanelTab.MATCH
+                //   ? openSidePanelTab(SidePanelTab.MATCH)
+                //   : closeSidePanelTab()
+              }
               }
               disabled
             >
@@ -134,20 +136,6 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             }}
           >
             <FontAwesomeIcon icon={isLoggedIn ? faUser : faSignInAlt} />
-          </Button>
-          <Button
-            className={classnames('py-2 px-auto notification-btn-ctrl', styles.customBtn, {
-              [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.NOTIFICATION,
-            })}
-            id="notifications_button"
-            title={'About'}
-            onClick={() =>
-              sidePanelTab !== SidePanelTab.NOTIFICATION
-                ? openSidePanelTab(SidePanelTab.NOTIFICATION)
-                : closeSidePanelTab()
-            }
-          >
-            <FontAwesomeIcon icon={faInfoCircle} />
           </Button>
           {isLoggedIn ? (
             <Button
