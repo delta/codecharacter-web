@@ -9,6 +9,7 @@ export interface State {
 
 export interface Props {
   index: number;
+  code: string;
   commitDetails: Commit;
   commitsLength: number;
   forkCode?: () => void;

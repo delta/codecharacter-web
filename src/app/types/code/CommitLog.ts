@@ -2,6 +2,7 @@ import { Commit } from 'app/types/code/Code';
 import { Map } from 'app/types/code/Submission';
 
 export interface StateProps {
+  code: string;
   commitLog: Commit[];
   currentCommitHash: string;
   maps: Map[];

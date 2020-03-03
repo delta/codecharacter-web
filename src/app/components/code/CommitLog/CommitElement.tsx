@@ -2,6 +2,8 @@ import { MapList } from 'app/components/code/CommitLog/MapList';
 import * as styles from 'app/styles/CommitLog.module.css';
 import * as CommitInterfaces from 'app/types/code/CommitElement';
 import classnames from 'classnames';
+// tslint:disable-next-line
+import copy from 'copy-to-clipboard';
 import * as React from 'react';
 
 export class CommitElement extends React.Component<CommitInterfaces.Props, CommitInterfaces.State> {
@@ -59,6 +61,9 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
       prevProps.isCurrentHash !== this.props.isCurrentHash
     ) {
       this.setImgType();
+    }
+    if (prevProps.code !== this.props.code) {
+      copy(this.props.code);
     }
   }
 
@@ -124,6 +129,14 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
                   }}
                   src="assets/img/commit-match.png"
                   title="Fight this code"
+                />
+                <img
+                  className={classnames(styles.ForkLogo)}
+                  onClick={() => {
+                    checkoutCode();
+                  }}
+                  src="assets/img/fork.png"
+                  title="Copy code of this commit"
                 />
               </div>
             ) : null}
