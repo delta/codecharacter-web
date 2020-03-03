@@ -90,8 +90,11 @@ export function textResponseWrapper(response: any) {
         case 302:
         case 409:
         case 401:
+        case 404:
+        case 403:
         case 500:
         case 403:
+        case 501:
           error = 'Oops! Something went wrong.';
           type = resType.ERROR;
       }

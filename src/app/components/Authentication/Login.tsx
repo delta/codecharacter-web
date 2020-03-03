@@ -2,6 +2,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { API_BASE_URL } from 'app/../config/config';
 import ForgotPassword from 'app/components/Authentication/ForgotPassword';
+import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
 import * as registerStyles from 'app/styles/Register.module.css';
@@ -65,7 +66,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     if (isLoggedIn) {
       return <Redirect to={Routes.ROOT} />;
     }
-    if (this.props.errorMessage === ' ' && this.state.isForgotPasswordOpen) {
+    if (errorMessage === ' ' && isForgotPasswordOpen) {
       this.setState({
         isForgotPasswordOpen: false,
       });
@@ -247,21 +248,31 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               </div>
             </Col>
           </Row>
+          <PopUpMenu />
         </div>
       );
     }
     return (
-      <ForgotPassword
-        updateErrorMessage={updateErrorMessage}
-        handleSelectPanel={this.props.handleSelectPanel}
-        errorMessage={this.props.errorMessage}
-        forgotPassword={this.props.forgotPassword}
-        closeForgotPassword={() =>
-          this.setState({
-            isForgotPasswordOpen: false,
-          })
-        }
-      />
+      <div>
+        <ForgotPassword
+          updateErrorMessage={updateErrorMessage}
+          handleSelectPanel={this.props.handleSelectPanel}
+          errorMessage={this.props.errorMessage}
+          forgotPassword={this.props.forgotPassword}
+          username={username}
+          setUsername={(newUsername) =>
+            this.setState({
+              username: newUsername,
+            })
+          }
+          closeForgotPassword={() =>
+            this.setState({
+              isForgotPasswordOpen: false,
+            })
+          }
+        />
+        <PopUpMenu />
+      </div>
     );
   }
 

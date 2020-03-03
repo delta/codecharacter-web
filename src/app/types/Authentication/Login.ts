@@ -26,6 +26,8 @@ export interface ForgotPasswordProps {
   handleSelectPanel: (authType: AuthType) => void;
   closeForgotPassword: () => void;
   errorMessage: string;
+  username: string;
+  setUsername: (username: string) => void;
   forgotPassword: (email: string) => void;
 }
 
