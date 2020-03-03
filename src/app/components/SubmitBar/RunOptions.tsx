@@ -2,6 +2,7 @@ import { faBrain, faRobot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SubmissionActions } from 'app/actions';
 import * as styles from 'app/styles/RunOptions.module.css';
+import { Map } from 'app/types/code/Submission';
 import * as SubmitBarInterfaces from 'app/types/SubmitBar';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -29,8 +30,29 @@ export class RunOptions extends React.Component<
   }
 
   public render() {
-    const { maps, startMatch, aiIds } = this.props;
+    const { startMatch } = this.props;
     const { currentIndex, isMapOptionsOpen } = this.state;
+
+    const hardCodedMap: Map[] = [
+      {
+        mapId: 1,
+        name: 'Map of kings',
+      },
+      {
+        mapId: 2,
+        name: 'The forbidden isle of Zeus',
+      },
+      {
+        mapId: 3,
+        name: 'The End of fucking world',
+      },
+    ];
+
+    const maps = this.props.maps || hardCodedMap;
+
+    const hardCodedAiIds: number[] = [1, 2, 3];
+
+    const aiIds = hardCodedAiIds;
 
     const matchOptions = [
       {

@@ -1,4 +1,4 @@
-import { MapList } from 'app/components/code/CommitLog/MapList';
+import MapList from 'app/containers/code/MapList';
 import * as styles from 'app/styles/CommitLog.module.css';
 import * as CommitInterfaces from 'app/types/code/CommitElement';
 import classnames from 'classnames';
@@ -130,7 +130,7 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
             {isMapListOpen ? (
               <MapList
                 maps={maps}
-                startMatch={(mapId) => {
+                startMatch={(mapId: number) => {
                   startMatch(mapId, commitDetails.hash);
                   this.setState({
                     isMapListOpen: !isMapListOpen,
