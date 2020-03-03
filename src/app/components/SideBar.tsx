@@ -84,6 +84,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
                 ? openSidePanelTab(SidePanelTab.LEADERBOARD)
                 : closeSidePanelTab()
             }
+            disabled
           >
             <FontAwesomeIcon icon={faTrophy} />
           </Button>
@@ -115,6 +116,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
                   ? openSidePanelTab(SidePanelTab.MATCH)
                   : closeSidePanelTab()
               }
+              disabled
             >
               <FontAwesomeIcon icon={faTv} />
             </Button>
