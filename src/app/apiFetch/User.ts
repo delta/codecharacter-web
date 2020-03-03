@@ -78,7 +78,7 @@ export const userGetRatings = (username: string) => {
     .then((data) => {
       return data;
     })
-    .catch((error) => console.log('error', error));
+    .catch((error) => console.error(error));
 };
 
 export const userRegister = (body: UserInterfaces.Register) => {

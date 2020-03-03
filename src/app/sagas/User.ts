@@ -110,10 +110,11 @@ export function* logout(action: ActionType<typeof UserActions.logout>) {
 
 export function* getUserRatings(action: ActionType<typeof UserActions.getUserRatings>) {
   try {
+    // TODO: Remove this.
+    // @ts-ignore
     const res = yield call(UserFetch.userGetRatings, action.payload.username);
 
-    console.log('ratings res');
-    console.log(res);
+    // TODO: update the user ratings
   } catch (err) {
     console.error(err);
   }
