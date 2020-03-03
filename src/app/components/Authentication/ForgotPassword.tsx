@@ -32,17 +32,6 @@ const ForgotPassword = (props: LoginInterfaces.ForgotPasswordProps) => {
         <Row>
           <Col className="text-center my-3 ml-auto mr-auto">
             <div className="text-dark">
-              Don't have an account?
-              <a
-                href={Routes.REGISTER}
-                className={classnames(styles['create-one-button'])}
-                onClick={() => {
-                  props.updateErrorMessage('');
-                  props.handleSelectPanel(AuthType.REGISTER);
-                }}
-              >
-                Create one
-              </a>
               <Row>
                 <div className={classnames('col-sm-10', styles.form)}>
                   <form

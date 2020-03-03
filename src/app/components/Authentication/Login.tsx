@@ -164,7 +164,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                   </div>
                 </div>
                 <div className="form-row">
-                  <div className="col mb-1">
+                  <div className="col">
                     <div className={classnames(styles['login-label'])}> Password </div>
                     <div className="input-group">
                       <input
