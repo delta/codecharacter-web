@@ -14,7 +14,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
 
   constructor(props: SocketHandlerInterfaces.Props) {
     super(props);
-    this.socket = new SockJsClient(`${SOCKET_BASE_URL}`);
+    this.socket = new SockJsClient(`${SOCKET_BASE_URL}socket`);
     this.stompClient = Stomp.over(this.socket);
     // @ts-ignore
     this.stompClient.connect({}, (frame) => {
