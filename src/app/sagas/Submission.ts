@@ -74,7 +74,6 @@ export function* selfMatch(action: ActionType<typeof SubmissionActions.selfMatch
     const latestCode = yield select(getUserLatestCode);
     yield put(SubmissionActions.updateDebugRunCode(latestCode));
     yield put(SubmissionActions.updateDebugRunCommitHash(submissionState.commitHash));
-
     yield put(GameLogActions.clearAllLogs());
     yield put(GameLogActions.setHideDebugLog(false));
 
