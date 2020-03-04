@@ -73,3 +73,23 @@ export interface UserStoreState {
 }
 
 export type UserStoreAction = ActionType<typeof actions>;
+
+export enum MatchMode {
+  AUTO = 'AUTO',
+  SELF = 'SELF',
+  AI = 'AI',
+  PREV_COMMIT = 'PREV_COMMIT',
+  MANUAL = 'MANUAL',
+}
+
+export interface MatchDetails {
+  mapId: number;
+  matchMode: MatchMode;
+  playerId1: number;
+  playerId2: number;
+}
+
+export interface StateProps {
+  isMatchRequestPresent: boolean;
+  matchRequestDetails: MatchDetails;
+}
