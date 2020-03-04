@@ -62,6 +62,7 @@ export interface UserStoreState {
   username: string;
   email: string;
   country: string;
+  userId: number;
   isLoggedIn: boolean;
   isLoginLoading: boolean;
   isUserProfileModalOpen: boolean;

@@ -43,6 +43,7 @@ export namespace UserActions {
 
   interface UserDetails {
     isLoggedIn: boolean;
+    userId?: number;
     avatar?: string;
     college?: string;
     userType?: UserInterfaces.UserType;

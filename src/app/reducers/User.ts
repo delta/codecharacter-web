@@ -20,6 +20,7 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   isLoggedIn: false,
   isLoginLoading: false,
   isUserProfileModalOpen: false,
+  userId: 0,
   userType: UserInterfaces.UserType.STUDENT,
   username: '',
 };
@@ -36,6 +37,7 @@ export const userReducer = (
         isLoggedIn,
         username,
         fullName,
+        userId,
         isUserProfileModalOpen,
         errorMessage,
         avatar,
@@ -62,11 +64,13 @@ export const userReducer = (
         email: email !== undefined ? email : state.email,
         errorMessage: errorMessage !== undefined ? errorMessage : state.errorMessage,
         fullName: fullName !== undefined ? fullName : state.fullName,
+
         isLoggedIn: isLoggedIn !== undefined ? isLoggedIn : state.isLoggedIn,
         isUserProfileModalOpen:
           isUserProfileModalOpen !== undefined
             ? isUserProfileModalOpen
             : state.isUserProfileModalOpen,
+        userId: userId !== undefined ? userId : state.userId,
         userType: userType !== undefined ? userType : state.userType,
         username: username !== undefined ? username : state.username,
       };
