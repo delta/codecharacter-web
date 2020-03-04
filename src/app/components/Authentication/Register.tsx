@@ -4,7 +4,6 @@ import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
 import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
 import * as authStyles from 'app/styles/Authentication.module.css';
-import * as navStyles from 'app/styles/LandingPage.module.css';
 import * as registerStyles from 'app/styles/Register.module.css';
 import * as RegisterInterfaces from 'app/types/Authentication/Register';
 import { UserType } from 'app/types/User';
@@ -121,24 +120,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
     return (
       <div className={classnames(authStyles.registerRoot)} onKeyDown={this.handleKeyDown}>
-        <div className={classnames(navStyles.nav)}>
-          <input type="checkbox" className={classnames(navStyles['nav-check'])} id="nav-check" />
-          <div className={classnames(navStyles['nav-header'])}>
-            <div className={classnames(navStyles['nav-title'])}>CodeCharacter</div>
-          </div>
-          <div className={classnames(navStyles['nav-btn'])}>
-            <label htmlFor="nav-check">
-              <span></span>
-              <span></span>
-              <span></span>
-            </label>
-          </div>
-
-          <div className={classnames(navStyles['nav-links'])}>
-            <a href={Routes.HOME}>Home</a>
-            <a href={Routes.LOGIN}>Login</a>
-          </div>
-        </div>
+        <NavBar isLoggedIn={false} page={NavPage.REGISTER} />
         <div className={classnames(authStyles.registerMessage)}>
           <h1 className={classnames(authStyles['register-h1'])}> Register to CodeCharacter! </h1>
           <p> Register now and code your way through!! </p>

@@ -20,8 +20,8 @@ export const Footer: React.FunctionComponent = () => {
     <div>
       <div className={classnames('container-fluid', style.footer_head)}>
         <footer className="container py-5">
-          <div className="row">
-            <div className="col col-md">
+          <div className="row justify-content-md-around">
+            <div className="col col-md-3">
               <h5>Contact</h5>
               <ul className="list-unstyled text-small">
                 <Table>
@@ -37,36 +37,23 @@ export const Footer: React.FunctionComponent = () => {
                     <td>Kumaran</td>
                     <td>9566541342</td>
                   </tr>
+                  <tr onClick={() => copyToClipboard('8428747686')}>
+                    <td>Kumaran</td>
+                    <td>9566541342</td>
+                  </tr>
                 </Table>
               </ul>
             </div>
-            <div className="col col-md">
-              <h5>Documentation</h5>
-              <ul className="list-unstyled text-small">
-                <li>
-                  <a href="#">Home</a>
-                </li>
-                <li>
-                  <a href="#">Bots</a>
-                </li>
-                <li>
-                  <a href="#">Towers</a>
-                </li>
-                <li>
-                  <a href="#">States</a>
-                </li>
-                <li>
-                  <a href="#">Terrain</a>
-                </li>
-              </ul>
-            </div>
-            <div className="col col-md">
+            <div className="col col-md-3">
               <h5>Quick Links</h5>
               <ul className="list-unstyled text-small">
                 <li>
                   <Link to="/">Home</Link>
                 </li>
                 <li>
+                  <li>
+                    <a href="https://code.pragyan.org/docs">Documentation</a>
+                  </li>
                   <a href="https://pragyan.org">Pragyan</a>
                 </li>
                 <li>
@@ -81,56 +68,6 @@ export const Footer: React.FunctionComponent = () => {
                 </li>
               </ul>
             </div>
-            {/* <div className="col-lg-4 pr-5">
-              <h5 className="ft_title m-0">Reach out to us</h5>
-              <form className="container-fluid d-flex flex-column">
-                <input
-                  className={classnames(
-                    'row my-1',
-                    'form-control',
-                    'form-control-sm',
-                    style.input_area,
-                  )}
-                  type="text"
-                  name="name"
-                  placeholder="Enter Your name"
-                />
-                <input
-                  className={classnames(
-                    'row my-1',
-                    'form-control',
-                    'form-control-sm',
-                    style.input_area,
-                  )}
-                  type="email"
-                  name="email"
-                  placeholder="Enter email address"
-                />
-                <textarea
-                  className={classnames(
-                    'row my-1',
-                    'form-control',
-                    'form-control-sm',
-                    style.input_area,
-                  )}
-                  name="message"
-                  placeholder="Message"
-                ></textarea>
-                <button
-                  className={classnames(
-                    'row form-control',
-                    'form-control-sm',
-                    'btn btn-info my-1',
-                    style.input_area,
-                    style.submitButton,
-                  )}
-                  type="submit"
-                  value="Subscribe"
-                >
-                  Submit
-                </button>
-              </form>
-            </div> */}
           </div>
         </footer>
       </div>

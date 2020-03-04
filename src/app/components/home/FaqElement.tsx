@@ -32,7 +32,7 @@ export class FaqElement extends React.Component<FaqElementProps, FaqElementState
         maxHeight: '500px',
       };
     }
-    this.setState((state) => ({ ...state, isFaqBarDown: !state.isFaqBarDown }));
+    this.setState({ isFaqBarDown: !this.state.isFaqBarDown });
   };
 
   public render() {
@@ -61,9 +61,11 @@ export class FaqElement extends React.Component<FaqElementProps, FaqElementState
         </div>
 
         <div className={classnames(styles['faq-body'])}>
-          <div className={classnames(styles['faq-body-inactive'])} style={this.faqBodyStyle}>
-            {answer}
-          </div>
+          <div
+            className={classnames(styles['faq-body-inactive'])}
+            style={this.faqBodyStyle}
+            dangerouslySetInnerHTML={{ __html: answer }}
+          ></div>
         </div>
       </div>
     );

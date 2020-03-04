@@ -1,12 +1,10 @@
 import { FaqElement } from 'app/components/home/FaqElement';
 import { Footer } from 'app/components/home/Footer';
-import { Routes } from 'app/routes';
 import * as styles from 'app/styles/LandingPage.module.css';
 import * as LandingPageInterfaces from 'app/types/LandingPage';
 import classnames from 'classnames';
 import * as React from 'react';
-// tslint:disable-next-line:import-name
-import { HashLink } from 'react-router-hash-link';
+import { NavBar, NavPage } from './Navbar';
 
 export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}> {
   private faq = [
@@ -21,7 +19,7 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
     },
     {
       answer:
-        'Yes! Code Character is played completely on the web. However, we provide functionality for you to write code offline on your own text editor and compile the code. For more details, check out the player docs (Insert link here).',
+        'Yes! Code Character is played completely on the web. However, we provide functionality for you to write code offline on your own text editor and compile the code. For more details, check out the player docs <a href="https://code.pragyan.org/docs">code.pragyan.org/docs</a>',
       question: 'Is the event completely online?',
     },
     {
@@ -38,48 +36,7 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
   public render() {
     return (
       <div className={classnames(styles.root)}>
-        <div className={classnames(styles.nav)}>
-          <input type="checkbox" className={classnames(styles['nav-check'])} id="nav-check" />
-          <div className={classnames(styles['nav-header'], 'container-fluid')}>
-            <div className={classnames(styles['nav-title'], 'p-lg-3')}>CodeCharacter</div>
-          </div>
-          <div className={classnames(styles['nav-btn'])}>
-            <label htmlFor="nav-check">
-              <span></span>
-              <span></span>
-              <span></span>
-            </label>
-          </div>
-          <div className={classnames(styles['nav-links'])}>
-            {this.props.isLoggedIn ? (
-              <a href={Routes.ROOT} className="p-3">
-                {' '}
-                Play!{' '}
-              </a>
-            ) : (
-              <>
-                <a href={Routes.LOGIN} className="p-3">
-                  {' '}
-                  Login{' '}
-                </a>
-                <a href={Routes.REGISTER} className="p-3">
-                  {' '}
-                  Register{' '}
-                </a>
-              </>
-            )}
-            <HashLink to="#about" className="p-3">
-              About
-            </HashLink>
-            <HashLink to="#faq" className="p-3">
-              FAQ
-            </HashLink>
-            <HashLink to="#contact" className="p-3">
-              Contact
-            </HashLink>
-          </div>
-        </div>
-
+        <NavBar isLoggedIn={this.props.isLoggedIn} page={NavPage.HOME} />
         <div className={classnames(styles.head, 'container-fluid')}>
           <div className={classnames('col-lg-6', styles.head_img)}>
             <img src="assets/img/bot_dashboard.png" className={styles.img_big} />
