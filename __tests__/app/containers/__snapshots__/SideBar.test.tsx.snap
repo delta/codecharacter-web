@@ -235,14 +235,14 @@ exports[`SideBar Container Should render 1`] = `
             bsClass="btn"
             bsStyle="default"
             className="py-2 px-auto leaderboard-btn-ctrl"
-            disabled={false}
+            disabled={true}
             id="leaderboard_button"
             onClick={[Function]}
             title="Leaderboard"
           >
             <button
               className="py-2 px-auto leaderboard-btn-ctrl btn btn-default"
-              disabled={false}
+              disabled={true}
               id="leaderboard_button"
               onClick={[Function]}
               title="Leaderboard"
