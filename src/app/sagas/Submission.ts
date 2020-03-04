@@ -1,5 +1,5 @@
 /* tslint:disable:no-console*/
-import { CodeActions, GameLogActions, NotificationActions, SubmissionActions } from 'app/actions';
+import { CodeActions, GameLogActions, SubmissionActions } from 'app/actions';
 import * as SubmissionFetch from 'app/apiFetch/Submission';
 import { RootState } from 'app/reducers';
 import { checkAccountActivated, checkAuthentication } from 'app/sagas/utils';
@@ -11,27 +11,25 @@ export const getSubmissionState = (state: RootState) => state.submission;
 export const getUserLatestCode = (state: RootState) => state.code.code;
 
 export function* lockCode(action: ActionType<typeof SubmissionActions.lockCode>) {
-  try {
-    const submissionState = yield select(getSubmissionState);
-
-    if (submissionState.request !== Request.NONE) return;
-
-    yield put(SubmissionActions.updateDebugRunRequest(Request.NONE));
-
-    yield put(CodeActions.save());
-    yield put(NotificationActions.info('Code is being locked...'));
-    yield put(GameLogActions.clearAllLogs());
-    yield put(GameLogActions.setHideDebugLog(false));
-
-    yield put(
-      SubmissionActions.changeStateCurrentRequest(
-        RequestState.COMPILE_CURRENT_CODE,
-        Request.LOCK_CODE,
-      ),
-    );
-  } catch (err) {
-    console.error(err);
-  }
+  // try {
+  //   const submissionState = yield select(getSubmissionState);
+  //   if (submissionState.request !== Request.NONE) return;
+  //   yield put(SubmissionActions.updateDebugRunRequest(Request.NONE));
+  //   yield put(CodeActions.save());
+  //   yield put(NotificationActions.info('Code is being locked...'));
+  //   yield put(GameLogActions.clearAllLogs());
+  //   yield put(GameLogActions.setHideDebugLog(false));
+  //   yield put(
+  //     SubmissionActions.changeStateCurrentRequest(
+  //       RequestState.COMPILE_CURRENT_CODE,
+  //       Request.LOCK_CODE,
+  //       '',
+  //       0,
+  //     ),
+  //   );
+  // } catch (err) {
+  //   console.error(err);
+  // }
 }
 
 export function* previousCommitMatch(
@@ -50,6 +48,8 @@ export function* previousCommitMatch(
     yield put(GameLogActions.setHideDebugLog(false));
 
     yield put(CodeActions.save());
+
+    console.log(action.payload);
 
     yield put(
       SubmissionActions.changeStateCurrentRequest(
@@ -214,221 +214,203 @@ export function* changeStateCurrentRequest(
 export function* handleCompileSuccess(
   action: ActionType<typeof SubmissionActions.handleCompileSuccess>,
 ) {
-  try {
-    const submissionState = yield select(getSubmissionState);
-    const currentRequest = submissionState.request;
-    const currentState = submissionState.state;
-
-    if (
-      currentRequest === Request.NONE ||
-      (currentRequest === Request.LOCK_CODE &&
-        currentState !== RequestState.COMPILE_CURRENT_CODE) ||
-      (currentRequest === Request.PREVIOUS_COMMIT_MATCH &&
-        currentState !== RequestState.COMPILE_CURRENT_CODE &&
-        currentState !== RequestState.COMPILE_PREVIOUS_COMMIT_CODE) ||
-      (currentRequest === Request.SELF_MATCH &&
-        currentState !== RequestState.COMPILE_CURRENT_CODE) ||
-      (currentRequest === Request.AI_MATCH && currentState !== RequestState.COMPILE_CURRENT_CODE)
-    ) {
-      return;
-    }
-
-    switch (currentState) {
-      case RequestState.COMPILE_PREVIOUS_COMMIT_CODE: {
-        yield put(
-          SubmissionActions.changeStateCurrentRequest(
-            RequestState.COMPILE_CURRENT_CODE,
-            currentRequest,
-          ),
-        );
-        break;
-      }
-
-      case RequestState.COMPILE_CURRENT_CODE: {
-        switch (currentRequest) {
-          case Request.SELF_MATCH: {
-            yield put(
-              SubmissionActions.changeStateCurrentRequest(
-                RequestState.EXECUTE_SELF_MATCH,
-                currentRequest,
-              ),
-            );
-            break;
-          }
-          case Request.PREVIOUS_COMMIT_MATCH: {
-            yield put(
-              SubmissionActions.changeStateCurrentRequest(
-                RequestState.EXECUTE_PREVIOUS_COMMIT_MATCH,
-                currentRequest,
-              ),
-            );
-            break;
-          }
-          case Request.AI_MATCH: {
-            yield put(
-              SubmissionActions.changeStateCurrentRequest(
-                RequestState.EXECUTE_AI_MATCH,
-                currentRequest,
-              ),
-            );
-            break;
-          }
-          case Request.LOCK_CODE: {
-            const res = yield call(SubmissionFetch.lockCode);
-            yield checkAuthentication(res);
-            yield put(NotificationActions.success('Code Locked'));
-            yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
-            break;
-          }
-        }
-        break;
-      }
-    }
-  } catch (err) {
-    console.error(err);
-  }
+  // try {
+  //   const submissionState = yield select(getSubmissionState);
+  //   const currentRequest = submissionState.request;
+  //   const currentState = submissionState.state;
+  //   if (
+  //     currentRequest === Request.NONE ||
+  //     (currentRequest === Request.LOCK_CODE &&
+  //       currentState !== RequestState.COMPILE_CURRENT_CODE) ||
+  //     (currentRequest === Request.PREVIOUS_COMMIT_MATCH &&
+  //       currentState !== RequestState.COMPILE_CURRENT_CODE &&
+  //       currentState !== RequestState.COMPILE_PREVIOUS_COMMIT_CODE) ||
+  //     (currentRequest === Request.SELF_MATCH &&
+  //       currentState !== RequestState.COMPILE_CURRENT_CODE) ||
+  //     (currentRequest === Request.AI_MATCH && currentState !== RequestState.COMPILE_CURRENT_CODE)
+  //   ) {
+  //     return;
+  //   }
+  //   switch (currentState) {
+  //     case RequestState.COMPILE_PREVIOUS_COMMIT_CODE: {
+  //       yield put(
+  //         SubmissionActions.changeStateCurrentRequest(
+  //           RequestState.COMPILE_CURRENT_CODE,
+  //           currentRequest,
+  //         ),
+  //       );
+  //       break;
+  //     }
+  //     case RequestState.COMPILE_CURRENT_CODE: {
+  //       switch (currentRequest) {
+  //         case Request.SELF_MATCH: {
+  //           yield put(
+  //             SubmissionActions.changeStateCurrentRequest(
+  //               RequestState.EXECUTE_SELF_MATCH,
+  //               currentRequest,
+  //             ),
+  //           );
+  //           break;
+  //         }
+  //         case Request.PREVIOUS_COMMIT_MATCH: {
+  //           yield put(
+  //             SubmissionActions.changeStateCurrentRequest(
+  //               RequestState.EXECUTE_PREVIOUS_COMMIT_MATCH,
+  //               currentRequest,
+  //             ),
+  //           );
+  //           break;
+  //         }
+  //         case Request.AI_MATCH: {
+  //           yield put(
+  //             SubmissionActions.changeStateCurrentRequest(
+  //               RequestState.EXECUTE_AI_MATCH,
+  //               currentRequest,
+  //             ),
+  //           );
+  //           break;
+  //         }
+  //         case Request.LOCK_CODE: {
+  //           const res = yield call(SubmissionFetch.lockCode);
+  //           yield checkAuthentication(res);
+  //           yield put(NotificationActions.success('Code Locked'));
+  //           yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
+  //           break;
+  //         }
+  //       }
+  //       break;
+  //     }
+  //   }
+  // } catch (err) {
+  //   console.error(err);
+  // }
 }
 
 export function* handleCompileError(
   action: ActionType<typeof SubmissionActions.handleCompileError>,
 ) {
-  try {
-    const submissionState = yield select(getSubmissionState);
-    const currentRequest = submissionState.request;
-    const currentState = submissionState.state;
-
-    if (
-      currentRequest === Request.NONE ||
-      (currentRequest === Request.LOCK_CODE &&
-        currentState !== RequestState.COMPILE_CURRENT_CODE) ||
-      (currentRequest === Request.PREVIOUS_COMMIT_MATCH &&
-        (currentState !== RequestState.COMPILE_CURRENT_CODE ||
-          currentState !== RequestState.COMPILE_PREVIOUS_COMMIT_CODE)) ||
-      (currentRequest === Request.SELF_MATCH &&
-        currentState !== RequestState.COMPILE_CURRENT_CODE) ||
-      (currentRequest === Request.AI_MATCH && currentState !== RequestState.COMPILE_CURRENT_CODE)
-    ) {
-      return;
-    }
-
-    const errorLog = action.payload.error;
-
-    if (errorLog) {
-      yield put(GameLogActions.clearAllLogs());
-      yield put(GameLogActions.updateDisplayDebugLog(errorLog));
-    }
-
-    yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
-  } catch (err) {
-    console.error(err);
-  }
+  // try {
+  //   const submissionState = yield select(getSubmissionState);
+  //   const currentRequest = submissionState.request;
+  //   const currentState = submissionState.state;
+  //   if (
+  //     currentRequest === Request.NONE ||
+  //     (currentRequest === Request.LOCK_CODE &&
+  //       currentState !== RequestState.COMPILE_CURRENT_CODE) ||
+  //     (currentRequest === Request.PREVIOUS_COMMIT_MATCH &&
+  //       (currentState !== RequestState.COMPILE_CURRENT_CODE ||
+  //         currentState !== RequestState.COMPILE_PREVIOUS_COMMIT_CODE)) ||
+  //     (currentRequest === Request.SELF_MATCH &&
+  //       currentState !== RequestState.COMPILE_CURRENT_CODE) ||
+  //     (currentRequest === Request.AI_MATCH && currentState !== RequestState.COMPILE_CURRENT_CODE)
+  //   ) {
+  //     return;
+  //   }
+  //   const errorLog = action.payload.error;
+  //   if (errorLog) {
+  //     yield put(GameLogActions.clearAllLogs());
+  //     yield put(GameLogActions.updateDisplayDebugLog(errorLog));
+  //   }
+  //   yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
+  // } catch (err) {
+  //   console.error(err);
+  // }
 }
 
 export function* handleExecuteSuccess(
   action: ActionType<typeof SubmissionActions.handleExecuteSuccess>,
 ) {
-  try {
-    const submissionState = yield select(getSubmissionState);
-    const currentRequest = submissionState.request;
-    const currentState = submissionState.state;
-
-    if (
-      currentRequest === Request.NONE ||
-      currentRequest === Request.LOCK_CODE ||
-      (currentRequest === Request.PREVIOUS_COMMIT_MATCH &&
-        currentState !== RequestState.EXECUTE_PREVIOUS_COMMIT_MATCH) ||
-      (currentRequest === Request.SELF_MATCH && currentState !== RequestState.EXECUTE_SELF_MATCH) ||
-      (currentRequest === Request.AI_MATCH && currentState !== RequestState.EXECUTE_AI_MATCH)
-    ) {
-      return;
-    }
-
-    const logs = JSON.parse(action.payload.logs);
-
-    const debugLog1 = logs.player1Log;
-    const debugLog2 = logs.player2Log;
-    const gameLog = logs.gameLog;
-    const matchPlayerId = logs.matchPlayerId;
-
-    yield put(GameLogActions.updateGameLog(debugLog1, debugLog2, gameLog));
-    yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
-    yield put(GameLogActions.updateMatchPlayerId(matchPlayerId));
-  } catch (err) {
-    console.error(err);
-  }
+  // try {
+  //   const submissionState = yield select(getSubmissionState);
+  //   const currentRequest = submissionState.request;
+  //   const currentState = submissionState.state;
+  //   if (
+  //     currentRequest === Request.NONE ||
+  //     currentRequest === Request.LOCK_CODE ||
+  //     (currentRequest === Request.PREVIOUS_COMMIT_MATCH &&
+  //       currentState !== RequestState.EXECUTE_PREVIOUS_COMMIT_MATCH) ||
+  //     (currentRequest === Request.SELF_MATCH && currentState !== RequestState.EXECUTE_SELF_MATCH) ||
+  //     (currentRequest === Request.AI_MATCH && currentState !== RequestState.EXECUTE_AI_MATCH)
+  //   ) {
+  //     return;
+  //   }
+  //   const logs = JSON.parse(action.payload.logs);
+  //   const debugLog1 = logs.player1Log;
+  //   const debugLog2 = logs.player2Log;
+  //   const gameLog = logs.gameLog;
+  //   const matchPlayerId = logs.matchPlayerId;
+  //   yield put(GameLogActions.updateGameLog(debugLog1, debugLog2, gameLog));
+  //   yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
+  //   yield put(GameLogActions.updateMatchPlayerId(matchPlayerId));
+  // } catch (err) {
+  //   console.error(err);
+  // }
 }
 
 export function* handleExecuteError(
   action: ActionType<typeof SubmissionActions.handleExecuteError>,
 ) {
-  try {
-    const submissionState = yield select(getSubmissionState);
-    const currentRequest = submissionState.request;
-    const currentState = submissionState.state;
-
-    if (
-      currentRequest === Request.NONE ||
-      currentRequest === Request.LOCK_CODE ||
-      (currentRequest === Request.PREVIOUS_COMMIT_MATCH &&
-        currentState !== RequestState.EXECUTE_PREVIOUS_COMMIT_MATCH) ||
-      (currentRequest === Request.SELF_MATCH && currentState !== RequestState.EXECUTE_SELF_MATCH) ||
-      (currentRequest === Request.AI_MATCH && currentState !== RequestState.EXECUTE_AI_MATCH)
-    ) {
-      return;
-    }
-
-    if (
-      action.payload.error.includes('runtime') &&
-      (currentRequest === Request.PREVIOUS_COMMIT_MATCH || currentRequest === Request.SELF_MATCH)
-    ) {
-      yield put(SubmissionActions.updateDebugRunRequest(currentRequest));
-    } else {
-      yield put(SubmissionActions.updateDebugRunRequest(Request.NONE));
-    }
-
-    yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
-  } catch (err) {
-    console.error(err);
-  }
+  // try {
+  //   const submissionState = yield select(getSubmissionState);
+  //   const currentRequest = submissionState.request;
+  //   const currentState = submissionState.state;
+  //   if (
+  //     currentRequest === Request.NONE ||
+  //     currentRequest === Request.LOCK_CODE ||
+  //     (currentRequest === Request.PREVIOUS_COMMIT_MATCH &&
+  //       currentState !== RequestState.EXECUTE_PREVIOUS_COMMIT_MATCH) ||
+  //     (currentRequest === Request.SELF_MATCH && currentState !== RequestState.EXECUTE_SELF_MATCH) ||
+  //     (currentRequest === Request.AI_MATCH && currentState !== RequestState.EXECUTE_AI_MATCH)
+  //   ) {
+  //     return;
+  //   }
+  //   if (
+  //     action.payload.error.includes('runtime') &&
+  //     (currentRequest === Request.PREVIOUS_COMMIT_MATCH || currentRequest === Request.SELF_MATCH)
+  //   ) {
+  //     yield put(SubmissionActions.updateDebugRunRequest(currentRequest));
+  //   } else {
+  //     yield put(SubmissionActions.updateDebugRunRequest(Request.NONE));
+  //   }
+  //   yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
+  // } catch (err) {
+  //   console.error(err);
+  // }
 }
 
 export function* handleDebugRunSuccess(
   action: ActionType<typeof SubmissionActions.handleDebugRunSuccess>,
 ) {
-  try {
-    const submissionState = yield select(getSubmissionState);
-    const currentRequest = submissionState.request;
-    const currentState = submissionState.state;
-
-    if (!(currentRequest === Request.DEBUG_RUN && currentState === RequestState.DEBUG_RUN)) {
-      return;
-    }
-
-    yield put(GameLogActions.clearAllLogs());
-    yield put(GameLogActions.updateDisplayDebugLog(action.payload.stackTrace));
-    yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
-  } catch (err) {
-    console.error(err);
-  }
+  // try {
+  //   const submissionState = yield select(getSubmissionState);
+  //   const currentRequest = submissionState.request;
+  //   const currentState = submissionState.state;
+  //   if (!(currentRequest === Request.DEBUG_RUN && currentState === RequestState.DEBUG_RUN)) {
+  //     return;
+  //   }
+  //   yield put(GameLogActions.clearAllLogs());
+  //   yield put(GameLogActions.updateDisplayDebugLog(action.payload.stackTrace));
+  //   yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
+  // } catch (err) {
+  //   console.error(err);
+  // }
 }
 
 export function* handleDebugRunError(
   action: ActionType<typeof SubmissionActions.handleDebugRunError>,
 ) {
-  try {
-    const submissionState = yield select(getSubmissionState);
-    const currentRequest = submissionState.request;
-    const currentState = submissionState.state;
-
-    if (!(currentRequest === Request.DEBUG_RUN && currentState === RequestState.DEBUG_RUN)) {
-      return;
-    }
-
-    yield put(GameLogActions.clearAllLogs());
-    yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
-  } catch (err) {
-    console.error(err);
-  }
+  // try {
+  //   const submissionState = yield select(getSubmissionState);
+  //   const currentRequest = submissionState.request;
+  //   const currentState = submissionState.state;
+  //   if (!(currentRequest === Request.DEBUG_RUN && currentState === RequestState.DEBUG_RUN)) {
+  //     return;
+  //   }
+  //   yield put(GameLogActions.clearAllLogs());
+  //   yield put(SubmissionActions.changeStateCurrentRequest(RequestState.IDLE, Request.NONE));
+  // } catch (err) {
+  //   console.error(err);
+  // }
 }
 
 export function* loadMaps(action: ActionType<typeof SubmissionActions.loadMaps>) {

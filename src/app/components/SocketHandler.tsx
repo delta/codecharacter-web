@@ -68,6 +68,8 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       '/request/match',
       {},
       JSON.stringify({
+        commitHash,
+        mapId,
         matchMode,
         playerId1,
         playerId2,
@@ -77,12 +79,12 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
 
   public componentDidUpdate() {
     // tslint:disable-next-line: no-console
-    const { request, mapId, playerId1, playerId2, commitHash, updateRequest } = this.props;
+    const { request, mapId, playerId1, playerId2, commitHash, updateRequest, userId } = this.props;
     switch (request) {
       case SubmissionInterfaces.Request.PREVIOUS_COMMIT_MATCH: {
         this.initiateMatch(
-          playerId1,
-          playerId2,
+          userId,
+          userId,
           SubmissionInterfaces.Request.PREVIOUS_COMMIT_MATCH,
           mapId,
           commitHash,

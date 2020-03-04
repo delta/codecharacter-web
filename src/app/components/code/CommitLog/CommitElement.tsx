@@ -130,6 +130,7 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
             {isMapListOpen ? (
               <MapList
                 maps={maps}
+                commitHash={commitDetails.hash}
                 startMatch={(mapId: number) => {
                   startMatch(mapId, commitDetails.hash);
                   this.setState({

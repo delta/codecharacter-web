@@ -13,11 +13,13 @@ export interface State {
 export interface DispatchProps {
   updateRequest: (request: Request) => void;
   updateMapId: (mapId: number) => void;
+  updateCommitHash: (commitHash: string) => void;
 }
 
 export interface MapListProps {
   maps: Map[];
   startMatch: (mapId: number) => void;
+  commitHash: string;
 }
 
 export type Props = MapListProps & DispatchProps;
@@ -27,6 +29,7 @@ const mapStateToProps = (rootState: RootState) => {
 };
 
 const mapListContainer = connect<{}, DispatchProps, {}>(mapStateToProps, {
+  updateCommitHash: SubmissionActions.updateCommitHash,
   updateMapId: SubmissionActions.updateMapId,
   updateRequest: SubmissionActions.changeCurrentRequest,
 })(MapList);

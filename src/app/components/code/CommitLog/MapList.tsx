@@ -6,7 +6,7 @@ import * as React from 'react';
 
 export class MapList extends React.Component<Props, {}> {
   public render() {
-    const { updateMapId, updateRequest } = this.props;
+    const { updateMapId, updateRequest, updateCommitHash, commitHash } = this.props;
     const maps: Map[] = [
       {
         mapId: 1,
@@ -26,9 +26,10 @@ export class MapList extends React.Component<Props, {}> {
         {maps.map((map, index) => (
           <div
             className={classnames(styles.dropdownItem)}
-            onClick={(e) => {
+            onClick={async (e) => {
+              await updateMapId(map.mapId);
+              await updateCommitHash(commitHash);
               updateRequest(Request.PREVIOUS_COMMIT_MATCH);
-              updateMapId(map.mapId);
               e.stopPropagation();
             }}
           >

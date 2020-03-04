@@ -26,6 +26,7 @@ export namespace SubmissionActions {
     SAVE_MAPS = 'SAVE_MAPS',
     GET_AI_IDS = 'GET_AI_IDS',
     UPDATE_AI_IDS = 'UPDATE_AI_IDS',
+    UPDATE_COMMIT_HASH = 'UPDATE_COMMIT_HASH',
     RESET_SUBMISSION_STATE = 'RESET_SUBMISSION_STATE',
   }
 
@@ -38,11 +39,9 @@ export namespace SubmissionActions {
   export const changeStateCurrentRequest = (
     state: SubmissionInterfaces.RequestState,
     currentRequest: SubmissionInterfaces.Request,
-    commitHash = 'latest',
-    mapId = 1,
-    aiId = 1,
-  ) =>
-    action(Type.CHANGE_STATE_CURRENT_REQUEST, { state, currentRequest, commitHash, mapId, aiId });
+    commitHash: string,
+    mapId: number,
+  ) => action(Type.CHANGE_STATE_CURRENT_REQUEST, { state, currentRequest, commitHash, mapId });
 
   export const handleCompileSuccess = () => action(Type.HANDLE_COMPILE_SUCCESS);
 
@@ -100,4 +99,7 @@ export namespace SubmissionActions {
   export const getAiIds = () => action(Type.GET_AI_IDS);
 
   export const updateAiIds = (aiIds: number[]) => action(Type.UPDATE_AI_IDS, { aiIds });
+
+  export const updateCommitHash = (commitHash: string) =>
+    action(Type.UPDATE_COMMIT_HASH, { commitHash });
 }
