@@ -6,9 +6,12 @@ const actions = {
   deleteNotification: NotificationActions.deleteNotification,
   deleteNotificationType: NotificationActions.deleteNotificationType,
   error: NotificationActions.error,
+  hideNotification: NotificationActions.hideNotification,
+  hideNotificationType: NotificationActions.hideNotificationType,
   info: NotificationActions.info,
   resetNotificationState: NotificationActions.resetNotificationState,
   success: NotificationActions.success,
+  updateGlobalAnnouncements: NotificationActions.updateGlobalAnnouncements,
   updateGlobalNotifications: NotificationActions.updateGlobalNotifications,
 };
 
@@ -25,29 +28,51 @@ export enum NotificationTabType {
   ERROR = 'ERROR',
 }
 
+export enum TabType {
+  NOTIFICATIONS,
+  ANNOUNCEMENTS,
+}
+
 export interface Notification {
   id: number;
-  message: string;
+  isRead: boolean;
+  content: string;
   createdAt: Date;
+  message: string;
+  userId: number;
+  type: NotificationTabType;
+  title: string;
+}
+
+export interface Announcement {
+  adminUserId: number;
+  date: Date;
+  id: number;
+  message: string;
 }
 
 export interface NotificationStoreState {
+  announcements: Announcement[];
   notifications: Notification[];
   loading: boolean;
 }
 
 export interface State {
   activeNotificationTab: NotificationTabType;
+  tabType: TabType;
 }
 
 export interface StateProps {
   loading: boolean;
   notifications: Notification[];
+  announcements: Announcement[];
 }
 
 export interface DispatchProps {
+  deleteNotification: (id: number) => void;
   deleteNotificationType: (type: NotificationTabType) => void;
   getAllGlobalNotifications: () => void;
+  getAllGlobalAnnouncements: () => void;
 }
 
 export type Props = StateProps & DispatchProps;

@@ -1,4 +1,4 @@
-import { Notification, NotificationTabType, NotificationType } from 'app/types/Notification';
+import * as NotificationInterfaces from 'app/types/Notification';
 import { action } from 'typesafe-actions';
 
 export namespace NotificationActions {
@@ -7,12 +7,16 @@ export namespace NotificationActions {
     SUCCESS = 'SUCCESS',
     ERROR = 'ERROR',
     ADD = 'ADD',
+    HIDE_NOTIFICATION = 'HIDE_NOTIFICATION',
+    HIDE_NOTIFICATION_TYPE = 'HIDE_NOTIFICATION_TYPE',
     DELETE_NOTIFICATION = 'DELETE_NOTIFICATION',
     DELETE_NOTIFICATION_TYPE = 'DELETE_NOTIFICATION_TYPE',
     RESET_NOTIFICATION_STATE = 'RESET_NOTIFICATION_STATE',
-    GET_UNREAD_GLOBAL_NOTIFICATIONS = 'GET_GLOBAL_NOTIFICATIONS',
-    GET_ALL_GLOBAL_NOTIFICATIONS = 'GET_ALL_GLOBAL_NOTIFICATIONS',
     UPDATE_GLOBAL_NOTIFICATIONS = 'UPDATE_GLOBAL_NOTIFICATIONS',
+    GET_ALL_GLOBAL_NOTIFICATIONS = 'GET_ALL_GLOBAL_NOTIFICATIONS',
+    GET_UNREAD_GLOBAL_NOTIFICATIONS = 'GET_GLOBAL_NOTIFICATIONS',
+    GET_ALL_GLOBAL_ANNOUNCEMENTS = 'GET_ALL_GLOBAL_ANNOUNCEMENTS',
+    UPDATE_GLOBAL_ANNOUNCEMENTS = 'UPDATE_GLOBAL_ANNOUNCEMENTS',
   }
 
   export const info = (message: string) =>
@@ -30,21 +34,26 @@ export namespace NotificationActions {
       message,
     });
 
-  export const add = (type: NotificationType, title: string, text: string) =>
+  export const add = (type: NotificationInterfaces.NotificationType, title: string, text: string) =>
     action(Type.ADD, {
       text,
       title,
       type,
     });
 
-  export const deleteNotificationType = (type: NotificationTabType) =>
+  export const deleteNotificationType = (type: NotificationInterfaces.NotificationTabType) =>
     action(Type.DELETE_NOTIFICATION_TYPE, {
       type,
     });
 
-  export const deleteNotification = (id: number) =>
-    action(Type.DELETE_NOTIFICATION, {
+  export const hideNotification = (id: number) =>
+    action(Type.HIDE_NOTIFICATION, {
       id,
+    });
+
+  export const hideNotificationType = (type: NotificationInterfaces.NotificationTabType) =>
+    action(Type.HIDE_NOTIFICATION_TYPE, {
+      type,
     });
 
   export const resetNotificationState = () => action(Type.RESET_NOTIFICATION_STATE);
@@ -53,6 +62,15 @@ export namespace NotificationActions {
 
   export const getAllGlobalNotifications = () => action(Type.GET_ALL_GLOBAL_NOTIFICATIONS);
 
-  export const updateGlobalNotifications = (notifications: Notification[]) =>
+  export const updateGlobalNotifications = (notifications: NotificationInterfaces.Notification[]) =>
     action(Type.UPDATE_GLOBAL_NOTIFICATIONS, { notifications });
+
+  export const deleteNotification = (id: number) => {
+    return action(Type.DELETE_NOTIFICATION, { id });
+  };
+
+  export const getAllGlobalAnnouncements = () => action(Type.GET_ALL_GLOBAL_ANNOUNCEMENTS);
+
+  export const updateGlobalAnnouncements = (announcements: NotificationInterfaces.Announcement[]) =>
+    action(Type.UPDATE_GLOBAL_ANNOUNCEMENTS, { announcements });
 }

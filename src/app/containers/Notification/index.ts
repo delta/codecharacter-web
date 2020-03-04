@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (rootState: RootState) => {
   return {
+    announcements: rootState.notification.announcements,
     loading: rootState.notification.loading,
     notifications: rootState.notification.notifications,
   };
@@ -16,7 +17,9 @@ const notificationContainer = connect<
   NotificationInterfaces.DispatchProps,
   {}
 >(mapStateToProps, {
+  deleteNotification: NotificationActions.deleteNotification,
   deleteNotificationType: NotificationActions.deleteNotificationType,
+  getAllGlobalAnnouncements: NotificationActions.getAllGlobalAnnouncements,
   getAllGlobalNotifications: NotificationActions.getAllGlobalNotifications,
 })(Notification);
 
