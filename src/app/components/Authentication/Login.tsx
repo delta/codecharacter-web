@@ -1,5 +1,6 @@
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NavBar, NavPage } from 'app/components/home/Navbar';
 // import { API_BASE_URL } from 'app/../config/config';
 import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
@@ -66,6 +67,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
 
     return (
       <div className={classnames(styles.loginRoot)}>
+        <NavBar isLoggedIn={false} page={NavPage.LOGIN} />
         <div className={classnames(styles.welcomeBack)}>
           <h1> Welcome! </h1>
           <p> Log in to access your dashboard and profile </p>

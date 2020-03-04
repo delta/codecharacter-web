@@ -1,6 +1,7 @@
 import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
+import { NavBar, NavPage } from 'app/components/home/Navbar';
 import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
 import * as authStyles from 'app/styles/Authentication.module.css';
@@ -120,6 +121,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
     return (
       <div className={classnames(authStyles.registerRoot)} onKeyDown={this.handleKeyDown}>
+        <NavBar isLoggedIn={false} page={NavPage.REGISTER} />
         <div className={classnames(authStyles.registerMessage)}>
           <h1 className={classnames(authStyles['register-h1'])}> Register to CodeCharacter! </h1>
           <p> Register now and code your way through!! </p>

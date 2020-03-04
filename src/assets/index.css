@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Axiforma';
+  src: url('./fonts/Axiforma-regular.ttf');
+}
+@font-face {
+  font-family: 'Under';
+  src: url('./fonts/underground.regular.ttf');
+}
 #root {
   font-family: 'Karla', sans-serif;
 }
