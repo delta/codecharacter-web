@@ -146,6 +146,10 @@
 .tab-active {
   background-color: gray;
   padding: 0.25em;
+  padding: 4px !important;
+}
+.tab-inactive {
+  padding: 4px !important;
 }
 
 .tab-active:hover,
@@ -160,6 +164,9 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+.trashInactive {
+  color: gray;
 }
 
 .sideIcon {

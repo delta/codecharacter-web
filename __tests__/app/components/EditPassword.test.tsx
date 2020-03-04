@@ -28,6 +28,7 @@ describe('EditPassword Component', () => {
         isLoggedIn: true,
         isLoginLoading: false,
         isUserProfileModalOpen: false,
+        userId: 0,
         userType: UserType.STUDENT,
         username: '',
       }}
