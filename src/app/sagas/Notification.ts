@@ -1,3 +1,4 @@
+/* tslint:disable:no-console*/
 import { NotificationActions } from 'app/actions';
 import * as NotificationFetch from 'app/apiFetch/Notification';
 import { checkAuthentication } from 'app/sagas/utils';
@@ -27,7 +28,7 @@ export function* getUnreadGlobalNotifications(
       yield call(NotificationFetch.deleteGlobalNotifications, notification.id);
     }
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -41,7 +42,7 @@ export function* getAllGlobalNotifications(
     console.log(notifications);
     yield put(NotificationActions.updateGlobalNotifications(notifications));
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -53,7 +54,7 @@ export function* getAllGlobalAnnouncements(
     const announcements = res.body;
     yield put(NotificationActions.updateGlobalAnnouncements(announcements));
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -64,7 +65,7 @@ export function* deleteNotificationFromBackend(
     yield call(NotificationFetch.deleteGlobalNotifications, action.payload.id);
     yield put(NotificationActions.hideNotification(action.payload.id));
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 
@@ -82,7 +83,7 @@ export function* deleteNotificationByTypeFromBackend(
     }
     yield put(NotificationActions.hideNotificationType(action.payload.type));
   } catch (err) {
-    throw err;
+    console.error(err);
   }
 }
 

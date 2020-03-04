@@ -1,3 +1,4 @@
+/* tslint:disable:no-console*/
 import {
   HeadReqType,
   headResponseWrapper,
@@ -19,7 +20,6 @@ export const getUnreadNotifications = () => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      /* tslint:disable-next-line:no-console */
       console.log(error);
     });
 };
@@ -33,7 +33,7 @@ export const deleteGlobalNotifications = (notificationId: number) => {
     .then((response) => headResponseWrapper(response, HeadReqType.OTHERS))
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -46,7 +46,7 @@ export const deleteGlobalNotificationsByType = (type: NotificationType) => {
     .then((response) => headResponseWrapper(response, HeadReqType.OTHERS))
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -62,7 +62,7 @@ export const getAllGlobalNotifications = () => {
     .then((response) => jsonResponseWrapper(response))
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };
 
@@ -78,6 +78,6 @@ export const getAllGlobalAnnouncements = () => {
     .then((response) => jsonResponseWrapper(response))
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
     });
 };

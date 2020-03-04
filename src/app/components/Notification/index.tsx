@@ -77,7 +77,7 @@ export class Notification extends React.Component<
               }}
               onClick={() => {
                 if (NotificationInterfaces.TabType.NOTIFICATIONS) {
-                  deleteNotificationType(activeNotificationTab)
+                  deleteNotificationType(activeNotificationTab);
                 }
               }}
             >
