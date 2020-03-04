@@ -145,6 +145,7 @@
 
 .tab-active {
   background-color: gray;
+  padding: 0.25em;
 }
 
 .tab-active:hover,

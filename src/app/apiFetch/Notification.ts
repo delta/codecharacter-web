@@ -1,4 +1,10 @@
-import { jsonResponseWrapper, setRequestHeaders } from 'app/apiFetch/utils';
+import {
+  HeadReqType,
+  headResponseWrapper,
+  jsonResponseWrapper,
+  setRequestHeaders,
+} from 'app/apiFetch/utils';
+import { NotificationType } from 'app/types/Notification';
 import { API_BASE_URL } from '../../config/config';
 
 export const getUnreadNotifications = () => {
@@ -24,7 +30,20 @@ export const deleteGlobalNotifications = (notificationId: number) => {
     headers: setRequestHeaders(),
     method: 'DELETE',
   })
-    .then((response) => response.json())
+    .then((response) => headResponseWrapper(response, HeadReqType.OTHERS))
+    .then((data) => data)
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const deleteGlobalNotificationsByType = (type: NotificationType) => {
+  return fetch(`${API_BASE_URL}notifications/type/${type}/`, {
+    credentials: 'include',
+    headers: setRequestHeaders(),
+    method: 'DELETE',
+  })
+    .then((response) => headResponseWrapper(response, HeadReqType.OTHERS))
     .then((data) => data)
     .catch((error) => {
       throw error;

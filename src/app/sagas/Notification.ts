@@ -1,7 +1,7 @@
 import { NotificationActions } from 'app/actions';
 import * as NotificationFetch from 'app/apiFetch/Notification';
 import { checkAuthentication } from 'app/sagas/utils';
-import { Notification } from 'app/types/Notification';
+import { Notification, NotificationTabType, NotificationType } from 'app/types/Notification';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
@@ -37,6 +37,8 @@ export function* getAllGlobalNotifications(
   try {
     const res = yield call(NotificationFetch.getAllGlobalNotifications);
     const notifications = res.body;
+    // tslint:disable-next-line: no-console
+    console.log(notifications);
     yield put(NotificationActions.updateGlobalNotifications(notifications));
   } catch (err) {
     throw err;
@@ -66,6 +68,24 @@ export function* deleteNotificationFromBackend(
   }
 }
 
+export function* deleteNotificationByTypeFromBackend(
+  action: ActionType<typeof NotificationActions.deleteNotificationType>,
+) {
+  try {
+    if (action.payload.type === NotificationTabType.ALL) {
+      yield call(NotificationFetch.deleteGlobalNotificationsByType, NotificationType.ERROR);
+      yield call(NotificationFetch.deleteGlobalNotificationsByType, NotificationType.SUCCESS);
+      yield call(NotificationFetch.deleteGlobalNotificationsByType, NotificationType.INFO);
+    } else {
+      // @ts-ignore
+      yield call(NotificationFetch.deleteGlobalNotificationsByType, action.payload.type);
+    }
+    yield put(NotificationActions.hideNotificationType(action.payload.type));
+  } catch (err) {
+    throw err;
+  }
+}
+
 export function* notificationSagas() {
   yield all([
     takeEvery(
@@ -75,5 +95,9 @@ export function* notificationSagas() {
     takeEvery(NotificationActions.Type.GET_ALL_GLOBAL_NOTIFICATIONS, getAllGlobalNotifications),
     takeEvery(NotificationActions.Type.DELETE_NOTIFICATION, deleteNotificationFromBackend),
     takeEvery(NotificationActions.Type.GET_ALL_GLOBAL_ANNOUNCEMENTS, getAllGlobalAnnouncements),
+    takeEvery(
+      NotificationActions.Type.DELETE_NOTIFICATION_TYPE,
+      deleteNotificationByTypeFromBackend,
+    ),
   ]);
 }

@@ -52,20 +52,6 @@ export const notificationReducer = (
       return state;
     }
 
-    case NotificationActions.Type.DELETE_NOTIFICATION_TYPE: {
-      const updatedNotifications =
-        action.payload.type === NotificationInterfaces.NotificationTabType.ALL
-          ? []
-          : state.notifications.filter(
-              // @ts-ignore
-              (notification) => notification.type !== action.payload.type,
-            );
-      return {
-        ...state,
-        notifications: updatedNotifications,
-      };
-    }
-
     case NotificationActions.Type.HIDE_NOTIFICATION: {
       return {
         ...state,
@@ -74,6 +60,19 @@ export const notificationReducer = (
         ),
       };
     }
+
+    case NotificationActions.Type.HIDE_NOTIFICATION_TYPE: {
+      return {
+        ...state,
+        notifications:
+          action.payload.type === NotificationInterfaces.NotificationTabType.ALL
+            ? []
+            : state.notifications.filter(
+                (notification) => notification.type !== action.payload.type,
+              ),
+      };
+    }
+
     case NotificationActions.Type.UPDATE_GLOBAL_NOTIFICATIONS: {
       return {
         ...state,

@@ -75,7 +75,11 @@ export class Notification extends React.Component<
               style={{
                 background: 'none',
               }}
-              onClick={() => deleteNotificationType(activeNotificationTab)}
+              onClick={() => {
+                if (NotificationInterfaces.TabType.NOTIFICATIONS) {
+                  deleteNotificationType(activeNotificationTab)
+                }
+              }}
             >
               <FontAwesomeIcon icon={faTrash} />
             </button>

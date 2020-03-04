@@ -8,6 +8,7 @@ export namespace NotificationActions {
     ERROR = 'ERROR',
     ADD = 'ADD',
     HIDE_NOTIFICATION = 'HIDE_NOTIFICATION',
+    HIDE_NOTIFICATION_TYPE = 'HIDE_NOTIFICATION_TYPE',
     DELETE_NOTIFICATION = 'DELETE_NOTIFICATION',
     DELETE_NOTIFICATION_TYPE = 'DELETE_NOTIFICATION_TYPE',
     RESET_NOTIFICATION_STATE = 'RESET_NOTIFICATION_STATE',
@@ -48,6 +49,11 @@ export namespace NotificationActions {
   export const hideNotification = (id: number) =>
     action(Type.HIDE_NOTIFICATION, {
       id,
+    });
+
+  export const hideNotificationType = (type: NotificationInterfaces.NotificationTabType) =>
+    action(Type.HIDE_NOTIFICATION_TYPE, {
+      type,
     });
 
   export const resetNotificationState = () => action(Type.RESET_NOTIFICATION_STATE);
