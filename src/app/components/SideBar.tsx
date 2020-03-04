@@ -14,9 +14,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SidePanelTab } from 'app/reducers/Dashboard';
-import { Routes } from 'app/routes';
+
 import * as styles from 'app/styles/Sidebar.module.css';
 import * as SideBarInterfaces from 'app/types/SideBar';
+
 import classnames from 'classnames';
 import * as React from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
@@ -30,6 +31,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
       closeSidePanelTab,
       openSidePanelTab,
       logout,
+      clearAllLogs,
     } = this.props;
     return (
       <div className={classnames('h-100', styles.Sidebar)}>
@@ -37,16 +39,15 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           vertical
           className={classnames('w-100 justify-content-center align-items-center', styles.Sidebar)}
         >
-          <a
-            href="/#/home"
+          <Button
             className={classnames(
               'py-2 px-auto text-white d-flex justify-content-center',
               styles.customBtn,
             )}
             onClick={() => closeSidePanelTab()}
           >
-            <FontAwesomeIcon icon={faHome} />
-          </a>
+            <FontAwesomeIcon icon={faCode} />
+          </Button>
 
           <Button
             className={classnames('py-2 px-auto documentation-btn-ctrl', styles.customBtn, {
@@ -83,6 +84,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             })}
             id="leaderboard_button"
             title={'Leaderboard'}
+            onClick={() => clearAllLogs()}
           >
             <FontAwesomeIcon icon={faTrophy} />
           </a>
@@ -134,11 +136,12 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           </Button>
 
           <Button
-            href={Routes.USER_PROFILE_MODEL}
+            href={'/#/profile'}
             className={classnames('py-2 px-auto', styles.customBtn)}
             id="user_profile_button"
             title={isLoggedIn ? 'Profile' : 'Login'}
             onClick={() => {
+              clearAllLogs();
               if (!isLoggedIn) {
                 setIsAuthenticationOpen(true);
                 return;
@@ -146,20 +149,6 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             }}
           >
             <FontAwesomeIcon icon={isLoggedIn ? faUser : faSignInAlt} />
-          </Button>
-          <Button
-            className={classnames('py-2 px-auto notification-btn-ctrl', styles.customBtn, {
-              [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.NOTIFICATION,
-            })}
-            id="notifications_button"
-            title={'About'}
-            onClick={() =>
-              sidePanelTab !== SidePanelTab.NOTIFICATION
-                ? openSidePanelTab(SidePanelTab.NOTIFICATION)
-                : closeSidePanelTab()
-            }
-          >
-            <FontAwesomeIcon icon={faInfoCircle} />
           </Button>
           {isLoggedIn ? (
             <Button
@@ -174,6 +163,18 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               <FontAwesomeIcon icon={faSignOutAlt} />
             </Button>
           ) : null}
+          <a
+            className={classnames(
+              'py-2 px-auto notification-btn-ctrl',
+              styles.customBtn,
+              styles.infoCircle,
+            )}
+            title={'Home'}
+            href="/#/home"
+            onClick={() => clearAllLogs()}
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />
+          </a>
           <Button
             className={classnames('py-2 px-auto', styles.joyRide)}
             id="joyride_button"
@@ -190,13 +191,6 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <a href="https://delta.nitt.edu" target="_blank">
               <img src="assets/img/deltaLogo.png" height={20} width={20} />
             </a>
-          </Button>
-          <Button
-            className={classnames('py-2 px-auto', styles.dologo)}
-            id="digital_ocean_logo"
-            title={'We thank Digital Ocean for hosting Code Character'}
-          >
-            <img src="assets/img/doLogo.png" height={20} width={20} />
           </Button>
         </ButtonGroup>
       </div>

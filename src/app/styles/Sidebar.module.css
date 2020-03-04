@@ -25,7 +25,7 @@
   color: #fff;
 }
 
-.Sidebar .joyRide {
+.Sidebar .infoCircle {
   font-size: 20px;
   color: #9c9c9c;
   position: fixed;
@@ -33,7 +33,9 @@
   top: 77vh;
 }
 
-.Sidebar .dologo {
+.Sidebar .joyRide {
+  font-size: 20px;
+  color: #9c9c9c;
   position: fixed;
   position: absolute;
   top: 85vh;
@@ -53,12 +55,6 @@
 
 .joyRide:hover {
   color: #fff;
-}
-
-.dologo:hover {
-  -webkit-filter: invert(44%) sepia(34%) saturate(5910%) hue-rotate(174deg) brightness(90%)
-    contrast(102%);
-  filter: invert(44%) sepia(34%) saturate(5910%) hue-rotate(174deg) brightness(90%) contrast(102%);
 }
 
 .deltaLogo:hover {

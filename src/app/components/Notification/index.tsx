@@ -6,6 +6,7 @@ import * as NotificationInterfaces from 'app/types/Notification';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
+// tslint:disable-next-line
 
 export class Notification extends React.Component<
   NotificationInterfaces.Props,
@@ -24,7 +25,7 @@ export class Notification extends React.Component<
   }
 
   public render() {
-    const { activeNotificationTab } = this.state;
+    const { activeNotificationTab, tabType } = this.state;
     const { announcements, notifications, deleteNotificationType, deleteNotification } = this.props;
     // let r :Array<NotificationInterfaces.Notification>=[];
     const activeNotifications = notifications.filter((notification) => {
@@ -71,12 +72,16 @@ export class Notification extends React.Component<
           </Col>
           <Col className="text-light font-weight-bold my-auto">
             <button
-              className={classnames(styles.customBtn)}
+              className={
+                tabType === NotificationInterfaces.TabType.ANNOUNCEMENTS
+                  ? classnames(styles.trashInactive, styles.customBtn)
+                  : classnames(styles.customBtn)
+              }
               style={{
                 background: 'none',
               }}
               onClick={() => {
-                if (NotificationInterfaces.TabType.NOTIFICATIONS) {
+                if (tabType === NotificationInterfaces.TabType.NOTIFICATIONS) {
                   deleteNotificationType(activeNotificationTab);
                 }
               }}

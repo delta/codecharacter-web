@@ -54,6 +54,11 @@ export class Dashboard extends React.Component<
   }
 
   public componentDidMount() {
+    if (this.props.isFirstLogin) {
+      this.setState({
+        isReactTourActive: true,
+      });
+    }
     ReactGA.initialize(GOOGLE_ANALYTICS_TRACKING_ID);
     ReactGA.pageview('/');
   }
@@ -64,19 +69,14 @@ export class Dashboard extends React.Component<
   }
 
   public render() {
-    const {
-      editorWidthRatio,
-      windowWidth,
-      fixedLeftPaneWidth,
-      splitPaneState,
-      isReactTourActive,
-    } = this.state;
+    const { editorWidthRatio, windowWidth, fixedLeftPaneWidth, splitPaneState } = this.state;
     const {
       isLoggedIn,
       isAuthenticationOpen,
       setIsAuthenticationOpen,
       isWelcomeModalOpen,
       closeWelcomeModal,
+      isReactTourActive,
     } = this.props;
 
     let editorWidth;
@@ -106,7 +106,14 @@ export class Dashboard extends React.Component<
 
     return (
       <div>
-        {isWelcomeModalOpen ? <Welcome closeWelcomeModal={() => closeWelcomeModal()} /> : null}
+        {isWelcomeModalOpen ? (
+          <Welcome
+            closeWelcomeModal={() => {
+              closeWelcomeModal();
+              this.props.toggleReactTour();
+            }}
+          />
+        ) : null}
         {isLoggedIn && isReactTourActive && !isWelcomeModalOpen ? (
           <ReactTour toggleReactTour={this.onToggleReactTour} />
         ) : null}
@@ -212,8 +219,6 @@ export class Dashboard extends React.Component<
   };
 
   private onToggleReactTour = (): void => {
-    this.setState({
-      isReactTourActive: !this.state.isReactTourActive,
-    });
+    this.props.toggleReactTour();
   };
 }

@@ -17,9 +17,15 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   errorMessage: '',
   fullName: '',
   isAuthenticationOpen: true,
+  isFirstLogin: true,
   isLoggedIn: false,
   isLoginLoading: false,
+  isNotificationPresent: false,
+  isSocketPresent: false,
   isUserProfileModalOpen: false,
+  notification: '',
+  socketMessage: '',
+  userId: 0,
   userType: UserInterfaces.UserType.STUDENT,
   username: '',
 };
@@ -36,11 +42,13 @@ export const userReducer = (
         isLoggedIn,
         username,
         fullName,
+        userId,
         isUserProfileModalOpen,
         errorMessage,
         avatar,
         college,
         userType,
+        isFirstLogin,
       } = action.payload.userDetails;
 
       let isAuthenticationOpen = state.isAuthenticationOpen;
@@ -62,11 +70,13 @@ export const userReducer = (
         email: email !== undefined ? email : state.email,
         errorMessage: errorMessage !== undefined ? errorMessage : state.errorMessage,
         fullName: fullName !== undefined ? fullName : state.fullName,
+        isFirstLogin: isFirstLogin !== undefined ? isFirstLogin : state.isFirstLogin,
         isLoggedIn: isLoggedIn !== undefined ? isLoggedIn : state.isLoggedIn,
         isUserProfileModalOpen:
           isUserProfileModalOpen !== undefined
             ? isUserProfileModalOpen
             : state.isUserProfileModalOpen,
+        userId: userId !== undefined ? userId : state.userId,
         userType: userType !== undefined ? userType : state.userType,
         username: username !== undefined ? username : state.username,
       };
@@ -105,6 +115,32 @@ export const userReducer = (
         isLoginLoading: action.payload.isLoginLoading,
       };
     }
+    case UserActions.Type.TOGGLE_IS_SOCKET_PRESENT: {
+      return {
+        ...state,
+        isSocketPresent: !state.isSocketPresent,
+      };
+    }
+    case UserActions.Type.TOGGLE_IS_NOTIFICATION_PRESENT: {
+      return {
+        ...state,
+        isNotificationPresent: !state.isNotificationPresent,
+      };
+    }
+
+    case UserActions.Type.UPDATE_SOCKET_MESSAGE: {
+      return {
+        ...state,
+        socketMessage: action.payload.socketMessage,
+      };
+    }
+    case UserActions.Type.UPDATE_NOTIFICATION: {
+      return {
+        ...state,
+        notification: action.payload.notification,
+      };
+    }
+
     case UserActions.Type.RESET_USER_STATE: {
       return {
         ...userStoreIntialState,

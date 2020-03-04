@@ -11,10 +11,14 @@ export namespace UserActions {
     EDIT_USER_PROFILE = 'EDIT_USER_PROFILE',
     EDIT_USER_PASSWORD = 'EDIT_USER_PASSWORD',
     UPDATE_ERROR_MESSAGE = 'UPDATE_ERROR_MESSAGE',
+    UPDATE_NOTIFICATION = 'UPDATE_NOTIFICATION',
     UPDATE_USER_DETAILS = 'UPDATE_USER_DETAILS',
+    UPDATE_SOCKET_MESSAGE = 'UPDATE_SOCKET_MESSAGE',
     CHECK_EMAIL_EXISTS = 'CHECK_EMAIL_EXISTS',
     CHECK_USERNAME_EXISTS = 'CHECK_USERNAME_EXISTS',
     TOGGLE_USER_PROFILE_MODAL = 'TOGGLE_USER_PROFILE_MODAL',
+    TOGGLE_IS_NOTIFICATION_PRESENT = 'TOGGLE_IS_NOTIFICATION_PRESENT',
+    TOGGLE_IS_SOCKET_PRESENT = 'TOGGLE_IS_SOCKET_PRESENT',
     RESET_USER_STATE = 'RESET_USER_STATE',
     RESET_APP_STATE = 'RESET_APP_STATE',
     SET_IS_AUTHENTICATION_OPEN = 'SET_IS_AUTHENTICATION_OPEN',
@@ -43,6 +47,8 @@ export namespace UserActions {
 
   interface UserDetails {
     isLoggedIn: boolean;
+    isFirstLogin?: boolean;
+    userId?: number;
     avatar?: string;
     college?: string;
     userType?: UserInterfaces.UserType;
@@ -69,6 +75,16 @@ export namespace UserActions {
 
   export const checkUsernameExists = (username: string) =>
     action(Type.CHECK_USERNAME_EXISTS, { username });
+
+  export const toggleIsSocketPresent = () => action(Type.TOGGLE_IS_SOCKET_PRESENT);
+
+  export const updateSocketMessage = (socketMessage: string) =>
+    action(Type.UPDATE_SOCKET_MESSAGE, { socketMessage });
+
+  export const toggleIsNotificationPresent = () => action(Type.TOGGLE_IS_NOTIFICATION_PRESENT);
+
+  export const updateNotification = (notification: string) =>
+    action(Type.UPDATE_NOTIFICATION, { notification });
 
   export const toggleUserProfileModal = (isUserProfileModalOpen: boolean) =>
     action(Type.TOGGLE_USER_PROFILE_MODAL, { isUserProfileModalOpen });

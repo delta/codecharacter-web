@@ -10,14 +10,17 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NavBar, NavPage } from 'app/components/home/Navbar';
 import { LeaderboardElement } from 'app/components/Leaderboard/LeaderboardElement';
 import { Timer } from 'app/components/Leaderboard/Timer';
 import SocketHandler from 'app/containers/SocketHandler';
+import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Leaderboard.module.css';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import { ScaleLoader } from 'react-spinners';
 
 export class Leaderboard extends React.Component<
@@ -82,6 +85,10 @@ export class Leaderboard extends React.Component<
       updateRequest,
       isLoggedIn,
     } = this.props;
+
+    if (!isLoggedIn) {
+      return <Redirect to={Routes.LOGIN} />;
+    }
     return (
       <>
         <NavBar isLoggedIn={isLoggedIn} page={NavPage.LEADERBOARD} />
@@ -89,16 +96,11 @@ export class Leaderboard extends React.Component<
           {isLoggedIn ? <SocketHandler /> : null}
           <Row className={classnames('py-4 pl-3')}>
             <Col
-              sm={10}
+              sm={9}
               className="text-light font-weight-bold my-auto"
-              style={{ paddingLeft: '25px', paddingRight: '0 !important' }}
+              style={{ left: '45%', height: '10%', paddingTop: '10px', paddingBottom: '10px' }}
             >
-              <input
-                placeholder="Search for..."
-                ref={this.search}
-                onChange={(e) => this.updatePattern(e.target.value)}
-                className={classnames(styles.textbox, '')}
-              />
+              LEADERBOARD
             </Col>
           </Row>
           {this.state.isSearching ? (
@@ -108,19 +110,25 @@ export class Leaderboard extends React.Component<
                 className="text-light font-weight-bold my-auto"
                 style={{ paddingLeft: '25px', paddingRight: '0 !important' }}
               >
-                <FontAwesomeIcon style={{ color: 'white' }} icon={faTimes} />
-              </button>
-              <button className={styles.button} onClick={this.searchLeaderboard}>
-                <FontAwesomeIcon style={{ color: 'white' }} icon={faSearch} />
-              </button>
-            </Col>
-          </Row>
-        ) : (
-          <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
-            <Col>
-              <div className={styles.dropdown} style={{ paddingRight: '10px' }}>
-                <button className={styles.dropbtn}>
-                  {LeaderboardInterfaces.DivisionNames[this.state.currentDiv]}
+                <input
+                  placeholder="Search for..."
+                  ref={this.search}
+                  onChange={(e) => this.updatePattern(e.target.value)}
+                  className={classnames(styles.textbox, '')}
+                />
+              </Col>
+              <Col sm={2}>
+                <button
+                  className={styles.button}
+                  onClick={() => {
+                    this.setState({ isSearching: false });
+                    this.props.getLeaderboard(this.state.nextFetchIndex, this.state.pageSize);
+                  }}
+                >
+                  <FontAwesomeIcon style={{ color: 'white' }} icon={faTimes} />
+                </button>
+                <button className={styles.button} onClick={this.searchLeaderboard}>
+                  <FontAwesomeIcon style={{ color: 'white' }} icon={faSearch} />
                 </button>
               </Col>
             </Row>
@@ -241,37 +249,43 @@ export class Leaderboard extends React.Component<
               <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
                 <div
                   // style={{ position: 'relative', left: '13%' }}
-                  className="col-2 text-light font-weight-bold my-auto"
+                  className="col-2 text-light font-weight-bold my-auto "
+                  style={{ textAlign: 'center' }}
                 >
                   RANK
                 </div>
                 <div
                   // style={{ position: 'relative', left: '22%' }}
                   className="col-2 text-light font-weight-bold my-auto"
+                  style={{ textAlign: 'start' }}
                 >
-                  Name
+                  NAME
                 </div>
                 <div
                   // style={{ position: 'relative', left: '22%' }}
                   className="col-2 text-light font-weight-bold my-auto"
+                  style={{ textAlign: 'start' }}
                 >
                   RATING
                 </div>
                 <div
                   // style={{ position: 'relative', left: '49%' }}
                   className="col-2 text-light font-weight-bold my-auto"
+                  style={{ textAlign: 'start' }}
                 >
                   WON
                 </div>
                 <div
                   // style={{ position: 'relative', left: '62%' }}
                   className="col-2 text-light font-weight-bold my-auto"
+                  style={{ textAlign: 'start' }}
                 >
                   TIED
                 </div>
                 <div
                   // style={{ position: 'relative', left: '73%' }}
                   className="col-2 text-light font-weight-bold my-auto"
+                  style={{ textAlign: 'start' }}
                 >
                   LOST
                 </div>
@@ -284,12 +298,15 @@ export class Leaderboard extends React.Component<
           >
             <Row>
               <div
-                style={{ position: 'absolute', left: '10%', bottom: '50%' }}
-                onClick={() => this.handlePageClick(-1)}
+                className="col-12 text-center"
+                style={{
+                  fontSize: '10px',
+                  marginTop: '20px',
+                  paddingBottom: '15px',
+                }}
               >
                 <Timer timerData={timerData} getTimer={getTimer} setTimer={setTimer} />
               </div>
-            ) : null}
 
               {this.state.nextFetchIndex !== 1 ? (
                 <div
@@ -349,68 +366,44 @@ export class Leaderboard extends React.Component<
                   <div style={{ padding: '0px 30px', textAlign: 'center' }}>Nothing to show</div>
                 )}
               </div>
-            ) : null}
-
-            <div style={{ marginLeft: '20%', width: '60%' }}>
-              {players.length ? (
-                players.map((player, index) =>
-                  player &&
-                  index >= this.state.offset &&
-                  index <= this.state.offset + this.state.pageSize - 1 ? (
-                    <LeaderboardElement
-                      updatePlayerId2={updatePlayerId2}
-                      updateRequest={updateRequest}
-                      currentUsername={currentUsername}
-                      player={player}
-                      rank={player.rank}
-                      index={index}
-                      key={index}
-                      runMatch={runMatch}
-                      isPlayAgainstDisabled={timerData > 0 ? true : false}
-                    />
-                  ) : null,
-                )
-              ) : (
-                <div style={{ padding: '0px 30px', textAlign: 'center' }}>Nothing to show</div>
-              )}
-            </div>
-            <Col
-              className="d-flex justify-content-center"
-              style={{ width: '100vw', margin: '10px' }}
-            >
-              <span
-                onClick={() => this.handlePageClick(-1)}
-                style={
-                  this.state.nextFetchIndex !== 1
-                    ? { cursor: 'pointer' }
-                    : { cursor: 'not-allowed', color: '#333' }
-                }
+              <Col
+                className="d-flex justify-content-center"
+                style={{ width: '100vw', margin: '10px' }}
               >
-                <FontAwesomeIcon icon={faAngleLeft} />
-                <FontAwesomeIcon icon={faCaretLeft} />
-              </span>
+                <span
+                  onClick={() => this.handlePageClick(-1)}
+                  style={
+                    this.state.nextFetchIndex !== 1
+                      ? { cursor: 'pointer' }
+                      : { cursor: 'not-allowed', color: '#333' }
+                  }
+                >
+                  <FontAwesomeIcon icon={faAngleLeft} />
+                  <FontAwesomeIcon icon={faCaretLeft} />
+                </span>
 
-              <span className={classnames('mx-3')}>{this.state.nextFetchIndex}</span>
+                <span className={classnames('mx-3')}>{this.state.nextFetchIndex}</span>
 
-              <span
-                onClick={() => this.handlePageClick(1)}
-                style={
-                  this.props.players.length >= this.state.pageSize
-                    ? { cursor: 'pointer' }
-                    : { cursor: 'not-allowed', color: '#333' }
-                }
-              >
-                <FontAwesomeIcon icon={faAngleRight} /> <FontAwesomeIcon icon={faCaretRight} />
-              </span>
-            </Col>
-            {loading && (
-              <Col sm={12} className="d-flex justify-content-center" style={{ padding: '2px' }}>
-                <ScaleLoader css={'override'} loading={loading} color={'#36D7B7'} />
+                <span
+                  onClick={() => this.handlePageClick(1)}
+                  style={
+                    this.props.players.length >= this.state.pageSize
+                      ? { cursor: 'pointer' }
+                      : { cursor: 'not-allowed', color: '#333' }
+                  }
+                >
+                  <FontAwesomeIcon icon={faAngleRight} /> <FontAwesomeIcon icon={faCaretRight} />
+                </span>
               </Col>
-            )}
-          </Row>
-        </div>
-      </Grid>
+              {loading && (
+                <Col sm={12} className="d-flex justify-content-center" style={{ padding: '2px' }}>
+                  <ScaleLoader css={'override'} loading={loading} color={'#36D7B7'} />
+                </Col>
+              )}
+            </Row>
+          </div>
+        </Grid>
+      </>
     );
   }
 

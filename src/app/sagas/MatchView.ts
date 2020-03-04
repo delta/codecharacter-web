@@ -68,7 +68,7 @@ export function* getGameLogs(action: ActionType<typeof MatchActions.getGameLogs>
       const debugLog2 = Buffer.from(logs.player2Log, 'base64');
       const gameLog = Buffer.from(logs.gameLog, 'base64');
       const playerId1 = logs.playerId1;
-
+      yield put(GameLogActions.clearAllLogs());
       yield put(GameLogActions.updateGameLog('', '', ''));
       // @ts-ignore
       yield put(GameLogActions.updateGameLog(debugLog1, debugLog2, gameLog));

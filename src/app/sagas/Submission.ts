@@ -63,7 +63,6 @@ export function* selfMatch(action: ActionType<typeof SubmissionActions.selfMatch
     const latestCode = yield select(getUserLatestCode);
     yield put(SubmissionActions.updateDebugRunCode(latestCode));
     yield put(SubmissionActions.updateDebugRunCommitHash(submissionState.commitHash));
-
     yield put(GameLogActions.clearAllLogs());
     yield put(GameLogActions.setHideDebugLog(false));
 
@@ -404,19 +403,17 @@ export function* handleDebugRunError(
 }
 
 export function* loadMaps(action: ActionType<typeof SubmissionActions.loadMaps>) {
-  try {
-    const res = yield call(SubmissionFetch.loadMaps);
-
-    const isAuthenticated = yield checkAuthentication(res);
-    const isActivated = yield checkAccountActivated(res);
-
-    if (isAuthenticated === false || isActivated === false) {
-      return;
-    }
-    yield put(SubmissionActions.saveMaps(res.mapsData));
-  } catch (err) {
-    console.error(err);
-  }
+  // try {
+  //   const res = yield call(SubmissionFetch.loadMaps);
+  //   const isAuthenticated = yield checkAuthentication(res);
+  //   const isActivated = yield checkAccountActivated(res);
+  //   if (isAuthenticated === false || isActivated === false) {
+  //     return;
+  //   }
+  //   yield put(SubmissionActions.saveMaps(res.mapsData));
+  // } catch (err) {
+  //   console.error(err);
+  // }
 }
 
 export function* getAiIds(action: ActionType<typeof SubmissionActions.getAiIds>) {

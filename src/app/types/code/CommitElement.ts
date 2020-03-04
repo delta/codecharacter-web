@@ -13,8 +13,10 @@ export interface Props {
   commitsLength: number;
   forkCode?: () => void;
   checkoutCode: () => void;
+  save: (code: string) => void;
   startMatch: (mapId: number, commitHash: string) => void;
   maps: Map[];
+  code: string;
   isCurrentHash: boolean;
 }
 

@@ -6,6 +6,7 @@ const actions = {
   resetDashboardState: DashboardActions.resetDashboardState,
   setIsWelcomeModalOpen: DashboardActions.setIsWelcomeModalOpen,
   setSidePanelTab: DashboardActions.setSidePanelTab,
+  toggleReactTour: DashboardActions.toggleReactTour,
 };
 
 export enum SplitPaneState {
@@ -24,6 +25,7 @@ export interface State {
 }
 
 export interface StateProps {
+  isFirstLogin: boolean;
   isLoggedIn: boolean;
   sidePanelOpen: boolean;
   isAuthenticationOpen: boolean;
@@ -32,10 +34,12 @@ export interface StateProps {
   logFile: string;
   player1DebugLog: string;
   player2DebugLog: string;
+  isReactTourActive: boolean;
 }
 
 export interface DispatchProps {
   setIsAuthenticationOpen: (isAuthenticationOpen: boolean) => void;
+  toggleReactTour: () => void;
   closeWelcomeModal: () => void;
 }
 
@@ -44,6 +48,7 @@ export type Props = StateProps & DispatchProps;
 export type DashboardActions = Omit<typeof DashboardActions, 'Type'>;
 
 export interface DashboardStoreState {
+  isReactTourActive: boolean;
   sidePanelTab: SidePanelTab;
   isWelcomeModalOpen: boolean;
 }

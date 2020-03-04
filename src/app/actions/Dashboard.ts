@@ -6,6 +6,7 @@ export namespace DashboardActions {
     SET_SIDE_PANEL_TAB = 'SET_SIDE_PANEL_TAB',
     RESET_DASHBOARD_STATE = 'RESET_DASHBOARD_STATE',
     SET_IS_WELCOME_MODAL_OPEN = 'SET_IS_WELCOME_MODAL_OPEN',
+    TOGGLE_REACT_TOUR = 'TOGGLE_REACT_TOUR',
   }
 
   export const setSidePanelTab = (sidePanelTab: SidePanelTab) =>
@@ -17,4 +18,6 @@ export namespace DashboardActions {
 
   export const setIsWelcomeModalOpen = (isOpen: boolean) =>
     action(Type.SET_IS_WELCOME_MODAL_OPEN, { isOpen });
+
+  export const toggleReactTour = () => action(Type.TOGGLE_REACT_TOUR);
 }

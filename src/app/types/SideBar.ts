@@ -16,6 +16,7 @@ export interface DispatchProps {
   openSidePanelTab: (type: SidePanelTab) => void;
   resetAppState: () => void;
   toggleUserProfileModal: (isUserProfileModalOpen: boolean) => void;
+  clearAllLogs: () => void;
 }
 
 export type Props = OwnProps & StateProps & DispatchProps;

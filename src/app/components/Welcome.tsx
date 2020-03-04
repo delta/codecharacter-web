@@ -19,7 +19,7 @@ export class Welcome extends React.Component<
         <Modal.Header>
           <Modal.Title>
             <div style={{ margin: 0 }}>
-              <b>Welcome to Code Character 2019!</b>
+              <b>Welcome to Code Character 2020!</b>
             </div>
           </Modal.Title>
           <button
@@ -39,12 +39,21 @@ export class Welcome extends React.Component<
             <br />
             <b>
               Learn the rules of the battlefield by reading the{' '}
-              <a href="https://code.pragyan.org/docs/">Documentation</a>.
+              <a href="https://code.pragyan.org/docs/" target="_blank">
+                Documentation
+              </a>
+              .
             </b>
             <br />
             <b>
               Found a bug? Want a new feature? Post in the{' '}
-              <a href="https://forum.pragyan.org/c/code-character">Forum</a>.
+              <a
+                href="https://forum.pragyan.org/t/code-character-frequently-asked-questions/20"
+                target="_blank"
+              >
+                Forum
+              </a>
+              .
             </b>
           </p>
         </Modal.Body>

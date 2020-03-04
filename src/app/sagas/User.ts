@@ -29,7 +29,7 @@ export function* activateUser(action: ActionType<typeof UserActions.activateUser
 
     if (res.type !== resType.ERROR) {
       // FIXME : use declarative packages to manipulate browser urls
-      window.location.assign('/login');
+      window.location.assign('/#/login');
       yield put(NotificationActions.success('Account activated sucessfully'));
     }
   } catch (err) {
@@ -71,6 +71,7 @@ export function* login(action: ActionType<typeof UserActions.login>) {
         }),
       );
       yield put(UserActions.getUserDetails());
+      yield put(CodeActions.getLatestCode());
       yield put(CodeActions.getLastSaveTime());
       yield put(DashboardActions.setIsWelcomeModalOpen(true));
     }
@@ -94,6 +95,7 @@ export function* logout(action: ActionType<typeof UserActions.logout>) {
         UserActions.updateUserDetails({
           country: '',
           email: '',
+          isFirstLogin: false,
           isLoggedIn: false,
           username: '',
         }),
@@ -127,7 +129,11 @@ export function* register(action: ActionType<typeof UserActions.register>) {
         }),
       );
       yield put(NotificationActions.success('Registered successfully!'));
+      yield put(
+        NotificationActions.info('Account activation link has been sent to registered Email ID.'),
+      );
     }
+    yield put(NotificationActions.error('Registration unsuccessful!'));
   } catch (err) {
     console.error(err);
   }
@@ -148,6 +154,7 @@ export function* getUserDetails(action: ActionType<typeof UserActions.getUserDet
           college,
           country,
           fullName,
+          userId,
           userType,
           username,
           avatar: avatarName[avatarId],

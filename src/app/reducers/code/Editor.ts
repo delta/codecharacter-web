@@ -13,7 +13,7 @@ const editorStoreIntialState: EditorInterfaces.EditorStoreState = {
     enableSnippets: true,
     fontSize: 16,
     keyboardHandler: keyboardHandlers[KeyboardHandler.DEFAULT],
-    theme: themes[EditorThemeTypes.SOLARIZED_LIGHT],
+    theme: themes[EditorThemeTypes.MONOKAI],
   },
 };
 

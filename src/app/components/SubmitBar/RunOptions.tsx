@@ -1,7 +1,8 @@
-import { faBrain } from '@fortawesome/free-solid-svg-icons';
+import { faBrain, faRobot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SubmissionActions } from 'app/actions';
 import * as styles from 'app/styles/RunOptions.module.css';
+import { Map } from 'app/types/code/Submission';
 import * as SubmitBarInterfaces from 'app/types/SubmitBar';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -20,8 +21,6 @@ export class RunOptions extends React.Component<
 
   public componentWillMount(): void {
     window.addEventListener('click', this.props.closeOptions, false);
-    this.props.loadMaps();
-    this.props.getAiIds();
   }
 
   public componentWillUnmount(): void {
@@ -29,29 +28,29 @@ export class RunOptions extends React.Component<
   }
 
   public render() {
-    const { maps, startMatch, aiIds } = this.props;
+    const { startMatch } = this.props;
     const { currentIndex, isMapOptionsOpen } = this.state;
 
     const hardCodedMap: Map[] = [
       {
         mapId: 1,
-        name: 'Map of kings',
+        name: 'Sands of Time',
       },
       {
         mapId: 2,
-        name: 'The forbidden isle of Zeus',
+        name: 'Sector',
       },
       {
         mapId: 3,
-        name: 'The End of fucking world',
+        name: 'Revival',
       },
     ];
 
-    const maps = this.props.maps || hardCodedMap;
+    const maps = hardCodedMap;
 
     const hardCodedAiIds: number[] = [1];
 
-    @ts-ignore
+    // @ts-ignore
     const aiIds = hardCodedAiIds;
 
     const matchOptions = [
@@ -68,7 +67,7 @@ export class RunOptions extends React.Component<
         matchOptions.push({
           aiId,
           icon: <FontAwesomeIcon icon={faRobot} />,
-          name: `AI ${aiId} Match`,
+          name: `AI Match`,
           type: SubmissionActions.Type.AI_MATCH,
         });
       });

@@ -4,7 +4,7 @@ import * as React from 'react';
 
 // @ts-ignore
 // tslint:disable-next-line:import-name
-import CodecharacterRenderer from 'codecharacter-renderer';
+import CodecharacterRenderer from 'code-character-renderer-20';
 import { Col, Row } from 'react-bootstrap';
 
 export default class Renderer extends React.Component<RendererInterfaces.Props, {}> {

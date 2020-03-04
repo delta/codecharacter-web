@@ -3,6 +3,7 @@ import * as SubmissionInterfaces from 'app/types/code/Submission';
 
 const submissionStoreState: SubmissionInterfaces.SubmissionStoreState = {
   aiIds: [],
+  commitHash: '',
   currentAiId: 1,
   debugRunCode: '',
   debugRunCommitHash: 'latest',
@@ -10,6 +11,8 @@ const submissionStoreState: SubmissionInterfaces.SubmissionStoreState = {
   isCodeLocked: false,
   mapId: 1,
   maps: [],
+  playerId1: 1,
+  playerId2: 1,
   request: SubmissionInterfaces.Request.NONE,
   state: SubmissionInterfaces.RequestState.IDLE,
 };

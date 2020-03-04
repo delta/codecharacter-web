@@ -59,7 +59,7 @@
 }
 
 input:checked + .flaglabel {
-  background: #bada55;
+  background: #4630eb;
 }
 
 input:checked + .flaglabel:after {

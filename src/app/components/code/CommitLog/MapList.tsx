@@ -1,9 +1,10 @@
+import { Props } from 'app/containers/code/MapList';
 import * as styles from 'app/styles/CommitLog.module.css';
-import { MapListProps } from 'app/types/code/CommitElement';
+import { Map, Request } from 'app/types/code/Submission';
 import classnames from 'classnames';
 import * as React from 'react';
 
-export class MapList extends React.Component<MapListProps, {}> {
+export class MapList extends React.Component<Props, {}> {
   public render() {
     const { updateMapId, updateRequest, updateCommitHash, commitHash } = this.props;
     const maps: Map[] = [
