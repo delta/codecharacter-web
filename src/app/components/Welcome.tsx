@@ -39,12 +39,18 @@ export class Welcome extends React.Component<
             <br />
             <b>
               Learn the rules of the battlefield by reading the{' '}
-              <a href="https://code.pragyan.org/docs/" target="_blank">Documentation</a>.
+              <a href="https://code.pragyan.org/docs/" target="_blank">
+                Documentation
+              </a>
+              .
             </b>
             <br />
             <b>
               Found a bug? Want a new feature? Post in the{' '}
-              <a href="https://forum.pragyan.org/c/code-character" target="_blank">Forum</a>.
+              <a href="https://forum.pragyan.org/c/code-character" target="_blank">
+                Forum
+              </a>
+              .
             </b>
           </p>
         </Modal.Body>

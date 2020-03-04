@@ -79,12 +79,10 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             id="leaderboard_button"
             title={'Leaderboard'}
             onClick={() => {
-
               // sidePanelTab !== SidePanelTab.LEADERBOARD
-                // ? openSidePanelTab(SidePanelTab.LEADERBOARD)
-                // : closeSidePanelTab()
-            }
-            }
+              // ? openSidePanelTab(SidePanelTab.LEADERBOARD)
+              // : closeSidePanelTab()
+            }}
             disabled
           >
             <FontAwesomeIcon icon={faTrophy} />
@@ -116,8 +114,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
                 // sidePanelTab !== SidePanelTab.MATCH
                 //   ? openSidePanelTab(SidePanelTab.MATCH)
                 //   : closeSidePanelTab()
-              }
-              }
+              }}
               disabled
             >
               <FontAwesomeIcon icon={faTv} />

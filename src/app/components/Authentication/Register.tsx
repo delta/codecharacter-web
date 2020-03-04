@@ -15,7 +15,7 @@ import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
 // tslint:disable-next-line:import-name
 import ReCAPTCHA from 'react-google-recaptcha';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 enum KeyCode {
   ENTER = 'Enter',
@@ -535,15 +535,16 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           <Col className="ml-auto  my-3 mr-auto">
             <div className="text-dark">
               Already have an account?{' '}
-              <a
-                href={Routes.LOGIN}
-                className={classnames(authStyles['create-one-button'])}
-                onClick={() => {
-                  updateErrorMessage('');
-                }}
-              >
-                Login now
-              </a>
+              <NavLink to={Routes.LOGIN}>
+                <div
+                  className={classnames(authStyles['create-one-button'])}
+                  onClick={() => {
+                    updateErrorMessage('');
+                  }}
+                >
+                  Login now
+                </div>
+              </NavLink>
             </div>
           </Col>
         </Row>
