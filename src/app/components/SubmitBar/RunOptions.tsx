@@ -36,15 +36,15 @@ export class RunOptions extends React.Component<
     const hardCodedMap: Map[] = [
       {
         mapId: 1,
-        name: 'Map of kings',
+        name: 'Sands of Time',
       },
       {
         mapId: 2,
-        name: 'The forbidden isle of Zeus',
+        name: 'Sector',
       },
       {
         mapId: 3,
-        name: 'The End of fucking world',
+        name: 'Revival',
       },
     ];
 

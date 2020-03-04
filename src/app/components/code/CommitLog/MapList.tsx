@@ -10,21 +10,16 @@ export class MapList extends React.Component<Props, {}> {
     const maps: Map[] = [
       {
         mapId: 1,
-        name: 'Map of kings',
+        name: 'Sands of Time',
       },
       {
         mapId: 2,
-        name: 'The forbidden isle of Zeus',
+        name: 'Sector',
       },
       {
         mapId: 3,
-        name: 'The End of fucking world',
+        name: 'Revival',
       },
-      {
-        mapId: 4,
-        name: 'Not your map',
-      },
-      { mapId: 5, name: 'You cannot win in this one' },
     ];
     return (
       <div className={classnames(styles.dropdown)}>

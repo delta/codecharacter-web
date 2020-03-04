@@ -13,6 +13,7 @@ const mapStateToProps = (rootState: RootState) => {
     playerId1: rootState.submission.playerId1,
     playerId2: rootState.submission.playerId2,
     request: rootState.submission.request,
+    userId: rootState.user.userId,
   };
 };
 

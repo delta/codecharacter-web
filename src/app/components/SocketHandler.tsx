@@ -19,15 +19,11 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     // @ts-ignore
     this.stompClient.connect({}, (frame) => {
       // TODO: Change to user's actual id
-      const userId = 4;
+      const { userId } = this.props;
       // @ts-ignore
-      this.stompClient.subscribe(`/response/alert/${userId}`, (message: { body: string }) => {
-        // tslint:disable-next-line:no-console
-        console.log(`Received message: ${message.body}`);
-      });
+      this.stompClient.subscribe(`/response/alert/${userId}`);
       // @ts-ignore
       this.stompClient.subscribe(`/response/match/${userId}`, (message: { body: string }) => {
-        // @ts-ignore
         // tslint:disable: no-console
         console.log('Received match object', message.body);
         const { updateGameLog, updateMatchPlayerId } = this.props;
@@ -47,8 +43,6 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     mapId: number,
     commitHash: string,
   ): void {
-    // tslint:disable-next-line: no-console
-    console.log(`MAP ID:${mapId}, MATCH_MODE:${matchMode}`);
     // @ts-ignore
     this.stompClient.send(
       '/request/match',
@@ -66,8 +60,6 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     const { request, mapId, playerId1, playerId2, commitHash, updateRequest } = this.props;
     switch (request) {
       case SubmissionInterfaces.Request.PREVIOUS_COMMIT_MATCH: {
-        // tslint:disable-next-line: no-console
-        console.log('INITIATING MATCH:PREVIOUS_COMMIT_MATCH');
         this.initiateMatch(
           playerId1,
           playerId2,
@@ -79,8 +71,6 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
         break;
       }
       case SubmissionInterfaces.Request.AI_MATCH: {
-        // tslint:disable-next-line: no-console
-        console.log('INITIATING MATCH:AI_MATCH');
         this.initiateMatch(
           playerId1,
           playerId2,
@@ -92,8 +82,6 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
         break;
       }
       case SubmissionInterfaces.Request.SELF_MATCH: {
-        // tslint:disable-next-line: no-console
-        console.log('INITIATING MATCH:SELF_MATCH');
         this.initiateMatch(
           playerId1,
           playerId2,
