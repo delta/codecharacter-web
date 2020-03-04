@@ -4,6 +4,7 @@ import * as React from 'react';
 // tslint:disable-next-line:import-name
 import { Stomp } from '@stomp/stompjs';
 import * as SubmissionInterfaces from 'app/types/code/Submission';
+import { Buffer } from 'buffer';
 // tslint:disable-next-line:import-name
 import SockJsClient from 'sockjs-client';
 import { SOCKET_BASE_URL } from '../../config/config';
@@ -39,12 +40,38 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
             // @ts-ignore
             // tslint:disable-next-line: no-console
             console.log('Received match object', message.body);
+
+            const matchDetails = {
+              matchPlayerId: '',
+              // tslint:disable-next-line: object-literal-sort-keys
+              gameLog: '',
+              debugLog1: '',
+              debugLog2: '',
+            }
+            Object.keys(matchDetails).forEach((key, index) => {
+              // @ts-ignore
+              matchDetails[key] = message.body.slice(10, (message.body.length - 1)).split(', ')[index];
+              if (index !== 0) {
+                // @ts-ignore
+                matchDetails[key] = Buffer.from(matchDetails[key], 'base64');
+              }
+            })
+            console.log(matchDetails);
+
             const { updateGameLog, updateMatchPlayerId } = this.props;
-            const { debugLog1, debugLog2, gameLog, matchPlayerId } = JSON.parse(message.body);
+
+            // /**
+            //  Received match object [GameLogs(isPlayer1=true, gameLog=H4sIAAAAAAAAA+zdd7CdV3pfabXVJA9BEpFA9w3I8YIEkUgAzPcw55xzzjlntkiCEcwRzDnnnDNIgO6Ry5aV7LFsyXLLmvHIlmXJnmBpCOwb3nN677VdrQ4Ma+aPuVXL81W5xj77/T1EjRvLfzD8Bz/+JxP+6IczVp/zkxf+7IeLfvLpH87uHbfTf2oM6Wj89sTfWvV//bste/r/mPNPdlj+g6/TD8tptXJavZzWKKdGOa1ZTkPKaa1yWruc1imnoeU0rJyGl9OIchpZTqPKad1yGl1OY0qpq/Gj4T9I8Seb9/b0/9Eff0yxg2InxS6K3RT 
+            //  str.slice(1, (str.length -1)).split(', ')[1].split('=')[1]str.slice(1, (str.length -1)).split(', ')[1].split('=')[1]
+            //  */
+            // (new Buffer(data, 'base64')).toString('binary')
+
+            // const { debugLog1, debugLog2, gameLog, matchPlayerId } = JSON.parse(message.body);
+            
 
             updateGameLog('', '', '');
-            updateGameLog(debugLog1, debugLog2, gameLog);
-            updateMatchPlayerId(matchPlayerId);
+            updateGameLog(matchDetails.debugLog1, matchDetails.debugLog2, matchDetails.gameLog);
+            updateMatchPlayerId(parseInt(matchDetails.matchPlayerId, 10));
           },
         );
       },
