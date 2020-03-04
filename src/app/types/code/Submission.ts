@@ -16,9 +16,9 @@ const actions = {
 
 export enum Request {
   NONE = 'NONE',
-  SELF_MATCH = 'SELF_MATCH',
-  PREVIOUS_COMMIT_MATCH = 'PREVIOUS_COMMIT_MATCH',
-  AI_MATCH = 'AI_MATCH',
+  SELF_MATCH = 'SELF',
+  PREVIOUS_COMMIT_MATCH = 'PREV_COMMIT',
+  AI_MATCH = 'AI',
   LOCK_CODE = 'LOCK_CODE',
   DEBUG_RUN = 'DEBUG_RUN',
 }
@@ -43,6 +43,9 @@ export interface SubmissionStoreState {
   debugRunCommitHash: string;
   mapId: number;
   maps: Map[];
+  commitHash: string;
+  playerId1: number;
+  playerId2: number;
 }
 
 export interface Map {
