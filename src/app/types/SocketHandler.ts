@@ -36,6 +36,7 @@ export interface StateProps {
   playerId1: number;
   playerId2: number;
   request: SubmissionInterfaces.Request;
+  userId: number;
 }
 
 export type Props = DispatchProps & StateProps;

@@ -4,7 +4,6 @@ import {
   faCode,
   faCodeBranch,
   faCog,
-  faInfoCircle,
   faQuestionCircle,
   faSignInAlt,
   faSignOutAlt,
@@ -149,20 +148,6 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           >
             <FontAwesomeIcon icon={isLoggedIn ? faUser : faSignInAlt} />
           </Button>
-          <Button
-            className={classnames('py-2 px-auto notification-btn-ctrl', styles.customBtn, {
-              [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.NOTIFICATION,
-            })}
-            id="notifications_button"
-            title={'About'}
-            onClick={() =>
-              sidePanelTab !== SidePanelTab.NOTIFICATION
-                ? openSidePanelTab(SidePanelTab.NOTIFICATION)
-                : closeSidePanelTab()
-            }
-          >
-            <FontAwesomeIcon icon={faInfoCircle} />
-          </Button>
           {isLoggedIn ? (
             <Button
               className={classnames('py-2 px-auto', styles.customBtn)}
@@ -192,13 +177,6 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             <a href="https://delta.nitt.edu" target="_blank">
               <img src="assets/img/deltaLogo.png" height={20} width={20} />
             </a>
-          </Button>
-          <Button
-            className={classnames('py-2 px-auto', styles.dologo)}
-            id="digital_ocean_logo"
-            title={'We thank Digital Ocean for hosting Code Character'}
-          >
-            <img src="assets/img/doLogo.png" height={20} width={20} />
           </Button>
         </ButtonGroup>
       </div>
