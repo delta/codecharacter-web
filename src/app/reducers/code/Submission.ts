@@ -72,6 +72,12 @@ export const submissionReducer = (
         debugRunCommitHash: action.payload.commitHash,
       };
     }
+    case SubmissionActions.Type.UPDATE_COMMIT_HASH: {
+      return {
+        ...state,
+        commitHash: action.payload.commitHash,
+      };
+    }
     case SubmissionActions.Type.RESET_SUBMISSION_STATE:
       return {
         ...submissionStoreState,

@@ -139,7 +139,7 @@ export function* getUserDetails(action: ActionType<typeof UserActions.getUserDet
     const isAuthenticated = yield checkAuthentication(res);
     if (isAuthenticated === false) return;
     if (res.type !== resType.ERROR) {
-      const { avatarId, college, country, fullName, userType, username } = res.body;
+      const { avatarId, college, country, fullName, userType, username, userId } = res.body;
       yield put(
         UserActions.updateUserDetails({
           college,

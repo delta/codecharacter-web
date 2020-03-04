@@ -7,6 +7,7 @@ const actions = {
   resetSubmissionState: SubmissionActions.resetSubmissionState,
   saveMaps: SubmissionActions.saveMaps,
   updateAiIds: SubmissionActions.updateAiIds,
+  updateCommitHash: SubmissionActions.updateCommitHash,
   updateCurrentAiId: SubmissionActions.updateCurrentAiId,
   updateDebugRunCode: SubmissionActions.updateDebugRunCode,
   updateDebugRunCommitHash: SubmissionActions.updateDebugRunCommitHash,
