@@ -134,7 +134,6 @@ export function* register(action: ActionType<typeof UserActions.register>) {
 export function* getUserDetails(action: ActionType<typeof UserActions.getUserDetails>) {
   try {
     const res = yield call(UserFetch.userGetDetails);
-    console.log(res.body);
     // res.error has error string if type = 'Error', else empty
     yield put(UserActions.updateErrorMessage(res.error));
     const isAuthenticated = yield checkAuthentication(res);
