@@ -48,12 +48,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     commitHash: string,
   ): void {
     // tslint:disable-next-line: no-console
-    console.log({
-      mapId,
-      matchMode,
-      playerId1,
-      playerId2,
-    });
+    console.log(`MAP ID:${mapId}, MATCH_MODE:${matchMode}`);
     // @ts-ignore
     this.stompClient.send(
       '/request/match',
@@ -66,13 +61,13 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     );
   }
 
-  public componentWillUpdate() {
+  public componentDidUpdate() {
     // tslint:disable-next-line: no-console
-    const { request, mapId, playerId1, playerId2, commitHash } = this.props;
+    const { request, mapId, playerId1, playerId2, commitHash, updateRequest } = this.props;
     switch (request) {
       case SubmissionInterfaces.Request.PREVIOUS_COMMIT_MATCH: {
         // tslint:disable-next-line: no-console
-        console.log('HELLO');
+        console.log('INITIATING MATCH:PREVIOUS_COMMIT_MATCH');
         this.initiateMatch(
           playerId1,
           playerId2,
@@ -80,6 +75,33 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
           mapId,
           commitHash,
         );
+        updateRequest(SubmissionInterfaces.Request.NONE);
+        break;
+      }
+      case SubmissionInterfaces.Request.AI_MATCH: {
+        // tslint:disable-next-line: no-console
+        console.log('INITIATING MATCH:AI_MATCH');
+        this.initiateMatch(
+          playerId1,
+          playerId2,
+          SubmissionInterfaces.Request.AI_MATCH,
+          mapId,
+          commitHash,
+        );
+        updateRequest(SubmissionInterfaces.Request.NONE);
+        break;
+      }
+      case SubmissionInterfaces.Request.SELF_MATCH: {
+        // tslint:disable-next-line: no-console
+        console.log('INITIATING MATCH:SELF_MATCH');
+        this.initiateMatch(
+          playerId1,
+          playerId2,
+          SubmissionInterfaces.Request.SELF_MATCH,
+          mapId,
+          commitHash,
+        );
+        updateRequest(SubmissionInterfaces.Request.NONE);
         break;
       }
     }
