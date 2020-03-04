@@ -50,7 +50,7 @@ export class RunOptions extends React.Component<
 
     const maps = this.props.maps || hardCodedMap;
 
-    const hardCodedAiIds: number[] = [1, 2, 3];
+    const hardCodedAiIds: number[] = [1, 2];
 
     const aiIds = hardCodedAiIds;
 

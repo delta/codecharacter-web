@@ -55,7 +55,7 @@ export const userLogout = () => {
     method: 'POST',
   })
     .then((response) => {
-      return response.json();
+      return headResponseWrapper(response, HeadReqType.OTHERS);
     })
     .then((data) => {
       return data;
