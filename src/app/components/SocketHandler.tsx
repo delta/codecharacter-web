@@ -23,8 +23,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       (frame) => {
         // tslint:disable-next-line:no-console
         console.log('Success call back console log', frame);
-        // TODO: Change to user's actual id
-        const userId = 13;
+        const { userId } = this.props;
         // @ts-ignore
         this.stompClient.subscribe(
           `/socket/response/alert/${userId}`,
