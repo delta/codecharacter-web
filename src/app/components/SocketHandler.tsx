@@ -14,92 +14,71 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     });
   }
 
-  public componentDidMount() {
-    const {
-      sendCompileError,
-      sendCompileSuccess,
-      sendExecuteError,
-      sendExecuteSuccess,
-      sendInfo,
-      sendSuccess,
-      sendError,
-      sendDebugRunSuccess,
-      sendDebugRunError,
-    } = this.props;
+  public initiateMatch(
+    playerId1: number,
+    playerId2: number,
+    matchMode: string,
+    mapId: number,
+    commitHash: string,
+  ): void {
+    // tslint:disable-next-line: no-console
+    console.log(`MAP ID:${mapId}, MATCH_MODE:${matchMode}`);
+    // @ts-ignore
+    this.stompClient.send(
+      '/request/match',
+      {},
+      JSON.stringify({
+        matchMode,
+        playerId1,
+        playerId2,
+      }),
+    );
+  }
 
-    this.socket.on('Info', (message: string) => {
-      sendInfo(message);
-    });
-
-    this.socket.on('Success', (message: string) => {
-      sendSuccess(message);
-    });
-
-    this.socket.on('Error', (message: string) => {
-      sendError(message);
-    });
-
-    this.socket.on('connect', () => {
-      sendSuccess('Connected to Server!');
-    });
-
-    this.socket.on('Compile Info', (message: string) => {
-      sendInfo(message);
-    });
-
-    this.socket.on('Compile Success', () => {
-      sendSuccess('Compiled Successfully!');
-      sendCompileSuccess();
-    });
-
-    this.socket.on('Compile Error', (message: string) => {
-      sendError(`Compile Error: ${message}`);
-      sendCompileError('');
-    });
-
-    this.socket.on('Compile Error Log', (log: string) => {
-      sendError('Compile Error');
-      sendCompileError(log);
-    });
-
-    this.socket.on('Match Info', (message: string) => {
-      sendInfo(message);
-    });
-
-    this.socket.on('Match Error', (message: string) => {
-      sendError(message);
-      sendExecuteError(message);
-    });
-
-    this.socket.on('Match Result Success', (result: string) => {
-      sendSuccess(result);
-    });
-
-    this.socket.on('Match Result Error', (result: string) => {
-      sendError(result);
-    });
-
-    this.socket.on('Match Success', (matchLogs: string) => {
-      sendSuccess('Match Executed Successfully!');
-      sendExecuteSuccess(matchLogs);
-    });
-
-    this.socket.on('Debug Run Info', (message: string) => {
-      sendInfo(message);
-    });
-
-    this.socket.on('Debug Run Success', (stackTrace: string) => {
-      sendDebugRunSuccess(stackTrace);
-    });
-
-    this.socket.on('Debug Run Error', (message: string) => {
-      sendError(`Debug Run Error: ${message}`);
-      sendDebugRunError();
-    });
-
-    this.socket.on('disconnect', () => {
-      sendError('Disconnected');
-    });
+  public componentDidUpdate() {
+    // tslint:disable-next-line: no-console
+    const { request, mapId, playerId1, playerId2, commitHash, updateRequest } = this.props;
+    switch (request) {
+      case SubmissionInterfaces.Request.PREVIOUS_COMMIT_MATCH: {
+        // tslint:disable-next-line: no-console
+        console.log('INITIATING MATCH:PREVIOUS_COMMIT_MATCH');
+        this.initiateMatch(
+          playerId1,
+          playerId2,
+          SubmissionInterfaces.Request.PREVIOUS_COMMIT_MATCH,
+          mapId,
+          commitHash,
+        );
+        updateRequest(SubmissionInterfaces.Request.NONE);
+        break;
+      }
+      case SubmissionInterfaces.Request.AI_MATCH: {
+        // tslint:disable-next-line: no-console
+        console.log('INITIATING MATCH:AI_MATCH');
+        this.initiateMatch(
+          playerId1,
+          playerId2,
+          SubmissionInterfaces.Request.AI_MATCH,
+          mapId,
+          commitHash,
+        );
+        updateRequest(SubmissionInterfaces.Request.NONE);
+        break;
+      }
+      case SubmissionInterfaces.Request.SELF_MATCH: {
+        // tslint:disable-next-line: no-console
+        console.log('INITIATING MATCH:SELF_MATCH');
+        this.initiateMatch(
+          playerId1,
+          playerId2,
+          SubmissionInterfaces.Request.SELF_MATCH,
+          mapId,
+          commitHash,
+        );
+        updateRequest(SubmissionInterfaces.Request.NONE);
+        break;
+      }
+    }
   }
 
   public componentWillUnmount() {

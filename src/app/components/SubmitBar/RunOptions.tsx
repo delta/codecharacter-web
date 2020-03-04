@@ -32,6 +32,27 @@ export class RunOptions extends React.Component<
     const { maps, startMatch, aiIds } = this.props;
     const { currentIndex, isMapOptionsOpen } = this.state;
 
+    const hardCodedMap: Map[] = [
+      {
+        mapId: 1,
+        name: 'Map of kings',
+      },
+      {
+        mapId: 2,
+        name: 'The forbidden isle of Zeus',
+      },
+      {
+        mapId: 3,
+        name: 'The End of fucking world',
+      },
+    ];
+
+    const maps = this.props.maps || hardCodedMap;
+
+    const hardCodedAiIds: number[] = [1, 2];
+
+    const aiIds = hardCodedAiIds;
+
     const matchOptions = [
       {
         aiId: 0,
