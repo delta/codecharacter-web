@@ -7,11 +7,68 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
   private socket: SocketIOClient.Socket;
   constructor(props: SocketHandlerInterfaces.Props) {
     super(props);
-    this.socket = io.connect(SOCKET_BASE_URL, {
-      reconnection: true,
-      reconnectionDelay: 1000,
-      transports: ['websocket'],
-    });
+    this.socket = new SockJsClient(`${SOCKET_BASE_URL}connect`);
+    this.stompClient = Stomp.over(this.socket);
+    // @ts-ignore
+    this.stompClient.connect(
+      {},
+      // @ts-ignore
+      (frame) => {
+        // tslint:disable-next-line:no-console
+        console.log('Success call back console log', frame);
+        const { userId } = this.props;
+        // @ts-ignore
+        this.stompClient.subscribe(
+          `/socket/response/alert/${userId}`,
+          (message: { body: string }) => {
+            // tslint:disable-next-line:no-console
+            console.log(`Received message: ${message.body}`);
+          },
+        );
+        // @ts-ignore
+        this.stompClient.subscribe(
+          `/socket/response/match/${userId}`,
+          (message: { body: string }) => {
+            // @ts-ignore
+            // tslint:disable-next-line: no-console
+            console.log('Received match object', message.body);
+
+            const matchDetails = {
+              matchPlayerId: '',
+              // tslint:disable-next-line: object-literal-sort-keys
+              gameLog: '',
+              debugLog1: '',
+              debugLog2: '',
+            };
+            Object.keys(matchDetails).forEach((key, index) => {
+              // @ts-ignore
+              matchDetails[key] = message.body.slice(10, message.body.length - 1).split(', ')[
+                index
+              ];
+              if (index !== 0) {
+                // @ts-ignore
+                matchDetails[key] = Buffer.from(matchDetails[key], 'base64');
+              }
+            });
+
+            // tslint:disable-next-line: no-shadowed-variable
+            const { updateGameLog, updateMatchPlayerId, userId } = this.props;
+            const matchPlayerId = parseInt(matchDetails.matchPlayerId, 10);
+            // tslint:disable-next-line: no-console
+            console.log(matchDetails, matchPlayerId, userId);
+
+            updateGameLog('', '', '');
+            updateGameLog(matchDetails.debugLog1, matchDetails.debugLog2, matchDetails.gameLog);
+            updateMatchPlayerId(matchPlayerId === userId ? 1 : 2);
+          },
+        );
+      },
+      // @ts-ignore
+      (frame) => {
+        // tslint:disable-next-line: no-console
+        console.log('Error Callback console log', frame);
+      },
+    );
   }
 
   public initiateMatch(
@@ -25,7 +82,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     console.log(`MAP ID:${mapId}, MATCH_MODE:${matchMode}`);
     // @ts-ignore
     this.stompClient.send(
-      '/request/match',
+      '/socket/request/match',
       {},
       JSON.stringify({
         commitHash,

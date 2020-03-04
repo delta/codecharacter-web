@@ -23,24 +23,33 @@ export default class Renderer extends React.Component<RendererInterfaces.Props, 
       updateLog,
     } = this.props;
     // tslint:disable-next-line: no-console
-    console.log('logfile:', logFile, 'player1DL', player1DebugLog, 'player2DL', player2DebugLog);
+    console.log(
+      'logfile:',
+      logFile,
+      'player1DL',
+      player1DebugLog,
+      'player2DL',
+      player2DebugLog,
+      'MatchPlayerId',
+      matchPlayerId,
+    );
 
     return (
       <div style={{ height, display: 'flex', width: '100%', alignItems: 'center' }}>
         {logFile !== '' ? (
           <CodecharacterRenderer
             // @ts-ignore
-            logFile={pako.inflate(Buffer.from(JSON.parse(logFile)))}
+            logFile={pako.inflate(Buffer.from(logFile))}
             options={{
               logClearFunction: clearLog,
               logFunction: updateLog,
               // @ts-ignore
               player1Log: new TextDecoder('utf-8').decode(
-                pako.inflate(Buffer.from(JSON.parse(player1DebugLog))),
+                pako.inflate(Buffer.from(player1DebugLog)),
               ),
               // @ts-ignore
               player2Log: new TextDecoder('utf-8').decode(
-                pako.inflate(Buffer.from(JSON.parse(player2DebugLog))),
+                pako.inflate(Buffer.from(player2DebugLog)),
               ),
               playerID: matchPlayerId,
             }}
