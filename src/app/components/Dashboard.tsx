@@ -101,7 +101,7 @@ export class Dashboard extends React.Component<
       }
     }
     if (!isLoggedIn) {
-      return <Redirect from="/" to={Routes.LOGIN} />;
+      return <Redirect to={Routes.LOGIN} />;
     }
 
     return (

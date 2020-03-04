@@ -34,6 +34,7 @@
 
 .notificationWrap {
   max-height: 85vh;
+  overflow-y: scroll;
 }
 
 .notificationWrap::-webkit-scrollbar-track {
@@ -55,15 +56,22 @@
 .notificationElement {
   min-height: 70px;
   color: #104300;
-  padding: 10px;
-  background: #aff29a;
+  background: white;
   border-radius: 2px;
+  border: 3px solid #31d8c2;
+  display: flex;
 }
 
 .about-grid {
-  color: white;
+  color: rgb(53, 34, 34);
   height: 100%;
   overflow: auto;
+}
+
+.date {
+  font-size: 0.64rem;
+  color: black;
+  font-weight: bold;
 }
 
 .about-grid::-webkit-scrollbar-track {
@@ -84,17 +92,21 @@
 
 .INFO {
   color: #0c5460;
+  border-color: #d1ecf1;
+}
+
+.sideCurve-INFO {
   background-color: #d1ecf1;
 }
 
 .SUCCESS {
   color: #104300;
-  background: #aff29a;
+  border-color: #aff29a;
 }
 
 .ERROR {
   color: #4f0800;
-  background: #ffaba2;
+  border-color: #ffaba2;
 }
 
 .header {
@@ -106,4 +118,74 @@
   color: inherit;
   border: none;
   outline: none;
+}
+
+.notificationContent {
+  padding: 0px;
+  padding-top: 3px;
+  padding-left: 5px;
+  width: 100%;
+}
+
+.announcement-div {
+  min-height: 70px;
+  color: #104300;
+  background: white;
+  border-radius: 2px;
+  border: 3px solid #31d8c2;
+  display: flex;
+  margin-top: 5px;
+}
+
+.announcement-content {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 5px;
+}
+
+.tab-active {
+  background-color: gray;
+  padding: 0.25em;
+}
+
+.tab-active:hover,
+.tab-inactive:hover {
+  cursor: pointer;
+}
+
+.sideContainer {
+  width: 55px;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.sideIcon {
+  text-align: center;
+}
+.side-INFO {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+.side-SUCCESS {
+  background-color: #aff29a;
+  color: #104300;
+}
+
+.side-ERROR {
+  color: #4f0800;
+  background-color: #ffaba2;
+}
+.body {
+  font-size: 0.9rem;
+  color: black;
+  font-weight: bold;
+}
+.title {
+  font-size: 1rem;
+  color: black;
+  font-weight: bold;
 }

@@ -5,12 +5,11 @@ import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
 import * as registerStyles from 'app/styles/Register.module.css';
-import { AuthType } from 'app/types/Authentication/';
 import * as LoginInterfaces from 'app/types/Authentication/Login';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export enum OAUTH_ROUTES {
   GOOGLE = 'login/google',
@@ -60,7 +59,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
 
   public render() {
     const { username, password } = this.state;
-    const { errorMessage, updateErrorMessage, isLoginLoading, isLoggedIn } = this.props;
+    const { errorMessage, isLoginLoading, isLoggedIn } = this.props;
     if (isLoggedIn) {
       return <Redirect to={Routes.ROOT} />;
     }
@@ -214,16 +213,9 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           <Col className="text-center my-3 ml-auto mr-auto">
             <div className="text-dark">
               Don't have an account?{' '}
-              <a
-                href={Routes.REGISTER}
-                className={classnames(styles['create-one-button'])}
-                onClick={() => {
-                  updateErrorMessage('');
-                  this.props.handleSelectPanel(AuthType.REGISTER);
-                }}
-              >
+              <Link to={Routes.REGISTER} className={classnames(styles['create-one-button'])}>
                 Create one
-              </a>
+              </Link>
             </div>
           </Col>
         </Row>

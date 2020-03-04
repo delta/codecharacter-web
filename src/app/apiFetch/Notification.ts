@@ -1,3 +1,11 @@
+/* tslint:disable:no-console*/
+import {
+  HeadReqType,
+  headResponseWrapper,
+  jsonResponseWrapper,
+  setRequestHeaders,
+} from 'app/apiFetch/utils';
+import { NotificationType } from 'app/types/Notification';
 import { API_BASE_URL } from '../../config/config';
 
 export const getUnreadNotifications = () => {
@@ -12,28 +20,38 @@ export const getUnreadNotifications = () => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.log(error);
     });
 };
 
 export const deleteGlobalNotifications = (notificationId: number) => {
-  return fetch(`${API_BASE_URL}notifications/global/${notificationId}`, {
+  return fetch(`${API_BASE_URL}notifications/${notificationId}/`, {
     credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
+    headers: setRequestHeaders(),
     method: 'DELETE',
   })
-    .then((response) => response.json())
+    .then((response) => headResponseWrapper(response, HeadReqType.OTHERS))
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
+    });
+};
+
+export const deleteGlobalNotificationsByType = (type: NotificationType) => {
+  return fetch(`${API_BASE_URL}notifications/type/${type}/`, {
+    credentials: 'include',
+    headers: setRequestHeaders(),
+    method: 'DELETE',
+  })
+    .then((response) => headResponseWrapper(response, HeadReqType.OTHERS))
+    .then((data) => data)
+    .catch((error) => {
+      console.error(error);
     });
 };
 
 export const getAllGlobalNotifications = () => {
-  return fetch(`${API_BASE_URL}notifications/global/all`, {
+  return fetch(`${API_BASE_URL}notifications`, {
     credentials: 'include',
     headers: {
       Accept: 'application/json',
@@ -41,9 +59,25 @@ export const getAllGlobalNotifications = () => {
     },
     method: 'GET',
   })
-    .then((response) => response.json())
+    .then((response) => jsonResponseWrapper(response))
     .then((data) => data)
     .catch((error) => {
-      throw error;
+      console.error(error);
+    });
+};
+
+export const getAllGlobalAnnouncements = () => {
+  return fetch(`${API_BASE_URL}announcements/`, {
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'GET',
+  })
+    .then((response) => jsonResponseWrapper(response))
+    .then((data) => data)
+    .catch((error) => {
+      console.error(error);
     });
 };

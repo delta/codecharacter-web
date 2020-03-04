@@ -27,6 +27,7 @@ const pnotifyOptions = (title: string) => {
 };
 
 const notificationInitialState: NotificationInterfaces.NotificationStoreState = {
+  announcements: [],
   loading: false,
   notifications: [],
 };
@@ -51,21 +52,7 @@ export const notificationReducer = (
       return state;
     }
 
-    case NotificationActions.Type.DELETE_NOTIFICATION_TYPE: {
-      const updatedNotifications =
-        action.payload.type === NotificationInterfaces.NotificationTabType.ALL
-          ? []
-          : state.notifications.filter(
-              // @ts-ignore
-              (notification) => notification.type !== action.payload.type,
-            );
-      return {
-        ...state,
-        notifications: updatedNotifications,
-      };
-    }
-
-    case NotificationActions.Type.DELETE_NOTIFICATION: {
+    case NotificationActions.Type.HIDE_NOTIFICATION: {
       return {
         ...state,
         notifications: state.notifications.filter(
@@ -73,12 +60,32 @@ export const notificationReducer = (
         ),
       };
     }
+
+    case NotificationActions.Type.HIDE_NOTIFICATION_TYPE: {
+      return {
+        ...state,
+        notifications:
+          action.payload.type === NotificationInterfaces.NotificationTabType.ALL
+            ? []
+            : state.notifications.filter(
+                (notification) => notification.type !== action.payload.type,
+              ),
+      };
+    }
+
     case NotificationActions.Type.UPDATE_GLOBAL_NOTIFICATIONS: {
       return {
         ...state,
         notifications: action.payload.notifications,
       };
     }
+    case NotificationActions.Type.UPDATE_GLOBAL_ANNOUNCEMENTS: {
+      return {
+        ...state,
+        announcements: action.payload.announcements,
+      };
+    }
+
     case NotificationActions.Type.RESET_NOTIFICATION_STATE: {
       return {
         ...notificationInitialState,
