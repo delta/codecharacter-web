@@ -120,9 +120,8 @@ export class SubmitBar extends React.Component<
           className={classnames(styles.customBtn)}
           id="run_button"
           onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-
             // this.setState({
-              // isRunOptionsOpen: !isRunOptionsOpen,
+            // isRunOptionsOpen: !isRunOptionsOpen,
             // });
             event.stopPropagation();
           }}

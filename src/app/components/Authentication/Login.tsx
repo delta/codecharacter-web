@@ -10,7 +10,7 @@ import * as LoginInterfaces from 'app/types/Authentication/Login';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 export enum OAUTH_ROUTES {
   GOOGLE = 'login/google',
@@ -83,7 +83,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           </div>
         </div>
         <div className={classnames('container px-0 justify-content-center', styles.loginForm)}>
-{/* {       
+          {/* {       
             // TODO: Remove this on OAuth Integration.   
             <Row
             onClick={(e) => {
@@ -217,16 +217,17 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           <Col className="text-center my-3 ml-auto mr-auto">
             <div className="text-dark">
               Don't have an account?{' '}
-              <a
-                href={Routes.REGISTER}
-                className={classnames(styles['create-one-button'])}
-                onClick={() => {
-                  updateErrorMessage('');
-                  this.props.handleSelectPanel(AuthType.REGISTER);
-                }}
-              >
-                Create one
-              </a>
+              <NavLink to={Routes.REGISTER}>
+                <div
+                  className={classnames(styles['create-one-button'])}
+                  onClick={() => {
+                    updateErrorMessage('');
+                    this.props.handleSelectPanel(AuthType.REGISTER);
+                  }}
+                >
+                  Create one
+                </div>
+              </NavLink>
             </div>
           </Col>
         </Row>
