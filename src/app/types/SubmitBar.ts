@@ -16,6 +16,7 @@ export interface StateProps {
 
 export interface DispatchProps {
   saveCode: () => void;
+  changeCurrentRequest: (currentRequest: SubmissionInterfaces.Request) => void;
   commit: (commitMessage: string) => void;
   getCommitLog: () => void;
   lockCode: () => void;
@@ -25,6 +26,8 @@ export interface DispatchProps {
   loadMaps: () => void;
   getAiIds: () => void;
   clearLogs: () => void;
+  updateCurrentAiId: (aiId: number) => void;
+  updateMapId: (mapId: number) => void;
 }
 
 export interface RunOptionsOwnState {

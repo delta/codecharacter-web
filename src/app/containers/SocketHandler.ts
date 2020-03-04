@@ -1,6 +1,8 @@
-import { NotificationActions, SubmissionActions } from 'app/actions';
+import { GameLogActions, NotificationActions, SubmissionActions, UserActions } from 'app/actions';
 import { SocketHandler } from 'app/components/SocketHandler';
 import { RootState } from 'app/reducers';
+import * as SubmissionInterfaces from 'app/types/code/Submission';
+import * as NotificationInterfaces from 'app/types/Notification';
 import * as SocketHandlerInterfaces from 'app/types/SocketHandler';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -26,8 +28,24 @@ const mapStateToProps = (rootState: RootState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
+    add: (type: NotificationInterfaces.NotificationType, title: string, text: string) =>
+      dispatch(NotificationActions.add(type, title, text)),
     clearAllLogs: () => GameLogActions.clearAllLogs(),
     clearDisplayDebugLog: () => GameLogActions.clearDisplayDebugLog(),
+    deleteNotification: (id: number) => dispatch(NotificationActions.deleteNotification(id)),
+    deleteNotificationType: (type: NotificationInterfaces.NotificationTabType) =>
+      dispatch(NotificationActions.deleteNotificationType(type)),
+    error: (message: string) => dispatch(NotificationActions.error(message)),
+    getAllGlobalAnnouncements: () => dispatch(NotificationActions.getAllGlobalAnnouncements()),
+    getAllGlobalNotifications: () => dispatch(NotificationActions.getAllGlobalNotifications()),
+    getUnreadGlobalNotifications: () =>
+      dispatch(NotificationActions.getUnreadGlobalNotifications()),
+    hideNotification: (id: number) => dispatch(NotificationActions.hideNotification(id)),
+    hideNotificationType: (type: NotificationInterfaces.NotificationTabType) =>
+      dispatch(NotificationActions.hideNotificationType(type)),
+    info: (message: string) => dispatch(NotificationActions.info(message)),
+    logout: () => dispatch(UserActions.logout()),
+    resetNotificationState: () => dispatch(NotificationActions.resetNotificationState()),
     sendCompileError: (error: string) => dispatch(SubmissionActions.handleCompileError(error)),
     sendCompileSuccess: () => dispatch(SubmissionActions.handleCompileSuccess()),
     sendDebugRunError: () => dispatch(SubmissionActions.handleDebugRunError()),
@@ -54,7 +72,11 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-const socketHandlerContainer = connect<{}, SocketHandlerInterfaces.DispatchProps, {}>(
+const socketHandlerContainer = connect<
+  SocketHandlerInterfaces.StateProps,
+  SocketHandlerInterfaces.DispatchProps,
+  {}
+>(
   mapStateToProps,
   mapDispatchToProps,
 )(SocketHandler);

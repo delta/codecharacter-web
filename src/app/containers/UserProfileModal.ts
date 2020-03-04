@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (rootState: RootState) => {
   return {
+    isLoggedIn: rootState.user.isLoggedIn,
     isUserProfileModalOpen: rootState.user.isUserProfileModalOpen,
     userDetails: { ...rootState.user },
   };

@@ -1,9 +1,10 @@
-import { SubmissionActions } from 'app/actions';
+import { SubmissionActions, UserActions } from 'app/actions';
 import { ActionType } from 'typesafe-actions';
 
 const actions = {
   changeCurrentRequest: SubmissionActions.changeCurrentRequest,
   changeState: SubmissionActions.changeState,
+  logout: UserActions.logout,
   resetSubmissionState: SubmissionActions.resetSubmissionState,
   saveMaps: SubmissionActions.saveMaps,
   toggleLockCode: SubmissionActions.toggleLockCode,
@@ -19,9 +20,9 @@ const actions = {
 
 export enum Request {
   NONE = 'NONE',
-  SELF_MATCH = 'SELF_MATCH',
-  PREVIOUS_COMMIT_MATCH = 'PREVIOUS_COMMIT_MATCH',
-  AI_MATCH = 'AI_MATCH',
+  SELF_MATCH = 'SELF',
+  PREVIOUS_COMMIT_MATCH = 'PREV_COMMIT',
+  AI_MATCH = 'AI',
   LOCK_CODE = 'LOCK_CODE',
   DEBUG_RUN = 'DEBUG_RUN',
   MANUAL = 'MANUAL',

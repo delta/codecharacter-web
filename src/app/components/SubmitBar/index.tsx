@@ -13,6 +13,7 @@ import { SubmissionActions } from 'app/actions';
 import { CommitMessageBox } from 'app/components/SubmitBar/CommitMessageBox';
 import { RunOptions } from 'app/components/SubmitBar/RunOptions';
 import * as styles from 'app/styles/SubmitBar.module.css';
+import * as SubmissionInterfaces from 'app/types/code/Submission';
 import { SplitPaneState } from 'app/types/Dashboard';
 import * as SubmitBarInterfaces from 'app/types/SubmitBar';
 import classnames from 'classnames';
@@ -229,14 +230,19 @@ export class SubmitBar extends React.Component<
   };
 
   private startMatch = async (type: SubmissionActions.Type, mapId: number, aiId: number) => {
-    const { selfMatch, aiMatch } = this.props;
+    const { selfMatch, aiMatch, updateMapId, updateCurrentAiId, changeCurrentRequest } = this.props;
 
     switch (type) {
       case SubmissionActions.Type.SELF_MATCH: {
+        changeCurrentRequest(SubmissionInterfaces.Request.SELF_MATCH);
+        updateMapId(mapId);
         await selfMatch(mapId);
         break;
       }
       case SubmissionActions.Type.AI_MATCH: {
+        changeCurrentRequest(SubmissionInterfaces.Request.AI_MATCH);
+        updateCurrentAiId(aiId);
+        updateMapId(mapId);
         await aiMatch(mapId, aiId);
         break;
       }

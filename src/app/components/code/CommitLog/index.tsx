@@ -44,7 +44,7 @@ export class CommitLog extends React.Component<
     };
     const renderCommitLog: Commit[] = [];
     renderCommitLog.push(latestCommit);
-    const { checkoutCode, currentCommitHash, forkCode, commitLog, maps } = this.props;
+    const { checkoutCode, currentCommitHash, forkCode, commitLog, maps, save, code } = this.props;
     renderCommitLog.push(...commitLog);
     return (
       <Grid fluid={true} className={classnames(styles.CommitLog)}>
@@ -58,6 +58,8 @@ export class CommitLog extends React.Component<
               <CommitElement
                 isCurrentHash={currentCommitHash === commit.hash}
                 checkoutCode={() => checkoutCode(commit.hash)}
+                code={code}
+                save={save}
                 key={index}
                 index={index}
                 forkCode={() => {

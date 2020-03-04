@@ -13,13 +13,7 @@ export class MatchElement extends React.Component<
 > {
   public MAP_THUMBNAIL = ['sands_of_time', 'sector', 'revival', 'mysterymap', 'mysterymap'];
 
-  public MAP_NAME = [
-    'Isles of Codecharacter',
-    'Time Turner',
-    'Treacherous Mangroves',
-    'The Fuhrer',
-    'Crossroads of Destiny',
-  ];
+  public MAP_NAME = ['Sands of Time', 'Sector', 'Revival', 'The Fuhrer', 'Crossroads of Destiny'];
   public constructor(props: MatchInterfaces.ElementProps) {
     super(props);
     this.state = {

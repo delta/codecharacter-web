@@ -14,6 +14,7 @@ export interface Register {
   fullName: string;
   password: string;
   username: string;
+  userType: UserType;
 }
 
 export interface EditUserDetails {
@@ -51,8 +52,12 @@ const actions = {
   resetUserState: UserActions.resetUserState,
   setIsAuthenticationOpen: UserActions.setIsAuthenticationOpen,
   setIsLoginLoading: UserActions.setIsLoginLoading,
+  toggleIsNotificationPresent: UserActions.toggleIsNotificationPresent,
+  toggleIsSocketPresent: UserActions.toggleIsSocketPresent,
   toggleUserProfileModal: UserActions.toggleUserProfileModal,
   updateErrorMessage: UserActions.updateErrorMessage,
+  updateNotification: UserActions.updateNotification,
+  updateSocketMessage: UserActions.updateSocketMessage,
   updateUserDetails: UserActions.updateUserDetails,
 };
 
@@ -62,9 +67,15 @@ export interface UserStoreState {
   username: string;
   email: string;
   country: string;
+  userId: number;
+  isFirstLogin: boolean;
   isLoggedIn: boolean;
   isLoginLoading: boolean;
   isUserProfileModalOpen: boolean;
+  isNotificationPresent: boolean;
+  isSocketPresent: boolean;
+  notification: string;
+  socketMessage: string;
   isAuthenticationOpen: boolean;
   college: string;
   userType: UserType;
@@ -72,3 +83,23 @@ export interface UserStoreState {
 }
 
 export type UserStoreAction = ActionType<typeof actions>;
+
+export enum MatchMode {
+  AUTO = 'AUTO',
+  SELF = 'SELF',
+  AI = 'AI',
+  PREV_COMMIT = 'PREV_COMMIT',
+  MANUAL = 'MANUAL',
+}
+
+export interface MatchDetails {
+  mapId: number;
+  matchMode: MatchMode;
+  playerId1: number;
+  playerId2: number;
+}
+
+export interface StateProps {
+  isMatchRequestPresent: boolean;
+  matchRequestDetails: MatchDetails;
+}

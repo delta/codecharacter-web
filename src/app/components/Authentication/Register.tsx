@@ -1,6 +1,7 @@
 import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RECAPTCHA_SITE_KEY } from 'app/../config/config';
+import { NavBar, NavPage } from 'app/components/home/Navbar';
 import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
 import * as authStyles from 'app/styles/Authentication.module.css';
@@ -15,7 +16,7 @@ import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
 // tslint:disable-next-line:import-name
 import ReCAPTCHA from 'react-google-recaptcha';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 enum KeyCode {
   ENTER = 'Enter',
@@ -120,6 +121,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
 
     return (
       <div className={classnames(authStyles.registerRoot)} onKeyDown={this.handleKeyDown}>
+        <NavBar isLoggedIn={false} page={NavPage.REGISTER} />
         <div className={classnames(authStyles.registerMessage)}>
           <h1 className={classnames(authStyles['register-h1'])}> Register to CodeCharacter! </h1>
           <p> Register now and code your way through!! </p>
@@ -314,11 +316,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                           })
                         }
                       />
-                      <label
-                        htmlFor="switch"
-                        className={classnames(registerStyles.flaglabel)}
-                        style={{ backgroundColor: '#4630eb' }}
-                      >
+                      <label htmlFor="switch" className={classnames(registerStyles.flaglabel)}>
                         Toggle
                       </label>
                     </span>
@@ -535,15 +533,16 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           <Col className="ml-auto  my-3 mr-auto">
             <div className="text-dark">
               Already have an account?{' '}
-              <a
-                href={Routes.LOGIN}
-                className={classnames(authStyles['create-one-button'])}
-                onClick={() => {
-                  updateErrorMessage('');
-                }}
-              >
-                Login now
-              </a>
+              <NavLink to={Routes.LOGIN}>
+                <div
+                  className={classnames(authStyles['create-one-button'])}
+                  onClick={() => {
+                    updateErrorMessage('');
+                  }}
+                >
+                  Login now
+                </div>
+              </NavLink>
             </div>
           </Col>
         </Row>
@@ -625,6 +624,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       username,
       isCaptchaValidated,
       collegeName: college,
+      userType,
     } = this.state;
     const registerForm = this.registerFormRef.current;
     const otherDetailsForm = this.otherDetailsFormRef.current;
@@ -638,6 +638,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           email,
           fullName,
           password,
+          userType,
           username,
           // @ts-ignore
           avatarId: RegisterInterfaces.AvatarId[avatar],

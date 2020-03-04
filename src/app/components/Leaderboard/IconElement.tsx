@@ -26,7 +26,7 @@ export const IconsComponent = ({ player }: any) => {
           top: '15px',
         }}
       >
-        {player.rating[player.rating.length - 1].rating}{' '}
+        {player.rating[player.rating.length - 1].rating.toFixed(2)}{' '}
         {player.type === 'Student' ? (
           <FontAwesomeIcon
             style={{ fontSize: 18, display: 'inline' }}
@@ -35,7 +35,7 @@ export const IconsComponent = ({ player }: any) => {
           />
         ) : null}
       </div>
-      <div style={{ position: 'absolute', left: '50%', top: '15px', textAlign: 'center' }}>
+      <div style={{ position: 'absolute', left: '52%', top: '15px', textAlign: 'center' }}>
         <FontAwesomeIcon
           title="Won"
           icon={faTrophy}
@@ -44,7 +44,7 @@ export const IconsComponent = ({ player }: any) => {
         />
         <p style={{ color: 'grey' }}>{player.wins}</p>
       </div>
-      <div style={{ position: 'absolute', left: '65%', top: '15px', textAlign: 'center' }}>
+      <div style={{ position: 'absolute', left: '68%', top: '15px', textAlign: 'center' }}>
         <FontAwesomeIcon
           title="Tied"
           icon={faHandshake}
@@ -53,7 +53,7 @@ export const IconsComponent = ({ player }: any) => {
         />
         <p style={{ color: 'grey' }}>{player.ties}</p>
       </div>
-      <div style={{ position: 'absolute', left: '80%', top: '15px', textAlign: 'center' }}>
+      <div style={{ position: 'absolute', left: '85%', top: '15px', textAlign: 'center' }}>
         <FontAwesomeIcon
           title="Lost"
           icon={faThumbsDown}

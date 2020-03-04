@@ -38,6 +38,12 @@ export const dashboardReducer = (
         isWelcomeModalOpen: action.payload.isOpen,
       };
     }
+    case DashboardActions.Type.TOGGLE_REACT_TOUR: {
+      return {
+        ...state,
+        isReactTourActive: !state.isReactTourActive,
+      };
+    }
     default:
       return state;
   }

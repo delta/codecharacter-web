@@ -69,9 +69,8 @@
 }
 
 .date {
-  font-size: 0.64rem;
+  font-size: 0.71rem;
   color: black;
-  font-weight: bold;
 }
 
 .about-grid::-webkit-scrollbar-track {
@@ -92,7 +91,7 @@
 
 .INFO {
   color: #0c5460;
-  border-color: #d1ecf1;
+  border: none;
 }
 
 .sideCurve-INFO {
@@ -101,12 +100,12 @@
 
 .SUCCESS {
   color: #104300;
-  border-color: #aff29a;
+  border: none;
 }
 
 .ERROR {
   color: #4f0800;
-  border-color: #ffaba2;
+  border: none;
 }
 
 .header {
@@ -146,6 +145,10 @@
 .tab-active {
   background-color: gray;
   padding: 0.25em;
+  padding: 4px !important;
+}
+.tab-inactive {
+  padding: 4px !important;
 }
 
 .tab-active:hover,
@@ -160,6 +163,9 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+.trashInactive {
+  color: gray;
 }
 
 .sideIcon {
@@ -180,12 +186,10 @@
   background-color: #ffaba2;
 }
 .body {
-  font-size: 0.9rem;
   color: black;
-  font-weight: bold;
 }
 .title {
-  font-size: 1rem;
+  font-size: 1.16rem;
   color: black;
   font-weight: bold;
 }

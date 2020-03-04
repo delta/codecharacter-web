@@ -44,15 +44,15 @@ function get_time_difference(earlierDate: string | Date) {
 
   oDiff.seconds = Math.floor(nTotalDiff / 1000);
   if (oDiff.days !== 0) {
-    answer = `${oDiff.days} Days`;
+    answer = `${oDiff.days} days ago`;
   } else if (oDiff.hours !== 0) {
-    answer = `${oDiff.hours} Hours`;
+    answer = `${oDiff.hours} hours ago `;
   } else if (oDiff.hours !== 0) {
-    answer = `${oDiff.hours} Hours`;
+    answer = `${oDiff.hours} hours ago`;
   } else if (oDiff.minutes !== 0) {
-    answer = `${oDiff.minutes} mins`;
+    answer = `${oDiff.minutes} mins ago`;
   } else {
-    answer = `${oDiff.seconds} s`;
+    answer = `${oDiff.seconds} seconds ago`;
   }
 
   return answer;

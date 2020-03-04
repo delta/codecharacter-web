@@ -1,10 +1,18 @@
-import { SOCKET_BASE_URL } from 'app/../config/config';
 import * as SocketHandlerInterfaces from 'app/types/SocketHandler';
 import * as React from 'react';
-import * as io from 'socket.io-client';
+
+// tslint:disable-next-line:import-name
+import { Stomp } from '@stomp/stompjs';
+import * as SubmissionInterfaces from 'app/types/code/Submission';
+import { Buffer } from 'buffer';
+// tslint:disable-next-line:import-name
+import SockJsClient from 'sockjs-client';
+import { SOCKET_BASE_URL } from '../../config/config';
 
 export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props, {}> {
-  private socket: SocketIOClient.Socket;
+  private readonly socket: WebSocket;
+  private stompClient: Stomp;
+
   constructor(props: SocketHandlerInterfaces.Props) {
     super(props);
     this.socket = new SockJsClient(`${SOCKET_BASE_URL}connect`);
@@ -19,8 +27,8 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
         this.stompClient.subscribe(
           `/socket/response/alert/${userId}`,
           (message: { body: string }) => {
-            // tslint:disable-next-line:no-console
-            console.log(`Received message: ${message.body}`);
+            const { info } = this.props;
+            info(message.body);
           },
         );
         // @ts-ignore
@@ -77,7 +85,12 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       // @ts-ignore
       (frame) => {
         // tslint:disable-next-line: no-console
-        console.log('Error Callback console log', frame);
+        console.log('Socker connection error', frame);
+      },
+      // tslint:disable-next-line
+      (closeEvent: any) => {
+        // const { logout } = this.props;
+        // logout();
       },
     );
   }
@@ -114,6 +127,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
   }
 
   public componentDidUpdate() {
+    // tslint:disable-next-line: no-console
     const {
       request,
       mapId,
@@ -138,8 +152,8 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       }
       case SubmissionInterfaces.Request.AI_MATCH: {
         this.initiateMatch(
-          playerId1,
-          playerId2,
+          userId,
+          currentAiId,
           SubmissionInterfaces.Request.AI_MATCH,
           mapId,
           commitHash,
@@ -147,7 +161,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
         updateRequest(SubmissionInterfaces.Request.NONE);
         break;
       }
-      case SubmissionInterfaces.Request.SELF_MATCH: {
+      case SubmissionInterfaces.Request.MANUAL: {
         this.initiateMatch(
           userId,
           playerId2,
@@ -158,15 +172,16 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
         updateRequest(SubmissionInterfaces.Request.NONE);
         break;
       }
-      case SubmissionInterfaces.Request.MANUAL: {
+      case SubmissionInterfaces.Request.SELF_MATCH: {
         this.initiateMatch(
-          playerId1,
-          playerId2,
-          SubmissionInterfaces.Request.MANUAL,
+          userId,
+          userId,
+          SubmissionInterfaces.Request.SELF_MATCH,
           mapId,
           commitHash,
         );
         updateRequest(SubmissionInterfaces.Request.NONE);
+        break;
       }
     }
 
@@ -177,7 +192,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
 
   public componentWillUnmount(): void {
     // @ts-ignore
-    // this.stompClient.disconnect();
+    this.stompClient.disconnect();
   }
 
   public render() {

@@ -5,6 +5,7 @@ export interface StateProps {
   commitLog: Commit[];
   currentCommitHash: string;
   maps: Map[];
+  code: string;
 }
 
 export interface State {
@@ -14,6 +15,7 @@ export interface State {
 export interface DispatchProps {
   checkoutCode: (commitHash: string) => void;
   getCommitLog: () => void;
+  save: () => void;
   forkCode: (commitHash: string) => void;
   startPreviousCommitMatch: (mapId: number, commitHash: string) => void;
   loadMaps: () => void;

@@ -3,6 +3,7 @@ import * as UserInterfaces from 'app/types/User';
 export interface StateProps {
   isUserProfileModalOpen: boolean;
   userDetails: UserInterfaces.UserStoreState;
+  isLoggedIn: boolean;
 }
 
 export interface State {

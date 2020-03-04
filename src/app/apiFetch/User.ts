@@ -1,5 +1,10 @@
 /* tslint:disable:no-console*/
-import { HeadReqType, headResponseWrapper, jsonResponseWrapper } from 'app/apiFetch/utils';
+import {
+  HeadReqType,
+  headResponseWrapper,
+  jsonResponseWrapper,
+  setRequestHeaders,
+} from 'app/apiFetch/utils';
 import * as UserInterfaces from 'app/types/User';
 import { API_BASE_URL } from '../../config/config';
 
@@ -89,11 +94,8 @@ export const userEditProfile = (body: UserInterfaces.EditUserDetails) => {
   return fetch(`${API_BASE_URL}user`, {
     body: JSON.stringify(body),
     credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    method: 'PUT',
+    headers: setRequestHeaders(),
+    method: 'PATCH',
   })
     .then((response) => {
       return headResponseWrapper(response, HeadReqType.PROFILE);
