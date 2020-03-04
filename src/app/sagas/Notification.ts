@@ -38,8 +38,6 @@ export function* getAllGlobalNotifications(
   try {
     const res = yield call(NotificationFetch.getAllGlobalNotifications);
     const notifications = res.body;
-    // tslint:disable-next-line: no-console
-    console.log(notifications);
     yield put(NotificationActions.updateGlobalNotifications(notifications));
   } catch (err) {
     console.error(err);
