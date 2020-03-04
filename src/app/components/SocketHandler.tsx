@@ -47,31 +47,27 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
               gameLog: '',
               debugLog1: '',
               debugLog2: '',
-            }
+            };
             Object.keys(matchDetails).forEach((key, index) => {
               // @ts-ignore
-              matchDetails[key] = message.body.slice(10, (message.body.length - 1)).split(', ')[index];
+              matchDetails[key] = message.body.slice(10, message.body.length - 1).split(', ')[
+                index
+              ];
               if (index !== 0) {
                 // @ts-ignore
                 matchDetails[key] = Buffer.from(matchDetails[key], 'base64');
               }
-            })
-            console.log(matchDetails);
+            });
 
-            const { updateGameLog, updateMatchPlayerId } = this.props;
-
-            // /**
-            //  Received match object [GameLogs(isPlayer1=true, gameLog=H4sIAAAAAAAAA+zdd7CdV3pfabXVJA9BEpFA9w3I8YIEkUgAzPcw55xzzjlntkiCEcwRzDnnnDNIgO6Ry5aV7LFsyXLLmvHIlmXJnmBpCOwb3nN677VdrQ4Ma+aPuVXL81W5xj77/T1EjRvLfzD8Bz/+JxP+6IczVp/zkxf+7IeLfvLpH87uHbfTf2oM6Wj89sTfWvV//bste/r/mPNPdlj+g6/TD8tptXJavZzWKKdGOa1ZTkPKaa1yWruc1imnoeU0rJyGl9OIchpZTqPKad1yGl1OY0qpq/Gj4T9I8Seb9/b0/9Eff0yxg2InxS6K3RT 
-            //  str.slice(1, (str.length -1)).split(', ')[1].split('=')[1]str.slice(1, (str.length -1)).split(', ')[1].split('=')[1]
-            //  */
-            // (new Buffer(data, 'base64')).toString('binary')
-
-            // const { debugLog1, debugLog2, gameLog, matchPlayerId } = JSON.parse(message.body);
-            
+            // tslint:disable-next-line: no-shadowed-variable
+            const { updateGameLog, updateMatchPlayerId, userId } = this.props;
+            const matchPlayerId = parseInt(matchDetails.matchPlayerId, 10);
+            // tslint:disable-next-line: no-console
+            console.log(matchDetails, matchPlayerId, userId);
 
             updateGameLog('', '', '');
             updateGameLog(matchDetails.debugLog1, matchDetails.debugLog2, matchDetails.gameLog);
-            updateMatchPlayerId(parseInt(matchDetails.matchPlayerId, 10));
+            updateMatchPlayerId(matchPlayerId === userId ? 1 : 2);
           },
         );
       },
@@ -92,7 +88,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
   ): void {
     // @ts-ignore
     this.stompClient.send(
-      '/request/match',
+      '/socket/request/match',
       {},
       JSON.stringify({
         commitHash,
