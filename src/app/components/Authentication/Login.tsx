@@ -213,9 +213,9 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           <Col className="text-center my-3 ml-auto mr-auto">
             <div className="text-dark">
               Don't have an account?{' '}
-              <Link to={Routes.REGISTER} className={classnames(styles['create-one-button'])}>
-                Create one
-              </Link>
+              <NavLink to={Routes.REGISTER}>
+                <div className={classnames(styles['create-one-button'])}>Create one</div>
+              </NavLink>
             </div>
           </Col>
         </Row>
