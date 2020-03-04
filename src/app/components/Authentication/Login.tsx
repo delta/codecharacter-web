@@ -1,6 +1,6 @@
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { API_BASE_URL } from 'app/../config/config';
+// import { API_BASE_URL } from 'app/../config/config';
 import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
@@ -9,7 +9,7 @@ import * as LoginInterfaces from 'app/types/Authentication/Login';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Link, Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 export enum OAUTH_ROUTES {
   GOOGLE = 'login/google',
@@ -82,9 +82,11 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           </div>
         </div>
         <div className={classnames('container px-0 justify-content-center', styles.loginForm)}>
-          <Row
+          {/* {       
+            // TODO: Remove this on OAuth Integration.   
+            <Row
             onClick={(e) => {
-              window.location.href = `${API_BASE_URL}${OAUTH_ROUTES.GOOGLE}`;
+              window.location.href = `https://code.pragyan.org/api/${OAUTH_ROUTES.GOOGLE}`;
             }}
             className={classnames(
               styles['google-btn'],
@@ -113,7 +115,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               <img src="assets/img/github.png" height="24" width="24" />
             </div>
             <p className="col-auto">Log in with Github</p>
-          </Row>
+          </Row>} 
           <Row className={classnames(styles.no_margin)}>
             <div className={classnames(styles.separator)}>
               <div className={classnames(styles.wordWithLine)}>
@@ -121,6 +123,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               </div>
             </div>
           </Row>
+          */}
         </div>
         <Row className={classnames(styles.no_margin)}>
           <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
@@ -213,9 +216,13 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
           <Col className="text-center my-3 ml-auto mr-auto">
             <div className="text-dark">
               Don't have an account?{' '}
-              <Link to={Routes.REGISTER} className={classnames(styles['create-one-button'])}>
-                Create one
-              </Link>
+              <NavLink to={Routes.REGISTER}>
+                <div
+                  className={classnames(styles['create-one-button'])}
+                >
+                  Create one
+                </div>
+              </NavLink>
             </div>
           </Col>
         </Row>
