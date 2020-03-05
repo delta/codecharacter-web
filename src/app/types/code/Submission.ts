@@ -1,9 +1,10 @@
-import { SubmissionActions } from 'app/actions';
+import { SubmissionActions, UserActions } from 'app/actions';
 import { ActionType } from 'typesafe-actions';
 
 const actions = {
   changeCurrentRequest: SubmissionActions.changeCurrentRequest,
   changeState: SubmissionActions.changeState,
+  logout: UserActions.logout,
   resetSubmissionState: SubmissionActions.resetSubmissionState,
   saveMaps: SubmissionActions.saveMaps,
   updateAiIds: SubmissionActions.updateAiIds,

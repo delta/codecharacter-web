@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (rootState: RootState) => {
   return {
+    code: rootState.code.code,
     commitLog: rootState.code.commitLog,
     currentCommitHash: rootState.code.currentCommitHash,
     maps: rootState.submission.maps,
@@ -21,6 +22,7 @@ const commitLogContainer = connect<
   forkCode: CodeActions.forkCode,
   getCommitLog: CodeActions.getCommitLog,
   loadMaps: SubmissionActions.loadMaps,
+  save: CodeActions.save,
   startPreviousCommitMatch: SubmissionActions.previousCommitMatch,
 })(CommitLog);
 

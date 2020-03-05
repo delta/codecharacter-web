@@ -22,24 +22,28 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       {},
       // @ts-ignore
       (frame) => {
-        // tslint:disable-next-line:no-console
-        console.log('Success call back console log', frame);
-        const { userId } = this.props;
+        const { userId, success } = this.props;
+        success('Connected to Server.')
         // @ts-ignore
         this.stompClient.subscribe(
           `/socket/response/alert/${userId}`,
           (message: { body: string }) => {
-            // tslint:disable-next-line:no-console
-            console.log(`Received message: ${message.body}`);
+            const { info } = this.props;
+            info(message.body);
           },
         );
         // @ts-ignore
         this.stompClient.subscribe(
           `/socket/response/match/${userId}`,
           (message: { body: string }) => {
-            // @ts-ignore
-            // tslint:disable-next-line: no-console
-            console.log('Received match object', message.body);
+
+            if (message.body[0] === 'E') {
+              this.props.error('')
+              this.props.updateGameLog(message.body, '', '');
+              return;
+            }
+
+            this.props.success('Match executed successfully');
 
             const matchDetails = {
               matchPlayerId: '',
@@ -83,6 +87,11 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       (frame) => {
         // tslint:disable-next-line: no-console
         console.log('Error Callback console log', frame);
+      },
+      // tslint:disable-next-line
+      (closeEvent: any) => {
+        const { logout } = this.props;
+        logout();
       },
     );
   }
