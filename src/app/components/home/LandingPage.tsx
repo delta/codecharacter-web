@@ -27,6 +27,11 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
         'All players can match up against other players of their choice and the match results cause corresponding rating changes. The top 20 players are considered to be in Div 1. For these players, every 6 hours, matches are simulated between all Div 1 players to normalize the leaderboard. ',
       question: 'What is the tournament format?',
     },
+    {
+      answer: `
+      The Latest versions of Chrome or all the versions of Firefox except 71 can be used to play CodeCharacter!`,
+      question: 'What are the supported browsers?',
+    },
   ];
 
   public constructor(props: LandingPageInterfaces.Props) {

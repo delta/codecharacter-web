@@ -1,9 +1,9 @@
 import {
   faBell,
   faBook,
-  faCode,
   faCodeBranch,
   faCog,
+  faHome,
   faQuestionCircle,
   faSignInAlt,
   faSignOutAlt,
@@ -13,8 +13,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SidePanelTab } from 'app/reducers/Dashboard';
+
 import * as styles from 'app/styles/Sidebar.module.css';
 import * as SideBarInterfaces from 'app/types/SideBar';
+
 import classnames from 'classnames';
 import * as React from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
@@ -40,10 +42,10 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               'py-2 px-auto text-white d-flex justify-content-center',
               styles.customBtn,
             )}
-            onClick={() => closeSidePanelTab()}
           >
-            <FontAwesomeIcon icon={faCode} />
+            <FontAwesomeIcon icon={faHome} />
           </Button>
+
           <Button
             className={classnames('py-2 px-auto documentation-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.DOCS,

@@ -32,6 +32,7 @@
   box-shadow: 2px darkgrey;
   box-shadow: 5px 0 5px gray;
   text-align: left;
+  z-index: 1000;
 }
 
 .nav > .nav-header {

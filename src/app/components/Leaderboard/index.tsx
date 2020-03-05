@@ -10,6 +10,7 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NavBar, NavPage } from 'app/components/home/Navbar';
 import { LeaderboardElement } from 'app/components/Leaderboard/LeaderboardElement';
 import { Timer } from 'app/components/Leaderboard/Timer';
 import SocketHandler from 'app/containers/SocketHandler';
@@ -85,6 +86,7 @@ export class Leaderboard extends React.Component<
     } = this.props;
     return (
       <Grid fluid={true} className={classnames(styles.Leaderboard)}>
+        <NavBar isLoggedIn={isLoggedIn} page={NavPage.LEADERBOARD} />
         {isLoggedIn ? <SocketHandler /> : null}
         <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
           <Col

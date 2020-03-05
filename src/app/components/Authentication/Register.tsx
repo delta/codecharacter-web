@@ -316,11 +316,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                           })
                         }
                       />
-                      <label
-                        htmlFor="switch"
-                        className={classnames(registerStyles.flaglabel)}
-                        style={{ backgroundColor: '#4630eb' }}
-                      >
+                      <label htmlFor="switch" className={classnames(registerStyles.flaglabel)}>
                         Toggle
                       </label>
                     </span>
