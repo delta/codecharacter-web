@@ -11,6 +11,8 @@ const mapStateToProps = (rootState: RootState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
+    clearAllLogs: () => GameLogActions.clearAllLogs(),
+    clearDisplayDebugLog: () => GameLogActions.clearDisplayDebugLog(),
     sendCompileError: (error: string) => dispatch(SubmissionActions.handleCompileError(error)),
     sendCompileSuccess: () => dispatch(SubmissionActions.handleCompileSuccess()),
     sendDebugRunError: () => dispatch(SubmissionActions.handleDebugRunError()),

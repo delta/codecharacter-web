@@ -1,5 +1,5 @@
 /* tslint:disable:no-console*/
-import { CodeActions, GameLogActions, SubmissionActions } from 'app/actions';
+import { CodeActions, GameLogActions, NotificationActions, SubmissionActions } from 'app/actions';
 import * as SubmissionFetch from 'app/apiFetch/Submission';
 import { RootState } from 'app/reducers';
 import { checkAccountActivated, checkAuthentication } from 'app/sagas/utils';
@@ -11,25 +11,15 @@ export const getSubmissionState = (state: RootState) => state.submission;
 export const getUserLatestCode = (state: RootState) => state.code.code;
 
 export function* lockCode(action: ActionType<typeof SubmissionActions.lockCode>) {
-  // try {
-  //   const submissionState = yield select(getSubmissionState);
-  //   if (submissionState.request !== Request.NONE) return;
-  //   yield put(SubmissionActions.updateDebugRunRequest(Request.NONE));
-  //   yield put(CodeActions.save());
-  //   yield put(NotificationActions.info('Code is being locked...'));
-  //   yield put(GameLogActions.clearAllLogs());
-  //   yield put(GameLogActions.setHideDebugLog(false));
-  //   yield put(
-  //     SubmissionActions.changeStateCurrentRequest(
-  //       RequestState.COMPILE_CURRENT_CODE,
-  //       Request.LOCK_CODE,
-  //       '',
-  //       0,
-  //     ),
-  //   );
-  // } catch (err) {
-  //   console.error(err);
-  // }
+  try {
+    yield put(CodeActions.save());
+    // @ts-ignore
+    const res = yield call(SubmissionFetch.lockCode);
+    yield put(NotificationActions.success('Code Locked'));
+    yield put(GameLogActions.clearAllLogs());
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 export function* previousCommitMatch(

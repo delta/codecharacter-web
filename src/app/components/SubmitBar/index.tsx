@@ -172,7 +172,10 @@ export class SubmitBar extends React.Component<
           className={classnames(styles.customBtn)}
           title="Submit Code"
           id="submit_button"
-          onClick={this.props.lockCode}
+          onClick={(e) => {
+            this.props.saveCode();
+            this.props.lockCode();
+          }}
         >
           <span className={classnames(styles.icon)}>
             <FontAwesomeIcon icon={faLock} />

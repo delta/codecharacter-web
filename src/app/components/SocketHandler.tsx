@@ -51,12 +51,20 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
               }
             });
 
-            // tslint:disable-next-line: no-shadowed-variable
-            const { updateGameLog, updateMatchPlayerId, userId } = this.props;
+            const {
+              updateGameLog,
+              updateMatchPlayerId,
+              // tslint:disable-next-line: no-shadowed-variable
+              userId,
+              clearDisplayDebugLog,
+              clearAllLogs,
+            } = this.props;
             const matchPlayerId = parseInt(matchDetails.matchPlayerId, 10);
             // tslint:disable-next-line: no-console
             console.log(matchDetails, matchPlayerId, userId);
 
+            clearDisplayDebugLog();
+            clearAllLogs();
             updateGameLog('', '', '');
             updateGameLog(matchDetails.debugLog1, matchDetails.debugLog2, matchDetails.gameLog);
             updateMatchPlayerId(matchPlayerId === userId ? 1 : 2);
