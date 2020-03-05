@@ -1,7 +1,7 @@
-import React from 'react';
 import { Routes } from 'app/routes';
-import classnames from 'classnames';
 import * as styles from 'app/styles/LandingPage.module.css';
+import classnames from 'classnames';
+import * as React from 'react';
 import { HashLink } from 'react-router-hash-link';
 
 export enum NavPage {
@@ -10,6 +10,7 @@ export enum NavPage {
   HOME,
 }
 
+// tslint:disable-next-line: variable-name
 export const NavBar = (props: { isLoggedIn: boolean; page: NavPage }) => {
   return (
     <div className={classnames(styles.nav)}>

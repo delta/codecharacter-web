@@ -1,5 +1,6 @@
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NavBar, NavPage } from 'app/components/home/Navbar';
 // import { API_BASE_URL } from 'app/../config/config';
 import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
