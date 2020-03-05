@@ -72,8 +72,8 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           >
             <FontAwesomeIcon icon={faCog} />
           </Button>
-          <Button
-            href="/leaderboard"
+          <a
+            href="/#/leaderboard"
             className={classnames('py-2 px-auto leaderboard-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.LEADERBOARD,
             })}
@@ -81,7 +81,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             title={'Leaderboard'}
           >
             <FontAwesomeIcon icon={faTrophy} />
-          </Button>
+          </a>
           {isLoggedIn ? (
             <Button
               className={classnames('py-2 px-auto commitLog-btn-ctrl', styles.customBtn, {
