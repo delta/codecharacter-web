@@ -109,7 +109,7 @@ exports[`Editor Container Should render Editor 1`] = `
   isLoggedIn={false}
   keyboardHandler="default"
   save={[Function]}
-  theme="solarized_light"
+  theme="monokai"
   updateCode={[Function]}
   viewOnly={false}
 />

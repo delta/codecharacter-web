@@ -13,7 +13,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SidePanelTab } from 'app/reducers/Dashboard';
-import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Sidebar.module.css';
 import * as SideBarInterfaces from 'app/types/SideBar';
 import classnames from 'classnames';
@@ -137,7 +136,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           </Button>
 
           <Button
-            href={Routes.USER_PROFILE_MODEL}
+            href={'/#/profile'}
             className={classnames('py-2 px-auto', styles.customBtn)}
             id="user_profile_button"
             title={isLoggedIn ? 'Profile' : 'Login'}
