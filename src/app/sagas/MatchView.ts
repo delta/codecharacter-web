@@ -61,14 +61,16 @@ export function* getGameLogs(action: ActionType<typeof MatchActions.getGameLogs>
       console.log('GameLOG from backend', res);
 
       const userId = yield select((state: RootState) => state.user.userId);
+      /*Buffer.from(matchDetails[key], 'base64')*/
 
       const logs = res.body;
-      const debugLog1 = logs.player1Log;
-      const debugLog2 = logs.player2Log;
-      const gameLog = logs.gameLog;
+      const debugLog1 = Buffer.from(logs.player1Log, 'base64');
+      const debugLog2 = Buffer.from(logs.player2Log, 'base64');
+      const gameLog = Buffer.from(logs.gameLog, 'base64');
       const playerId1 = logs.playerId1;
 
       yield put(GameLogActions.updateGameLog('', '', ''));
+      // @ts-ignore
       yield put(GameLogActions.updateGameLog(debugLog1, debugLog2, gameLog));
       yield put(GameLogActions.updateMatchPlayerId(userId === playerId1 ? 1 : 2));
     }
