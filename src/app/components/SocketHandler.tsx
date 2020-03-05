@@ -14,9 +14,8 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       {},
       // @ts-ignore
       (frame) => {
-        // tslint:disable-next-line:no-console
-        console.log('Success call back console log', frame);
-        const { userId } = this.props;
+        const { userId, success } = this.props;
+        success('Connected to Server.');
         // @ts-ignore
         this.stompClient.subscribe(
           `/socket/response/alert/${userId}`,
@@ -29,9 +28,13 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
         this.stompClient.subscribe(
           `/socket/response/match/${userId}`,
           (message: { body: string }) => {
-            // @ts-ignore
-            // tslint:disable-next-line: no-console
-            console.log('Received match object', message.body);
+            if (message.body[0] === 'E') {
+              this.props.error('Match not executed successfully');
+              this.props.updateGameLog(message.body, message.body, '');
+              return;
+            }
+
+            this.props.success('Match executed successfully');
 
             const matchDetails = {
               matchPlayerId: '',
@@ -103,9 +106,15 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
   }
 
   public componentDidUpdate() {
-    // tslint:disable-next-line: no-console
-    const { request, mapId, playerId1, playerId2, commitHash, updateRequest, userId } = this.props;
-    // tslint:disable-next-line: no-console
+    const {
+      request,
+      mapId,
+      playerId2,
+      commitHash,
+      currentAiId,
+      updateRequest,
+      userId,
+    } = this.props;
     switch (request) {
       case SubmissionInterfaces.Request.PREVIOUS_COMMIT_MATCH: {
         // tslint:disable-next-line: no-console
@@ -137,9 +146,9 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
         // tslint:disable-next-line: no-console
         console.log('INITIATING MATCH:SELF_MATCH');
         this.initiateMatch(
-          playerId1,
+          userId,
           playerId2,
-          SubmissionInterfaces.Request.SELF_MATCH,
+          SubmissionInterfaces.Request.MANUAL,
           mapId,
           commitHash,
         );
@@ -159,8 +168,9 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     }
   }
 
-  public componentWillUnmount() {
-    this.socket.disconnect();
+  public componentWillUnmount(): void {
+    // @ts-ignore
+    // this.stompClient.disconnect();
   }
 
   public render() {
