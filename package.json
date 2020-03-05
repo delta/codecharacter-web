@@ -1,5 +1,5 @@
 {
-  "name": "codecharacter-web-2019",
+  "name": "codecharacter-web-2020",
   "version": "1.0.0",
   "private": true,
   "description": "Web App for CodeCharacter",
@@ -141,7 +141,7 @@
     "@types/sockjs-client": "^1.1.1",
     "bootstrap": "^4.2.1",
     "classnames": "^2.2.6",
-    "code-character-renderer-20": "^1.1.1",
+    "code-character-renderer-20": "*",
     "commonmark": "^0.28.1",
     "copy-webpack-plugin": "^5.0.0",
     "pako": "^1.0.10",
