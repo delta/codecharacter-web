@@ -23,7 +23,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       // @ts-ignore
       (frame) => {
         const { userId, success } = this.props;
-        success('Connected to Server.')
+        success('Connected to Server.');
         // @ts-ignore
         this.stompClient.subscribe(
           `/socket/response/alert/${userId}`,
@@ -36,10 +36,9 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
         this.stompClient.subscribe(
           `/socket/response/match/${userId}`,
           (message: { body: string }) => {
-
             if (message.body[0] === 'E') {
-              this.props.error('')
-              this.props.updateGameLog(message.body, '', '');
+              this.props.error('Match not executed successfully');
+              this.props.updateGameLog(message.body, message.body, '');
               return;
             }
 
@@ -122,7 +121,6 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     const {
       request,
       mapId,
-      playerId1,
       playerId2,
       commitHash,
       currentAiId,
@@ -154,9 +152,9 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       }
       case SubmissionInterfaces.Request.MANUAL: {
         this.initiateMatch(
-          playerId1,
+          userId,
           playerId2,
-          SubmissionInterfaces.Request.AI_MATCH,
+          SubmissionInterfaces.Request.MANUAL,
           mapId,
           commitHash,
         );
@@ -179,7 +177,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
 
   public componentWillUnmount(): void {
     // @ts-ignore
-    this.stompClient.disconnect();
+    // this.stompClient.disconnect();
   }
 
   public render() {

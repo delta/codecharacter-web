@@ -296,10 +296,10 @@ export class LeaderboardElement extends React.Component<
             {!(isPlayAgainstDisabled || currentUsername === player.username) ? (
               <div
                 style={{ fontSize: '0.55em', cursor: 'pointer' }}
-                onClick={(e) => {
+                onClick={async (e) => {
                   // hello
-                  updatePlayerId2(player.userId);
-                  updateRequest(Request.MANUAL);
+                  await updatePlayerId2(player.userId);
+                  await updateRequest(Request.MANUAL);
                   e.stopPropagation();
                 }}
                 title={`Start match`}
