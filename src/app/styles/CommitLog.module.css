@@ -9,10 +9,6 @@
   padding: 0px !important;
 }
 
-.Commit:hover {
-  cursor: pointer;
-}
-
 .CommitDetails {
   width: 80%;
   float: left;
@@ -128,4 +124,8 @@
   color: black !important;
   font-size: 14px;
   z-index: 99;
+}
+
+.imgDiv:hover {
+  cursor: pointer;
 }
