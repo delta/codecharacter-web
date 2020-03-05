@@ -16,7 +16,12 @@ const colors = ['#FFB900', '#69797E', '#847545', '#038387'];
 export class LeaderboardElement extends React.Component<LeaderboardInterfaces.ElementProps, {}> {
   public render() {
     const { player, index, isPlayAgainstDisabled, runMatch, currentUsername } = this.props;
-
+    let urlToProfile;
+    if (player.username === currentUsername) {
+      urlToProfile = `/profile`;
+    } else {
+      urlToProfile = `/profile/${player.username}`;
+    }
     const playerTotalMatches = player.numWin + player.numLoss + player.numTie;
 
     return (
@@ -86,9 +91,11 @@ export class LeaderboardElement extends React.Component<LeaderboardInterfaces.El
                   }}
                   title={player.username}
                 >
-                  <span>{`${player.username.substr(0, 15)}${
-                    player.username.length > 15 ? '...' : ''
-                  }`}</span>
+                  <a href={urlToProfile}>
+                    <span>{`${player.username.substr(0, 15)}${
+                      player.username.length > 15 ? '...' : ''
+                    }`}</span>
+                  </a>
                 </div>
                 <div
                   className={classnames(styles['leader-score_title'])}

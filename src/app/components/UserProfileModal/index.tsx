@@ -1,6 +1,9 @@
+import { faChartLine, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PopUpMenu from 'app/components/PopUpMenu';
 import { EditPassword } from 'app/components/UserProfileModal/EditPassword';
 import { EditProfile } from 'app/components/UserProfileModal/EditProfile';
+import { UserStats } from 'app/components/UserProfileModal/UserStats';
 import * as styles from 'app/styles/UserProfileModal.module.css';
 import { AvatarId } from 'app/types/Authentication/Register';
 import * as UserProfileInterfaces from 'app/types/UserProfileModal';
@@ -25,6 +28,7 @@ export class UserProfileModal extends React.Component<
     this.state = {
       avatar: userDetails.avatar,
       country: userDetails.country,
+      currentPage: UserProfileInterfaces.SelectedPage.EDITPROFILE,
       fullName: userDetails.fullName,
       isPasswordPage: true,
       oldPassword: '',
@@ -32,7 +36,58 @@ export class UserProfileModal extends React.Component<
       repeatPassword: '',
       username: userDetails.username,
     };
-    this.props.getUserDetails();
+  }
+
+  public renderSwitch(
+    param: UserProfileInterfaces.SelectedPage,
+    username: string,
+    fullName: string,
+    // tslint:disable-next-line
+    userDetails: any,
+    country: string,
+    avatar: string,
+    oldPassword: string,
+    password: string,
+    repeatPassword: string,
+  ) {
+    switch (param) {
+      case UserProfileInterfaces.SelectedPage.EDITPROFILE:
+        return (
+          <EditProfile
+            handleEditProfile={this.handleEditProfile}
+            onInputChange={this.onInputChange}
+            editProfileRef={this.editProfileRef}
+            reactFlagRef={this.reactFlagRef}
+            username={username}
+            fullName={fullName}
+            userDetails={userDetails}
+            country={country}
+            avatar={avatar}
+          />
+        );
+        break;
+
+      case UserProfileInterfaces.SelectedPage.EDITPASSWORD:
+        return (
+          <EditPassword
+            handleEditPassword={this.handleEditPassword}
+            onInputChange={this.onInputChange}
+            editPasswordRef={this.editPasswordRef}
+            oldPassword={oldPassword}
+            password={password}
+            repeatPassword={repeatPassword}
+            userDetails={userDetails}
+          />
+        );
+        break;
+
+      case UserProfileInterfaces.SelectedPage.USERSTATS:
+        return <UserStats />;
+        break;
+
+      default:
+        return <p>Default</p>;
+    }
   }
 
   public render() {
@@ -48,6 +103,55 @@ export class UserProfileModal extends React.Component<
     const { userDetails } = this.props;
     return (
       <Grid fluid={true} className={classnames(styles.UserEdit)}>
+        <div
+          style={{
+            borderRight: '2px solid #D3D3D3',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: '',
+            marginLeft: '10%',
+            marginTop: '10%',
+            position: 'absolute',
+          }}
+        >
+          <div
+            style={{ paddingBottom: '10px', paddingRight: '10px', cursor: 'pointer' }}
+            onClick={() => {
+              this.setState({
+                currentPage: UserProfileInterfaces.SelectedPage.EDITPROFILE,
+              });
+            }}
+          >
+            <FontAwesomeIcon icon={faUser} style={{ fontSize: '30' }} />
+            <label style={{ paddingLeft: '10px', cursor: 'pointer' }}>User Details</label>
+          </div>
+
+          <div
+            style={{ paddingBottom: '10px', paddingRight: '10px', cursor: 'pointer' }}
+            onClick={() => {
+              this.setState({
+                currentPage: UserProfileInterfaces.SelectedPage.EDITPASSWORD,
+              });
+            }}
+          >
+            <FontAwesomeIcon icon={faLock} style={{ fontSize: '30' }} />
+            <label style={{ paddingLeft: '10px', cursor: 'pointer' }}>User Credentials</label>
+          </div>
+
+          <div
+            style={{ paddingBottom: '10px', paddingRight: '10px', cursor: 'pointer' }}
+            onClick={() => {
+              this.setState({
+                currentPage: UserProfileInterfaces.SelectedPage.USERSTATS,
+              });
+            }}
+          >
+            <FontAwesomeIcon icon={faChartLine} style={{ fontSize: '30' }} />
+            <label style={{ paddingLeft: '10px', paddingRight: '10px', cursor: 'pointer' }}>
+              User Stats
+            </label>
+          </div>
+        </div>
         <Row
           className={
             this.state.isPasswordPage
@@ -55,28 +159,16 @@ export class UserProfileModal extends React.Component<
               : classnames(styles.editPasswordElement)
           }
         >
-          {this.state.isPasswordPage ? (
-            <EditProfile
-              handleEditProfile={this.handleEditProfile}
-              onInputChange={this.onInputChange}
-              editProfileRef={this.editProfileRef}
-              reactFlagRef={this.reactFlagRef}
-              username={username}
-              fullName={fullName}
-              userDetails={userDetails}
-              country={country}
-              avatar={avatar}
-            />
-          ) : (
-            <EditPassword
-              handleEditPassword={this.handleEditPassword}
-              onInputChange={this.onInputChange}
-              editPasswordRef={this.editPasswordRef}
-              oldPassword={oldPassword}
-              password={password}
-              repeatPassword={repeatPassword}
-              userDetails={userDetails}
-            />
+          {this.renderSwitch(
+            this.state.currentPage,
+            username,
+            fullName,
+            userDetails,
+            country,
+            avatar,
+            oldPassword,
+            password,
+            repeatPassword,
           )}
         </Row>
         <Row>
@@ -87,12 +179,20 @@ export class UserProfileModal extends React.Component<
                 : classnames('labeltext', styles.passwordPageLink)
             }
             onClick={() => {
-              this.setState((prevState) => ({
-                isPasswordPage: !prevState.isPasswordPage,
-              }));
+              const newState =
+                this.state.currentPage === UserProfileInterfaces.SelectedPage.EDITPROFILE
+                  ? UserProfileInterfaces.SelectedPage.EDITPASSWORD
+                  : UserProfileInterfaces.SelectedPage.EDITPROFILE;
+              this.setState({
+                currentPage: newState,
+              });
             }}
           >
-            {this.state.isPasswordPage ? 'Want to change Credentials?' : 'Want to change Info?'}
+            {this.state.currentPage === UserProfileInterfaces.SelectedPage.EDITPROFILE
+              ? 'Want to change Credentials?'
+              : this.state.currentPage === UserProfileInterfaces.SelectedPage.EDITPASSWORD
+              ? 'Want to change Info?'
+              : null}
           </a>
         </Row>
         {this.state.isPasswordPage ? (

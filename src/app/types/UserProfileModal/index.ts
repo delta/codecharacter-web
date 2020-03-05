@@ -1,5 +1,11 @@
 import * as UserInterfaces from 'app/types/User';
 
+export enum SelectedPage {
+  EDITPROFILE = 0,
+  EDITPASSWORD = 1,
+  USERSTATS = 2,
+}
+
 export interface StateProps {
   isUserProfileModalOpen: boolean;
   userDetails: UserInterfaces.UserStoreState;
@@ -11,6 +17,7 @@ export interface State {
   oldPassword: string;
   password: string;
   repeatPassword: string;
+  currentPage: SelectedPage;
   country: string;
   fullName: string;
   isPasswordPage: boolean;

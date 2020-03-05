@@ -4,6 +4,7 @@ import { codeSagas } from 'app/sagas/Code';
 import { leaderboardSagas } from 'app/sagas/Leaderboard';
 import { matchSagas } from 'app/sagas/MatchView';
 import { notificationSagas } from 'app/sagas/Notification';
+import { profileSagas } from 'app/sagas/ProfileUser';
 import { submissionSagas } from 'app/sagas/Submission';
 import { userSagas } from 'app/sagas/User';
 import { applyMiddleware, createStore } from 'redux';
@@ -32,6 +33,7 @@ export function configureStore(initialState?: object) {
   const store = createStore(persistedReducer, initialState, middleware);
   sagaMiddleware.run(userSagas);
   sagaMiddleware.run(codeSagas);
+  sagaMiddleware.run(profileSagas);
   sagaMiddleware.run(leaderboardSagas);
   sagaMiddleware.run(submissionSagas);
   sagaMiddleware.run(matchSagas);

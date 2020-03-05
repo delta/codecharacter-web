@@ -71,4 +71,14 @@ export interface UserStoreState {
   avatar: string;
 }
 
+export interface ProfileUserStoreState {
+  avatar: string;
+  college: string;
+  country: string;
+  email: string;
+  fullName: string;
+  type: string;
+  username: string;
+}
+
 export type UserStoreAction = ActionType<typeof actions>;
