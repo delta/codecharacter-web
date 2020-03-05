@@ -1,5 +1,5 @@
 {
-  "name": "codecharacter-web-2019",
+  "name": "codecharacter-web-2020",
   "version": "1.0.0",
   "private": true,
   "description": "Web App for CodeCharacter",
@@ -138,7 +138,7 @@
     "@types/reactour": "^1.13.1",
     "bootstrap": "^4.2.1",
     "classnames": "^2.2.6",
-    "codecharacter-renderer": "^2.3.1",
+    "code-character-renderer-20": "*",
     "commonmark": "^0.28.1",
     "copy-webpack-plugin": "^5.0.0",
     "pako": "^1.0.10",
