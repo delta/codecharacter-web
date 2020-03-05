@@ -1,9 +1,10 @@
 /* tslint:disable:no-console*/
 import { GameLogActions, MatchActions, NotificationActions } from 'app/actions';
 import * as MatchFetch from 'app/apiFetch/MatchView';
+import { RootState } from 'app/reducers';
 import { checkAuthentication, mapMatchResponse } from 'app/sagas/utils';
 import { resType } from 'app/types/sagas';
-import { all, call, put, takeEvery } from 'redux-saga/effects';
+import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 import { isArray } from 'util';
 
@@ -21,7 +22,6 @@ export function* getMatches(action: ActionType<typeof MatchActions.getMatches>) 
       yield put(MatchActions.updateMatches(matchData));
     } else yield put(NotificationActions.error(res.message));
   } catch (err) {
-    console.error('get matches err');
     console.error(err);
   }
 }
@@ -45,7 +45,6 @@ export function* getTopMatches(action: ActionType<typeof MatchActions.getTopMatc
       yield put(MatchActions.updateTopMatches(matchData));
     } else yield put(NotificationActions.error(res.message));
   } catch (err) {
-    console.error('top mat err');
     console.error(err);
   }
 }
@@ -54,24 +53,24 @@ export function* getGameLogs(action: ActionType<typeof MatchActions.getGameLogs>
   try {
     const res = yield call(MatchFetch.getGameLogs, action.payload.gameId);
 
-    const isAuthenticated = yield checkAuthentication(res);
-    if (isAuthenticated === false) return;
-
     if (res.type === resType.ERROR) {
       yield put(MatchActions.updateError(res.error));
     } else {
       yield put(GameLogActions.setHideDebugLog(true));
       yield put(GameLogActions.clearDisplayDebugLog());
+      console.log('GameLOG from backend', res);
 
-      const logs = res.logs;
+      const userId = yield select((state: RootState) => state.user.userId);
+
+      const logs = res.body;
       const debugLog1 = logs.player1Log;
       const debugLog2 = logs.player2Log;
       const gameLog = logs.gameLog;
-      const matchPlayerId = logs.matchPlayerId;
+      const playerId1 = logs.playerId1;
 
       yield put(GameLogActions.updateGameLog('', '', ''));
       yield put(GameLogActions.updateGameLog(debugLog1, debugLog2, gameLog));
-      yield put(GameLogActions.updateMatchPlayerId(matchPlayerId));
+      yield put(GameLogActions.updateMatchPlayerId(userId === playerId1 ? 1 : 2));
     }
   } catch (err) {
     console.error(err);

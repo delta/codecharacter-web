@@ -106,11 +106,10 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               id="matchView_button"
               title={'View Matches'}
               onClick={() => {
-                // sidePanelTab !== SidePanelTab.MATCH
-                //   ? openSidePanelTab(SidePanelTab.MATCH)
-                //   : closeSidePanelTab()
+                sidePanelTab !== SidePanelTab.MATCH
+                  ? openSidePanelTab(SidePanelTab.MATCH)
+                  : closeSidePanelTab();
               }}
-              disabled
             >
               <FontAwesomeIcon icon={faTv} />
             </Button>
