@@ -18,7 +18,7 @@ describe('EditPassword Component', () => {
       password={'password'}
       repeatPassword={'repeatPassword'}
       userDetails={{
-        avatar: 'CRUNCH',
+        avatar: '',
         college: '',
         country: 'IN',
         email: '',
@@ -26,9 +26,13 @@ describe('EditPassword Component', () => {
         fullName: '',
         isAuthenticationOpen: true,
         isFirstLogin: true,
-        isLoggedIn: true,
+        isLoggedIn: false,
         isLoginLoading: false,
+        isNotificationPresent: false,
+        isSocketPresent: false,
         isUserProfileModalOpen: false,
+        notification: '',
+        socketMessage: '',
         userId: 0,
         userType: UserType.STUDENT,
         username: '',

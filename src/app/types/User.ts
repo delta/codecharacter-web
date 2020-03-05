@@ -52,8 +52,12 @@ const actions = {
   resetUserState: UserActions.resetUserState,
   setIsAuthenticationOpen: UserActions.setIsAuthenticationOpen,
   setIsLoginLoading: UserActions.setIsLoginLoading,
+  toggleIsNotificationPresent: UserActions.toggleIsNotificationPresent,
+  toggleIsSocketPresent: UserActions.toggleIsSocketPresent,
   toggleUserProfileModal: UserActions.toggleUserProfileModal,
   updateErrorMessage: UserActions.updateErrorMessage,
+  updateNotification: UserActions.updateNotification,
+  updateSocketMessage: UserActions.updateSocketMessage,
   updateUserDetails: UserActions.updateUserDetails,
 };
 
@@ -68,6 +72,10 @@ export interface UserStoreState {
   isLoggedIn: boolean;
   isLoginLoading: boolean;
   isUserProfileModalOpen: boolean;
+  isNotificationPresent: boolean;
+  isSocketPresent: boolean;
+  notification: string;
+  socketMessage: string;
   isAuthenticationOpen: boolean;
   college: string;
   userType: UserType;

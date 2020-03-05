@@ -53,11 +53,14 @@ export interface StateProps {
   commitHash: string;
   currentAiId: number;
   loading: boolean;
-  mapId: number;
   notifications: NotificationInterfaces.Notification[];
+  isNotificationPresent: boolean;
+  isSocketPresent: boolean;
+  mapId: number;
   playerId1: number;
   playerId2: number;
   request: SubmissionInterfaces.Request;
+  socketMessage: string;
   userId: number;
 }
 

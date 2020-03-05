@@ -12,12 +12,15 @@ const mapStateToProps = (rootState: RootState) => {
     announcements: rootState.notification.announcements,
     commitHash: rootState.submission.commitHash,
     currentAiId: rootState.submission.currentAiId,
+    isNotificationPresent: rootState.user.isNotificationPresent,
+    isSocketPresent: rootState.user.isSocketPresent,
     loading: rootState.notification.loading,
     mapId: rootState.submission.mapId,
     notifications: rootState.notification.notifications,
     playerId1: rootState.submission.playerId1,
     playerId2: rootState.submission.playerId2,
     request: rootState.submission.request,
+    socketMessage: rootState.user.socketMessage,
     userId: rootState.user.userId,
   };
 };
