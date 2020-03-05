@@ -90,13 +90,6 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
 
     return (
       <div
-        onClick={checkoutCode}
-        onMouseEnter={() => {
-          this.setState({ isHovered: true });
-        }}
-        onMouseLeave={() => {
-          this.setState({ isHovered: false });
-        }}
         className={classnames(
           styles.Commit,
           'list-group-item',
@@ -144,7 +137,17 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
             {`${new Date(commitDetails.date).toLocaleString()}`}
           </p>
         </div>
-        <div style={{ width: '20%', marginLeft: '80%' }}>
+        <div
+          style={{ width: '20%', marginLeft: '80%' }}
+          className={classnames(styles.imgDiv)}
+          onClick={checkoutCode}
+          onMouseEnter={() => {
+            this.setState({ isHovered: true });
+          }}
+          onMouseLeave={() => {
+            this.setState({ isHovered: false });
+          }}
+        >
           <img src={this.state.imgType} style={{ height: '100px' }} width={40} />
         </div>
       </div>
