@@ -14,6 +14,7 @@ export interface Register {
   fullName: string;
   password: string;
   username: string;
+  userType: UserType;
 }
 
 export interface EditUserDetails {

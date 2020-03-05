@@ -628,6 +628,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       username,
       isCaptchaValidated,
       collegeName: college,
+      userType,
     } = this.state;
     const registerForm = this.registerFormRef.current;
     const otherDetailsForm = this.otherDetailsFormRef.current;
@@ -641,6 +642,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           email,
           fullName,
           password,
+          userType,
           username,
           // @ts-ignore
           avatarId: RegisterInterfaces.AvatarId[avatar],
