@@ -1,10 +1,12 @@
 import * as RendererInterfaces from 'app/types/Renderer';
 import * as pako from 'pako';
 import * as React from 'react';
+// tslint:disable-next-line:import-name
+import LazyLoad from 'react-lazyload';
 
 // @ts-ignore
-// tslint:disable-next-line:variable-name
-const  CodecharacterRenderer = React.lazy(() => import('code-character-renderer-20'));
+// tslint:disable-next-line:import-name
+import CodecharacterRenderer from 'code-character-renderer-20';
 import { Col, Row } from 'react-bootstrap';
 
 export default class Renderer extends React.Component<RendererInterfaces.Props, {}> {
@@ -37,24 +39,26 @@ export default class Renderer extends React.Component<RendererInterfaces.Props, 
     return (
       <div style={{ height, display: 'flex', width: '100%', alignItems: 'center' }}>
         {logFile !== '' ? (
-          <CodecharacterRenderer
-            // @ts-ignore
-            logFile={pako.inflate(Buffer.from(logFile))}
-            options={{
-              logClearFunction: clearLog,
-              logFunction: updateLog,
+          <LazyLoad>
+            <CodecharacterRenderer
               // @ts-ignore
-              player1Log: new TextDecoder('utf-8').decode(
-                pako.inflate(Buffer.from(player1DebugLog)),
-              ),
-              // @ts-ignore
-              player2Log: new TextDecoder('utf-8').decode(
-                pako.inflate(Buffer.from(player2DebugLog)),
-              ),
-              playerID: matchPlayerId,
-            }}
-            style={{ position: 'relative' }}
-          />
+              logFile={pako.inflate(Buffer.from(logFile))}
+              options={{
+                logClearFunction: clearLog,
+                logFunction: updateLog,
+                // @ts-ignore
+                player1Log: new TextDecoder('utf-8').decode(
+                  pako.inflate(Buffer.from(player1DebugLog)),
+                ),
+                // @ts-ignore
+                player2Log: new TextDecoder('utf-8').decode(
+                  pako.inflate(Buffer.from(player2DebugLog)),
+                ),
+                playerID: matchPlayerId,
+              }}
+              style={{ position: 'relative' }}
+            />
+          </LazyLoad>
         ) : (
           <div style={{ width: '100%', minWidth: '280px' }}>
             <Row>
