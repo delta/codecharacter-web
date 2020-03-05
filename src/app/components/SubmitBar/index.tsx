@@ -174,10 +174,9 @@ export class SubmitBar extends React.Component<
           title="Submit Code"
           id="submit_button"
           onClick={(e) => {
-            // FIXME: remove this.
-            // this.props.lockCode
+            this.props.saveCode();
+            this.props.lockCode();
           }}
-          disabled
         >
           <span className={classnames(styles.icon)}>
             <FontAwesomeIcon icon={faLock} />

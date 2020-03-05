@@ -13,6 +13,8 @@ export interface DispatchProps {
   updateRequest: (request: SubmissionInterfaces.Request) => void;
   updateGameLog: (player1DebugLog: string, player2DebugLog: string, gameLog: string) => void;
   updateMatchPlayerId: (matchPlayerId: number) => void;
+  clearDisplayDebugLog: () => void;
+  clearAllLogs: () => void;
 }
 
 export enum MatchMode {

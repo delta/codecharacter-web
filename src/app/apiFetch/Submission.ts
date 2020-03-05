@@ -1,4 +1,5 @@
 /* tslint:disable:no-console*/
+import { jsonResponseWrapper, setRequestHeaders } from 'app/apiFetch/utils';
 import { API_BASE_URL } from '../../config/config';
 
 export const codeCompile = (commitHash = 'latest') => {
@@ -101,15 +102,12 @@ export const executeDebugRun = (code: string, mapId: number, type: string, commi
 };
 
 export const lockCode = () => {
-  return fetch(`${API_BASE_URL}code/lock`, {
+  return fetch(`${API_BASE_URL}code/submit`, {
     credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    method: 'POST',
+    headers: setRequestHeaders(),
+    method: 'PUT',
   })
-    .then((response) => response.json())
+    .then((response) => jsonResponseWrapper(response))
     .then((data) => data)
     .catch((error) => {
       console.error(error);
