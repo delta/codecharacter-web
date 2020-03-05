@@ -29,7 +29,7 @@ export function* activateUser(action: ActionType<typeof UserActions.activateUser
 
     if (res.type !== resType.ERROR) {
       // FIXME : use declarative packages to manipulate browser urls
-      window.location.assign('/login');
+      window.location.assign('/#/login');
       yield put(NotificationActions.success('Account activated sucessfully'));
     }
   } catch (err) {
