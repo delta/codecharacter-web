@@ -26,6 +26,7 @@ export interface DispatchProps {
   loadMaps: () => void;
   getAiIds: () => void;
   clearLogs: () => void;
+  updateCurrentAiId: (aiId: number) => void;
   updateMapId: (mapId: number) => void;
 }
 

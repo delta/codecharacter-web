@@ -97,6 +97,7 @@ export function* logout(action: ActionType<typeof UserActions.logout>) {
         UserActions.updateUserDetails({
           country: '',
           email: '',
+          isFirstLogin: false,
           isLoggedIn: false,
           username: '',
         }),

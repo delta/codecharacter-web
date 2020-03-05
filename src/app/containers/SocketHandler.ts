@@ -9,6 +9,7 @@ import { Dispatch } from 'redux';
 const mapStateToProps = (rootState: RootState) => {
   return {
     commitHash: rootState.submission.commitHash,
+    currentAiId: rootState.submission.currentAiId,
     mapId: rootState.submission.mapId,
     playerId1: rootState.submission.playerId1,
     playerId2: rootState.submission.playerId2,

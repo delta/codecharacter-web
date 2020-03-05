@@ -120,12 +120,11 @@ export class SubmitBar extends React.Component<
           className={classnames(styles.customBtn)}
           id="run_button"
           onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-            // this.setState({
-            // isRunOptionsOpen: !isRunOptionsOpen,
-            // });
+            this.setState({
+              isRunOptionsOpen: !isRunOptionsOpen,
+            });
             event.stopPropagation();
           }}
-          disabled
         >
           <span className={classnames(styles.icon)}>
             <FontAwesomeIcon icon={faPlay} />
@@ -232,7 +231,7 @@ export class SubmitBar extends React.Component<
   };
 
   private startMatch = async (type: SubmissionActions.Type, mapId: number, aiId: number) => {
-    const { selfMatch, aiMatch, updateMapId, changeCurrentRequest } = this.props;
+    const { selfMatch, aiMatch, updateMapId, updateCurrentAiId, changeCurrentRequest } = this.props;
 
     switch (type) {
       case SubmissionActions.Type.SELF_MATCH: {
@@ -243,6 +242,7 @@ export class SubmitBar extends React.Component<
       }
       case SubmissionActions.Type.AI_MATCH: {
         changeCurrentRequest(SubmissionInterfaces.Request.AI_MATCH);
+        updateCurrentAiId(aiId);
         updateMapId(mapId);
         await aiMatch(mapId, aiId);
         break;

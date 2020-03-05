@@ -17,6 +17,7 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   errorMessage: '',
   fullName: '',
   isAuthenticationOpen: true,
+  isFirstLogin: true,
   isLoggedIn: false,
   isLoginLoading: false,
   isUserProfileModalOpen: false,
@@ -43,6 +44,7 @@ export const userReducer = (
         avatar,
         college,
         userType,
+        isFirstLogin,
       } = action.payload.userDetails;
 
       let isAuthenticationOpen = state.isAuthenticationOpen;
@@ -64,7 +66,7 @@ export const userReducer = (
         email: email !== undefined ? email : state.email,
         errorMessage: errorMessage !== undefined ? errorMessage : state.errorMessage,
         fullName: fullName !== undefined ? fullName : state.fullName,
-
+        isFirstLogin: isFirstLogin !== undefined ? isFirstLogin : state.isFirstLogin,
         isLoggedIn: isLoggedIn !== undefined ? isLoggedIn : state.isLoggedIn,
         isUserProfileModalOpen:
           isUserProfileModalOpen !== undefined

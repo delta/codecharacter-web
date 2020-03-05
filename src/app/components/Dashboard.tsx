@@ -54,6 +54,11 @@ export class Dashboard extends React.Component<
   }
 
   public componentDidMount() {
+    if (this.props.isFirstLogin) {
+      this.setState({
+        isReactTourActive: true,
+      });
+    }
     ReactGA.initialize(GOOGLE_ANALYTICS_TRACKING_ID);
     ReactGA.pageview('/');
   }

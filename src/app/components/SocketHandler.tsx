@@ -102,8 +102,16 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
 
   public componentDidUpdate() {
     // tslint:disable-next-line: no-console
-    const { request, mapId, playerId1, playerId2, commitHash, updateRequest, userId } = this.props;
-    // tslint:disable-next-line: no-console
+    const {
+      request,
+      mapId,
+      playerId1,
+      playerId2,
+      commitHash,
+      currentAiId,
+      updateRequest,
+      userId,
+    } = this.props;
     switch (request) {
       case SubmissionInterfaces.Request.PREVIOUS_COMMIT_MATCH: {
         this.initiateMatch(
@@ -118,6 +126,17 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       }
       case SubmissionInterfaces.Request.AI_MATCH: {
         this.initiateMatch(
+          userId,
+          currentAiId,
+          SubmissionInterfaces.Request.AI_MATCH,
+          mapId,
+          commitHash,
+        );
+        updateRequest(SubmissionInterfaces.Request.NONE);
+        break;
+      }
+      case SubmissionInterfaces.Request.MANUAL: {
+        this.initiateMatch(
           playerId1,
           playerId2,
           SubmissionInterfaces.Request.AI_MATCH,
@@ -129,8 +148,8 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       }
       case SubmissionInterfaces.Request.SELF_MATCH: {
         this.initiateMatch(
-          playerId1,
-          playerId2,
+          userId,
+          userId,
           SubmissionInterfaces.Request.SELF_MATCH,
           mapId,
           commitHash,
@@ -138,16 +157,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
         updateRequest(SubmissionInterfaces.Request.NONE);
         break;
       }
-      case SubmissionInterfaces.Request.MANUAL: {
-        this.initiateMatch(
-          playerId1,
-          playerId2,
-          SubmissionInterfaces.Request.MANUAL,
-          mapId,
-          commitHash,
-        );
-        updateRequest(SubmissionInterfaces.Request.NONE);
-      }
+     
     }
   }
 

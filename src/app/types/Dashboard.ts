@@ -24,6 +24,7 @@ export interface State {
 }
 
 export interface StateProps {
+  isFirstLogin: boolean;
   isLoggedIn: boolean;
   sidePanelOpen: boolean;
   isAuthenticationOpen: boolean;

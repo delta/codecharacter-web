@@ -25,6 +25,7 @@ describe('EditPassword Component', () => {
         errorMessage: '',
         fullName: '',
         isAuthenticationOpen: true,
+        isFirstLogin: true,
         isLoggedIn: true,
         isLoginLoading: false,
         isUserProfileModalOpen: false,

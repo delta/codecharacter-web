@@ -6,6 +6,7 @@ import * as NotificationInterfaces from 'app/types/Notification';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
+// tslint:disable-next-line
 
 export class Notification extends React.Component<
   NotificationInterfaces.Props,
@@ -80,7 +81,7 @@ export class Notification extends React.Component<
                 background: 'none',
               }}
               onClick={() => {
-                if (NotificationInterfaces.TabType.NOTIFICATIONS) {
+                if (tabType === NotificationInterfaces.TabType.NOTIFICATIONS) {
                   deleteNotificationType(activeNotificationTab);
                 }
               }}

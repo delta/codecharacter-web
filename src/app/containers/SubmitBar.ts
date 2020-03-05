@@ -31,6 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     lockCode: () => dispatch(SubmissionActions.lockCode()),
     saveCode: () => dispatch(CodeActions.save()),
     selfMatch: (mapId: number) => dispatch(SubmissionActions.selfMatch(mapId)),
+    updateCurrentAiId: (aiId: number) => dispatch(SubmissionActions.updateCurrentAiId(aiId)),
     updateMapId: (mapId: number) => dispatch(SubmissionActions.updateMapId(mapId)),
   };
 };

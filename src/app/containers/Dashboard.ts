@@ -9,6 +9,7 @@ import { Dispatch } from 'redux';
 const mapStateToProps = (rootState: RootState) => {
   return {
     isAuthenticationOpen: rootState.user.isAuthenticationOpen,
+    isFirstLogin: rootState.user.isFirstLogin,
     isLoggedIn: rootState.user.isLoggedIn,
     isUserProfileModalOpen: rootState.user.isUserProfileModalOpen,
     isWelcomeModalOpen: rootState.dashboard.isWelcomeModalOpen,

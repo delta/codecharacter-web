@@ -32,6 +32,7 @@ export interface MatchDetails {
 
 export interface StateProps {
   commitHash: string;
+  currentAiId: number;
   mapId: number;
   playerId1: number;
   playerId2: number;
