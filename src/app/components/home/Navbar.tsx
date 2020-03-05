@@ -32,7 +32,7 @@ export const NavBar = (props: { isLoggedIn: boolean; page: NavPage }) => {
           <>
             <HashLink to={Routes.ROOT} className="p-3">
               {' '}
-              Play!{' '}
+              Dashboars{' '}
             </HashLink>
             {props.page !== NavPage.PROFILE ? (
               <HashLink to={Routes.USER_PROFILE_MODEL}> Profile </HashLink>

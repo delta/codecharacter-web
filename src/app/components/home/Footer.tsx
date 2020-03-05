@@ -25,22 +25,20 @@ export const Footer: React.FunctionComponent = () => {
               <h5>Contact</h5>
               <ul className="list-unstyled text-small">
                 <Table>
-                  <tr onClick={() => copyToClipboard('8428747686')}>
-                    <td>Sai Haemanth</td>
-                    <td>8428747686</td>
-                  </tr>
-                  <tr onClick={() => copyToClipboard('8428747686')}>
-                    <td>Mario</td>
-                    <td>9444018377</td>
-                  </tr>
-                  <tr onClick={() => copyToClipboard('8428747686')}>
-                    <td>Kumaran</td>
-                    <td>9566541342</td>
-                  </tr>
-                  <tr onClick={() => copyToClipboard('8428747686')}>
-                    <td>Kumaran</td>
-                    <td>9566541342</td>
-                  </tr>
+                  <tbody>
+                    <tr onClick={() => copyToClipboard('9994479069')}>
+                      <td>Mandeep</td>
+                      <td>9994479069</td>
+                    </tr>
+                    <tr onClick={() => copyToClipboard('9566541342')}>
+                      <td>Kumaran</td>
+                      <td>9566541342</td>
+                    </tr>
+                    <tr onClick={() => copyToClipboard('codecharacter@pragyan.org')}>
+                      <td>For more queries</td>
+                      <td>codecharacter@pragyan.org</td>
+                    </tr>
+                  </tbody>
                 </Table>
               </ul>
             </div>
@@ -51,10 +49,7 @@ export const Footer: React.FunctionComponent = () => {
                   <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <li>
-                    <a href="https://code.pragyan.org/docs">Documentation</a>
-                  </li>
-                  <a href="https://pragyan.org">Pragyan</a>
+                  <a href="https://code.pragyan.org/docs">Documentation</a>
                 </li>
                 <li>
                   <a href="https://www.pragyan.org/20/home/events/bytehoc/code_character/">
