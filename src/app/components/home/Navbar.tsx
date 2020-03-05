@@ -8,6 +8,8 @@ export enum NavPage {
   LOGIN,
   REGISTER,
   HOME,
+  LEADERBOARD,
+  PROFILE,
 }
 
 // tslint:disable-next-line: variable-name
@@ -27,10 +29,15 @@ export const NavBar = (props: { isLoggedIn: boolean; page: NavPage }) => {
       </div>
       <div className={classnames(styles['nav-links'])}>
         {props.isLoggedIn ? (
-          <HashLink to={Routes.ROOT} className="p-3">
-            {' '}
-            Play!{' '}
-          </HashLink>
+          <>
+            <HashLink to={Routes.ROOT} className="p-3">
+              {' '}
+              Play!{' '}
+            </HashLink>
+            {props.page !== NavPage.PROFILE ? (
+              <HashLink to={Routes.USER_PROFILE_MODEL}> Profile </HashLink>
+            ) : null}
+          </>
         ) : (
           <>
             {!(props.page === NavPage.LOGIN) ? (
@@ -43,12 +50,6 @@ export const NavBar = (props: { isLoggedIn: boolean; page: NavPage }) => {
               <HashLink to={Routes.REGISTER} className="p-3">
                 {' '}
                 Register{' '}
-              </HashLink>
-            ) : null}
-            {!(props.page === NavPage.HOME) ? (
-              <HashLink to={Routes.HOME} className="p-3">
-                {' '}
-                Home{' '}
               </HashLink>
             ) : null}
           </>
@@ -65,7 +66,12 @@ export const NavBar = (props: { isLoggedIn: boolean; page: NavPage }) => {
               Contact
             </HashLink>
           </>
-        ) : null}
+        ) : (
+          <HashLink to={Routes.HOME} className="p-3">
+            {' '}
+            Home{' '}
+          </HashLink>
+        )}
       </div>
     </div>
   );

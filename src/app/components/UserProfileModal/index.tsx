@@ -10,6 +10,7 @@ import { Grid, Row } from 'react-bootstrap';
 // tslint:disable-next-line
 import ReactFlagsSelect from 'react-flags-select';
 import { Redirect } from 'react-router-dom';
+import { NavBar, NavPage } from '../home/Navbar';
 
 export class UserProfileModal extends React.Component<
   UserProfileInterfaces.Props,
@@ -47,7 +48,8 @@ export class UserProfileModal extends React.Component<
     } = this.state;
     const { userDetails } = this.props;
     return (
-      <Grid fluid={true} className={classnames(styles.UserEdit)}>
+      <Grid fluid={true} className={classnames(styles.UserEdit)} style={{ padding: '0' }}>
+        <NavBar isLoggedIn={true} page={NavPage.PROFILE} />
         <Row
           className={
             this.state.isPasswordPage
