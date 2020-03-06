@@ -19,6 +19,7 @@ initializeRendererAssets();
 /* tslint:disable-next-line:variable-name */
 export const App = hot(module)(() => (
   <HashRouter>
+    <Sugar background="#484848" color="white" />
     <Switch>
       <Route exact path={Routes.ROOT} component={Dashboard} />
       <Route exact path={Routes.LOGIN} component={Login} />
@@ -28,6 +29,5 @@ export const App = hot(module)(() => (
       <Route path={Routes.USER_ACTIVATION} component={ActivateUser} />
       <Route exact path={Routes.HOME} component={LandingPage} />
     </Switch>
-    <Sugar background="#484848" color="white" />
   </HashRouter>
 ));

@@ -18,7 +18,6 @@ export function* getMatches(action: ActionType<typeof MatchActions.getMatches>) 
 
     if (isArray(res)) {
       const matchData = mapMatchResponse(res);
-
       yield put(MatchActions.updateMatches(matchData));
     } else yield put(NotificationActions.error(res.message));
   } catch (err) {
