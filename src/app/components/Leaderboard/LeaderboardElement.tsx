@@ -1,9 +1,4 @@
-import {
-  faCaretDown,
-  faCaretUp,
-  faCrown,
-  faGraduationCap,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faCaretUp, faCrown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconsComponent } from 'app/components/Leaderboard/IconElement';
 import * as styles from 'app/styles/Leaderboard.module.css';
@@ -115,7 +110,7 @@ export class LeaderboardElement extends React.Component<
     const ratingArray: number[] = [];
     const labelArray: string[] = [];
     player.rating.forEach((element) => {
-      ratingArray.push(element.rating);
+      ratingArray.push(Math.round((element.rating + Number.EPSILON) * 100) / 100);
       const dateobj = new Date(element.validFrom);
       labelArray.push(dateobj.toLocaleDateString('en-GB').substr(0, 5));
     });
@@ -249,44 +244,28 @@ export class LeaderboardElement extends React.Component<
                 }}
               >
                 <div style={{ display: 'flex' }}>
-                  <div
-                    className={classnames('text-light', styles['leader-score_title'])}
-                    style={{
-                      display: 'block',
-                      fontSize: '16px',
-                      whiteSpace: 'nowrap',
-                    }}
-                    title={player.username}
-                  >
-                    <span style={{ fontFamily: 'Lato' }}>{`${player.username.substr(0, 15)}${
-                      player.username.length > 15 ? '...' : ''
-                    }`}</span>
+                  <div className="col-auto">
+                    <div
+                      className={classnames('text-light', styles['leader-score_title'])}
+                      style={{
+                        display: 'block',
+                        fontSize: '16px',
+                        whiteSpace: 'nowrap',
+                      }}
+                      title={player.username}
+                    >
+                      <span style={{ fontFamily: 'Lato' }}>{`${player.username.substr(0, 15)}${
+                        player.username.length > 15 ? '...' : ''
+                      }`}</span>
+                    </div>
+                    <div className={classnames(styles['leader-flag'], 'mt-2')}>
+                      <ReactCountryFlag
+                        code={player.country === 'null' ? player.country : 'IN'}
+                        svg
+                        alt={player.country}
+                      />
+                    </div>
                   </div>
-                  <div className={classnames(styles['leader-flag'])}>
-                    <ReactCountryFlag
-                      code={player.country === 'null' ? player.country : 'USA'}
-                      svg
-                      alt={player.country}
-                    />
-                  </div>
-                </div>
-                <div
-                  className={classnames(styles['leader-score_title'])}
-                  style={{
-                    color: 'gray',
-                    display: 'block',
-                    fontSize: '26px',
-                    marginTop: '5px',
-                  }}
-                >
-                  {player.rating[player.rating.length - 1].rating}{' '}
-                  {player.type === 'Student' ? (
-                    <FontAwesomeIcon
-                      style={{ fontSize: 18, display: 'inline' }}
-                      icon={faGraduationCap}
-                      title={'Student Participant'}
-                    />
-                  ) : null}
                 </div>
               </div>
             </div>
@@ -294,18 +273,21 @@ export class LeaderboardElement extends React.Component<
 
           <div className={classnames(styles['player-info-2'])}>
             {!(isPlayAgainstDisabled || currentUsername === player.username) ? (
-              <div
-                style={{ fontSize: '0.55em', cursor: 'pointer' }}
-                onClick={async (e) => {
-                  // hello
-                  await updatePlayerId2(player.userId);
-                  await updateRequest(Request.MANUAL);
-                  e.stopPropagation();
-                }}
-                title={`Start match`}
-              >
+              <div style={{ fontSize: '0.55em', cursor: 'pointer' }} title={`Start match`}>
                 {this.state.onHover ? (
-                  <img src="assets/img/fight.png" width={15} height={15} />
+                  <img
+                    src="assets/img/fight.png"
+                    width={30}
+                    height={30}
+                    className="mr-3"
+                    onClickCapture={async (e) => {
+                      // hello
+                      e.stopPropagation();
+                      await updatePlayerId2(player.userId);
+                      await updateRequest(Request.MANUAL);
+                      this.props.getTimer();
+                    }}
+                  />
                 ) : null}
               </div>
             ) : null}
@@ -323,38 +305,27 @@ export class LeaderboardElement extends React.Component<
         >
           {this.state.isModelOpen ? (
             <div
-              style={{ marginLeft: '-2% !important', right: '0px !important ' }}
+              className="row justify-content-center"
               onClick={(event) => {
                 event.stopPropagation();
               }}
             >
-              <Chart
-                options={this.state.optionsPie}
-                series={[player.ties, player.wins, player.losses]}
-                type="donut"
-                width="380"
-              />
-            </div>
-          ) : null}
-
-          {this.state.isModelOpen ? (
-            <div
-              onClick={(event) => {
-                event.stopPropagation();
-              }}
-              style={{ transform: 'scaleX(0.7) translate(50px)', marginLeft: '-20% !important' }}
-              className={classnames(
-                styles['apexcharts-canvas'],
-                styles['apexcharts-zoomable'],
-                styles['hovering-zoom'],
-              )}
-            >
-              <Chart
-                options={this.state.optionsLine}
-                series={[this.state.series]}
-                type="line"
-                width="500"
-              />
+              <div className={classnames(styles.chart_div, 'col col-lg-5')}>
+                <Chart
+                  options={this.state.optionsPie}
+                  series={[player.ties, player.wins, player.losses]}
+                  type="donut"
+                  width="380"
+                />
+              </div>
+              <div className={classnames(styles.chart_div, 'col-lg-5')}>
+                <Chart
+                  options={this.state.optionsLine}
+                  series={[this.state.series]}
+                  type="line"
+                  width="500"
+                />
+              </div>
             </div>
           ) : null}
         </div>

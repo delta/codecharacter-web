@@ -37,14 +37,14 @@ export class Leaderboard extends React.Component<
       isSearching: false,
       nextFetchIndex: 1,
       offset: 0,
-      pageSize: Math.floor((window.innerHeight * 0.8) / 100),
+      pageSize: Math.floor((window.innerHeight * 0.7) / 100),
       pattern: '',
     };
   }
 
   public componentWillMount(): void {
     this.props.clearLeaderboard();
-    const noOfElems = Math.floor((window.innerHeight * 0.8) / 100);
+    const noOfElems = Math.floor((window.innerHeight * 0.7) / 100);
     this.props.getLeaderboard(this.state.nextFetchIndex, noOfElems);
     this.props.getTimer();
   }
@@ -99,7 +99,7 @@ export class Leaderboard extends React.Component<
             </Col>
           </Row>
           {this.state.isSearching ? (
-            <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
+            <Row className={classnames('py-2 pl-5', styles.leaderboardTitle)}>
               <Col
                 sm={10}
                 className="text-light font-weight-bold my-auto"
@@ -128,146 +128,158 @@ export class Leaderboard extends React.Component<
               </Col>
             </Row>
           ) : (
-            <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
-              <Col>
-                <div className={styles.dropdown} style={{ paddingRight: '10px' }}>
-                  <button className={styles.dropbtn}>
-                    {LeaderboardInterfaces.DivisionNames[this.state.currentDiv]}
-                  </button>
-                  <FontAwesomeIcon style={{ color: 'white' }} icon={faCaretDown} />
-                  <div className={styles['dropdown-content']}>
-                    <a
-                      style={{ cursor: 'pointer' }}
-                      onClick={() => {
-                        this.setState({ currentDiv: LeaderboardInterfaces.DivisionType.DIV1 });
-                      }}
-                      className={
-                        this.state.currentDiv === LeaderboardInterfaces.DivisionType.DIV1
-                          ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
-                          : classnames(styles.dropDownMenu)
-                      }
-                    >
-                      {LeaderboardInterfaces.DivisionNames.DIV_1}
-                    </a>
-                    <a
-                      style={{ cursor: 'pointer' }}
-                      onClick={() => {
-                        this.setState({ currentDiv: LeaderboardInterfaces.DivisionType.DIV2 });
-                      }}
-                      className={
-                        this.state.currentDiv === LeaderboardInterfaces.DivisionType.DIV2
-                          ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
-                          : classnames(styles.dropDownMenu)
-                      }
-                    >
-                      {LeaderboardInterfaces.DivisionNames.DIV_2}
-                    </a>
-                    <a
-                      style={{ cursor: 'pointer' }}
-                      onClick={() => {
-                        this.setState({ currentDiv: LeaderboardInterfaces.DivisionType.ALL });
-                      }}
-                      className={
-                        this.state.currentDiv === LeaderboardInterfaces.DivisionType.ALL
-                          ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
-                          : classnames(styles.dropDownMenu)
-                      }
-                    >
-                      {LeaderboardInterfaces.DivisionNames.All}
-                    </a>
+            <div>
+              <Row className="px-5">
+                <Col>
+                  <div className={styles.dropdown} style={{ paddingRight: '10px' }}>
+                    <button className={styles.dropbtn}>
+                      {LeaderboardInterfaces.DivisionNames[this.state.currentDiv]}
+                    </button>
+                    <FontAwesomeIcon style={{ color: 'white' }} icon={faCaretDown} />
+                    <div className={styles['dropdown-content']}>
+                      <a
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => {
+                          this.setState({ currentDiv: LeaderboardInterfaces.DivisionType.DIV1 });
+                        }}
+                        className={
+                          this.state.currentDiv === LeaderboardInterfaces.DivisionType.DIV1
+                            ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
+                            : classnames(styles.dropDownMenu)
+                        }
+                      >
+                        {LeaderboardInterfaces.DivisionNames.DIV_1}
+                      </a>
+                      <a
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => {
+                          this.setState({ currentDiv: LeaderboardInterfaces.DivisionType.DIV2 });
+                        }}
+                        className={
+                          this.state.currentDiv === LeaderboardInterfaces.DivisionType.DIV2
+                            ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
+                            : classnames(styles.dropDownMenu)
+                        }
+                      >
+                        {LeaderboardInterfaces.DivisionNames.DIV_2}
+                      </a>
+                      <a
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => {
+                          this.setState({ currentDiv: LeaderboardInterfaces.DivisionType.ALL });
+                        }}
+                        className={
+                          this.state.currentDiv === LeaderboardInterfaces.DivisionType.ALL
+                            ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
+                            : classnames(styles.dropDownMenu)
+                        }
+                      >
+                        {LeaderboardInterfaces.DivisionNames.All}
+                      </a>
+                    </div>
                   </div>
-                </div>
-              </Col>
-              <Col>
-                <div className={styles.dropdown}>
-                  <button className={styles.dropbtn}>
-                    {LeaderboardInterfaces.UserTypeName[this.state.currentUserType]}
-                  </button>
-                  <FontAwesomeIcon style={{ color: 'white' }} icon={faCaretDown} />
-                  <div className={styles['dropdown-content']}>
-                    <a
-                      style={{ cursor: 'pointer' }}
-                      onClick={() => {
-                        this.setState({ currentUserType: LeaderboardInterfaces.UserType.STUDENT });
-                      }}
-                      className={
-                        this.state.currentUserType === LeaderboardInterfaces.UserType.STUDENT
-                          ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
-                          : classnames(styles.dropDownMenu)
-                      }
-                    >
-                      {LeaderboardInterfaces.UserTypeName.STUDENT}
-                    </a>
-                    <a
-                      style={{ cursor: 'pointer' }}
-                      onClick={() => {
-                        this.setState({
-                          currentUserType: LeaderboardInterfaces.UserType.PROFESSIONAL,
-                        });
-                      }}
-                      className={
-                        this.state.currentUserType === LeaderboardInterfaces.UserType.PROFESSIONAL
-                          ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
-                          : classnames(styles.dropDownMenu)
-                      }
-                    >
-                      {LeaderboardInterfaces.UserTypeName.PROFESSIONAL}
-                    </a>
-                    <a
-                      style={{ cursor: 'pointer' }}
-                      onClick={() => {
-                        this.setState({ currentUserType: LeaderboardInterfaces.UserType.ALL });
-                      }}
-                      className={
-                        this.state.currentUserType === LeaderboardInterfaces.UserType.ALL
-                          ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
-                          : classnames(styles.dropDownMenu)
-                      }
-                    >
-                      {LeaderboardInterfaces.UserTypeName.All}
-                    </a>
+                </Col>
+                <Col>
+                  <div className={styles.dropdown}>
+                    <button className={styles.dropbtn}>
+                      {LeaderboardInterfaces.UserTypeName[this.state.currentUserType]}
+                    </button>
+                    <FontAwesomeIcon style={{ color: 'white' }} icon={faCaretDown} />
+                    <div className={styles['dropdown-content']}>
+                      <a
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => {
+                          this.setState({
+                            currentUserType: LeaderboardInterfaces.UserType.STUDENT,
+                          });
+                        }}
+                        className={
+                          this.state.currentUserType === LeaderboardInterfaces.UserType.STUDENT
+                            ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
+                            : classnames(styles.dropDownMenu)
+                        }
+                      >
+                        {LeaderboardInterfaces.UserTypeName.STUDENT}
+                      </a>
+                      <a
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => {
+                          this.setState({
+                            currentUserType: LeaderboardInterfaces.UserType.PROFESSIONAL,
+                          });
+                        }}
+                        className={
+                          this.state.currentUserType === LeaderboardInterfaces.UserType.PROFESSIONAL
+                            ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
+                            : classnames(styles.dropDownMenu)
+                        }
+                      >
+                        {LeaderboardInterfaces.UserTypeName.PROFESSIONAL}
+                      </a>
+                      <a
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => {
+                          this.setState({ currentUserType: LeaderboardInterfaces.UserType.ALL });
+                        }}
+                        className={
+                          this.state.currentUserType === LeaderboardInterfaces.UserType.ALL
+                            ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
+                            : classnames(styles.dropDownMenu)
+                        }
+                      >
+                        {LeaderboardInterfaces.UserTypeName.All}
+                      </a>
+                    </div>
                   </div>
-                </div>
-              </Col>
-              <Col
-                style={{ position: 'absolute', left: '27%' }}
-                className="text-light font-weight-bold my-auto"
-              >
-                RANK
-              </Col>
-              <Col
-                style={{ position: 'absolute', left: '35%' }}
-                className="text-light font-weight-bold my-auto"
-              >
-                RATING
-              </Col>
-              <Col
-                style={{ position: 'absolute', left: '49%' }}
-                className="text-light font-weight-bold my-auto"
-              >
-                WON
-              </Col>
-              <Col
-                style={{ position: 'absolute', left: '57%' }}
-                className="text-light font-weight-bold my-auto"
-              >
-                TIED
-              </Col>
-              <Col
-                style={{ position: 'absolute', left: '66%' }}
-                className="text-light font-weight-bold my-auto"
-              >
-                LOST
-              </Col>
-              <Col style={{ position: 'absolute', right: '10%' }}>
-                <button
-                  className={styles.button}
-                  onClick={() => this.setState({ isSearching: true })}
+                </Col>
+                <Col style={{ position: 'relative', left: '80%' }}>
+                  <button
+                    className={styles.button}
+                    onClick={() => this.setState({ isSearching: true })}
+                  >
+                    <FontAwesomeIcon style={{ color: 'white' }} icon={faSearch} />
+                  </button>
+                </Col>
+              </Row>
+              <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
+                <div
+                  // style={{ position: 'relative', left: '13%' }}
+                  className="col-2 text-light font-weight-bold my-auto"
                 >
-                  <FontAwesomeIcon style={{ color: 'white' }} icon={faSearch} />
-                </button>
-              </Col>
-            </Row>
+                  RANK
+                </div>
+                <div
+                  // style={{ position: 'relative', left: '22%' }}
+                  className="col-2 text-light font-weight-bold my-auto"
+                >
+                  Name
+                </div>
+                <div
+                  // style={{ position: 'relative', left: '22%' }}
+                  className="col-2 text-light font-weight-bold my-auto"
+                >
+                  RATING
+                </div>
+                <div
+                  // style={{ position: 'relative', left: '49%' }}
+                  className="col-2 text-light font-weight-bold my-auto"
+                >
+                  WON
+                </div>
+                <div
+                  // style={{ position: 'relative', left: '62%' }}
+                  className="col-2 text-light font-weight-bold my-auto"
+                >
+                  TIED
+                </div>
+                <div
+                  // style={{ position: 'relative', left: '73%' }}
+                  className="col-2 text-light font-weight-bold my-auto"
+                >
+                  LOST
+                </div>
+              </Row>
+            </div>
           )}
           <div
             ref={this.leaderboard}
@@ -282,18 +294,13 @@ export class Leaderboard extends React.Component<
                   paddingBottom: '15px',
                 }}
               >
-                {timerData > 0 ? (
-                  <Timer timerData={timerData} getTimer={getTimer} setTimer={setTimer} />
-                ) : (
-                  <span className="mb-2" style={{ paddingBottom: '5px', paddingTop: '5px' }}>
-                    Ready to initiate Match
-                  </span>
-                )}
+                <Timer timerData={timerData} getTimer={getTimer} setTimer={setTimer} />
               </div>
 
               {this.state.nextFetchIndex !== 1 ? (
                 <div
-                  style={{ position: 'absolute', left: '10%', bottom: '50%' }}
+                  className={styles.arrow}
+                  style={{ position: 'absolute', left: '3%', bottom: '50%' }}
                   onClick={() => this.handlePageClick(-1)}
                 >
                   <FontAwesomeIcon
@@ -309,7 +316,8 @@ export class Leaderboard extends React.Component<
 
               {this.props.players.length >= this.state.pageSize ? (
                 <div
-                  style={{ position: 'absolute', right: '10%', bottom: '50%' }}
+                  className={styles.arrow}
+                  style={{ position: 'absolute', right: '3%', bottom: '50%' }}
                   onClick={() => this.handlePageClick(1)}
                 >
                   <FontAwesomeIcon
@@ -323,7 +331,7 @@ export class Leaderboard extends React.Component<
                 </div>
               ) : null}
 
-              <div style={{ marginLeft: '20%', width: '60%' }}>
+              <div style={{ marginLeft: '0', width: '100%' }}>
                 {players.length ? (
                   players.map((player, index) =>
                     player &&
@@ -339,6 +347,7 @@ export class Leaderboard extends React.Component<
                         key={index}
                         runMatch={runMatch}
                         isPlayAgainstDisabled={timerData > 0 ? true : false}
+                        getTimer={this.props.getTimer}
                       />
                     ) : null,
                   )

@@ -139,6 +139,7 @@ export interface ElementOwnProps {
   currentUsername: string;
   updatePlayerId2: (playerId2: number) => void;
   updateRequest: (request: Request) => void;
+  getTimer: () => void;
 }
 
 export type ElementProps = ElementOwnProps;
@@ -150,9 +151,7 @@ export interface TimerProps {
 }
 
 export interface TimerState {
-  totalSeconds: number;
   seconds: number;
-  minutes: number;
 }
 
 const actions = {
