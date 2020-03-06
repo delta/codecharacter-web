@@ -56,6 +56,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     sendInfo: (message: string) => dispatch(NotificationActions.info(message)),
     sendSuccess: (message: string) => dispatch(NotificationActions.success(message)),
     success: (message: string) => dispatch(NotificationActions.success(message)),
+    updateDisplayDebugLog: (log: string) => dispatch(GameLogActions.updateDisplayDebugLog(log)),
     updateGameLog: (player1DebugLog: string, player2DebugLog: string, gameLog: string) =>
       dispatch(GameLogActions.updateGameLog(player1DebugLog, player2DebugLog, gameLog)),
     updateGlobalAnnouncements: (announcements: NotificationInterfaces.Announcement[]) =>

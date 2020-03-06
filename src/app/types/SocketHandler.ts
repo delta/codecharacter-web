@@ -26,6 +26,7 @@ export interface DispatchProps {
   sendInfo: (message: string) => void;
   sendSuccess: (message: string) => void;
   success: (message: string) => void;
+  updateDisplayDebugLog: (log: string) => void;
   updateGameLog: (player1DebugLog: string, player2DebugLog: string, gameLog: string) => void;
   updateGlobalAnnouncements: (announcements: NotificationInterfaces.Announcement[]) => void;
   updateGlobalNotifications: (notifications: NotificationInterfaces.Notification[]) => void;
