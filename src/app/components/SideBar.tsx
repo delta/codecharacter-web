@@ -1,9 +1,10 @@
 import {
   faBell,
   faBook,
+  faCode,
   faCodeBranch,
   faCog,
-  faHome,
+  faInfoCircle,
   faQuestionCircle,
   faSignInAlt,
   faSignOutAlt,
@@ -30,6 +31,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
       closeSidePanelTab,
       openSidePanelTab,
       logout,
+      clearAllLogs,
     } = this.props;
     return (
       <div className={classnames('h-100', styles.Sidebar)}>
@@ -37,15 +39,15 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           vertical
           className={classnames('w-100 justify-content-center align-items-center', styles.Sidebar)}
         >
-          <a
-            href="/#/home"
+          <Button
             className={classnames(
               'py-2 px-auto text-white d-flex justify-content-center',
               styles.customBtn,
             )}
+            onClick={() => closeSidePanelTab()}
           >
-            <FontAwesomeIcon icon={faHome} />
-          </a>
+            <FontAwesomeIcon icon={faCode} />
+          </Button>
 
           <Button
             className={classnames('py-2 px-auto documentation-btn-ctrl', styles.customBtn, {
@@ -82,6 +84,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             })}
             id="leaderboard_button"
             title={'Leaderboard'}
+            onClick={() => clearAllLogs()}
           >
             <FontAwesomeIcon icon={faTrophy} />
           </a>
@@ -138,6 +141,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             id="user_profile_button"
             title={isLoggedIn ? 'Profile' : 'Login'}
             onClick={() => {
+              clearAllLogs();
               if (!isLoggedIn) {
                 setIsAuthenticationOpen(true);
                 return;
@@ -159,6 +163,18 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               <FontAwesomeIcon icon={faSignOutAlt} />
             </Button>
           ) : null}
+          <a
+            className={classnames(
+              'py-2 px-auto notification-btn-ctrl',
+              styles.customBtn,
+              styles.infoCircle,
+            )}
+            title={'Home'}
+            href="/#/home"
+            onClick={() => clearAllLogs()}
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />
+          </a>
           <Button
             className={classnames('py-2 px-auto', styles.joyRide)}
             id="joyride_button"

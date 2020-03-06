@@ -126,7 +126,11 @@ export function* register(action: ActionType<typeof UserActions.register>) {
         }),
       );
       yield put(NotificationActions.success('Registered successfully!'));
+      yield put(
+        NotificationActions.info('Account activation link has been sent to registered Email ID.'),
+      );
     }
+    yield put(NotificationActions.error('Registration unsuccessful!'));
   } catch (err) {
     console.error(err);
   }
