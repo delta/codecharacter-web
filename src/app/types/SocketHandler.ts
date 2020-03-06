@@ -8,7 +8,8 @@ export interface DispatchProps {
   sendError: (message: string) => void;
   sendInfo: (message: string) => void;
   sendSuccess: (message: string) => void;
-  updateRequest: (request: SubmissionInterfaces.Request) => void;
+  success: (message: string) => void;
+  updateDisplayDebugLog: (log: string) => void;
   updateGameLog: (player1DebugLog: string, player2DebugLog: string, gameLog: string) => void;
   updateMatchPlayerId: (matchPlayerId: number) => void;
   clearDisplayDebugLog: () => void;

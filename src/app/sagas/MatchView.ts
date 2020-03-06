@@ -17,7 +17,8 @@ export function* getMatches(action: ActionType<typeof MatchActions.getMatches>) 
     if (isAuthenticated === false) return;
 
     if (isArray(res)) {
-      const matchData = mapMatchResponse(res);
+      const username = yield select((state: RootState) => state.user.username);
+      const matchData = mapMatchResponse(res, username);
       yield put(MatchActions.updateMatches(matchData));
     } else yield put(NotificationActions.error(res.message));
   } catch (err) {
@@ -39,8 +40,8 @@ export function* getTopMatches(action: ActionType<typeof MatchActions.getTopMatc
     if (isAuthenticated === false) return;
 
     if (isArray(res)) {
-      const matchData = mapMatchResponse(res);
-
+      const username = yield select((state: RootState) => state.user.username);
+      const matchData = mapMatchResponse(res, username);
       yield put(MatchActions.updateTopMatches(matchData));
     } else yield put(NotificationActions.error(res.message));
   } catch (err) {

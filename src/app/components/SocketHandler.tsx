@@ -14,8 +14,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       {},
       // @ts-ignore
       (frame) => {
-        const { userId, success } = this.props;
-        success('Connected to Server.');
+        const { userId } = this.props;
         // @ts-ignore
         this.stompClient.subscribe(
           `/socket/response/alert/${userId}`,
@@ -30,7 +29,11 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
           (message: { body: string }) => {
             if (message.body[0] === 'E') {
               this.props.error('Match not executed successfully');
-              this.props.updateGameLog(message.body, message.body, '');
+              // @ts-ignore
+              this.props.clearAllLogs();
+              this.props.clearDisplayDebugLog();
+              this.props.updateDisplayDebugLog(message.body);
+              // this.props.updateGameLog(Buffer.from(message.body), '', '');
               return;
             }
 

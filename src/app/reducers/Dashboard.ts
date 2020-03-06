@@ -12,7 +12,8 @@ export enum SidePanelTab {
 }
 
 const dashboardStoreIntialState: DashboardInterfaces.DashboardStoreState = {
-  isWelcomeModalOpen: false,
+  isReactTourActive: true,
+  isWelcomeModalOpen: true,
   sidePanelTab: SidePanelTab.NONE,
 };
 

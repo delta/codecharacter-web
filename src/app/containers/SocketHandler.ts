@@ -23,6 +23,18 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     sendExecuteSuccess: (logs: string) => dispatch(SubmissionActions.handleExecuteSuccess(logs)),
     sendInfo: (message: string) => dispatch(NotificationActions.info(message)),
     sendSuccess: (message: string) => dispatch(NotificationActions.success(message)),
+    success: (message: string) => dispatch(NotificationActions.success(message)),
+    updateDisplayDebugLog: (log: string) => dispatch(GameLogActions.updateDisplayDebugLog(log)),
+    updateGameLog: (player1DebugLog: string, player2DebugLog: string, gameLog: string) =>
+      dispatch(GameLogActions.updateGameLog(player1DebugLog, player2DebugLog, gameLog)),
+    updateGlobalAnnouncements: (announcements: NotificationInterfaces.Announcement[]) =>
+      dispatch(NotificationActions.updateGlobalAnnouncements(announcements)),
+    updateGlobalNotifications: (notifications: NotificationInterfaces.Notification[]) =>
+      dispatch(NotificationActions.updateGlobalNotifications(notifications)),
+    updateMatchPlayerId: (matchPlayerId: number) =>
+      dispatch(GameLogActions.updateMatchPlayerId(matchPlayerId)),
+    updateRequest: (request: SubmissionInterfaces.Request) =>
+      dispatch(SubmissionActions.changeCurrentRequest(request)),
   };
 };
 

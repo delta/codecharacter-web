@@ -11,13 +11,7 @@ export class MatchElement extends React.Component<
   MatchInterfaces.ElementProps,
   MatchInterfaces.ElementState
 > {
-  public MAP_THUMBNAIL = [
-    'islesofcodechar',
-    'timeturner',
-    'treacherousmangroves',
-    'mysterymap',
-    'mysterymap',
-  ];
+  public MAP_THUMBNAIL = ['sands_of_time', 'sector', 'revival', 'mysterymap', 'mysterymap'];
 
   public MAP_NAME = [
     'Isles of Codecharacter',
