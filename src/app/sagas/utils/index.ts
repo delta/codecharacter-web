@@ -60,15 +60,27 @@ export const mapMatchResponse = (
   });
 };
 
+export enum VERDICT {
+  TIE = 'TIE',
+  PLAYER1 = 'PLAYER1',
+  PLAYER2 = 'PLAYER2',
+}
+
+export enum MAP_VERDICT_TO_STRING {
+  TIE = '0',
+  PLAYER1 = '1',
+  PLAYER2 = '2',
+}
+
 const getVerdict = (verdict: string) => {
   switch (verdict) {
-    case 'PLAYER_1':
-      return '1';
-    case 'PLAYER_1':
-      return '2';
-    case 'TIE':
-      return '0';
+    case VERDICT.PLAYER1:
+      return MAP_VERDICT_TO_STRING.PLAYER1;
+    case VERDICT.PLAYER2:
+      return MAP_VERDICT_TO_STRING.PLAYER2;
+    case VERDICT.TIE:
+      return MAP_VERDICT_TO_STRING.TIE;
     default:
-      return '0';
+      return MAP_VERDICT_TO_STRING.TIE;
   }
 };

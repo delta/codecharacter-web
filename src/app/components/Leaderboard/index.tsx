@@ -84,19 +84,11 @@ export class Leaderboard extends React.Component<
       isLoggedIn,
     } = this.props;
     return (
-      <Grid fluid={true} className={classnames(styles.Leaderboard)}>
-        {isLoggedIn ? <SocketHandler /> : null}
-        <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
-          <Col
-            sm={9}
-            className="text-light font-weight-bold my-auto"
-            style={{ left: '45%', height: '10%', paddingTop: '10px', paddingBottom: '10px' }}
-          >
-            LEADERBOARD
-          </Col>
-        </Row>
-        {this.state.isSearching ? (
-          <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
+      <>
+        <NavBar isLoggedIn={isLoggedIn} page={NavPage.LEADERBOARD} />
+        <Grid fluid={true} className={classnames(styles.Leaderboard)}>
+          {isLoggedIn ? <SocketHandler /> : null}
+          <Row className={classnames('py-4 pl-3')}>
             <Col
               sm={10}
               className="text-light font-weight-bold my-auto"

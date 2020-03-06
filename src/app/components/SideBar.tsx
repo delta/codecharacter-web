@@ -37,15 +37,17 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           vertical
           className={classnames('w-100 justify-content-center align-items-center', styles.Sidebar)}
         >
-          <Button
+          <a
+            href="/#/home"
             className={classnames(
               'py-2 px-auto text-white d-flex justify-content-center',
               styles.customBtn,
             )}
             onClick={() => closeSidePanelTab()}
           >
-            <FontAwesomeIcon icon={faCode} />
-          </Button>
+            <FontAwesomeIcon icon={faHome} />
+          </a>
+
           <Button
             className={classnames('py-2 px-auto documentation-btn-ctrl', styles.customBtn, {
               [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.DOCS,
