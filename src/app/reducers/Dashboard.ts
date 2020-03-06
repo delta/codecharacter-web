@@ -12,6 +12,7 @@ export enum SidePanelTab {
 }
 
 const dashboardStoreIntialState: DashboardInterfaces.DashboardStoreState = {
+  isReactTourActive: false,
   isWelcomeModalOpen: false,
   sidePanelTab: SidePanelTab.NONE,
 };
@@ -35,6 +36,12 @@ export const dashboardReducer = (
       return {
         ...state,
         isWelcomeModalOpen: action.payload.isOpen,
+      };
+    }
+    case DashboardActions.Type.TOGGLE_REACT_TOUR: {
+      return {
+        ...state,
+        isReactTourActive: !state.isReactTourActive,
       };
     }
     default:

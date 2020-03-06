@@ -11,6 +11,7 @@ const mapStateToProps = (rootState: RootState) => {
     isAuthenticationOpen: rootState.user.isAuthenticationOpen,
     isFirstLogin: rootState.user.isFirstLogin,
     isLoggedIn: rootState.user.isLoggedIn,
+    isReactTourActive: rootState.dashboard.isReactTourActive,
     isUserProfileModalOpen: rootState.user.isUserProfileModalOpen,
     isWelcomeModalOpen: rootState.dashboard.isWelcomeModalOpen,
     logFile: rootState.gameLog.gameLog,
@@ -25,6 +26,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     closeWelcomeModal: () => dispatch(DashboardActions.setIsWelcomeModalOpen(false)),
     setIsAuthenticationOpen: (isAuthenticationOpen: boolean) =>
       dispatch(UserActions.setIsAuthenticationOpen(isAuthenticationOpen)),
+    toggleReactTour: () => dispatch(DashboardActions.toggleReactTour()),
   };
 };
 
