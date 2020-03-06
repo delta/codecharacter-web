@@ -92,7 +92,6 @@ export const getLeaderboardByDivAndType = (
 };
 
 export const getLeaderboardByUsername = (body: LeaderboardInterfaces.Search) => {
-  console.log(`${API_BASE_URL}leaderboard/${body.username}/${body.pageNo}/${body.pageSize}`);
   return fetch(`${API_BASE_URL}leaderboard/${body.username}/${body.pageNo}/${body.pageSize}`, {
     credentials: 'include',
     headers: {
@@ -113,7 +112,7 @@ export const getLeaderboardByUsername = (body: LeaderboardInterfaces.Search) => 
 };
 
 export const getTimer = () => {
-  return fetch(`${API_BASE_URL}leaderboard/timer`, {
+  return fetch(`${API_BASE_URL}user/wait-time`, {
     credentials: 'include',
     headers: {
       Accept: 'application/json',
@@ -121,7 +120,7 @@ export const getTimer = () => {
     },
     method: 'GET',
   })
-    .then((response) => response.json())
+    .then((response) => response.text())
     .then((data) => data)
     .catch((err) => {
       console.error(err);

@@ -108,7 +108,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
                 [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.MATCH,
               })}
               id="matchView_button"
-              title={'View Matches'}
+              title={'Battle TV'}
               onClick={() => {
                 sidePanelTab !== SidePanelTab.MATCH
                   ? openSidePanelTab(SidePanelTab.MATCH)
