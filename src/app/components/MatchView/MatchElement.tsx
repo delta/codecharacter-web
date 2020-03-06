@@ -19,13 +19,7 @@ export class MatchElement extends React.Component<
     'mysterymap',
   ];
 
-  public MAP_NAME = [
-    'Isles of Codecharacter',
-    'Time Turner',
-    'Treacherous Mangroves',
-    'The Fuhrer',
-    'Crossroads of Destiny',
-  ];
+  public MAP_NAME = ['Sands of Time', 'Sector', 'Revival', 'The Fuhrer', 'Crossroads of Destiny'];
   public constructor(props: MatchInterfaces.ElementProps) {
     super(props);
     this.state = {
@@ -38,9 +32,6 @@ export class MatchElement extends React.Component<
     const { isSelected } = this.state;
 
     let games = null;
-
-    // tslint:disable-next-line: no-console
-    console.log(match);
 
     if (isSelected) {
       games = match.games.map((game, index) => {
@@ -61,8 +52,6 @@ export class MatchElement extends React.Component<
             key={index}
             className={classnames(styles.game, 'mt-2')}
             onClick={(e) => {
-              // tslint:disable-next-line: no-console
-              console.log('HE CLICKED HERE');
               getGameLogs(game.id);
               e.stopPropagation();
             }}

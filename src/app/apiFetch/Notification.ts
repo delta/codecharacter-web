@@ -20,7 +20,7 @@ export const getUnreadNotifications = () => {
     .then((response) => response.json())
     .then((data) => data)
     .catch((error) => {
-      console.log(error);
+      console.error(error);
     });
 };
 

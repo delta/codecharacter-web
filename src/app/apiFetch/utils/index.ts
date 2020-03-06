@@ -15,8 +15,6 @@ export enum HeadReqType {
  */
 export function jsonResponseWrapper(response: any) {
   return response.json().then((data: any) => {
-    // tslint:disable-next-line: no-console
-    console.log(data);
     return new Promise((resolve, reject) => {
       let type: string = resType.SUCCESS;
       let error: string = '';

@@ -39,8 +39,6 @@ export function* previousCommitMatch(
 
     yield put(CodeActions.save());
 
-    console.log(action.payload);
-
     yield put(
       SubmissionActions.changeStateCurrentRequest(
         RequestState.COMPILE_PREVIOUS_COMMIT_CODE,

@@ -85,7 +85,7 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
   }
 
   public render() {
-    const { commitDetails, checkoutCode, maps, startMatch, save, code } = this.props;
+    const { commitDetails, checkoutCode, maps, startMatch } = this.props;
     const { isMapListOpen } = this.state;
 
     return (
@@ -141,7 +141,6 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
           style={{ width: '20%', marginLeft: '80%' }}
           className={classnames(styles.imgDiv)}
           onClick={() => {
-            save(code);
             checkoutCode();
           }}
           onMouseEnter={() => {

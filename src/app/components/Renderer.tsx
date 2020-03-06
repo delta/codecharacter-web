@@ -22,17 +22,6 @@ export default class Renderer extends React.Component<RendererInterfaces.Props, 
       clearLog,
       updateLog,
     } = this.props;
-    // tslint:disable-next-line: no-console
-    console.log(
-      'logfile:',
-      logFile,
-      'player1DL',
-      player1DebugLog,
-      'player2DL',
-      player2DebugLog,
-      'MatchPlayerId',
-      matchPlayerId,
-    );
 
     return (
       <div style={{ height, display: 'flex', width: '100%', alignItems: 'center' }}>

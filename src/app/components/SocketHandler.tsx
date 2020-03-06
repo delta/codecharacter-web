@@ -38,7 +38,8 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
           (message: { body: string }) => {
             if (message.body[0] === 'E') {
               this.props.error('Match not executed successfully');
-              this.props.updateGameLog(message.body, message.body, '');
+              // @ts-ignore
+              this.props.updateGameLog(Buffer.from(message.body), '', '');
               return;
             }
 
@@ -71,8 +72,6 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
               clearAllLogs,
             } = this.props;
             const matchPlayerId = parseInt(matchDetails.matchPlayerId, 10);
-            // tslint:disable-next-line: no-console
-            console.log(matchDetails, matchPlayerId, userId);
 
             clearDisplayDebugLog();
             clearAllLogs();
@@ -85,12 +84,12 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       // @ts-ignore
       (frame) => {
         // tslint:disable-next-line: no-console
-        console.log('Error Callback console log', frame);
+        console.log('Socker connection error', frame);
       },
       // tslint:disable-next-line
       (closeEvent: any) => {
-        const { logout } = this.props;
-        logout();
+        // const { logout } = this.props;
+        // logout();
       },
     );
   }

@@ -58,7 +58,6 @@ export function* getGameLogs(action: ActionType<typeof MatchActions.getGameLogs>
     } else {
       yield put(GameLogActions.setHideDebugLog(true));
       yield put(GameLogActions.clearDisplayDebugLog());
-      console.log('GameLOG from backend', res);
 
       const userId = yield select((state: RootState) => state.user.userId);
 
