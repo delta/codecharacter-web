@@ -30,6 +30,19 @@
   margin-bottom: 5px;
 }
 
+@media (max-width: 1000px) {
+  .arrow {
+    display: none;
+  }
+  .Leaderboard {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .chart_div {
+    padding: auto;
+  }
+}
+
 .leaderboard-wrap::-webkit-scrollbar-track {
   display: none;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -191,6 +204,8 @@
 
 .leaderboardTitle {
   padding: 0px !important;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 @keyframes revealLeaders {

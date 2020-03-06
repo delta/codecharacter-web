@@ -7,9 +7,7 @@ export class Timer extends React.Component<TimerProps, TimerState> {
     super(props);
 
     this.state = {
-      minutes: 0,
-      seconds: 0,
-      totalSeconds: this.props.timerData,
+      seconds: this.props.timerData,
     };
   }
 
@@ -24,26 +22,27 @@ export class Timer extends React.Component<TimerProps, TimerState> {
       // @ts-ignore
       this.intervalHandle = setInterval(this.tick, 1000);
     }
-    const { minutes, seconds } = this.state;
+    const { seconds } = this.state;
     return (
-      <span>{`Please wait ${minutes} minutes, ${Math.floor(
-        seconds,
-      )} seconds to initiate a match.`}</span>
+      <span>
+        {seconds > 0
+          ? `Please wait ${Math.floor(seconds)} seconds to initiate a match.`
+          : seconds === 0
+          ? 'Ready to initiate Match'
+          : 'Something went wrong'}
+      </span>
     );
   }
 
   private tick = (): void => {
-    const { totalSeconds } = this.state;
-    const min = Math.floor(totalSeconds / 60);
-    const sec = Math.floor(totalSeconds - Math.floor(totalSeconds / 60) * 60);
+    const { seconds } = this.state;
+    const sec = Math.floor(seconds - Math.floor(seconds / 60) * 60);
 
     this.setState({
-      minutes: min,
-      seconds: sec,
-      totalSeconds: totalSeconds <= 0 ? 0 : totalSeconds - 1,
+      seconds: seconds <= 0 ? 0 : seconds - 1,
     });
 
-    if (min === 0 && sec === 0) {
+    if (sec === 0) {
       clearInterval(this.intervalHandle);
       this.intervalHandle = 0;
       this.props.setTimer(0);

@@ -124,14 +124,11 @@ export function* getLeaderboardSearch(
 export function* getTimerSaga() {
   try {
     const result = yield call(LeaderboardFetch.getTimer);
-
-    if (result.type === resType.ERROR) {
-      yield put(LeaderboardActions.setTimer(0));
-    } else {
-      yield put(LeaderboardActions.setTimer(result.timer));
-    }
+    const time = Number(result);
+    yield put(LeaderboardActions.setTimer(time));
   } catch (err) {
     console.error(err);
+    yield put(LeaderboardActions.setTimer(-1));
   }
 }
 
