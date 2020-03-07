@@ -32,7 +32,17 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
       openSidePanelTab,
       logout,
       clearAllLogs,
+      notifications,
     } = this.props;
+
+    let numberOfUnreadNotifications: number = 0;
+
+    for (const notification of notifications) {
+      if (!notification.isRead) {
+        numberOfUnreadNotifications = numberOfUnreadNotifications + 1;
+      }
+    }
+
     return (
       <div className={classnames('h-100', styles.Sidebar)}>
         <ButtonGroup
@@ -133,6 +143,9 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             }
           >
             <FontAwesomeIcon icon={faBell} />
+            {numberOfUnreadNotifications > 0 ? (
+              <span className={styles.badge}>{numberOfUnreadNotifications}</span>
+            ) : null}
           </Button>
 
           <Button

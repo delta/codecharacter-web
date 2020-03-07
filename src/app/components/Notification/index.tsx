@@ -6,7 +6,6 @@ import * as NotificationInterfaces from 'app/types/Notification';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
-// tslint:disable-next-line
 
 export class Notification extends React.Component<
   NotificationInterfaces.Props,
@@ -19,9 +18,15 @@ export class Notification extends React.Component<
       tabType: NotificationInterfaces.TabType.NOTIFICATIONS,
     };
   }
-  public componentDidMount() {
-    this.props.getAllGlobalNotifications();
-    this.props.getAllGlobalAnnouncements();
+  public async componentDidMount() {
+    try {
+      await this.props.getAllGlobalNotifications();
+      this.props.getAllGlobalAnnouncements();
+      this.props.setIsRead(this.props.notifications);
+    } catch (err) {
+      // tslint:disable-next-line
+      console.log(err);
+    }
   }
 
   public render() {

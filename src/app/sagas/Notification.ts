@@ -56,6 +56,17 @@ export function* getAllGlobalAnnouncements(
   }
 }
 
+export function* setIsRead(action: ActionType<typeof NotificationActions.setIsRead>) {
+  try {
+    const notifications = action.payload.notifications;
+    for (const notification of notifications) {
+      yield call(NotificationFetch.setIsRead, notification.id);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export function* deleteNotificationFromBackend(
   action: ActionType<typeof NotificationActions.deleteNotification>,
 ) {
@@ -98,5 +109,6 @@ export function* notificationSagas() {
       NotificationActions.Type.DELETE_NOTIFICATION_TYPE,
       deleteNotificationByTypeFromBackend,
     ),
+    takeEvery(NotificationActions.Type.SET_IS_READ, setIsRead),
   ]);
 }

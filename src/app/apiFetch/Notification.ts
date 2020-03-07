@@ -81,3 +81,19 @@ export const getAllGlobalAnnouncements = () => {
       console.error(error);
     });
 };
+
+export const setIsRead = (id: number) => {
+  return fetch(`${API_BASE_URL}notifications/read/${id}`, {
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'PATCH',
+  })
+    .then((response) => jsonResponseWrapper(response))
+    .then((data) => data)
+    .catch((error) => {
+      console.error(error);
+    });
+};

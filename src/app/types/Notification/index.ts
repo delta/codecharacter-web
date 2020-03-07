@@ -73,6 +73,7 @@ export interface DispatchProps {
   deleteNotificationType: (type: NotificationTabType) => void;
   getAllGlobalNotifications: () => void;
   getAllGlobalAnnouncements: () => void;
+  setIsRead: (notifications: Notification[]) => void;
 }
 
 export type Props = StateProps & DispatchProps;

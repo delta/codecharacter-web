@@ -1,7 +1,9 @@
 import { SidePanelTab } from 'app/reducers/Dashboard';
+import { Notification } from 'app/types/Notification';
 
 export interface StateProps {
   isLoggedIn: boolean;
+  notifications: Notification[];
   sidePanelTab: SidePanelTab;
 }
 

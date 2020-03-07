@@ -70,3 +70,15 @@
 .joyRideActive {
   color: #fff;
 }
+
+.badge {
+  position: absolute;
+  background-color: aquamarine;
+  font-size: 0.8rem;
+  border-radius: 23px;
+  width: 15px;
+  height: 18px;
+  top: 0;
+  right: 2.5px;
+  color: black;
+}

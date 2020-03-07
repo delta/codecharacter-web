@@ -10,6 +10,7 @@ exports[`SideBar Container Should render 1`] = `
     closeSidePanelTab={[Function]}
     isLoggedIn={false}
     logout={[Function]}
+    notifications={Array []}
     openSidePanelTab={[Function]}
     resetAppState={[Function]}
     setIsAuthenticationOpen={[Function]}

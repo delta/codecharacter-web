@@ -9,5 +9,6 @@ exports[`Notification Container Should render Notification 1`] = `
   getAllGlobalNotifications={[Function]}
   loading={false}
   notifications={Array []}
+  setIsRead={[Function]}
 />
 `;

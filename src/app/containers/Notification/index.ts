@@ -21,6 +21,7 @@ const notificationContainer = connect<
   deleteNotificationType: NotificationActions.deleteNotificationType,
   getAllGlobalAnnouncements: NotificationActions.getAllGlobalAnnouncements,
   getAllGlobalNotifications: NotificationActions.getAllGlobalNotifications,
+  setIsRead: NotificationActions.setIsRead,
 })(Notification);
 
 export default notificationContainer;

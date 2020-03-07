@@ -17,6 +17,7 @@ export namespace NotificationActions {
     GET_UNREAD_GLOBAL_NOTIFICATIONS = 'GET_GLOBAL_NOTIFICATIONS',
     GET_ALL_GLOBAL_ANNOUNCEMENTS = 'GET_ALL_GLOBAL_ANNOUNCEMENTS',
     UPDATE_GLOBAL_ANNOUNCEMENTS = 'UPDATE_GLOBAL_ANNOUNCEMENTS',
+    SET_IS_READ = 'SET_IS_READ',
   }
 
   export const info = (message: string) =>
@@ -64,6 +65,9 @@ export namespace NotificationActions {
 
   export const updateGlobalNotifications = (notifications: NotificationInterfaces.Notification[]) =>
     action(Type.UPDATE_GLOBAL_NOTIFICATIONS, { notifications });
+
+  export const setIsRead = (notifications: NotificationInterfaces.Notification[]) =>
+    action(Type.SET_IS_READ, { notifications });
 
   export const deleteNotification = (id: number) => {
     return action(Type.DELETE_NOTIFICATION, { id });
