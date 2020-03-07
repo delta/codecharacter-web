@@ -110,8 +110,6 @@ export class LeaderboardElement extends React.Component<
     const ratingArray: number[] = [];
     const labelArray: string[] = [];
     player.rating.forEach((element) => {
-      // tslint:disable-next-line: no-console
-      console.log(player, player.rating, player.rating[0].rating.toFixed(2))
       // @ts-ignore
       ratingArray.push(element.rating.toFixed(2));
       const dateobj = new Date(element.validFrom);

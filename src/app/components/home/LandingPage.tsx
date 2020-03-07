@@ -81,7 +81,10 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
               </p>
               <p>
                 In case of any queries, discuss at the{' '}
-                <a href="https://forum.pragyan.org/t/code-character-frequently-asked-questions/20" target="_blank">
+                <a
+                  href="https://forum.pragyan.org/t/code-character-frequently-asked-questions/20"
+                  target="_blank"
+                >
                   CodeCharacter Forum
                 </a>{' '}
                 .

@@ -47,7 +47,10 @@ export class Welcome extends React.Component<
             <br />
             <b>
               Found a bug? Want a new feature? Post in the{' '}
-              <a href="https://forum.pragyan.org/t/code-character-frequently-asked-questions/20" target="_blank">
+              <a
+                href="https://forum.pragyan.org/t/code-character-frequently-asked-questions/20"
+                target="_blank"
+              >
                 Forum
               </a>
               .

@@ -14,11 +14,13 @@ import { NavBar, NavPage } from 'app/components/home/Navbar';
 import { LeaderboardElement } from 'app/components/Leaderboard/LeaderboardElement';
 import { Timer } from 'app/components/Leaderboard/Timer';
 import SocketHandler from 'app/containers/SocketHandler';
+import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Leaderboard.module.css';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import { ScaleLoader } from 'react-spinners';
 
 export class Leaderboard extends React.Component<
@@ -84,6 +86,10 @@ export class Leaderboard extends React.Component<
       updateRequest,
       isLoggedIn,
     } = this.props;
+
+    if (!isLoggedIn) {
+      return <Redirect to={Routes.LOGIN} />;
+    }
     return (
       <>
         <NavBar isLoggedIn={isLoggedIn} page={NavPage.LEADERBOARD} />

@@ -102,6 +102,8 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     mapId: number,
     commitHash: string,
   ): void {
+
+    this.props.clearAllLogs();
     // @ts-ignore
     this.stompClient.send(
       '/socket/request/match',

@@ -1,6 +1,7 @@
 import PopUpMenu from 'app/components/PopUpMenu';
 import { EditPassword } from 'app/components/UserProfileModal/EditPassword';
 import { EditProfile } from 'app/components/UserProfileModal/EditProfile';
+import { Routes } from 'app/routes';
 import * as styles from 'app/styles/UserProfileModal.module.css';
 import { AvatarId } from 'app/types/Authentication/Register';
 import * as UserProfileInterfaces from 'app/types/UserProfileModal';
@@ -46,7 +47,12 @@ export class UserProfileModal extends React.Component<
       repeatPassword,
       avatar,
     } = this.state;
-    const { userDetails } = this.props;
+    const { userDetails, isLoggedIn } = this.props;
+
+    if (!isLoggedIn) {
+      return <Redirect to={Routes.LOGIN} />;
+    }
+
     return (
       <Grid fluid={true} className={classnames(styles.UserEdit)} style={{ padding: '0' }}>
         <NavBar isLoggedIn={true} page={NavPage.PROFILE} />

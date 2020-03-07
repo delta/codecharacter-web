@@ -26,7 +26,7 @@ export const IconsComponent = ({ player }: any) => {
           top: '15px',
         }}
       >
-        {player.rating[player.rating.length - 1].rating}{' '}
+        {player.rating[player.rating.length - 1].rating.toFixed(2)}{' '}
         {player.type === 'Student' ? (
           <FontAwesomeIcon
             style={{ fontSize: 18, display: 'inline' }}
