@@ -29,7 +29,7 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
     },
     {
       answer: `
-      The Latest versions of Chrome or all the versions of Firefox except 71 can be used to play CodeCharacter!`,
+      The Latest versions of Chrome and Firefox can be used play CodeCharacter!`,
       question: 'What are the supported browsers?',
     },
   ];
