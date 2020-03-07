@@ -39,14 +39,14 @@ export class Leaderboard extends React.Component<
       isSearching: false,
       nextFetchIndex: 1,
       offset: 0,
-      pageSize: Math.floor((window.innerHeight * 0.7) / 100),
+      pageSize: Math.floor(window.innerHeight / 100),
       pattern: '',
     };
   }
 
   public componentWillMount(): void {
     this.props.clearLeaderboard();
-    const noOfElems = Math.floor((window.innerHeight * 0.7) / 100);
+    const noOfElems = Math.floor((window.innerHeight * 1.2) / 100);
     this.props.getLeaderboard(this.state.nextFetchIndex, noOfElems);
     this.props.getTimer();
   }
@@ -250,37 +250,43 @@ export class Leaderboard extends React.Component<
               <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
                 <div
                   // style={{ position: 'relative', left: '13%' }}
-                  className="col-2 text-light font-weight-bold my-auto"
+                  className="col-2 text-light font-weight-bold my-auto "
+                  style={{ textAlign: 'center' }}
                 >
                   RANK
                 </div>
                 <div
                   // style={{ position: 'relative', left: '22%' }}
                   className="col-2 text-light font-weight-bold my-auto"
+                  style={{ textAlign: 'start' }}
                 >
                   NAME
                 </div>
                 <div
                   // style={{ position: 'relative', left: '22%' }}
                   className="col-2 text-light font-weight-bold my-auto"
+                  style={{ textAlign: 'start' }}
                 >
                   RATING
                 </div>
                 <div
                   // style={{ position: 'relative', left: '49%' }}
                   className="col-2 text-light font-weight-bold my-auto"
+                  style={{ textAlign: 'start' }}
                 >
                   WON
                 </div>
                 <div
                   // style={{ position: 'relative', left: '62%' }}
                   className="col-2 text-light font-weight-bold my-auto"
+                  style={{ textAlign: 'start' }}
                 >
                   TIED
                 </div>
                 <div
                   // style={{ position: 'relative', left: '73%' }}
                   className="col-2 text-light font-weight-bold my-auto"
+                  style={{ textAlign: 'start' }}
                 >
                   LOST
                 </div>

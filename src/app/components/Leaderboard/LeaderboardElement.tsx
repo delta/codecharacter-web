@@ -110,8 +110,7 @@ export class LeaderboardElement extends React.Component<
     const ratingArray: number[] = [];
     const labelArray: string[] = [];
     player.rating.forEach((element) => {
-      // @ts-ignore
-      ratingArray.push(element.rating.toFixed(2));
+      ratingArray.push(Math.round(element.rating * 100) / 100);
       const dateobj = new Date(element.validFrom);
       labelArray.push(dateobj.toLocaleDateString('en-GB').substr(0, 5));
     });
@@ -275,21 +274,19 @@ export class LeaderboardElement extends React.Component<
           <div className={classnames(styles['player-info-2'])}>
             {!(isPlayAgainstDisabled || currentUsername === player.username) ? (
               <div style={{ fontSize: '0.55em', cursor: 'pointer' }} title={`Start match`}>
-                {this.state.onHover ? (
-                  <img
-                    src="assets/img/fight.png"
-                    width={30}
-                    height={30}
-                    className="mr-3"
-                    onClickCapture={async (e) => {
-                      // hello
-                      e.stopPropagation();
-                      await updatePlayerId2(player.userId);
-                      await updateRequest(Request.MANUAL);
-                      this.props.getTimer();
-                    }}
-                  />
-                ) : null}
+                <img
+                  src="assets/img/fight.png"
+                  width={30}
+                  height={30}
+                  className="mr-3"
+                  onClickCapture={async (e) => {
+                    // hello
+                    e.stopPropagation();
+                    await updatePlayerId2(player.userId);
+                    await updateRequest(Request.MANUAL);
+                    this.props.getTimer();
+                  }}
+                />
               </div>
             ) : null}
           </div>
