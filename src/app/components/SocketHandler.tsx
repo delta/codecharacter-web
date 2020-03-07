@@ -91,8 +91,10 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     mapId: number,
     commitHash: string,
   ): void {
-    // tslint:disable-next-line: no-console
-    console.log(`MAP ID:${mapId}, MATCH_MODE:${matchMode}`);
+    this.props.clearAllLogs();
+    this.props.clearDisplayDebugLog();
+    this.props.updateDisplayDebugLog('');
+    this.props.updateGameLog('', '', '');
     // @ts-ignore
     this.stompClient.send(
       '/socket/request/match',
