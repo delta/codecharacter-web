@@ -41,7 +41,6 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
               this.props.clearAllLogs();
               this.props.clearDisplayDebugLog();
               this.props.updateDisplayDebugLog(message.body);
-              this.props.updateGameLog('', '', '');
               return;
             }
 

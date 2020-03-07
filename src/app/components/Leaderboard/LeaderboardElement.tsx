@@ -110,7 +110,8 @@ export class LeaderboardElement extends React.Component<
     const ratingArray: number[] = [];
     const labelArray: string[] = [];
     player.rating.forEach((element) => {
-      ratingArray.push(Math.round((element.rating + Number.EPSILON) * 100) / 100);
+      // @ts-ignore
+      ratingArray.push(element.rating.toFixed(2));
       const dateobj = new Date(element.validFrom);
       labelArray.push(dateobj.toLocaleDateString('en-GB').substr(0, 5));
     });
