@@ -1,4 +1,4 @@
-import { DashboardActions, UserActions } from 'app/actions';
+import { DashboardActions, NotificationActions, UserActions } from 'app/actions';
 import { Dashboard } from 'app/components/Dashboard';
 import { RootState } from 'app/reducers';
 import { SidePanelTab } from 'app/reducers/Dashboard';
@@ -24,6 +24,7 @@ const mapStateToProps = (rootState: RootState) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     closeWelcomeModal: () => dispatch(DashboardActions.setIsWelcomeModalOpen(false)),
+    getAllGlobalNotifications: () => dispatch(NotificationActions.getAllGlobalNotifications()),
     setIsAuthenticationOpen: (isAuthenticationOpen: boolean) =>
       dispatch(UserActions.setIsAuthenticationOpen(isAuthenticationOpen)),
     toggleReactTour: () => dispatch(DashboardActions.toggleReactTour()),

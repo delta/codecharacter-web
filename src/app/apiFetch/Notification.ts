@@ -83,12 +83,9 @@ export const getAllGlobalAnnouncements = () => {
 };
 
 export const setIsRead = (id: number) => {
-  return fetch(`${API_BASE_URL}notifications/read/${id}`, {
+  return fetch(`${API_BASE_URL}notifications/read/${id}/`, {
     credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
+    headers: setRequestHeaders(),
     method: 'PATCH',
   })
     .then((response) => jsonResponseWrapper(response))

@@ -41,6 +41,7 @@ export interface DispatchProps {
   setIsAuthenticationOpen: (isAuthenticationOpen: boolean) => void;
   toggleReactTour: () => void;
   closeWelcomeModal: () => void;
+  getAllGlobalNotifications: () => void;
 }
 
 export type Props = StateProps & DispatchProps;

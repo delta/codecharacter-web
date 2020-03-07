@@ -62,6 +62,7 @@ export function* setIsRead(action: ActionType<typeof NotificationActions.setIsRe
     for (const notification of notifications) {
       yield call(NotificationFetch.setIsRead, notification.id);
     }
+    yield call(NotificationActions.getAllGlobalNotifications);
   } catch (err) {
     console.error(err);
   }

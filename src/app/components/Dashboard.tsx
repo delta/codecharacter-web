@@ -59,6 +59,7 @@ export class Dashboard extends React.Component<
         isReactTourActive: true,
       });
     }
+    this.props.getAllGlobalNotifications();
     ReactGA.initialize(GOOGLE_ANALYTICS_TRACKING_ID);
     ReactGA.pageview('/');
   }
