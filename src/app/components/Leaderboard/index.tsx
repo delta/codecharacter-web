@@ -252,7 +252,7 @@ export class Leaderboard extends React.Component<
                   // style={{ position: 'relative', left: '22%' }}
                   className="col-2 text-light font-weight-bold my-auto"
                 >
-                  Name
+                  NAME
                 </div>
                 <div
                   // style={{ position: 'relative', left: '22%' }}
