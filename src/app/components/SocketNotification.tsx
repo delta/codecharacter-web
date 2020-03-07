@@ -1,37 +1,46 @@
-import 'app/styles/ReactToastNotifications.css';
 import { useToasts } from 'react-toast-notifications';
+import * as SocketNotificationInterfaces from 'app/types/SocketNotification';
+import React from 'react';
 
-let message=''
-let result=''
-const { addToast } = useToasts();
+export class SocketNotification extends React.Component<SocketNotificationInterfaces.Props, {}>{
+    constructor(props:SocketNotificationInterfaces.Props){
+        super(props);
+    }
 
-addToast(message, { appearance: 'info', autoDismiss: true });
+    public useHooks = () =>{
+        const {notification}=this.props;
 
-addToast(message, { appearance: 'success', autoDismiss: true });
+        const { addToast } = useToasts();
 
-addToast(message, { appearance: 'error', autoDismiss: true });
+        addToast(notification, { appearance: 'info', autoDismiss: true });
 
-addToast('Connected to Server!', { appearance: 'success', autoDismiss: true });
+        addToast(notification, { appearance: 'success', autoDismiss: true });
 
-addToast(message, { appearance: 'info', autoDismiss: true });
+        addToast(notification, { appearance: 'error', autoDismiss: true });
 
-addToast('Compiled Successfully!', { appearance: 'success', autoDismiss: true });
+        addToast('Connected to Server!', { appearance: 'success', autoDismiss: true });
 
-addToast(`Compile Error: ${message}`, { appearance: 'error', autoDismiss: true }),
+        addToast(notification, { appearance: 'info', autoDismiss: true });
 
-addToast(message, { appearance: 'info', autoDismiss: true });
+        addToast('Compiled Successfully!', { appearance: 'success', autoDismiss: true });
 
-addToast(message, { appearance: 'error', autoDismiss: true });
+        addToast(`Compile Error: ${notification}`, { appearance: 'error', autoDismiss: true }),
 
-addToast(result, { appearance: 'success', autoDismiss: true });
+        addToast(notification, { appearance: 'info', autoDismiss: true });
 
-addToast(result, { appearance: 'error', autoDismiss: true });
+        addToast(notification, { appearance: 'error', autoDismiss: true });
 
-addToast('Match Executed Successfully!', { appearance: 'success', autoDismiss: true })
+        // addToast(result, { appearance: 'success', autoDismiss: true });
+        // Have no Idea why result is being used
+        // addToast(result, { appearance: 'error', autoDismiss: true });
 
-addToast(message, { appearance: 'info', autoDismiss: true });
+        addToast('Match Executed Successfully!', { appearance: 'success', autoDismiss: true })
 
-addToast(`Debug Run Error: ${message}`, { appearance: 'error', autoDismiss: true }),
+        addToast(notification, { appearance: 'info', autoDismiss: true });
 
-addToast('Disconnected', { appearance: 'error', autoDismiss: true });
+        addToast(`Debug Run Error: ${notification}`, { appearance: 'error', autoDismiss: true }),
+
+        addToast('Disconnected', { appearance: 'error', autoDismiss: true });
+    }
+}
 
