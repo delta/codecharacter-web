@@ -1,4 +1,5 @@
 import { SubmissionActions } from 'app/actions';
+import * as SubmitBarInterfaces from 'app/types/SubmitBar';
 import { ActionType } from 'typesafe-actions';
 
 const actions = {
@@ -11,6 +12,7 @@ const actions = {
   updateDebugRunCode: SubmissionActions.updateDebugRunCode,
   updateDebugRunCommitHash: SubmissionActions.updateDebugRunCommitHash,
   updateDebugRunRequest: SubmissionActions.updateDebugRunRequest,
+  updateMap: SubmissionActions.updateMap,
   updateMapId: SubmissionActions.updateMapId,
 };
 
@@ -43,6 +45,7 @@ export interface SubmissionStoreState {
   debugRunCommitHash: string;
   mapId: number;
   maps: Map[];
+  selectedMap: SubmitBarInterfaces.Map;
 }
 
 export interface Map {

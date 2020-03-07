@@ -1,4 +1,5 @@
 import * as SubmissionInterfaces from 'app/types/code/Submission';
+import * as SubmitBarInterfaces from 'app/types/SubmitBar';
 import { action } from 'typesafe-actions';
 
 export namespace SubmissionActions {
@@ -12,6 +13,7 @@ export namespace SubmissionActions {
     HANDLE_EXECUTE_ERROR = 'HANDLE_EXECUTE_ERROR',
     HANDLE_DEBUG_RUN_SUCCESS = 'HANDLE_DEBUG_RUN_SUCCESS',
     HANDLE_DEBUG_RUN_ERROR = 'HANDLE_DEBUG_RUN_ERROR',
+    UPDATE_MAP = 'UPDATE_MAP',
     UPDATE_MAP_ID = 'UPDATE_MAP_ID',
     UPDATE_CURRENT_AI_ID = 'UPDATE_CURRENT_AI_ID',
     UPDATE_DEBUG_RUN_REQUEST = 'UPDATE_DEBUG_RUN_REQUEST',
@@ -57,6 +59,8 @@ export namespace SubmissionActions {
     action(Type.HANDLE_DEBUG_RUN_SUCCESS, { stackTrace });
 
   export const handleDebugRunError = () => action(Type.HANDLE_EXECUTE_ERROR);
+
+  export const updateMap = (map: SubmitBarInterfaces.Map) => action(Type.UPDATE_MAP, { map });
 
   export const updateMapId = (mapId: number) => action(Type.UPDATE_MAP_ID, { mapId });
 

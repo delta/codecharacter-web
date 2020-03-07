@@ -10,6 +10,7 @@ const mapStateToProps = (rootState: RootState) => {
   return {
     aiIds: rootState.submission.aiIds,
     debugRunAvailable: rootState.submission.debugRunRequest !== Request.NONE,
+    map: rootState.submission.selectedMap,
     maps: rootState.submission.maps,
   };
 };
@@ -29,6 +30,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     lockCode: () => dispatch(SubmissionActions.lockCode()),
     saveCode: () => dispatch(CodeActions.save()),
     selfMatch: (mapId: number) => dispatch(SubmissionActions.selfMatch(mapId)),
+    updateMap: (map: SubmitBarInterfaces.Map) => dispatch(SubmissionActions.updateMap(map)),
   };
 };
 

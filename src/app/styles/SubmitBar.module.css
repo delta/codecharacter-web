@@ -6,6 +6,7 @@
   position: fixed;
   box-sizing: border-box;
   z-index: 1;
+  transition: 2s ease-in;
 }
 
 .SubmitBar .customBtn {
@@ -47,4 +48,35 @@
 .toggleIcon {
   padding-right: 0px;
   border-right: 0px;
+}
+
+.mapDropdown {
+  width: 100px;
+  height: 168px;
+  background-color: #525252;
+  color: white;
+  margin-left: 90px;
+  margin-top: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: max-height 0.7s ease;
+}
+
+.mapDropdownInactive {
+  display: none;
+}
+
+.mapItem {
+  width: 100%;
+  margin-top: 3px;
+  text-align: center;
+  height: 30px;
+}
+
+.mapItem:hover {
+  background-color: #292929;
+}
+.mapItemActive {
+  background-color: #292929;
 }

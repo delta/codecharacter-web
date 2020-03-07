@@ -2,13 +2,23 @@ import { SubmissionActions } from 'app/actions';
 import * as SubmissionInterfaces from 'app/types/code/Submission';
 import { SplitPaneState } from 'app/types/Dashboard';
 
+export enum Map {
+  MAP1,
+  MAP2,
+  MAP3,
+  MAP4,
+  MAP5,
+}
+
 export interface State {
   commitMessage: string;
   isCommitMessageBoxOpen: boolean;
   isRunOptionsOpen: boolean;
+  isMapOptionsOpen: boolean;
 }
 
 export interface StateProps {
+  map: Map;
   maps: SubmissionInterfaces.Map[];
   debugRunAvailable: boolean;
   aiIds: number[];
@@ -25,6 +35,7 @@ export interface DispatchProps {
   loadMaps: () => void;
   getAiIds: () => void;
   clearLogs: () => void;
+  updateMap: (map: Map) => void;
 }
 
 export interface RunOptionsOwnState {
