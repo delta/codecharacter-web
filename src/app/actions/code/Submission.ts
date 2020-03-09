@@ -29,6 +29,7 @@ export namespace SubmissionActions {
     UPDATE_COMMIT_HASH = 'UPDATE_COMMIT_HASH',
     UPDATE_PLAYER_ID2 = 'UPDATE_PLAYER_ID2',
     RESET_SUBMISSION_STATE = 'RESET_SUBMISSION_STATE',
+    TOGGLE_LOCK_CODE = 'TOGGLE_LOCK_CODE',
   }
 
   export const changeState = (state: SubmissionInterfaces.RequestState) =>
@@ -107,4 +108,6 @@ export namespace SubmissionActions {
   export const updatePlayerId2 = (playerId2: number) => {
     return action(Type.UPDATE_PLAYER_ID2, { playerId2 });
   };
+
+  export const toggleLockCode = () => action(Type.TOGGLE_LOCK_CODE);
 }

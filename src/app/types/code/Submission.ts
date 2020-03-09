@@ -7,6 +7,7 @@ const actions = {
   logout: UserActions.logout,
   resetSubmissionState: SubmissionActions.resetSubmissionState,
   saveMaps: SubmissionActions.saveMaps,
+  toggleLockCode: SubmissionActions.toggleLockCode,
   updateAiIds: SubmissionActions.updateAiIds,
   updateCommitHash: SubmissionActions.updateCommitHash,
   updateCurrentAiId: SubmissionActions.updateCurrentAiId,
@@ -50,6 +51,7 @@ export interface SubmissionStoreState {
   commitHash: string;
   playerId1: number;
   playerId2: number;
+  isCodeLocked: boolean;
 }
 
 export interface Map {

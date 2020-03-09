@@ -120,6 +120,12 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     );
   }
 
+  public lockCode(): void {
+    // @ts-ignore
+    this.stompClient.send('/socket/request/code/submit');
+    this.props.toggleLockCode();
+  }
+
   public componentDidUpdate() {
     // tslint:disable-next-line: no-console
     const {
@@ -130,6 +136,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       currentAiId,
       updateRequest,
       userId,
+      isCodeLocked,
     } = this.props;
     switch (request) {
       case SubmissionInterfaces.Request.PREVIOUS_COMMIT_MATCH: {
@@ -176,6 +183,10 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
         updateRequest(SubmissionInterfaces.Request.NONE);
         break;
       }
+    }
+
+    if (isCodeLocked) {
+      this.lockCode();
     }
   }
 

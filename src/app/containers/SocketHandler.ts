@@ -12,6 +12,7 @@ const mapStateToProps = (rootState: RootState) => {
     announcements: rootState.notification.announcements,
     commitHash: rootState.submission.commitHash,
     currentAiId: rootState.submission.currentAiId,
+    isCodeLocked: rootState.submission.isCodeLocked,
     isNotificationPresent: rootState.user.isNotificationPresent,
     isSocketPresent: rootState.user.isSocketPresent,
     loading: rootState.notification.loading,
@@ -56,6 +57,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     sendInfo: (message: string) => dispatch(NotificationActions.info(message)),
     sendSuccess: (message: string) => dispatch(NotificationActions.success(message)),
     success: (message: string) => dispatch(NotificationActions.success(message)),
+    toggleLockCode: () => dispatch(SubmissionActions.toggleLockCode()),
     updateDisplayDebugLog: (log: string) => dispatch(GameLogActions.updateDisplayDebugLog(log)),
     updateGameLog: (player1DebugLog: string, player2DebugLog: string, gameLog: string) =>
       dispatch(GameLogActions.updateGameLog(player1DebugLog, player2DebugLog, gameLog)),

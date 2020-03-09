@@ -8,6 +8,7 @@ const submissionStoreState: SubmissionInterfaces.SubmissionStoreState = {
   debugRunCode: '',
   debugRunCommitHash: 'latest',
   debugRunRequest: SubmissionInterfaces.Request.NONE,
+  isCodeLocked: false,
   mapId: 1,
   maps: [],
   playerId1: 1,
@@ -90,6 +91,11 @@ export const submissionReducer = (
     case SubmissionActions.Type.RESET_SUBMISSION_STATE:
       return {
         ...submissionStoreState,
+      };
+    case SubmissionActions.Type.TOGGLE_LOCK_CODE:
+      return {
+        ...submissionStoreState,
+        isCodeLocked: !state.isCodeLocked,
       };
     default:
       return state;

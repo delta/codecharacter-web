@@ -26,6 +26,7 @@ export interface DispatchProps {
   sendInfo: (message: string) => void;
   sendSuccess: (message: string) => void;
   success: (message: string) => void;
+  toggleLockCode: () => void;
   updateDisplayDebugLog: (log: string) => void;
   updateGameLog: (player1DebugLog: string, player2DebugLog: string, gameLog: string) => void;
   updateGlobalAnnouncements: (announcements: NotificationInterfaces.Announcement[]) => void;
@@ -63,6 +64,7 @@ export interface StateProps {
   request: SubmissionInterfaces.Request;
   socketMessage: string;
   userId: number;
+  isCodeLocked: boolean;
 }
 
 export type Props = DispatchProps & StateProps;
