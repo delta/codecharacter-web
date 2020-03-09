@@ -9,6 +9,7 @@ export interface DispatchProps {
   sendInfo: (message: string) => void;
   sendSuccess: (message: string) => void;
   success: (message: string) => void;
+  toggleLockCode: () => void;
   updateDisplayDebugLog: (log: string) => void;
   updateGameLog: (player1DebugLog: string, player2DebugLog: string, gameLog: string) => void;
   updateMatchPlayerId: (matchPlayerId: number) => void;
@@ -39,6 +40,7 @@ export interface StateProps {
   playerId2: number;
   request: SubmissionInterfaces.Request;
   userId: number;
+  isCodeLocked: boolean;
 }
 
 export type Props = DispatchProps;

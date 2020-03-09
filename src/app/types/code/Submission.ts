@@ -6,6 +6,7 @@ const actions = {
   changeState: SubmissionActions.changeState,
   resetSubmissionState: SubmissionActions.resetSubmissionState,
   saveMaps: SubmissionActions.saveMaps,
+  toggleLockCode: SubmissionActions.toggleLockCode,
   updateAiIds: SubmissionActions.updateAiIds,
   updateCommitHash: SubmissionActions.updateCommitHash,
   updateCurrentAiId: SubmissionActions.updateCurrentAiId,
@@ -46,6 +47,10 @@ export interface SubmissionStoreState {
   debugRunCommitHash: string;
   mapId: number;
   maps: Map[];
+  commitHash: string;
+  playerId1: number;
+  playerId2: number;
+  isCodeLocked: boolean;
 }
 
 export interface Map {

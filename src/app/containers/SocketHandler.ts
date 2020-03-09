@@ -6,7 +6,22 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 const mapStateToProps = (rootState: RootState) => {
-  return {};
+  return {
+    announcements: rootState.notification.announcements,
+    commitHash: rootState.submission.commitHash,
+    currentAiId: rootState.submission.currentAiId,
+    isCodeLocked: rootState.submission.isCodeLocked,
+    isNotificationPresent: rootState.user.isNotificationPresent,
+    isSocketPresent: rootState.user.isSocketPresent,
+    loading: rootState.notification.loading,
+    mapId: rootState.submission.mapId,
+    notifications: rootState.notification.notifications,
+    playerId1: rootState.submission.playerId1,
+    playerId2: rootState.submission.playerId2,
+    request: rootState.submission.request,
+    socketMessage: rootState.user.socketMessage,
+    userId: rootState.user.userId,
+  };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -24,6 +39,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     sendInfo: (message: string) => dispatch(NotificationActions.info(message)),
     sendSuccess: (message: string) => dispatch(NotificationActions.success(message)),
     success: (message: string) => dispatch(NotificationActions.success(message)),
+    toggleLockCode: () => dispatch(SubmissionActions.toggleLockCode()),
     updateDisplayDebugLog: (log: string) => dispatch(GameLogActions.updateDisplayDebugLog(log)),
     updateGameLog: (player1DebugLog: string, player2DebugLog: string, gameLog: string) =>
       dispatch(GameLogActions.updateGameLog(player1DebugLog, player2DebugLog, gameLog)),
