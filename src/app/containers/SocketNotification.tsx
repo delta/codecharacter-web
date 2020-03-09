@@ -10,7 +10,7 @@ const mapStateToProps = (rootState: RootState) => {
     isNotificationPresent: rootState.user.isNotificationPresent,
     isSocketPresent: rootState.user.isSocketPresent,
     notification: rootState.user.notification,
-    socketMessage: rootState.user.socketMessage
+    socketMessage: rootState.user.socketMessage,
   };
 };
 
@@ -18,7 +18,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     toggleIsNotificationPresent: () => dispatch(UserActions.toggleIsNotificationPresent()),
     toggleIsSocketPresent: () => dispatch(UserActions.toggleIsSocketPresent()),
-    updateNotification: (notification: string) => dispatch(UserActions.updateNotification(notification)),
+    updateNotification: (notification: string) =>
+      dispatch(UserActions.updateNotification(notification)),
     updateSocketMessage: (message: string) => dispatch(UserActions.updateSocketMessage(message)),
   };
 };
