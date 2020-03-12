@@ -49,10 +49,10 @@ export class RunOptions extends React.Component<
 
     const maps = this.props.maps || hardCodedMap;
 
-    // const hardCodedAiIds: number[] = [1];
+    const hardCodedAiIds: number[] = [1];
 
-    // @ts-ignore
-    // const aiIds = hardCodedAiIds;
+    @ts-ignore
+    const aiIds = hardCodedAiIds;
 
     const matchOptions = [
       {
@@ -63,16 +63,16 @@ export class RunOptions extends React.Component<
       },
     ];
 
-    // if (aiIds) {
-    //   aiIds.map((aiId) => {
-    //     matchOptions.push({
-    //       aiId,
-    //       icon: <FontAwesomeIcon icon={faRobot} />,
-    //       name: `AI ${aiId} Match`,
-    //       type: SubmissionActions.Type.AI_MATCH,
-    //     });
-    //   });
-    // }
+    if (aiIds) {
+      aiIds.map((aiId) => {
+        matchOptions.push({
+          aiId,
+          icon: <FontAwesomeIcon icon={faRobot} />,
+          name: `AI ${aiId} Match`,
+          type: SubmissionActions.Type.AI_MATCH,
+        });
+      });
+    }
 
     const mapOptions = (
       <div className={classnames(styles['dropdown-submenu'])}>
