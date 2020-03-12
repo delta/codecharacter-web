@@ -39,15 +39,14 @@ export class Leaderboard extends React.Component<
       isSearching: false,
       nextFetchIndex: 1,
       offset: 0,
-      pageSize: Math.floor(window.innerHeight / 100),
+      pageSize: 10,
       pattern: '',
     };
   }
 
   public componentWillMount(): void {
     this.props.clearLeaderboard();
-    const noOfElems = Math.floor((window.innerHeight * 1.2) / 100);
-    this.props.getLeaderboard(this.state.nextFetchIndex, noOfElems);
+    this.props.getLeaderboard(this.state.nextFetchIndex, 10);
     this.props.getTimer();
   }
 
