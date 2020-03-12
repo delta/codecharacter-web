@@ -9,7 +9,7 @@ export const getMatches = (pageNo: number, pageSize: number) => {
     method: 'GET',
   })
     .then((response) => {
-      return response.json();
+      return jsonResponseWrapper(response);
     })
     .then((data) => {
       return data;
@@ -29,7 +29,7 @@ export const getTopMatches = (pageNo: number, pageSize: number) => {
     method: 'GET',
   })
     .then((response) => {
-      return response.json();
+      return jsonResponseWrapper(response);
     })
     .then((data) => {
       return data;

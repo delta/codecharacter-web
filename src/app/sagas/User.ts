@@ -85,10 +85,7 @@ export function* logout(action: ActionType<typeof UserActions.logout>) {
   try {
     const res = yield call(UserFetch.userLogout);
 
-    const isAuthenticated = yield checkAuthentication({
-      error: res.error,
-      type: res.type,
-    });
+    const isAuthenticated = yield checkAuthentication(res);
     if (isAuthenticated === false) return;
 
     yield put(UserActions.updateErrorMessage(res.message));
@@ -112,6 +109,12 @@ export function* logout(action: ActionType<typeof UserActions.logout>) {
 export function* register(action: ActionType<typeof UserActions.register>) {
   try {
     const res = yield call(UserFetch.userRegister, action.payload.registerDetails);
+
+    const isAuthenticated = yield checkAuthentication(res);
+
+    if (isAuthenticated === false) {
+      return;
+    }
 
     // res.error has error string if type = 'Error', else empty
     yield put(UserActions.updateErrorMessage(res.error ? res.body.message : ''));
@@ -139,6 +142,7 @@ export function* register(action: ActionType<typeof UserActions.register>) {
 export function* getUserDetails(action: ActionType<typeof UserActions.getUserDetails>) {
   try {
     const res = yield call(UserFetch.userGetDetails);
+
     // res.error has error string if type = 'Error', else empty
     yield put(UserActions.updateErrorMessage(res.error));
     const isAuthenticated = yield checkAuthentication(res);
@@ -229,6 +233,12 @@ export function* checkEmailExists(action: ActionType<typeof UserActions.checkEma
 export function* checkUsernameExists(action: ActionType<typeof UserActions.checkUsernameExists>) {
   try {
     const res = yield call(UserFetch.checkUsernameExists, action.payload.username);
+
+    const isAuthenticated = yield checkAuthentication(res);
+
+    if (isAuthenticated === false) {
+      return;
+    }
 
     // Call returns error if email already exists, else empty
     yield put(UserActions.updateErrorMessage(res.error));

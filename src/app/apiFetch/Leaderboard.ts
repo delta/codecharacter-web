@@ -1,5 +1,5 @@
 /* tslint:disable:no-console*/
-import { jsonResponseWrapper } from 'app/apiFetch/utils';
+import { jsonResponseWrapper, textResponseWrapper } from 'app/apiFetch/utils';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import { API_BASE_URL } from '../../config/config';
 
@@ -120,7 +120,7 @@ export const getTimer = () => {
     },
     method: 'GET',
   })
-    .then((response) => response.text())
+    .then((response) => textResponseWrapper(response))
     .then((data) => data)
     .catch((err) => {
       console.error(err);

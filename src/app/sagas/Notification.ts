@@ -18,7 +18,11 @@ export function* getUnreadGlobalNotifications(
       return;
     }
 
-    const notifications = res.notifications;
+    const notifications = res.body.notifications;
+
+    if (notifications && notifications.length > 0) {
+      yield put(NotificationActions.info('You have some unread notifications'));
+    }
 
     notifications.forEach((notification: Notification) => {
       NotificationActions.info(notification.message);
@@ -37,6 +41,11 @@ export function* getAllGlobalNotifications(
 ) {
   try {
     const res = yield call(NotificationFetch.getAllGlobalNotifications);
+    const isAuthenticated = yield checkAuthentication(res);
+
+    if (isAuthenticated === false) {
+      return;
+    }
     const notifications = res.body;
     yield put(NotificationActions.updateGlobalNotifications(notifications));
   } catch (err) {
@@ -49,8 +58,17 @@ export function* getAllGlobalAnnouncements(
 ) {
   try {
     const res = yield call(NotificationFetch.getAllGlobalAnnouncements);
+
+    const isAuthenticated = yield checkAuthentication(res);
+
+    if (isAuthenticated === false) {
+      return;
+    }
     const announcements = res.body;
     yield put(NotificationActions.updateGlobalAnnouncements(announcements));
+    if (announcements && announcements.length > 0) {
+      yield put(NotificationActions.info('You have some unread announcements'));
+    }
   } catch (err) {
     console.error(err);
   }

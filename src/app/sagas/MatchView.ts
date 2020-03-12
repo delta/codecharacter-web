@@ -16,9 +16,9 @@ export function* getMatches(action: ActionType<typeof MatchActions.getMatches>) 
     const isAuthenticated = yield checkAuthentication(res);
     if (isAuthenticated === false) return;
 
-    if (isArray(res)) {
+    if (isArray(res.body)) {
       const username = yield select((state: RootState) => state.user.username);
-      const matchData = mapMatchResponse(res, username);
+      const matchData = mapMatchResponse(res.body, username);
       yield put(MatchActions.updateMatches(matchData));
     } else yield put(NotificationActions.error(res.message));
   } catch (err) {
@@ -39,9 +39,9 @@ export function* getTopMatches(action: ActionType<typeof MatchActions.getTopMatc
     const isAuthenticated = yield checkAuthentication(res);
     if (isAuthenticated === false) return;
 
-    if (isArray(res)) {
+    if (isArray(res.body)) {
       const username = yield select((state: RootState) => state.user.username);
-      const matchData = mapMatchResponse(res, username);
+      const matchData = mapMatchResponse(res.body, username);
       yield put(MatchActions.updateTopMatches(matchData));
     } else yield put(NotificationActions.error(res.message));
   } catch (err) {
@@ -52,6 +52,8 @@ export function* getTopMatches(action: ActionType<typeof MatchActions.getTopMatc
 export function* getGameLogs(action: ActionType<typeof MatchActions.getGameLogs>) {
   try {
     const res = yield call(MatchFetch.getGameLogs, action.payload.gameId);
+    const isAuthenticated = yield checkAuthentication(res);
+    if (isAuthenticated === false) return;
 
     if (res.type === resType.ERROR) {
       yield put(MatchActions.updateError(res.error));

@@ -1,6 +1,7 @@
 /* tslint:disable:no-console*/
 import { LeaderboardActions, SubmissionActions } from 'app/actions';
 import * as LeaderboardFetch from 'app/apiFetch/Leaderboard';
+import { checkAuthentication } from 'app/sagas/utils';
 import { Request } from 'app/types/code/Submission';
 import { resType } from 'app/types/sagas';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
@@ -13,6 +14,8 @@ export function* getLeaderboard(action: ActionType<typeof LeaderboardActions.get
       pageNo: action.payload.pageNo,
       pageSize: action.payload.pageSize,
     });
+    const isAuthenticated = yield checkAuthentication(result);
+    if (isAuthenticated === false) return;
     yield put(LeaderboardActions.updateError(result.error));
     if (result.type !== resType.ERROR) {
       yield put(
@@ -36,6 +39,8 @@ export function* getLeaderboardByDiv(
       pageNo: action.payload.pageNo,
       pageSize: action.payload.pageSize,
     });
+    const isAuthenticated = yield checkAuthentication(result);
+    if (isAuthenticated === false) return;
     yield put(LeaderboardActions.updateError(result.error));
     if (result.type !== resType.ERROR) {
       yield put(
@@ -59,6 +64,8 @@ export function* getLeaderboardByUserType(
       pageNo: action.payload.pageNo,
       pageSize: action.payload.pageSize,
     });
+    const isAuthenticated = yield checkAuthentication(result);
+    if (isAuthenticated === false) return;
     yield put(LeaderboardActions.updateError(result.error));
     if (result.type !== resType.ERROR) {
       yield put(
@@ -83,6 +90,8 @@ export function* getLeaderboardLeaderboardByDivAndType(
       pageNo: action.payload.pageNo,
       pageSize: action.payload.pageSize,
     });
+    const isAuthenticated = yield checkAuthentication(result);
+    if (isAuthenticated === false) return;
     yield put(LeaderboardActions.updateError(result.error));
     if (result.type !== resType.ERROR) {
       yield put(
@@ -107,6 +116,8 @@ export function* getLeaderboardSearch(
       pageSize: action.payload.pageSize,
       username: action.payload.username,
     });
+    const isAuthenticated = yield checkAuthentication(result);
+    if (isAuthenticated === false) return;
     yield put(LeaderboardActions.updateError(result.okay));
 
     if (result.type !== resType.ERROR) {
@@ -124,7 +135,9 @@ export function* getLeaderboardSearch(
 export function* getTimerSaga() {
   try {
     const result = yield call(LeaderboardFetch.getTimer);
-    const time = Number(result);
+    const isAuthenticated = yield checkAuthentication(result);
+    if (isAuthenticated === false) return;
+    const time = Number(result.body);
     yield put(LeaderboardActions.setTimer(time));
   } catch (err) {
     console.error(err);

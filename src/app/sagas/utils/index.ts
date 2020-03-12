@@ -4,12 +4,13 @@ import * as MatchVewInterfaces from 'app/types/MatchView';
 import { put } from 'redux-saga/effects';
 
 export interface ResponseStructure {
+  status: number | undefined;
   type: string | undefined;
   error: string | undefined;
 }
 
 export function* checkAuthentication(result: ResponseStructure) {
-  if (result && result.error && result.error === 'Unauthorised') {
+  if (result && (result.status === 401 || result.status === 403)) {
     yield put(
       UserActions.updateUserDetails({
         country: '',
@@ -18,7 +19,6 @@ export function* checkAuthentication(result: ResponseStructure) {
         username: '',
       }),
     );
-    yield put(UserActions.setIsAuthenticationOpen(true));
     return false;
   }
   return true;

@@ -27,6 +27,7 @@ export function jsonResponseWrapper(response: any) {
         error,
         type,
         body: data,
+        status: response.status,
       });
     });
   });
@@ -72,6 +73,7 @@ export function headResponseWrapper(response: any, headReqType: HeadReqType) {
       error,
       type,
       body: response.text(),
+      status: response.status,
     });
   });
 }
@@ -99,6 +101,7 @@ export function textResponseWrapper(response: any) {
         error,
         type,
         body: data,
+        status: response.status,
       });
     });
   });
