@@ -9,10 +9,7 @@ export const getMatches = (pageNo: number, pageSize: number) => {
     method: 'GET',
   })
     .then((response) => {
-      console.log('match response');
-      console.log(response);
-
-      return response.json();
+      return jsonResponseWrapper(response);
     })
     .then((data) => {
       return data;
@@ -32,10 +29,7 @@ export const getTopMatches = (pageNo: number, pageSize: number) => {
     method: 'GET',
   })
     .then((response) => {
-      console.log('top response');
-      console.log(response);
-
-      return response.json();
+      return jsonResponseWrapper(response);
     })
     .then((data) => {
       return data;
@@ -52,7 +46,6 @@ export const getGameLogs = (gameId: number) => {
     method: 'GET',
   })
     .then((response) => {
-      console.log(response);
       return jsonResponseWrapper(response);
     })
     .then((data) => data)

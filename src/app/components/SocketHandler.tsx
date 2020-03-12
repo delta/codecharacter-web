@@ -65,8 +65,6 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
               clearAllLogs,
             } = this.props;
             const matchPlayerId = parseInt(matchDetails.matchPlayerId, 10);
-            // tslint:disable-next-line: no-console
-            console.log(matchDetails, matchPlayerId, userId);
 
             clearDisplayDebugLog();
             clearAllLogs();
@@ -128,8 +126,6 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
     } = this.props;
     switch (request) {
       case SubmissionInterfaces.Request.PREVIOUS_COMMIT_MATCH: {
-        // tslint:disable-next-line: no-console
-        console.log('INITIATING MATCH:PREVIOUS_COMMIT_MATCH');
         this.initiateMatch(
           userId,
           userId,
@@ -141,8 +137,6 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
         break;
       }
       case SubmissionInterfaces.Request.AI_MATCH: {
-        // tslint:disable-next-line: no-console
-        console.log('INITIATING MATCH:AI_MATCH');
         this.initiateMatch(
           playerId1,
           playerId2,
@@ -154,8 +148,6 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
         break;
       }
       case SubmissionInterfaces.Request.SELF_MATCH: {
-        // tslint:disable-next-line: no-console
-        console.log('INITIATING MATCH:SELF_MATCH');
         this.initiateMatch(
           userId,
           playerId2,

@@ -15,8 +15,6 @@ export enum HeadReqType {
  */
 export function jsonResponseWrapper(response: any) {
   return response.json().then((data: any) => {
-    // tslint:disable-next-line: no-console
-    console.log(data);
     return new Promise((resolve, reject) => {
       let type: string = resType.SUCCESS;
       let error: string = '';
@@ -29,6 +27,7 @@ export function jsonResponseWrapper(response: any) {
         error,
         type,
         body: data,
+        status: response.status,
       });
     });
   });
@@ -74,6 +73,7 @@ export function headResponseWrapper(response: any, headReqType: HeadReqType) {
       error,
       type,
       body: response.text(),
+      status: response.status,
     });
   });
 }
@@ -101,6 +101,7 @@ export function textResponseWrapper(response: any) {
         error,
         type,
         body: data,
+        status: response.status,
       });
     });
   });
