@@ -1,4 +1,8 @@
+import { faCodeBranch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { CommitMessageBox } from 'app/components/SubmitBar/CommitMessageBox';
 import * as styles from 'app/styles/CodeStatus.module.css';
+import * as Commitstyles from 'app/styles/SubmitBar.module.css';
 import * as CodeStatusInterfaces from 'app/types/code/CodeStatus';
 import classnames from 'classnames';
 import * as React from 'react';
@@ -11,6 +15,8 @@ export class CodeStatus extends React.Component<
   public constructor(props: CodeStatusInterfaces.Props) {
     super(props);
     this.state = {
+      commitMessage: '',
+      isCommitMessageBoxOpen: false,
       lastSaveMessage: '',
     };
   }
@@ -68,12 +74,13 @@ export class CodeStatus extends React.Component<
 
   public render() {
     const { currentState, width, isCodeSaved, currentCommitHash } = this.props;
+    const { isCommitMessageBoxOpen, commitMessage } = this.state;
     return (
       <Row
         className={classnames(styles.CodeStatusRow)}
         style={{
           width,
-          height: '3.5vh',
+          height: '6vh',
         }}
       >
         <Col sm={6} className={classnames(styles.StatusTextCol)}>
@@ -91,6 +98,25 @@ export class CodeStatus extends React.Component<
             </p>
           )}
         </Col>
+
+        <Col>
+          <button
+            id="commit_button"
+            className={classnames(Commitstyles.customBtn)}
+            onClick={() => this.toggleCommitMessageBox(!isCommitMessageBoxOpen)}
+          >
+            <span className={classnames(Commitstyles.icon)}>
+              <FontAwesomeIcon icon={faCodeBranch} />
+            </span>
+            <span>COMMIT</span>
+          </button>
+        </Col>
+        <CommitMessageBox
+          commitMessage={commitMessage}
+          isCommitMessageBoxOpen={isCommitMessageBoxOpen}
+          handleCommit={this.handleCommit}
+          updateCommitMessage={this.updateCommitMessage}
+        />
         <Col sm={5} className={classnames(styles.CommitStatusCol)}>
           <p className={classnames(styles.StatusText)} style={{ textAlign: 'right' }}>
             {currentState}
@@ -104,4 +130,22 @@ export class CodeStatus extends React.Component<
       </Row>
     );
   }
+  private toggleCommitMessageBox = (isCommitMessageBoxOpen: boolean) => {
+    this.setState({
+      isCommitMessageBoxOpen,
+    });
+  };
+
+  private handleCommit = async () => {
+    const { commitMessage } = this.state;
+    const { commit, getCommitLog } = this.props;
+    await commit(commitMessage);
+    await this.toggleCommitMessageBox(false);
+    await getCommitLog();
+  };
+  private updateCommitMessage = (commitMessage: string) => {
+    this.setState({
+      commitMessage,
+    });
+  };
 }

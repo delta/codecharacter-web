@@ -1,3 +1,4 @@
+import { CodeActions } from 'app/actions';
 import { CodeStatus } from 'app/components/code/CodeStatus';
 import { RootState } from 'app/reducers';
 import * as CodeStatusInterfaces from 'app/types/code/CodeStatus';
@@ -47,11 +48,11 @@ const mapStateToProps = (rootState: RootState) => {
 
 const codeStatusContainer = connect<
   CodeStatusInterfaces.StateProps,
-  {},
+  CodeStatusInterfaces.DispatchProps,
   CodeStatusInterfaces.OwnProps
->(
-  mapStateToProps,
-  {},
-)(CodeStatus);
+>(mapStateToProps, {
+  commit: CodeActions.commit,
+  getCommitLog: CodeActions.getCommitLog,
+})(CodeStatus);
 
 export default codeStatusContainer;

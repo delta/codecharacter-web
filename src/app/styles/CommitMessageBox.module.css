@@ -1,9 +1,11 @@
 .CommitMessageBox {
   position: absolute;
-  left: 15px;
-  top: 45px;
+  left: 115px;
+  top: 40px;
   width: 350px;
-  background-color: rgb(41, 41, 41);
+  background-color: white;
+  border: 2px solid royalblue;
+  border-radius: 5px !important;
   color: #ddd;
   border-radius: 3px;
   z-index: 1000;
@@ -15,13 +17,25 @@
 
 .customBtn:hover {
   color: #fff;
+  background-color: royalblue;
+}
+.customBtn {
+  background-color: royalblue;
 }
 
 .customBtn:active {
   transform: scale(1.04);
+  background-color: royalblue;
 }
 
 .customBtn:focus {
   outline: none;
   box-shadow: none;
+  background-color: royalblue;
+}
+
+.commit-input:focus,
+.commit-input:active {
+  box-shadow: none;
+  outline: none;
 }
