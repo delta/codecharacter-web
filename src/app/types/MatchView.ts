@@ -3,7 +3,7 @@ import { ActionType } from 'typesafe-actions';
 
 export enum MatchViewTabType {
   MY_MATCHES = 'MY_MATCHES',
-  TOP_MATCHES = 'TOP_MATCHES',
+  TOP_MATCHES = 'FEATURED_MATCHES',
 }
 
 export interface OwnState {
