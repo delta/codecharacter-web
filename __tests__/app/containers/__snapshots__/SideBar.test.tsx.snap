@@ -232,7 +232,7 @@ exports[`SideBar Container Should render 1`] = `
           </Button>
           <a
             className="py-2 px-auto leaderboard-btn-ctrl"
-            href="/#/leaderboard"
+            href="/leaderboard"
             id="leaderboard_button"
             onClick={[Function]}
             title="Leaderboard"
@@ -360,7 +360,7 @@ exports[`SideBar Container Should render 1`] = `
             bsStyle="default"
             className="py-2 px-auto"
             disabled={false}
-            href="/#/profile"
+            href="/profile"
             id="user_profile_button"
             onClick={[Function]}
             title="Login"
@@ -369,14 +369,14 @@ exports[`SideBar Container Should render 1`] = `
               className="py-2 px-auto btn btn-default"
               componentClass="a"
               disabled={false}
-              href="/#/profile"
+              href="/profile"
               id="user_profile_button"
               onClick={[Function]}
               title="Login"
             >
               <a
                 className="py-2 px-auto btn btn-default"
-                href="/#/profile"
+                href="/profile"
                 id="user_profile_button"
                 onClick={[Function]}
                 onKeyDown={[Function]}
@@ -434,7 +434,7 @@ exports[`SideBar Container Should render 1`] = `
           </Button>
           <a
             className="py-2 px-auto notification-btn-ctrl"
-            href="/#/home"
+            href="/home"
             onClick={[Function]}
             title="Home"
           >

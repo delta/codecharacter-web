@@ -12,13 +12,13 @@ import * as React from 'react';
 import { hot } from 'react-hot-loader';
 // @ts-ignore
 import { Sugar } from 'react-preloaders';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 initializeRendererAssets();
 
 /* tslint:disable-next-line:variable-name */
 export const App = hot(module)(() => (
-  <HashRouter>
+  <BrowserRouter>
     <Sugar background="#484848" color="white" />
     <Switch>
       <Route exact path={Routes.ROOT} component={Dashboard} />
@@ -29,5 +29,5 @@ export const App = hot(module)(() => (
       <Route path={Routes.USER_ACTIVATION} component={ActivateUser} />
       <Route exact path={Routes.HOME} component={LandingPage} />
     </Switch>
-  </HashRouter>
+  </BrowserRouter>
 ));
