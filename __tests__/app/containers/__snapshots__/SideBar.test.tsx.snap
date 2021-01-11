@@ -494,7 +494,7 @@ exports[`SideBar Container Should render 1`] = `
               <a
                 aria-describedby={null}
                 className="py-2 px-auto leaderboard-btn-ctrl"
-                href="/#/leaderboard"
+                href="/leaderboard"
                 id="leaderboard_button"
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -557,7 +557,7 @@ exports[`SideBar Container Should render 1`] = `
                 anchorEl={
                   <a
                     class="py-2 px-auto leaderboard-btn-ctrl"
-                    href="/#/leaderboard"
+                    href="/leaderboard"
                     id="leaderboard_button"
                     title="Leaderboard"
                   >
@@ -773,7 +773,7 @@ exports[`SideBar Container Should render 1`] = `
                 bsStyle="default"
                 className="py-2 px-auto"
                 disabled={false}
-                href="/#/profile"
+                href="/profile"
                 id="user_profile_button"
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -789,7 +789,7 @@ exports[`SideBar Container Should render 1`] = `
                   className="py-2 px-auto btn btn-default"
                   componentClass="a"
                   disabled={false}
-                  href="/#/profile"
+                  href="/profile"
                   id="user_profile_button"
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -803,7 +803,7 @@ exports[`SideBar Container Should render 1`] = `
                   <a
                     aria-describedby={null}
                     className="py-2 px-auto btn btn-default"
-                    href="/#/profile"
+                    href="/profile"
                     id="user_profile_button"
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -869,7 +869,7 @@ exports[`SideBar Container Should render 1`] = `
                 anchorEl={
                   <a
                     class="py-2 px-auto btn btn-default"
-                    href="/#/profile"
+                    href="/profile"
                     id="user_profile_button"
                     title="Login"
                   >
@@ -933,7 +933,7 @@ exports[`SideBar Container Should render 1`] = `
               <a
                 aria-describedby={null}
                 className="py-2 px-auto notification-btn-ctrl"
-                href="/#/home"
+                href="/home"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -995,7 +995,7 @@ exports[`SideBar Container Should render 1`] = `
                 anchorEl={
                   <a
                     class="py-2 px-auto notification-btn-ctrl"
-                    href="/#/home"
+                    href="/home"
                     title="Home"
                   >
                     <svg
