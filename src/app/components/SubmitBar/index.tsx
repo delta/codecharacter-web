@@ -18,6 +18,25 @@ import { SplitPaneState } from 'app/types/Dashboard';
 import * as SubmitBarInterfaces from 'app/types/SubmitBar';
 import classnames from 'classnames';
 import * as React from 'react';
+import Tooltip from '@material-ui/core/Tooltip'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStylesBootstrap = makeStyles((theme) => ({
+  arrow: {
+    color: theme.palette.common.black,
+  },
+  tooltip: {
+    backgroundColor: theme.palette.common.black,
+    fontSize: 12,
+  },
+  
+}));
+
+function BootstrapTooltip(props: any) {
+  const classes = useStylesBootstrap();
+
+  return <Tooltip arrow classes={classes} {...props} />;
+}
 
 export class SubmitBar extends React.Component<
   SubmitBarInterfaces.Props,
@@ -31,6 +50,8 @@ export class SubmitBar extends React.Component<
       isRunOptionsOpen: false,
     };
   }
+  
+  
 
   public render() {
     const {
@@ -103,6 +124,7 @@ export class SubmitBar extends React.Component<
             </span>
           ) : null}
         </button>
+        <BootstrapTooltip title = "Clear Renderer Log">
         <button
           className={classnames(styles.customBtn)}
           onClick={clearLogs}
@@ -111,11 +133,13 @@ export class SubmitBar extends React.Component<
           <span
             className={classnames(styles.icon)}
             style={{ padding: 0, margin: 0, border: 0 }}
-            title={'Clear Renderer Log'}
+          
           >
             <FontAwesomeIcon icon={faTrash} />
           </span>
         </button>
+        </BootstrapTooltip>
+        <BootstrapTooltip title = "Run Code">
         <button
           className={classnames(styles.customBtn)}
           id="run_button"
@@ -126,12 +150,15 @@ export class SubmitBar extends React.Component<
             event.stopPropagation();
           }}
         >
-          <span className={classnames(styles.icon)}>
+          <span className={classnames(styles.icon)}
+          >
             <FontAwesomeIcon icon={faPlay} />
           </span>
           <span>RUN</span>
         </button>
+        </BootstrapTooltip>
         {debugRunAvailable ? (
+          <BootstrapTooltip title = "Debug Code">
           <button
             className={classnames(styles.customBtn)}
             style={{
@@ -152,23 +179,31 @@ export class SubmitBar extends React.Component<
             </span>
             <span>DEBUG RUN</span>
           </button>
+          </BootstrapTooltip>
         ) : null}
+        <BootstrapTooltip title = "Save Code">
         <button className={classnames(styles.customBtn)} onClick={saveCode} id="save_button">
-          <span className={classnames(styles.icon)}>
+          <span className={classnames(styles.icon)}
+          >
             <FontAwesomeIcon icon={faSave} />
           </span>
           <span>SAVE</span>
         </button>
+        </BootstrapTooltip>
+        <BootstrapTooltip title = "Commit Code">
         <button
           id="commit_button"
           className={classnames(styles.customBtn)}
           onClick={() => this.toggleCommitMessageBox(!isCommitMessageBoxOpen)}
         >
-          <span className={classnames(styles.icon)}>
+          <span className={classnames(styles.icon)}
+          >
             <FontAwesomeIcon icon={faCodeBranch} />
           </span>
           <span>COMMIT</span>
         </button>
+        </BootstrapTooltip>
+        <BootstrapTooltip title = "Submit Code">
         <button
           className={classnames(styles.customBtn)}
           title="Submit Code"
@@ -178,11 +213,14 @@ export class SubmitBar extends React.Component<
             this.props.lockCode();
           }}
         >
-          <span className={classnames(styles.icon)}>
+          <span className={classnames(styles.icon)}
+          
+          >
             <FontAwesomeIcon icon={faLock} />
           </span>
           <span>SUBMIT</span>
         </button>
+        </BootstrapTooltip>
         <CommitMessageBox
           commitMessage={commitMessage}
           isCommitMessageBoxOpen={isCommitMessageBoxOpen}
