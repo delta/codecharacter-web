@@ -74,6 +74,7 @@ export class SubmitBar extends React.Component<
       >
         <button className={classnames(styles.customBtn)} style={{ padding: '0px' }}>
           {this.props.splitPaneState !== SplitPaneState.RENDERER ? (
+            <BootstrapTooltip title = {splitPaneState == SplitPaneState.EDITOR? "Show Renderer and Editor":splitPaneState == SplitPaneState.BOTH? "Close Editor": null}>
             <span
               id="toggle_button"
               className={classnames(styles.icon, styles.toggleIcon)}
@@ -97,8 +98,10 @@ export class SubmitBar extends React.Component<
             >
               <FontAwesomeIcon icon={faChevronLeft} />
             </span>
+            </BootstrapTooltip>
           ) : null}
           {this.props.splitPaneState !== SplitPaneState.EDITOR ? (
+            <BootstrapTooltip title = {splitPaneState == SplitPaneState.RENDERER? "Show Renderer and Editor":splitPaneState == SplitPaneState.BOTH? "Close Renderer": null}>
             <span
               id="toggle_button"
               className={classnames(styles.icon, styles.toggleIcon)}
@@ -122,6 +125,7 @@ export class SubmitBar extends React.Component<
             >
               <FontAwesomeIcon icon={faChevronRight} />
             </span>
+            </BootstrapTooltip>
           ) : null}
         </button>
         <BootstrapTooltip title = "Clear Renderer Log">
