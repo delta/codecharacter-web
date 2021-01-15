@@ -58,6 +58,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           vertical
           className={classnames('w-100 justify-content-center align-items-center', styles.Sidebar)}
         >
+          <BootstrapTooltip title = "Code Character" placement = "right">
           <Button
             className={classnames(
               'py-2 px-auto text-white d-flex justify-content-center',
@@ -67,6 +68,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           >
             <FontAwesomeIcon icon={faCode} />
           </Button>
+          </BootstrapTooltip>
 
           <BootstrapTooltip title = "Docs" placement = "right">
           <Button
