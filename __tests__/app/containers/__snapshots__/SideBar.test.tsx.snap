@@ -30,48 +30,49 @@ exports[`SideBar Container Should render 1`] = `
         <div
           className="w-100 justify-content-center align-items-center btn-group-vertical"
         >
-          <BootstrapTooltip
+          <WithStyles(ForwardRef(Tooltip))
             placement="right"
             title="Code Character"
           >
-            <WithStyles(ForwardRef(Tooltip))
-              arrow={true}
+            <ForwardRef(Tooltip)
               classes={
                 Object {
-                  "arrow": "makeStyles-arrow-1",
-                  "tooltip": "makeStyles-tooltip-2",
+                  "arrow": "MuiTooltip-arrow",
+                  "popper": "MuiTooltip-popper",
+                  "popperArrow": "MuiTooltip-popperArrow",
+                  "popperInteractive": "MuiTooltip-popperInteractive",
+                  "tooltip": "MuiTooltip-tooltip",
+                  "tooltipArrow": "MuiTooltip-tooltipArrow",
+                  "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
+                  "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
+                  "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
+                  "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
+                  "touch": "MuiTooltip-touch",
                 }
               }
               placement="right"
               title="Code Character"
             >
-              <ForwardRef(Tooltip)
-                arrow={true}
-                classes={
-                  Object {
-                    "arrow": "MuiTooltip-arrow makeStyles-arrow-1",
-                    "popper": "MuiTooltip-popper",
-                    "popperArrow": "MuiTooltip-popperArrow",
-                    "popperInteractive": "MuiTooltip-popperInteractive",
-                    "tooltip": "MuiTooltip-tooltip makeStyles-tooltip-2",
-                    "tooltipArrow": "MuiTooltip-tooltipArrow",
-                    "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
-                    "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
-                    "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
-                    "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
-                    "touch": "MuiTooltip-touch",
-                  }
-                }
-                placement="right"
+              <Button
+                active={false}
+                aria-describedby={null}
+                block={false}
+                bsClass="btn"
+                bsStyle="default"
+                className="py-2 px-auto text-white d-flex justify-content-center"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}
                 title="Code Character"
               >
-                <Button
-                  active={false}
+                <button
                   aria-describedby={null}
-                  block={false}
-                  bsClass="btn"
-                  bsStyle="default"
-                  className="py-2 px-auto text-white d-flex justify-content-center"
+                  className="py-2 px-auto text-white d-flex justify-content-center btn btn-default"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -81,480 +82,7 @@ exports[`SideBar Container Should render 1`] = `
                   onTouchEnd={[Function]}
                   onTouchStart={[Function]}
                   title="Code Character"
-                >
-                  <button
-                    aria-describedby={null}
-                    className="py-2 px-auto text-white d-flex justify-content-center btn btn-default"
-                    disabled={false}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseLeave={[Function]}
-                    onMouseOver={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchStart={[Function]}
-                    title="Code Character"
-                    type="button"
-                  >
-                    <FontAwesomeIcon
-                      border={false}
-                      className=""
-                      fixedWidth={false}
-                      flip={null}
-                      icon={
-                        Object {
-                          "icon": Array [
-                            640,
-                            512,
-                            Array [],
-                            "f121",
-                            "M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z",
-                          ],
-                          "iconName": "code",
-                          "prefix": "fas",
-                        }
-                      }
-                      inverse={false}
-                      listItem={false}
-                      mask={null}
-                      pull={null}
-                      pulse={false}
-                      rotation={null}
-                      size={null}
-                      spin={false}
-                      symbol={false}
-                      title=""
-                      transform={null}
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="svg-inline--fa fa-code fa-w-20 "
-                        data-icon="code"
-                        data-prefix="fas"
-                        role="img"
-                        style={Object {}}
-                        viewBox="0 0 640 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"
-                          fill="currentColor"
-                          style={Object {}}
-                        />
-                      </svg>
-                    </FontAwesomeIcon>
-                  </button>
-                </Button>
-                <ForwardRef(Popper)
-                  anchorEl={
-                    <button
-                      class="py-2 px-auto text-white d-flex justify-content-center btn btn-default"
-                      title="Code Character"
-                      type="button"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-code fa-w-20 "
-                        data-icon="code"
-                        data-prefix="fas"
-                        role="img"
-                        viewBox="0 0 640 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </button>
-                  }
-                  className="MuiTooltip-popper MuiTooltip-popperArrow"
-                  id={null}
-                  open={false}
-                  placement="right"
-                  popperOptions={
-                    Object {
-                      "modifiers": Object {
-                        "arrow": Object {
-                          "element": null,
-                          "enabled": false,
-                        },
-                      },
-                    }
-                  }
-                  transition={true}
-                />
-              </ForwardRef(Tooltip)>
-            </WithStyles(ForwardRef(Tooltip))>
-          </Tooltip>
-          <BootstrapTooltip
-            placement="right"
-            title="Docs"
-          >
-            <WithStyles(ForwardRef(Tooltip))
-              arrow={true}
-              classes={
-                Object {
-                  "arrow": "makeStyles-arrow-1",
-                  "tooltip": "makeStyles-tooltip-2",
-                }
-              }
-              placement="right"
-              title="Docs"
-            >
-              <ForwardRef(Tooltip)
-                arrow={true}
-                classes={
-                  Object {
-                    "arrow": "MuiTooltip-arrow makeStyles-arrow-1",
-                    "popper": "MuiTooltip-popper",
-                    "popperArrow": "MuiTooltip-popperArrow",
-                    "popperInteractive": "MuiTooltip-popperInteractive",
-                    "tooltip": "MuiTooltip-tooltip makeStyles-tooltip-2",
-                    "tooltipArrow": "MuiTooltip-tooltipArrow",
-                    "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
-                    "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
-                    "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
-                    "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
-                    "touch": "MuiTooltip-touch",
-                  }
-                }
-                placement="right"
-                title="Docs"
-              >
-                <Button
-                  active={false}
-                  aria-describedby={null}
-                  block={false}
-                  bsClass="btn"
-                  bsStyle="default"
-                  className="py-2 px-auto documentation-btn-ctrl"
-                  disabled={false}
-                  id="docs_button"
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseOver={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchStart={[Function]}
-                  title="Docs"
-                >
-                  <button
-                    aria-describedby={null}
-                    className="py-2 px-auto documentation-btn-ctrl btn btn-default"
-                    disabled={false}
-                    id="docs_button"
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseLeave={[Function]}
-                    onMouseOver={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchStart={[Function]}
-                    title="Docs"
-                    type="button"
-                  >
-                    <FontAwesomeIcon
-                      border={false}
-                      className=""
-                      fixedWidth={false}
-                      flip={null}
-                      icon={
-                        Object {
-                          "icon": Array [
-                            448,
-                            512,
-                            Array [],
-                            "f02d",
-                            "M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z",
-                          ],
-                          "iconName": "book",
-                          "prefix": "fas",
-                        }
-                      }
-                      inverse={false}
-                      listItem={false}
-                      mask={null}
-                      pull={null}
-                      pulse={false}
-                      rotation={null}
-                      size={null}
-                      spin={false}
-                      symbol={false}
-                      title=""
-                      transform={null}
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="svg-inline--fa fa-book fa-w-14 "
-                        data-icon="book"
-                        data-prefix="fas"
-                        role="img"
-                        style={Object {}}
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"
-                          fill="currentColor"
-                          style={Object {}}
-                        />
-                      </svg>
-                    </FontAwesomeIcon>
-                  </button>
-                </Button>
-                <ForwardRef(Popper)
-                  anchorEl={
-                    <button
-                      class="py-2 px-auto documentation-btn-ctrl btn btn-default"
-                      id="docs_button"
-                      title="Docs"
-                      type="button"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-book fa-w-14 "
-                        data-icon="book"
-                        data-prefix="fas"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </button>
-                  }
-                  className="MuiTooltip-popper MuiTooltip-popperArrow"
-                  id={null}
-                  open={false}
-                  placement="right"
-                  popperOptions={
-                    Object {
-                      "modifiers": Object {
-                        "arrow": Object {
-                          "element": null,
-                          "enabled": false,
-                        },
-                      },
-                    }
-                  }
-                  transition={true}
-                />
-              </ForwardRef(Tooltip)>
-            </WithStyles(ForwardRef(Tooltip))>
-          </BootstrapTooltip>
-          <BootstrapTooltip
-            placement="right"
-            title="Editor Settings"
-          >
-            <WithStyles(ForwardRef(Tooltip))
-              arrow={true}
-              classes={
-                Object {
-                  "arrow": "makeStyles-arrow-1",
-                  "tooltip": "makeStyles-tooltip-2",
-                }
-              }
-              placement="right"
-              title="Editor Settings"
-            >
-              <ForwardRef(Tooltip)
-                arrow={true}
-                classes={
-                  Object {
-                    "arrow": "MuiTooltip-arrow makeStyles-arrow-1",
-                    "popper": "MuiTooltip-popper",
-                    "popperArrow": "MuiTooltip-popperArrow",
-                    "popperInteractive": "MuiTooltip-popperInteractive",
-                    "tooltip": "MuiTooltip-tooltip makeStyles-tooltip-2",
-                    "tooltipArrow": "MuiTooltip-tooltipArrow",
-                    "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
-                    "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
-                    "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
-                    "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
-                    "touch": "MuiTooltip-touch",
-                  }
-                }
-                placement="right"
-                title="Editor Settings"
-              >
-                <Button
-                  active={false}
-                  aria-describedby={null}
-                  block={false}
-                  bsClass="btn"
-                  bsStyle="default"
-                  className="py-2 px-auto editor-settings-btn-ctrl"
-                  disabled={false}
-                  id="editor_settings_button"
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseOver={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchStart={[Function]}
-                  title="Editor Settings"
-                >
-                  <button
-                    aria-describedby={null}
-                    className="py-2 px-auto editor-settings-btn-ctrl btn btn-default"
-                    disabled={false}
-                    id="editor_settings_button"
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseLeave={[Function]}
-                    onMouseOver={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchStart={[Function]}
-                    title="Editor Settings"
-                    type="button"
-                  >
-                    <FontAwesomeIcon
-                      border={false}
-                      className=""
-                      fixedWidth={false}
-                      flip={null}
-                      icon={
-                        Object {
-                          "icon": Array [
-                            512,
-                            512,
-                            Array [],
-                            "f013",
-                            "M444.788 291.1l42.616 24.599c4.867 2.809 7.126 8.618 5.459 13.985-11.07 35.642-29.97 67.842-54.689 94.586a12.016 12.016 0 0 1-14.832 2.254l-42.584-24.595a191.577 191.577 0 0 1-60.759 35.13v49.182a12.01 12.01 0 0 1-9.377 11.718c-34.956 7.85-72.499 8.256-109.219.007-5.49-1.233-9.403-6.096-9.403-11.723v-49.184a191.555 191.555 0 0 1-60.759-35.13l-42.584 24.595a12.016 12.016 0 0 1-14.832-2.254c-24.718-26.744-43.619-58.944-54.689-94.586-1.667-5.366.592-11.175 5.459-13.985L67.212 291.1a193.48 193.48 0 0 1 0-70.199l-42.616-24.599c-4.867-2.809-7.126-8.618-5.459-13.985 11.07-35.642 29.97-67.842 54.689-94.586a12.016 12.016 0 0 1 14.832-2.254l42.584 24.595a191.577 191.577 0 0 1 60.759-35.13V25.759a12.01 12.01 0 0 1 9.377-11.718c34.956-7.85 72.499-8.256 109.219-.007 5.49 1.233 9.403 6.096 9.403 11.723v49.184a191.555 191.555 0 0 1 60.759 35.13l42.584-24.595a12.016 12.016 0 0 1 14.832 2.254c24.718 26.744 43.619 58.944 54.689 94.586 1.667 5.366-.592 11.175-5.459 13.985L444.788 220.9a193.485 193.485 0 0 1 0 70.2zM336 256c0-44.112-35.888-80-80-80s-80 35.888-80 80 35.888 80 80 80 80-35.888 80-80z",
-                          ],
-                          "iconName": "cog",
-                          "prefix": "fas",
-                        }
-                      }
-                      inverse={false}
-                      listItem={false}
-                      mask={null}
-                      pull={null}
-                      pulse={false}
-                      rotation={null}
-                      size={null}
-                      spin={false}
-                      symbol={false}
-                      title=""
-                      transform={null}
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="svg-inline--fa fa-cog fa-w-16 "
-                        data-icon="cog"
-                        data-prefix="fas"
-                        role="img"
-                        style={Object {}}
-                        viewBox="0 0 512 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M444.788 291.1l42.616 24.599c4.867 2.809 7.126 8.618 5.459 13.985-11.07 35.642-29.97 67.842-54.689 94.586a12.016 12.016 0 0 1-14.832 2.254l-42.584-24.595a191.577 191.577 0 0 1-60.759 35.13v49.182a12.01 12.01 0 0 1-9.377 11.718c-34.956 7.85-72.499 8.256-109.219.007-5.49-1.233-9.403-6.096-9.403-11.723v-49.184a191.555 191.555 0 0 1-60.759-35.13l-42.584 24.595a12.016 12.016 0 0 1-14.832-2.254c-24.718-26.744-43.619-58.944-54.689-94.586-1.667-5.366.592-11.175 5.459-13.985L67.212 291.1a193.48 193.48 0 0 1 0-70.199l-42.616-24.599c-4.867-2.809-7.126-8.618-5.459-13.985 11.07-35.642 29.97-67.842 54.689-94.586a12.016 12.016 0 0 1 14.832-2.254l42.584 24.595a191.577 191.577 0 0 1 60.759-35.13V25.759a12.01 12.01 0 0 1 9.377-11.718c34.956-7.85 72.499-8.256 109.219-.007 5.49 1.233 9.403 6.096 9.403 11.723v49.184a191.555 191.555 0 0 1 60.759 35.13l42.584-24.595a12.016 12.016 0 0 1 14.832 2.254c24.718 26.744 43.619 58.944 54.689 94.586 1.667 5.366-.592 11.175-5.459 13.985L444.788 220.9a193.485 193.485 0 0 1 0 70.2zM336 256c0-44.112-35.888-80-80-80s-80 35.888-80 80 35.888 80 80 80 80-35.888 80-80z"
-                          fill="currentColor"
-                          style={Object {}}
-                        />
-                      </svg>
-                    </FontAwesomeIcon>
-                  </button>
-                </Button>
-                <ForwardRef(Popper)
-                  anchorEl={
-                    <button
-                      class="py-2 px-auto editor-settings-btn-ctrl btn btn-default"
-                      id="editor_settings_button"
-                      title="Editor Settings"
-                      type="button"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-cog fa-w-16 "
-                        data-icon="cog"
-                        data-prefix="fas"
-                        role="img"
-                        viewBox="0 0 512 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M444.788 291.1l42.616 24.599c4.867 2.809 7.126 8.618 5.459 13.985-11.07 35.642-29.97 67.842-54.689 94.586a12.016 12.016 0 0 1-14.832 2.254l-42.584-24.595a191.577 191.577 0 0 1-60.759 35.13v49.182a12.01 12.01 0 0 1-9.377 11.718c-34.956 7.85-72.499 8.256-109.219.007-5.49-1.233-9.403-6.096-9.403-11.723v-49.184a191.555 191.555 0 0 1-60.759-35.13l-42.584 24.595a12.016 12.016 0 0 1-14.832-2.254c-24.718-26.744-43.619-58.944-54.689-94.586-1.667-5.366.592-11.175 5.459-13.985L67.212 291.1a193.48 193.48 0 0 1 0-70.199l-42.616-24.599c-4.867-2.809-7.126-8.618-5.459-13.985 11.07-35.642 29.97-67.842 54.689-94.586a12.016 12.016 0 0 1 14.832-2.254l42.584 24.595a191.577 191.577 0 0 1 60.759-35.13V25.759a12.01 12.01 0 0 1 9.377-11.718c34.956-7.85 72.499-8.256 109.219-.007 5.49 1.233 9.403 6.096 9.403 11.723v49.184a191.555 191.555 0 0 1 60.759 35.13l42.584-24.595a12.016 12.016 0 0 1 14.832 2.254c24.718 26.744 43.619 58.944 54.689 94.586 1.667 5.366-.592 11.175-5.459 13.985L444.788 220.9a193.485 193.485 0 0 1 0 70.2zM336 256c0-44.112-35.888-80-80-80s-80 35.888-80 80 35.888 80 80 80 80-35.888 80-80z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </button>
-                  }
-                  className="MuiTooltip-popper MuiTooltip-popperArrow"
-                  id={null}
-                  open={false}
-                  placement="right"
-                  popperOptions={
-                    Object {
-                      "modifiers": Object {
-                        "arrow": Object {
-                          "element": null,
-                          "enabled": false,
-                        },
-                      },
-                    }
-                  }
-                  transition={true}
-                />
-              </ForwardRef(Tooltip)>
-            </WithStyles(ForwardRef(Tooltip))>
-          </BootstrapTooltip>
-          <BootstrapTooltip
-            placement="right"
-            title="Leaderboard"
-          >
-            <WithStyles(ForwardRef(Tooltip))
-              arrow={true}
-              classes={
-                Object {
-                  "arrow": "makeStyles-arrow-1",
-                  "tooltip": "makeStyles-tooltip-2",
-                }
-              }
-              placement="right"
-              title="Leaderboard"
-            >
-              <ForwardRef(Tooltip)
-                arrow={true}
-                classes={
-                  Object {
-                    "arrow": "MuiTooltip-arrow makeStyles-arrow-1",
-                    "popper": "MuiTooltip-popper",
-                    "popperArrow": "MuiTooltip-popperArrow",
-                    "popperInteractive": "MuiTooltip-popperInteractive",
-                    "tooltip": "MuiTooltip-tooltip makeStyles-tooltip-2",
-                    "tooltipArrow": "MuiTooltip-tooltipArrow",
-                    "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
-                    "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
-                    "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
-                    "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
-                    "touch": "MuiTooltip-touch",
-                  }
-                }
-                placement="right"
-                title="Leaderboard"
-              >
-                <a
-                  aria-describedby={null}
-                  className="py-2 px-auto leaderboard-btn-ctrl"
-                  href="/#/leaderboard"
-                  id="leaderboard_button"
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseOver={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchStart={[Function]}
-                  title="Leaderboard"
+                  type="button"
                 >
                   <FontAwesomeIcon
                     border={false}
@@ -564,13 +92,13 @@ exports[`SideBar Container Should render 1`] = `
                     icon={
                       Object {
                         "icon": Array [
-                          576,
+                          640,
                           512,
                           Array [],
-                          "f091",
-                          "M552 64H448V24c0-13.3-10.7-24-24-24H152c-13.3 0-24 10.7-24 24v40H24C10.7 64 0 74.7 0 88v56c0 35.7 22.5 72.4 61.9 100.7 31.5 22.7 69.8 37.1 110 41.7C203.3 338.5 240 360 240 360v72h-48c-35.3 0-64 20.7-64 56v12c0 6.6 5.4 12 12 12h296c6.6 0 12-5.4 12-12v-12c0-35.3-28.7-56-64-56h-48v-72s36.7-21.5 68.1-73.6c40.3-4.6 78.6-19 110-41.7 39.3-28.3 61.9-65 61.9-100.7V88c0-13.3-10.7-24-24-24zM99.3 192.8C74.9 175.2 64 155.6 64 144v-16h64.2c1 32.6 5.8 61.2 12.8 86.2-15.1-5.2-29.2-12.4-41.7-21.4zM512 144c0 16.1-17.7 36.1-35.3 48.8-12.5 9-26.7 16.2-41.8 21.4 7-25 11.8-53.6 12.8-86.2H512v16z",
+                          "f121",
+                          "M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z",
                         ],
-                        "iconName": "trophy",
+                        "iconName": "code",
                         "prefix": "fas",
                       }
                     }
@@ -588,107 +116,529 @@ exports[`SideBar Container Should render 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-trophy fa-w-18 "
-                      data-icon="trophy"
+                      className="svg-inline--fa fa-code fa-w-20 "
+                      data-icon="code"
                       data-prefix="fas"
                       role="img"
                       style={Object {}}
+                      viewBox="0 0 640 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"
+                        fill="currentColor"
+                        style={Object {}}
+                      />
+                    </svg>
+                  </FontAwesomeIcon>
+                </button>
+              </Button>
+              <ForwardRef(Popper)
+                anchorEl={
+                  <button
+                    class="py-2 px-auto text-white d-flex justify-content-center btn btn-default"
+                    title="Code Character"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-code fa-w-20 "
+                      data-icon="code"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 640 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                }
+                className="MuiTooltip-popper"
+                id={null}
+                open={false}
+                placement="right"
+                popperOptions={
+                  Object {
+                    "modifiers": Object {
+                      "arrow": Object {
+                        "element": null,
+                        "enabled": false,
+                      },
+                    },
+                  }
+                }
+                transition={true}
+              />
+            </ForwardRef(Tooltip)>
+          </WithStyles(ForwardRef(Tooltip))>
+          <WithStyles(ForwardRef(Tooltip))
+            placement="right"
+            title="Docs"
+          >
+            <ForwardRef(Tooltip)
+              classes={
+                Object {
+                  "arrow": "MuiTooltip-arrow",
+                  "popper": "MuiTooltip-popper",
+                  "popperArrow": "MuiTooltip-popperArrow",
+                  "popperInteractive": "MuiTooltip-popperInteractive",
+                  "tooltip": "MuiTooltip-tooltip",
+                  "tooltipArrow": "MuiTooltip-tooltipArrow",
+                  "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
+                  "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
+                  "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
+                  "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
+                  "touch": "MuiTooltip-touch",
+                }
+              }
+              placement="right"
+              title="Docs"
+            >
+              <Button
+                active={false}
+                aria-describedby={null}
+                block={false}
+                bsClass="btn"
+                bsStyle="default"
+                className="py-2 px-auto documentation-btn-ctrl"
+                disabled={false}
+                id="docs_button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}
+                title="Docs"
+              >
+                <button
+                  aria-describedby={null}
+                  className="py-2 px-auto documentation-btn-ctrl btn btn-default"
+                  disabled={false}
+                  id="docs_button"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseOver={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchStart={[Function]}
+                  title="Docs"
+                  type="button"
+                >
+                  <FontAwesomeIcon
+                    border={false}
+                    className=""
+                    fixedWidth={false}
+                    flip={null}
+                    icon={
+                      Object {
+                        "icon": Array [
+                          448,
+                          512,
+                          Array [],
+                          "f02d",
+                          "M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z",
+                        ],
+                        "iconName": "book",
+                        "prefix": "fas",
+                      }
+                    }
+                    inverse={false}
+                    listItem={false}
+                    mask={null}
+                    pull={null}
+                    pulse={false}
+                    rotation={null}
+                    size={null}
+                    spin={false}
+                    symbol={false}
+                    title=""
+                    transform={null}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="svg-inline--fa fa-book fa-w-14 "
+                      data-icon="book"
+                      data-prefix="fas"
+                      role="img"
+                      style={Object {}}
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"
+                        fill="currentColor"
+                        style={Object {}}
+                      />
+                    </svg>
+                  </FontAwesomeIcon>
+                </button>
+              </Button>
+              <ForwardRef(Popper)
+                anchorEl={
+                  <button
+                    class="py-2 px-auto documentation-btn-ctrl btn btn-default"
+                    id="docs_button"
+                    title="Docs"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-book fa-w-14 "
+                      data-icon="book"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                }
+                className="MuiTooltip-popper"
+                id={null}
+                open={false}
+                placement="right"
+                popperOptions={
+                  Object {
+                    "modifiers": Object {
+                      "arrow": Object {
+                        "element": null,
+                        "enabled": false,
+                      },
+                    },
+                  }
+                }
+                transition={true}
+              />
+            </ForwardRef(Tooltip)>
+          </WithStyles(ForwardRef(Tooltip))>
+          <WithStyles(ForwardRef(Tooltip))
+            placement="right"
+            title="Editor Settings"
+          >
+            <ForwardRef(Tooltip)
+              classes={
+                Object {
+                  "arrow": "MuiTooltip-arrow",
+                  "popper": "MuiTooltip-popper",
+                  "popperArrow": "MuiTooltip-popperArrow",
+                  "popperInteractive": "MuiTooltip-popperInteractive",
+                  "tooltip": "MuiTooltip-tooltip",
+                  "tooltipArrow": "MuiTooltip-tooltipArrow",
+                  "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
+                  "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
+                  "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
+                  "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
+                  "touch": "MuiTooltip-touch",
+                }
+              }
+              placement="right"
+              title="Editor Settings"
+            >
+              <Button
+                active={false}
+                aria-describedby={null}
+                block={false}
+                bsClass="btn"
+                bsStyle="default"
+                className="py-2 px-auto editor-settings-btn-ctrl"
+                disabled={false}
+                id="editor_settings_button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}
+                title="Editor Settings"
+              >
+                <button
+                  aria-describedby={null}
+                  className="py-2 px-auto editor-settings-btn-ctrl btn btn-default"
+                  disabled={false}
+                  id="editor_settings_button"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseOver={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchStart={[Function]}
+                  title="Editor Settings"
+                  type="button"
+                >
+                  <FontAwesomeIcon
+                    border={false}
+                    className=""
+                    fixedWidth={false}
+                    flip={null}
+                    icon={
+                      Object {
+                        "icon": Array [
+                          512,
+                          512,
+                          Array [],
+                          "f013",
+                          "M444.788 291.1l42.616 24.599c4.867 2.809 7.126 8.618 5.459 13.985-11.07 35.642-29.97 67.842-54.689 94.586a12.016 12.016 0 0 1-14.832 2.254l-42.584-24.595a191.577 191.577 0 0 1-60.759 35.13v49.182a12.01 12.01 0 0 1-9.377 11.718c-34.956 7.85-72.499 8.256-109.219.007-5.49-1.233-9.403-6.096-9.403-11.723v-49.184a191.555 191.555 0 0 1-60.759-35.13l-42.584 24.595a12.016 12.016 0 0 1-14.832-2.254c-24.718-26.744-43.619-58.944-54.689-94.586-1.667-5.366.592-11.175 5.459-13.985L67.212 291.1a193.48 193.48 0 0 1 0-70.199l-42.616-24.599c-4.867-2.809-7.126-8.618-5.459-13.985 11.07-35.642 29.97-67.842 54.689-94.586a12.016 12.016 0 0 1 14.832-2.254l42.584 24.595a191.577 191.577 0 0 1 60.759-35.13V25.759a12.01 12.01 0 0 1 9.377-11.718c34.956-7.85 72.499-8.256 109.219-.007 5.49 1.233 9.403 6.096 9.403 11.723v49.184a191.555 191.555 0 0 1 60.759 35.13l42.584-24.595a12.016 12.016 0 0 1 14.832 2.254c24.718 26.744 43.619 58.944 54.689 94.586 1.667 5.366-.592 11.175-5.459 13.985L444.788 220.9a193.485 193.485 0 0 1 0 70.2zM336 256c0-44.112-35.888-80-80-80s-80 35.888-80 80 35.888 80 80 80 80-35.888 80-80z",
+                        ],
+                        "iconName": "cog",
+                        "prefix": "fas",
+                      }
+                    }
+                    inverse={false}
+                    listItem={false}
+                    mask={null}
+                    pull={null}
+                    pulse={false}
+                    rotation={null}
+                    size={null}
+                    spin={false}
+                    symbol={false}
+                    title=""
+                    transform={null}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="svg-inline--fa fa-cog fa-w-16 "
+                      data-icon="cog"
+                      data-prefix="fas"
+                      role="img"
+                      style={Object {}}
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M444.788 291.1l42.616 24.599c4.867 2.809 7.126 8.618 5.459 13.985-11.07 35.642-29.97 67.842-54.689 94.586a12.016 12.016 0 0 1-14.832 2.254l-42.584-24.595a191.577 191.577 0 0 1-60.759 35.13v49.182a12.01 12.01 0 0 1-9.377 11.718c-34.956 7.85-72.499 8.256-109.219.007-5.49-1.233-9.403-6.096-9.403-11.723v-49.184a191.555 191.555 0 0 1-60.759-35.13l-42.584 24.595a12.016 12.016 0 0 1-14.832-2.254c-24.718-26.744-43.619-58.944-54.689-94.586-1.667-5.366.592-11.175 5.459-13.985L67.212 291.1a193.48 193.48 0 0 1 0-70.199l-42.616-24.599c-4.867-2.809-7.126-8.618-5.459-13.985 11.07-35.642 29.97-67.842 54.689-94.586a12.016 12.016 0 0 1 14.832-2.254l42.584 24.595a191.577 191.577 0 0 1 60.759-35.13V25.759a12.01 12.01 0 0 1 9.377-11.718c34.956-7.85 72.499-8.256 109.219-.007 5.49 1.233 9.403 6.096 9.403 11.723v49.184a191.555 191.555 0 0 1 60.759 35.13l42.584-24.595a12.016 12.016 0 0 1 14.832 2.254c24.718 26.744 43.619 58.944 54.689 94.586 1.667 5.366-.592 11.175-5.459 13.985L444.788 220.9a193.485 193.485 0 0 1 0 70.2zM336 256c0-44.112-35.888-80-80-80s-80 35.888-80 80 35.888 80 80 80 80-35.888 80-80z"
+                        fill="currentColor"
+                        style={Object {}}
+                      />
+                    </svg>
+                  </FontAwesomeIcon>
+                </button>
+              </Button>
+              <ForwardRef(Popper)
+                anchorEl={
+                  <button
+                    class="py-2 px-auto editor-settings-btn-ctrl btn btn-default"
+                    id="editor_settings_button"
+                    title="Editor Settings"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-cog fa-w-16 "
+                      data-icon="cog"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M444.788 291.1l42.616 24.599c4.867 2.809 7.126 8.618 5.459 13.985-11.07 35.642-29.97 67.842-54.689 94.586a12.016 12.016 0 0 1-14.832 2.254l-42.584-24.595a191.577 191.577 0 0 1-60.759 35.13v49.182a12.01 12.01 0 0 1-9.377 11.718c-34.956 7.85-72.499 8.256-109.219.007-5.49-1.233-9.403-6.096-9.403-11.723v-49.184a191.555 191.555 0 0 1-60.759-35.13l-42.584 24.595a12.016 12.016 0 0 1-14.832-2.254c-24.718-26.744-43.619-58.944-54.689-94.586-1.667-5.366.592-11.175 5.459-13.985L67.212 291.1a193.48 193.48 0 0 1 0-70.199l-42.616-24.599c-4.867-2.809-7.126-8.618-5.459-13.985 11.07-35.642 29.97-67.842 54.689-94.586a12.016 12.016 0 0 1 14.832-2.254l42.584 24.595a191.577 191.577 0 0 1 60.759-35.13V25.759a12.01 12.01 0 0 1 9.377-11.718c34.956-7.85 72.499-8.256 109.219-.007 5.49 1.233 9.403 6.096 9.403 11.723v49.184a191.555 191.555 0 0 1 60.759 35.13l42.584-24.595a12.016 12.016 0 0 1 14.832 2.254c24.718 26.744 43.619 58.944 54.689 94.586 1.667 5.366-.592 11.175-5.459 13.985L444.788 220.9a193.485 193.485 0 0 1 0 70.2zM336 256c0-44.112-35.888-80-80-80s-80 35.888-80 80 35.888 80 80 80 80-35.888 80-80z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                }
+                className="MuiTooltip-popper"
+                id={null}
+                open={false}
+                placement="right"
+                popperOptions={
+                  Object {
+                    "modifiers": Object {
+                      "arrow": Object {
+                        "element": null,
+                        "enabled": false,
+                      },
+                    },
+                  }
+                }
+                transition={true}
+              />
+            </ForwardRef(Tooltip)>
+          </WithStyles(ForwardRef(Tooltip))>
+          <WithStyles(ForwardRef(Tooltip))
+            placement="right"
+            title="Leaderboard"
+          >
+            <ForwardRef(Tooltip)
+              classes={
+                Object {
+                  "arrow": "MuiTooltip-arrow",
+                  "popper": "MuiTooltip-popper",
+                  "popperArrow": "MuiTooltip-popperArrow",
+                  "popperInteractive": "MuiTooltip-popperInteractive",
+                  "tooltip": "MuiTooltip-tooltip",
+                  "tooltipArrow": "MuiTooltip-tooltipArrow",
+                  "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
+                  "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
+                  "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
+                  "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
+                  "touch": "MuiTooltip-touch",
+                }
+              }
+              placement="right"
+              title="Leaderboard"
+            >
+              <a
+                aria-describedby={null}
+                className="py-2 px-auto leaderboard-btn-ctrl"
+                href="/#/leaderboard"
+                id="leaderboard_button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}
+                title="Leaderboard"
+              >
+                <FontAwesomeIcon
+                  border={false}
+                  className=""
+                  fixedWidth={false}
+                  flip={null}
+                  icon={
+                    Object {
+                      "icon": Array [
+                        576,
+                        512,
+                        Array [],
+                        "f091",
+                        "M552 64H448V24c0-13.3-10.7-24-24-24H152c-13.3 0-24 10.7-24 24v40H24C10.7 64 0 74.7 0 88v56c0 35.7 22.5 72.4 61.9 100.7 31.5 22.7 69.8 37.1 110 41.7C203.3 338.5 240 360 240 360v72h-48c-35.3 0-64 20.7-64 56v12c0 6.6 5.4 12 12 12h296c6.6 0 12-5.4 12-12v-12c0-35.3-28.7-56-64-56h-48v-72s36.7-21.5 68.1-73.6c40.3-4.6 78.6-19 110-41.7 39.3-28.3 61.9-65 61.9-100.7V88c0-13.3-10.7-24-24-24zM99.3 192.8C74.9 175.2 64 155.6 64 144v-16h64.2c1 32.6 5.8 61.2 12.8 86.2-15.1-5.2-29.2-12.4-41.7-21.4zM512 144c0 16.1-17.7 36.1-35.3 48.8-12.5 9-26.7 16.2-41.8 21.4 7-25 11.8-53.6 12.8-86.2H512v16z",
+                      ],
+                      "iconName": "trophy",
+                      "prefix": "fas",
+                    }
+                  }
+                  inverse={false}
+                  listItem={false}
+                  mask={null}
+                  pull={null}
+                  pulse={false}
+                  rotation={null}
+                  size={null}
+                  spin={false}
+                  symbol={false}
+                  title=""
+                  transform={null}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-trophy fa-w-18 "
+                    data-icon="trophy"
+                    data-prefix="fas"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M552 64H448V24c0-13.3-10.7-24-24-24H152c-13.3 0-24 10.7-24 24v40H24C10.7 64 0 74.7 0 88v56c0 35.7 22.5 72.4 61.9 100.7 31.5 22.7 69.8 37.1 110 41.7C203.3 338.5 240 360 240 360v72h-48c-35.3 0-64 20.7-64 56v12c0 6.6 5.4 12 12 12h296c6.6 0 12-5.4 12-12v-12c0-35.3-28.7-56-64-56h-48v-72s36.7-21.5 68.1-73.6c40.3-4.6 78.6-19 110-41.7 39.3-28.3 61.9-65 61.9-100.7V88c0-13.3-10.7-24-24-24zM99.3 192.8C74.9 175.2 64 155.6 64 144v-16h64.2c1 32.6 5.8 61.2 12.8 86.2-15.1-5.2-29.2-12.4-41.7-21.4zM512 144c0 16.1-17.7 36.1-35.3 48.8-12.5 9-26.7 16.2-41.8 21.4 7-25 11.8-53.6 12.8-86.2H512v16z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                </FontAwesomeIcon>
+              </a>
+              <ForwardRef(Popper)
+                anchorEl={
+                  <a
+                    class="py-2 px-auto leaderboard-btn-ctrl"
+                    href="/#/leaderboard"
+                    id="leaderboard_button"
+                    title="Leaderboard"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-trophy fa-w-18 "
+                      data-icon="trophy"
+                      data-prefix="fas"
+                      role="img"
                       viewBox="0 0 576 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M552 64H448V24c0-13.3-10.7-24-24-24H152c-13.3 0-24 10.7-24 24v40H24C10.7 64 0 74.7 0 88v56c0 35.7 22.5 72.4 61.9 100.7 31.5 22.7 69.8 37.1 110 41.7C203.3 338.5 240 360 240 360v72h-48c-35.3 0-64 20.7-64 56v12c0 6.6 5.4 12 12 12h296c6.6 0 12-5.4 12-12v-12c0-35.3-28.7-56-64-56h-48v-72s36.7-21.5 68.1-73.6c40.3-4.6 78.6-19 110-41.7 39.3-28.3 61.9-65 61.9-100.7V88c0-13.3-10.7-24-24-24zM99.3 192.8C74.9 175.2 64 155.6 64 144v-16h64.2c1 32.6 5.8 61.2 12.8 86.2-15.1-5.2-29.2-12.4-41.7-21.4zM512 144c0 16.1-17.7 36.1-35.3 48.8-12.5 9-26.7 16.2-41.8 21.4 7-25 11.8-53.6 12.8-86.2H512v16z"
                         fill="currentColor"
-                        style={Object {}}
                       />
                     </svg>
-                  </FontAwesomeIcon>
-                </a>
-                <ForwardRef(Popper)
-                  anchorEl={
-                    <a
-                      class="py-2 px-auto leaderboard-btn-ctrl"
-                      href="/#/leaderboard"
-                      id="leaderboard_button"
-                      title="Leaderboard"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-trophy fa-w-18 "
-                        data-icon="trophy"
-                        data-prefix="fas"
-                        role="img"
-                        viewBox="0 0 576 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M552 64H448V24c0-13.3-10.7-24-24-24H152c-13.3 0-24 10.7-24 24v40H24C10.7 64 0 74.7 0 88v56c0 35.7 22.5 72.4 61.9 100.7 31.5 22.7 69.8 37.1 110 41.7C203.3 338.5 240 360 240 360v72h-48c-35.3 0-64 20.7-64 56v12c0 6.6 5.4 12 12 12h296c6.6 0 12-5.4 12-12v-12c0-35.3-28.7-56-64-56h-48v-72s36.7-21.5 68.1-73.6c40.3-4.6 78.6-19 110-41.7 39.3-28.3 61.9-65 61.9-100.7V88c0-13.3-10.7-24-24-24zM99.3 192.8C74.9 175.2 64 155.6 64 144v-16h64.2c1 32.6 5.8 61.2 12.8 86.2-15.1-5.2-29.2-12.4-41.7-21.4zM512 144c0 16.1-17.7 36.1-35.3 48.8-12.5 9-26.7 16.2-41.8 21.4 7-25 11.8-53.6 12.8-86.2H512v16z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </a>
-                  }
-                  className="MuiTooltip-popper MuiTooltip-popperArrow"
-                  id={null}
-                  open={false}
-                  placement="right"
-                  popperOptions={
-                    Object {
-                      "modifiers": Object {
-                        "arrow": Object {
-                          "element": null,
-                          "enabled": false,
-                        },
+                  </a>
+                }
+                className="MuiTooltip-popper"
+                id={null}
+                open={false}
+                placement="right"
+                popperOptions={
+                  Object {
+                    "modifiers": Object {
+                      "arrow": Object {
+                        "element": null,
+                        "enabled": false,
                       },
-                    }
+                    },
                   }
-                  transition={true}
-                />
-              </ForwardRef(Tooltip)>
-            </WithStyles(ForwardRef(Tooltip))>
-          </BootstrapTooltip>
-          <BootstrapTooltip
+                }
+                transition={true}
+              />
+            </ForwardRef(Tooltip)>
+          </WithStyles(ForwardRef(Tooltip))>
+          <WithStyles(ForwardRef(Tooltip))
             placement="right"
             title="Notifications"
           >
-            <WithStyles(ForwardRef(Tooltip))
-              arrow={true}
+            <ForwardRef(Tooltip)
               classes={
                 Object {
-                  "arrow": "makeStyles-arrow-1",
-                  "tooltip": "makeStyles-tooltip-2",
+                  "arrow": "MuiTooltip-arrow",
+                  "popper": "MuiTooltip-popper",
+                  "popperArrow": "MuiTooltip-popperArrow",
+                  "popperInteractive": "MuiTooltip-popperInteractive",
+                  "tooltip": "MuiTooltip-tooltip",
+                  "tooltipArrow": "MuiTooltip-tooltipArrow",
+                  "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
+                  "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
+                  "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
+                  "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
+                  "touch": "MuiTooltip-touch",
                 }
               }
               placement="right"
               title="Notifications"
             >
-              <ForwardRef(Tooltip)
-                arrow={true}
-                classes={
-                  Object {
-                    "arrow": "MuiTooltip-arrow makeStyles-arrow-1",
-                    "popper": "MuiTooltip-popper",
-                    "popperArrow": "MuiTooltip-popperArrow",
-                    "popperInteractive": "MuiTooltip-popperInteractive",
-                    "tooltip": "MuiTooltip-tooltip makeStyles-tooltip-2",
-                    "tooltipArrow": "MuiTooltip-tooltipArrow",
-                    "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
-                    "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
-                    "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
-                    "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
-                    "touch": "MuiTooltip-touch",
-                  }
-                }
-                placement="right"
+              <Button
+                active={false}
+                aria-describedby={null}
+                block={false}
+                bsClass="btn"
+                bsStyle="default"
+                className="py-2 px-auto notification-btn-ctrl"
+                disabled={false}
+                id="notifications_button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}
                 title="Notifications"
               >
-                <Button
-                  active={false}
+                <button
                   aria-describedby={null}
-                  block={false}
-                  bsClass="btn"
-                  bsStyle="default"
-                  className="py-2 px-auto notification-btn-ctrl"
+                  className="py-2 px-auto notification-btn-ctrl btn btn-default"
                   disabled={false}
                   id="notifications_button"
                   onBlur={[Function]}
@@ -699,156 +649,145 @@ exports[`SideBar Container Should render 1`] = `
                   onTouchEnd={[Function]}
                   onTouchStart={[Function]}
                   title="Notifications"
+                  type="button"
                 >
+                  <FontAwesomeIcon
+                    border={false}
+                    className=""
+                    fixedWidth={false}
+                    flip={null}
+                    icon={
+                      Object {
+                        "icon": Array [
+                          448,
+                          512,
+                          Array [],
+                          "f0f3",
+                          "M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z",
+                        ],
+                        "iconName": "bell",
+                        "prefix": "fas",
+                      }
+                    }
+                    inverse={false}
+                    listItem={false}
+                    mask={null}
+                    pull={null}
+                    pulse={false}
+                    rotation={null}
+                    size={null}
+                    spin={false}
+                    symbol={false}
+                    title=""
+                    transform={null}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="svg-inline--fa fa-bell fa-w-14 "
+                      data-icon="bell"
+                      data-prefix="fas"
+                      role="img"
+                      style={Object {}}
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"
+                        fill="currentColor"
+                        style={Object {}}
+                      />
+                    </svg>
+                  </FontAwesomeIcon>
+                </button>
+              </Button>
+              <ForwardRef(Popper)
+                anchorEl={
                   <button
-                    aria-describedby={null}
-                    className="py-2 px-auto notification-btn-ctrl btn btn-default"
-                    disabled={false}
+                    class="py-2 px-auto notification-btn-ctrl btn btn-default"
                     id="notifications_button"
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseLeave={[Function]}
-                    onMouseOver={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchStart={[Function]}
                     title="Notifications"
                     type="button"
                   >
-                    <FontAwesomeIcon
-                      border={false}
-                      className=""
-                      fixedWidth={false}
-                      flip={null}
-                      icon={
-                        Object {
-                          "icon": Array [
-                            448,
-                            512,
-                            Array [],
-                            "f0f3",
-                            "M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z",
-                          ],
-                          "iconName": "bell",
-                          "prefix": "fas",
-                        }
-                      }
-                      inverse={false}
-                      listItem={false}
-                      mask={null}
-                      pull={null}
-                      pulse={false}
-                      rotation={null}
-                      size={null}
-                      spin={false}
-                      symbol={false}
-                      title=""
-                      transform={null}
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-bell fa-w-14 "
+                      data-icon="bell"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <svg
-                        aria-hidden="true"
-                        className="svg-inline--fa fa-bell fa-w-14 "
-                        data-icon="bell"
-                        data-prefix="fas"
-                        role="img"
-                        style={Object {}}
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"
-                          fill="currentColor"
-                          style={Object {}}
-                        />
-                      </svg>
-                    </FontAwesomeIcon>
+                      <path
+                        d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"
+                        fill="currentColor"
+                      />
+                    </svg>
                   </button>
-                </Button>
-                <ForwardRef(Popper)
-                  anchorEl={
-                    <button
-                      class="py-2 px-auto notification-btn-ctrl btn btn-default"
-                      id="notifications_button"
-                      title="Notifications"
-                      type="button"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-bell fa-w-14 "
-                        data-icon="bell"
-                        data-prefix="fas"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </button>
-                  }
-                  className="MuiTooltip-popper MuiTooltip-popperArrow"
-                  id={null}
-                  open={false}
-                  placement="right"
-                  popperOptions={
-                    Object {
-                      "modifiers": Object {
-                        "arrow": Object {
-                          "element": null,
-                          "enabled": false,
-                        },
+                }
+                className="MuiTooltip-popper"
+                id={null}
+                open={false}
+                placement="right"
+                popperOptions={
+                  Object {
+                    "modifiers": Object {
+                      "arrow": Object {
+                        "element": null,
+                        "enabled": false,
                       },
-                    }
+                    },
                   }
-                  transition={true}
-                />
-              </ForwardRef(Tooltip)>
-            </WithStyles(ForwardRef(Tooltip))>
-          </BootstrapTooltip>
-          <BootstrapTooltip
+                }
+                transition={true}
+              />
+            </ForwardRef(Tooltip)>
+          </WithStyles(ForwardRef(Tooltip))>
+          <WithStyles(ForwardRef(Tooltip))
             placement="right"
             title="Login"
           >
-            <WithStyles(ForwardRef(Tooltip))
-              arrow={true}
+            <ForwardRef(Tooltip)
               classes={
                 Object {
-                  "arrow": "makeStyles-arrow-1",
-                  "tooltip": "makeStyles-tooltip-2",
+                  "arrow": "MuiTooltip-arrow",
+                  "popper": "MuiTooltip-popper",
+                  "popperArrow": "MuiTooltip-popperArrow",
+                  "popperInteractive": "MuiTooltip-popperInteractive",
+                  "tooltip": "MuiTooltip-tooltip",
+                  "tooltipArrow": "MuiTooltip-tooltipArrow",
+                  "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
+                  "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
+                  "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
+                  "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
+                  "touch": "MuiTooltip-touch",
                 }
               }
               placement="right"
               title="Login"
             >
-              <ForwardRef(Tooltip)
-                arrow={true}
-                classes={
-                  Object {
-                    "arrow": "MuiTooltip-arrow makeStyles-arrow-1",
-                    "popper": "MuiTooltip-popper",
-                    "popperArrow": "MuiTooltip-popperArrow",
-                    "popperInteractive": "MuiTooltip-popperInteractive",
-                    "tooltip": "MuiTooltip-tooltip makeStyles-tooltip-2",
-                    "tooltipArrow": "MuiTooltip-tooltipArrow",
-                    "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
-                    "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
-                    "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
-                    "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
-                    "touch": "MuiTooltip-touch",
-                  }
-                }
-                placement="right"
+              <Button
+                active={false}
+                aria-describedby={null}
+                block={false}
+                bsClass="btn"
+                bsStyle="default"
+                className="py-2 px-auto"
+                disabled={false}
+                href="/#/profile"
+                id="user_profile_button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}
                 title="Login"
               >
-                <Button
-                  active={false}
+                <SafeAnchor
                   aria-describedby={null}
-                  block={false}
-                  bsClass="btn"
-                  bsStyle="default"
-                  className="py-2 px-auto"
+                  className="py-2 px-auto btn btn-default"
+                  componentClass="a"
                   disabled={false}
                   href="/#/profile"
                   id="user_profile_button"
@@ -861,335 +800,20 @@ exports[`SideBar Container Should render 1`] = `
                   onTouchStart={[Function]}
                   title="Login"
                 >
-                  <SafeAnchor
+                  <a
                     aria-describedby={null}
                     className="py-2 px-auto btn btn-default"
-                    componentClass="a"
-                    disabled={false}
                     href="/#/profile"
                     id="user_profile_button"
                     onBlur={[Function]}
                     onClick={[Function]}
                     onFocus={[Function]}
+                    onKeyDown={[Function]}
                     onMouseLeave={[Function]}
                     onMouseOver={[Function]}
                     onTouchEnd={[Function]}
                     onTouchStart={[Function]}
                     title="Login"
-                  >
-                    <a
-                      aria-describedby={null}
-                      className="py-2 px-auto btn btn-default"
-                      href="/#/profile"
-                      id="user_profile_button"
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onKeyDown={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseOver={[Function]}
-                      onTouchEnd={[Function]}
-                      onTouchStart={[Function]}
-                      title="Login"
-                    >
-                      <FontAwesomeIcon
-                        border={false}
-                        className=""
-                        fixedWidth={false}
-                        flip={null}
-                        icon={
-                          Object {
-                            "icon": Array [
-                              512,
-                              512,
-                              Array [],
-                              "f2f6",
-                              "M416 448h-84c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h84c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32h-84c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h84c53 0 96 43 96 96v192c0 53-43 96-96 96zm-47-201L201 79c-15-15-41-4.5-41 17v96H24c-13.3 0-24 10.7-24 24v96c0 13.3 10.7 24 24 24h136v96c0 21.5 26 32 41 17l168-168c9.3-9.4 9.3-24.6 0-34z",
-                            ],
-                            "iconName": "sign-in-alt",
-                            "prefix": "fas",
-                          }
-                        }
-                        inverse={false}
-                        listItem={false}
-                        mask={null}
-                        pull={null}
-                        pulse={false}
-                        rotation={null}
-                        size={null}
-                        spin={false}
-                        symbol={false}
-                        title=""
-                        transform={null}
-                      >
-                        <svg
-                          aria-hidden="true"
-                          className="svg-inline--fa fa-sign-in-alt fa-w-16 "
-                          data-icon="sign-in-alt"
-                          data-prefix="fas"
-                          role="img"
-                          style={Object {}}
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M416 448h-84c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h84c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32h-84c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h84c53 0 96 43 96 96v192c0 53-43 96-96 96zm-47-201L201 79c-15-15-41-4.5-41 17v96H24c-13.3 0-24 10.7-24 24v96c0 13.3 10.7 24 24 24h136v96c0 21.5 26 32 41 17l168-168c9.3-9.4 9.3-24.6 0-34z"
-                            fill="currentColor"
-                            style={Object {}}
-                          />
-                        </svg>
-                      </FontAwesomeIcon>
-                    </a>
-                  </SafeAnchor>
-                </Button>
-                <ForwardRef(Popper)
-                  anchorEl={
-                    <a
-                      class="py-2 px-auto btn btn-default"
-                      href="/#/profile"
-                      id="user_profile_button"
-                      title="Login"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-sign-in-alt fa-w-16 "
-                        data-icon="sign-in-alt"
-                        data-prefix="fas"
-                        role="img"
-                        viewBox="0 0 512 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M416 448h-84c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h84c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32h-84c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h84c53 0 96 43 96 96v192c0 53-43 96-96 96zm-47-201L201 79c-15-15-41-4.5-41 17v96H24c-13.3 0-24 10.7-24 24v96c0 13.3 10.7 24 24 24h136v96c0 21.5 26 32 41 17l168-168c9.3-9.4 9.3-24.6 0-34z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </a>
-                  }
-                  className="MuiTooltip-popper MuiTooltip-popperArrow"
-                  id={null}
-                  open={false}
-                  placement="right"
-                  popperOptions={
-                    Object {
-                      "modifiers": Object {
-                        "arrow": Object {
-                          "element": null,
-                          "enabled": false,
-                        },
-                      },
-                    }
-                  }
-                  transition={true}
-                />
-              </ForwardRef(Tooltip)>
-            </WithStyles(ForwardRef(Tooltip))>
-          </BootstrapTooltip>
-          <BootstrapTooltip
-            placement="right"
-            title="Home"
-          >
-            <WithStyles(ForwardRef(Tooltip))
-              arrow={true}
-              classes={
-                Object {
-                  "arrow": "makeStyles-arrow-1",
-                  "tooltip": "makeStyles-tooltip-2",
-                }
-              }
-              placement="right"
-              title="Home"
-            >
-              <ForwardRef(Tooltip)
-                arrow={true}
-                classes={
-                  Object {
-                    "arrow": "MuiTooltip-arrow makeStyles-arrow-1",
-                    "popper": "MuiTooltip-popper",
-                    "popperArrow": "MuiTooltip-popperArrow",
-                    "popperInteractive": "MuiTooltip-popperInteractive",
-                    "tooltip": "MuiTooltip-tooltip makeStyles-tooltip-2",
-                    "tooltipArrow": "MuiTooltip-tooltipArrow",
-                    "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
-                    "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
-                    "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
-                    "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
-                    "touch": "MuiTooltip-touch",
-                  }
-                }
-                placement="right"
-                title="Home"
-              >
-                <a
-                  aria-describedby={null}
-                  className="py-2 px-auto notification-btn-ctrl"
-                  href="/#/home"
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseOver={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchStart={[Function]}
-                  title="Home"
-                >
-                  <FontAwesomeIcon
-                    border={false}
-                    className=""
-                    fixedWidth={false}
-                    flip={null}
-                    icon={
-                      Object {
-                        "icon": Array [
-                          512,
-                          512,
-                          Array [],
-                          "f05a",
-                          "M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z",
-                        ],
-                        "iconName": "info-circle",
-                        "prefix": "fas",
-                      }
-                    }
-                    inverse={false}
-                    listItem={false}
-                    mask={null}
-                    pull={null}
-                    pulse={false}
-                    rotation={null}
-                    size={null}
-                    spin={false}
-                    symbol={false}
-                    title=""
-                    transform={null}
-                  >
-                    <svg
-                      aria-hidden="true"
-                      className="svg-inline--fa fa-info-circle fa-w-16 "
-                      data-icon="info-circle"
-                      data-prefix="fas"
-                      role="img"
-                      style={Object {}}
-                      viewBox="0 0 512 512"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"
-                        fill="currentColor"
-                        style={Object {}}
-                      />
-                    </svg>
-                  </FontAwesomeIcon>
-                </a>
-                <ForwardRef(Popper)
-                  anchorEl={
-                    <a
-                      class="py-2 px-auto notification-btn-ctrl"
-                      href="/#/home"
-                      title="Home"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-info-circle fa-w-16 "
-                        data-icon="info-circle"
-                        data-prefix="fas"
-                        role="img"
-                        viewBox="0 0 512 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </a>
-                  }
-                  className="MuiTooltip-popper MuiTooltip-popperArrow"
-                  id={null}
-                  open={false}
-                  placement="right"
-                  popperOptions={
-                    Object {
-                      "modifiers": Object {
-                        "arrow": Object {
-                          "element": null,
-                          "enabled": false,
-                        },
-                      },
-                    }
-                  }
-                  transition={true}
-                />
-              </ForwardRef(Tooltip)>
-            </WithStyles(ForwardRef(Tooltip))>
-          </BootstrapTooltip>
-          <BootstrapTooltip
-            placement="right"
-            title="Take a tour"
-          >
-            <WithStyles(ForwardRef(Tooltip))
-              arrow={true}
-              classes={
-                Object {
-                  "arrow": "makeStyles-arrow-1",
-                  "tooltip": "makeStyles-tooltip-2",
-                }
-              }
-              placement="right"
-              title="Take a tour"
-            >
-              <ForwardRef(Tooltip)
-                arrow={true}
-                classes={
-                  Object {
-                    "arrow": "MuiTooltip-arrow makeStyles-arrow-1",
-                    "popper": "MuiTooltip-popper",
-                    "popperArrow": "MuiTooltip-popperArrow",
-                    "popperInteractive": "MuiTooltip-popperInteractive",
-                    "tooltip": "MuiTooltip-tooltip makeStyles-tooltip-2",
-                    "tooltipArrow": "MuiTooltip-tooltipArrow",
-                    "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
-                    "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
-                    "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
-                    "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
-                    "touch": "MuiTooltip-touch",
-                  }
-                }
-                placement="right"
-                title="Take a tour"
-              >
-                <Button
-                  active={false}
-                  aria-describedby={null}
-                  block={false}
-                  bsClass="btn"
-                  bsStyle="default"
-                  className="py-2 px-auto"
-                  disabled={false}
-                  id="joyride_button"
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseOver={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchStart={[Function]}
-                  title="Take a tour"
-                >
-                  <button
-                    aria-describedby={null}
-                    className="py-2 px-auto btn btn-default"
-                    disabled={false}
-                    id="joyride_button"
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseLeave={[Function]}
-                    onMouseOver={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchStart={[Function]}
-                    title="Take a tour"
-                    type="button"
                   >
                     <FontAwesomeIcon
                       border={false}
@@ -1202,10 +826,10 @@ exports[`SideBar Container Should render 1`] = `
                             512,
                             512,
                             Array [],
-                            "f059",
-                            "M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z",
+                            "f2f6",
+                            "M416 448h-84c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h84c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32h-84c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h84c53 0 96 43 96 96v192c0 53-43 96-96 96zm-47-201L201 79c-15-15-41-4.5-41 17v96H24c-13.3 0-24 10.7-24 24v96c0 13.3 10.7 24 24 24h136v96c0 21.5 26 32 41 17l168-168c9.3-9.4 9.3-24.6 0-34z",
                           ],
-                          "iconName": "question-circle",
+                          "iconName": "sign-in-alt",
                           "prefix": "fas",
                         }
                       }
@@ -1223,8 +847,8 @@ exports[`SideBar Container Should render 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        className="svg-inline--fa fa-question-circle fa-w-16 "
-                        data-icon="question-circle"
+                        className="svg-inline--fa fa-sign-in-alt fa-w-16 "
+                        data-icon="sign-in-alt"
                         data-prefix="fas"
                         role="img"
                         style={Object {}}
@@ -1232,99 +856,372 @@ exports[`SideBar Container Should render 1`] = `
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z"
+                          d="M416 448h-84c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h84c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32h-84c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h84c53 0 96 43 96 96v192c0 53-43 96-96 96zm-47-201L201 79c-15-15-41-4.5-41 17v96H24c-13.3 0-24 10.7-24 24v96c0 13.3 10.7 24 24 24h136v96c0 21.5 26 32 41 17l168-168c9.3-9.4 9.3-24.6 0-34z"
                           fill="currentColor"
                           style={Object {}}
                         />
                       </svg>
                     </FontAwesomeIcon>
-                  </button>
-                </Button>
-                <ForwardRef(Popper)
-                  anchorEl={
-                    <button
-                      class="py-2 px-auto btn btn-default"
-                      id="joyride_button"
-                      title="Take a tour"
-                      type="button"
+                  </a>
+                </SafeAnchor>
+              </Button>
+              <ForwardRef(Popper)
+                anchorEl={
+                  <a
+                    class="py-2 px-auto btn btn-default"
+                    href="/#/profile"
+                    id="user_profile_button"
+                    title="Login"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-sign-in-alt fa-w-16 "
+                      data-icon="sign-in-alt"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-question-circle fa-w-16 "
-                        data-icon="question-circle"
-                        data-prefix="fas"
-                        role="img"
-                        viewBox="0 0 512 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </button>
-                  }
-                  className="MuiTooltip-popper MuiTooltip-popperArrow"
-                  id={null}
-                  open={false}
-                  placement="right"
-                  popperOptions={
-                    Object {
-                      "modifiers": Object {
-                        "arrow": Object {
-                          "element": null,
-                          "enabled": false,
-                        },
+                      <path
+                        d="M416 448h-84c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h84c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32h-84c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h84c53 0 96 43 96 96v192c0 53-43 96-96 96zm-47-201L201 79c-15-15-41-4.5-41 17v96H24c-13.3 0-24 10.7-24 24v96c0 13.3 10.7 24 24 24h136v96c0 21.5 26 32 41 17l168-168c9.3-9.4 9.3-24.6 0-34z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </a>
+                }
+                className="MuiTooltip-popper"
+                id={null}
+                open={false}
+                placement="right"
+                popperOptions={
+                  Object {
+                    "modifiers": Object {
+                      "arrow": Object {
+                        "element": null,
+                        "enabled": false,
                       },
+                    },
+                  }
+                }
+                transition={true}
+              />
+            </ForwardRef(Tooltip)>
+          </WithStyles(ForwardRef(Tooltip))>
+          <WithStyles(ForwardRef(Tooltip))
+            placement="right"
+            title="Home"
+          >
+            <ForwardRef(Tooltip)
+              classes={
+                Object {
+                  "arrow": "MuiTooltip-arrow",
+                  "popper": "MuiTooltip-popper",
+                  "popperArrow": "MuiTooltip-popperArrow",
+                  "popperInteractive": "MuiTooltip-popperInteractive",
+                  "tooltip": "MuiTooltip-tooltip",
+                  "tooltipArrow": "MuiTooltip-tooltipArrow",
+                  "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
+                  "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
+                  "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
+                  "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
+                  "touch": "MuiTooltip-touch",
+                }
+              }
+              placement="right"
+              title="Home"
+            >
+              <a
+                aria-describedby={null}
+                className="py-2 px-auto notification-btn-ctrl"
+                href="/#/home"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}
+                title="Home"
+              >
+                <FontAwesomeIcon
+                  border={false}
+                  className=""
+                  fixedWidth={false}
+                  flip={null}
+                  icon={
+                    Object {
+                      "icon": Array [
+                        512,
+                        512,
+                        Array [],
+                        "f05a",
+                        "M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z",
+                      ],
+                      "iconName": "info-circle",
+                      "prefix": "fas",
                     }
                   }
-                  transition={true}
-                />
-              </ForwardRef(Tooltip)>
-            </WithStyles(ForwardRef(Tooltip))>
-          </BootstrapTooltip>
-          <BootstrapTooltip
+                  inverse={false}
+                  listItem={false}
+                  mask={null}
+                  pull={null}
+                  pulse={false}
+                  rotation={null}
+                  size={null}
+                  spin={false}
+                  symbol={false}
+                  title=""
+                  transform={null}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-info-circle fa-w-16 "
+                    data-icon="info-circle"
+                    data-prefix="fas"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                </FontAwesomeIcon>
+              </a>
+              <ForwardRef(Popper)
+                anchorEl={
+                  <a
+                    class="py-2 px-auto notification-btn-ctrl"
+                    href="/#/home"
+                    title="Home"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-info-circle fa-w-16 "
+                      data-icon="info-circle"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </a>
+                }
+                className="MuiTooltip-popper"
+                id={null}
+                open={false}
+                placement="right"
+                popperOptions={
+                  Object {
+                    "modifiers": Object {
+                      "arrow": Object {
+                        "element": null,
+                        "enabled": false,
+                      },
+                    },
+                  }
+                }
+                transition={true}
+              />
+            </ForwardRef(Tooltip)>
+          </WithStyles(ForwardRef(Tooltip))>
+          <WithStyles(ForwardRef(Tooltip))
+            placement="right"
+            title="Take a tour"
+          >
+            <ForwardRef(Tooltip)
+              classes={
+                Object {
+                  "arrow": "MuiTooltip-arrow",
+                  "popper": "MuiTooltip-popper",
+                  "popperArrow": "MuiTooltip-popperArrow",
+                  "popperInteractive": "MuiTooltip-popperInteractive",
+                  "tooltip": "MuiTooltip-tooltip",
+                  "tooltipArrow": "MuiTooltip-tooltipArrow",
+                  "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
+                  "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
+                  "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
+                  "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
+                  "touch": "MuiTooltip-touch",
+                }
+              }
+              placement="right"
+              title="Take a tour"
+            >
+              <Button
+                active={false}
+                aria-describedby={null}
+                block={false}
+                bsClass="btn"
+                bsStyle="default"
+                className="py-2 px-auto"
+                disabled={false}
+                id="joyride_button"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}
+                title="Take a tour"
+              >
+                <button
+                  aria-describedby={null}
+                  className="py-2 px-auto btn btn-default"
+                  disabled={false}
+                  id="joyride_button"
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseOver={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchStart={[Function]}
+                  title="Take a tour"
+                  type="button"
+                >
+                  <FontAwesomeIcon
+                    border={false}
+                    className=""
+                    fixedWidth={false}
+                    flip={null}
+                    icon={
+                      Object {
+                        "icon": Array [
+                          512,
+                          512,
+                          Array [],
+                          "f059",
+                          "M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z",
+                        ],
+                        "iconName": "question-circle",
+                        "prefix": "fas",
+                      }
+                    }
+                    inverse={false}
+                    listItem={false}
+                    mask={null}
+                    pull={null}
+                    pulse={false}
+                    rotation={null}
+                    size={null}
+                    spin={false}
+                    symbol={false}
+                    title=""
+                    transform={null}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="svg-inline--fa fa-question-circle fa-w-16 "
+                      data-icon="question-circle"
+                      data-prefix="fas"
+                      role="img"
+                      style={Object {}}
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z"
+                        fill="currentColor"
+                        style={Object {}}
+                      />
+                    </svg>
+                  </FontAwesomeIcon>
+                </button>
+              </Button>
+              <ForwardRef(Popper)
+                anchorEl={
+                  <button
+                    class="py-2 px-auto btn btn-default"
+                    id="joyride_button"
+                    title="Take a tour"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-question-circle fa-w-16 "
+                      data-icon="question-circle"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                }
+                className="MuiTooltip-popper"
+                id={null}
+                open={false}
+                placement="right"
+                popperOptions={
+                  Object {
+                    "modifiers": Object {
+                      "arrow": Object {
+                        "element": null,
+                        "enabled": false,
+                      },
+                    },
+                  }
+                }
+                transition={true}
+              />
+            </ForwardRef(Tooltip)>
+          </WithStyles(ForwardRef(Tooltip))>
+          <WithStyles(ForwardRef(Tooltip))
             placement="right"
             title="Made with ❤ by Delta Force"
           >
-            <WithStyles(ForwardRef(Tooltip))
-              arrow={true}
+            <ForwardRef(Tooltip)
               classes={
                 Object {
-                  "arrow": "makeStyles-arrow-1",
-                  "tooltip": "makeStyles-tooltip-2",
+                  "arrow": "MuiTooltip-arrow",
+                  "popper": "MuiTooltip-popper",
+                  "popperArrow": "MuiTooltip-popperArrow",
+                  "popperInteractive": "MuiTooltip-popperInteractive",
+                  "tooltip": "MuiTooltip-tooltip",
+                  "tooltipArrow": "MuiTooltip-tooltipArrow",
+                  "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
+                  "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
+                  "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
+                  "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
+                  "touch": "MuiTooltip-touch",
                 }
               }
               placement="right"
               title="Made with ❤ by Delta Force"
             >
-              <ForwardRef(Tooltip)
-                arrow={true}
-                classes={
-                  Object {
-                    "arrow": "MuiTooltip-arrow makeStyles-arrow-1",
-                    "popper": "MuiTooltip-popper",
-                    "popperArrow": "MuiTooltip-popperArrow",
-                    "popperInteractive": "MuiTooltip-popperInteractive",
-                    "tooltip": "MuiTooltip-tooltip makeStyles-tooltip-2",
-                    "tooltipArrow": "MuiTooltip-tooltipArrow",
-                    "tooltipPlacementBottom": "MuiTooltip-tooltipPlacementBottom",
-                    "tooltipPlacementLeft": "MuiTooltip-tooltipPlacementLeft",
-                    "tooltipPlacementRight": "MuiTooltip-tooltipPlacementRight",
-                    "tooltipPlacementTop": "MuiTooltip-tooltipPlacementTop",
-                    "touch": "MuiTooltip-touch",
-                  }
-                }
-                placement="right"
+              <Button
+                active={false}
+                aria-describedby={null}
+                block={false}
+                bsClass="btn"
+                bsStyle="default"
+                className="py-2 px-auto"
+                disabled={false}
+                id="delta_logo"
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onMouseLeave={[Function]}
+                onMouseOver={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}
                 title="Made with ❤ by Delta Force"
               >
-                <Button
-                  active={false}
+                <button
                   aria-describedby={null}
-                  block={false}
-                  bsClass="btn"
-                  bsStyle="default"
-                  className="py-2 px-auto"
+                  className="py-2 px-auto btn btn-default"
                   disabled={false}
                   id="delta_logo"
                   onBlur={[Function]}
@@ -1334,18 +1231,25 @@ exports[`SideBar Container Should render 1`] = `
                   onTouchEnd={[Function]}
                   onTouchStart={[Function]}
                   title="Made with ❤ by Delta Force"
+                  type="button"
                 >
+                  <a
+                    href="https://delta.nitt.edu"
+                    target="_blank"
+                  >
+                    <img
+                      height={20}
+                      src="assets/img/deltaLogo.png"
+                      width={20}
+                    />
+                  </a>
+                </button>
+              </Button>
+              <ForwardRef(Popper)
+                anchorEl={
                   <button
-                    aria-describedby={null}
-                    className="py-2 px-auto btn btn-default"
-                    disabled={false}
+                    class="py-2 px-auto btn btn-default"
                     id="delta_logo"
-                    onBlur={[Function]}
-                    onFocus={[Function]}
-                    onMouseLeave={[Function]}
-                    onMouseOver={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchStart={[Function]}
                     title="Made with ❤ by Delta Force"
                     type="button"
                   >
@@ -1354,52 +1258,31 @@ exports[`SideBar Container Should render 1`] = `
                       target="_blank"
                     >
                       <img
-                        height={20}
+                        height="20"
                         src="assets/img/deltaLogo.png"
-                        width={20}
+                        width="20"
                       />
                     </a>
                   </button>
-                </Button>
-                <ForwardRef(Popper)
-                  anchorEl={
-                    <button
-                      class="py-2 px-auto btn btn-default"
-                      id="delta_logo"
-                      title="Made with ❤ by Delta Force"
-                      type="button"
-                    >
-                      <a
-                        href="https://delta.nitt.edu"
-                        target="_blank"
-                      >
-                        <img
-                          height="20"
-                          src="assets/img/deltaLogo.png"
-                          width="20"
-                        />
-                      </a>
-                    </button>
-                  }
-                  className="MuiTooltip-popper MuiTooltip-popperArrow"
-                  id={null}
-                  open={false}
-                  placement="right"
-                  popperOptions={
-                    Object {
-                      "modifiers": Object {
-                        "arrow": Object {
-                          "element": null,
-                          "enabled": false,
-                        },
+                }
+                className="MuiTooltip-popper"
+                id={null}
+                open={false}
+                placement="right"
+                popperOptions={
+                  Object {
+                    "modifiers": Object {
+                      "arrow": Object {
+                        "element": null,
+                        "enabled": false,
                       },
-                    }
+                    },
                   }
-                  transition={true}
-                />
-              </ForwardRef(Tooltip)>
-            </WithStyles(ForwardRef(Tooltip))>
-          </BootstrapTooltip>
+                }
+                transition={true}
+              />
+            </ForwardRef(Tooltip)>
+          </WithStyles(ForwardRef(Tooltip))>
         </div>
       </ButtonGroup>
     </div>
