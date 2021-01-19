@@ -19,6 +19,8 @@ import * as SubmitBarInterfaces from 'app/types/SubmitBar';
 import classnames from 'classnames';
 import * as React from 'react';
 
+import Tooltip from '@material-ui/core/Tooltip';
+
 export class SubmitBar extends React.Component<
   SubmitBarInterfaces.Props,
   SubmitBarInterfaces.State
@@ -53,136 +55,164 @@ export class SubmitBar extends React.Component<
       >
         <button className={classnames(styles.customBtn)} style={{ padding: '0px' }}>
           {this.props.splitPaneState !== SplitPaneState.RENDERER ? (
-            <span
-              id="toggle_button"
-              className={classnames(styles.icon, styles.toggleIcon)}
-              style={{ padding: '6px' }}
-              onClick={() => {
-                switch (splitPaneState) {
-                  case SplitPaneState.EDITOR: {
-                    changeSplitPaneState(SplitPaneState.BOTH);
-                    break;
-                  }
-                  case SplitPaneState.BOTH: {
-                    changeSplitPaneState(SplitPaneState.RENDERER);
-                    break;
-                  }
-                  case SplitPaneState.RENDERER: {
-                    changeSplitPaneState(SplitPaneState.RENDERER);
-                    break;
-                  }
-                }
-              }}
+            <Tooltip
+              title={
+                splitPaneState === SplitPaneState.EDITOR
+                  ? 'Show Renderer and Editor'
+                  : splitPaneState === SplitPaneState.BOTH
+                  ? 'Close Editor'
+                  : ''
+              }
             >
-              <FontAwesomeIcon icon={faChevronLeft} />
-            </span>
+              <span
+                id="toggle_button"
+                className={classnames(styles.icon, styles.toggleIcon)}
+                style={{ padding: '6px' }}
+                onClick={() => {
+                  switch (splitPaneState) {
+                    case SplitPaneState.EDITOR: {
+                      changeSplitPaneState(SplitPaneState.BOTH);
+                      break;
+                    }
+                    case SplitPaneState.BOTH: {
+                      changeSplitPaneState(SplitPaneState.RENDERER);
+                      break;
+                    }
+                    case SplitPaneState.RENDERER: {
+                      changeSplitPaneState(SplitPaneState.RENDERER);
+                      break;
+                    }
+                  }
+                }}
+              >
+                <FontAwesomeIcon icon={faChevronLeft} />
+              </span>
+            </Tooltip>
           ) : null}
           {this.props.splitPaneState !== SplitPaneState.EDITOR ? (
-            <span
-              id="toggle_button"
-              className={classnames(styles.icon, styles.toggleIcon)}
-              style={{ padding: '6px' }}
-              onClick={() => {
-                switch (splitPaneState) {
-                  case SplitPaneState.EDITOR: {
-                    changeSplitPaneState(SplitPaneState.EDITOR);
-                    break;
-                  }
-                  case SplitPaneState.BOTH: {
-                    changeSplitPaneState(SplitPaneState.EDITOR);
-                    break;
-                  }
-                  case SplitPaneState.RENDERER: {
-                    changeSplitPaneState(SplitPaneState.BOTH);
-                    break;
-                  }
-                }
-              }}
+            <Tooltip
+              title={
+                splitPaneState === SplitPaneState.RENDERER
+                  ? 'Show Renderer and Editor'
+                  : splitPaneState === SplitPaneState.BOTH
+                  ? 'Close Renderer'
+                  : ''
+              }
             >
-              <FontAwesomeIcon icon={faChevronRight} />
-            </span>
+              <span
+                id="toggle_button"
+                className={classnames(styles.icon, styles.toggleIcon)}
+                style={{ padding: '6px' }}
+                onClick={() => {
+                  switch (splitPaneState) {
+                    case SplitPaneState.EDITOR: {
+                      changeSplitPaneState(SplitPaneState.EDITOR);
+                      break;
+                    }
+                    case SplitPaneState.BOTH: {
+                      changeSplitPaneState(SplitPaneState.EDITOR);
+                      break;
+                    }
+                    case SplitPaneState.RENDERER: {
+                      changeSplitPaneState(SplitPaneState.BOTH);
+                      break;
+                    }
+                  }
+                }}
+              >
+                <FontAwesomeIcon icon={faChevronRight} />
+              </span>
+            </Tooltip>
           ) : null}
         </button>
-        <button
-          className={classnames(styles.customBtn)}
-          onClick={clearLogs}
-          id="clear_gamelog_button"
-        >
-          <span
-            className={classnames(styles.icon)}
-            style={{ padding: 0, margin: 0, border: 0 }}
-            title={'Clear Renderer Log'}
-          >
-            <FontAwesomeIcon icon={faTrash} />
-          </span>
-        </button>
-        <button
-          className={classnames(styles.customBtn)}
-          id="run_button"
-          onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-            this.setState({
-              isRunOptionsOpen: !isRunOptionsOpen,
-            });
-            event.stopPropagation();
-          }}
-        >
-          <span className={classnames(styles.icon)}>
-            <FontAwesomeIcon icon={faPlay} />
-          </span>
-          <span>RUN</span>
-        </button>
-        {debugRunAvailable ? (
+        <Tooltip title="Clear Renderer Log">
           <button
             className={classnames(styles.customBtn)}
-            style={{
-              backgroundColor: '#dc3545',
-              color: 'white',
-            }}
-            title="Run debugger on your last runtime error"
-            id="debug_run_button"
-            onClick={this.props.debugRun}
+            onClick={clearLogs}
+            id="clear_gamelog_button"
           >
-            <span
-              className={classnames(styles.icon)}
-              style={{
-                borderColor: 'rgb(185, 53, 60)',
-              }}
-            >
-              <FontAwesomeIcon icon={faCog} />
+            <span className={classnames(styles.icon)} style={{ padding: 0, margin: 0, border: 0 }}>
+              <FontAwesomeIcon icon={faTrash} />
             </span>
-            <span>DEBUG RUN</span>
           </button>
+        </Tooltip>
+        <Tooltip title="Run Code">
+          <button
+            className={classnames(styles.customBtn)}
+            id="run_button"
+            onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+              this.setState({
+                isRunOptionsOpen: !isRunOptionsOpen,
+              });
+              event.stopPropagation();
+            }}
+          >
+            <span className={classnames(styles.icon)}>
+              <FontAwesomeIcon icon={faPlay} />
+            </span>
+            <span>RUN</span>
+          </button>
+        </Tooltip>
+        {debugRunAvailable ? (
+          <Tooltip title="Debug Code">
+            <button
+              className={classnames(styles.customBtn)}
+              style={{
+                backgroundColor: '#dc3545',
+                color: 'white',
+              }}
+              title="Run debugger on your last runtime error"
+              id="debug_run_button"
+              onClick={this.props.debugRun}
+            >
+              <span
+                className={classnames(styles.icon)}
+                style={{
+                  borderColor: 'rgb(185, 53, 60)',
+                }}
+              >
+                <FontAwesomeIcon icon={faCog} />
+              </span>
+              <span>DEBUG RUN</span>
+            </button>
+          </Tooltip>
         ) : null}
-        <button className={classnames(styles.customBtn)} onClick={saveCode} id="save_button">
-          <span className={classnames(styles.icon)}>
-            <FontAwesomeIcon icon={faSave} />
-          </span>
-          <span>SAVE</span>
-        </button>
-        <button
-          id="commit_button"
-          className={classnames(styles.customBtn)}
-          onClick={() => this.toggleCommitMessageBox(!isCommitMessageBoxOpen)}
-        >
-          <span className={classnames(styles.icon)}>
-            <FontAwesomeIcon icon={faCodeBranch} />
-          </span>
-          <span>COMMIT</span>
-        </button>
-        <button
-          className={classnames(styles.customBtn)}
-          title="Submit Code"
-          id="submit_button"
-          onClick={(e) => {
-            this.props.saveCode();
-            this.props.lockCode();
-          }}
-        >
-          <span className={classnames(styles.icon)}>
-            <FontAwesomeIcon icon={faLock} />
-          </span>
-          <span>SUBMIT</span>
-        </button>
+        <Tooltip title="Save Code">
+          <button className={classnames(styles.customBtn)} onClick={saveCode} id="save_button">
+            <span className={classnames(styles.icon)}>
+              <FontAwesomeIcon icon={faSave} />
+            </span>
+            <span>SAVE</span>
+          </button>
+        </Tooltip>
+        <Tooltip title="Commit Code">
+          <button
+            id="commit_button"
+            className={classnames(styles.customBtn)}
+            onClick={() => this.toggleCommitMessageBox(!isCommitMessageBoxOpen)}
+          >
+            <span className={classnames(styles.icon)}>
+              <FontAwesomeIcon icon={faCodeBranch} />
+            </span>
+            <span>COMMIT</span>
+          </button>
+        </Tooltip>
+        <Tooltip title="Submit Code">
+          <button
+            className={classnames(styles.customBtn)}
+            title="Submit Code"
+            id="submit_button"
+            onClick={(e) => {
+              this.props.saveCode();
+              this.props.lockCode();
+            }}
+          >
+            <span className={classnames(styles.icon)}>
+              <FontAwesomeIcon icon={faLock} />
+            </span>
+            <span>SUBMIT</span>
+          </button>
+        </Tooltip>
         <CommitMessageBox
           commitMessage={commitMessage}
           isCommitMessageBoxOpen={isCommitMessageBoxOpen}
