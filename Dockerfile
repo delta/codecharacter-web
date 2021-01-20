@@ -16,4 +16,4 @@ WORKDIR /usr/src/app/server
 EXPOSE 5000
 
 RUN npm install --silent
-RUN npm start
+ENTRYPOINT [ "npm", "start" ]
