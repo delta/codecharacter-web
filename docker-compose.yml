@@ -2,6 +2,11 @@ version: '3'
 services:
   web:
     container_name: codecharacter_web
-    build: .
+    image: node:latest
     ports:
       - "9019:5000"
+    volumes:
+      - ./:/usr/src/app
+
+    # command: ["ls","/usr/src/app"]
+    entrypoint: /usr/src/app/entrypoint.sh
