@@ -1,0 +1,14 @@
+{
+  "name": "codecharacter-web",
+  "version": "1.0.0",
+  "description": "Simple webserver to run prod version of Codecharacter",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Delta",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
