@@ -1,4 +1,4 @@
-FROM node:8.11.1
+FROM node:latest
 
 WORKDIR /usr/src/app
 
@@ -10,6 +10,10 @@ COPY src/config/config.example.ts src/config/config.ts
 COPY . .
 
 RUN npm run build
-RUN npm install -g serve
 
-CMD ["serve", "build"]
+WORKDIR /usr/src/app/server
+
+EXPOSE 5000
+
+RUN npm install --silent
+RUN npm start
