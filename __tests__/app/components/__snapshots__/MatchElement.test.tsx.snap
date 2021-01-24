@@ -19,7 +19,7 @@ exports[`MatchElement Component Should render 1`] = `
       "verdict": "1",
     }
   }
-  type="TOP_MATCHES"
+  type="FEATURED_MATCHES"
 >
   <Col
     bsClass="col"
