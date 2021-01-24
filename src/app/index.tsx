@@ -11,7 +11,6 @@ import { initializeRendererAssets } from 'code-character-renderer-20';
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
 // @ts-ignore
-import { Sugar } from 'react-preloaders';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 
 initializeRendererAssets();
@@ -19,7 +18,6 @@ initializeRendererAssets();
 /* tslint:disable-next-line:variable-name */
 export const App = hot(module)(() => (
   <HashRouter>
-    <Sugar background="#484848" color="white" />
     <Switch>
       <Route exact path={Routes.ROOT} component={Dashboard} />
       <Route exact path={Routes.LOGIN} component={Login} />
