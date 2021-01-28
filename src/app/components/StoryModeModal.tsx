@@ -33,7 +33,11 @@ export class StoryModeModal extends React.Component<StoryModalPropType.Props, {}
         <Modal.Footer>
           <Button
             className={this.props.isCompleted ? 'btn-success' : 'btn-primary'}
+<<<<<<< HEAD
             onClick={() => this.props.startMatch(1, this.props.level)}
+=======
+            onClick={() => this.props.closeStoryModeModal()}
+>>>>>>> Added StoryModeModal component and actions to open and close the modal.
           >
             {this.props.isCompleted ? 'Retry' : 'Start'} &nbsp;
             <FontAwesomeIcon icon={faArrowRight} />
