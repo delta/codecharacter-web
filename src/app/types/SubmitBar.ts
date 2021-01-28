@@ -12,6 +12,8 @@ export interface StateProps {
   maps: SubmissionInterfaces.Map[];
   debugRunAvailable: boolean;
   aiIds: number[];
+  isStoryModeModalOpen: boolean;
+  storyModeModalLevel: number;
 }
 
 export interface DispatchProps {
@@ -28,6 +30,8 @@ export interface DispatchProps {
   clearLogs: () => void;
   updateCurrentAiId: (aiId: number) => void;
   updateMapId: (mapId: number) => void;
+  openStoryModeModal: (level: number) => void;
+  closeStoryModeModal: () => void;
 }
 
 export interface RunOptionsOwnState {
