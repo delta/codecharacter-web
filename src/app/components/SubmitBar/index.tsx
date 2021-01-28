@@ -11,6 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SubmissionActions } from 'app/actions';
+import { StoryModeModal } from 'app/components/StoryModeModal';
 import { CommitMessageBox } from 'app/components/SubmitBar/CommitMessageBox';
 import { DropDownItem } from 'app/components/SubmitBar/DropDownItem';
 import { RunOptions } from 'app/components/SubmitBar/RunOptions';
@@ -48,6 +49,7 @@ export class SubmitBar extends React.Component<
       aiIds,
       clearLogs,
       debugRunAvailable,
+      openStoryModeModal,
     } = this.props;
     const { commitMessage, isCommitMessageBoxOpen, isRunOptionsOpen, level } = this.state;
     return (
@@ -259,6 +261,23 @@ export class SubmitBar extends React.Component<
       </div>
     );
   }
+
+  private storyModeModalComponent = (isCompleted: boolean, stars: number) => {
+    // can just call storyModeModalComponent(true, 3) to render a StoryModeModal component with
+    // stars=3 and isCompleted= true and the level value is fetched from storyModeModalLevel state variable
+    const { closeStoryModeModal, storyModeModalLevel } = this.props;
+
+    return (
+      <StoryModeModal
+        isCompleted={isCompleted}
+        level={storyModeModalLevel}
+        closeStoryModeModal={() => {
+          closeStoryModeModal();
+        }}
+        stars={stars}
+      />
+    );
+  };
 
   private closeRunOptions = () => {
     this.setState({

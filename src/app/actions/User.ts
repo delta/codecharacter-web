@@ -23,6 +23,8 @@ export namespace UserActions {
     RESET_APP_STATE = 'RESET_APP_STATE',
     SET_IS_AUTHENTICATION_OPEN = 'SET_IS_AUTHENTICATION_OPEN',
     SET_IS_LOGIN_LOADING = 'SET_IS_LOGIN_LOADING',
+    OPEN_STORY_MODE_MODAL = 'OPEN_STORY_MODE_MODAL',
+    CLOSE_STORY_MODE_MODAL = 'CLOSE_STORY_MODE_MODAL',
   }
 
   export const activateUser = (authToken: string, userId: number) =>
@@ -98,4 +100,9 @@ export namespace UserActions {
 
   export const setIsLoginLoading = (isLoginLoading: boolean) =>
     action(Type.SET_IS_LOGIN_LOADING, { isLoginLoading });
+
+  export const openStoryModeModal = (level: number) =>
+    action(Type.OPEN_STORY_MODE_MODAL, { level });
+
+  export const closeStoryModeModal = () => action(Type.CLOSE_STORY_MODE_MODAL);
 }

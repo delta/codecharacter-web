@@ -52,6 +52,9 @@ export class Editor extends React.Component<EditorInterfaces.Props, EditorInterf
 
     return (
       <AceEditor
+        style={{
+          zIndex: 1,
+        }}
         mode="c_cpp"
         theme={theme}
         name="editor_div"

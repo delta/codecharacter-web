@@ -43,11 +43,13 @@ export interface ActivateUser {
 
 const actions = {
   ActivateUser: UserActions.activateUser,
+  closeStoryModeModal: UserActions.closeStoryModeModal,
   editUserPassword: UserActions.editUserPassword,
   editUserProfile: UserActions.editUserProfile,
   getUserDetails: UserActions.getUserDetails,
   login: UserActions.login,
   logout: UserActions.logout,
+  openStoryModeModal: UserActions.openStoryModeModal,
   register: UserActions.register,
   resetUserState: UserActions.resetUserState,
   setIsAuthenticationOpen: UserActions.setIsAuthenticationOpen,
@@ -74,6 +76,8 @@ export interface UserStoreState {
   isUserProfileModalOpen: boolean;
   isNotificationPresent: boolean;
   isSocketPresent: boolean;
+  isStoryModeModalOpen?: boolean;
+  storyModeModalLevel?: number;
   notification: string;
   socketMessage: string;
   isAuthenticationOpen: boolean;
