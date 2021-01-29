@@ -1,4 +1,4 @@
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCaretLeft, faCaretRight, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import NotificationElement from 'app/containers/Notification/NotificationElement';
 import * as styles from 'app/styles/Notification.module.css';
@@ -7,15 +7,21 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 // tslint:disable-next-line
+import ReactPaginate from 'react-paginate';
+
+// tslint:disable-next-line
 
 export class Notification extends React.Component<
   NotificationInterfaces.Props,
   NotificationInterfaces.State
 > {
+  private static paginationSize = 6;
+
   constructor(props: NotificationInterfaces.Props) {
     super(props);
     this.state = {
       activeNotificationTab: NotificationInterfaces.NotificationTabType.ALL,
+      offset: 0,
       tabType: NotificationInterfaces.TabType.NOTIFICATIONS,
     };
   }
@@ -23,6 +29,12 @@ export class Notification extends React.Component<
     this.props.getAllGlobalNotifications();
     this.props.getAllGlobalAnnouncements();
   }
+
+  public handlePageClick = (data: { selected: number }) => {
+    this.setState({
+      offset: Math.ceil(data.selected * Notification.paginationSize),
+    });
+  };
 
   public render() {
     const { activeNotificationTab, tabType } = this.state;
@@ -151,17 +163,48 @@ export class Notification extends React.Component<
               </div>
             </Row>
             <Row className={classnames('mb-2', styles.notificationWrap)}>
-              {activeNotifications.map(({ id, title, content, type, createdAt }) => (
-                <NotificationElement
-                  createdAt={createdAt}
-                  key={id}
-                  id={id}
-                  title={title}
-                  content={content}
-                  type={type}
-                  deleteNotification={deleteNotification}
+              <Col
+                className="d-flex justify-content-center"
+                style={{ width: '100vw', margin: '5px' }}
+              >
+                <ReactPaginate
+                  previousLabel={
+                    <span>
+                      <FontAwesomeIcon icon={faCaretLeft} /> <FontAwesomeIcon icon={faCaretLeft} />
+                    </span>
+                  }
+                  nextLabel={
+                    <span>
+                      <FontAwesomeIcon icon={faCaretRight} />{' '}
+                      <FontAwesomeIcon icon={faCaretRight} />
+                    </span>
+                  }
+                  breakLabel={'...'}
+                  breakClassName={'break-me'}
+                  pageCount={Math.max(activeNotifications.length / Notification.paginationSize)}
+                  marginPagesDisplayed={1}
+                  pageClassName={'atag'}
+                  pageRangeDisplayed={2}
+                  activeLinkClassName={'active'}
+                  onPageChange={this.handlePageClick}
+                  containerClassName={'pagination'}
+                  activeClassName={'active'}
                 />
-              ))}
+              </Col>
+              {activeNotifications.map(({ id, title, content, type, createdAt }, index) =>
+                index >= this.state.offset &&
+                index <= this.state.offset + Notification.paginationSize - 1 ? (
+                  <NotificationElement
+                    createdAt={createdAt}
+                    key={id}
+                    id={id}
+                    title={title}
+                    content={content}
+                    type={type}
+                    deleteNotification={deleteNotification}
+                  />
+                ) : null,
+              )}
             </Row>
           </>
         ) : (
