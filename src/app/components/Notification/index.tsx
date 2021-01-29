@@ -8,6 +8,8 @@ import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 
 // tslint:disable-next-line
+
+// tslint:disable-next-line
 import ReactPaginate from 'react-paginate';
 export class Notification extends React.Component<
   NotificationInterfaces.Props,
@@ -18,6 +20,7 @@ export class Notification extends React.Component<
   constructor(props: NotificationInterfaces.Props) {
     super(props);
     this.state = {
+      offset: 0,
       activeNotificationTab: NotificationInterfaces.NotificationTabType.ALL,
       offset: 0,
       tabType: NotificationInterfaces.TabType.NOTIFICATIONS,
@@ -56,6 +59,7 @@ export class Notification extends React.Component<
           return true;
       }
     });
+
 
     return (
       <Grid fluid={true} className={classnames(styles.Notification)}>
