@@ -76,8 +76,8 @@ export interface UserStoreState {
   isUserProfileModalOpen: boolean;
   isNotificationPresent: boolean;
   isSocketPresent: boolean;
-  isStoryModeModalOpen?: boolean;
-  storyModeModalLevel?: number;
+  isStoryModeModalOpen: boolean;
+  storyModeModalLevel: number;
   notification: string;
   socketMessage: string;
   isAuthenticationOpen: boolean;
