@@ -6,6 +6,7 @@ export interface State {
   commitMessage: string;
   isCommitMessageBoxOpen: boolean;
   isRunOptionsOpen: boolean;
+  level: number;
 }
 
 export interface StateProps {
