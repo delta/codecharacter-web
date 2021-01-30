@@ -48,3 +48,39 @@
   padding-right: 0px;
   border-right: 0px;
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: 9px;
+  background-color: #292929;
+  width: 134px;
+  padding: 0px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content div {
+  color: rgb(214, 198, 198);
+  padding: 12px 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content div span {
+  margin-right: 18px;
+}
+
+.dropdown-content div:hover {
+  background-color: rgb(240, 231, 231);
+  color: rgb(15, 14, 14);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

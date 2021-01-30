@@ -3,6 +3,7 @@ import {
   faChevronRight,
   faCodeBranch,
   faCog,
+  faExclamationCircle,
   faLock,
   faPlay,
   faSave,
@@ -11,6 +12,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SubmissionActions } from 'app/actions';
 import { CommitMessageBox } from 'app/components/SubmitBar/CommitMessageBox';
+import { DropDownItem } from 'app/components/SubmitBar/DropDownItem';
 import { RunOptions } from 'app/components/SubmitBar/RunOptions';
 import * as styles from 'app/styles/SubmitBar.module.css';
 import * as SubmissionInterfaces from 'app/types/code/Submission';
@@ -19,7 +21,7 @@ import * as SubmitBarInterfaces from 'app/types/SubmitBar';
 import classnames from 'classnames';
 import * as React from 'react';
 
-import Tooltip from '@material-ui/core/Tooltip';
+import { Badge, Tooltip } from '@material-ui/core';
 
 export class SubmitBar extends React.Component<
   SubmitBarInterfaces.Props,
@@ -31,6 +33,7 @@ export class SubmitBar extends React.Component<
       commitMessage: '',
       isCommitMessageBoxOpen: false,
       isRunOptionsOpen: false,
+      level: 1,
     };
   }
 
@@ -46,7 +49,7 @@ export class SubmitBar extends React.Component<
       clearLogs,
       debugRunAvailable,
     } = this.props;
-    const { commitMessage, isCommitMessageBoxOpen, isRunOptionsOpen } = this.state;
+    const { commitMessage, isCommitMessageBoxOpen, isRunOptionsOpen, level } = this.state;
     return (
       <div
         className={classnames(styles.SubmitBar, {
@@ -213,6 +216,30 @@ export class SubmitBar extends React.Component<
             <span>SUBMIT</span>
           </button>
         </Tooltip>
+        <Badge
+          anchorOrigin={{
+            horizontal: 'right',
+            vertical: 'top',
+          }}
+          badgeContent={level}
+          color={'secondary'}
+        >
+          <div className={styles.dropdown}>
+            <button className={classnames(styles.customBtn)} title="Quest_Level" id="quest_button">
+              <span className={classnames(styles.icon)}>
+                <FontAwesomeIcon icon={faExclamationCircle} />
+              </span>
+              <span>QUEST LEVEL</span>
+            </button>
+            <div className={styles['dropdown-content']}>
+              <DropDownItem level={'1'} rating={1} />
+              <DropDownItem level={'2'} rating={2} />
+              <DropDownItem level={'3'} rating={3} />
+              <DropDownItem level={'4'} rating={0} />
+              <DropDownItem level={'5'} rating={0} />
+            </div>
+          </div>
+        </Badge>
         <CommitMessageBox
           commitMessage={commitMessage}
           isCommitMessageBoxOpen={isCommitMessageBoxOpen}
