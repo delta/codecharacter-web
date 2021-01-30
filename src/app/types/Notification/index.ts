@@ -58,6 +58,7 @@ export interface NotificationStoreState {
 }
 
 export interface State {
+  offset: number;
   activeNotificationTab: NotificationTabType;
   tabType: TabType;
 }
