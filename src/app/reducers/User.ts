@@ -22,9 +22,11 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   isLoginLoading: false,
   isNotificationPresent: false,
   isSocketPresent: false,
+  isStoryModeModalOpen: false,
   isUserProfileModalOpen: false,
   notification: '',
   socketMessage: '',
+  storyModeModalLevel: 0,
   userId: 0,
   userType: UserInterfaces.UserType.STUDENT,
   username: '',
@@ -127,7 +129,20 @@ export const userReducer = (
         isNotificationPresent: !state.isNotificationPresent,
       };
     }
-
+    case UserActions.Type.OPEN_STORY_MODE_MODAL: {
+      return {
+        ...state,
+        isStoryModeModalOpen: true,
+        storyModeModalLevel: action.payload.level,
+      };
+    }
+    case UserActions.Type.CLOSE_STORY_MODE_MODAL: {
+      return {
+        ...state,
+        isStoryModeModalOpen: false,
+        storyModeModalLevel: -1,
+      };
+    }
     case UserActions.Type.UPDATE_SOCKET_MESSAGE: {
       return {
         ...state,

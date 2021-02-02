@@ -1,4 +1,4 @@
-import { CodeActions, GameLogActions, SubmissionActions } from 'app/actions';
+import { CodeActions, GameLogActions, SubmissionActions, UserActions } from 'app/actions';
 import { SubmitBar } from 'app/components/SubmitBar';
 import { RootState } from 'app/reducers';
 import * as SubmissionInterfaces from 'app/types/code/Submission';
@@ -10,7 +10,9 @@ const mapStateToProps = (rootState: RootState) => {
   return {
     aiIds: rootState.submission.aiIds,
     debugRunAvailable: rootState.submission.debugRunRequest !== SubmissionInterfaces.Request.NONE,
+    isStoryModeModalOpen: rootState.user.isStoryModeModalOpen,
     maps: rootState.submission.maps,
+    storyModeModalLevel: rootState.user.storyModeModalLevel,
   };
 };
 
@@ -23,12 +25,14 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       dispatch(GameLogActions.updateGameLog('', '', ''));
       dispatch(GameLogActions.clearDisplayDebugLog());
     },
+    closeStoryModeModal: () => dispatch(UserActions.closeStoryModeModal()),
     commit: (commitMessage: string) => dispatch(CodeActions.commit(commitMessage)),
     debugRun: () => dispatch(SubmissionActions.debugRun()),
     getAiIds: () => dispatch(SubmissionActions.getAiIds()),
     getCommitLog: () => dispatch(CodeActions.getCommitLog()),
     loadMaps: () => dispatch(SubmissionActions.loadMaps()),
     lockCode: () => dispatch(SubmissionActions.lockCode()),
+    openStoryModeModal: (level: number) => dispatch(UserActions.openStoryModeModal(level)),
     saveCode: () => dispatch(CodeActions.save()),
     selfMatch: (mapId: number) => dispatch(SubmissionActions.selfMatch(mapId)),
     updateCurrentAiId: (aiId: number) => dispatch(SubmissionActions.updateCurrentAiId(aiId)),
