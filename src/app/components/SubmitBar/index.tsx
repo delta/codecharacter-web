@@ -50,6 +50,7 @@ export class SubmitBar extends React.Component<
       clearLogs,
       debugRunAvailable,
       openStoryModeModal,
+      isStoryModeModalOpen,
     } = this.props;
     const { commitMessage, isCommitMessageBoxOpen, isRunOptionsOpen, level } = this.state;
     return (
@@ -234,11 +235,11 @@ export class SubmitBar extends React.Component<
               <span>QUEST LEVEL</span>
             </button>
             <div className={styles['dropdown-content']}>
-              <DropDownItem level={'1'} rating={1} />
-              <DropDownItem level={'2'} rating={2} />
-              <DropDownItem level={'3'} rating={3} />
-              <DropDownItem level={'4'} rating={0} />
-              <DropDownItem level={'5'} rating={0} />
+              <DropDownItem level={'1'} rating={1} openStoryModeModal={openStoryModeModal} />
+              <DropDownItem level={'2'} rating={2} openStoryModeModal={openStoryModeModal} />
+              <DropDownItem level={'3'} rating={3} openStoryModeModal={openStoryModeModal} />
+              <DropDownItem level={'4'} rating={0} openStoryModeModal={openStoryModeModal} />
+              <DropDownItem level={'5'} rating={0} openStoryModeModal={openStoryModeModal} />
             </div>
           </div>
         </Badge>
@@ -258,6 +259,7 @@ export class SubmitBar extends React.Component<
             closeOptions={this.closeRunOptions}
           />
         ) : null}
+        {isStoryModeModalOpen ? this.storyModeModalComponent(true, 2) : null}
       </div>
     );
   }

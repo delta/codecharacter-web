@@ -59,7 +59,6 @@ export class Notification extends React.Component<
       }
     });
 
-
     return (
       <Grid fluid={true} className={classnames(styles.Notification)}>
         <Row className="justify-content-between py-2 px-3">
