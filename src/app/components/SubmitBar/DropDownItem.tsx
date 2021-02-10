@@ -1,4 +1,5 @@
 import { DeltaStarCount } from 'app/components/SubmitBar/DeltaStarCount';
+import * as styles from 'app/styles/SubmitBar.module.css';
 import * as DropDownItemInterfaces from 'app/types/DropDownItem';
 import * as React from 'react';
 
@@ -14,14 +15,14 @@ export class DropDownItem extends React.Component<DropDownItemInterfaces.Props, 
     return (
       <span>
         {rating ? (
-          <div onClick={(e) => openStoryModeModal(Number(level))}>
-            <span>LVL {level}</span>
+          <div  onClick={(e) => openStoryModeModal(Number(level))}>
+            <span className={styles['dropdown-content-LVL']}>LVL {level}</span>
             <DeltaStarCount rating={rating} />
           </div>
         ) : (
           <Tooltip title={'Unlock the previous level'} placement={'right'}>
             <div style={{ opacity: 0.2 }}>
-              <span>LVL {level}</span>
+              <span className={styles['dropdown-content-LVL']}>LVL {level}</span>
               <DeltaStarCount rating={0} />
             </div>
           </Tooltip>
