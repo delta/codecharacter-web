@@ -56,7 +56,7 @@ export default class Renderer extends React.Component<RendererInterfaces.Props, 
                   }}
                 >
                   <img
-                    src="assets/img/mascot.png"
+                    src="./assets/img/mascot.png"
                     height={240}
                     width={190}
                     style={{ padding: 10, margin: '10px 36px 10px 50px' }}

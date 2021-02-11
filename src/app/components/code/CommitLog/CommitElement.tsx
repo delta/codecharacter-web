@@ -6,15 +6,15 @@ import * as React from 'react';
 
 export class CommitElement extends React.Component<CommitInterfaces.Props, CommitInterfaces.State> {
   private static commitImgType = {
-    COMMIT_HEAD: 'assets/img/commit-head.png',
-    COMMIT_HEAD_HOVER: 'assets/img/commit-head-hover.png',
-    COMMIT_HEAD_HOVER_SELECT: 'assets/img/commit-head-hover-select.png',
-    COMMIT_INITIAL: 'assets/img/commit-initial.png',
-    COMMIT_INITIAL_HOVER: 'assets/img/commit-initial-hover.png',
-    COMMIT_INITIAL_HOVER_SELECT: 'assets/img/commit-initial-hover-select.png',
-    COMMIT_MIDDLE: 'assets/img/commit.png',
-    COMMIT_MIDDLE_HOVER: 'assets/img/commit-hover.png',
-    COMMIT_MIDDLE_HOVER_SELECT: 'assets/img/commit-hover-select.png',
+    COMMIT_HEAD: './assets/img/commit-head.png',
+    COMMIT_HEAD_HOVER: './assets/img/commit-head-hover.png',
+    COMMIT_HEAD_HOVER_SELECT: './assets/img/commit-head-hover-select.png',
+    COMMIT_INITIAL: './assets/img/commit-initial.png',
+    COMMIT_INITIAL_HOVER: './assets/img/commit-initial-hover.png',
+    COMMIT_INITIAL_HOVER_SELECT: './assets/img/commit-initial-hover-select.png',
+    COMMIT_MIDDLE: './assets/img/commit.png',
+    COMMIT_MIDDLE_HOVER: './assets/img/commit-hover.png',
+    COMMIT_MIDDLE_HOVER_SELECT: './assets/img/commit-hover-select.png',
   };
 
   constructor(props: CommitInterfaces.Props) {
@@ -115,7 +115,7 @@ export class CommitElement extends React.Component<CommitInterfaces.Props, Commi
                       isMapListOpen: !isMapListOpen,
                     });
                   }}
-                  src="assets/img/commit-match.png"
+                  src="./assets/img/commit-match.png"
                   title="Fight this code"
                 />
               </div>

@@ -2,6 +2,7 @@ import { Routes } from 'app/routes';
 import * as styles from 'app/styles/LandingPage.module.css';
 import classnames from 'classnames';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 export enum NavPage {
@@ -30,27 +31,27 @@ export const NavBar = (props: { isLoggedIn: boolean; page: NavPage }) => {
       <div className={classnames(styles['nav-links'])}>
         {props.isLoggedIn ? (
           <>
-            <HashLink to={Routes.ROOT} className="p-3">
+            <Link to={Routes.ROOT} className="p-3">
               {' '}
               Dashboard{' '}
-            </HashLink>
+            </Link>
             {props.page !== NavPage.PROFILE ? (
-              <HashLink to={Routes.USER_PROFILE_MODEL}> Profile </HashLink>
+              <Link to={Routes.USER_PROFILE_MODEL}> Profile </Link>
             ) : null}
           </>
         ) : (
           <>
             {!(props.page === NavPage.LOGIN) ? (
-              <HashLink to={Routes.LOGIN} className="p-3">
+              <Link to={Routes.LOGIN} className="p-3">
                 {' '}
                 Login{' '}
-              </HashLink>
+              </Link>
             ) : null}
             {!(props.page === NavPage.REGISTER) ? (
-              <HashLink to={Routes.REGISTER} className="p-3">
+              <Link to={Routes.REGISTER} className="p-3">
                 {' '}
                 Register{' '}
-              </HashLink>
+              </Link>
             ) : null}
           </>
         )}
@@ -67,10 +68,10 @@ export const NavBar = (props: { isLoggedIn: boolean; page: NavPage }) => {
             </HashLink>
           </>
         ) : (
-          <HashLink to={Routes.HOME} className="p-3">
+          <Link to={Routes.HOME} className="p-3">
             {' '}
             Home{' '}
-          </HashLink>
+          </Link>
         )}
       </div>
     </div>

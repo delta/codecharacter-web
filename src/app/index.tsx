@@ -11,13 +11,13 @@ import { initializeRendererAssets } from 'code-character-renderer-20';
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
 // @ts-ignore
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 initializeRendererAssets();
 
 /* tslint:disable-next-line:variable-name */
 export const App = hot(module)(() => (
-  <HashRouter>
+  <BrowserRouter>
     <Switch>
       <Route exact path={Routes.ROOT} component={Dashboard} />
       <Route exact path={Routes.LOGIN} component={Login} />
@@ -27,5 +27,5 @@ export const App = hot(module)(() => (
       <Route path={Routes.USER_ACTIVATION} component={ActivateUser} />
       <Route exact path={Routes.HOME} component={LandingPage} />
     </Switch>
-  </HashRouter>
+  </BrowserRouter>
 ));

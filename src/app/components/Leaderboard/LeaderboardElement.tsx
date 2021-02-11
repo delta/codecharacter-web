@@ -275,7 +275,7 @@ export class LeaderboardElement extends React.Component<
             {!(isPlayAgainstDisabled || currentUsername === player.username) ? (
               <div style={{ fontSize: '0.55em', cursor: 'pointer' }} title={`Start match`}>
                 <img
-                  src="assets/img/fight.png"
+                  src="./assets/img/fight.png"
                   width={30}
                   height={30}
                   className="mr-3"

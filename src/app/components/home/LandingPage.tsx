@@ -44,8 +44,8 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
         <NavBar isLoggedIn={this.props.isLoggedIn} page={NavPage.HOME} />
         <div className={classnames(styles.head, 'container-fluid')}>
           <div className={classnames('col-lg-6', styles.head_img)}>
-            <img src="assets/img/bot_dashboard.png" className={styles.img_big} />
-            <img src="assets/img/bot_dashboard_mob.png" className={styles.img_mob} />
+            <img src="./assets/img/bot_dashboard.png" className={styles.img_big} />
+            <img src="./assets/img/bot_dashboard_mob.png" className={styles.img_mob} />
           </div>
           <div className={classnames(styles['landing-heading'], 'col-lg-6')}>
             <h1 className="row">Code Character</h1>
@@ -109,12 +109,12 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
               </p>
             </div>
             <div className={classnames(styles['codechar-video'], 'col-lg-5')}>
-              <img width="auto" height="auto" src="assets/img/bot_hi.png" />
+              <img width="auto" height="auto" src="./assets/img/bot_hi.png" />
             </div>
           </div>
 
           <div className="row justify-content-center" id={'faq'}>
-            <img src="assets/img/faq.jpg" height={200} />
+            <img src="./assets/img/faq.jpg" height={200} />
           </div>
           <div className={classnames('row', styles.faq_section)}>
             <div className="col-lg-6 col-sm-12">

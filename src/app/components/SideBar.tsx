@@ -85,7 +85,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           </Tooltip>
           <Tooltip title="Leaderboard" placement="right">
             <a
-              href="/#/leaderboard"
+              href="./leaderboard"
               className={classnames('py-2 px-auto leaderboard-btn-ctrl', styles.customBtn, {
                 [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.LEADERBOARD,
               })}
@@ -146,7 +146,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           </Tooltip>
           <Tooltip title={isLoggedIn ? 'Profile' : 'Login'} placement="right">
             <Button
-              href={'/#/profile'}
+              href={'./profile'}
               className={classnames('py-2 px-auto', styles.customBtn)}
               id="user_profile_button"
               onClick={() => {
@@ -181,7 +181,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
                 styles.customBtn,
                 styles.infoCircle,
               )}
-              href="/#/home"
+              href="./home"
               onClick={() => clearAllLogs()}
             >
               <FontAwesomeIcon icon={faInfoCircle} />
@@ -199,7 +199,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
           <Tooltip title="Made with ❤ by Delta Force" placement="right">
             <Button className={classnames('py-2 px-auto', styles.deltaLogo)} id="delta_logo">
               <a href="https://delta.nitt.edu" target="_blank">
-                <img src="assets/img/deltaLogo.png" height={20} width={20} />
+                <img src="./assets/img/deltaLogo.png" height={20} width={20} />
               </a>
             </Button>
           </Tooltip>
