@@ -6,11 +6,11 @@ import {
   faCog,
   faInfoCircle,
   faQuestionCircle,
-  faSignInAlt,
+  // faSignInAlt,
   faSignOutAlt,
-  faTrophy,
+  // faTrophy,
   faTv,
-  faUser,
+  // faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SidePanelTab } from 'app/reducers/Dashboard';
@@ -27,7 +27,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
   public render() {
     const {
-      setIsAuthenticationOpen,
+      // setIsAuthenticationOpen,
       isLoggedIn,
       sidePanelTab,
       closeSidePanelTab,
@@ -83,7 +83,9 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               <FontAwesomeIcon icon={faCog} />
             </Button>
           </Tooltip>
-          <Tooltip title="Leaderboard" placement="right">
+
+          { // TODO: Uncomment later
+          /* <Tooltip title="Leaderboard" placement="right">
             <a
               href="./leaderboard"
               className={classnames('py-2 px-auto leaderboard-btn-ctrl', styles.customBtn, {
@@ -94,7 +96,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             >
               <FontAwesomeIcon icon={faTrophy} />
             </a>
-          </Tooltip>
+          </Tooltip> */}
           {isLoggedIn ? (
             <Tooltip title="Commit Log" placement="right">
               <Button
@@ -144,7 +146,8 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               <FontAwesomeIcon icon={faBell} />
             </Button>
           </Tooltip>
-          <Tooltip title={isLoggedIn ? 'Profile' : 'Login'} placement="right">
+          { // TODO: Uncomment later
+          /* <Tooltip title={isLoggedIn ? 'Profile' : 'Login'} placement="right">
             <Button
               href={'./profile'}
               className={classnames('py-2 px-auto', styles.customBtn)}
@@ -159,7 +162,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             >
               <FontAwesomeIcon icon={isLoggedIn ? faUser : faSignInAlt} />
             </Button>
-          </Tooltip>
+          </Tooltip> */}
           {isLoggedIn ? (
             <Tooltip title="Logout" placement="right">
               <Button
