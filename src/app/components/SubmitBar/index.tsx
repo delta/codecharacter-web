@@ -277,6 +277,7 @@ export class SubmitBar extends React.Component<
           closeStoryModeModal();
         }}
         stars={stars}
+        startMatch={this.startStoryModeMatch}
       />
     );
   };
@@ -305,6 +306,21 @@ export class SubmitBar extends React.Component<
     await commit(commitMessage);
     await this.toggleCommitMessageBox(false);
     await getCommitLog();
+  };
+
+  private startStoryModeMatch = async (mapId: number, aiId: number) => {
+    const {
+      closeStoryModeModal,
+      aiMatch,
+      updateMapId,
+      updateCurrentAiId,
+      changeCurrentRequest,
+    } = this.props;
+    closeStoryModeModal();
+    changeCurrentRequest(SubmissionInterfaces.Request.AI_MATCH);
+    updateCurrentAiId(aiId);
+    updateMapId(mapId);
+    await aiMatch(mapId, aiId);
   };
 
   private startMatch = async (type: SubmissionActions.Type, mapId: number, aiId: number) => {

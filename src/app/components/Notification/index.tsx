@@ -7,10 +7,6 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
-import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
-
-// tslint:disable-next-line
-import ReactPaginate from 'react-paginate';
 
 // tslint:disable-next-line
 
@@ -23,7 +19,6 @@ export class Notification extends React.Component<
   constructor(props: NotificationInterfaces.Props) {
     super(props);
     this.state = {
-      offset: 0,
       activeNotificationTab: NotificationInterfaces.NotificationTabType.ALL,
       offset: 0,
       tabType: NotificationInterfaces.TabType.NOTIFICATIONS,

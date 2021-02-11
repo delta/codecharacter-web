@@ -3,4 +3,5 @@ export interface Props {
   level: number;
   stars: number;
   closeStoryModeModal: () => void;
+  startMatch: (mapId: number, aiId: number) => void;
 }
