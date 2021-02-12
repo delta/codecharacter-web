@@ -6,10 +6,9 @@ import * as NotificationInterfaces from 'app/types/Notification';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
-import ReactPaginate from 'react-paginate';
 
 // tslint:disable-next-line
-
+import ReactPaginate from 'react-paginate';
 export class Notification extends React.Component<
   NotificationInterfaces.Props,
   NotificationInterfaces.State

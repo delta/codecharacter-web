@@ -15,7 +15,7 @@ export class DropDownItem extends React.Component<DropDownItemInterfaces.Props, 
     return (
       <span>
         {rating ? (
-          <div  onClick={(e) => openStoryModeModal(Number(level))}>
+          <div onClick={(e) => openStoryModeModal(Number(level))}>
             <span className={styles['dropdown-content-LVL']}>LVL {level}</span>
             <DeltaStarCount rating={rating} />
           </div>
