@@ -22,8 +22,7 @@ export class LeaderboardElement extends React.Component<
     isModelOpen: boolean;
     onHover: boolean;
     optionsPie: object;
-    optionsLine: object;
-    series: object;
+    
   }
 > {
   // tslint:disable-next-line
@@ -32,41 +31,7 @@ export class LeaderboardElement extends React.Component<
     this.state = {
       isModelOpen: false,
       onHover: false,
-      optionsLine: {
-        chart: {
-          foreColor: 'gray',
-          height: 40,
-          id: 'basic-bar',
-          toolbar: {
-            show: false,
-          },
-          zoom: {
-            enabled: false,
-          },
-        },
-        dataLabels: {
-          enabled: false,
-          markers: {
-            colors: ['rgb(0, 143, 251)', 'rgb(0, 227, 150)', 'rgb(254, 176, 25)'],
-          },
-          style: {
-            colors: ['#000000', '#000000', '#000000'],
-          },
-        },
-        markers: {
-          hover: {
-            size: '5',
-            sizeOffset: '0',
-          },
-          size: '5',
-        },
-        stroke: {
-          curve: 'smooth',
-        },
-        xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
-        },
-      },
+      
       optionsPie: {
         chart: {
           foreColor: 'gray',
@@ -98,31 +63,8 @@ export class LeaderboardElement extends React.Component<
           },
         },
       },
-      series: {
-        data: [30, 40, 45, 50, 49, 60, 70, 91],
-        name: 'series-1',
-      },
+      
     };
-  }
-
-  public componentDidMount() {
-    const { player } = this.props;
-    const ratingArray: number[] = [];
-    const labelArray: string[] = [];
-    player.rating.forEach((element) => {
-      ratingArray.push(Math.round(element.rating * 100) / 100);
-      const dateobj = new Date(element.validFrom);
-      labelArray.push(dateobj.toLocaleDateString('en-GB').substr(0, 5));
-    });
-    this.setState((prevState) => ({ series: { ...prevState.series, data: ratingArray } }));
-    this.setState((prevState) => ({
-      optionsLine: {
-        ...prevState.optionsLine,
-        xaxis: {
-          categories: labelArray,
-        },
-      },
-    }));
   }
 
   public handleOnClick = () => {
@@ -152,6 +94,44 @@ export class LeaderboardElement extends React.Component<
       updatePlayerId2,
       updateRequest,
     } = this.props;
+    const ratingArray: number[] = [];
+    const labelArray: string[] = [];
+    player.rating.forEach((element) => {
+      ratingArray.push(Math.round(element.rating * 100) / 100);
+      const dateobj = new Date(element.validFrom);
+      labelArray.push(dateobj.toLocaleDateString('en-GB').substr(0, 5));
+    });
+    const series =  { data: ratingArray,
+      name: 'series-1', } ;
+    const optionsLine = {
+      chart: {
+        foreColor: 'gray',
+        height: 40,
+        id: 'basic-bar',
+        toolbar: {
+          show: false,
+        },
+        zoom: {
+          enabled: false,
+        },
+      },
+      dataLabels: {
+        enabled: false,
+        markers: {
+          colors: ['rgb(0, 143, 251)', 'rgb(0, 227, 150)', 'rgb(254, 176, 25)'],
+        },
+        style: {
+          colors: ['#000000', '#000000', '#000000'],
+        },
+      },
+      markers: {
+        hover: {
+          size: '4',
+          sizeOffset: '0',
+        },
+        size: '4',
+        },
+      };
     return (
       <Col
         md={26}
@@ -314,14 +294,15 @@ export class LeaderboardElement extends React.Component<
                   series={[player.ties, player.wins, player.losses]}
                   type="donut"
                   width="380"
+                  
                 />
               </div>
               <div className={classnames(styles.chart_div, 'col-lg-5')}>
                 <Chart
-                  options={this.state.optionsLine}
-                  series={[this.state.series]}
+                  options={optionsLine}
+                  series={[series]}
                   type="line"
-                  width="500"
+                  width="760"
                 />
               </div>
             </div>
