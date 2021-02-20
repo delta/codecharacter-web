@@ -22,7 +22,6 @@ export class LeaderboardElement extends React.Component<
     isModelOpen: boolean;
     onHover: boolean;
     optionsPie: object;
-    
   }
 > {
   // tslint:disable-next-line
@@ -31,7 +30,7 @@ export class LeaderboardElement extends React.Component<
     this.state = {
       isModelOpen: false,
       onHover: false,
-      
+
       optionsPie: {
         chart: {
           foreColor: 'gray',
@@ -63,7 +62,6 @@ export class LeaderboardElement extends React.Component<
           },
         },
       },
-      
     };
   }
 
@@ -101,8 +99,7 @@ export class LeaderboardElement extends React.Component<
       const dateobj = new Date(element.validFrom);
       labelArray.push(dateobj.toLocaleDateString('en-GB').substr(0, 5));
     });
-    const series =  { data: ratingArray,
-      name: 'series-1', } ;
+    const series = { data: ratingArray, name: 'series-1' };
     const optionsLine = {
       chart: {
         foreColor: 'gray',
@@ -130,8 +127,8 @@ export class LeaderboardElement extends React.Component<
           sizeOffset: '0',
         },
         size: '4',
-        },
-      };
+      },
+    };
     return (
       <Col
         md={26}
@@ -283,27 +280,21 @@ export class LeaderboardElement extends React.Component<
         >
           {this.state.isModelOpen ? (
             <div
-              className="row justify-content-center"
+              className={classnames(styles.chart_holder, 'row', 'justify-content-center')}
               onClick={(event) => {
                 event.stopPropagation();
               }}
             >
-              <div className={classnames(styles.chart_div, 'col col-lg-5')}>
+              <div className={classnames(styles.chart_div)}>
                 <Chart
                   options={this.state.optionsPie}
                   series={[player.ties, player.wins, player.losses]}
                   type="donut"
-                  width="380"
-                  
+                  width="400"
                 />
               </div>
-              <div className={classnames(styles.chart_div, 'col-lg-5')}>
-                <Chart
-                  options={optionsLine}
-                  series={[series]}
-                  type="line"
-                  width="760"
-                />
+              <div className={classnames(styles.chart_div)}>
+                <Chart options={optionsLine} series={[series]} type="line" width="760" />
               </div>
             </div>
           ) : null}

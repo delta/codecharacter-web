@@ -28,6 +28,17 @@
   margin-bottom: 5px;
 }
 
+.chart_holder {
+  margin: 0 auto;
+  display: table-cell;
+}
+
+.chart_div {
+  padding: 20px 40px;
+  height: max-content;
+  display: inline-block;
+}
+
 @media (max-width: 1000px) {
   .arrow {
     display: none;
@@ -38,6 +49,12 @@
   }
   .chart_div {
     padding: auto;
+  }
+}
+
+@media (max-width: 1570px) {
+  .chart_holder {
+    display: flex;
   }
 }
 
