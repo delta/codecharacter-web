@@ -6,6 +6,7 @@ import { Avatar, avatarName } from 'app/types/Authentication/Register';
 import { Request } from 'app/types/code/Submission';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import classnames from 'classnames';
+// import { type } from 'os';
 import * as React from 'react';
 /* tslint:disable-next-line:import-name */
 import Chart from 'react-apexcharts';
@@ -94,10 +95,38 @@ export class LeaderboardElement extends React.Component<
     } = this.props;
     const ratingArray: number[] = [];
     const labelArray: string[] = [];
+    var tempDate = '';
+    // var tempRat = 0;
     player.rating.forEach((element) => {
+
       ratingArray.push(Math.round(element.rating * 100) / 100);
+        // const dateobj = new Date(element.validFrom);
+        // labelArray.push(dateobj.toLocaleDateString('en-GB').substr(0, 5));
+
+      var realDate = '';
       const dateobj = new Date(element.validFrom);
-      labelArray.push(dateobj.toLocaleDateString('en-GB').substr(0, 5));
+      realDate = dateobj.toLocaleDateString('en-GB').substr(0, 5);
+      if(realDate === tempDate){
+        labelArray.push(' ');
+      } else {
+        tempDate = realDate
+        labelArray.push(realDate);
+
+      }
+
+      // var realDate = '';
+      // const dateobj = new Date(element.validFrom);
+      // realDate = dateobj.toLocaleDateString('en-GB').substr(0, 5);
+      // if(realDate !== tempDate && tempDate !== ''){
+      //   labelArray.push(tempDate);
+      //   ratingArray.push(tempRat);
+      // }
+      // tempRat = Math.round(element.rating * 100) / 100;
+      // tempDate = realDate
+
+
+
+
     });
     const series = { data: ratingArray, name: 'series-1' };
     const optionsLine = {
@@ -123,11 +152,18 @@ export class LeaderboardElement extends React.Component<
       },
       markers: {
         hover: {
-          size: '4',
+          size: '0',
           sizeOffset: '0',
         },
-        size: '4',
+        size: '0',
       },
+      stroke: {	
+        curve: 'smooth',	
+      },	
+      xaxis: {
+        categories: labelArray
+      }
+      
     };
     return (
       <Col
@@ -294,7 +330,7 @@ export class LeaderboardElement extends React.Component<
                 />
               </div>
               <div className={classnames(styles.chart_div)}>
-                <Chart options={optionsLine} series={[series]} type="line" width="760" />
+                <Chart options={optionsLine} series={[series]}  type="line" width="760" />
               </div>
             </div>
           ) : null}
