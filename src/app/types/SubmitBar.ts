@@ -6,7 +6,6 @@ export interface State {
   commitMessage: string;
   isCommitMessageBoxOpen: boolean;
   isRunOptionsOpen: boolean;
-  level: number;
 }
 
 export interface StateProps {
@@ -15,10 +14,16 @@ export interface StateProps {
   aiIds: number[];
   isStoryModeModalOpen: boolean;
   storyModeModalLevel: number;
+  // tslint:disable-next-line
+  ratings: { level: number; stars: number }[];
+  current_level: number;
+  current_stars: number;
 }
 
 export interface DispatchProps {
   saveCode: () => void;
+  getQuestStatus: () => void;
+  setCurrentLevel: (level: number, stars: number) => void;
   changeCurrentRequest: (currentRequest: SubmissionInterfaces.Request) => void;
   commit: (commitMessage: string) => void;
   getCommitLog: () => void;

@@ -168,6 +168,24 @@ export function* getUserDetails(action: ActionType<typeof UserActions.getUserDet
   }
 }
 
+export function* getQuestStatus(action: ActionType<typeof UserActions.getQuestStatus>) {
+  try {
+    const res = yield call(UserFetch.userGetQuestStatus);
+
+    // res.error has error string if type = 'Error', else empty
+    yield put(UserActions.updateErrorMessage(res.error));
+
+    const isAuthenticated = yield checkAuthentication(res);
+    if (isAuthenticated === false) return;
+    if (res.type !== resType.ERROR) {
+      const ratings = res.body;
+      yield put(UserActions.updateQuestStatus(ratings));
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export function* editUserProfile(action: ActionType<typeof UserActions.editUserProfile>) {
   try {
     const res = yield call(UserFetch.userEditProfile, action.payload.editUserDetails);
@@ -275,6 +293,7 @@ export function* userSagas() {
     takeEvery(UserActions.Type.CHECK_EMAIL_EXISTS, checkEmailExists),
     takeEvery(UserActions.Type.CHECK_USERNAME_EXISTS, checkUsernameExists),
     takeEvery(UserActions.Type.GET_USER_DETAILS, getUserDetails),
+    takeEvery(UserActions.Type.GET_USER_QUESTSTATUS, getQuestStatus),
     takeEvery(UserActions.Type.RESET_APP_STATE, resetAppState),
   ]);
 }

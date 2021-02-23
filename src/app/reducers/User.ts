@@ -13,6 +13,8 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   avatar: '',
   college: '',
   country: 'IN',
+  current_level: 1,
+  current_stars: 0,
   email: '',
   errorMessage: '',
   fullName: '',
@@ -25,6 +27,7 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   isStoryModeModalOpen: false,
   isUserProfileModalOpen: false,
   notification: '',
+  ratings: [],
   socketMessage: '',
   storyModeModalLevel: 0,
   userId: 0,
@@ -161,6 +164,22 @@ export const userReducer = (
         ...userStoreIntialState,
       };
     }
+
+    case UserActions.Type.UPDATE_USER_QUESTSTATUS: {
+      return {
+        ...state,
+        ratings: action.payload.ratings,
+      };
+    }
+
+    case UserActions.Type.SET_CURRENT_LEVEL: {
+      return {
+        ...state,
+        current_level: action.payload.level,
+        current_stars: action.payload.stars,
+      };
+    }
+
     default:
       return state;
   }

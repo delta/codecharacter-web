@@ -11,12 +11,17 @@ export class DropDownItem extends React.Component<DropDownItemInterfaces.Props, 
   }
 
   public render() {
-    const { level, rating, openStoryModeModal } = this.props;
+    const { level, rating, openStoryModeModal, setCurrentLevel } = this.props;
     return (
       <span>
-        {rating ? (
-          <div onClick={(e) => openStoryModeModal(Number(level))}>
-            <span className={styles['dropdown-content-LVL']}>LVL {level}</span>
+        {rating || Number(level) === 1 ? (
+          <div
+            onClick={(e) => {
+              setCurrentLevel(Number(level), rating);
+              openStoryModeModal(Number(level));
+            }}
+          >
+            <span>LVL {level}</span>
             <DeltaStarCount rating={rating} />
           </div>
         ) : (

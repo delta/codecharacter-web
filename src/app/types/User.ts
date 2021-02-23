@@ -46,12 +46,14 @@ const actions = {
   closeStoryModeModal: UserActions.closeStoryModeModal,
   editUserPassword: UserActions.editUserPassword,
   editUserProfile: UserActions.editUserProfile,
+  getQuestStatus: UserActions.getQuestStatus,
   getUserDetails: UserActions.getUserDetails,
   login: UserActions.login,
   logout: UserActions.logout,
   openStoryModeModal: UserActions.openStoryModeModal,
   register: UserActions.register,
   resetUserState: UserActions.resetUserState,
+  setCurrentLevel: UserActions.setCurrentLevel,
   setIsAuthenticationOpen: UserActions.setIsAuthenticationOpen,
   setIsLoginLoading: UserActions.setIsLoginLoading,
   toggleIsNotificationPresent: UserActions.toggleIsNotificationPresent,
@@ -59,6 +61,7 @@ const actions = {
   toggleUserProfileModal: UserActions.toggleUserProfileModal,
   updateErrorMessage: UserActions.updateErrorMessage,
   updateNotification: UserActions.updateNotification,
+  updateQuestStatus: UserActions.updateQuestStatus,
   updateSocketMessage: UserActions.updateSocketMessage,
   updateUserDetails: UserActions.updateUserDetails,
 };
@@ -76,14 +79,18 @@ export interface UserStoreState {
   isUserProfileModalOpen: boolean;
   isNotificationPresent: boolean;
   isSocketPresent: boolean;
-  isStoryModeModalOpen?: boolean;
-  storyModeModalLevel?: number;
+  isStoryModeModalOpen: boolean;
+  storyModeModalLevel: number;
   notification: string;
   socketMessage: string;
   isAuthenticationOpen: boolean;
   college: string;
   userType: UserType;
   avatar: string;
+  // tslint:disable-next-line
+  ratings: { level: number; stars: number }[];
+  current_level: number;
+  current_stars: number;
 }
 
 export type UserStoreAction = ActionType<typeof actions>;

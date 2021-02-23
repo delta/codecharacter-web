@@ -8,6 +8,9 @@ export namespace UserActions {
     LOGOUT = 'LOGOUT',
     REGISTER = 'REGISTER',
     GET_USER_DETAILS = 'GET_USER_DETAILS',
+    GET_USER_QUESTSTATUS = 'GET_USER_QUESTSTATUS',
+    UPDATE_USER_QUESTSTATUS = 'UPDATE_USER_QUESTSTATUS',
+    SET_CURRENT_LEVEL = 'SET_CURRENT_LEVEL',
     EDIT_USER_PROFILE = 'EDIT_USER_PROFILE',
     EDIT_USER_PASSWORD = 'EDIT_USER_PASSWORD',
     UPDATE_ERROR_MESSAGE = 'UPDATE_ERROR_MESSAGE',
@@ -66,6 +69,14 @@ export namespace UserActions {
     action(Type.UPDATE_USER_DETAILS, { userDetails });
 
   export const getUserDetails = () => action(Type.GET_USER_DETAILS);
+
+  export const getQuestStatus = () => action(Type.GET_USER_QUESTSTATUS);
+
+  export const updateQuestStatus = (ratings: object) =>
+    action(Type.UPDATE_USER_QUESTSTATUS, { ratings });
+
+  export const setCurrentLevel = (level: number, stars: number) =>
+    action(Type.SET_CURRENT_LEVEL, { level, stars });
 
   export const editUserProfile = (editUserDetails: UserInterfaces.EditUserDetails) =>
     action(Type.EDIT_USER_PROFILE, { editUserDetails });

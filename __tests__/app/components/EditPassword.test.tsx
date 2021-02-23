@@ -33,11 +33,14 @@ describe('EditPassword Component', () => {
         isStoryModeModalOpen: false,
         isUserProfileModalOpen: false,
         notification: '',
+        ratings: [],
         socketMessage: '',
         storyModeModalLevel: 0,
         userId: 0,
         userType: UserType.STUDENT,
         username: '',
+        current_level: 1,
+        current_stars: 1,
       }}
     />,
   );

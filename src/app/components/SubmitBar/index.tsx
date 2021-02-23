@@ -34,7 +34,6 @@ export class SubmitBar extends React.Component<
       commitMessage: '',
       isCommitMessageBoxOpen: false,
       isRunOptionsOpen: false,
-      level: 1,
     };
   }
 
@@ -51,8 +50,12 @@ export class SubmitBar extends React.Component<
       debugRunAvailable,
       openStoryModeModal,
       isStoryModeModalOpen,
+      ratings,
+      current_level,
+      current_stars,
+      setCurrentLevel,
     } = this.props;
-    const { commitMessage, isCommitMessageBoxOpen, isRunOptionsOpen, level } = this.state;
+    const { commitMessage, isCommitMessageBoxOpen, isRunOptionsOpen } = this.state;
     return (
       <div
         className={classnames(styles.SubmitBar, {
@@ -224,7 +227,7 @@ export class SubmitBar extends React.Component<
             horizontal: 'right',
             vertical: 'top',
           }}
-          badgeContent={level}
+          badgeContent={current_level}
           color={'secondary'}
         >
           <div className={styles.dropdown}>
@@ -232,15 +235,87 @@ export class SubmitBar extends React.Component<
               <span className={classnames(styles.icon)}>
                 <FontAwesomeIcon icon={faExclamationCircle} />
               </span>
-              <span>QUEST LEVEL</span>
+              <span>QUEST LEVEL </span>
             </button>
-            <div className={styles['dropdown-content']}>
-              <DropDownItem level={'1'} rating={1} openStoryModeModal={openStoryModeModal} />
-              <DropDownItem level={'2'} rating={2} openStoryModeModal={openStoryModeModal} />
-              <DropDownItem level={'3'} rating={3} openStoryModeModal={openStoryModeModal} />
-              <DropDownItem level={'4'} rating={0} openStoryModeModal={openStoryModeModal} />
-              <DropDownItem level={'5'} rating={0} openStoryModeModal={openStoryModeModal} />
-            </div>
+            {ratings ? (
+              <div className={styles['dropdown-content']}>
+                {ratings[0] ? (
+                  <DropDownItem
+                    level={String(ratings[0].level)}
+                    rating={ratings[0].stars}
+                    openStoryModeModal={openStoryModeModal}
+                    setCurrentLevel={setCurrentLevel}
+                  />
+                ) : (
+                  <DropDownItem
+                    level={'1'}
+                    rating={0}
+                    openStoryModeModal={openStoryModeModal}
+                    setCurrentLevel={setCurrentLevel}
+                  />
+                )}
+                {ratings[1] ? (
+                  <DropDownItem
+                    level={String(ratings[1].level)}
+                    rating={ratings[1].stars}
+                    openStoryModeModal={openStoryModeModal}
+                    setCurrentLevel={setCurrentLevel}
+                  />
+                ) : (
+                  <DropDownItem
+                    level={'2'}
+                    rating={0}
+                    openStoryModeModal={openStoryModeModal}
+                    setCurrentLevel={setCurrentLevel}
+                  />
+                )}
+                {ratings[2] ? (
+                  <DropDownItem
+                    level={String(ratings[2].level)}
+                    rating={ratings[2].stars}
+                    openStoryModeModal={openStoryModeModal}
+                    setCurrentLevel={setCurrentLevel}
+                  />
+                ) : (
+                  <DropDownItem
+                    level={'3'}
+                    rating={0}
+                    openStoryModeModal={openStoryModeModal}
+                    setCurrentLevel={setCurrentLevel}
+                  />
+                )}
+                {ratings[3] ? (
+                  <DropDownItem
+                    level={String(ratings[3].level)}
+                    rating={ratings[3].stars}
+                    openStoryModeModal={openStoryModeModal}
+                    setCurrentLevel={setCurrentLevel}
+                  />
+                ) : (
+                  <DropDownItem
+                    level={'4'}
+                    rating={0}
+                    openStoryModeModal={openStoryModeModal}
+                    setCurrentLevel={setCurrentLevel}
+                  />
+                )}
+                {ratings[4] ? (
+                  <DropDownItem
+                    level={String(ratings[4].level)}
+                    rating={ratings[4].stars}
+                    openStoryModeModal={openStoryModeModal}
+                    setCurrentLevel={setCurrentLevel}
+                  />
+                ) : (
+                  <DropDownItem
+                    level={'5'}
+                    rating={0}
+                    openStoryModeModal={openStoryModeModal}
+                    setCurrentLevel={setCurrentLevel}
+                  />
+                )}
+              </div>
+            ) : null}
           </div>
         </Badge>
         <CommitMessageBox
@@ -259,9 +334,16 @@ export class SubmitBar extends React.Component<
             closeOptions={this.closeRunOptions}
           />
         ) : null}
-        {isStoryModeModalOpen ? this.storyModeModalComponent(true, 2) : null}
+        {isStoryModeModalOpen ? this.storyModeModalComponent(true, current_stars) : null}
       </div>
     );
+  }
+
+  public componentDidMount() {
+    this.props.getQuestStatus();
+    console.log('component did mount');
+    console.log(this.props.ratings);
+    this.props.setCurrentLevel(1, 0);
   }
 
   private storyModeModalComponent = (isCompleted: boolean, stars: number) => {
