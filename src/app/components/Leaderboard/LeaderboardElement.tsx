@@ -95,18 +95,17 @@ export class LeaderboardElement extends React.Component<
     } = this.props;
     const ratingArray: number[] = [];
     const labelArray: string[] = [];
-    var tempDate = '';
+    let tempDate = '';
     player.rating.forEach((element) => {
-
       ratingArray.push(Math.round(element.rating * 100) / 100);
-      
-      var realDate = '';
+
+      let realDate = '';
       const dateobj = new Date(element.validFrom);
       realDate = dateobj.toLocaleDateString('en-GB').substr(0, 5);
-      if(realDate === tempDate){
-        labelArray.push(" ");
+      if (realDate === tempDate) {
+        labelArray.push(' ');
       } else {
-        tempDate = realDate
+        tempDate = realDate;
         labelArray.push(realDate);
       }
     });
@@ -139,16 +138,15 @@ export class LeaderboardElement extends React.Component<
         },
         size: '0',
       },
-      stroke: {	
-        curve: 'smooth',	
-      },	
+      stroke: {
+        curve: 'smooth',
+      },
       xaxis: {
-        categories: labelArray,
         axisTicks: {
           show: false,
         },
-      }
-      
+        categories: labelArray,
+      },
     };
     return (
       <Col
@@ -315,7 +313,7 @@ export class LeaderboardElement extends React.Component<
                 />
               </div>
               <div className={classnames(styles.chart_div)}>
-                <Chart options={optionsLine} series={[series]}  type="line" width="800" />
+                <Chart options={optionsLine} series={[series]} type="line" width="800" />
               </div>
             </div>
           ) : null}
