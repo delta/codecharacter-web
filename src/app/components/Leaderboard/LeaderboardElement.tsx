@@ -188,6 +188,7 @@ export class LeaderboardElement extends React.Component<
       }
       
     };
+    const maxWinningStreak = 20;
     return (
       <Col
         md={26}
