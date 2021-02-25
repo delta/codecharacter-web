@@ -96,39 +96,21 @@ export class LeaderboardElement extends React.Component<
     const ratingArray: number[] = [];
     const labelArray: string[] = [];
     var tempDate = '';
-    // var tempRat = 0;
     player.rating.forEach((element) => {
 
       ratingArray.push(Math.round(element.rating * 100) / 100);
-        // const dateobj = new Date(element.validFrom);
-        // labelArray.push(dateobj.toLocaleDateString('en-GB').substr(0, 5));
-
+      
       var realDate = '';
       const dateobj = new Date(element.validFrom);
       realDate = dateobj.toLocaleDateString('en-GB').substr(0, 5);
       if(realDate === tempDate){
-        labelArray.push(' ');
+        labelArray.push(" ");
       } else {
         tempDate = realDate
         labelArray.push(realDate);
-
       }
-
-      // var realDate = '';
-      // const dateobj = new Date(element.validFrom);
-      // realDate = dateobj.toLocaleDateString('en-GB').substr(0, 5);
-      // if(realDate !== tempDate && tempDate !== ''){
-      //   labelArray.push(tempDate);
-      //   ratingArray.push(tempRat);
-      // }
-      // tempRat = Math.round(element.rating * 100) / 100;
-      // tempDate = realDate
-
-
-
-
     });
-    const series = { data: ratingArray, name: 'series-1' };
+    const series = { data: ratingArray, name: 'Points' };
     const optionsLine = {
       chart: {
         foreColor: 'gray',
@@ -161,7 +143,10 @@ export class LeaderboardElement extends React.Component<
         curve: 'smooth',	
       },	
       xaxis: {
-        categories: labelArray
+        categories: labelArray,
+        axisTicks: {
+          show: false,
+        },
       }
       
     };
@@ -330,7 +315,7 @@ export class LeaderboardElement extends React.Component<
                 />
               </div>
               <div className={classnames(styles.chart_div)}>
-                <Chart options={optionsLine} series={[series]}  type="line" width="760" />
+                <Chart options={optionsLine} series={[series]}  type="line" width="800" />
               </div>
             </div>
           ) : null}
