@@ -17,6 +17,7 @@
   flex-flow: row;
   justify-content: space-between;
   margin-left: 15px;
+  height: 80px;
 }
 
 .leader-wrap:hover {
@@ -26,6 +27,21 @@
 .leaderboard-wrap {
   z-index: 0;
   margin-bottom: 5px;
+}
+
+.winning_streak {
+  display: table-cell;
+  text-align: center;
+  width: 330px;
+  font-size: larger;
+  font-weight: bold;
+  position: relative;
+  top: 30px;
+}
+
+.pie_chart {
+  position: relative;
+  top: -30px;
 }
 
 .chart_holder {
@@ -55,6 +71,10 @@
 @media (max-width: 1570px) {
   .chart_holder {
     display: flex;
+  }
+  .pie_chart {
+    position: relative;
+    top: 0px;
   }
 }
 
@@ -91,15 +111,18 @@
 .leader-ava {
   padding: 8px;
   position: relative;
+  width: 80px;
 }
 
 .leader-ava-l {
   padding: 8px;
   position: relative;
+  margin-right: -20px;
 }
 
 .player-info-1 {
   display: flex;
+  max-width: 100px;
 }
 
 .player-info-2 {
@@ -194,6 +217,8 @@
 
 .leader-content {
   display: flex;
+  position: absolute;
+  left: 12%;
   padding: 10px;
   margin: 5px;
 }

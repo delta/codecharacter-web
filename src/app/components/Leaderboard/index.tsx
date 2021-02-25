@@ -250,28 +250,28 @@ export class Leaderboard extends React.Component<
                 <div
                   // style={{ position: 'relative', left: '13%' }}
                   className="col-2 text-light font-weight-bold my-auto "
-                  style={{ textAlign: 'center' }}
+                  style={{ position: 'relative', left: '1.5%' }}
                 >
                   RANK
                 </div>
                 <div
                   // style={{ position: 'relative', left: '22%' }}
                   className="col-2 text-light font-weight-bold my-auto"
-                  style={{ textAlign: 'start' }}
+                  style={{ textAlign: 'start', position: 'relative', left: '-4%' }}
                 >
                   NAME
                 </div>
                 <div
                   // style={{ position: 'relative', left: '22%' }}
                   className="col-2 text-light font-weight-bold my-auto"
-                  style={{ textAlign: 'start' }}
+                  style={{ textAlign: 'start', position: 'relative', left: '1.8%' }}
                 >
                   RATING
                 </div>
                 <div
                   // style={{ position: 'relative', left: '49%' }}
                   className="col-2 text-light font-weight-bold my-auto"
-                  style={{ textAlign: 'start' }}
+                  style={{ textAlign: 'start', position: 'relative', left: '0.5%' }}
                 >
                   WON
                 </div>
@@ -285,7 +285,7 @@ export class Leaderboard extends React.Component<
                 <div
                   // style={{ position: 'relative', left: '73%' }}
                   className="col-2 text-light font-weight-bold my-auto"
-                  style={{ textAlign: 'start' }}
+                  style={{ textAlign: 'start', position: 'relative', left: '0.5%' }}
                 >
                   LOST
                 </div>

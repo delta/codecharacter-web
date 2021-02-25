@@ -148,6 +148,7 @@ export class LeaderboardElement extends React.Component<
         categories: labelArray,
       },
     };
+    const maxWinningStreak = 20;
     return (
       <Col
         md={26}
@@ -189,6 +190,7 @@ export class LeaderboardElement extends React.Component<
                 style={{
                   color: colors[player.rank],
                   marginLeft: '4px',
+                  marginRight: '0px',
                   position: 'relative',
                   top: '20%',
                 }}
@@ -206,7 +208,7 @@ export class LeaderboardElement extends React.Component<
                   marginLeft: '4px',
                 }}
                 className={classnames(
-                  player.rank <= 10 ? styles['leader-ava'] : styles['leader-ava-l'],
+                  player.rank <= 9 ? styles['leader-ava'] : styles['leader-ava-l'],
                 )}
               >
                 {player.rank}
@@ -304,16 +306,19 @@ export class LeaderboardElement extends React.Component<
                 event.stopPropagation();
               }}
             >
-              <div className={classnames(styles.chart_div)}>
+              <div className={classnames(styles.chart_div, styles.pie_chart)}>
                 <Chart
                   options={this.state.optionsPie}
                   series={[player.ties, player.wins, player.losses]}
                   type="donut"
                   width="400"
                 />
+                <div className={classnames(styles.winning_streak)}>
+                  Highest winning streak: {maxWinningStreak}
+                </div>
               </div>
               <div className={classnames(styles.chart_div)}>
-                <Chart options={optionsLine} series={[series]} type="line" width="800" />
+                <Chart options={optionsLine} series={[series]} type="line" width="760" />
               </div>
             </div>
           ) : null}

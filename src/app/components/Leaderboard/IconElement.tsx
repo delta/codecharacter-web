@@ -20,6 +20,7 @@ export const IconsComponent = ({ player }: any) => {
           display: 'block',
           fontSize: '26px',
           left: '35%',
+          lineHeight: '2',
           marginTop: '5px',
           position: 'absolute',
           textAlign: 'center',
