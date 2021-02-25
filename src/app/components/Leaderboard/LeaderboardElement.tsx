@@ -94,15 +94,20 @@ export class LeaderboardElement extends React.Component<
     } = this.props;
     const ratingArray: number[] = [];
     const labelArray: string[] = [];
+<<<<<<< HEAD
     let tempDate = '';
     let prevRate = 0;
     let maxWinningStreak = 0;
     let curWinningStreak = 0;
     let currentRate = 0;
+=======
+    var tempDate = '';
+>>>>>>> Remove markers in X-Axis
     player.rating.forEach((element) => {
       currentRate = Math.round(element.rating * 100) / 100;
       ratingArray.push(currentRate);
 
+<<<<<<< HEAD
       if (currentRate > prevRate) {
         curWinningStreak += 1;
       } else {
@@ -118,6 +123,15 @@ export class LeaderboardElement extends React.Component<
       realDate = dateobj.toLocaleDateString('en-GB').substr(0, 5);
       if (realDate === tempDate) {
         labelArray.push(' ');
+=======
+      ratingArray.push(Math.round(element.rating * 100) / 100);
+      
+      var realDate = '';
+      const dateobj = new Date(element.validFrom);
+      realDate = dateobj.toLocaleDateString('en-GB').substr(0, 5);
+      if(realDate === tempDate){
+        labelArray.push(" ");
+>>>>>>> Remove markers in X-Axis
       } else {
         tempDate = realDate;
         labelArray.push(realDate);
@@ -181,7 +195,10 @@ export class LeaderboardElement extends React.Component<
         curve: 'smooth',	
       },	
       xaxis: {
-        categories: labelArray
+        categories: labelArray,
+        axisTicks: {
+          show: false,
+        },
       }
       
     };
@@ -358,7 +375,7 @@ export class LeaderboardElement extends React.Component<
                 </div>
               </div>
               <div className={classnames(styles.chart_div)}>
-                <Chart options={optionsLine} series={[series]}  type="line" width="760" />
+                <Chart options={optionsLine} series={[series]}  type="line" width="800" />
               </div>
             </div>
           ) : null}
