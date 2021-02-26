@@ -42,6 +42,7 @@ export const IconsComponent = ({ player }: any) => {
           icon={faTrophy}
           className={classnames(styles.trophy)}
           aria-hidden="true"
+          color="#00e396"
         />
         <p style={{ color: 'grey' }}>{player.wins}</p>
       </div>
@@ -51,6 +52,7 @@ export const IconsComponent = ({ player }: any) => {
           icon={faHandshake}
           className={classnames(styles.handshake)}
           aria-hidden="true"
+          color="#008ffb"
         />
         <p style={{ color: 'grey' }}>{player.ties}</p>
       </div>
@@ -60,6 +62,7 @@ export const IconsComponent = ({ player }: any) => {
           icon={faThumbsDown}
           className={classnames(styles.thumbdown)}
           aria-hidden="true"
+          color="#feb019"
         />
         <p style={{ color: 'grey' }}>{player.losses}</p>
       </div>

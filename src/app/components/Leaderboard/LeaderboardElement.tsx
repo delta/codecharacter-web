@@ -96,8 +96,23 @@ export class LeaderboardElement extends React.Component<
     const ratingArray: number[] = [];
     const labelArray: string[] = [];
     let tempDate = '';
+    let prevRate = 0;
+    let maxWinningStreak = 0;
+    let curWinningStreak = 0;
+    let currentRate = 0;
     player.rating.forEach((element) => {
-      ratingArray.push(Math.round(element.rating * 100) / 100);
+      currentRate = Math.round(element.rating * 100) / 100;
+      ratingArray.push(currentRate);
+
+      if (currentRate > prevRate) {
+        curWinningStreak += 1;
+      } else {
+        if (curWinningStreak > maxWinningStreak) {
+          maxWinningStreak = curWinningStreak;
+          curWinningStreak = 0;
+        }
+      }
+      prevRate = currentRate;
 
       let realDate = '';
       const dateobj = new Date(element.validFrom);
@@ -142,13 +157,28 @@ export class LeaderboardElement extends React.Component<
         curve: 'smooth',
       },
       xaxis: {
+        axisBorder: {
+          color: '#000',
+          show: true,
+        },
         axisTicks: {
           show: false,
         },
         categories: labelArray,
+        labels: {
+          style: {
+            colors: 'rgb(255,255,255)',
+          },
+        },
+      },
+      yaxis: {
+        labels: {
+          style: {
+            colors: 'rgb(255,255,255)',
+          },
+        },
       },
     };
-    const maxWinningStreak = 20;
     return (
       <Col
         md={26}
