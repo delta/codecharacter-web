@@ -12,11 +12,11 @@ import * as React from 'react';
 // tslint:disable-next-line
 export const IconsComponent = ({ player }: any) => {
   return (
-    <div style={{ fontSize: '1.5rem' }}>
+    <div style={{ fontSize: '1.5rem', color: 'light-gray' }}>
       <div
         className={classnames(styles['leader-score_title'])}
         style={{
-          color: 'gray',
+          color: 'light-gray',
           display: 'block',
           fontSize: '26px',
           left: '35%',
@@ -44,7 +44,7 @@ export const IconsComponent = ({ player }: any) => {
           aria-hidden="true"
           color="#00e396"
         />
-        <p style={{ color: 'grey' }}>{player.wins}</p>
+        <p style={{ color: 'light-gray' }}>{player.wins}</p>
       </div>
       <div style={{ position: 'absolute', left: '68%', top: '15px', textAlign: 'center' }}>
         <FontAwesomeIcon
@@ -54,7 +54,7 @@ export const IconsComponent = ({ player }: any) => {
           aria-hidden="true"
           color="#008ffb"
         />
-        <p style={{ color: 'grey' }}>{player.ties}</p>
+        <p style={{ color: 'light-gray' }}>{player.ties}</p>
       </div>
       <div style={{ position: 'absolute', left: '85%', top: '15px', textAlign: 'center' }}>
         <FontAwesomeIcon
@@ -64,7 +64,7 @@ export const IconsComponent = ({ player }: any) => {
           aria-hidden="true"
           color="#feb019"
         />
-        <p style={{ color: 'grey' }}>{player.losses}</p>
+        <p style={{ color: 'light-gray' }}>{player.losses}</p>
       </div>
     </div>
   );

@@ -307,6 +307,10 @@ export class LeaderboardElement extends React.Component<
                   width={30}
                   height={30}
                   className="mr-3"
+                  style={{
+                    filter:
+                      ' invert(14%) sepia(3%) saturate(68960%) hue-rotate(320deg) brightness(102%) contrast(110%)',
+                  }}
                   onClickCapture={async (e) => {
                     // hello
                     e.stopPropagation();

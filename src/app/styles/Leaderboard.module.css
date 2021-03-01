@@ -122,7 +122,7 @@
 
 .player-info-1 {
   display: flex;
-  max-width: 100px;
+  width: 100px;
 }
 
 .player-info-2 {
@@ -217,8 +217,8 @@
 
 .leader-content {
   display: flex;
-  position: absolute;
-  left: 12%;
+  position: relative;
+  left: 25%;
   padding: 10px;
   margin: 5px;
 }
@@ -246,6 +246,7 @@
   padding: 0px !important;
   margin-left: 0px;
   margin-right: 0px;
+  position: relative;
 }
 
 @keyframes revealLeaders {

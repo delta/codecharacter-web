@@ -133,8 +133,8 @@ export class Leaderboard extends React.Component<
               </Col>
             </Row>
           ) : (
-            <div>
-              <Row className="px-5">
+            <div style={{ position: 'relative' }}>
+              <Row className="px-3 mb-3">
                 <Col>
                   <div className={styles.dropdown} style={{ paddingRight: '10px' }}>
                     <button className={styles.dropbtn}>
@@ -237,7 +237,7 @@ export class Leaderboard extends React.Component<
                     </div>
                   </div>
                 </Col>
-                <Col style={{ position: 'relative', left: '80%' }}>
+                <Col style={{ position: 'absolute', left: '96.5%' }}>
                   <button
                     className={styles.button}
                     onClick={() => this.setState({ isSearching: true })}
@@ -246,50 +246,57 @@ export class Leaderboard extends React.Component<
                   </button>
                 </Col>
               </Row>
-              <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
-                <div
-                  // style={{ position: 'relative', left: '13%' }}
-                  className="col-2 text-light font-weight-bold my-auto "
-                  style={{ position: 'relative', left: '1.5%' }}
-                >
-                  RANK
-                </div>
-                <div
-                  // style={{ position: 'relative', left: '22%' }}
-                  className="col-2 text-light font-weight-bold my-auto"
-                  style={{ textAlign: 'start', position: 'relative', left: '-4%' }}
-                >
-                  NAME
-                </div>
-                <div
-                  // style={{ position: 'relative', left: '22%' }}
-                  className="col-2 text-light font-weight-bold my-auto"
-                  style={{ textAlign: 'start', position: 'relative', left: '1.8%' }}
-                >
-                  RATING
-                </div>
-                <div
-                  // style={{ position: 'relative', left: '49%' }}
-                  className="col-2 text-light font-weight-bold my-auto"
-                  style={{ textAlign: 'start', position: 'relative', left: '0.5%' }}
-                >
-                  WON
-                </div>
-                <div
-                  // style={{ position: 'relative', left: '62%' }}
-                  className="col-2 text-light font-weight-bold my-auto"
-                  style={{ textAlign: 'start' }}
-                >
-                  TIED
-                </div>
-                <div
-                  // style={{ position: 'relative', left: '73%' }}
-                  className="col-2 text-light font-weight-bold my-auto"
-                  style={{ textAlign: 'start', position: 'relative', left: '0.5%' }}
-                >
-                  LOST
-                </div>
-              </Row>
+              <div style={{ paddingLeft: '1px', paddingRight: '1px', display: 'block' }}>
+                <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
+                  <div
+                    // style={{ position: 'relative', left: '13%' }}
+                    className=" text-light font-weight-bold my-auto "
+                    style={{ width: '145px', paddingLeft: '40px' }}
+                  >
+                    RANK
+                  </div>
+                  <div
+                    // style={{ posit                                                                                                       ion: 'relative', left: '22%' }}
+                    className=" text-light font-weight-bold my-auto"
+                    style={{ textAlign: 'start' }}
+                  >
+                    NAME
+                  </div>
+                  <div
+                    // style={{ position: 'relative', left: '22%' }}
+                    className=" text-light font-weight-bold my-auto"
+                    style={{
+                      left: '35%',
+                      paddingLeft: '15px',
+                      position: 'absolute',
+                      textAlign: 'start',
+                    }}
+                  >
+                    RATING
+                  </div>
+                  <div
+                    // style={{ position: 'relative', left: '49%' }}
+                    className=" text-light font-weight-bold my-auto"
+                    style={{ textAlign: 'start', position: 'absolute', left: '52%' }}
+                  >
+                    WON
+                  </div>
+                  <div
+                    // style={{ position: 'relative', left: '62%' }}
+                    className=" text-light font-weight-bold my-auto"
+                    style={{ textAlign: 'start', position: 'absolute', left: '68%' }}
+                  >
+                    TIED
+                  </div>
+                  <div
+                    // style={{ position: 'relative', left: '73%' }}
+                    className=" text-light font-weight-bold my-auto"
+                    style={{ textAlign: 'start', position: 'absolute', left: '85%' }}
+                  >
+                    LOST
+                  </div>
+                </Row>
+              </div>
             </div>
           )}
           <div
