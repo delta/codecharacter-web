@@ -14,7 +14,7 @@ export class DropDownItem extends React.Component<DropDownItemInterfaces.Props, 
     const { level, rating, openStoryModeModal, setCurrentLevel } = this.props;
     return (
       <span>
-        {rating || Number(level) === 1 ? (
+        {rating !== -1 || Number(level) === 1 ? (
           <div
             onClick={(e) => {
               setCurrentLevel(Number(level), rating);

@@ -230,7 +230,7 @@ export class SubmitBar extends React.Component<
           badgeContent={current_level}
           color={'secondary'}
         >
-          <div className={styles.dropdown}>
+          <div onMouseEnter={this.updateQuestRating} className={styles.dropdown}>
             <button className={classnames(styles.customBtn)} title="Quest_Level" id="quest_button">
               <span className={classnames(styles.icon)}>
                 <FontAwesomeIcon icon={faExclamationCircle} />
@@ -239,7 +239,7 @@ export class SubmitBar extends React.Component<
             </button>
             {ratings ? (
               <div className={styles['dropdown-content']}>
-                {ratings[0] ? (
+                {ratings[0] !== undefined ? (
                   <DropDownItem
                     level={String(ratings[0].level)}
                     rating={ratings[0].stars}
@@ -249,12 +249,12 @@ export class SubmitBar extends React.Component<
                 ) : (
                   <DropDownItem
                     level={'1'}
-                    rating={0}
+                    rating={-1}
                     openStoryModeModal={openStoryModeModal}
                     setCurrentLevel={setCurrentLevel}
                   />
                 )}
-                {ratings[1] ? (
+                {ratings[1] !== undefined ? (
                   <DropDownItem
                     level={String(ratings[1].level)}
                     rating={ratings[1].stars}
@@ -264,12 +264,12 @@ export class SubmitBar extends React.Component<
                 ) : (
                   <DropDownItem
                     level={'2'}
-                    rating={0}
+                    rating={-1}
                     openStoryModeModal={openStoryModeModal}
                     setCurrentLevel={setCurrentLevel}
                   />
                 )}
-                {ratings[2] ? (
+                {ratings[2] !== undefined ? (
                   <DropDownItem
                     level={String(ratings[2].level)}
                     rating={ratings[2].stars}
@@ -279,12 +279,12 @@ export class SubmitBar extends React.Component<
                 ) : (
                   <DropDownItem
                     level={'3'}
-                    rating={0}
+                    rating={-1}
                     openStoryModeModal={openStoryModeModal}
                     setCurrentLevel={setCurrentLevel}
                   />
                 )}
-                {ratings[3] ? (
+                {ratings[3] !== undefined ? (
                   <DropDownItem
                     level={String(ratings[3].level)}
                     rating={ratings[3].stars}
@@ -294,12 +294,12 @@ export class SubmitBar extends React.Component<
                 ) : (
                   <DropDownItem
                     level={'4'}
-                    rating={0}
+                    rating={-1}
                     openStoryModeModal={openStoryModeModal}
                     setCurrentLevel={setCurrentLevel}
                   />
                 )}
-                {ratings[4] ? (
+                {ratings[4] !== undefined ? (
                   <DropDownItem
                     level={String(ratings[4].level)}
                     rating={ratings[4].stars}
@@ -309,7 +309,7 @@ export class SubmitBar extends React.Component<
                 ) : (
                   <DropDownItem
                     level={'5'}
-                    rating={0}
+                    rating={-1}
                     openStoryModeModal={openStoryModeModal}
                     setCurrentLevel={setCurrentLevel}
                   />
@@ -334,17 +334,19 @@ export class SubmitBar extends React.Component<
             closeOptions={this.closeRunOptions}
           />
         ) : null}
-        {isStoryModeModalOpen ? this.storyModeModalComponent(true, current_stars) : null}
+        {isStoryModeModalOpen ? this.storyModeModalComponent(false, current_stars) : null}
       </div>
     );
   }
 
   public componentDidMount() {
     this.props.getQuestStatus();
-    console.log('component did mount');
-    console.log(this.props.ratings);
     this.props.setCurrentLevel(1, 0);
   }
+
+  // public componentDidUpdate() {
+  //   this.props.getQuestStatus();
+  // }
 
   private storyModeModalComponent = (isCompleted: boolean, stars: number) => {
     // can just call storyModeModalComponent(true, 3) to render a StoryModeModal component with
@@ -363,6 +365,10 @@ export class SubmitBar extends React.Component<
       />
     );
   };
+  
+  private updateQuestRating = () =>{
+    this.props.getQuestStatus();
+  }
 
   private closeRunOptions = () => {
     this.setState({

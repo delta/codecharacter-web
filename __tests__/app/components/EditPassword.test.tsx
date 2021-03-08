@@ -21,6 +21,8 @@ describe('EditPassword Component', () => {
         avatar: '',
         college: '',
         country: 'IN',
+        current_level: 1,
+        current_stars: 1,
         email: '',
         errorMessage: '',
         fullName: '',
@@ -39,8 +41,6 @@ describe('EditPassword Component', () => {
         userId: 0,
         userType: UserType.STUDENT,
         username: '',
-        current_level: 1,
-        current_stars: 1,
       }}
     />,
   );
