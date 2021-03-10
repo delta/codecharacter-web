@@ -268,25 +268,28 @@ export class SubmitBar extends React.Component<
 
   private questLevel() {
     const levelsComponent = [];
-    for (let i = 0; i < levels.length; i += 1) {
-      levelsComponent[i] =
-        this.props.ratings[i] !== undefined ? (
-          <DropDownItem
-            level={String(this.props.ratings[i].level)}
-            rating={this.props.ratings[i].stars}
-            openStoryModeModal={this.props.openStoryModeModal}
-            setCurrentLevel={this.props.setCurrentLevel}
-          />
-        ) : (
-          <DropDownItem
-            level={'5'}
-            rating={-1}
-            openStoryModeModal={this.props.openStoryModeModal}
-            setCurrentLevel={this.props.setCurrentLevel}
-          />
-        );
+    if (this.props.ratings) {
+      for (let i = 0; i < levels.length; i += 1) {
+        levelsComponent[i] =
+          this.props.ratings[i] !== undefined ? (
+            <DropDownItem
+              level={String(this.props.ratings[i].level)}
+              rating={this.props.ratings[i].stars}
+              openStoryModeModal={this.props.openStoryModeModal}
+              setCurrentLevel={this.props.setCurrentLevel}
+            />
+          ) : (
+            <DropDownItem
+              level={String(i + 1)}
+              rating={-1}
+              openStoryModeModal={this.props.openStoryModeModal}
+              setCurrentLevel={this.props.setCurrentLevel}
+            />
+          );
+      }
+      return levelsComponent;
     }
-    return levelsComponent;
+    return null;
   }
 
   private storyModeModalComponent = (isCompleted: boolean, stars: number) => {
@@ -296,6 +299,7 @@ export class SubmitBar extends React.Component<
 
     return (
       <StoryModeModal
+        description={levels[storyModeModalLevel - 1].description}
         isCompleted={isCompleted}
         level={storyModeModalLevel}
         closeStoryModeModal={() => {
