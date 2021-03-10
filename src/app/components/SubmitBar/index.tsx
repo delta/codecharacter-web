@@ -1,3 +1,5 @@
+import { levels } from '../../../config/questLevels';
+
 import {
   faChevronLeft,
   faChevronRight,
@@ -48,12 +50,10 @@ export class SubmitBar extends React.Component<
       aiIds,
       clearLogs,
       debugRunAvailable,
-      openStoryModeModal,
       isStoryModeModalOpen,
       ratings,
       current_level,
       current_stars,
-      setCurrentLevel,
     } = this.props;
     const { commitMessage, isCommitMessageBoxOpen, isRunOptionsOpen } = this.state;
     return (
@@ -237,85 +237,7 @@ export class SubmitBar extends React.Component<
               </span>
               <span>QUEST LEVEL </span>
             </button>
-            {ratings ? (
-              <div className={styles['dropdown-content']}>
-                {ratings[0] !== undefined ? (
-                  <DropDownItem
-                    level={String(ratings[0].level)}
-                    rating={ratings[0].stars}
-                    openStoryModeModal={openStoryModeModal}
-                    setCurrentLevel={setCurrentLevel}
-                  />
-                ) : (
-                  <DropDownItem
-                    level={'1'}
-                    rating={-1}
-                    openStoryModeModal={openStoryModeModal}
-                    setCurrentLevel={setCurrentLevel}
-                  />
-                )}
-                {ratings[1] !== undefined ? (
-                  <DropDownItem
-                    level={String(ratings[1].level)}
-                    rating={ratings[1].stars}
-                    openStoryModeModal={openStoryModeModal}
-                    setCurrentLevel={setCurrentLevel}
-                  />
-                ) : (
-                  <DropDownItem
-                    level={'2'}
-                    rating={-1}
-                    openStoryModeModal={openStoryModeModal}
-                    setCurrentLevel={setCurrentLevel}
-                  />
-                )}
-                {ratings[2] !== undefined ? (
-                  <DropDownItem
-                    level={String(ratings[2].level)}
-                    rating={ratings[2].stars}
-                    openStoryModeModal={openStoryModeModal}
-                    setCurrentLevel={setCurrentLevel}
-                  />
-                ) : (
-                  <DropDownItem
-                    level={'3'}
-                    rating={-1}
-                    openStoryModeModal={openStoryModeModal}
-                    setCurrentLevel={setCurrentLevel}
-                  />
-                )}
-                {ratings[3] !== undefined ? (
-                  <DropDownItem
-                    level={String(ratings[3].level)}
-                    rating={ratings[3].stars}
-                    openStoryModeModal={openStoryModeModal}
-                    setCurrentLevel={setCurrentLevel}
-                  />
-                ) : (
-                  <DropDownItem
-                    level={'4'}
-                    rating={-1}
-                    openStoryModeModal={openStoryModeModal}
-                    setCurrentLevel={setCurrentLevel}
-                  />
-                )}
-                {ratings[4] !== undefined ? (
-                  <DropDownItem
-                    level={String(ratings[4].level)}
-                    rating={ratings[4].stars}
-                    openStoryModeModal={openStoryModeModal}
-                    setCurrentLevel={setCurrentLevel}
-                  />
-                ) : (
-                  <DropDownItem
-                    level={'5'}
-                    rating={-1}
-                    openStoryModeModal={openStoryModeModal}
-                    setCurrentLevel={setCurrentLevel}
-                  />
-                )}
-              </div>
-            ) : null}
+            {ratings ? <div className={styles['dropdown-content']}>{this.questLevel()}</div> : null}
           </div>
         </Badge>
         <CommitMessageBox
@@ -344,9 +266,28 @@ export class SubmitBar extends React.Component<
     this.props.setCurrentLevel(1, 0);
   }
 
-  // public componentDidUpdate() {
-  //   this.props.getQuestStatus();
-  // }
+  private questLevel() {
+    const levelsComponent = [];
+    for (let i = 0; i < levels.length; i += 1) {
+      levelsComponent[i] =
+        this.props.ratings[i] !== undefined ? (
+          <DropDownItem
+            level={String(this.props.ratings[i].level)}
+            rating={this.props.ratings[i].stars}
+            openStoryModeModal={this.props.openStoryModeModal}
+            setCurrentLevel={this.props.setCurrentLevel}
+          />
+        ) : (
+          <DropDownItem
+            level={'5'}
+            rating={-1}
+            openStoryModeModal={this.props.openStoryModeModal}
+            setCurrentLevel={this.props.setCurrentLevel}
+          />
+        );
+    }
+    return levelsComponent;
+  }
 
   private storyModeModalComponent = (isCompleted: boolean, stars: number) => {
     // can just call storyModeModalComponent(true, 3) to render a StoryModeModal component with
@@ -365,10 +306,10 @@ export class SubmitBar extends React.Component<
       />
     );
   };
-  
-  private updateQuestRating = () =>{
+
+  private updateQuestRating = () => {
     this.props.getQuestStatus();
-  }
+  };
 
   private closeRunOptions = () => {
     this.setState({
