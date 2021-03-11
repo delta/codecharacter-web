@@ -353,7 +353,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                       searchable={true}
                       placeholder="Search for a country"
                       className={classnames(authStyles.customFlag)}
-                      defaultCountry="IN"
                       onSelect={this.onSelectFlag}
                     />
 
