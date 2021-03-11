@@ -8,7 +8,6 @@ import classnames from 'classnames';
 import * as React from 'react';
 // tslint:disable-next-line:import-name
 import ReactFlagsSelect from 'react-flags-select';
-import 'react-flags-select/css/react-flags-select.css';
 
 export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}> {
   public render() {

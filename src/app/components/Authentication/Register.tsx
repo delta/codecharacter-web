@@ -13,7 +13,6 @@ import * as React from 'react';
 import { Col, Row } from 'react-bootstrap';
 // tslint:disable-next-line:import-name
 import ReactFlagsSelect from 'react-flags-select';
-import 'react-flags-select/css/react-flags-select.css';
 // tslint:disable-next-line:import-name
 import ReCAPTCHA from 'react-google-recaptcha';
 import { NavLink, Redirect } from 'react-router-dom';
@@ -350,6 +349,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   <div className={classnames(authStyles['login-label'])}> Your country </div>
                   <div className={classnames(registerStyles['input-group'])}>
                     <ReactFlagsSelect
+                      selected="IN"
                       searchable={true}
                       placeholder="Search for a country"
                       className={classnames(authStyles.customFlag)}
