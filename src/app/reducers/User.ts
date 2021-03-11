@@ -13,6 +13,8 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   avatar: '',
   college: '',
   country: 'IN',
+  current_level: 1,
+  current_stars: 0,
   email: '',
   errorMessage: '',
   fullName: '',
@@ -22,9 +24,12 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   isLoginLoading: false,
   isNotificationPresent: false,
   isSocketPresent: false,
+  isStoryModeModalOpen: false,
   isUserProfileModalOpen: false,
   notification: '',
+  ratings: [],
   socketMessage: '',
+  storyModeModalLevel: 0,
   userId: 0,
   userType: UserInterfaces.UserType.STUDENT,
   username: '',
@@ -127,7 +132,20 @@ export const userReducer = (
         isNotificationPresent: !state.isNotificationPresent,
       };
     }
-
+    case UserActions.Type.OPEN_STORY_MODE_MODAL: {
+      return {
+        ...state,
+        isStoryModeModalOpen: true,
+        storyModeModalLevel: action.payload.level,
+      };
+    }
+    case UserActions.Type.CLOSE_STORY_MODE_MODAL: {
+      return {
+        ...state,
+        isStoryModeModalOpen: false,
+        storyModeModalLevel: -1,
+      };
+    }
     case UserActions.Type.UPDATE_SOCKET_MESSAGE: {
       return {
         ...state,
@@ -146,6 +164,22 @@ export const userReducer = (
         ...userStoreIntialState,
       };
     }
+
+    case UserActions.Type.UPDATE_USER_QUESTSTATUS: {
+      return {
+        ...state,
+        ratings: action.payload.ratings,
+      };
+    }
+
+    case UserActions.Type.SET_CURRENT_LEVEL: {
+      return {
+        ...state,
+        current_level: action.payload.level,
+        current_stars: action.payload.stars,
+      };
+    }
+
     default:
       return state;
   }

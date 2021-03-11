@@ -1,8 +1,11 @@
+import { levels } from '../../../config/questLevels';
+
 import {
   faChevronLeft,
   faChevronRight,
   faCodeBranch,
   faCog,
+  faExclamationCircle,
   faLock,
   faPlay,
   faSave,
@@ -10,7 +13,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SubmissionActions } from 'app/actions';
+import { StoryModeModal } from 'app/components/StoryModeModal';
 import { CommitMessageBox } from 'app/components/SubmitBar/CommitMessageBox';
+import { DropDownItem } from 'app/components/SubmitBar/DropDownItem';
 import { RunOptions } from 'app/components/SubmitBar/RunOptions';
 import * as styles from 'app/styles/SubmitBar.module.css';
 import * as SubmissionInterfaces from 'app/types/code/Submission';
@@ -19,7 +24,7 @@ import * as SubmitBarInterfaces from 'app/types/SubmitBar';
 import classnames from 'classnames';
 import * as React from 'react';
 
-import Tooltip from '@material-ui/core/Tooltip';
+import { Badge, Tooltip } from '@material-ui/core';
 
 export class SubmitBar extends React.Component<
   SubmitBarInterfaces.Props,
@@ -45,6 +50,10 @@ export class SubmitBar extends React.Component<
       aiIds,
       clearLogs,
       debugRunAvailable,
+      isStoryModeModalOpen,
+      ratings,
+      current_level,
+      current_stars,
     } = this.props;
     const { commitMessage, isCommitMessageBoxOpen, isRunOptionsOpen } = this.state;
     return (
@@ -213,6 +222,24 @@ export class SubmitBar extends React.Component<
             <span>SUBMIT</span>
           </button>
         </Tooltip>
+        <Badge
+          anchorOrigin={{
+            horizontal: 'right',
+            vertical: 'top',
+          }}
+          badgeContent={current_level}
+          color={'secondary'}
+        >
+          <div onMouseEnter={this.updateQuestRating} className={styles.dropdown}>
+            <button className={classnames(styles.customBtn)} title="Quest_Level" id="quest_button">
+              <span className={classnames(styles.icon)}>
+                <FontAwesomeIcon icon={faExclamationCircle} />
+              </span>
+              <span>QUEST LEVEL </span>
+            </button>
+            {ratings ? <div className={styles['dropdown-content']}>{this.questLevel()}</div> : null}
+          </div>
+        </Badge>
         <CommitMessageBox
           commitMessage={commitMessage}
           isCommitMessageBoxOpen={isCommitMessageBoxOpen}
@@ -229,9 +256,64 @@ export class SubmitBar extends React.Component<
             closeOptions={this.closeRunOptions}
           />
         ) : null}
+        {isStoryModeModalOpen ? this.storyModeModalComponent(false, current_stars) : null}
       </div>
     );
   }
+
+  public componentDidMount() {
+    this.props.getQuestStatus();
+    this.props.setCurrentLevel(1, 0);
+  }
+
+  private questLevel() {
+    const levelsComponent = [];
+    if (this.props.ratings) {
+      for (let i = 0; i < levels.length; i += 1) {
+        levelsComponent[i] =
+          this.props.ratings[i] !== undefined ? (
+            <DropDownItem
+              level={String(this.props.ratings[i].level)}
+              rating={this.props.ratings[i].stars}
+              openStoryModeModal={this.props.openStoryModeModal}
+              setCurrentLevel={this.props.setCurrentLevel}
+            />
+          ) : (
+            <DropDownItem
+              level={String(i + 1)}
+              rating={-1}
+              openStoryModeModal={this.props.openStoryModeModal}
+              setCurrentLevel={this.props.setCurrentLevel}
+            />
+          );
+      }
+      return levelsComponent;
+    }
+    return null;
+  }
+
+  private storyModeModalComponent = (isCompleted: boolean, stars: number) => {
+    // can just call storyModeModalComponent(true, 3) to render a StoryModeModal component with
+    // stars=3 and isCompleted= true and the level value is fetched from storyModeModalLevel state variable
+    const { closeStoryModeModal, storyModeModalLevel } = this.props;
+
+    return (
+      <StoryModeModal
+        description={levels[storyModeModalLevel - 1].description}
+        isCompleted={isCompleted}
+        level={storyModeModalLevel}
+        closeStoryModeModal={() => {
+          closeStoryModeModal();
+        }}
+        stars={stars}
+        startMatch={this.startStoryModeMatch}
+      />
+    );
+  };
+
+  private updateQuestRating = () => {
+    this.props.getQuestStatus();
+  };
 
   private closeRunOptions = () => {
     this.setState({
@@ -257,6 +339,21 @@ export class SubmitBar extends React.Component<
     await commit(commitMessage);
     await this.toggleCommitMessageBox(false);
     await getCommitLog();
+  };
+
+  private startStoryModeMatch = async (mapId: number, aiId: number) => {
+    const {
+      closeStoryModeModal,
+      aiMatch,
+      updateMapId,
+      updateCurrentAiId,
+      changeCurrentRequest,
+    } = this.props;
+    closeStoryModeModal();
+    changeCurrentRequest(SubmissionInterfaces.Request.AI_MATCH);
+    updateCurrentAiId(aiId);
+    updateMapId(mapId);
+    await aiMatch(mapId, aiId);
   };
 
   private startMatch = async (type: SubmissionActions.Type, mapId: number, aiId: number) => {

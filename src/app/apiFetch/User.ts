@@ -180,3 +180,20 @@ export const checkUsernameExists = (username: string) => {
       console.error(error);
     });
 };
+
+export const userGetQuestStatus = () => {
+  console.log('Inside apiFetch');
+  return fetch(`${API_BASE_URL}user/quest-status`, {
+    credentials: 'include',
+    method: 'GET',
+  })
+    .then((response) => {
+      return jsonResponseWrapper(response);
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};

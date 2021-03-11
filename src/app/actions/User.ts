@@ -8,6 +8,9 @@ export namespace UserActions {
     LOGOUT = 'LOGOUT',
     REGISTER = 'REGISTER',
     GET_USER_DETAILS = 'GET_USER_DETAILS',
+    GET_USER_QUESTSTATUS = 'GET_USER_QUESTSTATUS',
+    UPDATE_USER_QUESTSTATUS = 'UPDATE_USER_QUESTSTATUS',
+    SET_CURRENT_LEVEL = 'SET_CURRENT_LEVEL',
     EDIT_USER_PROFILE = 'EDIT_USER_PROFILE',
     EDIT_USER_PASSWORD = 'EDIT_USER_PASSWORD',
     UPDATE_ERROR_MESSAGE = 'UPDATE_ERROR_MESSAGE',
@@ -23,6 +26,8 @@ export namespace UserActions {
     RESET_APP_STATE = 'RESET_APP_STATE',
     SET_IS_AUTHENTICATION_OPEN = 'SET_IS_AUTHENTICATION_OPEN',
     SET_IS_LOGIN_LOADING = 'SET_IS_LOGIN_LOADING',
+    OPEN_STORY_MODE_MODAL = 'OPEN_STORY_MODE_MODAL',
+    CLOSE_STORY_MODE_MODAL = 'CLOSE_STORY_MODE_MODAL',
   }
 
   export const activateUser = (authToken: string, userId: number) =>
@@ -65,6 +70,14 @@ export namespace UserActions {
 
   export const getUserDetails = () => action(Type.GET_USER_DETAILS);
 
+  export const getQuestStatus = () => action(Type.GET_USER_QUESTSTATUS);
+
+  export const updateQuestStatus = (ratings: object) =>
+    action(Type.UPDATE_USER_QUESTSTATUS, { ratings });
+
+  export const setCurrentLevel = (level: number, stars: number) =>
+    action(Type.SET_CURRENT_LEVEL, { level, stars });
+
   export const editUserProfile = (editUserDetails: UserInterfaces.EditUserDetails) =>
     action(Type.EDIT_USER_PROFILE, { editUserDetails });
 
@@ -98,4 +111,9 @@ export namespace UserActions {
 
   export const setIsLoginLoading = (isLoginLoading: boolean) =>
     action(Type.SET_IS_LOGIN_LOADING, { isLoginLoading });
+
+  export const openStoryModeModal = (level: number) =>
+    action(Type.OPEN_STORY_MODE_MODAL, { level });
+
+  export const closeStoryModeModal = () => action(Type.CLOSE_STORY_MODE_MODAL);
 }

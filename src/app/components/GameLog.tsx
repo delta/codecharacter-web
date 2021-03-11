@@ -40,6 +40,9 @@ export class GameLog extends React.Component<GameLogInterfaces.Props, {}> {
 
     return (
       <AceEditor
+        style={{
+          zIndex: 0,
+        }}
         ref={this.editorRef}
         cursorStart={20}
         mode="c_cpp"
