@@ -51,7 +51,7 @@ jobs:
           command: cp ./src/config/config.example.ts ./src/config/config.ts
       - run:
           name: build
-          command: npm run build
+          command: mkdir build && npm run build
 
 workflows:
   version: 2
