@@ -8,8 +8,6 @@ import * as UserProfileInterfaces from 'app/types/UserProfileModal';
 import classnames from 'classnames';
 import * as React from 'react';
 import { Grid, Row } from 'react-bootstrap';
-// tslint:disable-next-line
-import ReactFlagsSelect from 'react-flags-select';
 import { Redirect } from 'react-router-dom';
 import { NavBar, NavPage } from '../home/Navbar';
 
@@ -19,7 +17,6 @@ export class UserProfileModal extends React.Component<
 > {
   private editProfileRef = React.createRef<HTMLFormElement>();
   private editPasswordRef = React.createRef<HTMLFormElement>();
-  private reactFlagRef = React.createRef<ReactFlagsSelect>();
 
   constructor(props: UserProfileInterfaces.Props) {
     super(props);
@@ -68,7 +65,6 @@ export class UserProfileModal extends React.Component<
               handleEditProfile={this.handleEditProfile}
               onInputChange={this.onInputChange}
               editProfileRef={this.editProfileRef}
-              reactFlagRef={this.reactFlagRef}
               username={username}
               fullName={fullName}
               userDetails={userDetails}
