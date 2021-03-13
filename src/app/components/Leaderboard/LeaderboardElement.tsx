@@ -31,7 +31,6 @@ export class LeaderboardElement extends React.Component<
     this.state = {
       isModelOpen: false,
       onHover: false,
-
       optionsPie: {
         chart: {
           foreColor: 'gray',
