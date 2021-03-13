@@ -89,7 +89,6 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                   <div className={profileStyles.inputGroup}>
                     <ReactFlagsSelect
                       searchable={true}
-                      className={classnames(authStyles.customFlag, authStyles['login-input'])}
                       selected={currentCountry}
                       onSelect={(countryCode: string) =>
                         onInputChange(InputName.country, countryCode)

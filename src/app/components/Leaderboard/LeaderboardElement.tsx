@@ -177,16 +177,6 @@ export class LeaderboardElement extends React.Component<
           },
         },
       },
-      stroke: {	
-        curve: 'smooth',	
-      },	
-      xaxis: {
-        categories: labelArray,
-        axisTicks: {
-          show: false,
-        },
-      }
-      
     };
     return (
       <Col
@@ -361,7 +351,7 @@ export class LeaderboardElement extends React.Component<
                 </div>
               </div>
               <div className={classnames(styles.chart_div)}>
-                <Chart options={optionsLine} series={[series]}  type="line" width="800" />
+                <Chart options={optionsLine} series={[series]} type="line" width="760" />
               </div>
             </div>
           ) : null}
