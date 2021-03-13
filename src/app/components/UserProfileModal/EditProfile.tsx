@@ -1,3 +1,6 @@
+// tslint:disable-next-line:import-name
+import ReactFlagsSelect from 'react-flags-select';
+
 import * as authStyles from 'app/styles/Authentication.module.css';
 import 'app/styles/Flags.css';
 import * as profileStyles from 'app/styles/UserProfileModal.module.css';
@@ -6,14 +9,11 @@ import { InputName } from 'app/types/UserProfileModal';
 import * as EditProfileInterfaces from 'app/types/UserProfileModal/EditProfile';
 import classnames from 'classnames';
 import * as React from 'react';
-// tslint:disable-next-line:import-name
-import ReactFlagsSelect from 'react-flags-select';
-import 'react-flags-select/css/react-flags-select.css';
 
 export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}> {
   public render() {
     const { handleEditProfile, onInputChange } = this.props;
-    const { editProfileRef, reactFlagRef } = this.props;
+    const { editProfileRef } = this.props;
     const {
       username: currentUsername,
       fullName: currentFullName,
@@ -90,11 +90,10 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
                     <ReactFlagsSelect
                       searchable={true}
                       className={classnames(authStyles.customFlag, authStyles['login-input'])}
-                      defaultCountry={currentCountry}
+                      selected={currentCountry}
                       onSelect={(countryCode: string) =>
                         onInputChange(InputName.country, countryCode)
                       }
-                      ref={reactFlagRef}
                     />
                   </div>
                   <div className={classnames('invalid-feedback', authStyles['login-error'])}>

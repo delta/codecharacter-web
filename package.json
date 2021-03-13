@@ -152,7 +152,7 @@
     "react-bootstrap": "^0.32.4",
     "react-country-flag": "^1.0.1",
     "react-dom": "^16.5.2",
-    "react-flags-select": "^1.1.10",
+    "react-flags-select": "2.1.2",
     "react-ga": "^2.7.0",
     "react-google-recaptcha": "^1.0.5",
     "react-joyride": "^2.2.1",

@@ -6,6 +6,7 @@ import { Avatar, avatarName } from 'app/types/Authentication/Register';
 import { Request } from 'app/types/code/Submission';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import classnames from 'classnames';
+// import { type } from 'os';
 import * as React from 'react';
 /* tslint:disable-next-line:import-name */
 import Chart from 'react-apexcharts';
@@ -22,8 +23,6 @@ export class LeaderboardElement extends React.Component<
     isModelOpen: boolean;
     onHover: boolean;
     optionsPie: object;
-    optionsLine: object;
-    series: object;
   }
 > {
   // tslint:disable-next-line
@@ -32,41 +31,7 @@ export class LeaderboardElement extends React.Component<
     this.state = {
       isModelOpen: false,
       onHover: false,
-      optionsLine: {
-        chart: {
-          foreColor: 'gray',
-          height: 40,
-          id: 'basic-bar',
-          toolbar: {
-            show: false,
-          },
-          zoom: {
-            enabled: false,
-          },
-        },
-        dataLabels: {
-          enabled: false,
-          markers: {
-            colors: ['rgb(0, 143, 251)', 'rgb(0, 227, 150)', 'rgb(254, 176, 25)'],
-          },
-          style: {
-            colors: ['#000000', '#000000', '#000000'],
-          },
-        },
-        markers: {
-          hover: {
-            size: '5',
-            sizeOffset: '0',
-          },
-          size: '5',
-        },
-        stroke: {
-          curve: 'smooth',
-        },
-        xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
-        },
-      },
+
       optionsPie: {
         chart: {
           foreColor: 'gray',
@@ -98,31 +63,7 @@ export class LeaderboardElement extends React.Component<
           },
         },
       },
-      series: {
-        data: [30, 40, 45, 50, 49, 60, 70, 91],
-        name: 'series-1',
-      },
     };
-  }
-
-  public componentDidMount() {
-    const { player } = this.props;
-    const ratingArray: number[] = [];
-    const labelArray: string[] = [];
-    player.rating.forEach((element) => {
-      ratingArray.push(Math.round(element.rating * 100) / 100);
-      const dateobj = new Date(element.validFrom);
-      labelArray.push(dateobj.toLocaleDateString('en-GB').substr(0, 5));
-    });
-    this.setState((prevState) => ({ series: { ...prevState.series, data: ratingArray } }));
-    this.setState((prevState) => ({
-      optionsLine: {
-        ...prevState.optionsLine,
-        xaxis: {
-          categories: labelArray,
-        },
-      },
-    }));
   }
 
   public handleOnClick = () => {
@@ -152,6 +93,92 @@ export class LeaderboardElement extends React.Component<
       updatePlayerId2,
       updateRequest,
     } = this.props;
+    const ratingArray: number[] = [];
+    const labelArray: string[] = [];
+    let tempDate = '';
+    let prevRate = 0;
+    let maxWinningStreak = 0;
+    let curWinningStreak = 0;
+    let currentRate = 0;
+    player.rating.forEach((element) => {
+      currentRate = Math.round(element.rating * 100) / 100;
+      ratingArray.push(currentRate);
+
+      if (currentRate > prevRate) {
+        curWinningStreak += 1;
+      } else {
+        if (curWinningStreak > maxWinningStreak) {
+          maxWinningStreak = curWinningStreak;
+          curWinningStreak = 0;
+        }
+      }
+      prevRate = currentRate;
+
+      let realDate = '';
+      const dateobj = new Date(element.validFrom);
+      realDate = dateobj.toLocaleDateString('en-GB').substr(0, 5);
+      if (realDate === tempDate) {
+        labelArray.push(' ');
+      } else {
+        tempDate = realDate;
+        labelArray.push(realDate);
+      }
+    });
+    const series = { data: ratingArray, name: 'Points' };
+    const optionsLine = {
+      chart: {
+        foreColor: 'gray',
+        height: 40,
+        id: 'basic-bar',
+        toolbar: {
+          show: false,
+        },
+        zoom: {
+          enabled: false,
+        },
+      },
+      dataLabels: {
+        enabled: false,
+        markers: {
+          colors: ['rgb(0, 143, 251)', 'rgb(0, 227, 150)', 'rgb(254, 176, 25)'],
+        },
+        style: {
+          colors: ['#000000', '#000000', '#000000'],
+        },
+      },
+      markers: {
+        hover: {
+          size: '0',
+          sizeOffset: '0',
+        },
+        size: '0',
+      },
+      stroke: {
+        curve: 'smooth',
+      },
+      xaxis: {
+        axisBorder: {
+          color: '#000',
+          show: true,
+        },
+        axisTicks: {
+          show: false,
+        },
+        categories: labelArray,
+        labels: {
+          style: {
+            colors: 'rgb(255,255,255)',
+          },
+        },
+      },
+      yaxis: {
+        labels: {
+          style: {
+            colors: 'rgb(255,255,255)',
+          },
+        },
+      },
+    };
     return (
       <Col
         md={26}
@@ -193,6 +220,7 @@ export class LeaderboardElement extends React.Component<
                 style={{
                   color: colors[player.rank],
                   marginLeft: '4px',
+                  marginRight: '0px',
                   position: 'relative',
                   top: '20%',
                 }}
@@ -210,7 +238,7 @@ export class LeaderboardElement extends React.Component<
                   marginLeft: '4px',
                 }}
                 className={classnames(
-                  player.rank <= 10 ? styles['leader-ava'] : styles['leader-ava-l'],
+                  player.rank <= 9 ? styles['leader-ava'] : styles['leader-ava-l'],
                 )}
               >
                 {player.rank}
@@ -279,6 +307,10 @@ export class LeaderboardElement extends React.Component<
                   width={30}
                   height={30}
                   className="mr-3"
+                  style={{
+                    filter:
+                      ' invert(14%) sepia(3%) saturate(68960%) hue-rotate(320deg) brightness(102%) contrast(110%)',
+                  }}
                   onClickCapture={async (e) => {
                     // hello
                     e.stopPropagation();
@@ -303,26 +335,24 @@ export class LeaderboardElement extends React.Component<
         >
           {this.state.isModelOpen ? (
             <div
-              className="row justify-content-center"
+              className={classnames(styles.chart_holder, 'row', 'justify-content-center')}
               onClick={(event) => {
                 event.stopPropagation();
               }}
             >
-              <div className={classnames(styles.chart_div, 'col col-lg-5')}>
+              <div className={classnames(styles.chart_div, styles.pie_chart)}>
                 <Chart
                   options={this.state.optionsPie}
                   series={[player.ties, player.wins, player.losses]}
                   type="donut"
-                  width="380"
+                  width="400"
                 />
+                <div className={classnames(styles.winning_streak)}>
+                  Highest winning streak: {maxWinningStreak}
+                </div>
               </div>
-              <div className={classnames(styles.chart_div, 'col-lg-5')}>
-                <Chart
-                  options={this.state.optionsLine}
-                  series={[this.state.series]}
-                  type="line"
-                  width="500"
-                />
+              <div className={classnames(styles.chart_div)}>
+                <Chart options={optionsLine} series={[series]} type="line" width="760" />
               </div>
             </div>
           ) : null}
