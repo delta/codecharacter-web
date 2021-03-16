@@ -30,7 +30,9 @@ export class StoryModeModal extends React.Component<StoryModalPropType.Props, {}
             <FontAwesomeIcon icon={faTimes} style={{ float: 'right', cursor: 'pointer' }} />
           </button>
         </Modal.Header>
-        <Modal.Body>{this.props.description}</Modal.Body>
+        <Modal.Body>
+          <div dangerouslySetInnerHTML={{ __html: this.props.description }}></div>
+        </Modal.Body>
         <Modal.Footer>
           <Button
             className={this.props.isCompleted ? 'btn-success' : 'btn-primary'}
