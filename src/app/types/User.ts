@@ -43,14 +43,12 @@ export interface ActivateUser {
 
 const actions = {
   ActivateUser: UserActions.activateUser,
-  closeStoryModeModal: UserActions.closeStoryModeModal,
   editUserPassword: UserActions.editUserPassword,
   editUserProfile: UserActions.editUserProfile,
   getQuestStatus: UserActions.getQuestStatus,
   getUserDetails: UserActions.getUserDetails,
   login: UserActions.login,
   logout: UserActions.logout,
-  openStoryModeModal: UserActions.openStoryModeModal,
   register: UserActions.register,
   resetUserState: UserActions.resetUserState,
   setCurrentLevel: UserActions.setCurrentLevel,
@@ -58,6 +56,7 @@ const actions = {
   setIsLoginLoading: UserActions.setIsLoginLoading,
   toggleIsNotificationPresent: UserActions.toggleIsNotificationPresent,
   toggleIsSocketPresent: UserActions.toggleIsSocketPresent,
+  toggleStoryModeModal: UserActions.toggleStoryModeModal,
   toggleUserProfileModal: UserActions.toggleUserProfileModal,
   updateErrorMessage: UserActions.updateErrorMessage,
   updateNotification: UserActions.updateNotification,
@@ -87,10 +86,9 @@ export interface UserStoreState {
   college: string;
   userType: UserType;
   avatar: string;
-  // tslint:disable-next-line
-  ratings: { level: number; stars: number }[];
-  current_level: number;
-  current_stars: number;
+  ratings: [{ level: number; stars: number }];
+  currentLevel: number;
+  currentStars: number;
 }
 
 export type UserStoreAction = ActionType<typeof actions>;

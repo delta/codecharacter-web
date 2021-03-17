@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as StoryModalPropType from 'app/types/StoryModeModal';
 import * as React from 'react';
 import { Button, Modal } from 'react-bootstrap';
-//
 
 export class StoryModeModal extends React.Component<StoryModalPropType.Props, {}> {
   public render() {
@@ -25,7 +24,7 @@ export class StoryModeModal extends React.Component<StoryModalPropType.Props, {}
           </Modal.Title>
           <button
             style={{ border: 0, padding: 0, margin: 0, backgroundColor: 'white' }}
-            onClick={() => this.props.closeStoryModeModal()}
+            onClick={() => this.props.toggleStoryModeModal(this.props.level)}
           >
             <FontAwesomeIcon icon={faTimes} style={{ float: 'right', cursor: 'pointer' }} />
           </button>

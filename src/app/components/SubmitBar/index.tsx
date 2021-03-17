@@ -1,5 +1,3 @@
-import { levels } from '../../../config/questLevels';
-
 import {
   faChevronLeft,
   faChevronRight,
@@ -12,6 +10,7 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Badge, Tooltip } from '@material-ui/core';
 import { SubmissionActions } from 'app/actions';
 import { StoryModeModal } from 'app/components/StoryModeModal';
 import { CommitMessageBox } from 'app/components/SubmitBar/CommitMessageBox';
@@ -23,9 +22,7 @@ import { SplitPaneState } from 'app/types/Dashboard';
 import * as SubmitBarInterfaces from 'app/types/SubmitBar';
 import classnames from 'classnames';
 import * as React from 'react';
-
-import { Badge, Tooltip } from '@material-ui/core';
-
+import { levels } from '../../data/questData';
 export class SubmitBar extends React.Component<
   SubmitBarInterfaces.Props,
   SubmitBarInterfaces.State
@@ -52,8 +49,8 @@ export class SubmitBar extends React.Component<
       debugRunAvailable,
       isStoryModeModalOpen,
       ratings,
-      current_level,
-      current_stars,
+      currentLevel,
+      currentStars,
     } = this.props;
     const { commitMessage, isCommitMessageBoxOpen, isRunOptionsOpen } = this.state;
     return (
@@ -227,7 +224,7 @@ export class SubmitBar extends React.Component<
             horizontal: 'right',
             vertical: 'top',
           }}
-          badgeContent={current_level}
+          badgeContent={currentLevel}
           color={'secondary'}
         >
           <div onMouseEnter={this.updateQuestRating} className={styles.dropdown}>
@@ -256,7 +253,7 @@ export class SubmitBar extends React.Component<
             closeOptions={this.closeRunOptions}
           />
         ) : null}
-        {isStoryModeModalOpen ? this.storyModeModalComponent(false, current_stars) : null}
+        {isStoryModeModalOpen ? this.storyModeModalComponent(false, currentStars) : null}
       </div>
     );
   }
@@ -275,14 +272,14 @@ export class SubmitBar extends React.Component<
             <DropDownItem
               level={String(this.props.ratings[i].level)}
               rating={this.props.ratings[i].stars}
-              openStoryModeModal={this.props.openStoryModeModal}
+              toggleStoryModeModal={this.props.toggleStoryModeModal}
               setCurrentLevel={this.props.setCurrentLevel}
             />
           ) : (
             <DropDownItem
               level={String(i + 1)}
               rating={-1}
-              openStoryModeModal={this.props.openStoryModeModal}
+              toggleStoryModeModal={this.props.toggleStoryModeModal}
               setCurrentLevel={this.props.setCurrentLevel}
             />
           );
@@ -292,18 +289,20 @@ export class SubmitBar extends React.Component<
     return null;
   }
 
+  /*
+   * can just call storyModeModalComponent(true, 3) to render a StoryModeModal component with
+   * stars=3 and isCompleted= true and the level value is fetched from storyModeModalLevel state variable
+   */
   private storyModeModalComponent = (isCompleted: boolean, stars: number) => {
-    // can just call storyModeModalComponent(true, 3) to render a StoryModeModal component with
-    // stars=3 and isCompleted= true and the level value is fetched from storyModeModalLevel state variable
-    const { closeStoryModeModal, storyModeModalLevel } = this.props;
+    const { toggleStoryModeModal, storyModeModalLevel } = this.props;
 
     return (
       <StoryModeModal
         description={levels[storyModeModalLevel - 1].description}
         isCompleted={isCompleted}
         level={storyModeModalLevel}
-        closeStoryModeModal={() => {
-          closeStoryModeModal();
+        toggleStoryModeModal={(level: number) => {
+          toggleStoryModeModal(level);
         }}
         stars={stars}
         startMatch={this.startStoryModeMatch}
@@ -343,13 +342,13 @@ export class SubmitBar extends React.Component<
 
   private startStoryModeMatch = async (mapId: number, aiId: number) => {
     const {
-      closeStoryModeModal,
+      toggleStoryModeModal,
       aiMatch,
       updateMapId,
       updateCurrentAiId,
       changeCurrentRequest,
     } = this.props;
-    closeStoryModeModal();
+    toggleStoryModeModal(aiId);
     changeCurrentRequest(SubmissionInterfaces.Request.AI_MATCH);
     updateCurrentAiId(aiId);
     updateMapId(mapId);
