@@ -78,6 +78,7 @@ export class Leaderboard extends React.Component<
       loading,
       timerData,
       getTimer,
+      getLeaderboard,
       setTimer,
       runMatch,
       username: currentUsername,
@@ -122,7 +123,7 @@ export class Leaderboard extends React.Component<
                   className={styles.button}
                   onClick={() => {
                     this.setState({ isSearching: false });
-                    this.props.getLeaderboard(this.state.nextFetchIndex, this.state.pageSize);
+                    getLeaderboard(this.state.nextFetchIndex, this.state.pageSize);
                   }}
                 >
                   <FontAwesomeIcon style={{ color: 'white' }} icon={faTimes} />
@@ -332,7 +333,7 @@ export class Leaderboard extends React.Component<
                 </div>
               ) : null}
 
-              {this.props.players.length >= this.state.pageSize ? (
+              {players.length >= this.state.pageSize ? (
                 <div
                   className={styles.arrow}
                   style={{ position: 'absolute', right: '3%', bottom: '50%' }}
@@ -365,7 +366,7 @@ export class Leaderboard extends React.Component<
                         key={index}
                         runMatch={runMatch}
                         isPlayAgainstDisabled={timerData > 0 ? true : false}
-                        getTimer={this.props.getTimer}
+                        getTimer={getTimer}
                       />
                     ) : null,
                   )

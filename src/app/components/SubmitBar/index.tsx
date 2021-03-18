@@ -47,6 +47,7 @@ export class SubmitBar extends React.Component<
       aiIds,
       clearLogs,
       debugRunAvailable,
+      debugRun,
       isStoryModeModalOpen,
       ratings,
       currentLevel,
@@ -169,7 +170,7 @@ export class SubmitBar extends React.Component<
               }}
               title="Run debugger on your last runtime error"
               id="debug_run_button"
-              onClick={this.props.debugRun}
+              onClick={debugRun}
             >
               <span
                 className={classnames(styles.icon)}

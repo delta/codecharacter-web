@@ -17,7 +17,7 @@ export class DeltaStarCount extends React.Component<DeltaStarCountInterfaces.Pro
 
   public render() {
     const starsArray = [0, 0, 0];
-    for (let index = 0; index <= this.props.rating; index += 1) starsArray[index] = 1;
+    for (let index = 0; index < this.props.rating; index += 1) starsArray[index] = 1;
     return (
       <span className={classnames(styles.deltaStarSpan)}>
         {starsArray.map((value) => (

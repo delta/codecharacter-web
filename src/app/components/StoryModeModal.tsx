@@ -6,6 +6,7 @@ import { Button, Modal } from 'react-bootstrap';
 
 export class StoryModeModal extends React.Component<StoryModalPropType.Props, {}> {
   public render() {
+    const { description, level, stars, toggleStoryModeModal, startMatch, isCompleted } = this.props;
     return (
       <Modal.Dialog
         style={{
@@ -16,26 +17,26 @@ export class StoryModeModal extends React.Component<StoryModalPropType.Props, {}
         <Modal.Header>
           <Modal.Title>
             <div style={{ margin: 0 }}>
-              <b>Level {this.props.level} !! </b>
-              {[...Array(this.props.stars >= 0 ? this.props.stars : 0)].map(() => (
+              <b>Level {level} !! </b>
+              {[...Array(stars >= 0 ? stars : 0)].map(() => (
                 <FontAwesomeIcon icon={faStar} style={{ color: 'gold' }} />
               ))}
             </div>
           </Modal.Title>
           <button
             style={{ border: 0, padding: 0, margin: 0, backgroundColor: 'white' }}
-            onClick={() => this.props.toggleStoryModeModal(this.props.level)}
+            onClick={() => toggleStoryModeModal(level)}
           >
             <FontAwesomeIcon icon={faTimes} style={{ float: 'right', cursor: 'pointer' }} />
           </button>
         </Modal.Header>
-        <Modal.Body>{this.props.description}</Modal.Body>
+        <Modal.Body>{description}</Modal.Body>
         <Modal.Footer>
           <Button
-            className={this.props.isCompleted ? 'btn-success' : 'btn-primary'}
-            onClick={() => this.props.startMatch(1, this.props.level)}
+            className={isCompleted ? 'btn-success' : 'btn-primary'}
+            onClick={() => startMatch(1, level)}
           >
-            {this.props.isCompleted ? 'Retry' : 'Start'} &nbsp;
+            {isCompleted ? 'Retry' : 'Start'} &nbsp;
             <FontAwesomeIcon icon={faArrowRight} />
           </Button>
         </Modal.Footer>
