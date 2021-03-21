@@ -1,9 +1,8 @@
+import { Tooltip } from '@material-ui/core';
 import { DeltaStarCount } from 'app/components/SubmitBar/DeltaStarCount';
 import * as styles from 'app/styles/SubmitBar.module.css';
 import * as DropDownItemInterfaces from 'app/types/DropDownItem';
 import * as React from 'react';
-
-import { Tooltip } from '@material-ui/core';
 
 export class DropDownItem extends React.Component<DropDownItemInterfaces.Props, {}> {
   constructor(props: DropDownItemInterfaces.Props) {
@@ -11,14 +10,14 @@ export class DropDownItem extends React.Component<DropDownItemInterfaces.Props, 
   }
 
   public render() {
-    const { level, rating, openStoryModeModal, setCurrentLevel } = this.props;
+    const { level, rating, toggleStoryModeModal, setCurrentLevel } = this.props;
     return (
       <span>
         {rating !== -1 || Number(level) === 1 ? (
           <div
             onClick={(e) => {
               setCurrentLevel(Number(level), rating);
-              openStoryModeModal(Number(level));
+              toggleStoryModeModal(Number(level));
             }}
           >
             <span>LVL {level}</span>

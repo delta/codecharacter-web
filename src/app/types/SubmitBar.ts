@@ -16,8 +16,8 @@ export interface StateProps {
   storyModeModalLevel: number;
   // tslint:disable-next-line
   ratings: { level: number; stars: number }[];
-  current_level: number;
-  current_stars: number;
+  currentLevel: number;
+  currentStars: number;
 }
 
 export interface DispatchProps {
@@ -36,8 +36,7 @@ export interface DispatchProps {
   clearLogs: () => void;
   updateCurrentAiId: (aiId: number) => void;
   updateMapId: (mapId: number) => void;
-  openStoryModeModal: (level: number) => void;
-  closeStoryModeModal: () => void;
+  toggleStoryModeModal: (level: number) => void;
 }
 
 export interface RunOptionsOwnState {

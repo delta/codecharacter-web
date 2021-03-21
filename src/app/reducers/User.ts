@@ -13,8 +13,8 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   avatar: '',
   college: '',
   country: 'IN',
-  current_level: 1,
-  current_stars: 0,
+  currentLevel: 1,
+  currentStars: 0,
   email: '',
   errorMessage: '',
   fullName: '',
@@ -27,7 +27,7 @@ const userStoreIntialState: UserInterfaces.UserStoreState = {
   isStoryModeModalOpen: false,
   isUserProfileModalOpen: false,
   notification: '',
-  ratings: [],
+  ratings: [{ level: 1, stars: 0 }],
   socketMessage: '',
   storyModeModalLevel: 0,
   userId: 0,
@@ -132,18 +132,11 @@ export const userReducer = (
         isNotificationPresent: !state.isNotificationPresent,
       };
     }
-    case UserActions.Type.OPEN_STORY_MODE_MODAL: {
+    case UserActions.Type.TOGGLE_STORY_MODE_MODAL: {
       return {
         ...state,
-        isStoryModeModalOpen: true,
+        isStoryModeModalOpen: !state.isStoryModeModalOpen,
         storyModeModalLevel: action.payload.level,
-      };
-    }
-    case UserActions.Type.CLOSE_STORY_MODE_MODAL: {
-      return {
-        ...state,
-        isStoryModeModalOpen: false,
-        storyModeModalLevel: -1,
       };
     }
     case UserActions.Type.UPDATE_SOCKET_MESSAGE: {
@@ -175,8 +168,8 @@ export const userReducer = (
     case UserActions.Type.SET_CURRENT_LEVEL: {
       return {
         ...state,
-        current_level: action.payload.level,
-        current_stars: action.payload.stars,
+        currentLevel: action.payload.level,
+        currentStars: action.payload.stars,
       };
     }
 

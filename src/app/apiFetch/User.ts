@@ -182,7 +182,6 @@ export const checkUsernameExists = (username: string) => {
 };
 
 export const userGetQuestStatus = () => {
-  console.log('Inside apiFetch');
   return fetch(`${API_BASE_URL}user/quest-status`, {
     credentials: 'include',
     method: 'GET',

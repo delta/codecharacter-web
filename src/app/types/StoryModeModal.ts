@@ -3,6 +3,6 @@ export interface Props {
   isCompleted: boolean;
   level: number;
   stars: number;
-  closeStoryModeModal: () => void;
+  toggleStoryModeModal: (level: number) => void;
   startMatch: (mapId: number, aiId: number) => void;
 }
