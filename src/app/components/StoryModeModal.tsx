@@ -31,7 +31,7 @@ export class StoryModeModal extends React.Component<StoryModalPropType.Props, {}
           </button>
         </Modal.Header>
         <Modal.Body>
-          <div dangerouslySetInnerHTML={{ __html: this.props.description }}></div>
+          <div dangerouslySetInnerHTML={{ __html: description }}></div>
         </Modal.Body>
         <Modal.Footer>
           <Button
