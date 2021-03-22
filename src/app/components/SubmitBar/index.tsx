@@ -210,7 +210,6 @@ export class SubmitBar extends React.Component<
             title="Submit Code"
             id="submit_button"
             onClick={(e) => {
-              this.props.saveCode();
               this.props.lockCode();
             }}
           >
