@@ -10,7 +10,7 @@ const codeStoreInitialState: CodeInterfaces.CodeStoreState = {
   
   State PlayerCode::update(State state) {
   
-	  // Hello and Welcome to Code Character 2020!!
+	  // Hello and Welcome to Code Character 2021!!
   
 	  // Code Character is a strategy code writing competition, where you'll be
 	  // controlling some robots that will face off against each other

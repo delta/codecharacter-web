@@ -82,7 +82,7 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
               <p>
                 In case of any queries, discuss at the{' '}
                 <a
-                  href="https://forum.pragyan.org/t/code-character-frequently-asked-questions/20"
+                  href="https://forum.pragyan.org/t/code-character-frequently-asked-questions/21"
                   target="_blank"
                 >
                   CodeCharacter Forum
@@ -90,18 +90,18 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
                 .
               </p>
               <h1>Prizes</h1>
-              <p>A total of 50K INR up for grabs for acing the leaderboard.</p>
+              <p>A total of 125K INR up for grabs for acing the leaderboard.</p>
               <h6>College Students</h6>
               <ul>
-                <li>First Place - 10K INR</li>
-                <li>Second Place - 6K INR</li>
-                <li>Third Place - 4K INR</li>
+                <li>First Place - 25K INR</li>
+                <li>Second Place - 15K INR</li>
+                <li>Third Place - 10K INR</li>
               </ul>
               <h6>Professionals</h6>
               <ul>
-                <li>First Place - 15K INR</li>
-                <li>Second Place - 10K INR</li>
-                <li>Third Place - 5K INR</li>
+                <li>First Place - 35K INR</li>
+                <li>Second Place - 25K INR</li>
+                <li>Third Place - 15K INR</li>
               </ul>
               <p>
                 Note: College Student Winners will be requested to provide valid college proof to

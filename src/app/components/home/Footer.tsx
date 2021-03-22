@@ -48,12 +48,12 @@ export const Footer: React.FunctionComponent = () => {
                   <a href="https://code.pragyan.org/docs">Documentation</a>
                 </li>
                 <li>
-                  <a href="https://www.pragyan.org/20/home/events/bytehoc/code_character/">
+                  <a href="https://www.pragyan.org/21/home/events/bytehoc/code_character/">
                     Pragyan - CodeCharacter
                   </a>
                 </li>
                 <li>
-                  <a href="https://forum.pragyan.org/t/code-character-frequently-asked-questions/20">
+                  <a href="https://forum.pragyan.org/t/code-character-frequently-asked-questions/21">
                     Forum
                   </a>
                 </li>
@@ -72,7 +72,7 @@ export const Footer: React.FunctionComponent = () => {
         )}
       >
         <div className="col text-center">
-          &copy; 2020 Made with <span style={{ color: 'red' }}>❤</span> by{' '}
+          &copy; 2021 Made with <span style={{ color: 'red' }}>❤</span> by{' '}
           <a href="https://delta.nitt.edu"> Delta Force</a>
         </div>
       </div>
