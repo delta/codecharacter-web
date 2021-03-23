@@ -4,6 +4,7 @@ import { RootState } from 'app/reducers';
 import * as SubmissionInterfaces from 'app/types/code/Submission';
 import * as NotificationInterfaces from 'app/types/Notification';
 import * as SocketHandlerInterfaces from 'app/types/SocketHandler';
+import { UserDetails } from 'app/types/User';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
@@ -46,6 +47,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     info: (message: string) => dispatch(NotificationActions.info(message)),
     logout: () => dispatch(UserActions.logout()),
     resetNotificationState: () => dispatch(NotificationActions.resetNotificationState()),
+    resetUserState: () => dispatch(UserActions.resetUserState()),
     sendCompileError: (error: string) => dispatch(SubmissionActions.handleCompileError(error)),
     sendCompileSuccess: () => dispatch(SubmissionActions.handleCompileSuccess()),
     sendDebugRunError: () => dispatch(SubmissionActions.handleDebugRunError()),
@@ -69,6 +71,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       dispatch(GameLogActions.updateMatchPlayerId(matchPlayerId)),
     updateRequest: (request: SubmissionInterfaces.Request) =>
       dispatch(SubmissionActions.changeCurrentRequest(request)),
+    updateUserDetails: (details: UserDetails) => dispatch(UserActions.updateUserDetails(details)),
   };
 };
 

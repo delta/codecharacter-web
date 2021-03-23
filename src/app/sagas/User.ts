@@ -49,6 +49,8 @@ export function* login(action: ActionType<typeof UserActions.login>) {
     let errorMessage;
     switch (responseBody.message) {
       case 'User is disabled':
+        errorMessage = 'Please check your email to activate your account';
+        break;
       case 'Bad credentials':
         errorMessage = 'Your email or password was incorrect.';
         break;
@@ -183,6 +185,7 @@ export function* getQuestStatus(action: ActionType<typeof UserActions.getQuestSt
     }
   } catch (err) {
     console.error(err);
+    yield put(UserActions.resetUserState());
   }
 }
 
