@@ -5,7 +5,6 @@ import {
   faCog,
   faExclamationCircle,
   faLock,
-  faPlay,
   faSave,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
@@ -141,23 +140,6 @@ export class SubmitBar extends React.Component<
             <span className={classnames(styles.icon)} style={{ padding: 0, margin: 0, border: 0 }}>
               <FontAwesomeIcon icon={faTrash} />
             </span>
-          </button>
-        </Tooltip>
-        <Tooltip title="Run Code">
-          <button
-            className={classnames(styles.customBtn)}
-            id="run_button"
-            onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-              this.setState({
-                isRunOptionsOpen: !isRunOptionsOpen,
-              });
-              event.stopPropagation();
-            }}
-          >
-            <span className={classnames(styles.icon)}>
-              <FontAwesomeIcon icon={faPlay} />
-            </span>
-            <span>RUN</span>
           </button>
         </Tooltip>
         {debugRunAvailable ? (
