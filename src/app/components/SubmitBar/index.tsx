@@ -191,9 +191,7 @@ export class SubmitBar extends React.Component<
             className={classnames(styles.customBtn)}
             title="Submit Code"
             id="submit_button"
-            onClick={(e) => {
-              this.props.lockCode();
-            }}
+            onClick={this.handleSubmit}
           >
             <span className={classnames(styles.icon)}>
               <FontAwesomeIcon icon={faLock} />
@@ -316,11 +314,18 @@ export class SubmitBar extends React.Component<
 
   private handleCommit = async () => {
     const { commitMessage } = this.state;
-    const { commit, getCommitLog } = this.props;
+    const { commit, getCommitLog, saveCode } = this.props;
+    await saveCode();
     await commit(commitMessage);
     await this.toggleCommitMessageBox(false);
     await getCommitLog();
   };
+
+  private handleSubmit = async () => {
+    const { saveCode, lockCode } = this.props;
+    await saveCode();
+    await lockCode();
+  }
 
   private startStoryModeMatch = async (mapId: number, aiId: number) => {
     const {
