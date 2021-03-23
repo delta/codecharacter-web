@@ -90,23 +90,12 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
                 .
               </p>
               <h1>Prizes</h1>
-              <p>A total of 125K INR up for grabs for acing the leaderboard.</p>
-              <h6>College Students</h6>
+              <p>A total of 15K INR up for grabs for acing the leaderboard.</p>
               <ul>
-                <li>First Place - 25K INR</li>
-                <li>Second Place - 15K INR</li>
-                <li>Third Place - 10K INR</li>
+                <li>First Place - 7.5K INR</li>
+                <li>Second Place - 4.5K INR</li>
+                <li>Third Place - 3K INR</li>
               </ul>
-              <h6>Professionals</h6>
-              <ul>
-                <li>First Place - 35K INR</li>
-                <li>Second Place - 25K INR</li>
-                <li>Third Place - 15K INR</li>
-              </ul>
-              <p>
-                Note: College Student Winners will be requested to provide valid college proof to
-                collect prizes.
-              </p>
             </div>
             <div className={classnames(styles['codechar-video'], 'col-lg-5')}>
               <img width="auto" height="auto" src="./assets/img/bot_hi.png" />
