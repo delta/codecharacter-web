@@ -89,10 +89,7 @@ export class SocketHandler extends React.Component<SocketHandlerInterfaces.Props
       },
       // tslint:disable-next-line
       (closeEvent: any) => {
-        const { updateUserDetails } = this.props;
-        updateUserDetails({
-          isLoggedIn: false,
-        });
+        this.props.resetUserState();
       },
     );
   }

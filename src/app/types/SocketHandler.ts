@@ -17,6 +17,7 @@ export interface DispatchProps {
   info: (message: string) => void;
   logout: () => void;
   resetNotificationState: () => void;
+  resetUserState: () => void;
   sendExecuteError: (error: string) => void;
   sendExecuteSuccess: (logs: string) => void;
   sendCompileError: (error: string) => void;

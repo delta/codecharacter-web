@@ -47,6 +47,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     info: (message: string) => dispatch(NotificationActions.info(message)),
     logout: () => dispatch(UserActions.logout()),
     resetNotificationState: () => dispatch(NotificationActions.resetNotificationState()),
+    resetUserState: () => dispatch(UserActions.resetUserState()),
     sendCompileError: (error: string) => dispatch(SubmissionActions.handleCompileError(error)),
     sendCompileSuccess: () => dispatch(SubmissionActions.handleCompileSuccess()),
     sendDebugRunError: () => dispatch(SubmissionActions.handleDebugRunError()),
