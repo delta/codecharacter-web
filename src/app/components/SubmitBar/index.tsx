@@ -186,7 +186,11 @@ export class SubmitBar extends React.Component<
             <span>COMMIT</span>
           </button>
         </Tooltip>
-        <Tooltip title="Submit Code">
+        <Tooltip
+          title="Submit Code: This will submit your code as your current competitive AI. All your challenges with other
+          players in the leaderboard will be played using this code.
+          You have to submit your code before challenging an opponent."
+        >
           <button
             className={classnames(styles.customBtn)}
             title="Submit Code"
@@ -325,7 +329,7 @@ export class SubmitBar extends React.Component<
     const { saveCode, lockCode } = this.props;
     await saveCode();
     await lockCode();
-  }
+  };
 
   private startStoryModeMatch = async (mapId: number, aiId: number) => {
     const {
