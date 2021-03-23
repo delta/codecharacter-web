@@ -183,6 +183,11 @@ export function* getQuestStatus(action: ActionType<typeof UserActions.getQuestSt
     }
   } catch (err) {
     console.error(err);
+    yield put(
+      UserActions.updateUserDetails({
+        isLoggedIn: false,
+      }),
+    );
   }
 }
 

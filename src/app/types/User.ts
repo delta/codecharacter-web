@@ -41,6 +41,21 @@ export interface ActivateUser {
   userId: number;
 }
 
+export interface UserDetails {
+  isLoggedIn: boolean;
+  isFirstLogin?: boolean;
+  userId?: number;
+  avatar?: string;
+  college?: string;
+  userType?: UserType;
+  fullName?: string;
+  username?: string;
+  email?: string;
+  errorMessage?: string;
+  country?: string;
+  isUserProfileModalOpen?: boolean;
+}
+
 const actions = {
   ActivateUser: UserActions.activateUser,
   editUserPassword: UserActions.editUserPassword,

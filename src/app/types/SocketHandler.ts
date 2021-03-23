@@ -1,5 +1,6 @@
 import * as SubmissionInterfaces from 'app/types/code/Submission';
 import * as NotificationInterfaces from 'app/types/Notification';
+import { UserDetails } from 'app/types/User';
 
 export interface DispatchProps {
   add: (type: NotificationInterfaces.NotificationType, title: string, text: string) => void;
@@ -33,6 +34,7 @@ export interface DispatchProps {
   updateGlobalNotifications: (notifications: NotificationInterfaces.Notification[]) => void;
   updateMatchPlayerId: (matchPlayerId: number) => void;
   updateRequest: (request: SubmissionInterfaces.Request) => void;
+  updateUserDetails: (details: UserDetails) => void;
 }
 
 export enum MatchMode {

@@ -49,22 +49,7 @@ export namespace UserActions {
   export const updateErrorMessage = (errorMessage: string) =>
     action(Type.UPDATE_ERROR_MESSAGE, { errorMessage });
 
-  interface UserDetails {
-    isLoggedIn: boolean;
-    isFirstLogin?: boolean;
-    userId?: number;
-    avatar?: string;
-    college?: string;
-    userType?: UserInterfaces.UserType;
-    fullName?: string;
-    username?: string;
-    email?: string;
-    errorMessage?: string;
-    country?: string;
-    isUserProfileModalOpen?: boolean;
-  }
-
-  export const updateUserDetails = (userDetails: UserDetails) =>
+  export const updateUserDetails = (userDetails: UserInterfaces.UserDetails) =>
     action(Type.UPDATE_USER_DETAILS, { userDetails });
 
   export const getUserDetails = () => action(Type.GET_USER_DETAILS);
