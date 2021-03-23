@@ -1,5 +1,6 @@
 import { faArrowRight, faStar, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import 'app/styles/StoryModeModal.css';
 import * as StoryModalPropType from 'app/types/StoryModeModal';
 import * as React from 'react';
 import { Button, Modal } from 'react-bootstrap';
@@ -9,9 +10,9 @@ export class StoryModeModal extends React.Component<StoryModalPropType.Props, {}
     const { description, level, stars, toggleStoryModeModal, startMatch, isCompleted } = this.props;
     return (
       <Modal.Dialog
+        className="story-modal"
         style={{
-          marginTop: '10%',
-          zIndex: 10,
+          zIndex: 100,
         }}
       >
         <Modal.Header>
