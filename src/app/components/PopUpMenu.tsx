@@ -45,11 +45,11 @@ export default class PopUpMenu extends React.Component<{}, ElementOwnProps> {
               Documentation
             </div>
           </a>
-          <a href="https://www.pragyan.org/20/" target="_blank">
+          <a href="https://www.pragyan.org/21/" target="_blank">
             <div className={classnames(styles['menu-item'], styles['menu-item-documentation'])}>
               <div>
                 <img
-                  src="https://www.pragyan.org/20/cms/templates/common/site/images/favicon.ico"
+                  src="https://www.pragyan.org/21/cms/templates/common/site/images/favicon.ico"
                   alt="pragyan"
                   width="25px"
                   height="22px"
@@ -60,7 +60,7 @@ export default class PopUpMenu extends React.Component<{}, ElementOwnProps> {
           </a>
 
           <a
-            href="https://forum.pragyan.org/t/code-character-frequently-asked-questions/20"
+            href="https://forum.pragyan.org/t/code-character-frequently-asked-questions/21"
             target="_blank"
           >
             <div className={classnames(styles['menu-item'], styles['menu-item-discourse'])}>

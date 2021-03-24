@@ -1,5 +1,5 @@
 # CodeCharacter Web
-Web App for the frontend of CodeCharacter 2020
+Web App for the frontend of CodeCharacter 2021
 
 ## Installation
 

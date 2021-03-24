@@ -122,18 +122,6 @@ const tourConfig: ReactourStep[] = [
   {
     content: () => (
       <div>
-        <h6>Run Game</h6>
-        <p className={classnames(styles['step-description'])}>
-          Click to compile code and run the game simulation
-        </p>
-      </div>
-    ),
-    position: 'bottom',
-    selector: '[id="run_button"]',
-  },
-  {
-    content: () => (
-      <div>
         <h6>Save</h6>
         <p className={classnames(styles['step-description'])}>
           Click to save your code. Your last saved code is the version that is compiled!

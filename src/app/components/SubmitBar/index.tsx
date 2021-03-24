@@ -5,7 +5,6 @@ import {
   faCog,
   faExclamationCircle,
   faLock,
-  faPlay,
   faSave,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
@@ -143,23 +142,6 @@ export class SubmitBar extends React.Component<
             </span>
           </button>
         </Tooltip>
-        <Tooltip title="Run Code">
-          <button
-            className={classnames(styles.customBtn)}
-            id="run_button"
-            onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-              this.setState({
-                isRunOptionsOpen: !isRunOptionsOpen,
-              });
-              event.stopPropagation();
-            }}
-          >
-            <span className={classnames(styles.icon)}>
-              <FontAwesomeIcon icon={faPlay} />
-            </span>
-            <span>RUN</span>
-          </button>
-        </Tooltip>
         {debugRunAvailable ? (
           <Tooltip title="Debug Code">
             <button
@@ -204,14 +186,16 @@ export class SubmitBar extends React.Component<
             <span>COMMIT</span>
           </button>
         </Tooltip>
-        <Tooltip title="Submit Code">
+        <Tooltip
+          title="Submit Code: This will submit your code as your current competitive AI. All your challenges with other
+          players in the leaderboard will be played using this code.
+          You have to submit your code before challenging an opponent."
+        >
           <button
             className={classnames(styles.customBtn)}
             title="Submit Code"
             id="submit_button"
-            onClick={(e) => {
-              this.props.lockCode();
-            }}
+            onClick={this.handleSubmit}
           >
             <span className={classnames(styles.icon)}>
               <FontAwesomeIcon icon={faLock} />
@@ -334,10 +318,17 @@ export class SubmitBar extends React.Component<
 
   private handleCommit = async () => {
     const { commitMessage } = this.state;
-    const { commit, getCommitLog } = this.props;
+    const { commit, getCommitLog, saveCode } = this.props;
+    await saveCode();
     await commit(commitMessage);
     await this.toggleCommitMessageBox(false);
     await getCommitLog();
+  };
+
+  private handleSubmit = async () => {
+    const { saveCode, lockCode } = this.props;
+    await saveCode();
+    await lockCode();
   };
 
   private startStoryModeMatch = async (mapId: number, aiId: number) => {
