@@ -3,10 +3,12 @@
 exports[`Login Container Should render 1`] = `
 <Login
   errorMessage=""
+  getUserDetails={[Function]}
   handleSelectPanel={[Function]}
   isLoggedIn={false}
   isLoginLoading={false}
   login={[Function]}
+  setIsLoginLoading={[Function]}
   updateErrorMessage={[Function]}
 />
 `;
