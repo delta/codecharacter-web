@@ -1,7 +1,7 @@
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { API_BASE_URL } from 'app/../config/config';
 import { NavBar, NavPage } from 'app/components/home/Navbar';
-// import { API_BASE_URL } from 'app/../config/config';
 import PopUpMenu from 'app/components/PopUpMenu';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Authentication.module.css';
@@ -19,6 +19,8 @@ export enum OAUTH_ROUTES {
 
 export class Login extends React.Component<LoginInterfaces.Props, LoginInterfaces.State> {
   private loginRef = React.createRef<HTMLFormElement>();
+  private authWindow: Window | null = null;
+  private intervalID: null | ReturnType<typeof setTimeout> = null;
 
   constructor(props: LoginInterfaces.Props) {
     super(props);
@@ -62,6 +64,9 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
     const { username, password } = this.state;
     const { errorMessage, isLoginLoading, isLoggedIn } = this.props;
     if (isLoggedIn) {
+      if (this.authWindow != null) this.authWindow.close();
+      if (this.intervalID != null) clearInterval(this.intervalID);
+      this.props.setIsLoginLoading(false);
       return <Redirect to={Routes.ROOT} />;
     }
 
@@ -83,50 +88,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
             account credentials to login.
           </div>
         </div>
-        <div className={classnames('container px-0 justify-content-center', styles.loginForm)}>
-          {/* {
-            // TODO: Remove this on OAuth Integration.
-            <Row
-            onClick={(e) => {
-              window.location.href = `https://code.pragyan.org/api/${OAUTH_ROUTES.GOOGLE}`;
-            }}
-            className={classnames(
-              styles['google-btn'],
-              'border justify-content-center my-3',
-              styles.oauth_btn,
-              styles.no_margin,
-            )}
-          >
-            <div className={classnames('col-auto my-2', styles.img_div)}>
-              <img src="./assets/img/google.png" height="24" width="24" />
-            </div>
-            <p className="col-auto">Log in with Google</p>
-          </Row>
-          <Row
-            onClick={(e) => {
-              window.location.href = `${API_BASE_URL}${OAUTH_ROUTES.GITHUB}`;
-            }}
-            className={classnames(
-              'justify-content-center',
-              styles['github-btn'],
-              styles.oauth_btn,
-              styles.no_margin,
-            )}
-          >
-            <div className={classnames('col-auto my-2', styles.img_div)}>
-              <img src="./assets/img/github.png" height="24" width="24" />
-            </div>
-            <p className="col-auto">Log in with Github</p>
-          </Row>}
-          <Row className={classnames(styles.no_margin)}>
-            <div className={classnames(styles.separator)}>
-              <div className={classnames(styles.wordWithLine)}>
-                <span className={classnames(styles.text)}>or</span>
-              </div>
-            </div>
-          </Row>
-          */}
-        </div>
+
         <Row className={classnames(styles.no_margin)}>
           <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
             <form
@@ -135,7 +97,32 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               ref={this.loginRef}
               onSubmit={this.handleLogin}
             >
-              <div className="form-row">
+              <Row
+                onClick={(e) => {
+                  this.authWindow = window.open(`${API_BASE_URL}${OAUTH_ROUTES.GOOGLE}`);
+                  this.intervalID = setInterval(this.props.getUserDetails, 500);
+                  this.props.setIsLoginLoading(true);
+                }}
+                className={classnames(
+                  styles['google-btn'],
+                  'border justify-content-center my-3',
+                  styles.oauth_btn,
+                  styles.no_margin,
+                )}
+              >
+                <div className={classnames('col-auto my-2', styles.img_div)}>
+                  <img src="./assets/img/google.png" height="24" width="24" />
+                </div>
+                <p className="col-auto">Log in with Google</p>
+              </Row>
+              <Row className={classnames(styles.no_margin)}>
+                <div className={classnames(styles.separator)}>
+                  <div className={classnames(styles.wordWithLine)}>
+                    <span className={classnames(styles.text)}>or</span>
+                  </div>
+                </div>
+              </Row>
+              <div className="form-row mt-4">
                 <div className="col mb-4">
                   <div className={classnames(styles['login-label'])}> Email </div>
                   <div className="input-group">

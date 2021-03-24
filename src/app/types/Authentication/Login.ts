@@ -17,6 +17,8 @@ export interface StateProps {
 export interface DispatchProps {
   login: (username: string, password: string) => void;
   updateErrorMessage: (errorMessage: string) => void;
+  getUserDetails: () => void;
+  setIsLoginLoading: (isLoginLoading: boolean) => void;
 }
 
 export type Props = ElementOwnProps & StateProps & DispatchProps;
