@@ -115,26 +115,6 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
                 </div>
                 <p className="col-auto">Log in with Google</p>
               </Row>
-              {/* 
-              // TODO: Remove this on OAuth Integration.
-              <Row
-                onClick={(e) => {
-                  this.authWindow = window.open(`${API_BASE_URL}${OAUTH_ROUTES.GITHUB}`);
-                  this.intervalID = setInterval(this.props.getUserDetails, 500);
-                  this.props.setIsLoginLoading(true);
-                }}
-                className={classnames(
-                  'justify-content-center',
-                  styles['github-btn'],
-                  styles.oauth_btn,
-                  styles.no_margin,
-                )}
-              >
-                <div className={classnames('col-auto my-2', styles.img_div)}>
-                  <img src="./assets/img/github.png" height="24" width="24" />
-                </div>
-                <p className="col-auto">Log in with Github</p>
-                </Row>*/}
               <Row className={classnames(styles.no_margin)}>
                 <div className={classnames(styles.separator)}>
                   <div className={classnames(styles.wordWithLine)}>
