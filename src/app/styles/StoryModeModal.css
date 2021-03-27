@@ -21,3 +21,11 @@ code {
   display: inline-block;
   border-radius: 5px;
 }
+
+.story-modal .modal-content {
+  max-height: 95%;
+}
+
+.story-modal .modal-dialog {
+  height: 100%;
+}
