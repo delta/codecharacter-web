@@ -50,7 +50,7 @@ export default class Renderer extends React.Component<RendererInterfaces.Props, 
               <Col sm={12} className="text-center mt-3">
                 <div
                   style={{
-                    backgroundColor: '#d3d3d3',
+                    backgroundColor: '#535353',
                     borderRadius: `50%`,
                     display: 'inline-block',
                   }}

@@ -61,9 +61,9 @@
 
 .faq-heading {
   display: flex;
+  flex-wrap: nowrap;
   margin: 0;
   margin-bottom: 0;
-  width: 90%;
   position: relative;
 }
 .heading-text {
@@ -71,8 +71,8 @@
   align-self: center;
   font-size: 18px;
   font-family: Karla !important;
-  margin: 0 !important;
-  text-align: center;
+  margin: 0px 10px;
+  text-align: left;
 }
 
 .cont {

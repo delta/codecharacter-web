@@ -90,7 +90,8 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
         </div>
 
         <Row className={classnames(styles.no_margin)}>
-          <div className={classnames('col-sm-10 offset-sm-1', styles.form)}>
+          <div className="col-sm-2 col-md-3 col-lg-4"></div>
+          <div className={classnames('col-sm-8 col-md-6 col-lg-4', styles.form)}>
             <form
               className={classnames(styles.loginForm)}
               noValidate
@@ -200,6 +201,7 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
               </div>
             </form>
           </div>
+          <div className="col-sm-2 col-md-3 col-lg-4"></div>
         </Row>
         <Row className={classnames(styles.no_margin)}>
           <Col className="text-center my-3 ml-auto mr-auto">

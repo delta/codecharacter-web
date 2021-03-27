@@ -36,7 +36,10 @@ export const NavBar = (props: { isLoggedIn: boolean; page: NavPage }) => {
               Dashboard{' '}
             </Link>
             {props.page !== NavPage.PROFILE ? (
-              <Link to={Routes.USER_PROFILE_MODEL}> Profile </Link>
+              <Link to={Routes.USER_PROFILE_MODEL} className="p-3">
+                {' '}
+                Profile{' '}
+              </Link>
             ) : null}
           </>
         ) : (

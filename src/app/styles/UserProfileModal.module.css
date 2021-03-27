@@ -1,5 +1,4 @@
 .UserProfileModal {
-  width: 100vw;
   height: 100vh;
   position: fixed;
   display: flex;
@@ -118,14 +117,10 @@
 
 .passwordForm {
   padding: 10px 25px;
-  width: 100%;
-  margin-left: 5%;
 }
 
 .profileForm {
   padding: 10px 25px;
-  width: 85%;
-  margin-left: 12%;
 }
 
 .formHeading {
@@ -199,14 +194,6 @@
   background-color: #ddd;
 }
 
-.editProfileElement {
-  overflow-x: hidden;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-left: 30%;
-  margin-top: 2%;
-}
-
 .editPasswordElement {
   overflow-x: hidden;
   padding-left: 10px;
@@ -240,12 +227,7 @@
   width: 100%;
 }
 
-.loginPageLink {
-  cursor: pointer;
-  margin-left: 38%;
-}
-
+.loginPageLink,
 .passwordPageLink {
   cursor: pointer;
-  margin-left: 37%;
 }

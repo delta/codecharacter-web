@@ -125,94 +125,319 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
           <h1 className={classnames(authStyles['register-h1'])}> Register to CodeCharacter! </h1>
           <p> Register now and code your way through!! </p>
         </div>
-        <div className={classnames('col-sm-12', authStyles.form)}>
-          <form
-            className={classnames(
-              'registerForm d-flex flex-wrap',
-              authStyles['main-register-form'],
-            )}
-            noValidate
-            ref={this.registerFormRef}
-          >
-            {currentStep === RegisterInterfaces.Steps.USER_DETAILS && (
-              <div className={classnames(authStyles['stage-div'])}>
-                <form
-                  className={classnames(authStyles['stage-form'])}
-                  noValidate
-                  ref={this.userDetailsFormRef}
-                >
-                  <div className={classnames(authStyles['login-section1'])}>
-                    <div className={classnames(authStyles['login-label'])}> Full Name </div>
+        <div className="row">
+          <div className="col-sm-2 col-md-3 col-lg-4"></div>
+          <div className={classnames('col-sm-8 col-md-6 col-lg-4', authStyles.form)}>
+            <form
+              className={classnames(
+                'registerForm d-flex flex-wrap',
+                authStyles['main-register-form'],
+              )}
+              noValidate
+              ref={this.registerFormRef}
+            >
+              {currentStep === RegisterInterfaces.Steps.USER_DETAILS && (
+                <div className={classnames(authStyles['stage-div'])}>
+                  <form
+                    className={classnames(authStyles['stage-form'])}
+                    noValidate
+                    ref={this.userDetailsFormRef}
+                  >
+                    <div className={classnames(authStyles['login-section1'])}>
+                      <div className={classnames(authStyles['login-label'])}> Full Name </div>
+                      <div className={classnames(registerStyles['input-group'])}>
+                        <input
+                          type="text"
+                          className={classnames('form-control', authStyles['register-input'])}
+                          id="registerValidationFullname"
+                          aria-describedby="inputGroupPrepend"
+                          pattern=".{5,50}"
+                          value={fullName}
+                          onChange={(e) =>
+                            this.setState({
+                              fullName: e.target.value,
+                            })
+                          }
+                          required
+                        />
+                        <div
+                          className={classnames('invalid-feedback', authStyles['register-error'])}
+                        >
+                          Name must have minimum 5 characters.
+                        </div>
+                      </div>
+                      <div className={classnames(authStyles['login-label'])}> Username </div>
+                      <div className={classnames(registerStyles['input-group'])}>
+                        <input
+                          type="text"
+                          className={classnames('form-control', authStyles['register-input'])}
+                          id="registerValidationUsername"
+                          aria-describedby="inputGroupPrepend"
+                          pattern="[a-zA-Z0-9]{5,50}"
+                          value={username}
+                          onChange={(e) => {
+                            checkUsernameExists(e.target.value);
+                            this.setState({
+                              username: e.target.value,
+                            });
+                          }}
+                          required
+                        />
+                        <div
+                          className={classnames('invalid-feedback', authStyles['register-error'])}
+                        >
+                          Enter a valid username. It should have a minimum of 5 characters and must
+                          be alphanumeric
+                        </div>
+                      </div>
+                      <div className={classnames(authStyles['login-label'])}>Email </div>
+                      <div className={classnames(registerStyles['input-group'])}>
+                        <input
+                          type="email"
+                          className={classnames('form-control', authStyles['register-input'])}
+                          id="registerValidationEmail"
+                          aria-describedby="inputGroupPrepend"
+                          value={email}
+                          onChange={(e) => {
+                            const registerForm = this.registerFormRef.current;
+                            if (registerForm && registerForm.checkValidity()) {
+                              checkEmailExists(e.target.value);
+                            }
+                            this.setState({
+                              email: e.target.value,
+                            });
+                          }}
+                          required
+                        />
+                        <div
+                          className={classnames('invalid-feedback', authStyles['register-error'])}
+                        >
+                          Please enter a valid Email ID.
+                        </div>
+                      </div>
+
+                      <div
+                        className={
+                          !errorMessage
+                            ? classnames(
+                                'col text-center mt -0 mb-2 ',
+                                authStyles['register-error-inactive'],
+                                registerStyles.errorMessage,
+                              )
+                            : classnames(
+                                'col text-center mt -0 mb-2 errorMessage',
+                                authStyles['register-error-active'],
+                                registerStyles.errorMessage,
+                              )
+                        }
+                      >
+                        {errorMessage}
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              )}
+              {currentStep === RegisterInterfaces.Steps.CREDENTIALS && (
+                <div className={classnames(authStyles['stage-div'])}>
+                  <form
+                    className={classnames(authStyles['stage-form'])}
+                    noValidate
+                    ref={this.credentialsFormRef}
+                  >
+                    <div className={classnames(authStyles['login-label'])}> Password </div>
                     <div className={classnames(registerStyles['input-group'])}>
                       <input
-                        type="text"
+                        type="password"
                         className={classnames('form-control', authStyles['register-input'])}
-                        id="registerValidationFullname"
+                        id="registerValidationPassword"
                         aria-describedby="inputGroupPrepend"
-                        pattern=".{5,50}"
-                        value={fullName}
+                        pattern=".{5,}"
+                        value={password}
                         onChange={(e) =>
                           this.setState({
-                            fullName: e.target.value,
+                            password: e.target.value,
                           })
                         }
                         required
                       />
                       <div className={classnames('invalid-feedback', authStyles['register-error'])}>
-                        Name must have minimum 5 characters.
+                        Password should have minimum 5 characters.
                       </div>
                     </div>
-                    <div className={classnames(authStyles['login-label'])}> Username </div>
+                    <div className={classnames(authStyles['login-label'])}> Confirm Password </div>
                     <div className={classnames(registerStyles['input-group'])}>
                       <input
-                        type="text"
+                        type="password"
                         className={classnames('form-control', authStyles['register-input'])}
-                        id="registerValidationUsername"
+                        id="registerValidationrepeatPassword"
                         aria-describedby="inputGroupPrepend"
-                        pattern="[a-zA-Z0-9]{5,50}"
-                        value={username}
-                        onChange={(e) => {
-                          checkUsernameExists(e.target.value);
+                        pattern=".{5,}"
+                        value={repeatPassword}
+                        onChange={(e) =>
                           this.setState({
-                            username: e.target.value,
-                          });
-                        }}
+                            repeatPassword: e.target.value,
+                          })
+                        }
                         required
                       />
-                      <div className={classnames('invalid-feedback', authStyles['register-error'])}>
-                        Enter a valid username. It should have a minimum of 5 characters and must be
-                        alphanumeric
-                      </div>
-                    </div>
-                    <div className={classnames(authStyles['login-label'])}>Email </div>
-                    <div className={classnames(registerStyles['input-group'])}>
-                      <input
-                        type="email"
-                        className={classnames('form-control', authStyles['register-input'])}
-                        id="registerValidationEmail"
-                        aria-describedby="inputGroupPrepend"
-                        value={email}
-                        onChange={(e) => {
-                          const registerForm = this.registerFormRef.current;
-                          if (registerForm && registerForm.checkValidity()) {
-                            checkEmailExists(e.target.value);
-                          }
-                          this.setState({
-                            email: e.target.value,
-                          });
-                        }}
-                        required
-                      />
-                      <div className={classnames('invalid-feedback', authStyles['register-error'])}>
-                        Please enter a valid Email ID.
-                      </div>
                     </div>
 
                     <div
+                      className={classnames('form-row', authStyles['register-error-inactive'])}
+                      ref={this.passwordErrorDivRef}
+                    >
+                      <div
+                        className={classnames(
+                          'col text-center mt -0 mb-2 errorMessage',
+                          registerStyles.errorMessage,
+                        )}
+                      >
+                        Password and confirm passwords have different values
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              )}
+              {currentStep === RegisterInterfaces.Steps.OTHERS && (
+                <div className={classnames(authStyles['stage-div'])}>
+                  <form
+                    className={classnames(authStyles['stage-form'])}
+                    noValidate
+                    ref={this.otherDetailsFormRef}
+                  >
+                    <div className="text-center text-dark">
+                      Are you a student ?{' '}
+                      <span>
+                        <input
+                          type="checkbox"
+                          id="switch"
+                          className={classnames(registerStyles['checkbox-input'])}
+                          checked={isStudent}
+                          onChange={() =>
+                            this.setState({
+                              isStudent: !isStudent,
+                              userType:
+                                userType === UserType.STUDENT
+                                  ? UserType.PROFESSIONAL
+                                  : UserType.STUDENT,
+                            })
+                          }
+                        />
+                        <label htmlFor="switch" className={classnames(registerStyles.flaglabel)}>
+                          Toggle
+                        </label>
+                      </span>
+                    </div>
+                    {isStudent && (
+                      <div>
+                        <div className={classnames(authStyles['login-label'])}> College Name </div>
+                        <div className={classnames(registerStyles['input-group'])}>
+                          <input
+                            type="text"
+                            className={classnames('form-control', authStyles['register-input'])}
+                            id="collegeNameValidation"
+                            aria-describedby="inputGroupPrepend"
+                            pattern=".{5,50}|[a-zA-Z0-9\s]+"
+                            value={collegeName}
+                            onChange={(e) =>
+                              this.setState({
+                                collegeName: e.target.value,
+                              })
+                            }
+                            required
+                          />
+                          <div
+                            className={classnames('invalid-feedback', authStyles['register-error'])}
+                          >
+                            College Name should have minimum 5 characters.
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    <div className={classnames(authStyles['login-label'])}> Your country </div>
+                    <div className={classnames(registerStyles['input-group'])}>
+                      <ReactFlagsSelect
+                        selected="IN"
+                        searchable={true}
+                        placeholder="Search for a country"
+                        onSelect={this.onSelectFlag}
+                      />
+
+                      <div className={classnames('invalid-feedback', authStyles['register-error'])}>
+                        Please Select a country
+                      </div>
+                    </div>
+                    <div
+                      className={classnames('form-row', authStyles['avatar-select-form-row'])}
+                      style={{ padding: '10px 0px', fontFamily: 'Karla' }}
+                    >
+                      <div className={classnames(authStyles['login-label'])}>
+                        Choose your spirit animal
+                      </div>
+                      <div className={classnames(authStyles['avatar-select-container'])}>
+                        <section className={classnames(authStyles['avatar-section'])}>
+                          {avatars.map((avatar: string, index: number) => (
+                            <div
+                              className={
+                                avatar === this.state.avatar
+                                  ? classnames(authStyles['avatar-img-active'])
+                                  : classnames(authStyles['avatar-img'])
+                              }
+                              key={index}
+                              onClick={() => {
+                                this.setState({
+                                  avatar,
+                                });
+                              }}
+                              title={avatar}
+                            >
+                              {
+                                <img
+                                  className={classnames(registerStyles.img)}
+                                  width={50}
+                                  height={50}
+                                  // @ts-ignore
+                                  src={RegisterInterfaces.Avatar[avatar]}
+                                />
+                              }
+                            </div>
+                          ))}
+                        </section>
+                      </div>
+                    </div>
+                    <div
+                      className={classnames(
+                        registerStyles['input-group'],
+                        'd-flex justify-content-center',
+                      )}
+                    >
+                      <div className="form-row d-flex justify-content-center my-1">
+                        <div className="d-flex justify-content-center input-group">
+                          <ReCAPTCHA
+                            sitekey={RECAPTCHA_SITE_KEY}
+                            data-theme={'dark'}
+                            onChange={this.onChange}
+                            ref={this.recaptchaRef}
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className={classnames(
+                          authStyles['register-error-active'],
+                          'invalid-feedback text-center',
+                        )}
+                        style={{
+                          display: !isCaptchaValidated && isFormSubmitted ? 'block' : 'none',
+                        }}
+                      >
+                        Please fill recaptcha.
+                      </div>
+                    </div>
+                    <div
                       className={
-                        !errorMessage
+                        errorMessage === ''
                           ? classnames(
-                              'col text-center mt -0 mb-2 ',
+                              'col text-center mt -0 mb-2 errorMessage',
                               authStyles['register-error-inactive'],
                               registerStyles.errorMessage,
                             )
@@ -225,307 +450,96 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                     >
                       {errorMessage}
                     </div>
-                  </div>
-                </form>
-              </div>
-            )}
-            {currentStep === RegisterInterfaces.Steps.CREDENTIALS && (
-              <div className={classnames(authStyles['stage-div'])}>
-                <form
-                  className={classnames(authStyles['stage-form'])}
-                  noValidate
-                  ref={this.credentialsFormRef}
-                >
-                  <div className={classnames(authStyles['login-label'])}> Password </div>
-                  <div className={classnames(registerStyles['input-group'])}>
-                    <input
-                      type="password"
-                      className={classnames('form-control', authStyles['register-input'])}
-                      id="registerValidationPassword"
-                      aria-describedby="inputGroupPrepend"
-                      pattern=".{5,}"
-                      value={password}
-                      onChange={(e) =>
-                        this.setState({
-                          password: e.target.value,
-                        })
-                      }
-                      required
-                    />
-                    <div className={classnames('invalid-feedback', authStyles['register-error'])}>
-                      Password should have minimum 5 characters.
-                    </div>
-                  </div>
-                  <div className={classnames(authStyles['login-label'])}> Confirm Password </div>
-                  <div className={classnames(registerStyles['input-group'])}>
-                    <input
-                      type="password"
-                      className={classnames('form-control', authStyles['register-input'])}
-                      id="registerValidationrepeatPassword"
-                      aria-describedby="inputGroupPrepend"
-                      pattern=".{5,}"
-                      value={repeatPassword}
-                      onChange={(e) =>
-                        this.setState({
-                          repeatPassword: e.target.value,
-                        })
-                      }
-                      required
-                    />
-                  </div>
-
-                  <div
-                    className={classnames('form-row', authStyles['register-error-inactive'])}
-                    ref={this.passwordErrorDivRef}
-                  >
                     <div
                       className={classnames(
-                        'col text-center mt -0 mb-2 errorMessage',
-                        registerStyles.errorMessage,
+                        registerStyles['input-group'],
+                        'd-flex justify-content-center',
                       )}
                     >
-                      Password and confirm passwords have different values
+                      <button
+                        onClick={this.handleRegister}
+                        className={classnames(authStyles['register-button'])}
+                      >
+                        Register
+                      </button>
                     </div>
-                  </div>
-                </form>
-              </div>
-            )}
-            {currentStep === RegisterInterfaces.Steps.OTHERS && (
-              <div className={classnames(authStyles['stage-div'])}>
-                <form
-                  className={classnames(authStyles['stage-form'])}
-                  noValidate
-                  ref={this.otherDetailsFormRef}
-                >
-                  <div className="text-center text-dark">
-                    Are you a student ?{' '}
-                    <span>
-                      <input
-                        type="checkbox"
-                        id="switch"
-                        className={classnames(registerStyles['checkbox-input'])}
-                        checked={isStudent}
-                        onChange={() =>
-                          this.setState({
-                            isStudent: !isStudent,
-                            userType:
-                              userType === UserType.STUDENT
-                                ? UserType.PROFESSIONAL
-                                : UserType.STUDENT,
-                          })
-                        }
-                      />
-                      <label htmlFor="switch" className={classnames(registerStyles.flaglabel)}>
-                        Toggle
-                      </label>
-                    </span>
-                  </div>
-                  {isStudent && (
-                    <div>
-                      <div className={classnames(authStyles['login-label'])}> College Name </div>
-                      <div className={classnames(registerStyles['input-group'])}>
-                        <input
-                          type="text"
-                          className={classnames('form-control', authStyles['register-input'])}
-                          id="collegeNameValidation"
-                          aria-describedby="inputGroupPrepend"
-                          pattern=".{5,50}|[a-zA-Z0-9\s]+"
-                          value={collegeName}
-                          onChange={(e) =>
-                            this.setState({
-                              collegeName: e.target.value,
-                            })
-                          }
-                          required
-                        />
-                        <div
-                          className={classnames('invalid-feedback', authStyles['register-error'])}
-                        >
-                          College Name should have minimum 5 characters.
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  <div className={classnames(authStyles['login-label'])}> Your country </div>
-                  <div className={classnames(registerStyles['input-group'])}>
-                    <ReactFlagsSelect
-                      selected="IN"
-                      searchable={true}
-                      placeholder="Search for a country"
-                      onSelect={this.onSelectFlag}
-                    />
-
-                    <div className={classnames('invalid-feedback', authStyles['register-error'])}>
-                      Please Select a country
-                    </div>
-                  </div>
-                  <div
-                    className={classnames('form-row', authStyles['avatar-select-form-row'])}
-                    style={{ padding: '10px 0px', fontFamily: 'Karla' }}
-                  >
-                    <div className={classnames(authStyles['login-label'])}>
-                      Choose your spirit animal
-                    </div>
-                    <div className={classnames(authStyles['avatar-select-container'])}>
-                      <section className={classnames(authStyles['avatar-section'])}>
-                        {avatars.map((avatar: string, index: number) => (
-                          <div
-                            className={
-                              avatar === this.state.avatar
-                                ? classnames(authStyles['avatar-img-active'])
-                                : classnames(authStyles['avatar-img'])
-                            }
-                            key={index}
-                            onClick={() => {
-                              this.setState({
-                                avatar,
-                              });
-                            }}
-                            title={avatar}
-                          >
-                            {
-                              <img
-                                className={classnames(registerStyles.img)}
-                                width={50}
-                                height={50}
-                                // @ts-ignore
-                                src={RegisterInterfaces.Avatar[avatar]}
-                              />
-                            }
-                          </div>
-                        ))}
-                      </section>
-                    </div>
-                  </div>
-                  <div
-                    className={classnames(
-                      registerStyles['input-group'],
-                      'd-flex justify-content-center',
-                    )}
-                  >
-                    <div className="form-row d-flex justify-content-center my-1">
-                      <div className="d-flex justify-content-center input-group">
-                        <ReCAPTCHA
-                          sitekey={RECAPTCHA_SITE_KEY}
-                          data-theme={'dark'}
-                          onChange={this.onChange}
-                          ref={this.recaptchaRef}
-                        />
-                      </div>
-                    </div>
-                    <div
-                      className={classnames(
-                        authStyles['register-error-active'],
-                        'invalid-feedback text-center',
-                      )}
-                      style={{
-                        display: !isCaptchaValidated && isFormSubmitted ? 'block' : 'none',
-                      }}
-                    >
-                      Please fill recaptcha.
-                    </div>
-                  </div>
-                  <div
-                    className={
-                      errorMessage === ''
-                        ? classnames(
-                            'col text-center mt -0 mb-2 errorMessage',
-                            authStyles['register-error-inactive'],
-                            registerStyles.errorMessage,
-                          )
-                        : classnames(
-                            'col text-center mt -0 mb-2 errorMessage',
-                            authStyles['register-error-active'],
-                            registerStyles.errorMessage,
-                          )
-                    }
-                  >
-                    {errorMessage}
-                  </div>
-                  <div
-                    className={classnames(
-                      registerStyles['input-group'],
-                      'd-flex justify-content-center',
-                    )}
-                  >
-                    <button
-                      onClick={this.handleRegister}
-                      className={classnames(authStyles['register-button'])}
-                    >
-                      Register
-                    </button>
-                  </div>
-                </form>
-              </div>
-            )}
-          </form>
+                  </form>
+                </div>
+              )}
+            </form>
+          </div>
+          <div className="col-sm-2 col-md-3 col-lg-4"></div>
         </div>
         <Row>
-          <div
-            className={
-              currentStep === RegisterInterfaces.Steps.USER_DETAILS
-                ? classnames(authStyles['left-arrow-disable'])
-                : classnames(authStyles['left-arrow'])
-            }
-            onClick={() => {
-              if (currentStep !== RegisterInterfaces.Steps.USER_DETAILS) {
-                this.handleStepChange(currentStep, currentStep - 1);
-              }
-            }}
-          >
-            <FontAwesomeIcon icon={faChevronCircleLeft} />
-          </div>
-          <ul className={classnames(authStyles['list-unstyled'], authStyles['multi-steps'])}>
-            <li
+          <div className="col-sm-2 col-md-3 col-lg-4"></div>
+          <div className="col-sm-8 col-md-6 col-lg-4 d-flex">
+            <div
               className={
                 currentStep === RegisterInterfaces.Steps.USER_DETAILS
-                  ? classnames(authStyles['is-active'])
-                  : undefined
+                  ? classnames(authStyles['left-arrow-disable'])
+                  : classnames(authStyles['left-arrow'])
               }
-              onClick={() =>
-                this.handleStepChange(currentStep, RegisterInterfaces.Steps.USER_DETAILS)
-              }
+              onClick={() => {
+                if (currentStep !== RegisterInterfaces.Steps.USER_DETAILS) {
+                  this.handleStepChange(currentStep, currentStep - 1);
+                }
+              }}
             >
-              {' '}
-              <p style={{ color: 'black' }}>User Details</p>
-            </li>
-            <li
-              className={
-                currentStep === RegisterInterfaces.Steps.CREDENTIALS
-                  ? classnames(authStyles['is-active'])
-                  : undefined
-              }
-              onClick={() =>
-                this.handleStepChange(currentStep, RegisterInterfaces.Steps.CREDENTIALS)
-              }
-            >
-              <p style={{ color: 'black' }}>Credentials</p>
-            </li>
-            <li
+              <FontAwesomeIcon icon={faChevronCircleLeft} />
+            </div>
+            <ul className={classnames(authStyles['list-unstyled'], authStyles['multi-steps'])}>
+              <li
+                className={
+                  currentStep === RegisterInterfaces.Steps.USER_DETAILS
+                    ? classnames(authStyles['is-active'])
+                    : undefined
+                }
+                onClick={() =>
+                  this.handleStepChange(currentStep, RegisterInterfaces.Steps.USER_DETAILS)
+                }
+              >
+                {' '}
+                <p style={{ color: 'black' }}>User Details</p>
+              </li>
+              <li
+                className={
+                  currentStep === RegisterInterfaces.Steps.CREDENTIALS
+                    ? classnames(authStyles['is-active'])
+                    : undefined
+                }
+                onClick={() =>
+                  this.handleStepChange(currentStep, RegisterInterfaces.Steps.CREDENTIALS)
+                }
+              >
+                <p style={{ color: 'black' }}>Credentials</p>
+              </li>
+              <li
+                className={
+                  currentStep === RegisterInterfaces.Steps.OTHERS
+                    ? classnames(authStyles['is-active'])
+                    : undefined
+                }
+                onClick={() => this.handleStepChange(currentStep, RegisterInterfaces.Steps.OTHERS)}
+              >
+                <p style={{ color: 'black' }}>Other Details</p>
+              </li>
+            </ul>
+            <div
               className={
                 currentStep === RegisterInterfaces.Steps.OTHERS
-                  ? classnames(authStyles['is-active'])
-                  : undefined
+                  ? classnames(authStyles['right-arrow-disable'])
+                  : classnames(authStyles['right-arrow'])
               }
-              onClick={() => this.handleStepChange(currentStep, RegisterInterfaces.Steps.OTHERS)}
+              onClick={() => {
+                if (currentStep !== RegisterInterfaces.Steps.OTHERS) {
+                  this.handleStepChange(currentStep, currentStep + 1);
+                }
+              }}
             >
-              <p style={{ color: 'black' }}>Other Details</p>
-            </li>
-          </ul>
-          <div
-            className={
-              currentStep === RegisterInterfaces.Steps.OTHERS
-                ? classnames(authStyles['right-arrow-disable'])
-                : classnames(authStyles['right-arrow'])
-            }
-            onClick={() => {
-              if (currentStep !== RegisterInterfaces.Steps.OTHERS) {
-                this.handleStepChange(currentStep, currentStep + 1);
-              }
-            }}
-          >
-            <FontAwesomeIcon icon={faChevronCircleRight} />
+              <FontAwesomeIcon icon={faChevronCircleRight} />
+            </div>
           </div>
+          <div className="col-sm-2 col-md-3 col-lg-4"></div>
         </Row>
         <Row>
           <Col className="ml-auto  my-3 mr-auto">
