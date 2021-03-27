@@ -38,6 +38,7 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
+  getUserDetails: () => void;
   setIsAuthenticationOpen: (isAuthenticationOpen: boolean) => void;
   toggleReactTour: () => void;
   closeWelcomeModal: () => void;

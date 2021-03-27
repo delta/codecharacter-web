@@ -24,6 +24,7 @@ const mapStateToProps = (rootState: RootState) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     closeWelcomeModal: () => dispatch(DashboardActions.setIsWelcomeModalOpen(false)),
+    getUserDetails: () => dispatch(UserActions.getUserDetails()),
     setIsAuthenticationOpen: (isAuthenticationOpen: boolean) =>
       dispatch(UserActions.setIsAuthenticationOpen(isAuthenticationOpen)),
     toggleReactTour: () => dispatch(DashboardActions.toggleReactTour()),

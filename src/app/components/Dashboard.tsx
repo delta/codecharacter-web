@@ -54,6 +54,7 @@ export class Dashboard extends React.Component<
   }
 
   public componentDidMount() {
+    this.props.getUserDetails();
     if (this.props.isFirstLogin) {
       this.setState({
         isReactTourActive: true,
