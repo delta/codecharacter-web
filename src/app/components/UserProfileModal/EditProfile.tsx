@@ -23,8 +23,9 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
     } = this.props;
     const avatars = Object.keys(Avatar);
     return (
-      <div className="col-6">
-        <div className={classnames('col-sm-12', profileStyles.profileForm)}>
+      <div className="row">
+        <div className="col-sm-2 col-md-3 col-lg-4"></div>
+        <div className={classnames('col-sm-8 col-md-6 col-lg-4', profileStyles.profileForm)}>
           <div style={{ display: 'flex' }}>
             <div className={classnames('text-dark', profileStyles.formHeading)}>User Details</div>
           </div>
@@ -166,6 +167,7 @@ export class EditProfile extends React.Component<EditProfileInterfaces.Props, {}
             </div>
           </form>
         </div>
+        <div className="col-sm-2 col-md-3 col-lg-4"></div>
       </div>
     );
   }
