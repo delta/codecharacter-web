@@ -96,9 +96,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       fullName,
       isCaptchaValidated,
       isFormSubmitted,
-      isStudent,
-      collegeName,
-      userType,
       currentStep,
     } = this.state;
 
@@ -297,55 +294,6 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
                   noValidate
                   ref={this.otherDetailsFormRef}
                 >
-                  <div className="text-center text-dark">
-                    Are you a student ?{' '}
-                    <span>
-                      <input
-                        type="checkbox"
-                        id="switch"
-                        className={classnames(registerStyles['checkbox-input'])}
-                        checked={isStudent}
-                        onChange={() =>
-                          this.setState({
-                            isStudent: !isStudent,
-                            userType:
-                              userType === UserType.STUDENT
-                                ? UserType.PROFESSIONAL
-                                : UserType.STUDENT,
-                          })
-                        }
-                      />
-                      <label htmlFor="switch" className={classnames(registerStyles.flaglabel)}>
-                        Toggle
-                      </label>
-                    </span>
-                  </div>
-                  {isStudent && (
-                    <div>
-                      <div className={classnames(authStyles['login-label'])}> College Name </div>
-                      <div className={classnames(registerStyles['input-group'])}>
-                        <input
-                          type="text"
-                          className={classnames('form-control', authStyles['register-input'])}
-                          id="collegeNameValidation"
-                          aria-describedby="inputGroupPrepend"
-                          pattern=".{5,50}|[a-zA-Z0-9\s]+"
-                          value={collegeName}
-                          onChange={(e) =>
-                            this.setState({
-                              collegeName: e.target.value,
-                            })
-                          }
-                          required
-                        />
-                        <div
-                          className={classnames('invalid-feedback', authStyles['register-error'])}
-                        >
-                          College Name should have minimum 5 characters.
-                        </div>
-                      </div>
-                    </div>
-                  )}
                   <div className={classnames(authStyles['login-label'])}> Your country </div>
                   <div className={classnames(registerStyles['input-group'])}>
                     <ReactFlagsSelect
