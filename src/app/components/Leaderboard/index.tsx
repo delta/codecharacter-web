@@ -13,7 +13,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavBar, NavPage } from 'app/components/home/Navbar';
 import { LeaderboardElement } from 'app/components/Leaderboard/LeaderboardElement';
 import { Timer } from 'app/components/Leaderboard/Timer';
-import SocketHandler from 'app/containers/SocketHandler';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Leaderboard.module.css';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
@@ -94,7 +93,6 @@ export class Leaderboard extends React.Component<
       <>
         <NavBar isLoggedIn={isLoggedIn} page={NavPage.LEADERBOARD} />
         <Grid fluid={true} className={classnames(styles.Leaderboard)}>
-          {isLoggedIn ? <SocketHandler /> : null}
           <Row className={classnames('py-4 pl-3')}>
             <Col
               sm={9}
@@ -181,59 +179,6 @@ export class Leaderboard extends React.Component<
                         }
                       >
                         {LeaderboardInterfaces.DivisionNames.All}
-                      </a>
-                    </div>
-                  </div>
-                </Col>
-                <Col>
-                  <div className={styles.dropdown}>
-                    <button className={styles.dropbtn}>
-                      {LeaderboardInterfaces.UserTypeName[this.state.currentUserType]}
-                    </button>
-                    <FontAwesomeIcon style={{ color: 'white' }} icon={faCaretDown} />
-                    <div className={styles['dropdown-content']}>
-                      <a
-                        style={{ cursor: 'pointer' }}
-                        onClick={() => {
-                          this.setState({
-                            currentUserType: LeaderboardInterfaces.UserType.STUDENT,
-                          });
-                        }}
-                        className={
-                          this.state.currentUserType === LeaderboardInterfaces.UserType.STUDENT
-                            ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
-                            : classnames(styles.dropDownMenu)
-                        }
-                      >
-                        {LeaderboardInterfaces.UserTypeName.STUDENT}
-                      </a>
-                      <a
-                        style={{ cursor: 'pointer' }}
-                        onClick={() => {
-                          this.setState({
-                            currentUserType: LeaderboardInterfaces.UserType.PROFESSIONAL,
-                          });
-                        }}
-                        className={
-                          this.state.currentUserType === LeaderboardInterfaces.UserType.PROFESSIONAL
-                            ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
-                            : classnames(styles.dropDownMenu)
-                        }
-                      >
-                        {LeaderboardInterfaces.UserTypeName.PROFESSIONAL}
-                      </a>
-                      <a
-                        style={{ cursor: 'pointer' }}
-                        onClick={() => {
-                          this.setState({ currentUserType: LeaderboardInterfaces.UserType.ALL });
-                        }}
-                        className={
-                          this.state.currentUserType === LeaderboardInterfaces.UserType.ALL
-                            ? classnames(styles.dropDownMenuActive, styles.dropDownMenuActive)
-                            : classnames(styles.dropDownMenu)
-                        }
-                      >
-                        {LeaderboardInterfaces.UserTypeName.All}
                       </a>
                     </div>
                   </div>

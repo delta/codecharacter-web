@@ -6,7 +6,6 @@ import GameLog from 'app/containers/GameLog';
 import Renderer from 'app/containers/Renderer';
 import SideBar from 'app/containers/SideBar';
 import SidePanel from 'app/containers/SidePanel';
-import SocketHandler from 'app/containers/SocketHandler';
 import SubmitBar from 'app/containers/SubmitBar';
 import { Routes } from 'app/routes';
 import * as style from 'app/styles/Dashboard.css';
@@ -118,7 +117,6 @@ export class Dashboard extends React.Component<
         {isLoggedIn && isReactTourActive && !isWelcomeModalOpen ? (
           <ReactTour toggleReactTour={this.onToggleReactTour} />
         ) : null}
-        {isLoggedIn ? <SocketHandler /> : null}
         <SplitPane
           style={{
             filter: `blur(${isAuthenticationOpen || isWelcomeModalOpen ? 2 : 0}px)`,
