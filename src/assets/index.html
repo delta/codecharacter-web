@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="//cdn.polyfill.io/v2/polyfill.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
@@ -11,7 +10,7 @@
       rel="stylesheet"
     />
     <style>
-      #preloader-container {
+      #preloader-wrapper {
         position: fixed;
         top: 0;
         left: 0;
@@ -21,7 +20,7 @@
         background-color: #fff;
         transition: opacity 1s;
       }
-      .container {
+      .preloader-container {
         position: absolute;
         width: 200px;
         height: 200px;
@@ -136,8 +135,8 @@
   </head>
   <body>
     <div id="root">
-      <div id="preloader-container">
-        <div class="container">
+      <div id="preloader-wrapper">
+        <div class="preloader-container">
           <div class="item item-1"></div>
           <div class="item item-2"></div>
           <div class="item item-3"></div>

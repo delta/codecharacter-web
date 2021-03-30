@@ -1,6 +1,6 @@
 .Authentication {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   position: fixed;
   display: flex;
   align-items: center;
@@ -14,6 +14,10 @@
   overflow-x: hidden;
   user-select: none;
   text-align: center;
+}
+
+.registerRoot > * {
+  margin: 0;
 }
 
 .Authentication .customBtn:focus,
@@ -125,7 +129,7 @@
 }
 
 .stage-form {
-  width: 390px;
+  width: 100%;
 }
 
 .avatar-img {
@@ -155,11 +159,6 @@
 
 .avatar-section::-webkit-scrollbar-thumb {
   background-color: darkgrey;
-}
-
-.loginForm {
-  margin: auto !important;
-  width: 390px !important;
 }
 
 .login-error {
@@ -253,7 +252,6 @@
 }
 .left-arrow {
   position: relative;
-  left: 35%;
   border-radius: 50%;
   color: #4630eb;
   font-size: 30px;
@@ -262,7 +260,6 @@
 }
 .left-arrow-disable {
   position: relative;
-  left: 35%;
   border-radius: 50%;
   color: grey;
   font-size: 30px;
@@ -271,7 +268,6 @@
 
 .right-arrow {
   position: relative;
-  right: 35%;
   bottom: 5px;
   border-radius: 50%;
   color: #4630eb;
@@ -280,7 +276,6 @@
 }
 .right-arrow-disable {
   position: relative;
-  right: 35%;
   bottom: 5px;
   border-radius: 50%;
   color: grey;
@@ -331,6 +326,7 @@
 }
 
 .stage-div {
+  width: 100%;
   margin: auto;
   display: block;
 }
@@ -411,9 +407,6 @@
 }
 
 .multi-steps {
-  display: table;
-  table-layout: fixed;
-  width: 25%;
   margin: auto;
   cursor: pointer;
   font-family: 'Karla', sans-serif;
@@ -421,6 +414,7 @@
 }
 .multi-steps > li {
   counter-increment: stepNum;
+  padding: 0px 10px;
   text-align: center;
   display: table-cell;
   position: relative;
