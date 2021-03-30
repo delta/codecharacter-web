@@ -13,7 +13,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavBar, NavPage } from 'app/components/home/Navbar';
 import { LeaderboardElement } from 'app/components/Leaderboard/LeaderboardElement';
 import { Timer } from 'app/components/Leaderboard/Timer';
-import SocketHandler from 'app/containers/SocketHandler';
 import { Routes } from 'app/routes';
 import * as styles from 'app/styles/Leaderboard.module.css';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
@@ -94,7 +93,6 @@ export class Leaderboard extends React.Component<
       <>
         <NavBar isLoggedIn={isLoggedIn} page={NavPage.LEADERBOARD} />
         <Grid fluid={true} className={classnames(styles.Leaderboard)}>
-          {isLoggedIn ? <SocketHandler /> : null}
           <Row className={classnames('py-4 pl-3')}>
             <Col
               sm={9}

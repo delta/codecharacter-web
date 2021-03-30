@@ -114,6 +114,7 @@
     "postcss-url": "^8.0.0",
     "prettier": "^1.14.3",
     "react-hot-loader": "^4.3.11",
+    "react-router-enzyme-context": "^1.2.0",
     "redux-devtools-extension": "^2.13.5",
     "regenerator-runtime": "^0.13.1",
     "style-loader": "^0.23.1",

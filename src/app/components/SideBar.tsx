@@ -23,6 +23,7 @@ import * as React from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
 
 import Tooltip from '@material-ui/core/Tooltip';
+import { Link } from 'react-router-dom';
 
 export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
   public render() {
@@ -84,8 +85,8 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             </Button>
           </Tooltip>
           <Tooltip title="Leaderboard" placement="right">
-            <a
-              href="./leaderboard"
+            <Link
+              to="/leaderboard"
               className={classnames('py-2 px-auto leaderboard-btn-ctrl', styles.customBtn, {
                 [`${styles.customBtnActive}`]: sidePanelTab === SidePanelTab.LEADERBOARD,
               })}
@@ -93,7 +94,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               onClick={() => clearAllLogs()}
             >
               <FontAwesomeIcon icon={faTrophy} />
-            </a>
+            </Link>
           </Tooltip>
           {isLoggedIn ? (
             <Tooltip title="Commit Log" placement="right">
@@ -145,8 +146,8 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             </Button>
           </Tooltip>
           <Tooltip title={isLoggedIn ? 'Profile' : 'Login'} placement="right">
-            <Button
-              href={'./profile'}
+            <Link
+              to="/profile"
               className={classnames('py-2 px-auto', styles.customBtn)}
               id="user_profile_button"
               onClick={() => {
@@ -158,7 +159,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               }}
             >
               <FontAwesomeIcon icon={isLoggedIn ? faUser : faSignInAlt} />
-            </Button>
+            </Link>
           </Tooltip>
           {isLoggedIn ? (
             <Tooltip title="Logout" placement="right">
@@ -175,17 +176,17 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
             </Tooltip>
           ) : null}
           <Tooltip title="Home" placement="right">
-            <a
+            <Link
               className={classnames(
                 'py-2 px-auto notification-btn-ctrl',
                 styles.customBtn,
                 styles.infoCircle,
               )}
-              href="./home"
+              to="/home"
               onClick={() => clearAllLogs()}
             >
               <FontAwesomeIcon icon={faInfoCircle} />
-            </a>
+            </Link>
           </Tooltip>
           <Tooltip title="Take a tour" placement="right">
             <Button

@@ -9,7 +9,7 @@ COPY src/config/config.example.ts src/config/config.ts
 
 COPY . .
 
-RUN npm run build
+RUN mkdir -p build && npm run build
 
 WORKDIR /usr/src/app/server
 
