@@ -18,7 +18,7 @@ import * as styles from 'app/styles/Leaderboard.module.css';
 import * as LeaderboardInterfaces from 'app/types/Leaderboard';
 import classnames from 'classnames';
 import * as React from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
+import { Col, Row, Table } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import { ScaleLoader } from 'react-spinners';
 
@@ -57,7 +57,7 @@ export class Leaderboard extends React.Component<
       this.state.currentDiv !== nextState.currentDiv ||
       this.state.currentUserType !== nextState.currentUserType
     ) {
-      this.getLeaderboarItems();
+      this.getLeaderboardItems();
     }
   }
 
@@ -92,49 +92,48 @@ export class Leaderboard extends React.Component<
     return (
       <>
         <NavBar isLoggedIn={isLoggedIn} page={NavPage.LEADERBOARD} />
-        <Grid fluid={true} className={classnames(styles.Leaderboard)}>
-          <Row className={classnames('py-4 pl-3')}>
-            <Col
-              sm={9}
+        <div className={classnames(styles.Leaderboard)}>
+          <Row className={classnames('d-flex text-center')}>
+            <div
               className="text-light font-weight-bold my-auto"
-              style={{ left: '45%', height: '10%', paddingTop: '10px', paddingBottom: '10px' }}
+              style={{ height: '15%', width: '100%', paddingTop: '10px', paddingBottom: '10px' }}
             >
               LEADERBOARD
-            </Col>
+            </div>
           </Row>
-          {this.state.isSearching ? (
-            <Row className={classnames('py-2 pl-5', styles.leaderboardTitle)}>
-              <Col
-                sm={10}
-                className="text-light font-weight-bold my-auto"
-                style={{ paddingLeft: '25px', paddingRight: '0 !important' }}
-              >
-                <input
-                  placeholder="Search for..."
-                  ref={this.search}
-                  onChange={(e) => this.updatePattern(e.target.value)}
-                  className={classnames(styles.textbox, '')}
-                />
-              </Col>
-              <Col sm={2}>
-                <button
-                  className={styles.button}
-                  onClick={() => {
-                    this.setState({ isSearching: false });
-                    getLeaderboard(this.state.nextFetchIndex, this.state.pageSize);
-                  }}
-                >
-                  <FontAwesomeIcon style={{ color: 'white' }} icon={faTimes} />
-                </button>
-                <button className={styles.button} onClick={this.searchLeaderboard}>
-                  <FontAwesomeIcon style={{ color: 'white' }} icon={faSearch} />
-                </button>
-              </Col>
-            </Row>
-          ) : (
-            <div style={{ position: 'relative' }}>
-              <Row className="px-3 mb-3">
-                <Col>
+          <div
+            ref={this.leaderboard}
+            className={classnames(styles['leaderboard-wrap'], 'container-fluid')}
+          >
+            {this.state.isSearching ? (
+              <Row className={classnames('py-2 pl-5')} style={{ display: 'inline', width: '100%' }}>
+                <Col style={{ float: 'left' }}>
+                  <input
+                    autoFocus
+                    placeholder="Search for..."
+                    ref={this.search}
+                    onChange={(e) => this.updatePattern(e.target.value)}
+                    className={classnames(styles.textbox, '')}
+                  />
+                </Col>
+                <Col style={{ float: 'right' }}>
+                  <button
+                    className={styles.button}
+                    onClick={() => {
+                      this.setState({ isSearching: false });
+                      getLeaderboard(this.state.nextFetchIndex, this.state.pageSize);
+                    }}
+                  >
+                    <FontAwesomeIcon style={{ color: 'white' }} icon={faTimes} />
+                  </button>
+                  <button className={styles.button} onClick={this.searchLeaderboard}>
+                    <FontAwesomeIcon style={{ color: 'white' }} icon={faSearch} />
+                  </button>
+                </Col>
+              </Row>
+            ) : (
+              <Row className={classnames('py-2 pl-5')} style={{ display: 'inline', width: '100%' }}>
+                <Col style={{ float: 'left' }}>
                   <div className={styles.dropdown} style={{ paddingRight: '10px' }}>
                     <button className={styles.dropbtn}>
                       {LeaderboardInterfaces.DivisionNames[this.state.currentDiv]}
@@ -183,7 +182,7 @@ export class Leaderboard extends React.Component<
                     </div>
                   </div>
                 </Col>
-                <Col style={{ position: 'absolute', left: '96.5%' }}>
+                <Col style={{ float: 'right' }}>
                   <button
                     className={styles.button}
                     onClick={() => this.setState({ isSearching: true })}
@@ -192,75 +191,53 @@ export class Leaderboard extends React.Component<
                   </button>
                 </Col>
               </Row>
-              <div style={{ paddingLeft: '1px', paddingRight: '1px', display: 'block' }}>
-                <Row className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
-                  <div
-                    // style={{ position: 'relative', left: '13%' }}
-                    className=" text-light font-weight-bold my-auto "
-                    style={{ width: '145px', paddingLeft: '40px' }}
-                  >
-                    RANK
-                  </div>
-                  <div
-                    // style={{ posit                                                                                                       ion: 'relative', left: '22%' }}
-                    className=" text-light font-weight-bold my-auto"
-                    style={{ textAlign: 'start' }}
-                  >
-                    NAME
-                  </div>
-                  <div
-                    // style={{ position: 'relative', left: '22%' }}
-                    className=" text-light font-weight-bold my-auto"
-                    style={{
-                      left: '35%',
-                      paddingLeft: '15px',
-                      position: 'absolute',
-                      textAlign: 'start',
-                    }}
-                  >
-                    RATING
-                  </div>
-                  <div
-                    // style={{ position: 'relative', left: '49%' }}
-                    className=" text-light font-weight-bold my-auto"
-                    style={{ textAlign: 'start', position: 'absolute', left: '52%' }}
-                  >
-                    WON
-                  </div>
-                  <div
-                    // style={{ position: 'relative', left: '62%' }}
-                    className=" text-light font-weight-bold my-auto"
-                    style={{ textAlign: 'start', position: 'absolute', left: '68%' }}
-                  >
-                    TIED
-                  </div>
-                  <div
-                    // style={{ position: 'relative', left: '73%' }}
-                    className=" text-light font-weight-bold my-auto"
-                    style={{ textAlign: 'start', position: 'absolute', left: '85%' }}
-                  >
-                    LOST
-                  </div>
-                </Row>
-              </div>
-            </div>
-          )}
-          <div
-            ref={this.leaderboard}
-            className={classnames(styles['leaderboard-wrap'], 'container-fluid')}
-          >
-            <Row>
-              <div
-                className="col-12 text-center"
-                style={{
-                  fontSize: '10px',
-                  marginTop: '20px',
-                  paddingBottom: '15px',
-                }}
-              >
-                <Timer timerData={timerData} getTimer={getTimer} setTimer={setTimer} />
-              </div>
+            )}
 
+            <Table responsive>
+              <thead className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
+                <th className="text-light font-weight-bold my-auto">RANK</th>
+                <th className="text-light font-weight-bold my-auto">NAME</th>
+                <th className="text-light font-weight-bold my-auto">RATING</th>
+                <th className="text-light font-weight-bold my-auto">WON</th>
+                <th className="text-light font-weight-bold my-auto">TIED</th>
+                <th className="text-light font-weight-bold my-auto">LOST</th>
+                <th></th>
+              </thead>
+              <tbody>
+                <tr className="text-light my-auto">
+                  <td colSpan={7} className="text-center">
+                    <Timer timerData={timerData} getTimer={getTimer} setTimer={setTimer} />
+                  </td>
+                </tr>
+                {players.length ? (
+                  players.map((player, index) =>
+                    player &&
+                      index >= this.state.offset &&
+                      index <= this.state.offset + this.state.pageSize - 1 ? (
+                      <LeaderboardElement
+                        updatePlayerId2={updatePlayerId2}
+                        updateRequest={updateRequest}
+                        currentUsername={currentUsername}
+                        player={player}
+                        rank={player.rank}
+                        index={index}
+                        key={index}
+                        runMatch={runMatch}
+                        isPlayAgainstDisabled={timerData > 0 ? true : false}
+                        getTimer={getTimer}
+                      />
+                    ) : null,
+                  )
+                ) : (
+                  <tr>
+                    <td colSpan={7} style={{ padding: '0px 30px', textAlign: 'center' }}>
+                      Nothing to show
+                      </td>
+                  </tr>
+                )}
+              </tbody>
+            </Table>
+            <Row>
               {this.state.nextFetchIndex !== 1 ? (
                 <div
                   className={styles.arrow}
@@ -295,30 +272,6 @@ export class Leaderboard extends React.Component<
                 </div>
               ) : null}
 
-              <div style={{ marginLeft: '0', width: '100%' }}>
-                {players.length ? (
-                  players.map((player, index) =>
-                    player &&
-                    index >= this.state.offset &&
-                    index <= this.state.offset + this.state.pageSize - 1 ? (
-                      <LeaderboardElement
-                        updatePlayerId2={updatePlayerId2}
-                        updateRequest={updateRequest}
-                        currentUsername={currentUsername}
-                        player={player}
-                        rank={player.rank}
-                        index={index}
-                        key={index}
-                        runMatch={runMatch}
-                        isPlayAgainstDisabled={timerData > 0 ? true : false}
-                        getTimer={getTimer}
-                      />
-                    ) : null,
-                  )
-                ) : (
-                  <div style={{ padding: '0px 30px', textAlign: 'center' }}>Nothing to show</div>
-                )}
-              </div>
               <Col
                 className="d-flex justify-content-center"
                 style={{ width: '100vw', margin: '10px' }}
@@ -355,12 +308,12 @@ export class Leaderboard extends React.Component<
               )}
             </Row>
           </div>
-        </Grid>
+        </div>
       </>
     );
   }
 
-  private getLeaderboarItems = () => {
+  private getLeaderboardItems = () => {
     if (this.state.currentDiv !== LeaderboardInterfaces.DivisionType.ALL) {
       if (this.state.currentUserType !== LeaderboardInterfaces.UserType.ALL) {
         this.props.clearLeaderboard();
