@@ -21,6 +21,7 @@
 
 .landing-heading p {
   font-size: 2.5rem;
+  font-size: min(2.5rem, 6vw);
   font-family: 'Axiforma';
 }
 
@@ -118,7 +119,8 @@
   }
   .nav > .nav-btn > label:hover,
   .nav .nav-check:checked ~ .nav-btn > label {
-    background-color: #fff9f0;
+    background-color: transparent;
+    cursor: pointer;
   }
   .nav > .nav-btn > label > span {
     display: block;
@@ -131,8 +133,8 @@
     display: block;
     width: 100%;
     background-color: white;
-    height: 0px;
-    transition: all 0.3s ease-in;
+    max-height: 0px;
+    transition: max-height 0.3s ease-in;
     overflow-y: hidden;
     top: 50px;
     left: 0px;
@@ -142,17 +144,17 @@
     width: 100%;
   }
   .nav > .nav-check:not(:checked) ~ .nav-links {
-    height: 0px;
+    max-height: 0px;
   }
   .nav > .nav-check:checked ~ .nav-links {
-    height: 37vh;
-    overflow-y: auto;
+    max-height: 1000px;
+    overflow-y: hidden;
   }
 }
 
 .main-nav {
   position: fixed !important;
-  background-color: #fff9f0 !important;
+  background-color: #ffffff !important;
   width: 90% !important;
   margin-left: 5% !important;
   margin-top: 20px !important;
