@@ -10,7 +10,7 @@ import classnames from 'classnames';
 import * as React from 'react';
 /* tslint:disable-next-line:import-name */
 import Chart from 'react-apexcharts';
-import { Col } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 
 // @ts-ignore
 // tslint:disable-next-line:import-name
@@ -34,7 +34,7 @@ export class LeaderboardElement extends React.Component<
       optionsPie: {
         chart: {
           foreColor: 'gray',
-          width: '50%',
+          width: '100%',
         },
         dataLabels: {
           markers: {
@@ -155,6 +155,9 @@ export class LeaderboardElement extends React.Component<
       stroke: {
         curve: 'smooth',
       },
+      tooltip: {
+        theme: 'dark',
+      },
       xaxis: {
         axisBorder: {
           color: '#000',
@@ -179,19 +182,21 @@ export class LeaderboardElement extends React.Component<
       },
     };
     return (
-      <Col
-        md={26}
-        style={{
-          animationDelay: `${(index % 10) * 0.15}s`,
-          position: 'relative',
-        }}
-        className={classnames('mb-1', styles.leader)}
-        onClick={this.handleOnClick}
-        onMouseEnter={this.handleOnMouseEnter}
-        onMouseLeave={this.handleOnMouseLeave}
-      >
-        <div className={classnames(styles['leader-wrap'])}>
-          <div className={classnames(styles['player-info-1'])}>
+      <>
+        <tr
+          style={{
+            animationDelay: `${(index % 10) * 0.15}s`,
+            position: 'relative',
+          }}
+          className={classnames('mb-1', styles.leader)}
+          onClick={this.handleOnClick}
+          onMouseEnter={this.handleOnMouseEnter}
+          onMouseLeave={this.handleOnMouseLeave}
+        >
+          <td
+            className={classnames(styles['player-info-1'])}
+            style={{ alignItems: 'flex-end', paddingTop: 0 }}
+          >
             <FontAwesomeIcon
               style={{
                 color:
@@ -233,7 +238,7 @@ export class LeaderboardElement extends React.Component<
             ) : (
               <div
                 style={{
-                  fontSize: 38,
+                  color: 'white',
                   marginLeft: '4px',
                 }}
                 className={classnames(
@@ -243,62 +248,52 @@ export class LeaderboardElement extends React.Component<
                 {player.rank}
               </div>
             )}
-            <div className={classnames(styles['leader-content'])}>
-              <div
-                className={classnames(styles['leader-name'])}
-                style={{
-                  display: 'inline-block',
-                }}
-              >
-                {
-                  <img
-                    width={35}
-                    height={35}
-                    // @ts-ignore
-                    src={Avatar[avatarName[player.avatarId]]}
-                    className={classnames({
-                      [`${styles['leader-avatar']}`]: currentUsername !== player.username,
-                      [`${styles['leader-avatar-current']}`]: currentUsername === player.username,
-                    })}
-                  />
-                }
-              </div>
+          </td>
 
-              <div
-                className={classnames(styles['leader-score'])}
-                style={{
-                  display: 'inline-block',
-                }}
-              >
-                <div style={{ display: 'flex' }}>
-                  <div className="col-auto">
-                    <div
-                      className={classnames('text-light', styles['leader-score_title'])}
-                      style={{
-                        display: 'block',
-                        fontSize: '16px',
-                        whiteSpace: 'nowrap',
-                      }}
-                      title={player.username}
-                    >
-                      <span style={{ fontFamily: 'Lato' }}>{`${player.username.substr(0, 15)}${
-                        player.username.length > 15 ? '...' : ''
-                      }`}</span>
-                    </div>
-                    <div className={classnames(styles['leader-flag'], 'mt-2')}>
-                      <ReactCountryFlag
-                        code={player.country === 'null' ? player.country : 'IN'}
-                        svg
-                        alt={player.country}
-                      />
-                    </div>
+          <td className={classnames(styles['leader-score'], 'text-center', 'pb-0')}>
+            <div style={{ display: 'inline-flex', float: 'left' }}>
+              <img
+                style={{ marginTop: '5px' }}
+                width={35}
+                height={35}
+                // @ts-ignore
+                src={Avatar[avatarName[player.avatarId]]}
+                className={classnames({
+                  [`${styles['leader-avatar']}`]: currentUsername !== player.username,
+                  [`${styles['leader-avatar-current']}`]: currentUsername === player.username,
+                })}
+              />
+              <div style={{ display: 'flex' }}>
+                <div className="col-auto">
+                  <div
+                    className={classnames('text-light', styles['leader-score_title'])}
+                    style={{
+                      display: 'block',
+                      fontSize: '16px',
+                      whiteSpace: 'nowrap',
+                    }}
+                    title={player.username}
+                  >
+                    <span style={{ fontFamily: 'Lato' }}>{`${player.username.substr(0, 15)}${
+                      player.username.length > 15 ? '...' : ''
+                    }`}</span>
+                  </div>
+                  <div
+                    className={classnames(styles['leader-flag'], 'mt-2', 'ml-0')}
+                    style={{ float: 'left' }}
+                  >
+                    <ReactCountryFlag
+                      code={player.country === 'null' ? player.country : 'IN'}
+                      svg
+                      alt={player.country}
+                    />
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className={classnames(styles['player-info-2'])}>
+          </td>
+          <IconsComponent player={player} />
+          <td>
             {!(isPlayAgainstDisabled || currentUsername === player.username) ? (
               <div style={{ fontSize: '0.55em', cursor: 'pointer' }} title={`Start match`}>
                 <img
@@ -320,43 +315,41 @@ export class LeaderboardElement extends React.Component<
                 />
               </div>
             ) : null}
-          </div>
-        </div>
-        <div>
-          <IconsComponent player={player} />
-        </div>
-        <div
-          style={{
-            borderTop: `${this.state.isModelOpen ? '1px solid grey' : ''}`,
-            display: 'flex',
-            justifyContent: 'space-between',
-          }}
-        >
-          {this.state.isModelOpen ? (
-            <div
-              className={classnames(styles.chart_holder, 'row', 'justify-content-center')}
-              onClick={(event) => {
-                event.stopPropagation();
-              }}
-            >
-              <div className={classnames(styles.chart_div, styles.pie_chart)}>
-                <Chart
-                  options={this.state.optionsPie}
-                  series={[player.ties, player.wins, player.losses]}
-                  type="donut"
-                  width="400"
-                />
-                <div className={classnames(styles.winning_streak)}>
-                  Highest winning streak: {maxWinningStreak}
+          </td>
+        </tr>
+        <div onClick={(e) => e.stopPropagation()}>
+          <Modal
+            show={this.state.isModelOpen}
+            onHide={this.handleOnClick}
+            animation={false}
+            className="leaderboard-modal"
+          >
+            <Modal.Header style={{ backgroundColor: '#2c2c2c', borderBottom: '0px' }}>
+              <Button className="close" onClick={this.handleOnClick} style={{ color: 'white' }}>
+                ×
+              </Button>
+            </Modal.Header>
+            <Modal.Body style={{ backgroundColor: '#2c2c2c' }}>
+              <div className={classnames(styles.chart_holder, 'row', 'justify-content-center')}>
+                <div className={classnames(styles.chart_div, styles.pie_chart)}>
+                  <Chart
+                    options={this.state.optionsPie}
+                    series={[player.ties, player.wins, player.losses]}
+                    type="donut"
+                    width="100%"
+                  />
+                  <div className={classnames(styles.winning_streak)}>
+                    Highest winning streak: {maxWinningStreak}
+                  </div>
+                </div>
+                <div className={classnames(styles.chart_div)}>
+                  <Chart options={optionsLine} series={[series]} type="line" width="100%" />
                 </div>
               </div>
-              <div className={classnames(styles.chart_div)}>
-                <Chart options={optionsLine} series={[series]} type="line" width="760" />
-              </div>
-            </div>
-          ) : null}
+            </Modal.Body>
+          </Modal>
         </div>
-      </Col>
+      </>
     );
   }
 }

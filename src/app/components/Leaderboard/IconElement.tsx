@@ -1,9 +1,4 @@
-import {
-  faGraduationCap,
-  faHandshake,
-  faThumbsDown,
-  faTrophy,
-} from '@fortawesome/free-solid-svg-icons';
+import { faHandshake, faThumbsDown, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as styles from 'app/styles/Leaderboard.module.css';
 import classnames from 'classnames';
@@ -12,31 +7,19 @@ import * as React from 'react';
 // tslint:disable-next-line
 export const IconsComponent = ({ player }: any) => {
   return (
-    <div style={{ fontSize: '1.5rem', color: 'light-gray' }}>
-      <div
+    <>
+      <td
         className={classnames(styles['leader-score_title'])}
         style={{
-          color: 'light-gray',
-          display: 'block',
+          color: 'white',
           fontSize: '26px',
-          left: '35%',
-          lineHeight: '2',
-          marginTop: '5px',
-          position: 'absolute',
           textAlign: 'center',
           top: '15px',
         }}
       >
         {player.rating[player.rating.length - 1].rating.toFixed(2)}{' '}
-        {player.type === 'Student' ? (
-          <FontAwesomeIcon
-            style={{ fontSize: 18, display: 'inline' }}
-            icon={faGraduationCap}
-            title={'Student Participant'}
-          />
-        ) : null}
-      </div>
-      <div style={{ position: 'absolute', left: '52%', top: '15px', textAlign: 'center' }}>
+      </td>
+      <td style={{ textAlign: 'center' }}>
         <FontAwesomeIcon
           title="Won"
           icon={faTrophy}
@@ -44,9 +27,9 @@ export const IconsComponent = ({ player }: any) => {
           aria-hidden="true"
           color="#00e396"
         />
-        <p style={{ color: 'light-gray' }}>{player.wins}</p>
-      </div>
-      <div style={{ position: 'absolute', left: '68%', top: '15px', textAlign: 'center' }}>
+        <p style={{ color: 'white' }}>{player.wins}</p>
+      </td>
+      <td style={{ textAlign: 'center' }}>
         <FontAwesomeIcon
           title="Tied"
           icon={faHandshake}
@@ -54,9 +37,9 @@ export const IconsComponent = ({ player }: any) => {
           aria-hidden="true"
           color="#008ffb"
         />
-        <p style={{ color: 'light-gray' }}>{player.ties}</p>
-      </div>
-      <div style={{ position: 'absolute', left: '85%', top: '15px', textAlign: 'center' }}>
+        <p style={{ color: 'white' }}>{player.ties}</p>
+      </td>
+      <td style={{ textAlign: 'center' }}>
         <FontAwesomeIcon
           title="Lost"
           icon={faThumbsDown}
@@ -64,8 +47,8 @@ export const IconsComponent = ({ player }: any) => {
           aria-hidden="true"
           color="#feb019"
         />
-        <p style={{ color: 'light-gray' }}>{player.losses}</p>
-      </div>
-    </div>
+        <p style={{ color: 'white' }}>{player.losses}</p>
+      </td>
+    </>
   );
 };

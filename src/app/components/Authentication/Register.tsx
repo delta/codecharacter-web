@@ -39,7 +39,7 @@ export class Register extends React.Component<RegisterInterfaces.Props, Register
       currentStep: RegisterInterfaces.Steps.USER_DETAILS,
       email: '',
       fullName: '',
-      isCaptchaValidated: true,
+      isCaptchaValidated: false,
       isFormSubmitted: false,
       isRegistered: false,
       isStudent: false,

@@ -12,6 +12,10 @@
   padding-right: 100px;
 }
 
+.Leaderboard > * {
+  margin: 0;
+}
+
 .leader-wrap {
   display: flex;
   flex-flow: row;
@@ -32,27 +36,19 @@
 .winning_streak {
   display: table-cell;
   text-align: center;
-  width: 330px;
+  width: 100vw;
+  color: white;
   font-size: larger;
   font-weight: bold;
   position: relative;
-  top: 30px;
-}
-
-.pie_chart {
-  position: relative;
-  top: -30px;
 }
 
 .chart_holder {
   margin: 0 auto;
-  display: table-cell;
 }
 
-.chart_div {
-  padding: 20px 40px;
-  height: max-content;
-  display: inline-block;
+.chart_holder > * {
+  width: 100%;
 }
 
 @media (max-width: 1000px) {
@@ -62,19 +58,6 @@
   .Leaderboard {
     padding-left: 0 !important;
     padding-right: 0 !important;
-  }
-  .chart_div {
-    padding: auto;
-  }
-}
-
-@media (max-width: 1570px) {
-  .chart_holder {
-    display: flex;
-  }
-  .pie_chart {
-    position: relative;
-    top: 0px;
   }
 }
 
@@ -109,20 +92,18 @@
 }
 
 .leader-ava {
-  padding: 8px;
+  padding: 0px 15px 1px;
   position: relative;
-  width: 80px;
 }
 
 .leader-ava-l {
-  padding: 8px;
+  padding: 0px 15px 1px;
   position: relative;
   margin-right: -20px;
 }
 
 .player-info-1 {
   display: flex;
-  width: 100px;
 }
 
 .player-info-2 {
@@ -181,10 +162,8 @@
 
 .textbox {
   outline: 0;
-  height: 42px;
   width: 100%;
-  line-height: 42px;
-  padding: 0 16px;
+  padding: 2px 16px;
   background-color: #1c1c1c;
   color: white;
   border: 0;
@@ -198,11 +177,7 @@
 .button {
   outline: 0;
   background: #1c1c1c !important;
-  float: right;
-  height: 42px;
-  width: 42px;
   text-align: center;
-  line-height: 42px;
   border: 0;
   color: white;
   font: normal normal normal 14px/1 FontAwesome;
@@ -345,4 +320,23 @@
 
 .dropDownMenuActive {
   background-color: #555 !important;
+}
+
+table td,
+table th {
+  vertical-align: middle !important;
+  text-align: center !important;
+  border-top: 1px solid #505050 !important;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+:global(.leaderboard-modal .modal-content) {
+  background-color: transparent;
+}
+
+:global(.modal-backdrop) {
+  background-color: rgba(0, 0, 0, 0.6);
 }
