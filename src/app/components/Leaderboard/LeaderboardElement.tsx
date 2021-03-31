@@ -253,6 +253,7 @@ export class LeaderboardElement extends React.Component<
           <td className={classnames(styles['leader-score'], 'text-center', 'pb-0')}>
             <div style={{ display: 'inline-flex', float: 'left' }}>
               <img
+                style={{ marginTop: '5px' }}
                 width={35}
                 height={35}
                 // @ts-ignore
