@@ -238,8 +238,8 @@ export class LeaderboardElement extends React.Component<
             ) : (
               <div
                 style={{
+                  color: 'white',
                   marginLeft: '4px',
-                  color: 'white'
                 }}
                 className={classnames(
                   player.rank <= 9 ? styles['leader-ava'] : styles['leader-ava-l'],
@@ -321,7 +321,7 @@ export class LeaderboardElement extends React.Component<
             show={this.state.isModelOpen}
             onHide={this.handleOnClick}
             animation={false}
-            className='leaderboard-modal'
+            className="leaderboard-modal"
           >
             <Modal.Header style={{ backgroundColor: '#2c2c2c', borderBottom: '0px' }}>
               <Button className="close" onClick={this.handleOnClick} style={{ color: 'white' }}>

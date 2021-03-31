@@ -212,8 +212,8 @@ export class Leaderboard extends React.Component<
                 {players.length ? (
                   players.map((player, index) =>
                     player &&
-                      index >= this.state.offset &&
-                      index <= this.state.offset + this.state.pageSize - 1 ? (
+                    index >= this.state.offset &&
+                    index <= this.state.offset + this.state.pageSize - 1 ? (
                       <LeaderboardElement
                         updatePlayerId2={updatePlayerId2}
                         updateRequest={updateRequest}
@@ -232,7 +232,7 @@ export class Leaderboard extends React.Component<
                   <tr>
                     <td colSpan={7} style={{ padding: '0px 30px', textAlign: 'center' }}>
                       Nothing to show
-                      </td>
+                    </td>
                   </tr>
                 )}
               </tbody>
