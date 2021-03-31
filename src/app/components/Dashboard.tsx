@@ -26,7 +26,7 @@ export class Dashboard extends React.Component<
 > {
   public sideBarWidth = 50;
   public sidePanelWidth = 380;
-  public minEditorWidth = 350;
+  public minEditorWidth = 250;
   public minRendererWidth = 50;
   public initialEditorRatio = 0.4;
   public initialRendererHeight = 400;
