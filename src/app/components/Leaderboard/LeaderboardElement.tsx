@@ -274,8 +274,8 @@ export class LeaderboardElement extends React.Component<
                     }}
                     title={player.username}
                   >
-                    <span style={{ fontFamily: 'Lato' }}>{`${player.username.substr(0, 15)}${
-                      player.username.length > 15 ? '...' : ''
+                    <span style={{ fontFamily: 'Lato' }}>{`${player.username.substr(0, 20)}${
+                      player.username.length > 20 ? '...' : ''
                     }`}</span>
                   </div>
                   <div

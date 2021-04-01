@@ -21,31 +21,37 @@ export const Footer: React.FunctionComponent = () => {
       <div className={classnames('container-fluid', style.footer_head)}>
         <footer className="container py-5">
           <div className="row justify-content-md-around">
-            <div className="col col-md-3">
+            <div className="col col-md-6">
               <h5>Contact</h5>
-              <ul className="list-unstyled text-small">
-                <Table>
-                  <tbody>
-                    <tr onClick={() => copyToClipboard('9994479069')}>
-                      <td>Mandeep</td>
-                      <td>9994479069</td>
-                    </tr>
-                    <tr onClick={() => copyToClipboard('9566541342')}>
-                      <td>Kumaran</td>
-                      <td>9566541342</td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </ul>
+              <Table>
+                <tbody>
+                  <tr onClick={() => copyToClipboard('9790432692')}>
+                    <td>Lakshmanan R</td>
+                    <td>9790432692</td>
+                  </tr>
+                  <tr onClick={() => copyToClipboard('8879672720')}>
+                    <td>Rigved</td>
+                    <td>8879672720</td>
+                  </tr>
+                  <tr onClick={() => copyToClipboard('8130964865')}>
+                    <td>Yash</td>
+                    <td>8130964865</td>
+                  </tr>
+                  <tr onClick={() => copyToClipboard('9884052296')}>
+                    <td>Ram T N</td>
+                    <td>9884052296</td>
+                  </tr>
+                </tbody>
+              </Table>
             </div>
             <div className="col col-md-3">
               <h5>Quick Links</h5>
               <ul className="list-unstyled text-small">
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link to="/">Dashboard</Link>
                 </li>
                 <li>
-                  <a href="https://code.pragyan.org/docs">Documentation</a>
+                  <a href="https://code.pragyan.org/docs/">Documentation</a>
                 </li>
                 <li>
                   <a href="https://www.pragyan.org/21/home/events/bytehoc/code_character/">

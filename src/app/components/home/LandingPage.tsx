@@ -19,7 +19,7 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
     },
     {
       answer:
-        'Yes! Code Character is played completely on the web. However, we provide functionality for you to write code offline on your own text editor and compile the code. For more details, check out the player docs <a href="https://code.pragyan.org/docs">code.pragyan.org/docs</a>',
+        'Yes! Code Character is played completely on the web. However, we provide functionality for you to write code offline on your own text editor and compile the code. For more details, check out the player docs <a href="https://code.pragyan.org/docs/">code.pragyan.org/docs/</a>',
       question: 'Is the event completely online?',
     },
     {
@@ -74,7 +74,7 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
               </ul>
               <p>
                 Go through the{' '}
-                <a href="https://code.pragyan.org/docs" target="_blank">
+                <a href="https://code.pragyan.org/docs/" target="_blank">
                   docs
                 </a>{' '}
                 and start playing!

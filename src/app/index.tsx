@@ -29,6 +29,7 @@ export const App = hot(module)(() => (
         <Route exact path={Routes.USER_PROFILE_MODEL} component={UserProfileModal} />
         <Route path={Routes.USER_ACTIVATION} component={ActivateUser} />
         <Route exact path={Routes.HOME} component={LandingPage} />
+        <Route component={Dashboard} />
       </Switch>
     </BrowserRouter>
   </React.Fragment>
