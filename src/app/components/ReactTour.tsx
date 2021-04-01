@@ -164,7 +164,7 @@ const tourConfig: ReactourStep[] = [
       <div>
         <h6>Quest</h6>
         <p className={classnames(styles['step-description'])}>
-          With the help of Quest mode and its associated levels you can learn the game from absolute
+          With the help of Quest mode, you can learn the game from absolute
           scratch.
           <br />
           There are various levels increasing difficulty. There is a 3 star rating for each level
