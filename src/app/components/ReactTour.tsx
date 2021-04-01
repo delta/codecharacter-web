@@ -167,7 +167,7 @@ const tourConfig: ReactourStep[] = [
           With the help of Quest mode, you can learn the game from absolute
           scratch.
           <br />
-          There are various levels increasing difficulty. There is a 3 star rating for each level
+          There are various levels of increasing difficulty. Each level has a 3 star rating,
           which lets you know how competitive your code was against that particular bot.
         </p>
       </div>
