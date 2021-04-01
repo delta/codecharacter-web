@@ -23,7 +23,7 @@ export const Footer: React.FunctionComponent = () => {
           <div className="row justify-content-md-around">
             <div className="col col-md-6">
               <h5>Contact</h5>
-              <Table>
+              <Table className="contact-table">
                 <tbody>
                   <tr onClick={() => copyToClipboard('9790432692')}>
                     <td>Lakshmanan R</td>
