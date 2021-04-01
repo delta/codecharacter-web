@@ -164,11 +164,10 @@ const tourConfig: ReactourStep[] = [
       <div>
         <h6>Quest</h6>
         <p className={classnames(styles['step-description'])}>
-          With the help of Quest mode, you can learn the game from absolute
-          scratch.
+          With the help of Quest mode, you can learn the game from absolute scratch.
           <br />
-          There are various levels of increasing difficulty. Each level has a 3 star rating,
-          which lets you know how competitive your code was against that particular bot.
+          There are various levels of increasing difficulty. Each level has a 3 star rating, which
+          lets you know how competitive your code was against that particular bot.
         </p>
       </div>
     ),

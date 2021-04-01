@@ -60,7 +60,7 @@ export default class PopUpMenu extends React.Component<{}, ElementOwnProps> {
           </a>
 
           <a
-            href="https://forum.pragyan.org/t/code-character-frequently-asked-questions/21"
+            href="https://discord.gg/fgT7ejYk"
             target="_blank"
           >
             <div className={classnames(styles['menu-item'], styles['menu-item-discourse'])}>
