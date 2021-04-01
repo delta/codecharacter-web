@@ -239,7 +239,6 @@ export class LeaderboardElement extends React.Component<
               <div
                 style={{
                   color: 'white',
-                  marginLeft: '4px',
                 }}
                 className={classnames(
                   player.rank <= 9 ? styles['leader-ava'] : styles['leader-ava-l'],
@@ -293,7 +292,7 @@ export class LeaderboardElement extends React.Component<
             </div>
           </td>
           <IconsComponent player={player} />
-          <td>
+          <td style={{ width: '100px' }}>
             {!(isPlayAgainstDisabled || currentUsername === player.username) ? (
               <div style={{ fontSize: '0.55em', cursor: 'pointer' }} title={`Start match`}>
                 <img
