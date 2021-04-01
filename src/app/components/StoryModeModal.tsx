@@ -18,7 +18,7 @@ export class StoryModeModal extends React.Component<StoryModalPropType.Props, {}
         <Modal.Header>
           <Modal.Title>
             <div style={{ margin: 0 }}>
-              <b>Level {level} !! </b>
+              <b>Level {level}</b>
               {[...Array(stars >= 0 ? stars : 0)].map(() => (
                 <FontAwesomeIcon icon={faStar} style={{ color: 'gold' }} />
               ))}

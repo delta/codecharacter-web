@@ -37,7 +37,7 @@ export default class PopUpMenu extends React.Component<{}, ElementOwnProps> {
           <div onClick={this.togglePopUp}>
             <FontAwesomeIcon icon={faTimes} className={classnames(styles['close-icon'])} />
           </div>
-          <a href="https://code.pragyan.org/docs" target="_blank">
+          <a href="https://code.pragyan.org/docs/" target="_blank">
             <div className={classnames(styles['menu-item'], styles['menu-item-pragyan'])}>
               <div className={classnames(styles['menu-icon-documentation'])}>
                 <FontAwesomeIcon icon={faBook} />
@@ -49,7 +49,7 @@ export default class PopUpMenu extends React.Component<{}, ElementOwnProps> {
             <div className={classnames(styles['menu-item'], styles['menu-item-documentation'])}>
               <div>
                 <img
-                  src="https://www.pragyan.org/21/cms/templates/common/site/images/favicon.ico"
+                  src="https://www.pragyan.org/21/cms/templates/common/favicon.ico"
                   alt="pragyan"
                   width="25px"
                   height="22px"

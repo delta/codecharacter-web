@@ -4,7 +4,7 @@ import {
   faCode,
   faCodeBranch,
   faCog,
-  faInfoCircle,
+  faHome,
   faQuestionCircle,
   faSignInAlt,
   faSignOutAlt,
@@ -185,7 +185,7 @@ export class Sidebar extends React.Component<SideBarInterfaces.Props, {}> {
               to="/home"
               onClick={() => clearAllLogs()}
             >
-              <FontAwesomeIcon icon={faInfoCircle} />
+              <FontAwesomeIcon icon={faHome} />
             </Link>
           </Tooltip>
           <Tooltip title="Take a tour" placement="right">

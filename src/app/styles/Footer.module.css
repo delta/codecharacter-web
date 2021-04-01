@@ -70,3 +70,7 @@ textarea {
   color: yellowgreen;
   text-decoration: none;
 }
+
+:global(.contact-table *) {
+  text-align: left !important;
+}

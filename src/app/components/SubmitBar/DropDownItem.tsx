@@ -19,6 +19,7 @@ export class DropDownItem extends React.Component<DropDownItemInterfaces.Props, 
               setCurrentLevel(Number(level), rating);
               toggleStoryModeModal(Number(level));
             }}
+            style={{ cursor: 'pointer' }}
           >
             <span>LVL {level}</span>
             <DeltaStarCount rating={rating} />

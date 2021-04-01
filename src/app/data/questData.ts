@@ -1,4 +1,4 @@
-const urlToDocs = 'https://delta.nitt.edu/codecharacter-docs/';
+const urlToDocs = 'https://code.pragyan.org/docs/';
 
 export const levels = [
   {

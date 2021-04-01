@@ -195,8 +195,12 @@ export class Leaderboard extends React.Component<
 
             <Table responsive>
               <thead className={classnames('py-2 pl-3', styles.leaderboardTitle)}>
-                <th className="text-light font-weight-bold my-auto">RANK</th>
-                <th className="text-light font-weight-bold my-auto">NAME</th>
+                <th className="text-light font-weight-bold my-auto" style={{ width: 1 }}>
+                  RANK
+                </th>
+                <th className="text-light font-weight-bold my-auto" style={{ width: 1 }}>
+                  NAME
+                </th>
                 <th className="text-light font-weight-bold my-auto">RATING</th>
                 <th className="text-light font-weight-bold my-auto">WON</th>
                 <th className="text-light font-weight-bold my-auto">TIED</th>
