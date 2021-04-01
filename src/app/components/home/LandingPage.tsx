@@ -85,7 +85,7 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
                   href="https://discord.gg/fgT7ejYk"
                   target="_blank"
                 >
-                  Codechar Discord server
+                  CodeCharacter Forum
                 </a>{' '}
                 .
               </p>
