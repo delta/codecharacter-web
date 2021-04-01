@@ -36,8 +36,13 @@ export class Notification extends React.Component<
 
   public render() {
     const { activeNotificationTab, tabType } = this.state;
-    const { announcements, notifications, deleteNotificationType, deleteNotification } = this.props;
+    const { announcements, deleteNotificationType, deleteNotification } = this.props;
     // let r :Array<NotificationInterfaces.Notification>=[];
+    let { notifications } = this.props;
+    if (!Array.isArray(notifications)) {
+      notifications = [];
+    }
+
     const activeNotifications = notifications.filter((notification) => {
       switch (activeNotificationTab) {
         case NotificationInterfaces.NotificationTabType.ALL: {
