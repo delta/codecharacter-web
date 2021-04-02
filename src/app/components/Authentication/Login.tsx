@@ -76,17 +76,6 @@ export class Login extends React.Component<LoginInterfaces.Props, LoginInterface
         <div className={classnames(styles.welcomeBack)}>
           <h1> Welcome! </h1>
           <p> Log in to access your dashboard and profile </p>
-          <div className={classnames('text-center text-dark mb-2', styles['pragyan-login'])}>
-            You can use your{' '}
-            <a
-              target="blank"
-              href="https://pragyan.org"
-              className={classnames(styles['create-one-button'])}
-            >
-              Pragyan
-            </a>{' '}
-            account credentials to login.
-          </div>
         </div>
 
         <Row className={classnames(styles.no_margin)}>
