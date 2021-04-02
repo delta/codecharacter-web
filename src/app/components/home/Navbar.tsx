@@ -11,6 +11,7 @@ export enum NavPage {
   HOME,
   LEADERBOARD,
   PROFILE,
+  NOT_FOUND,
 }
 
 // tslint:disable-next-line: variable-name
