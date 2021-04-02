@@ -48,7 +48,7 @@ export class Welcome extends React.Component<
             <b>
               Found a bug? Want a new feature? Post in the{' '}
               <a href="https://discord.gg/fgT7ejYk" target="_blank">
-                Codecharacter Discord
+                CodeCharacter Discord server
               </a>
               .
             </b>
