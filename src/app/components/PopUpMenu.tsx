@@ -68,7 +68,7 @@ export default class PopUpMenu extends React.Component<{}, ElementOwnProps> {
                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAD+klEQVR4Xu3aWch1YxQH8N9nljFcUIYoZSjzPCUuzEO5+CSUCy4MJUq4MBY3IiFDSClcUMa4kHkmkkKZckPuzGOG/p/n9Z1O+xz7nLPf/e63s1edTmef51nPWv+91nrWWs+zwpzTijnXXw9AbwFzjkDvAnNuAH0Q7F2gd4E5R6B3gQYMYEPsiDUb4DUJiz/xCX6cZNLw2FksYGfchYOwxixCzDD3L7yGc/DRNHymBWAXvIP1p1l0Eeb8gr2nAWFaAF7BwYugyCwsI9OhkzKYBoCN8B2dS6LiDptMGhOmAWBPvDsp0i2N3wvvTbLWNADsg7cnWaTFsfuW2FR7yR6A2lCtHthbQO8CfQyYOAi+jifwDU7AySNc7znci21wLA6ZcLvtXBB8EZdg86L032WbStr6w0A+sTG2xv7YFV/ibiTfvwKn1oxVnQLgRlyJ3fH7hHFjHZyEn/BssZqHa4DQGQAieN5o3nLe4iy0QQHieRz+P4w6A8BtOH8WrSvmnojHlgsAKZU/bhiAlNyfYvsxfDthAR+WQNaw/qvY3YCLuw7A9bh8MbQv5e5LXQfgQLxRIWT2/zOwHq6pKFp2w7VYC1fjrQoecYPkEluMAGHJXeAPpEeYbW+QjsQzRbk8/7b4cr5D6+ILbFV+5/l2+L5C0adxdFcBeB97VAh3Z+nbDf6VLO/V8qCqx3AEsvUNU1zs0q4CcB/OqhDudNw/8Pw3bIafy7Nkil9j7fI7GWOifTLCYVqJh7oKQHz3qgrh0jK/pVhBlD4Tjw6NOxs3l/b6ZUgmWUX74c2uAnABbh0hXB5vinRwYwFVlFiQJs2vY3jEMj7vKgCn4cEB4ZLTx9fTsR0OjGN0/O+vxIHPhlwhTdmq4JhJS74LVKXAKW0TBNNIfaqYbzq4oyjR/zgchdvL7jE4Nu34AFpFSw5AhMpeniowgWyBYtbH46bSun4ZX5U9PS6xZfmkctwB5xVLGnaVw/AkYgWdBSCCRcELh9rnaVnnzdU5TbqogLWgZKwiW1+OwMYdw3XCAgbfTOqCKJ0tLtvjtnUcv5TQ9yCl8E7l2KvO1M4BUEfoJsf0APQHI/+eWtem/mSoNlSrB3b5cLSVGJByN5nYNNYzBd6rprxQoyGaca0AkIXaviCRBmsuP6QSHEetAdD2FZnHcQoeQbrDo6g1ACJAOr/J8ZObL/YlqdwES/8gbvdAAWPJUuHhhdu6JvdBKaMD9h1I/2CYWrWAaQNaU/OuQxongzRXAETxc0unacEF5w6AgJBD1DRhUmXOJQAB4YBy/+CYNmqBpny4aT65r5y2W1UneeRabWZzTSvcCL8egEZgXMZMegtYxi+vEdF7C2gExmXM5B8FnNRB6ACkgwAAAABJRU5ErkJggg=="
                 />
               </div>
-              Discord
+              Forum
             </div>
           </a>
         </div>

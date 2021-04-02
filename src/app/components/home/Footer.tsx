@@ -59,7 +59,7 @@ export const Footer: React.FunctionComponent = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://discord.gg/fgT7ejYk">Discord</a>
+                  <a href="https://discord.gg/fgT7ejYk">Forum</a>
                 </li>
               </ul>
             </div>
