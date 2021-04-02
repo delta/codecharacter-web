@@ -58,7 +58,7 @@
   background-image: linear-gradient(to bottom left, #5e579e, #c51ad4);
   text-decoration: none;
 }
-.menu-item-discourse:hover {
+.menu-item-discord:hover {
   color: white;
   background-image: linear-gradient(to right, #27b2ea, #51c4ce, #acd8ac, #ede794);
   text-decoration: none;
@@ -91,10 +91,10 @@
   border: 1px solid #7e7e7e;
 }
 
-.menu-item-discourse {
+.menu-item-discord {
   border: 1px solid #7e7e7e;
 }
-.menu-icon-discourse {
+.menu-icon-discord {
   margin-right: 2px;
 }
 
