@@ -4,6 +4,7 @@ import Register from 'app/containers/Authentication/Register';
 import Dashboard from 'app/containers/Dashboard';
 import LandingPage from 'app/containers/LandingPage';
 import Leaderboard from 'app/containers/Leaderboard';
+import NotFound from 'app/containers/NotFound';
 import SocketHandlerWrapper from 'app/containers/SocketHandlerWrapper';
 import UserProfileModal from 'app/containers/UserProfileModal';
 import { Routes } from 'app/routes';
@@ -29,7 +30,7 @@ export const App = hot(module)(() => (
         <Route exact path={Routes.USER_PROFILE_MODEL} component={UserProfileModal} />
         <Route path={Routes.USER_ACTIVATION} component={ActivateUser} />
         <Route exact path={Routes.HOME} component={LandingPage} />
-        <Route component={Dashboard} />
+        <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
   </React.Fragment>
