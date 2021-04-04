@@ -72,6 +72,30 @@
   display: none;
 }
 
+.sponsors {
+  text-align: center;
+}
+
+.sponsors > div > h1 {
+  font-family: 'Under';
+  margin: 20px auto;
+}
+
+.sponsorsImages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.sponsorsImages > div {
+  margin-bottom: 25px;
+}
+
+.startupnews > img {
+  max-width: 341.3px;
+}
+
 @media (max-width: 1000px) {
   .head_img {
     left: 50vw !important;
@@ -149,6 +173,9 @@
   .nav > .nav-check:checked ~ .nav-links {
     max-height: 1000px;
     overflow-y: hidden;
+  }
+  .sponsorsImages > img {
+    width: 90%;
   }
 }
 
