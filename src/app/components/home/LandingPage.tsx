@@ -125,6 +125,19 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
             </div>
           </div>
         </div>
+        <div className={classnames(styles.sponsors)}>
+          <div>
+            <h1>MEDIA PARTNERS</h1>
+          </div>
+          <div className={classnames(styles.sponsorsImages)}>
+            <div className={classnames(styles.startupnews)}>
+              <img src="../../assets/img/startupnews.png"></img>
+            </div>
+            <div>
+              <img src="../../assets/img/alltop9.png"></img>
+            </div>
+          </div>
+        </div>
         <div className="position-sticky align-bottom" id={'contact'}>
           <Footer />
         </div>
