@@ -1,5 +1,5 @@
 /* tslint:disable:no-console*/
-import { jsonResponseWrapper, setRequestHeaders } from 'app/apiFetch/utils';
+import { setRequestHeaders, textResponseWrapper } from 'app/apiFetch/utils';
 import { API_BASE_URL } from '../../config/config';
 
 export const codeCompile = (commitHash = 'latest') => {
@@ -107,7 +107,7 @@ export const lockCode = () => {
     headers: setRequestHeaders(),
     method: 'PUT',
   })
-    .then((response) => jsonResponseWrapper(response))
+    .then((response) => textResponseWrapper(response))
     .then((data) => data)
     .catch((error) => {
       console.error(error);

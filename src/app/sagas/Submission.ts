@@ -12,10 +12,15 @@ export const getUserLatestCode = (state: RootState) => state.code.code;
 
 export function* lockCode(action: ActionType<typeof SubmissionActions.lockCode>) {
   try {
-    yield call(SubmissionFetch.lockCode);
-    yield put(NotificationActions.success('Code Locked'));
-    yield put(SubmissionActions.toggleLockCode());
-    yield put(GameLogActions.clearAllLogs());
+    const res = yield call(SubmissionFetch.lockCode);
+
+    if (res.status === 200) {
+      yield put(NotificationActions.info('Processing code submission'));
+      yield put(SubmissionActions.toggleLockCode());
+      yield put(GameLogActions.clearAllLogs());
+    } else {
+      yield put(NotificationActions.error('Code cannot be locked'));
+    }
   } catch (err) {
     console.error(err);
   }
