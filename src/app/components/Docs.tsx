@@ -20,12 +20,12 @@ export class Docs extends React.Component<{}, {}> {
             zIndex: 1000,
           }}
           target="_blank"
-          href="https://code.pragyan.org/docs/"
+          href="https://delta.nitt.edu/codecharacter-docs/"
         >
           <FontAwesomeIcon icon={faExternalLinkAlt} />
         </a>
         <iframe
-          src="https://code.pragyan.org/docs/overview.html"
+          src="https://delta.nitt.edu/codecharacter-docs/overview.html"
           style={{
             border: 0,
             height: '100%',

@@ -74,7 +74,7 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
               </ul>
               <p>
                 Go through the{' '}
-                <a href="https://code.pragyan.org/docs" target="_blank">
+                <a href="https://delta.nitt.edu/codecharacter-docs/" target="_blank">
                   docs
                 </a>{' '}
                 and start playing!
@@ -90,11 +90,11 @@ export class LandingPage extends React.Component<LandingPageInterfaces.Props, {}
                 .
               </p>
               <h1>Prizes</h1>
-              <p>A total of 15K INR up for grabs for acing the leaderboard.</p>
+              <p>A total of 10K INR up for grabs for acing the leaderboard.</p>
               <ul>
-                <li>First Place - 7.5K INR</li>
-                <li>Second Place - 4.5K INR</li>
-                <li>Third Place - 3K INR</li>
+                <li>First Place - 5K INR</li>
+                <li>Second Place - 3K INR</li>
+                <li>Third Place - 2K INR</li>
               </ul>
             </div>
             <div className={classnames(styles['codechar-video'], 'col-lg-5')}>

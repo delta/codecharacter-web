@@ -27,12 +27,12 @@ export const Footer: React.FunctionComponent = () => {
                 <Table>
                   <tbody>
                     <tr onClick={() => copyToClipboard('9994479069')}>
-                      <td>Mandeep</td>
-                      <td>9994479069</td>
+                      <td>Bestin</td>
+                      <td>8111931125</td>
                     </tr>
                     <tr onClick={() => copyToClipboard('9566541342')}>
-                      <td>Kumaran</td>
-                      <td>9566541342</td>
+                      <td>Anirudh</td>
+                      <td>8870888215</td>
                     </tr>
                   </tbody>
                 </Table>
@@ -45,7 +45,7 @@ export const Footer: React.FunctionComponent = () => {
                   <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <a href="https://code.pragyan.org/docs">Documentation</a>
+                  <a href="https://delta.nitt.edu/codecharacter-docs/">Documentation</a>
                 </li>
                 <li>
                   <a href="https://www.pragyan.org/21/home/events/bytehoc/code_character/">
